@@ -30,18 +30,19 @@ extra:
 theme:
   name: material
   logo: Images/Elephpant.svg
+  #<a href="https://iconscout.com/icons/elephant" class="text-underline font-size-sm" target="_blank">Elephant</a> by <a href="https://iconscout.com/contributors/yogiaprelliyanto" class="text-underline font-size-sm" target="_blank">Yaprativa</a>
   favicon: Images/elephant.ico
   palette:
     
     - media: "(prefers-color-scheme: light)" 
       scheme: default
-      primary: teal
+      primary: deep purple
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)" 
       scheme: slate
-      primary: deep orange
+      primary: amber
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
