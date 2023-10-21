@@ -10,4 +10,19 @@
          <lastmod>2023-10-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar1/</loc>
+         <lastmod>2023-10-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar2/</loc>
+         <lastmod>2023-10-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar3/</loc>
+         <lastmod>2023-10-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>

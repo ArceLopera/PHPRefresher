@@ -12,21 +12,21 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/phpRefresh/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpVar3/">
       
-      <link rel="icon" href="../Images/elephant.ico">
+      <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>General - PHP Refresher</title>
+        <title>Variable Scope - PHP Refresher</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -41,7 +41,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php-resources" class="md-skip">
+        <a href="#local-scope" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../Images/Elephpant.svg" alt="logo">
+  <img src="../../Images/Elephpant.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              General
+              Variable Scope
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -215,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../phpRefresh/" class="md-tabs__link md-tabs__link--active">
         Basics
       </a>
     </li>
@@ -243,9 +243,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../Images/Elephpant.svg" alt="logo">
+  <img src="../../Images/Elephpant.svg" alt="logo">
 
     </a>
     PHP Refresher
@@ -273,7 +273,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -314,89 +314,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          General
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../phpRefresh/" class="md-nav__link">
         General
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#php-resources" class="md-nav__link">
-    PHP Resources
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-syntax" class="md-nav__link">
-    PHP Syntax
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-case-sensitivity" class="md-nav__link">
-    PHP Case Sensitivity
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-comments" class="md-nav__link">
-    PHP Comments
-  </a>
-  
-    <nav class="md-nav" aria-label="PHP Comments">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#syntax-for-single-line-comments" class="md-nav__link">
-    Syntax for single-line comments:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#syntax-for-multiple-line-comments" class="md-nav__link">
-    Syntax for multiple-line comments:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -406,12 +328,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
       
       
       
@@ -434,7 +358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PR/phpVar1/" class="md-nav__link">
+      <a href="../phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -448,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PR/phpVar2/" class="md-nav__link">
+      <a href="../phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -460,11 +384,75 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../PR/phpVar3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Variable Scope
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Variable Scope
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#local-scope" class="md-nav__link">
+    Local Scope
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-scope" class="md-nav__link">
+    Global Scope
+  </a>
+  
+    <nav class="md-nav" aria-label="Global Scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#php-the-global-keyword" class="md-nav__link">
+    PHP The global Keyword
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-the-static-keyword" class="md-nav__link">
+    PHP The static Keyword
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -508,50 +496,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#php-resources" class="md-nav__link">
-    PHP Resources
+  <a href="#local-scope" class="md-nav__link">
+    Local Scope
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#php-syntax" class="md-nav__link">
-    PHP Syntax
+  <a href="#global-scope" class="md-nav__link">
+    Global Scope
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-case-sensitivity" class="md-nav__link">
-    PHP Case Sensitivity
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-comments" class="md-nav__link">
-    PHP Comments
-  </a>
-  
-    <nav class="md-nav" aria-label="PHP Comments">
+    <nav class="md-nav" aria-label="Global Scope">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#syntax-for-single-line-comments" class="md-nav__link">
-    Syntax for single-line comments:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#syntax-for-multiple-line-comments" class="md-nav__link">
-    Syntax for multiple-line comments:
+  <a href="#php-the-global-keyword" class="md-nav__link">
+    PHP The global Keyword
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-the-static-keyword" class="md-nav__link">
+    PHP The static Keyword
+  </a>
   
 </li>
       
@@ -569,72 +543,91 @@
                 
 
 
-  <h1>General</h1>
+  <h1>Variable Scope</h1>
 
-<p>PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.</p>
-<p>A PHP script is executed on the server, and the plain HTML result is sent back to the browser.</p>
-<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">    &lt;head&gt;</span>
-<span class="x">        &lt;title&gt;Example&lt;/title&gt;</span>
-<span class="x">    &lt;/head&gt;</span>
-<span class="x">    &lt;body&gt;</span>
+<p>In PHP, variables can be declared anywhere in the script.</p>
+<p>The scope of a variable is the part of the script where the variable can be referenced/used.</p>
+<p>PHP has three different variable scopes:</p>
+<ul>
+<li><a href="#local-scope">Local</a></li>
+<li><a href="#global-scope">Global</a></li>
+<li><a href="#php-the-static-keyword">Static</a></li>
+</ul>
+<h2 id="local-scope">Local Scope</h2>
+<p>A variable declared within a function has a LOCAL SCOPE and can only be accessed within that function:</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// local scope</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x inside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">myTest</span><span class="p">();</span>
 
-<span class="x">        </span><span class="cp">&lt;?php</span>
-            <span class="k">echo</span> <span class="s2">&quot;Hi, I&#39;m a PHP script!&quot;</span><span class="p">;</span>
-        <span class="cp">?&gt;</span><span class="x"></span>
-
-<span class="x">    &lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span>
-</code></pre></div>
-<p>PHP is lossly typed (i.e. types are not necessarily enforced), dynamically, implicitly typed (i.e. you don’t have to declare variables), case sensitive (i.e. var and VAR are two different variables) and object-oriented (i.e. everything is an object, like C# and Java).</p>
-<p>PHP is a language like C that uses curly braces to contain code statements within loops or conditionals. PHP statements end with a semicolon (;) just like C.</p>
-<h2 id="php-resources">PHP Resources</h2>
-<ol>
-<li>The website <a href="http://www.php.net">http://www.php.net</a> is the official website for the PHP language,  and <a href="https://www.php.net/manual/en/index.php">Docs</a></li>
-</ol>
-<h2 id="php-syntax">PHP Syntax</h2>
-<p>A PHP script can be placed anywhere in the document.</p>
-<p>A PHP script starts with <mark>&lt;?php</mark> and ends with <mark>?&gt;</mark></p>
-<p>The default file extension for PHP files is ".php".</p>
-<p>A PHP file normally contains HTML tags, and some PHP scripting code.</p>
-<h2 id="php-case-sensitivity">PHP Case Sensitivity</h2>
-<p>In PHP, keywords (e.g. if, else, while, echo, etc.), classes, functions, and user-defined functions are not case-sensitive.</p>
-<blockquote>
-<p><strong>Warning:</strong> However; all variable names are case-sensitive!</p>
-</blockquote>
-<h2 id="php-comments">PHP Comments</h2>
-<p>A comment in PHP code is a line that is not executed as a part of the program. Its only purpose is to be read by someone who is looking at the code.</p>
-<h3 id="syntax-for-single-line-comments">Syntax for single-line comments:</h3>
-<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">&lt;body&gt;</span>
-
-<span class="cp">&lt;?php</span>
-<span class="c1">// This is a single-line comment</span>
-
-<span class="c1"># This is also a single-line comment</span>
+<span class="c1">// using x outside the function will generate an error</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x outside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<h3 id="syntax-for-multiple-line-comments">Syntax for multiple-line comments:</h3>
-<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">&lt;body&gt;</span>
+You can have local variables with the same name in different functions, because local variables are only recognized by the function in which they are declared.</p>
+<h2 id="global-scope">Global Scope</h2>
+<p>A variable declared outside a function has a GLOBAL SCOPE and can only be accessed outside a function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// global scope</span>
 
-<span class="cp">&lt;?php</span>
-<span class="cm">/*</span>
-<span class="cm">This is a multiple-lines comment block</span>
-<span class="cm">that spans over multiple</span>
-<span class="cm">lines</span>
-<span class="cm">*/</span>
+<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// using x inside this function will generate an error</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x inside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">myTest</span><span class="p">();</span>
+
+<span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x outside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span>
 </code></pre></div>
+<h3 id="php-the-global-keyword">PHP The global Keyword</h3>
+<p>The global keyword is used to access a global variable from within a function.</p>
+<p>To do this, use the global keyword before the variables (inside the function):
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nv">$y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">global</span> <span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">;</span>
+  <span class="nv">$y</span> <span class="o">=</span> <span class="nv">$x</span> <span class="o">+</span> <span class="nv">$y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">myTest</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$y</span><span class="p">;</span> <span class="c1">// outputs 15</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<p>PHP also stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable. This array is also accessible from within functions and can be used to update global variables directly.</p>
+<p>The example above can be rewritten like this:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="nv">$y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nx">myTest</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$y</span><span class="p">;</span> <span class="c1">// outputs 15</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<h2 id="php-the-static-keyword">PHP The static Keyword</h2>
+<p>Normally, when a function is completed/executed, all of its variables are deleted. However, sometimes we want a local variable NOT to be deleted. We need it for a further job.</p>
+<p>To do this, use the static keyword when you first declare the variable:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="nv">$x</span><span class="p">;</span>
+  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">myTest</span><span class="p">();</span>
+<span class="nx">myTest</span><span class="p">();</span>
+<span class="nx">myTest</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<p>Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.</p>
+<p>Note: The variable is still local to the function.</p>
 
               
             </article>
@@ -648,7 +641,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+        <a href="../phpVar2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Types and Casting" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -657,26 +650,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Home
+              Data Types and Casting
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../PR/phpVar1/" class="md-footer__link md-footer__link--next" aria-label="Next: Variables" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Variables
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
@@ -750,10 +728,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
