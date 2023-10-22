@@ -429,6 +429,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#print_r-function" class="md-nav__link">
+    print_r() function
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -472,6 +479,53 @@
     <li class="md-nav__item">
       <a href="../phpVar3/" class="md-nav__link">
         Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_3">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpStr1/" class="md-nav__link">
+        Functions
       </a>
     </li>
   
@@ -557,6 +611,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#print_r-function" class="md-nav__link">
+    print_r() function
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -632,6 +693,23 @@ After the execution of the statements above, the variable $txt will hold the val
 <span class="x">&lt;/html&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>int(5985)
+</code></pre></div></p>
+<h3 id="print_r-function">print_r() function</h3>
+<ul>
+<li>print_r() displays the value of a variable, in a human-readable format.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$b</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Array ( [0] =&gt; red [1] =&gt; green [2] =&gt; blue )
+Array ( [Peter] =&gt; 35 [Ben] =&gt; 37 [Joe] =&gt; 43 )
 </code></pre></div></p>
 <h2 id="null">NULL</h2>
 <p>The null type is PHP's unit type, i.e. it has only one value: null.</p>
