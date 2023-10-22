@@ -44,6 +44,7 @@ echo "I love $txt!";
 ### var_dump() function
 + var_dump() displays structured information about one or more expressions that includes its type and value. Arrays and objects are explored recursively with values indented to show structure.
 
+
 ``` php
 <!DOCTYPE html>
 <html>
@@ -60,7 +61,24 @@ var_dump($x);
 ```
 int(5985)
 ```
+### print_r() function
++ print_r() displays the value of a variable, in a human-readable format.
 
+```php
+<?php
+$a = array("red", "green", "blue");
+print_r($a);
+
+echo "<br>";
+
+$b = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+print_r($b);
+?>
+```
+```
+Array ( [0] => red [1] => green [2] => blue )
+Array ( [Peter] => 35 [Ben] => 37 [Joe] => 43 )
+```
 ## NULL
 The null type is PHP's unit type, i.e. it has only one value: null.
 

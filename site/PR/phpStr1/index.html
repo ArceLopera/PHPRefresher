@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpVar3/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpStr1/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Variable Scope - PHP Refresher</title>
+        <title>Functions - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#local-scope" class="md-skip">
+        <a href="#strlen" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variable Scope
+              Functions
             
           </span>
         </div>
@@ -328,14 +328,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
       
       
       
@@ -384,75 +382,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Variable Scope
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#local-scope" class="md-nav__link">
-    Local Scope
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#global-scope" class="md-nav__link">
-    Global Scope
-  </a>
-  
-    <nav class="md-nav" aria-label="Global Scope">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-the-global-keyword" class="md-nav__link">
-    PHP The global Keyword
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-the-static-keyword" class="md-nav__link">
-    PHP The static Keyword
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -469,12 +403,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -495,11 +431,97 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpStr1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Functions
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#strlen" class="md-nav__link">
+    strlen()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_word_count" class="md-nav__link">
+    str_word_count()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strrev" class="md-nav__link">
+    strrev()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strpos" class="md-nav__link">
+    strpos()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_replace" class="md-nav__link">
+    str_replace()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_repeat" class="md-nav__link">
+    str_repeat()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_split" class="md-nav__link">
+    str_split()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_shuffle" class="md-nav__link">
+    str_shuffle()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -543,35 +565,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#local-scope" class="md-nav__link">
-    Local Scope
+  <a href="#strlen" class="md-nav__link">
+    strlen()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#global-scope" class="md-nav__link">
-    Global Scope
+  <a href="#str_word_count" class="md-nav__link">
+    str_word_count()
   </a>
-  
-    <nav class="md-nav" aria-label="Global Scope">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-the-global-keyword" class="md-nav__link">
-    PHP The global Keyword
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#php-the-static-keyword" class="md-nav__link">
-    PHP The static Keyword
+  <a href="#strrev" class="md-nav__link">
+    strrev()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strpos" class="md-nav__link">
+    strpos()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_replace" class="md-nav__link">
+    str_replace()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_repeat" class="md-nav__link">
+    str_repeat()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_split" class="md-nav__link">
+    str_split()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#str_shuffle" class="md-nav__link">
+    str_shuffle()
   </a>
   
 </li>
@@ -590,91 +634,59 @@
                 
 
 
-  <h1>Variable Scope</h1>
+  <h1>Functions</h1>
 
-<p>In PHP, variables can be declared anywhere in the script.</p>
-<p>The scope of a variable is the part of the script where the variable can be referenced/used.</p>
-<p>PHP has three different variable scopes:</p>
-<ul>
-<li><a href="#local-scope">Local</a></li>
-<li><a href="#global-scope">Global</a></li>
-<li><a href="#php-the-static-keyword">Static</a></li>
-</ul>
-<h2 id="local-scope">Local Scope</h2>
-<p>A variable declared within a function has a LOCAL SCOPE and can only be accessed within that function:</p>
+<p>PHP contains many useful built-in functions and methods to accomplish common tasks.</p>
+<h2 id="strlen">strlen()</h2>
+<p>The PHP strlen() function returns the length of a string.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs 12</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="str_word_count">str_word_count()</h2>
+<p>The PHP str_word_count() function counts the number of words in a string.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">str_word_count</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs 2</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="strrev">strrev()</h2>
+<p>The PHP strrev() function reverses a string.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">strrev</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !dlrow olleH</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="strpos">strpos()</h2>
+<p>The PHP strpos() function searches for a specific text within a string. If a match is found, the function returns the character position of the first match. If no match is found, it will return FALSE.</p>
 <p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// local scope</span>
-  <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x inside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">myTest</span><span class="p">();</span>
-
-<span class="c1">// using x outside the function will generate an error</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x outside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">strpos</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">);</span> <span class="c1">// outputs 6</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-You can have local variables with the same name in different functions, because local variables are only recognized by the function in which they are declared.</p>
-<h2 id="global-scope">Global Scope</h2>
-<p>A variable declared outside a function has a GLOBAL SCOPE and can only be accessed outside a function:</p>
+The first character position in a string is 0 (not 1).</p>
+<h2 id="str_replace">str_replace()</h2>
+<p>The PHP str_replace() function replaces some characters with some other characters in a string.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// global scope</span>
-
-<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// using x inside this function will generate an error</span>
-  <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x inside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">myTest</span><span class="p">();</span>
-
-<span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;Variable x outside function is: </span><span class="si">$x</span><span class="s2">&lt;/p&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs Hello Earth!</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h3 id="php-the-global-keyword">PHP The global Keyword</h3>
-<p>The global keyword is used to access a global variable from within a function.</p>
-<p>To do this, use the global keyword before the variables (inside the function):
+<h2 id="str_repeat">str_repeat()</h2>
+<p>The str_repeat() function repeats a string a specified number of times.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="nv">$y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-
-<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">global</span> <span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">;</span>
-  <span class="nv">$y</span> <span class="o">=</span> <span class="nv">$x</span> <span class="o">+</span> <span class="nv">$y</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">myTest</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$y</span><span class="p">;</span> <span class="c1">// outputs 15</span>
+<span class="k">echo</span> <span class="nb">str_repeat</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// outputs Hello Hello Hello </span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
-<p>PHP also stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable. This array is also accessible from within functions and can be used to update global variables directly.</p>
-<p>The example above can be rewritten like this:
+</code></pre></div>
+<h2 id="str_split">str_split()</h2>
+<p>The str_split() function splits a string into an array.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="nv">$y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-
-<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="nx">myTest</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$y</span><span class="p">;</span> <span class="c1">// outputs 15</span>
+<span class="k">echo</span> <span class="nb">str_split</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs [&quot;H&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;, &quot; &quot;, &quot;w&quot;, &quot;o&quot;, &quot;r&quot;, &quot;l&quot;, &quot;d&quot;, &quot;!&quot;]</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
-<h2 id="php-the-static-keyword">PHP The static Keyword</h2>
-<p>Normally, when a function is completed/executed, all of its variables are deleted. However, sometimes we want a local variable NOT to be deleted. We need it for a further job.</p>
-<p>To do this, use the static keyword when you first declare the variable:
+</code></pre></div>
+<h2 id="str_shuffle">str_shuffle()</h2>
+<p>The str_shuffle() function randomly shuffles all the characters of a string.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">myTest</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">static</span> <span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="k">echo</span> <span class="nv">$x</span><span class="p">;</span>
-  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">myTest</span><span class="p">();</span>
-<span class="nx">myTest</span><span class="p">();</span>
-<span class="nx">myTest</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nb">str_shuffle</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !Wdroel loHl</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
-<p>Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.</p>
-<p>Note: The variable is still local to the function.</p>
+</code></pre></div>
+<p>For more information, see <a href="https://www.php.net/manual/en/ref.strings.php">PHP String Functions</a></p>
 
               
             </article>
@@ -688,7 +700,7 @@ You can have local variables with the same name in different functions, because 
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpVar2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Types and Casting" rel="prev">
+        <a href="../phpVar3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Variable Scope" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -697,26 +709,11 @@ You can have local variables with the same name in different functions, because 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Data Types and Casting
+              Variable Scope
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../phpStr1/" class="md-footer__link md-footer__link--next" aria-label="Next: Functions" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Functions
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

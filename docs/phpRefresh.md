@@ -21,6 +21,11 @@ A PHP script is executed on the server, and the plain HTML result is sent back t
 PHP is lossly typed (i.e. types are not necessarily enforced), dynamically, implicitly typed (i.e. you don’t have to declare variables), case sensitive (i.e. var and VAR are two different variables) and object-oriented (i.e. everything is an object, like C# and Java).
 
 PHP is a language like C that uses curly braces to contain code statements within loops or conditionals. PHP statements end with a semicolon (;) just like C.
+There are not dot notation in PHP. Everything is function based.
+``` php
+"name".split(); //doesnt work
+split("name"); //works
+```
 
 ## PHP Resources
  
