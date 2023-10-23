@@ -2,32 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/</loc>
-         <lastmod>2023-10-22</lastmod>
+         <lastmod>2023-10-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/phpRefresh/</loc>
-         <lastmod>2023-10-22</lastmod>
+         <lastmod>2023-10-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/PR/phpNum1/</loc>
+         <lastmod>2023-10-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/PR/phpStr1/</loc>
-         <lastmod>2023-10-22</lastmod>
+         <lastmod>2023-10-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar1/</loc>
-         <lastmod>2023-10-22</lastmod>
+         <lastmod>2023-10-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar2/</loc>
-         <lastmod>2023-10-22</lastmod>
+         <lastmod>2023-10-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar3/</loc>
-         <lastmod>2023-10-22</lastmod>
+         <lastmod>2023-10-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

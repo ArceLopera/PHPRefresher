@@ -98,3 +98,4 @@ nav:
         - Variable Scope: PR/phpVar3.md
      - Strings:
         - Functions: PR/phpStr1.md
+     - Numerical: PR/phpNum1.md
