@@ -100,3 +100,4 @@ nav:
         - Functions: PR/phpStr1.md
      - Numerical: PR/phpNum1.md
      - Math : PR/phpMath1.md
+     - Constant : PR/phpConst.md
