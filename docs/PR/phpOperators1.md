@@ -5,11 +5,11 @@ PHP divides the operators in the following groups:
 + [Arithmetic operators](#php-arithmetic-operators)
 + [Assignment operators](#php-assignment-operators)
 + [Comparison operators](#php-comparison-operators)
-+ Increment/Decrement operators
-+ Logical operators
-+ String operators
-+ Array operators
-+ Conditional assignment operators
++ [Increment/Decrement operators](#php-increment-decrement-operators)
++ [Logical operators](#php-logical-operators)
++ [String operators](#php-string-operators)
++ [Array operators](#php-array-operators)
++ [Conditional assignment operators](#conditional-assignment-operators)
 
 
 ## PHP Arithmetic Operators
@@ -56,3 +56,57 @@ The PHP comparison operators are used to compare two values (number or string):
 | `>=` | Greater than or equal to | $x >= $y | Returns true if $x is greater than or equal to $y |
 | `<=>` | Spaceship operator | $x <=> $y | Returns an integer less than, equal to, or greater than zero, depending on if $x is less than, equal to, or greater than $y.  Introduced in PHP 7. | 
 
+## PHP Increment / Decrement Operators
+
+The PHP increment and decrement operators are used to increase or decrease the value of a variable.
+
+| Operator | Description |Result|
+| -------- | ----------- | ----- |
+| `++$x` | Pre-increment | Increments $x by one, then returns $x |
+| `$x++` | Post-increment | Returns $x, then increments $x by one |
+| `--$x` | Pre-decrement | Decrements $x by one, then returns $x |
+| `$x--` | Post-decrement | Returns $x, then decrements $x by one |
+
+## PHP Logical Operators
+
+The PHP logical operators are used to combine conditional statements.
+
+| Operator | Description |Example|Result|
+| -------- | ----------- | ---- | ----- |
+| `&&` | Logical AND | $x && $y | Returns true if both $x and $y are true |
+| `||` | Logical OR | $x `||` $y | Returns true if either $x or $y is true |
+| `!` | Logical NOT | ! $x | Returns the opposite of $x |
+| `and` | Logical AND | $x and $y | Returns true if both $x and $y are true |
+| `or` | Logical OR | $x or $y | Returns true if either $x or $y is true |
+| `xor` | Logical Xor | $x xor $y | True if either $x or $y is true, but not both |
+
+
+## PHP String Operators
+
+The PHP string operators are used to concatenate strings.
+
+| Operator | Description |Example|Result|
+| -------- | ----------- | ---- | ----- |
+| `.` | Concatenation | $x . $y | Concatenates $x and $y |
+| `.=` | Concatenation assignment | $x .= $y | Appends $y to $x |
+
+## PHP Array Operators
+
+The PHP array operators are used to perform operations on arrays.
+
+| Operator | Description |Example|Result|
+| -------- | ----------- | ---- | ----- |
+| `+` | Union |	$x + $y	|Union of $x and $y|
+| `==`	|Equality|	$x == $y|	Returns true if $x and $y have the same key/value pairs|
+|`===`|	Identity|	$x === $y|	Returns true if $x and $y have the same key/value pairs in the same order and of the same types|
+|`!=`|	Inequality|	$x != $y|	Returns true if $x is not equal to $y|
+|`<>`	|Inequality	|$x <> $y|	Returns true if $x is not equal to $y|
+|`!==`	|Non-identity|	$x !== $y|	Returns true if $x is not identical to $y|
+
+
+## Conditional Assignment Operators
+
+| Operator | Description |Example|Result|
+| -------- | ----------- | ---- | ----- |
+| `?:` | Ternary Operator | $x = expr1 ? expr2 : expr3|	Returns the value of $x. The value of $x is expr2 if expr1 = TRUE. The value of $x is expr3 if expr1 = FALSE |
+|`??`|	Null coalescing	|$x = expr1 ?? expr2	|Returns the value of $x. The value of $x is expr1 if expr1 exists, and is not NULL. If expr1 does not exist, or is NULL, the value of $x is expr2. Introduced in PHP 7|

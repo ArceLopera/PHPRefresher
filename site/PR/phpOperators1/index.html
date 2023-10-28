@@ -544,6 +544,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#php-increment-decrement-operators" class="md-nav__link">
+    PHP Increment / Decrement Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-logical-operators" class="md-nav__link">
+    PHP Logical Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-string-operators" class="md-nav__link">
+    PHP String Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-array-operators" class="md-nav__link">
+    PHP Array Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-assignment-operators" class="md-nav__link">
+    Conditional Assignment Operators
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -604,6 +639,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#php-increment-decrement-operators" class="md-nav__link">
+    PHP Increment / Decrement Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-logical-operators" class="md-nav__link">
+    PHP Logical Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-string-operators" class="md-nav__link">
+    PHP String Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-array-operators" class="md-nav__link">
+    PHP Array Operators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditional-assignment-operators" class="md-nav__link">
+    Conditional Assignment Operators
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -626,11 +696,11 @@
 <li><a href="#php-arithmetic-operators">Arithmetic operators</a></li>
 <li><a href="#php-assignment-operators">Assignment operators</a></li>
 <li><a href="#php-comparison-operators">Comparison operators</a></li>
-<li>Increment/Decrement operators</li>
-<li>Logical operators</li>
-<li>String operators</li>
-<li>Array operators</li>
-<li>Conditional assignment operators</li>
+<li><a href="#php-increment-decrement-operators">Increment/Decrement operators</a></li>
+<li><a href="#php-logical-operators">Logical operators</a></li>
+<li><a href="#php-string-operators">String operators</a></li>
+<li><a href="#php-array-operators">Array operators</a></li>
+<li><a href="#conditional-assignment-operators">Conditional assignment operators</a></li>
 </ul>
 <h2 id="php-arithmetic-operators">PHP Arithmetic Operators</h2>
 <p>The PHP arithmetic operators are used with numeric values to perform common arithmetical operations, such as addition, subtraction, multiplication etc.</p>
@@ -804,6 +874,190 @@
 <td>Spaceship operator</td>
 <td>$x &lt;=&gt; $y</td>
 <td>Returns an integer less than, equal to, or greater than zero, depending on if $x is less than, equal to, or greater than $y.  Introduced in PHP 7.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="php-increment-decrement-operators">PHP Increment / Decrement Operators</h2>
+<p>The PHP increment and decrement operators are used to increase or decrease the value of a variable.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>++$x</code></td>
+<td>Pre-increment</td>
+<td>Increments $x by one, then returns $x</td>
+</tr>
+<tr>
+<td><code>$x++</code></td>
+<td>Post-increment</td>
+<td>Returns $x, then increments $x by one</td>
+</tr>
+<tr>
+<td><code>--$x</code></td>
+<td>Pre-decrement</td>
+<td>Decrements $x by one, then returns $x</td>
+</tr>
+<tr>
+<td><code>$x--</code></td>
+<td>Post-decrement</td>
+<td>Returns $x, then decrements $x by one</td>
+</tr>
+</tbody>
+</table>
+<h2 id="php-logical-operators">PHP Logical Operators</h2>
+<p>The PHP logical operators are used to combine conditional statements.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>Logical AND</td>
+<td>$x &amp;&amp; $y</td>
+<td>Returns true if both $x and $y are true</td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>Logical OR</td>
+<td>$x <code>||</code> $y</td>
+<td>Returns true if either $x or $y is true</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical NOT</td>
+<td>! $x</td>
+<td>Returns the opposite of $x</td>
+</tr>
+<tr>
+<td><code>and</code></td>
+<td>Logical AND</td>
+<td>$x and $y</td>
+<td>Returns true if both $x and $y are true</td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>Logical OR</td>
+<td>$x or $y</td>
+<td>Returns true if either $x or $y is true</td>
+</tr>
+<tr>
+<td><code>xor</code></td>
+<td>Logical Xor</td>
+<td>$x xor $y</td>
+<td>True if either $x or $y is true, but not both</td>
+</tr>
+</tbody>
+</table>
+<h2 id="php-string-operators">PHP String Operators</h2>
+<p>The PHP string operators are used to concatenate strings.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>Concatenation</td>
+<td>$x . $y</td>
+<td>Concatenates $x and $y</td>
+</tr>
+<tr>
+<td><code>.=</code></td>
+<td>Concatenation assignment</td>
+<td>$x .= $y</td>
+<td>Appends $y to $x</td>
+</tr>
+</tbody>
+</table>
+<h2 id="php-array-operators">PHP Array Operators</h2>
+<p>The PHP array operators are used to perform operations on arrays.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Union</td>
+<td>$x + $y</td>
+<td>Union of $x and $y</td>
+</tr>
+<tr>
+<td><code>==</code></td>
+<td>Equality</td>
+<td>$x == $y</td>
+<td>Returns true if $x and $y have the same key/value pairs</td>
+</tr>
+<tr>
+<td><code>===</code></td>
+<td>Identity</td>
+<td>$x === $y</td>
+<td>Returns true if $x and $y have the same key/value pairs in the same order and of the same types</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Inequality</td>
+<td>$x != $y</td>
+<td>Returns true if $x is not equal to $y</td>
+</tr>
+<tr>
+<td><code>&lt;&gt;</code></td>
+<td>Inequality</td>
+<td>$x &lt;&gt; $y</td>
+<td>Returns true if $x is not equal to $y</td>
+</tr>
+<tr>
+<td><code>!==</code></td>
+<td>Non-identity</td>
+<td>$x !== $y</td>
+<td>Returns true if $x is not identical to $y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conditional-assignment-operators">Conditional Assignment Operators</h2>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?:</code></td>
+<td>Ternary Operator</td>
+<td>$x = expr1 ? expr2 : expr3</td>
+<td>Returns the value of $x. The value of $x is expr2 if expr1 = TRUE. The value of $x is expr3 if expr1 = FALSE</td>
+</tr>
+<tr>
+<td><code>??</code></td>
+<td>Null coalescing</td>
+<td>$x = expr1 ?? expr2</td>
+<td>Returns the value of $x. The value of $x is expr1 if expr1 exists, and is not NULL. If expr1 does not exist, or is NULL, the value of $x is expr2. Introduced in PHP 7</td>
 </tr>
 </tbody>
 </table>
