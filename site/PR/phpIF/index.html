@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpVar1/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpIF/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Variables - PHP Refresher</title>
+        <title>Conditionals - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-declaring-php-variables" class="md-skip">
+        <a href="#php-conditional-statements" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Variables
+              Conditionals
             
           </span>
         </div>
@@ -328,14 +328,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
       
       
       
@@ -356,102 +354,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Variables
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpVar1/" class="md-nav__link">
         Variables
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-declaring-php-variables" class="md-nav__link">
-    Creating (Declaring) PHP Variables
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating (Declaring) PHP Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rules-for-php-variables" class="md-nav__link">
-    Rules for PHP variables:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-variables" class="md-nav__link">
-    Output Variables
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools-for-understanding-strange-objects" class="md-nav__link">
-    Tools for understanding strange objects
-  </a>
-  
-    <nav class="md-nav" aria-label="Tools for understanding strange objects">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#var_dump-function" class="md-nav__link">
-    var_dump() function
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#print_r-function" class="md-nav__link">
-    print_r() function
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#null" class="md-nav__link">
-    NULL
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -599,12 +506,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" data-md-state="indeterminate" type="checkbox" id="__nav_2_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" checked>
       
       
       
@@ -625,11 +534,82 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpIF/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Conditionals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Conditionals
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#php-conditional-statements" class="md-nav__link">
+    PHP Conditional Statements
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP Conditional Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-statement" class="md-nav__link">
+    if statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifelse-statement" class="md-nav__link">
+    if...else statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifelseifelse-statement" class="md-nav__link">
+    if...elseif...else statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-statement" class="md-nav__link">
+    switch statement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -687,63 +667,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-declaring-php-variables" class="md-nav__link">
-    Creating (Declaring) PHP Variables
+  <a href="#php-conditional-statements" class="md-nav__link">
+    PHP Conditional Statements
   </a>
   
-    <nav class="md-nav" aria-label="Creating (Declaring) PHP Variables">
+    <nav class="md-nav" aria-label="PHP Conditional Statements">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rules-for-php-variables" class="md-nav__link">
-    Rules for PHP variables:
+  <a href="#if-statement" class="md-nav__link">
+    if statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifelse-statement" class="md-nav__link">
+    if...else statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifelseifelse-statement" class="md-nav__link">
+    if...elseif...else statement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-statement" class="md-nav__link">
+    switch statement
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#output-variables" class="md-nav__link">
-    Output Variables
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools-for-understanding-strange-objects" class="md-nav__link">
-    Tools for understanding strange objects
-  </a>
-  
-    <nav class="md-nav" aria-label="Tools for understanding strange objects">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#var_dump-function" class="md-nav__link">
-    var_dump() function
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#print_r-function" class="md-nav__link">
-    print_r() function
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#null" class="md-nav__link">
-    NULL
-  </a>
   
 </li>
       
@@ -761,81 +721,69 @@
                 
 
 
-  <h1>Variables</h1>
+  <h1>Conditionals</h1>
 
-<p>In PHP, we store all pieces of data -- numbers, characters, strings, <em>everything</em> -- as objects, and we refer to these objects using variables.  As a simple case, we can <em>assign</em> a variable a value using the assignment operator, which is the "equals" sign. </p>
-<h2 id="creating-declaring-php-variables">Creating (Declaring) PHP Variables</h2>
-<p>In PHP, a variable starts with the $ sign, followed by the name of the variable:</p>
-<p>Remember that variables are case-sensitive!</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$txt</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span> <span class="c1">//No difference between &quot;&quot; and &#39;&#39;</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="nv">$y</span> <span class="o">=</span> <span class="mf">10.5</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-After the execution of the statements above, the variable $txt will hold the value Hello world!, the variable $x will hold the value 5, and the variable $y will hold the value 10.5.</p>
-<p>Note: When you assign a text value to a variable, put quotes around the value.</p>
-<p>Note: Unlike other programming languages, PHP has no command for declaring a variable. It is created the moment you first assign a value to it.</p>
-<h3 id="rules-for-php-variables">Rules for PHP variables:</h3>
+<p>Conditional statements are used to perform different actions based on different conditions.</p>
+<h2 id="php-conditional-statements">PHP Conditional Statements</h2>
+<p>In PHP we have the following conditional statements:</p>
 <ul>
-<li>A variable starts with the $ sign, followed by the name of the variable</li>
-<li>A variable name must start with a letter or the underscore character</li>
-<li>A variable name cannot start with a number</li>
-<li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )</li>
-<li>Variable names are case-sensitive ($age and $AGE are two different variables)</li>
+<li><a href="#if-statement">if statement</a> - executes some code if one condition is true</li>
+<li><a href="#if...else-statement">if...else statement</a> - executes some code if a condition is true and another code if that condition is false</li>
+<li><a href="#if...elseif...else-statement">if...elseif...else statement</a> - executes different codes for more than two conditions</li>
+<li><a href="#switch-statement">switch statement</a> - selects one of many blocks of code to be executed</li>
 </ul>
-<h2 id="output-variables">Output Variables</h2>
-<p>The PHP echo statement is often used to output data to the screen.</p>
-<p>The following example will show how to output text and a variable:</p>
+<h3 id="if-statement">if statement</h3>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$txt</span> <span class="o">=</span> <span class="s2">&quot;phpTutorial&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;I love </span><span class="si">$txt</span><span class="s2">!&quot;</span><span class="p">;</span>
+<span class="nv">$t</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$t</span> <span class="o">&lt;</span> <span class="s2">&quot;20&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Have a good day!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="tools-for-understanding-strange-objects"><strong>Tools for understanding strange objects</strong></h2>
-<h3 id="var_dump-function">var_dump() function</h3>
-<ul>
-<li>var_dump() displays structured information about one or more expressions that includes its type and value. Arrays and objects are explored recursively with values indented to show structure.</li>
-</ul>
-<p><div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">&lt;body&gt;</span>
-
-<span class="cp">&lt;?php</span>  
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">5985</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$x</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
-
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>int(5985)
-</code></pre></div></p>
-<h3 id="print_r-function">print_r() function</h3>
-<ul>
-<li>print_r() displays the value of a variable, in a human-readable format.</li>
-</ul>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$a</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">);</span>
-<span class="nb">print_r</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-
-<span class="nv">$b</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
-<span class="nb">print_r</span><span class="p">(</span><span class="nv">$b</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Array ( [0] =&gt; red [1] =&gt; green [2] =&gt; blue )
-Array ( [Peter] =&gt; 35 [Ben] =&gt; 37 [Joe] =&gt; 43 )
-</code></pre></div></p>
-<h2 id="null">NULL</h2>
-<p>The null type is PHP's unit type, i.e. it has only one value: null.</p>
-<p>Undefined, and unset() variables will resolve to the value null.</p>
-<p>There is only one value of type null, and that is the case-insensitive constant null.
+<h3 id="ifelse-statement">if...else statement</h3>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$var</span> <span class="o">=</span> <span class="k">NULL</span><span class="p">;</span>       
+<span class="nv">$t</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$t</span> <span class="o">&lt;</span> <span class="s2">&quot;20&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Have a good day!&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Have a good night!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
+</code></pre></div>
+<h3 id="ifelseifelse-statement">if...elseif...else statement</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$t</span> <span class="o">=</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$t</span> <span class="o">&lt;</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Have a good morning!&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$t</span> <span class="o">&lt;</span> <span class="s2">&quot;20&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Have a good day!&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Have a good night!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="switch-statement">switch statement</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$favcolor</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$favcolor</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="s2">&quot;red&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;Your favorite color is red!&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="s2">&quot;blue&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;Your favorite color is blue!&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="s2">&quot;green&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;Your favorite color is green!&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;Your favorite color is neither red, blue, nor green!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 
               
             </article>
@@ -849,7 +797,7 @@ Array ( [Peter] =&gt; 35 [Ben] =&gt; 37 [Joe] =&gt; 43 )
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../phpRefresh/" class="md-footer__link md-footer__link--prev" aria-label="Previous: General" rel="prev">
+        <a href="../phpOperators1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Operators" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -858,20 +806,20 @@ Array ( [Peter] =&gt; 35 [Ben] =&gt; 37 [Joe] =&gt; 43 )
               <span class="md-footer__direction">
                 Previous
               </span>
-              General
+              Operators
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpVar2/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Types and Casting" rel="next">
+        <a href="../phpFor/" class="md-footer__link md-footer__link--next" aria-label="Next: For-loops" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Data Types and Casting
+              For-loops
             </div>
           </div>
           <div class="md-footer__button md-icon">

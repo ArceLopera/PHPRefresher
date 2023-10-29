@@ -102,3 +102,7 @@ nav:
      - Math : PR/phpMath1.md
      - Constant : PR/phpConst.md
      - Operators : PR/phpOperators1.md
+     - Control Flow:
+        - Conditionals: PR/phpIF.md
+        - For-loops: PR/phpFor.md
+
