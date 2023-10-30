@@ -104,5 +104,5 @@ nav:
      - Operators : PR/phpOperators1.md
      - Control Flow:
         - Conditionals: PR/phpIF.md
-        - For-loops: PR/phpFor.md
+        - Loops: PR/phpLoops.md
 
