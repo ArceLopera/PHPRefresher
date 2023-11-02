@@ -6,7 +6,7 @@ PHP Functions
 
 | Functions | |||
 | -------- | -------- | -------- | -------- | 
-| Array | Calendar | Date |Directory| 
+| [Array](../DS/phpArray.md) | Calendar | Date |Directory| 
 |Error |Exception |Filesystem| Filter| 
 |FTP |JSON |Keywords| Libxml| 
 |Mail |Math |Misc |MySQLi |

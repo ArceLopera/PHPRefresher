@@ -109,4 +109,6 @@ nav:
      - Built-in:
         - All : Func/phpAll.md
      - User-Defined : Func/phpUserFunc.md
+  - Data Structures:
+     - Array: DS/phpArray.md
 
