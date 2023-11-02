@@ -108,4 +108,5 @@ nav:
   - Functions: 
      - Built-in:
         - All : Func/phpAll.md
+     - User-Defined : Func/phpUserFunc.md
 

@@ -4,31 +4,12 @@ Here is a list of all PHP functions, keywords and constants, along with examples
 
 PHP Functions
 
-Array 
-Calendar 
-Date 
-Directory 
-Error 
-Exception 
-Filesystem 
-Filter 
-FTP 
-JSON 
-Keywords 
-Libxml 
-Mail 
-Math 
-Misc 
-MySQLi 
-Network
-Output 
-RegEx 
-SimpleXML 
-Stream 
-String 
-Var 
-Handling 
-XML 
-Parser 
-Zip 
-Timezones
+| Functions | |||
+| -------- | -------- | -------- | -------- | 
+| Array | Calendar | Date |Directory| 
+|Error |Exception |Filesystem| Filter| 
+|FTP |JSON |Keywords| Libxml| 
+|Mail |Math |Misc |MySQLi |
+|Network|Output |RegEx |SimpleXML| 
+|Stream |String| Var |Handling| 
+|XML |Parser| Zip |Timezones|
