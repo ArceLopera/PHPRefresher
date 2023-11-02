@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpUserFunc/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/DS/phpArray/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>User-Defined - PHP Refresher</title>
+        <title>Array - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-a-user-defined-function" class="md-skip">
+        <a href="#create-an-array-in-php" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              User-Defined
+              Array
             
           </span>
         </div>
@@ -223,8 +223,6 @@
         
   
   
-    
-  
 
 
   
@@ -236,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../phpAll/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -248,13 +246,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../DS/phpArray/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Data Structures
       </a>
     </li>
@@ -612,14 +612,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -668,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpAll/" class="md-nav__link">
+      <a href="../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -687,102 +685,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          User-Defined
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
         User-Defined
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-user-defined-function" class="md-nav__link">
-    Create a User Defined Function
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arguments" class="md-nav__link">
-    Arguments
-  </a>
-  
-    <nav class="md-nav" aria-label="Arguments">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-is-a-loosely-typed-language" class="md-nav__link">
-    PHP is a Loosely Typed Language
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#default-parameter-values" class="md-nav__link">
-    Default Parameter Values
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#returning-values" class="md-nav__link">
-    Returning values
-  </a>
-  
-    <nav class="md-nav" aria-label="Returning values">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-return-type-declarations" class="md-nav__link">
-    PHP Return Type Declarations
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-arguments-by-reference" class="md-nav__link">
-    Passing Arguments by Reference
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -800,12 +707,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -826,11 +735,144 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../DS/phpArray/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Array
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Array
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-array-in-php" class="md-nav__link">
+    Create an Array in PHP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-indexed-arrays" class="md-nav__link">
+    PHP Indexed Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-associative-arrays" class="md-nav__link">
+    PHP Associative Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-multidimensional-arrays" class="md-nav__link">
+    PHP Multidimensional Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-array-functions" class="md-nav__link">
+    The Array Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="The Array Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-count-function" class="md-nav__link">
+    The count() Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-arrays" class="md-nav__link">
+    Sorting Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    sort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsort" class="md-nav__link">
+    rsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asort" class="md-nav__link">
+    asort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ksort" class="md-nav__link">
+    ksort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arsort" class="md-nav__link">
+    arsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#krsort" class="md-nav__link">
+    krsort()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -867,30 +909,94 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-a-user-defined-function" class="md-nav__link">
-    Create a User Defined Function
+  <a href="#create-an-array-in-php" class="md-nav__link">
+    Create an Array in PHP
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#arguments" class="md-nav__link">
-    Arguments
+  <a href="#php-indexed-arrays" class="md-nav__link">
+    PHP Indexed Arrays
   </a>
   
-    <nav class="md-nav" aria-label="Arguments">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-associative-arrays" class="md-nav__link">
+    PHP Associative Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-multidimensional-arrays" class="md-nav__link">
+    PHP Multidimensional Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-array-functions" class="md-nav__link">
+    The Array Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="The Array Functions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#php-is-a-loosely-typed-language" class="md-nav__link">
-    PHP is a Loosely Typed Language
+  <a href="#the-count-function" class="md-nav__link">
+    The count() Function
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#default-parameter-values" class="md-nav__link">
-    Default Parameter Values
+  <a href="#sorting-arrays" class="md-nav__link">
+    Sorting Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    sort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsort" class="md-nav__link">
+    rsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asort" class="md-nav__link">
+    asort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ksort" class="md-nav__link">
+    ksort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arsort" class="md-nav__link">
+    arsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#krsort" class="md-nav__link">
+    krsort()
   </a>
   
 </li>
@@ -899,31 +1005,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#returning-values" class="md-nav__link">
-    Returning values
-  </a>
-  
-    <nav class="md-nav" aria-label="Returning values">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-return-type-declarations" class="md-nav__link">
-    PHP Return Type Declarations
-  </a>
-  
-</li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-arguments-by-reference" class="md-nav__link">
-    Passing Arguments by Reference
-  </a>
   
 </li>
       
@@ -941,118 +1025,174 @@
                 
 
 
-  <h1>User-Defined</h1>
+  <h1>Array</h1>
 
+<p>An array stores multiple values in one single variable.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;I like &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; and &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="create-an-array-in-php">Create an Array in PHP</h2>
+<p>In PHP, the array() function is used to create an array:
+<div class="highlight"><pre><span></span><code><span class="x">array();</span>
+</code></pre></div>
+In PHP, there are three types of arrays:</p>
 <ul>
-<li>A function is a block of statements that can be used repeatedly in a program.</li>
-<li>A function will not execute automatically when a page loads.</li>
-<li>A function will be executed by a call to the function.</li>
+<li><a href="#php-indexed-arrays">Indexed arrays</a> - Arrays with a numeric index</li>
+<li><a href="#php-associative-arrays">Associative arrays</a> - Arrays with named keys</li>
+<li><a href="#php-multidimensional-arrays">Multidimensional arrays</a> - Arrays containing one or more arrays</li>
 </ul>
-<h2 id="create-a-user-defined-function">Create a User Defined Function</h2>
+<h2 id="php-indexed-arrays">PHP Indexed Arrays</h2>
+<p>There are two ways to create indexed arrays:</p>
+<p>The index can be assigned automatically (index always starts at 0), like this:</p>
+<p>$cars = array("Volvo", "BMW", "Toyota");
+or the index can be assigned manually:</p>
+<p>$cars[0] = "Volvo";
+$cars[1] = "BMW";
+$cars[2] = "Toyota";</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">writeMsg</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">writeMsg</span><span class="p">();</span> <span class="c1">// call the function</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="arguments">Arguments</h2>
-<p>Information can be passed to functions through arguments. </p>
-<p>Arguments are specified after the function name, inside the parentheses. You can add as many arguments as you want, just separate them with a comma.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">familyName</span><span class="p">(</span><span class="nv">$fname</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$fname</span><span class="s2"> Refsnes.&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Jani&quot;</span><span class="p">);</span>
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Hege&quot;</span><span class="p">);</span>
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Stale&quot;</span><span class="p">);</span>
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Kai Jim&quot;</span><span class="p">);</span>
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Borge&quot;</span><span class="p">);</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;I like &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; and &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">familyName</span><span class="p">(</span><span class="nv">$fname</span><span class="p">,</span> <span class="nv">$year</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$fname</span><span class="s2"> Refsnes. Born in </span><span class="si">$year</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nv">$arrlength</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;</span> <span class="nv">$arrlength</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="nv">$x</span><span class="p">];</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="p">}</span>
-
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Hege&quot;</span><span class="p">,</span> <span class="s2">&quot;1975&quot;</span><span class="p">);</span>
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Stale&quot;</span><span class="p">,</span> <span class="s2">&quot;1978&quot;</span><span class="p">);</span>
-<span class="nx">familyName</span><span class="p">(</span><span class="s2">&quot;Kai Jim&quot;</span><span class="p">,</span> <span class="s2">&quot;1983&quot;</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h3 id="php-is-a-loosely-typed-language">PHP is a Loosely Typed Language</h3>
-<p>In the example above, notice that we did not have to tell PHP which data type the variable is.</p>
-<p>PHP automatically associates a data type to the variable, depending on its value. Since the data types are not set in a strict sense, you can do things like adding a string to an integer without causing an error.</p>
-<p>In PHP 7, type declarations were added. This gives us an option to specify the expected data type when declaring a function, and by adding the strict declaration, it will throw a "Fatal Error" if the data type mismatches.</p>
+<h2 id="php-associative-arrays">PHP Associative Arrays</h2>
+<p>Associative arrays are arrays with named keys.</p>
+<p>There are two ways to create an associative array: </p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$age = array(&quot;Peter&quot;=&gt;&quot;35&quot;, &quot;Ben&quot;=&gt;&quot;37&quot;, &quot;Joe&quot;=&gt;&quot;43&quot;);</span>
+</code></pre></div>
+or:
+<div class="highlight"><pre><span></span><code><span class="x">$age[&#39;Peter&#39;] = &quot;35&quot;;</span>
+<span class="x">$age[&#39;Ben&#39;] = &quot;37&quot;;</span>
+<span class="x">$age[&#39;Joe&#39;] = &quot;43&quot;;</span>
+</code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">addNumbers</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">echo</span> <span class="nx">addNumbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;5 days&quot;</span><span class="p">);</span>
-<span class="c1">// since strict is NOT enabled &quot;5 days&quot; is changed to int(5), and it will return 10</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;Peter is &quot;</span> <span class="o">.</span> <span class="nv">$age</span><span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; years old.&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<p>To specify strict we need to set declare(strict_types=1);. This must be on the very first line of the PHP file.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// strict requirement</span>
-
-<span class="k">function</span> <span class="nf">addNumbers</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">echo</span> <span class="nx">addNumbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;5 days&quot;</span><span class="p">);</span>
-<span class="c1">// since strict is enabled and &quot;5 days&quot; is not an integer, an error will be thrown</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="default-parameter-values">Default Parameter Values</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// strict requirement</span>
-<span class="k">function</span> <span class="nf">setHeight</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$minheight</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;The height is : </span><span class="si">$minheight</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nx">setHeight</span><span class="p">(</span><span class="mi">350</span><span class="p">);</span>
-<span class="nx">setHeight</span><span class="p">();</span> <span class="c1">// will use the default value of 50</span>
-<span class="nx">setHeight</span><span class="p">(</span><span class="mi">135</span><span class="p">);</span>
-<span class="nx">setHeight</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="returning-values">Returning values</h2>
-<p>To let a function return a value, use the return statement</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">sum</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nv">$x</span> <span class="o">+</span> <span class="nv">$y</span><span class="p">;</span>
-<span class="p">}</span>   
-<span class="k">echo</span> <span class="nx">sum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="php-return-type-declarations">PHP Return Type Declarations</h3>
-<p>PHP 7 also supports Type Declarations for the return statement. Like with the type declaration for function arguments, by enabling the strict requirement, it will throw a "Fatal Error" on a type mismatch.</p>
-<p>To declare a type for the function return, add a colon ( : ) and the type right before the opening curly ( /{ )bracket when declaring the function.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// strict requirement</span>
-<span class="k">function</span> <span class="nf">addNumbers</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$b</span><span class="p">)</span> <span class="o">:</span> <span class="nx">float</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">echo</span> <span class="nx">addNumbers</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span> <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// strict requirement</span>
-<span class="k">function</span> <span class="nf">addNumbers</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">float</span> <span class="nv">$b</span><span class="p">)</span> <span class="o">:</span> <span class="nx">int</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span><span class="nx">int</span><span class="p">)(</span><span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="k">echo</span> <span class="nx">addNumbers</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="passing-arguments-by-reference">Passing Arguments by Reference</h2>
-<p>In PHP, arguments are usually passed by value, which means that a copy of the value is used in the function and the variable that was passed into the function cannot be changed.</p>
-<p>When a function argument is passed by reference, changes to the argument also change the variable that was passed in. To turn a function argument into a reference, the &amp; operator is used</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">add_five</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nv">$value</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
 
-<span class="nv">$num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="nx">add_five</span><span class="p">(</span><span class="nv">$num</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$num</span><span class="p">;</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="php-multidimensional-arrays">PHP Multidimensional Arrays</h2>
+<p>Multidimensional arrays are arrays containing one or more arrays.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span>
+  <span class="p">(</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;BMW&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Saab&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Land Rover&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$row</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;&lt;b&gt;Row number </span><span class="si">$row</span><span class="s2">&lt;/b&gt;&lt;/p&gt;&quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;ul&gt;&quot;</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nv">$col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;&quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="nv">$row</span><span class="p">][</span><span class="nv">$col</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="the-array-functions">The Array Functions</h2>
+<p>The PHP array functions are used to perform operations on arrays.</p>
+<p>All functions at the <a href="https://www.w3schools.com/php/php_ref_array.asp">reference</a>.</p>
+<h3 id="the-count-function">The count() Function</h3>
+<p>The count() function is used to return the length (the number of elements) of an array.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="sorting-arrays">Sorting Arrays</h3>
+<ul>
+<li><a href="#sort">sort()</a> - sort arrays in ascending order</li>
+<li><a href="#rsort">rsort()</a> - sort arrays in descending order</li>
+<li><a href="#asort">asort()</a> - sort associative arrays in ascending order, according to the value</li>
+<li><a href="#ksort">ksort()</a> - sort associative arrays in ascending order, according to the key</li>
+<li><a href="#arsort">arsort()</a> - sort associative arrays in descending order, according to the value</li>
+<li><a href="#krsort">krsort()</a> - sort associative arrays in descending order, according to the key</li>
+</ul>
+<h4 id="sort">sort()</h4>
+<p>The sort() function sorts an array alphabetically.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="rsort">rsort()</h4>
+<p>The rsort() function sorts an array in descending order.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nb">rsort</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="asort">asort()</h4>
+<p>The asort() function sorts an associative array in ascending order, according to the value.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">asort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="ksort">ksort()</h4>
+<p>The ksort() function sorts an associative array in ascending order, according to the key.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">ksort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="arsort">arsort()</h4>
+<p>The arsort() function sorts an associative array in descending order, according to the value.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">arsort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="krsort">krsort()</h4>
+<p>The krsort() function sorts an associative array in descending order, according to the key.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">krsort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
@@ -1068,7 +1208,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpAll/" class="md-footer__link md-footer__link--prev" aria-label="Previous: All" rel="prev">
+        <a href="../../Func/phpUserFunc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: User-Defined" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1077,26 +1217,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              All
+              User-Defined
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../../DS/phpArray/" class="md-footer__link md-footer__link--next" aria-label="Next: Array" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Array
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
