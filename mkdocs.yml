@@ -96,11 +96,12 @@ nav:
         - Variables: PR/phpVar1.md
         - Data Types and Casting: PR/phpVar2.md
         - Variable Scope: PR/phpVar3.md
+     - Constant : PR/phpConst.md
+     - Globals : PR/phpSuperGlobals.md
      - Strings:
         - Functions: PR/phpStr1.md
      - Numerical: PR/phpNum1.md
      - Math : PR/phpMath1.md
-     - Constant : PR/phpConst.md
      - Operators : PR/phpOperators1.md
      - Control Flow:
         - Conditionals: PR/phpIF.md
