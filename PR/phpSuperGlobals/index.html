@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpStr1/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpSuperGlobals/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Functions - PHP Refresher</title>
+        <title>Globals - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#strlen" class="md-skip">
+        <a href="#globals" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Functions
+              Globals
             
           </span>
         </div>
@@ -456,11 +456,76 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpSuperGlobals/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Globals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Globals
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#globals" class="md-nav__link">
+    $GLOBALS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_server" class="md-nav__link">
+    $_SERVER
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_request" class="md-nav__link">
+    $_REQUEST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_post" class="md-nav__link">
+    $_POST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_get" class="md-nav__link">
+    $_GET
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -470,14 +535,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" data-md-state="indeterminate" type="checkbox" id="__nav_2_5" checked>
       
       
       
@@ -498,97 +561,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Functions
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpStr1/" class="md-nav__link">
         Functions
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#strlen" class="md-nav__link">
-    strlen()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_word_count" class="md-nav__link">
-    str_word_count()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strrev" class="md-nav__link">
-    strrev()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strpos" class="md-nav__link">
-    strpos()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_replace" class="md-nav__link">
-    str_replace()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_repeat" class="md-nav__link">
-    str_repeat()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_split" class="md-nav__link">
-    str_split()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_shuffle" class="md-nav__link">
-    str_shuffle()
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -878,57 +855,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#strlen" class="md-nav__link">
-    strlen()
+  <a href="#globals" class="md-nav__link">
+    $GLOBALS
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#str_word_count" class="md-nav__link">
-    str_word_count()
+  <a href="#_server" class="md-nav__link">
+    $_SERVER
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#strrev" class="md-nav__link">
-    strrev()
+  <a href="#_request" class="md-nav__link">
+    $_REQUEST
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#strpos" class="md-nav__link">
-    strpos()
+  <a href="#_post" class="md-nav__link">
+    $_POST
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#str_replace" class="md-nav__link">
-    str_replace()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_repeat" class="md-nav__link">
-    str_repeat()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_split" class="md-nav__link">
-    str_split()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_shuffle" class="md-nav__link">
-    str_shuffle()
+  <a href="#_get" class="md-nav__link">
+    $_GET
   </a>
   
 </li>
@@ -947,59 +903,221 @@
                 
 
 
-  <h1>Functions</h1>
+  <h1>Globals</h1>
 
-<p>PHP contains many useful built-in functions and methods to accomplish common tasks.</p>
-<h2 id="strlen">strlen()</h2>
-<p>The PHP strlen() function returns the length of a string.</p>
+<p>Superglobals were introduced in PHP 4.1.0, and are built-in variables that are always available in all scopes.</p>
+<p>The PHP superglobal variables are:</p>
+<ul>
+<li><a href="#globals">$GLOBALS</a></li>
+<li><a href="#_server">$_SERVER</a></li>
+<li><a href="#_request">$_REQUEST</a></li>
+<li><a href="#_post">$_POST</a></li>
+<li><a href="#_get">$_GET</a></li>
+<li>$_FILES</li>
+<li>$_ENV</li>
+<li>$_COOKIE</li>
+<li>\ $_SESSION</li>
+</ul>
+<h2 id="globals">$GLOBALS</h2>
+<p>$GLOBALS is a PHP super global variable which is used to access global variables from anywhere in the PHP script (also from within functions or methods).</p>
+<p>PHP stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs 12</span>
+<span class="nv">$x</span> <span class="o">=</span> <span class="mi">75</span><span class="p">;</span>
+<span class="nv">$y</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">addition</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nx">addition</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$z</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="str_word_count">str_word_count()</h2>
-<p>The PHP str_word_count() function counts the number of words in a string.</p>
+<h2 id="_server">$_SERVER</h2>
+<p>$_SERVER is a PHP super global variable which holds information about headers, paths, and script locations.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_word_count</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs 2</span>
+<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;PHP_SELF&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;SERVER_NAME&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_REFERER&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;SCRIPT_NAME&#39;</span><span class="p">];</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="strrev">strrev()</h2>
-<p>The PHP strrev() function reverses a string.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">strrev</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !dlrow olleH</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<p>The following table lists the most important elements that can go inside $_SERVER.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$_SERVER['PHP_SELF']</td>
+<td>Returns the filename of the currently executing script</td>
+</tr>
+<tr>
+<td>$_SERVER['GATEWAY_INTERFACE']</td>
+<td>Returns the version of the Common Gateway Interface (CGI) the server is using</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_ADDR']</td>
+<td>Returns the IP address of the host server</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_NAME']</td>
+<td>Returns the name of the host server (such as www.w3schools.com)</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_SOFTWARE']</td>
+<td>Returns the server identification string (such as Apache/2.2.24)</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_PROTOCOL']</td>
+<td>Returns the name and revision of the information protocol (such as HTTP/1.1)</td>
+</tr>
+<tr>
+<td>$_SERVER['REQUEST_METHOD']</td>
+<td>Returns the request method used to access the page (such as POST)</td>
+</tr>
+<tr>
+<td>$_SERVER['REQUEST_TIME']</td>
+<td>Returns the timestamp of the start of the request (such as 1377687496)</td>
+</tr>
+<tr>
+<td>$_SERVER['QUERY_STRING']</td>
+<td>Returns the query string if the page is accessed via a query string</td>
+</tr>
+<tr>
+<td>$_SERVER['HTTP_ACCEPT']</td>
+<td>Returns the Accept header from the current request</td>
+</tr>
+<tr>
+<td>$_SERVER['HTTP_ACCEPT_CHARSET']</td>
+<td>Returns the Accept_Charset header from the current request (such as utf-8,ISO-8859-1)</td>
+</tr>
+<tr>
+<td>$_SERVER['HTTP_HOST']</td>
+<td>Returns the Host header from the current request</td>
+</tr>
+<tr>
+<td>$_SERVER['HTTP_REFERER']</td>
+<td>Returns the complete URL of the current page (not reliable because not all user-agents support it)</td>
+</tr>
+<tr>
+<td>$_SERVER['HTTPS']</td>
+<td>Is the script queried through a secure HTTP protocol</td>
+</tr>
+<tr>
+<td>$_SERVER['REMOTE_ADDR']</td>
+<td>Returns the IP address from where the user is viewing the current page</td>
+</tr>
+<tr>
+<td>$_SERVER['REMOTE_HOST']</td>
+<td>Returns the Host name from where the user is viewing the current page</td>
+</tr>
+<tr>
+<td>$_SERVER['REMOTE_PORT']</td>
+<td>Returns the port being used on the user's machine to communicate with the web server</td>
+</tr>
+<tr>
+<td>$_SERVER['SCRIPT_FILENAME']</td>
+<td>Returns the absolute pathname of the currently executing script</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_ADMIN']</td>
+<td>Returns the value given to the SERVER_ADMIN directive in the web server</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_PORT']</td>
+<td>Returns the port on the server machine being used by the web server for communication (such as 80)</td>
+</tr>
+<tr>
+<td>$_SERVER['SERVER_SIGNATURE']</td>
+<td>Returns the server version and virtual host name which are added to server-generated pages</td>
+</tr>
+<tr>
+<td>$_SERVER['PATH_TRANSLATED']</td>
+<td>Returns the file system based path to the current script</td>
+</tr>
+<tr>
+<td>$_SERVER['SCRIPT_NAME']</td>
+<td>Returns the path of the current script</td>
+</tr>
+<tr>
+<td>$_SERVER['SCRIPT_URI']</td>
+<td>Returns the URI of the current page</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_request">$_REQUEST</h2>
+<p>PHP $_REQUEST is a PHP super global variable which is used to collect data after submitting an HTML form.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&lt;?php echo $_SERVER[&#39;PHP_SELF&#39;];?&gt;&quot;</span><span class="p">&gt;</span>
+  Name: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fname&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="cp">if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;) {</span>
+<span class="cp">  // collect value of input field</span>
+<span class="cp">  $name = $_REQUEST[&#39;fname&#39;];</span>
+<span class="cp">  if (empty($name)) {</span>
+<span class="cp">    echo &quot;Name is empty&quot;;</span>
+<span class="cp">  } else {</span>
+<span class="cp">    echo $name;</span>
+<span class="cp">  }</span>
+<span class="cp">}</span>
+<span class="cp">?&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<h2 id="strpos">strpos()</h2>
-<p>The PHP strpos() function searches for a specific text within a string. If a match is found, the function returns the character position of the first match. If no match is found, it will return FALSE.</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">strpos</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">);</span> <span class="c1">// outputs 6</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<h2 id="_post">$_POST</h2>
+<p>PHP $_POST is a PHP super global variable which is used to collect form data after submitting an HTML form with method="post". $_POST is also widely used to pass variables.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&lt;?php echo $_SERVER[&#39;PHP_SELF&#39;];?&gt;&quot;</span><span class="p">&gt;</span>
+  Name: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fname&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="cp">if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;) {</span>
+<span class="cp">  // collect value of input field</span>
+<span class="cp">  $name = $_POST[&#39;fname&#39;];</span>
+<span class="cp">  if (empty($name)) {</span>
+<span class="cp">    echo &quot;Name is empty&quot;;</span>
+<span class="cp">  } else {</span>
+<span class="cp">    echo $name;</span>
+<span class="cp">  }</span>
+<span class="cp">}</span>
+<span class="cp">?&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-The first character position in a string is 0 (not 1).</p>
-<h2 id="str_replace">str_replace()</h2>
-<p>The PHP str_replace() function replaces some characters with some other characters in a string.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs Hello Earth!</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<h2 id="_get">$_GET</h2>
+<p>PHP $_GET is a PHP super global variable which is used to collect form data after submitting an HTML form with method="get".</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="cp">echo &quot;Study &quot; . $_GET[&#39;subject&#39;] . &quot; at &quot; . $_GET[&#39;web&#39;];</span>
+<span class="cp">?&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<h2 id="str_repeat">str_repeat()</h2>
-<p>The str_repeat() function repeats a string a specified number of times.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_repeat</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// outputs Hello Hello Hello </span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="str_split">str_split()</h2>
-<p>The str_split() function splits a string into an array.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_split</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs [&quot;H&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;, &quot; &quot;, &quot;w&quot;, &quot;o&quot;, &quot;r&quot;, &quot;l&quot;, &quot;d&quot;, &quot;!&quot;]</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="str_shuffle">str_shuffle()</h2>
-<p>The str_shuffle() function randomly shuffles all the characters of a string.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_shuffle</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !Wdroel loHl</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>For more information, see <a href="https://www.php.net/manual/en/ref.strings.php">PHP String Functions</a></p>
 
               
             </article>
@@ -1013,7 +1131,7 @@ The first character position in a string is 0 (not 1).</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpSuperGlobals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Globals" rel="prev">
+        <a href="../phpConst/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Constant" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1022,20 +1140,20 @@ The first character position in a string is 0 (not 1).</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Globals
+              Constant
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpNum1/" class="md-footer__link md-footer__link--next" aria-label="Next: Numerical" rel="next">
+        <a href="../phpStr1/" class="md-footer__link md-footer__link--next" aria-label="Next: Functions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Numerical
+              Functions
             </div>
           </div>
           <div class="md-footer__button md-icon">
