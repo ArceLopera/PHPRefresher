@@ -109,6 +109,7 @@ nav:
   - Functions: 
      - Built-in:
         - All : Func/phpAll.md
+        - Regex: Func/phpRegex.md
      - User-Defined : Func/phpUserFunc.md
   - Data Structures:
      - Array: DS/phpArray.md

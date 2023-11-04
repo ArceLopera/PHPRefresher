@@ -10,6 +10,6 @@ PHP Functions
 |Error |Exception |Filesystem| Filter| 
 |FTP |JSON |Keywords| Libxml| 
 |Mail |Math |Misc |MySQLi |
-|Network|Output |RegEx |SimpleXML| 
+|Network|Output |[RegEx](../Func/phpRegex.md) |SimpleXML| 
 |Stream |String| Var |Handling| 
 |XML |Parser| Zip |Timezones|
