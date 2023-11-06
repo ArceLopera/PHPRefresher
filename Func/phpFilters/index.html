@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpRegex/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpFilters/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Regex - PHP Refresher</title>
+        <title>Filters - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#regular-expressions-functions" class="md-skip">
+        <a href="#why-use-filters" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Regex
+              Filters
             
           </span>
         </div>
@@ -726,110 +726,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Regex
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpRegex/" class="md-nav__link">
         Regex
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
-  </a>
-  
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -914,11 +815,124 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpFilters/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Filters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Filters
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-filters" class="md-nav__link">
+    Why Use Filters?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter_var" class="md-nav__link">
+    filter_var()
+  </a>
+  
+    <nav class="md-nav" aria-label="filter_var()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-a-string" class="md-nav__link">
+    Sanitize a String
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-an-integer" class="md-nav__link">
+    Validate an Integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-an-ip-address" class="md-nav__link">
+    Validate an IP Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-and-validate-an-email-address" class="md-nav__link">
+    Sanitize and Validate an Email Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-and-validate-a-url" class="md-nav__link">
+    Sanitize and Validate a URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-an-integer-within-a-range" class="md-nav__link">
+    Validate an Integer Within a Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-ipv6-address" class="md-nav__link">
+    Validate IPv6 Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-url-must-contain-querystring" class="md-nav__link">
+    Validate URL - Must Contain QueryString
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-characters-with-ascii-value-127" class="md-nav__link">
+    Remove Characters With ASCII Value &gt; 127
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1128,71 +1142,85 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
+  <a href="#why-use-filters" class="md-nav__link">
+    Why Use Filters?
   </a>
   
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter_var" class="md-nav__link">
+    filter_var()
+  </a>
+  
+    <nav class="md-nav" aria-label="filter_var()">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
+  <a href="#sanitize-a-string" class="md-nav__link">
+    Sanitize a String
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
+  <a href="#validate-an-integer" class="md-nav__link">
+    Validate an Integer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
+  <a href="#validate-an-ip-address" class="md-nav__link">
+    Validate an IP Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-and-validate-an-email-address" class="md-nav__link">
+    Sanitize and Validate an Email Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-and-validate-a-url" class="md-nav__link">
+    Sanitize and Validate a URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-an-integer-within-a-range" class="md-nav__link">
+    Validate an Integer Within a Range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-ipv6-address" class="md-nav__link">
+    Validate IPv6 Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-url-must-contain-querystring" class="md-nav__link">
+    Validate URL - Must Contain QueryString
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-characters-with-ascii-value-127" class="md-nav__link">
+    Remove Characters With ASCII Value &gt; 127
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
-  </a>
   
 </li>
       
@@ -1210,194 +1238,258 @@
                 
 
 
-  <h1>Regex</h1>
+  <h1>Filters</h1>
 
-<p>A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for.</p>
-<h2 id="regular-expressions-functions">Regular Expressions Functions</h2>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#preg_match">preg_match()</a></td>
-<td>Returns 1 if the pattern was found in the string and 0 if not</td>
-</tr>
-<tr>
-<td><a href="#preg_match_all">preg_match_all()</a></td>
-<td>Returns the number of times the pattern was found in the string, which may also be 0</td>
-</tr>
-<tr>
-<td><a href="#preg_replace">preg_replace()</a></td>
-<td>Returns a new string where matched patterns have been replaced with another string</td>
-</tr>
-</tbody>
-</table>
-<h3 id="preg_match">preg_match()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit arcelopera.github.io&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/arce/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<p>Validating data = Determine if the data is in proper form.</p>
+<p>Sanitizing data = Remove any illegal character from the data.</p>
+<p>PHP filters are used to validate and sanitize external input.</p>
+<p>The PHP filter extension has many of the functions needed for checking user input, and is designed to make data validation easier and quicker.</p>
+<p>The filter_list() function can be used to list what the PHP filter extension offers:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;table&gt;</span>
+<span class="x">  &lt;tr&gt;</span>
+<span class="x">    &lt;td&gt;Filter Name&lt;/td&gt;</span>
+<span class="x">    &lt;td&gt;Filter ID&lt;/td&gt;</span>
+<span class="x">  &lt;/tr&gt;</span>
+<span class="x">  </span><span class="cp">&lt;?php</span>
+  <span class="k">foreach</span> <span class="p">(</span><span class="nb">filter_list</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$id</span> <span class="o">=&gt;</span><span class="nv">$filter</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;&lt;tr&gt;&lt;td&gt;&#39;</span> <span class="o">.</span> <span class="nv">$filter</span> <span class="o">.</span> <span class="s1">&#39;&lt;/td&gt;&lt;td&gt;&#39;</span> <span class="o">.</span> <span class="nb">filter_id</span><span class="p">(</span><span class="nv">$filter</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&lt;/td&gt;&lt;/tr&gt;&#39;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;/table&gt;</span>
 </code></pre></div>
-<h3 id="preg_match_all">preg_match_all()</h3>
+<table>
+<thead>
+<tr>
+<th>Filter Name</th>
+<th>Filter ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>257</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>258</td>
+</tr>
+<tr>
+<td>float</td>
+<td>259</td>
+</tr>
+<tr>
+<td>validate_regexp</td>
+<td>272</td>
+</tr>
+<tr>
+<td>validate_domain</td>
+<td>277</td>
+</tr>
+<tr>
+<td>validate_url</td>
+<td>273</td>
+</tr>
+<tr>
+<td>validate_email</td>
+<td>274</td>
+</tr>
+<tr>
+<td>validate_ip</td>
+<td>275</td>
+</tr>
+<tr>
+<td>validate_mac</td>
+<td>276</td>
+</tr>
+<tr>
+<td>string</td>
+<td>513</td>
+</tr>
+<tr>
+<td>stripped</td>
+<td>513</td>
+</tr>
+<tr>
+<td>encoded</td>
+<td>514</td>
+</tr>
+<tr>
+<td>special_chars</td>
+<td>515</td>
+</tr>
+<tr>
+<td>full_special_chars</td>
+<td>522</td>
+</tr>
+<tr>
+<td>unsafe_raw</td>
+<td>516</td>
+</tr>
+<tr>
+<td>email</td>
+<td>517</td>
+</tr>
+<tr>
+<td>url</td>
+<td>518</td>
+</tr>
+<tr>
+<td>number_int</td>
+<td>519</td>
+</tr>
+<tr>
+<td>number_float</td>
+<td>520</td>
+</tr>
+<tr>
+<td>magic_quotes</td>
+<td>521</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>1024</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-use-filters">Why Use Filters?</h2>
+<p>Many web applications receive external input. External input/data can be:</p>
+<ul>
+<li>User input from a form</li>
+<li>Cookies</li>
+<li>Web services data</li>
+<li>Server variables</li>
+<li>Database query results</li>
+</ul>
+<p>Invalid submitted data can lead to security problems and break your webpage!
+By using PHP filters you can be sure your application gets the correct input!</p>
+<h2 id="filter_var">filter_var()</h2>
+<p>The filter_var() function both validate and sanitize data.</p>
+<p>The filter_var() function filters a single variable with a specified filter. It takes two pieces of data:</p>
+<ul>
+<li>The variable you want to check</li>
+<li>The type of check to use</li>
+</ul>
+<h3 id="sanitize-a-string">Sanitize a String</h3>
+<p>The following example uses the filter_var() function to remove all HTML tags from a string:
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;The rain in SPAIN falls mainly on the plains.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ain/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match_all</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 4</span>
+<span class="nv">$input</span> <span class="o">=</span> <span class="s2">&quot;&lt;b&gt;Hello!&lt;/b&gt;&quot;</span><span class="p">;</span>
+<span class="nv">$output</span> <span class="o">=</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_STRING</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$output</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="preg_replace">preg_replace()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit Microsoft!&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/microsoft/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="s2">&quot;ME&quot;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs &quot;Visit ME!&quot;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="regular-expression-modifiers">Regular Expression Modifiers</h2>
-<table>
-<thead>
-<tr>
-<th>Modifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>Performs a case-insensitive search</td>
-</tr>
-<tr>
-<td>m</td>
-<td>Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)</td>
-</tr>
-<tr>
-<td>u</td>
-<td>Enables correct matching of UTF-8 encoded patterns</td>
-</tr>
-</tbody>
-</table>
-<h2 id="regular-expression-patterns">Regular Expression Patterns</h2>
-<p>Brackets are used to find a range of characters:</p>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[abc]</td>
-<td>Find one character from the options between the brackets</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>Find any character NOT between the brackets</td>
-</tr>
-<tr>
-<td>[0-9]</td>
-<td>Find one character from the range 0 to 9</td>
-</tr>
-</tbody>
-</table>
-<h2 id="metacharacters">Metacharacters</h2>
-<p>Metacharacters are characters with a special meaning.</p>
-<table>
-<thead>
-<tr>
-<th>Metacharacter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>|</td>
-<td>Find a match for any one of the patterns separated by | as in: cat|dog|fish</td>
-</tr>
-<tr>
-<td>.</td>
-<td>Find just one instance of any character</td>
-</tr>
-<tr>
-<td>^</td>
-<td>Finds a match as the beginning of a string as in: ^Hello</td>
-</tr>
-<tr>
-<td>$</td>
-<td>Finds a match at the end of the string as in: World$</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>Find a digit</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>Find a whitespace character</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b</td>
-</tr>
-<tr>
-<td>\uxxxx</td>
-<td>Find the Unicode character specified by the hexadecimal number xxxx</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quantifiers">Quantifiers</h2>
-<p>Quantifiers define quantities</p>
-<table>
-<thead>
-<tr>
-<th>Quantifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n+</td>
-<td>Find one or more n</td>
-</tr>
-<tr>
-<td>n*</td>
-<td>Find zero or more n</td>
-</tr>
-<tr>
-<td>n?</td>
-<td>Find zero or one n</td>
-</tr>
-<tr>
-<td>n{x}</td>
-<td>Matches any string that contains a sequence of X n's</td>
-</tr>
-<tr>
-<td>n{x,}</td>
-<td>Matches any string that contains a sequence of at least X n's</td>
-</tr>
-<tr>
-<td>n{,y}</td>
-<td>Matches any string that contains a sequence of up to Y n's</td>
-</tr>
-<tr>
-<td>n{x,y}</td>
-<td>Matches any string that contains a sequence of X to Y n's</td>
-</tr>
-</tbody>
-</table>
-<p>If your expression needs to search for one of the special characters you can use a backslash ( \ ) to escape them. For example, to search for one or more question marks you can use the following expression: 
-<div class="highlight"><pre><span></span><code><span class="x">$pattern = &#39;/\?+/&#39;;</span>
 </code></pre></div></p>
-<h2 id="grouping">Grouping</h2>
-<p>You can use parentheses ( ) to apply quantifiers to entire patterns. They also can be used to select parts of the pattern to be used as a match.</p>
+<h3 id="validate-an-integer">Validate an Integer</h3>
+<p>The following example uses the filter_var() function to check if the variable $int is an integer. If $int is an integer, the output of the code below will be: "Integer is valid". If $int is not an integer, the output will be: "Integer is not valid":
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Apples and bananas.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ba(na){2}/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
+<span class="nv">$int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$int</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_INT</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;Integer is valid&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;Integer is not valid&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<p>filter_var() and Problem With 0
+In the example above, if $int was set to 0, the function above will return "Integer is not valid". To solve this problem, use the code below:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$int</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_INT</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$int</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_INT</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;Integer is valid&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;Integer is not valid&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="validate-an-ip-address">Validate an IP Address</h3>
+<p>The following example uses the filter_var() function to check if the variable $ip is a valid IP address:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$ip</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$ip</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_IP</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$ip</span><span class="s2"> is a valid IP address&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$ip</span><span class="s2"> is not a valid IP address&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<h3 id="sanitize-and-validate-an-email-address">Sanitize and Validate an Email Address</h3>
+<p>The following example uses the filter_var() function to first remove all illegal characters from the $email variable, then check if it is a valid email address:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$email</span> <span class="o">=</span> <span class="s2">&quot;john.doe@example.com&quot;</span><span class="p">;</span>
+
+<span class="c1">// Remove all illegal characters from email</span>
+<span class="nv">$email</span> <span class="o">=</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_EMAIL</span><span class="p">);</span>
+
+<span class="c1">// Validate e-mail</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$email</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_EMAIL</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$email</span><span class="s2"> is a valid email address&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$email</span><span class="s2"> is not a valid email address&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="sanitize-and-validate-a-url">Sanitize and Validate a URL</h3>
+<p>The following example uses the filter_var() function to first remove all illegal characters from a URL, then check if $url is a valid URL:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">&quot;https://www.example.com&quot;</span><span class="p">;</span>
+<span class="c1">// Remove all illegal characters from a url</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_URL</span><span class="p">);</span>
+
+<span class="c1">// Validate url</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_URL</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$url</span><span class="s2"> is a valid URL&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$url</span><span class="s2"> is not a valid URL&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="validate-an-integer-within-a-range">Validate an Integer Within a Range</h3>
+<p>The following example uses the filter_var() function to check if a variable is both of type INT, and between 1 and 200:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$int</span> <span class="o">=</span> <span class="mi">122</span><span class="p">;</span>
+<span class="nv">$min</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$max</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$int</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_INT</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;options&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;min_range&quot;</span><span class="o">=&gt;</span><span class="nv">$min</span><span class="p">,</span> <span class="s2">&quot;max_range&quot;</span><span class="o">=&gt;</span><span class="nv">$max</span><span class="p">)))</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;Variable value is not within the legal range&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;Variable value is within the legal range&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<h3 id="validate-ipv6-address">Validate IPv6 Address</h3>
+<p>The following example uses the filter_var() function to check if the variable $ip is a valid IPv6 address:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$ip</span> <span class="o">=</span> <span class="s2">&quot;2001:0db8:85a3:08d3:1319:8a2e:0370:7334&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$ip</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_IP</span><span class="p">,</span> <span class="nx">FILTER_FLAG_IPV6</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$ip</span><span class="s2"> is a valid IPv6 address&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$ip</span><span class="s2"> is not a valid IPv6 address&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="validate-url-must-contain-querystring">Validate URL - Must Contain QueryString</h3>
+<p>The following example uses the filter_var() function to check if the variable $url is a URL with a querystring:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">&quot;https://www.example.com?name=Alex&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">filter_var</span><span class="p">(</span><span class="nv">$url</span><span class="p">,</span> <span class="nx">FILTER_VALIDATE_URL</span><span class="p">,</span> <span class="nx">FILTER_FLAG_QUERY_REQUIRED</span><span class="p">)</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$url</span><span class="s2"> is a valid URL with a query string&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">$url</span><span class="s2"> is not a valid URL with a query string&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="remove-characters-with-ascii-value-127">Remove Characters With ASCII Value &gt; 127</h3>
+<p>The following example uses the filter_var() function to sanitize a string. It will both remove all HTML tags, and all characters with ASCII value &gt; 127, from the string:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;&lt;h1&gt;Hello WorldÆØÅ!&lt;/h1&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$newstr</span> <span class="o">=</span> <span class="nb">filter_var</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span> <span class="nx">FILTER_SANITIZE_STRING</span><span class="p">,</span> <span class="nx">FILTER_FLAG_STRIP_HIGH</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$newstr</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
               
@@ -1412,7 +1504,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpAll/" class="md-footer__link md-footer__link--prev" aria-label="Previous: All" rel="prev">
+        <a href="../phpSessions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sessions" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1421,20 +1513,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              All
+              Sessions
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpDate/" class="md-footer__link md-footer__link--next" aria-label="Next: Date/Time" rel="next">
+        <a href="../phpCallback/" class="md-footer__link md-footer__link--next" aria-label="Next: Callback" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Date/Time
+              Callback
             </div>
           </div>
           <div class="md-footer__button md-icon">
