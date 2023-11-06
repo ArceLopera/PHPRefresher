@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpRegex/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpCookie/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Regex - PHP Refresher</title>
+        <title>Cookies - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#regular-expressions-functions" class="md-skip">
+        <a href="#setcookie" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Regex
+              Cookies
             
           </span>
         </div>
@@ -726,110 +726,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Regex
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpRegex/" class="md-nav__link">
         Regex
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
-  </a>
-  
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -853,12 +754,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" type="checkbox" id="__nav_3_1_4" checked>
       
       
       
@@ -879,11 +782,82 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpCookie/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cookies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Cookies
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setcookie" class="md-nav__link">
+    setcookie()
+  </a>
+  
+    <nav class="md-nav" aria-label="setcookie()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createretrieve-a-cookie" class="md-nav__link">
+    Create/Retrieve a Cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-a-cookie-value" class="md-nav__link">
+    Modify a Cookie Value
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-cookie" class="md-nav__link">
+    Delete a Cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-if-cookies-are-enabled" class="md-nav__link">
+    Check if Cookies are Enabled
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1128,71 +1102,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
+  <a href="#setcookie" class="md-nav__link">
+    setcookie()
   </a>
   
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
+    <nav class="md-nav" aria-label="setcookie()">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
+  <a href="#createretrieve-a-cookie" class="md-nav__link">
+    Create/Retrieve a Cookie
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
+  <a href="#modify-a-cookie-value" class="md-nav__link">
+    Modify a Cookie Value
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
+  <a href="#delete-a-cookie" class="md-nav__link">
+    Delete a Cookie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-if-cookies-are-enabled" class="md-nav__link">
+    Check if Cookies are Enabled
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
-  </a>
   
 </li>
       
@@ -1210,194 +1156,94 @@
                 
 
 
-  <h1>Regex</h1>
+  <h1>Cookies</h1>
 
-<p>A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for.</p>
-<h2 id="regular-expressions-functions">Regular Expressions Functions</h2>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#preg_match">preg_match()</a></td>
-<td>Returns 1 if the pattern was found in the string and 0 if not</td>
-</tr>
-<tr>
-<td><a href="#preg_match_all">preg_match_all()</a></td>
-<td>Returns the number of times the pattern was found in the string, which may also be 0</td>
-</tr>
-<tr>
-<td><a href="#preg_replace">preg_replace()</a></td>
-<td>Returns a new string where matched patterns have been replaced with another string</td>
-</tr>
-</tbody>
-</table>
-<h3 id="preg_match">preg_match()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit arcelopera.github.io&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/arce/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<p>A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.</p>
+<h2 id="setcookie">setcookie()</h2>
+<div class="highlight"><pre><span></span><code>setcookie($name, $value = &quot;&quot;, $expire = &quot;&quot;, $path = &quot;&quot;, $domain = &quot;&quot;, $secure = &quot;&quot;, $httponly = &quot;&quot;);
 </code></pre></div>
-<h3 id="preg_match_all">preg_match_all()</h3>
+<p>Only the name parameter is required. All other parameters are optional.</p>
+<h3 id="createretrieve-a-cookie">Create/Retrieve a Cookie</h3>
+<p>The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).</p>
+<p>We then retrieve the value of the cookie "user" (using the global variable $_COOKIE). We also use the isset() function to find out if the cookie is set:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;The rain in SPAIN falls mainly on the plains.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ain/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match_all</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 4</span>
+<span class="nv">$cookie_name</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span><span class="p">;</span>
+<span class="nv">$cookie_value</span> <span class="o">=</span> <span class="s2">&quot;John Doe&quot;</span><span class="p">;</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="nv">$cookie_name</span><span class="p">,</span> <span class="nv">$cookie_value</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">),</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span> <span class="c1">// 86400 = 1 day</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="preg_replace">preg_replace()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit Microsoft!&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/microsoft/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="s2">&quot;ME&quot;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs &quot;Visit ME!&quot;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="nv">$cookie_name</span><span class="p">]))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Cookie named &#39;&quot;</span> <span class="o">.</span> <span class="nv">$cookie_name</span> <span class="o">.</span> <span class="s2">&quot;&#39; is not set!&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Cookie &#39;&quot;</span> <span class="o">.</span> <span class="nv">$cookie_name</span> <span class="o">.</span> <span class="s2">&quot;&#39; is set!&lt;br&gt;&quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;Value is: &quot;</span> <span class="o">.</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="nv">$cookie_name</span><span class="p">];</span>
+<span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<h2 id="regular-expression-modifiers">Regular Expression Modifiers</h2>
-<table>
-<thead>
-<tr>
-<th>Modifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>Performs a case-insensitive search</td>
-</tr>
-<tr>
-<td>m</td>
-<td>Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)</td>
-</tr>
-<tr>
-<td>u</td>
-<td>Enables correct matching of UTF-8 encoded patterns</td>
-</tr>
-</tbody>
-</table>
-<h2 id="regular-expression-patterns">Regular Expression Patterns</h2>
-<p>Brackets are used to find a range of characters:</p>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[abc]</td>
-<td>Find one character from the options between the brackets</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>Find any character NOT between the brackets</td>
-</tr>
-<tr>
-<td>[0-9]</td>
-<td>Find one character from the range 0 to 9</td>
-</tr>
-</tbody>
-</table>
-<h2 id="metacharacters">Metacharacters</h2>
-<p>Metacharacters are characters with a special meaning.</p>
-<table>
-<thead>
-<tr>
-<th>Metacharacter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>|</td>
-<td>Find a match for any one of the patterns separated by | as in: cat|dog|fish</td>
-</tr>
-<tr>
-<td>.</td>
-<td>Find just one instance of any character</td>
-</tr>
-<tr>
-<td>^</td>
-<td>Finds a match as the beginning of a string as in: ^Hello</td>
-</tr>
-<tr>
-<td>$</td>
-<td>Finds a match at the end of the string as in: World$</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>Find a digit</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>Find a whitespace character</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b</td>
-</tr>
-<tr>
-<td>\uxxxx</td>
-<td>Find the Unicode character specified by the hexadecimal number xxxx</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quantifiers">Quantifiers</h2>
-<p>Quantifiers define quantities</p>
-<table>
-<thead>
-<tr>
-<th>Quantifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n+</td>
-<td>Find one or more n</td>
-</tr>
-<tr>
-<td>n*</td>
-<td>Find zero or more n</td>
-</tr>
-<tr>
-<td>n?</td>
-<td>Find zero or one n</td>
-</tr>
-<tr>
-<td>n{x}</td>
-<td>Matches any string that contains a sequence of X n's</td>
-</tr>
-<tr>
-<td>n{x,}</td>
-<td>Matches any string that contains a sequence of at least X n's</td>
-</tr>
-<tr>
-<td>n{,y}</td>
-<td>Matches any string that contains a sequence of up to Y n's</td>
-</tr>
-<tr>
-<td>n{x,y}</td>
-<td>Matches any string that contains a sequence of X to Y n's</td>
-</tr>
-</tbody>
-</table>
-<p>If your expression needs to search for one of the special characters you can use a backslash ( \ ) to escape them. For example, to search for one or more question marks you can use the following expression: 
-<div class="highlight"><pre><span></span><code><span class="x">$pattern = &#39;/\?+/&#39;;</span>
-</code></pre></div></p>
-<h2 id="grouping">Grouping</h2>
-<p>You can use parentheses ( ) to apply quantifiers to entire patterns. They also can be used to select parts of the pattern to be used as a match.</p>
+<p>The setcookie() function must appear BEFORE the html tag.</p>
+<p>The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).</p>
+<h3 id="modify-a-cookie-value">Modify a Cookie Value</h3>
+<p>To modify a cookie, just set (again) the cookie using the setcookie() function:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Apples and bananas.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ba(na){2}/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
+<span class="nv">$cookie_name</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span><span class="p">;</span>
+<span class="nv">$cookie_value</span> <span class="o">=</span> <span class="s2">&quot;Alex Porter&quot;</span><span class="p">;</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="nv">$cookie_name</span><span class="p">,</span> <span class="nv">$cookie_value</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="mi">86400</span> <span class="o">*</span> <span class="mi">30</span><span class="p">),</span> <span class="s2">&quot;/&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="nv">$cookie_name</span><span class="p">]))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Cookie named &#39;&quot;</span> <span class="o">.</span> <span class="nv">$cookie_name</span> <span class="o">.</span> <span class="s2">&quot;&#39; is not set!&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Cookie &#39;&quot;</span> <span class="o">.</span> <span class="nv">$cookie_name</span> <span class="o">.</span> <span class="s2">&quot;&#39; is set!&lt;br&gt;&quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;Value is: &quot;</span> <span class="o">.</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="nv">$cookie_name</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="delete-a-cookie">Delete a Cookie</h3>
+<p>To delete a cookie, use the setcookie() function with an expiration date in the past:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// set the expiration date to one hour ago</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3600</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;Cookie &#39;user&#39; is deleted.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="check-if-cookies-are-enabled">Check if Cookies are Enabled</h3>
+<p>The following example creates a small script that checks whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the $_COOKIE array variable:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">setcookie</span><span class="p">(</span><span class="s2">&quot;test_cookie&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3600</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="k">if</span><span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Cookies are enabled.&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Cookies are disabled.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
 </code></pre></div>
 
               
@@ -1412,7 +1258,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpAll/" class="md-footer__link md-footer__link--prev" aria-label="Previous: All" rel="prev">
+        <a href="../phpDate/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Date/Time" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1421,20 +1267,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              All
+              Date/Time
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpDate/" class="md-footer__link md-footer__link--next" aria-label="Next: Date/Time" rel="next">
+        <a href="../phpSessions/" class="md-footer__link md-footer__link--next" aria-label="Next: Sessions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Date/Time
+              Sessions
             </div>
           </div>
           <div class="md-footer__button md-icon">

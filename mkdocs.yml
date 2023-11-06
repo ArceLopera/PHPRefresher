@@ -98,6 +98,7 @@ nav:
         - Variable Scope: PR/phpVar3.md
      - Constant : PR/phpConst.md
      - Globals : PR/phpSuperGlobals.md
+     - Forms : PR/phpForms.md
      - Strings:
         - Functions: PR/phpStr1.md
      - Numerical: PR/phpNum1.md
@@ -110,7 +111,18 @@ nav:
      - Built-in:
         - All : Func/phpAll.md
         - Regex: Func/phpRegex.md
+        - Date/Time: Func/phpDate.md
+        - Network: 
+            - Cookies: Func/phpCookie.md
+            - Sessions: Func/phpSessions.md
+        - Filters: Func/phpFilters.md
+        - Callback: Func/phpCallback.md
+        - JSON: Func/phpJSON.md
+        - Exceptions: Func/phpExceptions.md
      - User-Defined : Func/phpUserFunc.md
   - Data Structures:
      - Array: DS/phpArray.md
+  - Advanced:
+     - Include : Adv/phpInclude.md
+     - File Management: Adv/phpFile.md
 

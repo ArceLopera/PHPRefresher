@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpRegex/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Adv/phpInclude/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Regex - PHP Refresher</title>
+        <title>Include - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#regular-expressions-functions" class="md-skip">
+        <a href="#php-include-and-require-statements" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Regex
+              Include
             
           </span>
         </div>
@@ -223,8 +223,6 @@
         
   
   
-    
-  
 
 
   
@@ -236,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../phpAll/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -264,13 +262,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         Advanced
       </a>
     </li>
@@ -656,14 +656,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -684,14 +682,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
       
       
       
@@ -714,7 +710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpAll/" class="md-nav__link">
+      <a href="../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -726,110 +722,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Regex
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
-  </a>
-  
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -841,7 +738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpDate/" class="md-nav__link">
+      <a href="../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -881,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCookie/" class="md-nav__link">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -895,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpSessions/" class="md-nav__link">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -916,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpFilters/" class="md-nav__link">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -930,7 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCallback/" class="md-nav__link">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -944,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpJSON/" class="md-nav__link">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -958,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpExceptions/" class="md-nav__link">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -979,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpUserFunc/" class="md-nav__link">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
         User-Defined
       </a>
     </li>
@@ -1047,12 +944,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1073,11 +972,96 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Adv/phpInclude/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Include
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Include
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#php-include-and-require-statements" class="md-nav__link">
+    PHP include and require Statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-include-examples" class="md-nav__link">
+    PHP include Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP include Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    Example 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    Example 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    Example 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-include-vs-require" class="md-nav__link">
+    PHP include vs. require
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1089,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpFile/" class="md-nav__link">
+      <a href="../phpFile/" class="md-nav__link">
         File Management
       </a>
     </li>
@@ -1128,30 +1112,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
+  <a href="#php-include-and-require-statements" class="md-nav__link">
+    PHP include and require Statements
   </a>
   
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-include-examples" class="md-nav__link">
+    PHP include Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP include Examples">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
+  <a href="#example-1" class="md-nav__link">
+    Example 1
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
+  <a href="#example-2" class="md-nav__link">
+    Example 2
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
+  <a href="#example-3" class="md-nav__link">
+    Example 3
   </a>
   
 </li>
@@ -1162,36 +1153,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
+  <a href="#php-include-vs-require" class="md-nav__link">
+    PHP include vs. require
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -1210,195 +1180,105 @@
                 
 
 
-  <h1>Regex</h1>
+  <h1>Include</h1>
 
-<p>A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for.</p>
-<h2 id="regular-expressions-functions">Regular Expressions Functions</h2>
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#preg_match">preg_match()</a></td>
-<td>Returns 1 if the pattern was found in the string and 0 if not</td>
-</tr>
-<tr>
-<td><a href="#preg_match_all">preg_match_all()</a></td>
-<td>Returns the number of times the pattern was found in the string, which may also be 0</td>
-</tr>
-<tr>
-<td><a href="#preg_replace">preg_replace()</a></td>
-<td>Returns a new string where matched patterns have been replaced with another string</td>
-</tr>
-</tbody>
-</table>
-<h3 id="preg_match">preg_match()</h3>
+<p>The include (or require) statement takes all the text/code/markup that exists in the specified file and copies it into the file that uses the include statement.</p>
+<p>Including files is very useful when you want to include the same PHP, HTML, or text on multiple pages of a website.</p>
+<h2 id="php-include-and-require-statements">PHP include and require Statements</h2>
+<p>It is possible to insert the content of one PHP file into another PHP file (before the server executes it), with the include or require statement.</p>
+<p>The include and require statements are identical, except upon failure:</p>
+<ul>
+<li>require will produce a fatal error (E_COMPILE_ERROR) and stop the script</li>
+<li>include will only produce a warning (E_WARNING) and the script will continue</li>
+</ul>
+<p>So, if you want the execution to go on and show users the output, even if the include file is missing, use the include statement. Otherwise, in case of FrameWork, CMS, or a complex PHP application coding, always use the require statement to include a key file to the flow of execution. This will help avoid compromising your application's security and integrity, just in-case one key file is accidentally missing.</p>
+<p>Including files saves a lot of work. This means that you can create a standard header, footer, or menu file for all your web pages. Then, when the header needs to be updated, you can only update the header include file.</p>
+<h2 id="php-include-examples">PHP include Examples</h2>
+<h3 id="example-1">Example 1</h3>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="x">&lt;p&gt;Some text.&lt;/p&gt;</span>
+<span class="x">&lt;p&gt;Some more text.&lt;/p&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">include</span> <span class="s1">&#39;footer.php&#39;</span><span class="p">;</span><span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="example-2">Example 2</h3>
+<p>Assume we have a standard menu file called "menu.php":
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit arcelopera.github.io&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/arce/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
+<span class="k">echo</span> <span class="s1">&#39;&lt;a href=&quot;/default.asp&quot;&gt;Home&lt;/a&gt; -</span>
+<span class="s1">&lt;a href=&quot;/html/default.asp&quot;&gt;HTML Tutorial&lt;/a&gt; -</span>
+<span class="s1">&lt;a href=&quot;/css/default.asp&quot;&gt;CSS Tutorial&lt;/a&gt; -</span>
+<span class="s1">&lt;a href=&quot;/js/default.asp&quot;&gt;JavaScript Tutorial&lt;/a&gt; -</span>
+<span class="s1">&lt;a href=&quot;default.asp&quot;&gt;PHP Tutorial&lt;/a&gt;&#39;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h3 id="preg_match_all">preg_match_all()</h3>
+All pages in the Web site should use this menu file. Here is how it can be done (we are using a &lt;'div&gt; element so that the menu easily can be styled with CSS later):</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;div class=&quot;menu&quot;&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">include</span> <span class="s1">&#39;menu.php&#39;</span><span class="p">;</span><span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;/div&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="x">&lt;p&gt;Some text.&lt;/p&gt;</span>
+<span class="x">&lt;p&gt;Some more text.&lt;/p&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="example-3">Example 3</h3>
+<p>Assume we have a file called "vars.php", with some variables defined:
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;The rain in SPAIN falls mainly on the plains.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ain/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match_all</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 4</span>
+<span class="nv">$color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">;</span>
+<span class="nv">$car</span><span class="o">=</span><span class="s1">&#39;BMW&#39;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h3 id="preg_replace">preg_replace()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit Microsoft!&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/microsoft/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="s2">&quot;ME&quot;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs &quot;Visit ME!&quot;</span>
+Then, if we include the "vars.php" file, the variables can be used in the calling file:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">include</span> <span class="s1">&#39;vars.php&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;I have a </span><span class="si">$color</span><span class="s2"> </span><span class="si">$car</span><span class="s2">.&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<h2 id="regular-expression-modifiers">Regular Expression Modifiers</h2>
-<table>
-<thead>
-<tr>
-<th>Modifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>Performs a case-insensitive search</td>
-</tr>
-<tr>
-<td>m</td>
-<td>Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)</td>
-</tr>
-<tr>
-<td>u</td>
-<td>Enables correct matching of UTF-8 encoded patterns</td>
-</tr>
-</tbody>
-</table>
-<h2 id="regular-expression-patterns">Regular Expression Patterns</h2>
-<p>Brackets are used to find a range of characters:</p>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[abc]</td>
-<td>Find one character from the options between the brackets</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>Find any character NOT between the brackets</td>
-</tr>
-<tr>
-<td>[0-9]</td>
-<td>Find one character from the range 0 to 9</td>
-</tr>
-</tbody>
-</table>
-<h2 id="metacharacters">Metacharacters</h2>
-<p>Metacharacters are characters with a special meaning.</p>
-<table>
-<thead>
-<tr>
-<th>Metacharacter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>|</td>
-<td>Find a match for any one of the patterns separated by | as in: cat|dog|fish</td>
-</tr>
-<tr>
-<td>.</td>
-<td>Find just one instance of any character</td>
-</tr>
-<tr>
-<td>^</td>
-<td>Finds a match as the beginning of a string as in: ^Hello</td>
-</tr>
-<tr>
-<td>$</td>
-<td>Finds a match at the end of the string as in: World$</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>Find a digit</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>Find a whitespace character</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b</td>
-</tr>
-<tr>
-<td>\uxxxx</td>
-<td>Find the Unicode character specified by the hexadecimal number xxxx</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quantifiers">Quantifiers</h2>
-<p>Quantifiers define quantities</p>
-<table>
-<thead>
-<tr>
-<th>Quantifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n+</td>
-<td>Find one or more n</td>
-</tr>
-<tr>
-<td>n*</td>
-<td>Find zero or more n</td>
-</tr>
-<tr>
-<td>n?</td>
-<td>Find zero or one n</td>
-</tr>
-<tr>
-<td>n{x}</td>
-<td>Matches any string that contains a sequence of X n's</td>
-</tr>
-<tr>
-<td>n{x,}</td>
-<td>Matches any string that contains a sequence of at least X n's</td>
-</tr>
-<tr>
-<td>n{,y}</td>
-<td>Matches any string that contains a sequence of up to Y n's</td>
-</tr>
-<tr>
-<td>n{x,y}</td>
-<td>Matches any string that contains a sequence of X to Y n's</td>
-</tr>
-</tbody>
-</table>
-<p>If your expression needs to search for one of the special characters you can use a backslash ( \ ) to escape them. For example, to search for one or more question marks you can use the following expression: 
-<div class="highlight"><pre><span></span><code><span class="x">$pattern = &#39;/\?+/&#39;;</span>
-</code></pre></div></p>
-<h2 id="grouping">Grouping</h2>
-<p>You can use parentheses ( ) to apply quantifiers to entire patterns. They also can be used to select parts of the pattern to be used as a match.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Apples and bananas.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ba(na){2}/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
+<h2 id="php-include-vs-require">PHP include vs. require</h2>
+<p>The require statement is also used to include a file into the PHP code.</p>
+<p>However, there is one big difference between include and require; when a file is included with the include statement and PHP cannot find it, the script will continue to execute:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">include</span> <span class="s1">&#39;noFileExists.php&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;I have a </span><span class="si">$color</span><span class="s2"> </span><span class="si">$car</span><span class="s2">.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
 </code></pre></div>
+<p>If we do the same example using the require statement, the echo statement will not be executed because the script execution dies after the require statement returned a fatal error:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">require</span> <span class="s1">&#39;noFileExists.php&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;I have a </span><span class="si">$color</span><span class="s2"> </span><span class="si">$car</span><span class="s2">.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+<p>Use require when the file is required by the application.</p>
+<p>Use include when the file is not required and application should continue when file is not found.</p>
 
               
             </article>
@@ -1412,7 +1292,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpAll/" class="md-footer__link md-footer__link--prev" aria-label="Previous: All" rel="prev">
+        <a href="../../DS/phpArray/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Array" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1421,20 +1301,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              All
+              Array
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpDate/" class="md-footer__link md-footer__link--next" aria-label="Next: Date/Time" rel="next">
+        <a href="../phpFile/" class="md-footer__link md-footer__link--next" aria-label="Next: File Management" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Date/Time
+              File Management
             </div>
           </div>
           <div class="md-footer__button md-icon">

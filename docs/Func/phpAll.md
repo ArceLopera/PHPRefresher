@@ -6,10 +6,10 @@ PHP Functions
 
 | Functions | |||
 | -------- | -------- | -------- | -------- | 
-| [Array](../DS/phpArray.md) | Calendar | Date |Directory| 
-|Error |Exception |Filesystem| Filter| 
-|FTP |JSON |Keywords| Libxml| 
+| [Array](../DS/phpArray.md) | Calendar | [Date](../Func/phpDate.md) |Directory| 
+|Error |[Exception](../Func/phpExceptions.md) |[Filesystem](../Adv/phpFile.md) | [Filter](../Func/phpFilters.md)| 
+|FTP |[JSON](../Func/phpJSON.md) |Keywords| Libxml| 
 |Mail |Math |Misc |MySQLi |
-|Network|Output |[RegEx](../Func/phpRegex.md) |SimpleXML| 
-|Stream |String| Var |Handling| 
-|XML |Parser| Zip |Timezones|
+|[Network](../Func/phpCookie.md) |Output Control |[RegEx](../Func/phpRegex.md) |SimpleXML| 
+|Stream |String| Var Handling|XML Parser| 
+|Zip |Timezones|||

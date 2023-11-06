@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpStr1/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Adv/phpFile/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Functions - PHP Refresher</title>
+        <title>File Management - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#strlen" class="md-skip">
+        <a href="#php-file-handling" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Functions
+              File Management
             
           </span>
         </div>
@@ -207,15 +207,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../phpRefresh/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../phpRefresh/" class="md-tabs__link">
         Basics
       </a>
     </li>
@@ -264,13 +262,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="../phpInclude/" class="md-tabs__link md-tabs__link--active">
         Advanced
       </a>
     </li>
@@ -341,14 +341,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -411,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar1/" class="md-nav__link">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -425,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar2/" class="md-nav__link">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -439,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar3/" class="md-nav__link">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
     </li>
@@ -460,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpConst/" class="md-nav__link">
+      <a href="../../PR/phpConst/" class="md-nav__link">
         Constant
       </a>
     </li>
@@ -474,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpSuperGlobals/" class="md-nav__link">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
         Globals
       </a>
     </li>
@@ -488,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpForms/" class="md-nav__link">
+      <a href="../../PR/phpForms/" class="md-nav__link">
         Forms
       </a>
     </li>
@@ -500,14 +498,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
       
       
       
@@ -528,97 +524,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Functions
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
         Functions
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#strlen" class="md-nav__link">
-    strlen()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_word_count" class="md-nav__link">
-    str_word_count()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strrev" class="md-nav__link">
-    strrev()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strpos" class="md-nav__link">
-    strpos()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_replace" class="md-nav__link">
-    str_replace()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_repeat" class="md-nav__link">
-    str_repeat()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_split" class="md-nav__link">
-    str_split()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_shuffle" class="md-nav__link">
-    str_shuffle()
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -637,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpNum1/" class="md-nav__link">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
         Numerical
       </a>
     </li>
@@ -651,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMath1/" class="md-nav__link">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
         Math
       </a>
     </li>
@@ -665,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpOperators1/" class="md-nav__link">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
         Operators
       </a>
     </li>
@@ -705,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpIF/" class="md-nav__link">
+      <a href="../../PR/phpIF/" class="md-nav__link">
         Conditionals
       </a>
     </li>
@@ -719,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpLoops/" class="md-nav__link">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
         Loops
       </a>
     </li>
@@ -1034,12 +944,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1062,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpInclude/" class="md-nav__link">
+      <a href="../phpInclude/" class="md-nav__link">
         Include
       </a>
     </li>
@@ -1074,11 +986,185 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Adv/phpFile/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         File Management
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#php-file-handling" class="md-nav__link">
+    PHP File Handling
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP File Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readfile" class="md-nav__link">
+    readfile()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fopen" class="md-nav__link">
+    fopen()
+  </a>
+  
+    <nav class="md-nav" aria-label="fopen()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-permissions" class="md-nav__link">
+    File Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fread" class="md-nav__link">
+    fread()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fwrite" class="md-nav__link">
+    fwrite()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fclose" class="md-nav__link">
+    fclose()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgets" class="md-nav__link">
+    fgets()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feof" class="md-nav__link">
+    feof()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgetc" class="md-nav__link">
+    fgetc()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-file-upload" class="md-nav__link">
+    PHP File Upload
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP File Upload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-phpini-file" class="md-nav__link">
+    Configure The "php.ini" File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-html-form" class="md-nav__link">
+    Create The HTML Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-upload-file-php-script" class="md-nav__link">
+    Create The Upload File PHP Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-if-file-already-exists" class="md-nav__link">
+    Check if File Already Exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-file-size" class="md-nav__link">
+    Limit File Size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-file-type" class="md-nav__link">
+    Limit File Type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-upload-file-php-script" class="md-nav__link">
+    Complete Upload File PHP Script
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1115,57 +1201,145 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#strlen" class="md-nav__link">
-    strlen()
+  <a href="#php-file-handling" class="md-nav__link">
+    PHP File Handling
   </a>
+  
+    <nav class="md-nav" aria-label="PHP File Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readfile" class="md-nav__link">
+    readfile()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fopen" class="md-nav__link">
+    fopen()
+  </a>
+  
+    <nav class="md-nav" aria-label="fopen()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-permissions" class="md-nav__link">
+    File Permissions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fread" class="md-nav__link">
+    fread()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fwrite" class="md-nav__link">
+    fwrite()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fclose" class="md-nav__link">
+    fclose()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgets" class="md-nav__link">
+    fgets()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feof" class="md-nav__link">
+    feof()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgetc" class="md-nav__link">
+    fgetc()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#str_word_count" class="md-nav__link">
-    str_word_count()
+  <a href="#php-file-upload" class="md-nav__link">
+    PHP File Upload
   </a>
+  
+    <nav class="md-nav" aria-label="PHP File Upload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-phpini-file" class="md-nav__link">
+    Configure The "php.ini" File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-html-form" class="md-nav__link">
+    Create The HTML Form
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-upload-file-php-script" class="md-nav__link">
+    Create The Upload File PHP Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-if-file-already-exists" class="md-nav__link">
+    Check if File Already Exists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-file-size" class="md-nav__link">
+    Limit File Size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-file-type" class="md-nav__link">
+    Limit File Type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#strrev" class="md-nav__link">
-    strrev()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#strpos" class="md-nav__link">
-    strpos()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_replace" class="md-nav__link">
-    str_replace()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_repeat" class="md-nav__link">
-    str_repeat()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_split" class="md-nav__link">
-    str_split()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#str_shuffle" class="md-nav__link">
-    str_shuffle()
+  <a href="#complete-upload-file-php-script" class="md-nav__link">
+    Complete Upload File PHP Script
   </a>
   
 </li>
@@ -1184,59 +1358,293 @@
                 
 
 
-  <h1>Functions</h1>
+  <h1>File Management</h1>
 
-<p>PHP contains many useful built-in functions and methods to accomplish common tasks.</p>
-<h2 id="strlen">strlen()</h2>
-<p>The PHP strlen() function returns the length of a string.</p>
+<h2 id="php-file-handling">PHP File Handling</h2>
+<p>File handling is an important part of any web application. You often need to open and process a file for different tasks.</p>
+<p>PHP has several functions for creating, reading, uploading, and editing files.</p>
+<h3 id="readfile">readfile()</h3>
+<p>The readfile() function reads a file and writes it to the output buffer.</p>
+<p>Assume we have a text file called "webdictionary.txt", stored on the server, that looks like this:
+<div class="highlight"><pre><span></span><code>AJAX = Asynchronous JavaScript and XML
+CSS = Cascading Style Sheets
+HTML = Hyper Text Markup Language
+PHP = PHP Hypertext Preprocessor
+SQL = Structured Query Language
+SVG = Scalable Vector Graphics
+XML = EXtensible Markup Language
+</code></pre></div></p>
+<p>The PHP code to read the file and write it to the output buffer is as follows (the readfile() function returns the number of bytes read on success):</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">strlen</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs 12</span>
+<span class="k">echo</span> <span class="nb">readfile</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="str_word_count">str_word_count()</h2>
-<p>The PHP str_word_count() function counts the number of words in a string.</p>
+<p>The readfile() function is useful if all you want to do is open up a file and read its contents.</p>
+<h3 id="fopen">fopen()</h3>
+<p>A better method to open files is with the fopen() function. This function gives you more options than the readfile() function.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_word_count</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs 2</span>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">));</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="strrev">strrev()</h2>
-<p>The PHP strrev() function reverses a string.</p>
+<p>The file may be opened in one of the following modes:</p>
+<table>
+<thead>
+<tr>
+<th>Modes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>Open a file for read only. File pointer starts at the beginning of the file</td>
+</tr>
+<tr>
+<td>w</td>
+<td>Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file</td>
+</tr>
+<tr>
+<td>a</td>
+<td>Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist</td>
+</tr>
+<tr>
+<td>x</td>
+<td>Creates a new file for write only. Returns FALSE and an error if file already exists</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>Open a file for read/write. File pointer starts at the beginning of the file</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist</td>
+</tr>
+<tr>
+<td>x+</td>
+<td>Creates a new file for read/write. Returns FALSE and an error if file already exists</td>
+</tr>
+</tbody>
+</table>
+<p>The fopen() function is also used to create a file.
+If you use fopen() on a file that does not exist, it will create it, given that the file is opened for writing (w) or appending (a).</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">strrev</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !dlrow olleH</span>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="strpos">strpos()</h2>
-<p>The PHP strpos() function searches for a specific text within a string. If a match is found, the function returns the character position of the first match. If no match is found, it will return FALSE.</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">strpos</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">);</span> <span class="c1">// outputs 6</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-The first character position in a string is 0 (not 1).</p>
-<h2 id="str_replace">str_replace()</h2>
-<p>The PHP str_replace() function replaces some characters with some other characters in a string.</p>
+<h4 id="file-permissions">File Permissions</h4>
+<p>If you are having errors when trying to get this code to run, check that you have granted your PHP file access to write information to the hard drive.</p>
+<h3 id="fread">fread()</h3>
+<p>The fread() function reads from an open file.</p>
+<p>The first parameter of fread() contains the name of the file to read from and the second parameter specifies the maximum number of bytes to read.</p>
+<p>The following PHP code reads the "webdictionary.txt" file to the end:
+<div class="highlight"><pre><span></span><code><span class="x">fread($myfile,filesize(&quot;webdictionary.txt&quot;));</span>
+</code></pre></div></p>
+<h3 id="fwrite">fwrite()</h3>
+<p>The fwrite() function is used to write to a file.</p>
+<p>The first parameter of fwrite() contains the name of the file to write to and the second parameter is the string to be written.
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs Hello Earth!</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="str_repeat">str_repeat()</h2>
-<p>The str_repeat() function repeats a string a specified number of times.</p>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;newfile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
+<span class="nv">$txt</span> <span class="o">=</span> <span class="s2">&quot;John Doe</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="nv">$txt</span><span class="p">);</span>
+<span class="nv">$txt</span> <span class="o">=</span> <span class="s2">&quot;Jane Doe</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="nv">$txt</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x">  </span>
+</code></pre></div></p>
+<h3 id="fclose">fclose()</h3>
+<p>The fclose() function is used to close an open file.</p>
+<p>It's a good programming practice to close all files after you have finished with them.</p>
+<p>The fclose() requires the name of the file (or a variable that holds the filename) we want to close:
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_repeat</span><span class="p">(</span><span class="s2">&quot;Hello &quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span> <span class="c1">// outputs Hello Hello Hello </span>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<span class="c1">// some code to be executed....</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="str_split">str_split()</h2>
-<p>The str_split() function splits a string into an array.</p>
+</code></pre></div></p>
+<h3 id="fgets">fgets()</h3>
+<p>The fgets() function is used to read a single line from a file.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_split</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs [&quot;H&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot;, &quot; &quot;, &quot;w&quot;, &quot;o&quot;, &quot;r&quot;, &quot;l&quot;, &quot;d&quot;, &quot;!&quot;]</span>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="str_shuffle">str_shuffle()</h2>
-<p>The str_shuffle() function randomly shuffles all the characters of a string.</p>
+<p>After a call to the fgets() function, the file pointer has moved to the next line.</p>
+<h3 id="feof">feof()</h3>
+<p>The feof() function checks if the "end-of-file" (EOF) has been reached.</p>
+<p>The feof() function is useful for looping through data of unknown length.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">str_shuffle</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !Wdroel loHl</span>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
+<span class="c1">// Output one line until end-of-file</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<p>For more information, see <a href="https://www.php.net/manual/en/ref.strings.php">PHP String Functions</a></p>
+<h3 id="fgetc">fgetc()</h3>
+<p>The fgetc() function is used to read a single character from a file.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
+<span class="c1">// Output one character until end-of-file</span>
+<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nb">fgetc</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>After a call to the fgetc() function, the file pointer moves to the next character.</p>
+<h2 id="php-file-upload">PHP File Upload</h2>
+<p>With PHP, it is easy to upload files to the server.</p>
+<h3 id="configure-the-phpini-file">Configure The "php.ini" File</h3>
+<p>First, ensure that PHP is configured to allow file uploads.</p>
+<p>In your "php.ini" file, search for the file_uploads directive, and set it to On:</p>
+<div class="highlight"><pre><span></span><code><span class="x">file_uploads = On</span>
+</code></pre></div>
+<h3 id="create-the-html-form">Create The HTML Form</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;upload.php&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
+  Select image to upload:
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fileToUpload&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fileToUpload&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Upload Image&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Some rules to follow for the HTML form above:</p>
+<ul>
+<li>Make sure that the form uses method="post"</li>
+<li>The form also needs the following attribute: enctype="multipart/form-data". It specifies which content-type to use when submitting the form</li>
+</ul>
+<p>Without the requirements above, the file upload will not work.</p>
+<p>Other things to notice:</p>
+<ul>
+<li>The type="file" attribute of the input tag shows the input field as a file-select control, with a "Browse" button next to the input control</li>
+</ul>
+<p>The form above sends data to a file called "upload.php", which we will create next.</p>
+<h3 id="create-the-upload-file-php-script">Create The Upload File PHP Script</h3>
+<p>The "upload.php" file contains the code for uploading a file:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$target_dir</span> <span class="o">=</span> <span class="s2">&quot;uploads/&quot;</span><span class="p">;</span>
+<span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$target_dir</span> <span class="o">.</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
+<span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$imageFileType</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">,</span><span class="nx">PATHINFO_EXTENSION</span><span class="p">));</span>
+<span class="c1">// Check if image file is a actual image or fake image</span>
+<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;submit&quot;</span><span class="p">]))</span> <span class="p">{</span>
+  <span class="nv">$check</span> <span class="o">=</span> <span class="nb">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;tmp_name&quot;</span><span class="p">]);</span>
+  <span class="k">if</span><span class="p">(</span><span class="nv">$check</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;File is an image - &quot;</span> <span class="o">.</span> <span class="nv">$check</span><span class="p">[</span><span class="s2">&quot;mime&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;File is not an image.&quot;</span><span class="p">;</span>
+    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>PHP script explained:</p>
+<ul>
+<li>$target_dir = "uploads/" - specifies the directory where the file is going to be placed</li>
+<li>$target_file specifies the path of the file to be uploaded</li>
+<li>$uploadOk=1 is not used yet (will be used later)</li>
+<li>$imageFileType holds the file extension of the file (in lower case)</li>
+<li>Next, check if the image file is an actual image or a fake image</li>
+</ul>
+<p>You will need to create a new directory called "uploads" in the directory where "upload.php" file resides. The uploaded files will be saved there.</p>
+<h3 id="check-if-file-already-exists">Check if File Already Exists</h3>
+<p>Now we can add some restrictions.</p>
+<p>First, we will check if the file already exists in the "uploads" folder. If it does, an error message is displayed, and $uploadOk is set to 0:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Check if file already exists</span>
+<span class="x">if (file_exists($target_file)) {</span>
+<span class="x">  echo &quot;Sorry, file already exists.&quot;;</span>
+<span class="x">  $uploadOk = 0;</span>
+<span class="x">}</span>
+<span class="x">?&gt;</span>
+</code></pre></div>
+<h3 id="limit-file-size">Limit File Size</h3>
+<p>The file input field in our HTML form above is named "fileToUpload".</p>
+<p>Now, we want to check the size of the file. If the file is larger than 500KB, an error message is displayed, and $uploadOk is set to 0:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Check file size</span>
+<span class="x">if ($_FILES[&quot;fileToUpload&quot;][&quot;size&quot;] &gt; 500000) {</span>
+<span class="x">  echo &quot;Sorry, your file is too large.&quot;;</span>
+<span class="x">  $uploadOk = 0;</span>
+<span class="x">}</span>
+<span class="x">?&gt;</span>
+</code></pre></div>
+<h3 id="limit-file-type">Limit File Type</h3>
+<p>The code below only allows users to upload JPG, JPEG, PNG, and GIF files. All other file types gives an error message before setting $uploadOk to 0:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Allow certain file formats</span>
+<span class="x">if($imageFileType != &quot;jpg&quot; &amp;&amp; $imageFileType != &quot;png&quot; &amp;&amp; $imageFileType != &quot;jpeg&quot;</span>
+<span class="x">&amp;&amp; $imageFileType != &quot;gif&quot; ) {</span>
+<span class="x">  echo &quot;Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed.&quot;;</span>
+<span class="x">  $uploadOk = 0;</span>
+<span class="x">}</span>
+<span class="x">?&gt;</span>
+</code></pre></div>
+<h2 id="complete-upload-file-php-script">Complete Upload File PHP Script</h2>
+<p>The complete "upload.php" file now looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$target_dir</span> <span class="o">=</span> <span class="s2">&quot;uploads/&quot;</span><span class="p">;</span>
+<span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$target_dir</span> <span class="o">.</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
+<span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$imageFileType</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">,</span><span class="nx">PATHINFO_EXTENSION</span><span class="p">));</span>
+
+<span class="c1">// Check if image file is a actual image or fake image</span>
+<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;submit&quot;</span><span class="p">]))</span> <span class="p">{</span>
+  <span class="nv">$check</span> <span class="o">=</span> <span class="nb">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;tmp_name&quot;</span><span class="p">]);</span>
+  <span class="k">if</span><span class="p">(</span><span class="nv">$check</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;File is an image - &quot;</span> <span class="o">.</span> <span class="nv">$check</span><span class="p">[</span><span class="s2">&quot;mime&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;File is not an image.&quot;</span><span class="p">;</span>
+    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Check if file already exists</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Sorry, file already exists.&quot;</span><span class="p">;</span>
+  <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Check file size</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500000</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Sorry, your file is too large.&quot;</span><span class="p">;</span>
+  <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Allow certain file formats</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;jpg&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;jpeg&quot;</span>
+<span class="o">&amp;&amp;</span> <span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;gif&quot;</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed.&quot;</span><span class="p">;</span>
+  <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Check if $uploadOk is set to 0 by an error</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$uploadOk</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Sorry, your file was not uploaded.&quot;</span><span class="p">;</span>
+<span class="c1">// if everything is ok, try to upload file</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;tmp_name&quot;</span><span class="p">],</span> <span class="nv">$target_file</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;The file &quot;</span><span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span> <span class="nb">basename</span><span class="p">(</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span><span class="o">.</span> <span class="s2">&quot; has been uploaded.&quot;</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Sorry, there was an error uploading your file.&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 
               
             </article>
@@ -1250,7 +1658,7 @@ The first character position in a string is 0 (not 1).</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpForms/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Forms" rel="prev">
+        <a href="../phpInclude/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Include" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1259,26 +1667,11 @@ The first character position in a string is 0 (not 1).</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Forms
+              Include
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../phpNum1/" class="md-footer__link md-footer__link--next" aria-label="Next: Numerical" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Numerical
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

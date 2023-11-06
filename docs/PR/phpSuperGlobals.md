@@ -10,7 +10,7 @@ The PHP superglobal variables are:
 + \$_FILES
 + \$_ENV
 + \$_COOKIE
-+ \ $_SESSION
++ \$_SESSION
 
 ## $GLOBALS
 
