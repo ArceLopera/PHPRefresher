@@ -122,6 +122,9 @@ nav:
      - User-Defined : Func/phpUserFunc.md
   - Data Structures:
      - Array: DS/phpArray.md
+  - Classes:
+     - OOP: Classes/phpCls.md
+     - Constructor : Classes/phpConstructor.md
   - Advanced:
      - Include : Adv/phpInclude.md
      - File Management: Adv/phpFile.md
