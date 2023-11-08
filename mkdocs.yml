@@ -122,9 +122,18 @@ nav:
      - User-Defined : Func/phpUserFunc.md
   - Data Structures:
      - Array: DS/phpArray.md
+     - Iterables: DS/phpIterables.md
   - Classes:
      - OOP: Classes/phpCls.md
      - Constructor : Classes/phpConstructor.md
+     - Access Modifiers : Classes/phpModifiers.md
+     - Inheritance: Classes/phpInheritance.md
+     - Constants: Classes/phpConstants.md
+     - Abstract Classes: Classes/phpAbstract.md
+     - Interfaces: Classes/phpInterfaces.md
+     - Traits: Classes/phpTraits.md
+     - Static: Classes/phpStatic.md
+     - Namespaces: Classes/phpNamespaces.md
   - Advanced:
      - Include : Adv/phpInclude.md
      - File Management: Adv/phpFile.md
