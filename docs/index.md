@@ -11,7 +11,7 @@ The key to becoming a proficient PHP developer is to keep learning and practicin
 |  Basic Topics |  Advanced Topics |
 |:-------------:|:----------------:|
 | [Basics](phpRefresh.md)        |  [File Management](./Adv/phpFile.md)  |
-| [Functions](./Func/phpAll.md)   |   |
+| [Functions](./Func/phpAll.md)   | [MySql](./Adv/phpMySql.md)  |
 | [Data Structures](./DS/phpArray.md)      |       |
 | [Classes](./Classes/phpCls.md)         |         |
 
