@@ -1359,8 +1359,36 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#select-and-order-data" class="md-nav__link">
+    Select and Order Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-data" class="md-nav__link">
+    Limit Data
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-data" class="md-nav__link">
+    Delete Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-data" class="md-nav__link">
+    Update Data
+  </a>
   
 </li>
       
@@ -1527,8 +1555,36 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#select-and-order-data" class="md-nav__link">
+    Select and Order Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limit-data" class="md-nav__link">
+    Limit Data
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-data" class="md-nav__link">
+    Delete Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-data" class="md-nav__link">
+    Update Data
+  </a>
   
 </li>
       
@@ -2396,6 +2452,284 @@ This function binds the parameters to the SQL query and tells the database what 
 <span class="p">}</span>
 <span class="nv">$conn</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;&lt;/table&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="select-and-order-data">Select and Order Data</h3>
+<div class="highlight"><pre><span></span><code><span class="x">//MySQLi Object-Oriented:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDB&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create connection</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="nv">$servername</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+<span class="c1">// Check connection</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Connection failed: &quot;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, firstname, lastname FROM MyGuests ORDER BY lastname&quot;</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// output data of each row</span>
+  <span class="k">while</span><span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch_assoc</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;id: &quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span> <span class="s2">&quot; - Name: &quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">&quot;firstname&quot;</span><span class="p">]</span><span class="o">.</span> <span class="s2">&quot; &quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">&quot;lastname&quot;</span><span class="p">]</span><span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;0 results&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">//MySQLi Procedural:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDB&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create connection</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="nv">$servername</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+<span class="c1">// Check connection</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$conn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Connection failed: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT id, firstname, lastname FROM MyGuests ORDER BY lastname&quot;</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$conn</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_num_rows</span><span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// output data of each row</span>
+  <span class="k">while</span><span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_assoc</span><span class="p">(</span><span class="nv">$result</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;id: &quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span> <span class="s2">&quot; - Name: &quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">&quot;firstname&quot;</span><span class="p">]</span><span class="o">.</span> <span class="s2">&quot; &quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s2">&quot;lastname&quot;</span><span class="p">]</span><span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;0 results&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">//PDO:</span>
+<span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;table style=&#39;border: solid 1px black;&#39;&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;tr&gt;&lt;th&gt;Id&lt;/th&gt;&lt;th&gt;Firstname&lt;/th&gt;&lt;th&gt;Lastname&lt;/th&gt;&lt;/tr&gt;&quot;</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TableRows</span> <span class="k">extends</span> <span class="nx">RecursiveIteratorIterator</span> <span class="p">{</span>
+  <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$it</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$it</span><span class="p">,</span> <span class="nx">self</span><span class="o">::</span><span class="na">LEAVES_ONLY</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">function</span> <span class="nf">current</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;td style=&#39;width:150px;border:1px solid black;&#39;&gt;&quot;</span> <span class="o">.</span> <span class="k">parent</span><span class="o">::</span><span class="na">current</span><span class="p">()</span><span class="o">.</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">function</span> <span class="nf">beginChildren</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;tr&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">function</span> <span class="nf">endChildren</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;/tr&gt;&quot;</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDBPDO&quot;</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s2">&quot;mysql:host=</span><span class="si">$servername</span><span class="s2">;dbname=</span><span class="si">$dbname</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
+  <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+  <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s2">&quot;SELECT id, firstname, lastname FROM MyGuests ORDER BY lastname&quot;</span><span class="p">);</span>
+  <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+  <span class="c1">// set the resulting array to associative</span>
+  <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">setFetchMode</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">);</span>
+  <span class="k">foreach</span><span class="p">(</span><span class="k">new</span> <span class="nx">TableRows</span><span class="p">(</span><span class="k">new</span> <span class="nx">RecursiveArrayIterator</span><span class="p">(</span><span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">()))</span> <span class="k">as</span> <span class="nv">$k</span><span class="o">=&gt;</span><span class="nv">$v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$v</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Error: &quot;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;&lt;/table&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="limit-data">Limit Data</h3>
+<p>MySQL provides a LIMIT clause that is used to specify the number of records to return.</p>
+<p>The LIMIT clause makes it easy to code multi page results or pagination with SQL, and is very useful on large tables. Returning a large number of records can impact on performance.</p>
+<p>Assume we wish to select all records from 1 - 30 (inclusive) from a table called "Orders". The SQL query would then look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM Orders LIMIT 30&quot;;</span>
+</code></pre></div>
+<p>When the SQL query above is run, it will return the first 30 records.</p>
+<p>What if we want to select records 16 - 25 (inclusive)?</p>
+<p>Mysql also provides a way to handle this: by using OFFSET.</p>
+<p>The SQL query below says "return only 10 records, start on record 16 (OFFSET 15)":</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM Orders LIMIT 10 OFFSET 15&quot;;</span>
+</code></pre></div>
+<p>You could also use a shorter syntax to achieve the same result:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM Orders LIMIT 15, 10&quot;;</span>
+</code></pre></div>
+<p>Notice that the numbers are reversed when you use a comma.</p>
+<h2 id="delete-data">Delete Data</h2>
+<div class="highlight"><pre><span></span><code><span class="x">//MySQLi Object-Oriented:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDB&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create connection</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="nv">$servername</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+<span class="c1">// Check connection</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Connection failed: &quot;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// sql to delete a record</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM MyGuests WHERE id=3&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">)</span> <span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Record deleted successfully&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Error deleting record: &quot;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">//MySQLi Procedural:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDB&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create connection</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="nv">$servername</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+<span class="c1">// Check connection</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$conn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Connection failed: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="c1">// sql to delete a record</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM MyGuests WHERE id=3&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$conn</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Record deleted successfully&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Error deleting record: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">//PDO:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDBPDO&quot;</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s2">&quot;mysql:host=</span><span class="si">$servername</span><span class="s2">;dbname=</span><span class="si">$dbname</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
+  <span class="c1">// set the PDO error mode to exception</span>
+  <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+
+  <span class="c1">// sql to delete a record</span>
+  <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM MyGuests WHERE id=3&quot;</span><span class="p">;</span>
+
+  <span class="c1">// use exec() because no results are returned</span>
+  <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">&quot;Record deleted successfully&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$sql</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="update-data">Update Data</h2>
+<div class="highlight"><pre><span></span><code><span class="x">//MySQLi Object-Oriented:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDB&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create connection</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mysqli</span><span class="p">(</span><span class="nv">$servername</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+<span class="c1">// Check connection</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Connection failed: &quot;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">connect_error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE MyGuests SET lastname=&#39;Doe&#39; WHERE id=2&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">)</span> <span class="o">===</span> <span class="k">TRUE</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Record updated successfully&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Error updating record: &quot;</span> <span class="o">.</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">close</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">//MySQLi Procedural:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDB&quot;</span><span class="p">;</span>
+
+<span class="c1">// Create connection</span>
+<span class="nv">$conn</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="nv">$servername</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">,</span> <span class="nv">$dbname</span><span class="p">);</span>
+<span class="c1">// Check connection</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$conn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Connection failed: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE MyGuests SET lastname=&#39;Doe&#39; WHERE id=2&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$conn</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Record updated successfully&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Error updating record: &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$conn</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">//PDO:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$servername</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="s2">&quot;username&quot;</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;password&quot;</span><span class="p">;</span>
+<span class="nv">$dbname</span> <span class="o">=</span> <span class="s2">&quot;myDBPDO&quot;</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s2">&quot;mysql:host=</span><span class="si">$servername</span><span class="s2">;dbname=</span><span class="si">$dbname</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
+  <span class="c1">// set the PDO error mode to exception</span>
+  <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+
+  <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;UPDATE MyGuests SET lastname=&#39;Doe&#39; WHERE id=2&quot;</span><span class="p">;</span>
+
+  <span class="c1">// Prepare statement</span>
+  <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+
+  <span class="c1">// execute the query</span>
+  <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+  <span class="c1">// echo a message to say the UPDATE succeeded</span>
+  <span class="k">echo</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">rowCount</span><span class="p">()</span> <span class="o">.</span> <span class="s2">&quot; records UPDATED successfully&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$sql</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span> <span class="o">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nv">$conn</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
