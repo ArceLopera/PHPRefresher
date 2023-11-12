@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Adv/phpFile/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Adv/phpXML/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>File Management - PHP Refresher</title>
+        <title>XML - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php-file-handling" class="md-skip">
+        <a href="#tree-based-parsers" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              File Management
+              XML
             
           </span>
         </div>
@@ -1190,185 +1190,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          File Management
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpFile/" class="md-nav__link">
         File Management
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#php-file-handling" class="md-nav__link">
-    PHP File Handling
-  </a>
-  
-    <nav class="md-nav" aria-label="PHP File Handling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#readfile" class="md-nav__link">
-    readfile()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fopen" class="md-nav__link">
-    fopen()
-  </a>
-  
-    <nav class="md-nav" aria-label="fopen()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#file-permissions" class="md-nav__link">
-    File Permissions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fread" class="md-nav__link">
-    fread()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fwrite" class="md-nav__link">
-    fwrite()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fclose" class="md-nav__link">
-    fclose()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fgets" class="md-nav__link">
-    fgets()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#feof" class="md-nav__link">
-    feof()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fgetc" class="md-nav__link">
-    fgetc()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-file-upload" class="md-nav__link">
-    PHP File Upload
-  </a>
-  
-    <nav class="md-nav" aria-label="PHP File Upload">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-the-phpini-file" class="md-nav__link">
-    Configure The "php.ini" File
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-the-html-form" class="md-nav__link">
-    Create The HTML Form
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-the-upload-file-php-script" class="md-nav__link">
-    Create The Upload File PHP Script
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-if-file-already-exists" class="md-nav__link">
-    Check if File Already Exists
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limit-file-size" class="md-nav__link">
-    Limit File Size
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limit-file-type" class="md-nav__link">
-    Limit File Type
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#complete-upload-file-php-script" class="md-nav__link">
-    Complete Upload File PHP Script
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1392,11 +1218,176 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpXML/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          XML
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         XML
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tree-based-parsers" class="md-nav__link">
+    Tree-Based Parsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Tree-Based Parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplexml" class="md-nav__link">
+    SimpleXML
+  </a>
+  
+    <nav class="md-nav" aria-label="SimpleXML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-from-string" class="md-nav__link">
+    Read From String
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-from-file" class="md-nav__link">
+    Read From File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-node-values" class="md-nav__link">
+    Get Node Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-node-values-of-specific-elements" class="md-nav__link">
+    Get Node Values of Specific Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-node-values-loop" class="md-nav__link">
+    Get Node Values - Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-attribute-values" class="md-nav__link">
+    Get Attribute Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-attribute-values-loop" class="md-nav__link">
+    Get Attribute Values - Loop
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-dom-parser" class="md-nav__link">
+    XML DOM Parser
+  </a>
+  
+    <nav class="md-nav" aria-label="XML DOM Parser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-and-output-xml" class="md-nav__link">
+    Load and Output XML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#looping-through-xml" class="md-nav__link">
+    Looping through XML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-based-parsers" class="md-nav__link">
+    Event-Based Parsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Event-Based Parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml-expat-parser" class="md-nav__link">
+    XML Expat Parser
+  </a>
+  
+    <nav class="md-nav" aria-label="XML Expat Parser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-xml-expat-parser" class="md-nav__link">
+    Initializing the XML Expat Parser
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1447,31 +1438,66 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#php-file-handling" class="md-nav__link">
-    PHP File Handling
+  <a href="#tree-based-parsers" class="md-nav__link">
+    Tree-Based Parsers
   </a>
   
-    <nav class="md-nav" aria-label="PHP File Handling">
+    <nav class="md-nav" aria-label="Tree-Based Parsers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#readfile" class="md-nav__link">
-    readfile()
+  <a href="#simplexml" class="md-nav__link">
+    SimpleXML
+  </a>
+  
+    <nav class="md-nav" aria-label="SimpleXML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-from-string" class="md-nav__link">
+    Read From String
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fopen" class="md-nav__link">
-    fopen()
+  <a href="#read-from-file" class="md-nav__link">
+    Read From File
   </a>
   
-    <nav class="md-nav" aria-label="fopen()">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#file-permissions" class="md-nav__link">
-    File Permissions
+  <a href="#get-node-values" class="md-nav__link">
+    Get Node Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-node-values-of-specific-elements" class="md-nav__link">
+    Get Node Values of Specific Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-node-values-loop" class="md-nav__link">
+    Get Node Values - Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-attribute-values" class="md-nav__link">
+    Get Attribute Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-attribute-values-loop" class="md-nav__link">
+    Get Attribute Values - Loop
   </a>
   
 </li>
@@ -1482,99 +1508,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fread" class="md-nav__link">
-    fread()
+  <a href="#xml-dom-parser" class="md-nav__link">
+    XML DOM Parser
+  </a>
+  
+    <nav class="md-nav" aria-label="XML DOM Parser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-and-output-xml" class="md-nav__link">
+    Load and Output XML
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fwrite" class="md-nav__link">
-    fwrite()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fclose" class="md-nav__link">
-    fclose()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fgets" class="md-nav__link">
-    fgets()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#feof" class="md-nav__link">
-    feof()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fgetc" class="md-nav__link">
-    fgetc()
+  <a href="#looping-through-xml" class="md-nav__link">
+    Looping through XML
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-file-upload" class="md-nav__link">
-    PHP File Upload
-  </a>
-  
-    <nav class="md-nav" aria-label="PHP File Upload">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-the-phpini-file" class="md-nav__link">
-    Configure The "php.ini" File
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-the-html-form" class="md-nav__link">
-    Create The HTML Form
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-the-upload-file-php-script" class="md-nav__link">
-    Create The Upload File PHP Script
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-if-file-already-exists" class="md-nav__link">
-    Check if File Already Exists
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limit-file-size" class="md-nav__link">
-    Limit File Size
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#limit-file-type" class="md-nav__link">
-    Limit File Type
-  </a>
   
 </li>
         
@@ -1584,9 +1540,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complete-upload-file-php-script" class="md-nav__link">
-    Complete Upload File PHP Script
+  <a href="#event-based-parsers" class="md-nav__link">
+    Event-Based Parsers
   </a>
+  
+    <nav class="md-nav" aria-label="Event-Based Parsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml-expat-parser" class="md-nav__link">
+    XML Expat Parser
+  </a>
+  
+    <nav class="md-nav" aria-label="XML Expat Parser">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-xml-expat-parser" class="md-nav__link">
+    Initializing the XML Expat Parser
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1604,291 +1586,350 @@
                 
 
 
-  <h1>File Management</h1>
+  <h1>XML</h1>
 
-<h2 id="php-file-handling">PHP File Handling</h2>
-<p>File handling is an important part of any web application. You often need to open and process a file for different tasks.</p>
-<p>PHP has several functions for creating, reading, uploading, and editing files.</p>
-<h3 id="readfile">readfile()</h3>
-<p>The readfile() function reads a file and writes it to the output buffer.</p>
-<p>Assume we have a text file called "webdictionary.txt", stored on the server, that looks like this:
-<div class="highlight"><pre><span></span><code>AJAX = Asynchronous JavaScript and XML
-CSS = Cascading Style Sheets
-HTML = Hyper Text Markup Language
-PHP = PHP Hypertext Preprocessor
-SQL = Structured Query Language
-SVG = Scalable Vector Graphics
-XML = EXtensible Markup Language
-</code></pre></div></p>
-<p>The PHP code to read the file and write it to the output buffer is as follows (the readfile() function returns the number of bytes read on success):</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nb">readfile</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>The readfile() function is useful if all you want to do is open up a file and read its contents.</p>
-<h3 id="fopen">fopen()</h3>
-<p>A better method to open files is with the fopen() function. This function gives you more options than the readfile() function.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="nb">filesize</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">));</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>The file may be opened in one of the following modes:</p>
-<table>
-<thead>
-<tr>
-<th>Modes</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td>Open a file for read only. File pointer starts at the beginning of the file</td>
-</tr>
-<tr>
-<td>w</td>
-<td>Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file</td>
-</tr>
-<tr>
-<td>a</td>
-<td>Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist</td>
-</tr>
-<tr>
-<td>x</td>
-<td>Creates a new file for write only. Returns FALSE and an error if file already exists</td>
-</tr>
-<tr>
-<td>r+</td>
-<td>Open a file for read/write. File pointer starts at the beginning of the file</td>
-</tr>
-<tr>
-<td>w+</td>
-<td>Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file</td>
-</tr>
-<tr>
-<td>a+</td>
-<td>Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist</td>
-</tr>
-<tr>
-<td>x+</td>
-<td>Creates a new file for read/write. Returns FALSE and an error if file already exists</td>
-</tr>
-</tbody>
-</table>
-<p>The fopen() function is also used to create a file.
-If you use fopen() on a file that does not exist, it will create it, given that the file is opened for writing (w) or appending (a).</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
-<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h4 id="file-permissions">File Permissions</h4>
-<p>If you are having errors when trying to get this code to run, check that you have granted your PHP file access to write information to the hard drive.</p>
-<h3 id="fread">fread()</h3>
-<p>The fread() function reads from an open file.</p>
-<p>The first parameter of fread() contains the name of the file to read from and the second parameter specifies the maximum number of bytes to read.</p>
-<p>The following PHP code reads the "webdictionary.txt" file to the end:
-<div class="highlight"><pre><span></span><code><span class="x">fread($myfile,filesize(&quot;webdictionary.txt&quot;));</span>
-</code></pre></div></p>
-<h3 id="fwrite">fwrite()</h3>
-<p>The fwrite() function is used to write to a file.</p>
-<p>The first parameter of fwrite() contains the name of the file to write to and the second parameter is the string to be written.
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;newfile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
-<span class="nv">$txt</span> <span class="o">=</span> <span class="s2">&quot;John Doe</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="nv">$txt</span><span class="p">);</span>
-<span class="nv">$txt</span> <span class="o">=</span> <span class="s2">&quot;Jane Doe</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">,</span> <span class="nv">$txt</span><span class="p">);</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
-</code></pre></div></p>
-<h3 id="fclose">fclose()</h3>
-<p>The fclose() function is used to close an open file.</p>
-<p>It's a good programming practice to close all files after you have finished with them.</p>
-<p>The fclose() requires the name of the file (or a variable that holds the filename) we want to close:
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
-<span class="c1">// some code to be executed....</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
-<h3 id="fgets">fgets()</h3>
-<p>The fgets() function is used to read a single line from a file.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>After a call to the fgets() function, the file pointer has moved to the next line.</p>
-<h3 id="feof">feof()</h3>
-<p>The feof() function checks if the "end-of-file" (EOF) has been reached.</p>
-<p>The feof() function is useful for looping through data of unknown length.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
-<span class="c1">// Output one line until end-of-file</span>
-<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">))</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="fgetc">fgetc()</h3>
-<p>The fgetc() function is used to read a single character from a file.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$myfile</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;webdictionary.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Unable to open file!&quot;</span><span class="p">);</span>
-<span class="c1">// Output one character until end-of-file</span>
-<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">))</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="nb">fgetc</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$myfile</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>After a call to the fgetc() function, the file pointer moves to the next character.</p>
-<h2 id="php-file-upload">PHP File Upload</h2>
-<p>With PHP, it is easy to upload files to the server.</p>
-<h3 id="configure-the-phpini-file">Configure The "php.ini" File</h3>
-<p>First, ensure that PHP is configured to allow file uploads.</p>
-<p>In your "php.ini" file, search for the file_uploads directive, and set it to On:</p>
-<div class="highlight"><pre><span></span><code><span class="x">file_uploads = On</span>
-</code></pre></div>
-<h3 id="create-the-html-form">Create The HTML Form</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;upload.php&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
-  Select image to upload:
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fileToUpload&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fileToUpload&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Upload Image&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<p>Some rules to follow for the HTML form above:</p>
+<p>The XML language is a way to structure data for sharing across websites.</p>
+<p>Several web technologies like RSS Feeds and Podcasts are written in XML.</p>
+<p>In PHP there are two major types of XML parsers:</p>
 <ul>
-<li>Make sure that the form uses method="post"</li>
-<li>The form also needs the following attribute: enctype="multipart/form-data". It specifies which content-type to use when submitting the form</li>
+<li><a href="#tree-based-parsers">Tree-Based Parsers</a></li>
+<li><a href="#event-based-parsers">Event-Based Parsers</a></li>
 </ul>
-<p>Without the requirements above, the file upload will not work.</p>
-<p>Other things to notice:</p>
+<h2 id="tree-based-parsers">Tree-Based Parsers</h2>
+<p>Tree-based parsers holds the entire document in Memory and transforms the XML document into a Tree structure. It analyzes the whole document, and provides access to the Tree elements (DOM).</p>
+<p>This type of parser is a better option for smaller XML documents, but not for large XML document as it causes major performance issues.</p>
+<p>Example of tree-based parsers:</p>
 <ul>
-<li>The type="file" attribute of the input tag shows the input field as a file-select control, with a "Browse" button next to the input control</li>
+<li><a href="#simplexml">SimpleXML</a></li>
+<li>DOM</li>
 </ul>
-<p>The form above sends data to a file called "upload.php", which we will create next.</p>
-<h3 id="create-the-upload-file-php-script">Create The Upload File PHP Script</h3>
-<p>The "upload.php" file contains the code for uploading a file:</p>
+<h3 id="simplexml">SimpleXML</h3>
+<p>SimpleXML is a PHP extension that allows us to easily manipulate and get XML data.</p>
+<p>SimpleXML is a tree-based parser.</p>
+<p>SimpleXML provides an easy way of getting an element's name, attributes and textual content if you know the XML document's structure or layout.</p>
+<p>SimpleXML turns an XML document into a data structure you can iterate through like a collection of arrays and objects.</p>
+<p>Compared to DOM or the Expat parser, SimpleXML takes a fewer lines of code to read text data from an element.</p>
+<h4 id="read-from-string">Read From String</h4>
+<p>The PHP simplexml_load_string() function is used to read XML data from a string.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$target_dir</span> <span class="o">=</span> <span class="s2">&quot;uploads/&quot;</span><span class="p">;</span>
-<span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$target_dir</span> <span class="o">.</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
-<span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="nv">$imageFileType</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">,</span><span class="nx">PATHINFO_EXTENSION</span><span class="p">));</span>
-<span class="c1">// Check if image file is a actual image or fake image</span>
-<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;submit&quot;</span><span class="p">]))</span> <span class="p">{</span>
-  <span class="nv">$check</span> <span class="o">=</span> <span class="nb">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;tmp_name&quot;</span><span class="p">]);</span>
-  <span class="k">if</span><span class="p">(</span><span class="nv">$check</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;File is an image - &quot;</span> <span class="o">.</span> <span class="nv">$check</span><span class="p">[</span><span class="s2">&quot;mime&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
-    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;File is not an image.&quot;</span><span class="p">;</span>
-    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$myXMLData</span> <span class="o">=</span>
+<span class="s2">&quot;&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="s2">&lt;note&gt;</span>
+<span class="s2">&lt;to&gt;Tove&lt;/to&gt;</span>
+<span class="s2">&lt;from&gt;Jani&lt;/from&gt;</span>
+<span class="s2">&lt;heading&gt;Reminder&lt;/heading&gt;</span>
+<span class="s2">&lt;body&gt;Don&#39;t forget me this weekend!&lt;/body&gt;</span>
+<span class="s2">&lt;/note&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_string</span><span class="p">(</span><span class="nv">$myXMLData</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$xml</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The output of the code above will be:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">SimpleXMLElement Object ( [to] =&gt; Tove [from] =&gt; Jani [heading] =&gt; Reminder [body] =&gt; Don&#39;t forget me this weekend! )</span>
+</code></pre></div>
+Error Handling Tip: Use the libxml functionality to retrieve all XML errors when loading the document and then iterate over the errors. </p>
+<p>The following example tries to load a broken XML string:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">libxml_use_internal_errors</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="nv">$myXMLData</span> <span class="o">=</span>
+<span class="s2">&quot;&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39;?&gt;</span>
+<span class="s2">&lt;document&gt;</span>
+<span class="s2">&lt;user&gt;John Doe&lt;/wronguser&gt;</span>
+<span class="s2">&lt;email&gt;john@example.com&lt;/wrongemail&gt;</span>
+<span class="s2">&lt;/document&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$xml</span> <span class="o">=</span> <span class="nb">simplexml_load_string</span><span class="p">(</span><span class="nv">$myXMLData</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$xml</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Failed loading XML: &quot;</span><span class="p">;</span>
+  <span class="k">foreach</span><span class="p">(</span><span class="nb">libxml_get_errors</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">,</span> <span class="nv">$error</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>PHP script explained:</p>
-<ul>
-<li>$target_dir = "uploads/" - specifies the directory where the file is going to be placed</li>
-<li>$target_file specifies the path of the file to be uploaded</li>
-<li>$uploadOk=1 is not used yet (will be used later)</li>
-<li>$imageFileType holds the file extension of the file (in lower case)</li>
-<li>Next, check if the image file is an actual image or a fake image</li>
-</ul>
-<p>You will need to create a new directory called "uploads" in the directory where "upload.php" file resides. The uploaded files will be saved there.</p>
-<h3 id="check-if-file-already-exists">Check if File Already Exists</h3>
-<p>Now we can add some restrictions.</p>
-<p>First, we will check if the file already exists in the "uploads" folder. If it does, an error message is displayed, and $uploadOk is set to 0:</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Check if file already exists</span>
-<span class="x">if (file_exists($target_file)) {</span>
-<span class="x">  echo &quot;Sorry, file already exists.&quot;;</span>
-<span class="x">  $uploadOk = 0;</span>
-<span class="x">}</span>
-<span class="x">?&gt;</span>
-</code></pre></div>
-<h3 id="limit-file-size">Limit File Size</h3>
-<p>The file input field in our HTML form above is named "fileToUpload".</p>
-<p>Now, we want to check the size of the file. If the file is larger than 500KB, an error message is displayed, and $uploadOk is set to 0:</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Check file size</span>
-<span class="x">if ($_FILES[&quot;fileToUpload&quot;][&quot;size&quot;] &gt; 500000) {</span>
-<span class="x">  echo &quot;Sorry, your file is too large.&quot;;</span>
-<span class="x">  $uploadOk = 0;</span>
-<span class="x">}</span>
-<span class="x">?&gt;</span>
-</code></pre></div>
-<h3 id="limit-file-type">Limit File Type</h3>
-<p>The code below only allows users to upload JPG, JPEG, PNG, and GIF files. All other file types gives an error message before setting $uploadOk to 0:</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Allow certain file formats</span>
-<span class="x">if($imageFileType != &quot;jpg&quot; &amp;&amp; $imageFileType != &quot;png&quot; &amp;&amp; $imageFileType != &quot;jpeg&quot;</span>
-<span class="x">&amp;&amp; $imageFileType != &quot;gif&quot; ) {</span>
-<span class="x">  echo &quot;Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed.&quot;;</span>
-<span class="x">  $uploadOk = 0;</span>
-<span class="x">}</span>
-<span class="x">?&gt;</span>
-</code></pre></div>
-<h2 id="complete-upload-file-php-script">Complete Upload File PHP Script</h2>
-<p>The complete "upload.php" file now looks like this:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$target_dir</span> <span class="o">=</span> <span class="s2">&quot;uploads/&quot;</span><span class="p">;</span>
-<span class="nv">$target_file</span> <span class="o">=</span> <span class="nv">$target_dir</span> <span class="o">.</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]);</span>
-<span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="nv">$imageFileType</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nb">pathinfo</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">,</span><span class="nx">PATHINFO_EXTENSION</span><span class="p">));</span>
-
-<span class="c1">// Check if image file is a actual image or fake image</span>
-<span class="k">if</span><span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;submit&quot;</span><span class="p">]))</span> <span class="p">{</span>
-  <span class="nv">$check</span> <span class="o">=</span> <span class="nb">getimagesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;tmp_name&quot;</span><span class="p">]);</span>
-  <span class="k">if</span><span class="p">(</span><span class="nv">$check</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;File is an image - &quot;</span> <span class="o">.</span> <span class="nv">$check</span><span class="p">[</span><span class="s2">&quot;mime&quot;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
-    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;File is not an image.&quot;</span><span class="p">;</span>
-    <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Check if file already exists</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$target_file</span><span class="p">))</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;Sorry, file already exists.&quot;</span><span class="p">;</span>
-  <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Check file size</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;size&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500000</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;Sorry, your file is too large.&quot;</span><span class="p">;</span>
-  <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Allow certain file formats</span>
-<span class="k">if</span><span class="p">(</span><span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;jpg&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;png&quot;</span> <span class="o">&amp;&amp;</span> <span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;jpeg&quot;</span>
-<span class="o">&amp;&amp;</span> <span class="nv">$imageFileType</span> <span class="o">!=</span> <span class="s2">&quot;gif&quot;</span> <span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;Sorry, only JPG, JPEG, PNG &amp; GIF files are allowed.&quot;</span><span class="p">;</span>
-  <span class="nv">$uploadOk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// Check if $uploadOk is set to 0 by an error</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$uploadOk</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;Sorry, your file was not uploaded.&quot;</span><span class="p">;</span>
-<span class="c1">// if everything is ok, try to upload file</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;tmp_name&quot;</span><span class="p">],</span> <span class="nv">$target_file</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;The file &quot;</span><span class="o">.</span> <span class="nb">htmlspecialchars</span><span class="p">(</span> <span class="nb">basename</span><span class="p">(</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fileToUpload&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span><span class="o">.</span> <span class="s2">&quot; has been uploaded.&quot;</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;Sorry, there was an error uploading your file.&quot;</span><span class="p">;</span>
+  <span class="nb">print_r</span><span class="p">(</span><span class="nv">$xml</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The output of the code above will be:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Failed loading XML:</span>
+<span class="x">Opening and ending tag mismatch: user line 3 and wronguser</span>
+<span class="x">Opening and ending tag mismatch: email line 4 and wrongemail</span>
+</code></pre></div>
+<h4 id="read-from-file">Read From File</h4>
+<p>The PHP simplexml_load_file() function is used to read XML data from a file.</p>
+<p>Assume we have an XML file called "note.xml".</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;note&gt;</span>
+  <span class="nt">&lt;to&gt;</span>Tove<span class="nt">&lt;/to&gt;</span>
+  <span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+  <span class="nt">&lt;heading&gt;</span>Reminder<span class="nt">&lt;/heading&gt;</span>
+  <span class="nt">&lt;body&gt;</span>Don&#39;t forget me this weekend!<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/note&gt;</span>
+</code></pre></div>
+The example below shows how to use the simplexml_load_file() function to read XML data from a file.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_file</span><span class="p">(</span><span class="s2">&quot;note.xml&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$xml</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The output of the code above will be:
+<div class="highlight"><pre><span></span><code>SimpleXMLElement Object ( [to] =&gt; Tove [from] =&gt; Jani [heading] =&gt; Reminder [body] =&gt; Don&#39;t forget me this weekend! )
+</code></pre></div></p>
+<h4 id="get-node-values">Get Node Values</h4>
+<p>Get the node values from the "note.xml" file.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_file</span><span class="p">(</span><span class="s2">&quot;note.xml&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">to</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">from</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">heading</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">body</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The output of the code above will be:
+<div class="highlight"><pre><span></span><code>Tove
+Jani
+Reminder
+Don&#39;t forget me this weekend!
+</code></pre></div></p>
+<h4 id="get-node-values-of-specific-elements">Get Node Values of Specific Elements</h4>
+<p>Assume we have an XML file called "books.xml", that looks like this: </p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;bookstore&gt;</span>
+  <span class="nt">&lt;book</span> <span class="na">category=</span><span class="s">&quot;COOKING&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Everyday Italian<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;author&gt;</span>Giada De Laurentiis<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;year&gt;</span>2005<span class="nt">&lt;/year&gt;</span>
+    <span class="nt">&lt;price&gt;</span>30.00<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/book&gt;</span>
+  <span class="nt">&lt;book</span> <span class="na">category=</span><span class="s">&quot;CHILDREN&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Harry Potter<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;author&gt;</span>J K. Rowling<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;year&gt;</span>2005<span class="nt">&lt;/year&gt;</span>
+    <span class="nt">&lt;price&gt;</span>29.99<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/book&gt;</span>
+  <span class="nt">&lt;book</span> <span class="na">category=</span><span class="s">&quot;WEB&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&quot;en-us&quot;</span><span class="nt">&gt;</span>XQuery Kick Start<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;author&gt;</span>James McGovern<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;year&gt;</span>2003<span class="nt">&lt;/year&gt;</span>
+    <span class="nt">&lt;price&gt;</span>49.99<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/book&gt;</span>
+  <span class="nt">&lt;book</span> <span class="na">category=</span><span class="s">&quot;WEB&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title</span> <span class="na">lang=</span><span class="s">&quot;en-us&quot;</span><span class="nt">&gt;</span>Learning XML<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;author&gt;</span>Erik T. Ray<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;year&gt;</span>2003<span class="nt">&lt;/year&gt;</span>
+    <span class="nt">&lt;price&gt;</span>39.95<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/book&gt;</span>
+<span class="nt">&lt;/bookstore&gt;</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_file</span><span class="p">(</span><span class="s2">&quot;books.xml&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">book</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">book</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+The output of the code above will be:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Everyday Italian</span>
+<span class="x">Harry Potter</span>
+</code></pre></div>
+<h4 id="get-node-values-loop">Get Node Values - Loop</h4>
+<p>The following example loops through all the book elements in the "books.xml" file, and gets the node values of the title, author, year, and price elements.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_file</span><span class="p">(</span><span class="s2">&quot;books.xml&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">children</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$books</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">title</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">author</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">year</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+The output of the code above will be:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Everyday Italian, Giada De Laurentiis, 2005, 30.00</span>
+<span class="x">Harry Potter, J K. Rowling, 2005, 29.99</span>
+<span class="x">XQuery Kick Start, James McGovern, 2003, 49.99</span>
+<span class="x">Learning XML, Erik T. Ray, 2003, 39.95</span>
+</code></pre></div>
+<h4 id="get-attribute-values">Get Attribute Values</h4>
+<p>The following example gets the attribute value of the "category" attribute of the first book element and the attribute value of the "lang" attribute of the title element in the second book element.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_file</span><span class="p">(</span><span class="s2">&quot;books.xml&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">book</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;category&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">book</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">[</span><span class="s1">&#39;lang&#39;</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+The output of the code above will be:</p>
+<div class="highlight"><pre><span></span><code><span class="x">COOKING</span>
+<span class="x">en</span>
+</code></pre></div>
+<h4 id="get-attribute-values-loop">Get Attribute Values - Loop</h4>
+<p>The following example gets the attribute values of the title elements in the "books.xml" file.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xml</span><span class="o">=</span><span class="nb">simplexml_load_file</span><span class="p">(</span><span class="s2">&quot;books.xml&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s2">&quot;Error: Cannot create object&quot;</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$xml</span><span class="o">-&gt;</span><span class="na">children</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$books</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$books</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">[</span><span class="s1">&#39;lang&#39;</span><span class="p">];</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+The output of the code above will be:</p>
+<div class="highlight"><pre><span></span><code><span class="x">en</span>
+<span class="x">en</span>
+<span class="x">en-us</span>
+<span class="x">en-us</span>
+</code></pre></div>
+<h3 id="xml-dom-parser">XML DOM Parser</h3>
+<p>The DOM parser is a tree-based parser.</p>
+<p>Look at the following XML document fraction:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+</code></pre></div>
+<p>The DOM sees the XML above as a tree structure:</p>
+<ul>
+<li>Level 1: XML Document</li>
+<li>Level 2: Root element: <from></li>
+<li>Level 3: Text element: "Jani"</li>
+</ul>
+<p>The XML file below ("note.xml") will be used in our example:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;note&gt;</span>
+<span class="nt">&lt;to&gt;</span>Tove<span class="nt">&lt;/to&gt;</span>
+<span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+<span class="nt">&lt;heading&gt;</span>Reminder<span class="nt">&lt;/heading&gt;</span>
+<span class="nt">&lt;body&gt;</span>Don&#39;t forget me this weekend!<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/note&gt;</span>
+</code></pre></div>
+<h4 id="load-and-output-xml">Load and Output XML</h4>
+<p>We want to initialize the XML parser, load the xml, and output it:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xmlDoc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDocument</span><span class="p">();</span>
+<span class="nv">$xmlDoc</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="s2">&quot;note.xml&quot;</span><span class="p">);</span>
+
+<span class="k">print</span> <span class="nv">$xmlDoc</span><span class="o">-&gt;</span><span class="na">saveXML</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The output of the code above will be:
+<div class="highlight"><pre><span></span><code>Tove Jani Reminder Don&#39;t forget me this weekend!
+</code></pre></div>
+If you select "View source" in the browser window, you will see the following HTML:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;note&gt;</span>
+<span class="nt">&lt;to&gt;</span>Tove<span class="nt">&lt;/to&gt;</span>
+<span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+<span class="nt">&lt;heading&gt;</span>Reminder<span class="nt">&lt;/heading&gt;</span>
+<span class="nt">&lt;body&gt;</span>Don&#39;t forget me this weekend!<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/note&gt;</span>
+</code></pre></div>
+<p>The example above creates a DOMDocument-Object and loads the XML from "note.xml" into it.</p>
+<p>Then the saveXML() function puts the internal XML document into a string, so we can output it.</p>
+<h4 id="looping-through-xml">Looping through XML</h4>
+<p>We want to initialize the XML parser, load the XML, and loop through all elements of the <note> element:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$xmlDoc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMDocument</span><span class="p">();</span>
+<span class="nv">$xmlDoc</span><span class="o">-&gt;</span><span class="na">load</span><span class="p">(</span><span class="s2">&quot;note.xml&quot;</span><span class="p">);</span>
+
+<span class="nv">$x</span> <span class="o">=</span> <span class="nv">$xmlDoc</span><span class="o">-&gt;</span><span class="na">documentElement</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$x</span><span class="o">-&gt;</span><span class="na">childNodes</span> <span class="k">AS</span> <span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">print</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">nodeName</span> <span class="o">.</span> <span class="s2">&quot; = &quot;</span> <span class="o">.</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">nodeValue</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The output of the code above will be:</p>
+<div class="highlight"><pre><span></span><code>#text =
+to = Tove
+#text =
+from = Jani
+#text =
+heading = Reminder
+#text =
+body = Don&#39;t forget me this weekend!
+#text =
+</code></pre></div>
+<p>In the example above you see that there are empty text nodes between each element.</p>
+<p>When XML generates, it often contains white-spaces between the nodes. The XML DOM parser treats these as ordinary elements, and if you are not aware of them, they sometimes cause problems.</p>
+<h2 id="event-based-parsers">Event-Based Parsers</h2>
+<p>Event-based parsers do not hold the entire document in Memory, instead, they read in one node at a time and allow you to interact with in real time. Once you move onto the next node, the old one is thrown away.</p>
+<p>This type of parser is well suited for large XML documents. It parses faster and consumes less memory.</p>
+<p>Example of event-based parsers:</p>
+<ul>
+<li>XMLReader</li>
+<li><a href="#xml-expat-parser">XML Expat Parser</a></li>
+</ul>
+<h3 id="xml-expat-parser">XML Expat Parser</h3>
+<p>The Expat parser is an event-based parser.</p>
+<p>Look at the following XML fraction:
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+</code></pre></div>
+An event-based parser reports the XML above as a series of three events:</p>
+<ul>
+<li>Start element: from</li>
+<li>Start CDATA section, value: Jani</li>
+<li>Close element: from</li>
+</ul>
+<p>The XML Expat Parser functions are part of the PHP core. There is no installation needed to use these functions.</p>
+<p>The XML file "note.xml" will be used in the example below:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;note&gt;</span>
+<span class="nt">&lt;to&gt;</span>Tove<span class="nt">&lt;/to&gt;</span>
+<span class="nt">&lt;from&gt;</span>Jani<span class="nt">&lt;/from&gt;</span>
+<span class="nt">&lt;heading&gt;</span>Reminder<span class="nt">&lt;/heading&gt;</span>
+<span class="nt">&lt;body&gt;</span>Don&#39;t forget me this weekend!<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/note&gt;</span>
+</code></pre></div>
+<h4 id="initializing-the-xml-expat-parser">Initializing the XML Expat Parser</h4>
+<p>We want to initialize the XML Expat Parser in PHP, define some handlers for different XML events, and then parse the XML file.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Initialize the XML parser</span>
+<span class="nv">$parser</span><span class="o">=</span><span class="nb">xml_parser_create</span><span class="p">();</span>
+
+<span class="c1">// Function to use at the start of an element</span>
+<span class="k">function</span> <span class="nf">start</span><span class="p">(</span><span class="nv">$parser</span><span class="p">,</span><span class="nv">$element_name</span><span class="p">,</span><span class="nv">$element_attrs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span><span class="p">(</span><span class="nv">$element_name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s2">&quot;NOTE&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;-- Note --&lt;br&gt;&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;TO&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;To: &quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;FROM&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;From: &quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;HEADING&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;Heading: &quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="s2">&quot;BODY&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;Message: &quot;</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="c1">// Function to use at the end of an element</span>
+<span class="k">function</span> <span class="nf">stop</span><span class="p">(</span><span class="nv">$parser</span><span class="p">,</span><span class="nv">$element_name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Function to use when finding character data</span>
+<span class="k">function</span> <span class="nf">char</span><span class="p">(</span><span class="nv">$parser</span><span class="p">,</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Specify element handler</span>
+<span class="nb">xml_set_element_handler</span><span class="p">(</span><span class="nv">$parser</span><span class="p">,</span><span class="s2">&quot;start&quot;</span><span class="p">,</span><span class="s2">&quot;stop&quot;</span><span class="p">);</span>
+
+<span class="c1">// Specify data handler</span>
+<span class="nb">xml_set_character_data_handler</span><span class="p">(</span><span class="nv">$parser</span><span class="p">,</span><span class="s2">&quot;char&quot;</span><span class="p">);</span>
+
+<span class="c1">// Open XML file</span>
+<span class="nv">$fp</span><span class="o">=</span><span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;note.xml&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+
+<span class="c1">// Read data</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$data</span><span class="o">=</span><span class="nb">fread</span><span class="p">(</span><span class="nv">$fp</span><span class="p">,</span><span class="mi">4096</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nb">xml_parse</span><span class="p">(</span><span class="nv">$parser</span><span class="p">,</span><span class="nv">$data</span><span class="p">,</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="k">or</span>
+  <span class="k">die</span> <span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;XML Error: %s at line %d&quot;</span><span class="p">,</span>
+  <span class="nb">xml_error_string</span><span class="p">(</span><span class="nb">xml_get_error_code</span><span class="p">(</span><span class="nv">$parser</span><span class="p">)),</span>
+  <span class="nb">xml_get_current_line_number</span><span class="p">(</span><span class="nv">$parser</span><span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="c1">// Free the XML parser</span>
+<span class="nb">xml_parser_free</span><span class="p">(</span><span class="nv">$parser</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
@@ -1904,7 +1945,7 @@ If you use fopen() on a file that does not exist, it will create it, given that 
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpInclude/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Include" rel="prev">
+        <a href="../phpMySql/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MySQL" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1913,20 +1954,20 @@ If you use fopen() on a file that does not exist, it will create it, given that 
               <span class="md-footer__direction">
                 Previous
               </span>
-              Include
+              MySQL
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpMySql/" class="md-footer__link md-footer__link--next" aria-label="Next: MySQL" rel="next">
+        <a href="../phpAjax/" class="md-footer__link md-footer__link--next" aria-label="Next: Ajax" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              MySQL
+              Ajax
             </div>
           </div>
           <div class="md-footer__button md-icon">
