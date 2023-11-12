@@ -138,4 +138,6 @@ nav:
      - Include : Adv/phpInclude.md
      - File Management: Adv/phpFile.md
      - MySQL : Adv/phpMySql.md
+     - XML : Adv/phpXML.md
+     - Ajax: Adv/phpAjax.md
 

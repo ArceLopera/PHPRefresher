@@ -10,6 +10,6 @@ PHP Functions
 |Error |[Exception](../Func/phpExceptions.md) |[Filesystem](../Adv/phpFile.md) | [Filter](../Func/phpFilters.md)| 
 |FTP |[JSON](../Func/phpJSON.md) |Keywords| Libxml| 
 |Mail |Math |Misc |[MySQLi](../Adv/phpMySql.md) |
-|[Network](../Func/phpCookie.md) |Output Control |[RegEx](../Func/phpRegex.md) |SimpleXML| 
-|Stream |String| Var Handling|XML Parser| 
+|[Network](../Func/phpCookie.md) |Output Control |[RegEx](../Func/phpRegex.md) |[SimpleXML](../Adv/phpXML.md#simplexml)| 
+|Stream |String| Var Handling|[XML Parser](../Adv/phpXML.md)| 
 |Zip |Timezones|||
