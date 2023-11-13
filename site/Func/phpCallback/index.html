@@ -660,6 +660,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -879,6 +893,13 @@
         <li class="md-nav__item">
   <a href="#callbacks-in-user-defined-functions" class="md-nav__link">
     Callbacks in User Defined Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-callable-keyword" class="md-nav__link">
+    PHP callable Keyword
   </a>
   
 </li>
@@ -1318,6 +1339,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#php-callable-keyword" class="md-nav__link">
+    PHP callable Keyword
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1372,6 +1400,56 @@
 <span class="c1">// Pass &quot;exclaim&quot; and &quot;ask&quot; as callback functions to printFormatted()</span>
 <span class="nx">printFormatted</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;exclaim&quot;</span><span class="p">);</span>
 <span class="nx">printFormatted</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;ask&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="php-callable-keyword">PHP callable Keyword</h2>
+<p>Use callable to require a callback function as an argument.</p>
+<p>The callable keyword is used to force a function argument to be a reference to a function.</p>
+<p>A callable can be one of the following:</p>
+<ul>
+<li>An anonymous function</li>
+<li>A string containing the name of a function</li>
+<li>An array describing a static class method</li>
+<li>An array describing an object method</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">printFormatted</span><span class="p">(</span><span class="nx">callable</span> <span class="nv">$format</span><span class="p">,</span> <span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$format</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">exclaim</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$str</span> <span class="o">.</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span> <span class="p">}</span>
+<span class="nx">printFormatted</span><span class="p">(</span><span class="s2">&quot;exclaim&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">printFormatted</span><span class="p">(</span><span class="nx">callable</span> <span class="nv">$format</span><span class="p">,</span> <span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$format</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">ask</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$str</span> <span class="o">.</span> <span class="s2">&quot;?&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">brackets</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s2">&quot;[</span><span class="si">$str</span><span class="s2">]&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// An anonymous function</span>
+<span class="nv">$func</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$str</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="p">};</span>
+<span class="nx">printFormatted</span><span class="p">(</span><span class="nv">$func</span> <span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+
+<span class="c1">// A string containing the name of a function</span>
+<span class="nx">printFormatted</span><span class="p">(</span><span class="s2">&quot;strtoupper&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+
+<span class="c1">// An array describing a static class method</span>
+<span class="nx">printFormatted</span><span class="p">([</span><span class="s2">&quot;MyClass&quot;</span><span class="p">,</span> <span class="s2">&quot;ask&quot;</span><span class="p">],</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+
+<span class="c1">// An array describing an object method</span>
+<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">();</span>
+<span class="nx">printFormatted</span><span class="p">([</span><span class="nv">$obj</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="p">],</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 

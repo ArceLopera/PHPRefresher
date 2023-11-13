@@ -101,3 +101,48 @@ if ($apple instanceof Fruit) {
 }
 ?>
 ```
+
+## PHP clone Keyword
+
+To clone an object, use the clone keyword.
+
+```php
+<?php
+class MyClass {
+  public $color;
+  public $amount;
+}
+
+$obj = new MyClass();
+$obj->color = "red";
+$obj->amount = 5;
+$copy = clone $obj;
+print_r($copy);
+?>
+```
+
+If any of the properties was a reference to another variable or object, then only the reference is copied. Objects are always passed by reference, so if the original object has another object in its properties, the copy will point to the same object. This behavior can be changed by creating a __clone() method in the class.
+
+Create a copy of an object which has a reference:
+
+```php
+<?php
+class MyClass {
+  public $amount;
+}
+
+// Create an object with a reference
+$value = 5;
+$obj = new MyClass();
+$obj->amount = &$value;
+
+// Clone the object
+$copy = clone $obj;
+
+// Change the value in the original object
+$obj->amount = 6;
+
+// The copy is changed
+print_r($copy);
+?>
+```

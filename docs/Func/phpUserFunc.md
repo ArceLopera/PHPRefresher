@@ -142,3 +142,29 @@ add_five($num);
 echo $num;
 ?>
 ```
+
+## PHP callable Keyword
+
+Use callable to require a callback function as an argument.
+
+The callable keyword is used to force a function argument to be a reference to a function.
+
+A callable can be one of the following:
+
++ An anonymous function
++ A string containing the name of a function
++ An array describing a static class method
++ An array describing an object method
+
+```php
+<?php
+function printFormatted(callable $format, $str) {
+  echo $format($str);
+  echo "<br>";
+}
+
+function exclaim($str) { return $str . "!"; }
+printFormatted("exclaim", "Hello World");
+?>
+```
+

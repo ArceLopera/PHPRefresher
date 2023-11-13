@@ -660,6 +660,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -980,6 +994,13 @@
         <li class="md-nav__item">
   <a href="#passing-arguments-by-reference" class="md-nav__link">
     Passing Arguments by Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-callable-keyword" class="md-nav__link">
+    PHP callable Keyword
   </a>
   
 </li>
@@ -1424,6 +1445,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#php-callable-keyword" class="md-nav__link">
+    PHP callable Keyword
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1550,6 +1578,26 @@
 <span class="nv">$num</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="nx">add_five</span><span class="p">(</span><span class="nv">$num</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$num</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="php-callable-keyword">PHP callable Keyword</h2>
+<p>Use callable to require a callback function as an argument.</p>
+<p>The callable keyword is used to force a function argument to be a reference to a function.</p>
+<p>A callable can be one of the following:</p>
+<ul>
+<li>An anonymous function</li>
+<li>A string containing the name of a function</li>
+<li>An array describing a static class method</li>
+<li>An array describing an object method</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">printFormatted</span><span class="p">(</span><span class="nx">callable</span> <span class="nv">$format</span><span class="p">,</span> <span class="nv">$str</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$format</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">exclaim</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$str</span> <span class="o">.</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span> <span class="p">}</span>
+<span class="nx">printFormatted</span><span class="p">(</span><span class="s2">&quot;exclaim&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 

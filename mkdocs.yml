@@ -107,6 +107,7 @@ nav:
      - Control Flow:
         - Conditionals: PR/phpIF.md
         - Loops: PR/phpLoops.md
+     - Keywords: PR/phpKeywords.md
   - Functions: 
      - Built-in:
         - All : Func/phpAll.md

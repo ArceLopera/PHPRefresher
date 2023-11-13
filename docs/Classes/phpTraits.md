@@ -56,3 +56,24 @@ $obj2->msg1();
 $obj2->msg2();
 ?>
 ```
+
+## Trait Alias
+
+``` php
+<?php
+trait message1 {
+  public function msg1() {
+    echo "OOP is fun! ";
+  }
+}
+
+class Welcome {
+  use message1 {
+    message1::msg1 as msg;
+  }
+}
+
+$obj = new Welcome();
+$obj->msg();
+?>
+```

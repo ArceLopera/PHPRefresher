@@ -52,6 +52,26 @@ try {
 ?>
 ```
 
+``` php
+<?php
+try {
+  $rand = rand(0, 2);
+  switch($rand) {
+    case 0: throw new Exception();
+    case 1: throw new OutOfBoundsException();
+    case 2: throw new LogicException();
+}
+
+} catch(OutOfBoundsException $e) {
+  echo "Caught an out of bounds exception";
+} catch(LogicException $e) {
+  echo "Caught a logic exception";
+} catch(Exception $e) {
+  echo "Caught an ordinary exception";
+}
+?>
+```
+
 The catch block indicates what type of exception should be caught and the name of the variable which can be used to access the exception. In the example above, the type of exception is Exception and the variable name is $e.
 
 ## The try...catch...finally Statement

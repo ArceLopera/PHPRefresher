@@ -47,3 +47,60 @@ printFormatted("Hello world", "exclaim");
 printFormatted("Hello world", "ask");
 ?>
 ```
+
+## PHP callable Keyword
+
+Use callable to require a callback function as an argument.
+
+The callable keyword is used to force a function argument to be a reference to a function.
+
+A callable can be one of the following:
+
++ An anonymous function
++ A string containing the name of a function
++ An array describing a static class method
++ An array describing an object method
+
+```php
+<?php
+function printFormatted(callable $format, $str) {
+  echo $format($str);
+  echo "<br>";
+}
+
+function exclaim($str) { return $str . "!"; }
+printFormatted("exclaim", "Hello World");
+?>
+```
+
+``` php
+<?php
+function printFormatted(callable $format, $str) {
+  echo $format($str);
+  echo "<br>";
+}
+
+class MyClass {
+  public static function ask($str) {
+    return $str . "?";
+  }
+  public function brackets($str) {
+    return "[$str]";
+  }
+}
+
+// An anonymous function
+$func = function($str) { return substr($str, 0, 5); };
+printFormatted($func , "Hello World");
+
+// A string containing the name of a function
+printFormatted("strtoupper", "Hello World");
+
+// An array describing a static class method
+printFormatted(["MyClass", "ask"], "Hello World");
+
+// An array describing an object method
+$obj = new MyClass();
+printFormatted([$obj, "brackets"], "Hello World");
+?>
+```
