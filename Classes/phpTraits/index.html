@@ -660,6 +660,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1138,6 +1152,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trait-alias" class="md-nav__link">
+    Trait Alias
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1316,6 +1337,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trait-alias" class="md-nav__link">
+    Trait Alias
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1380,6 +1408,24 @@
 <span class="nv">$obj2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Welcome2</span><span class="p">();</span>
 <span class="nv">$obj2</span><span class="o">-&gt;</span><span class="na">msg1</span><span class="p">();</span>
 <span class="nv">$obj2</span><span class="o">-&gt;</span><span class="na">msg2</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="trait-alias">Trait Alias</h2>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">trait</span> <span class="nx">message1</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">msg1</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;OOP is fun! &quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Welcome</span> <span class="p">{</span>
+  <span class="k">use</span> <span class="nx">message1</span> <span class="p">{</span>
+    <span class="nx">message1</span><span class="o">::</span><span class="na">msg1</span> <span class="k">as</span> <span class="nx">msg</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Welcome</span><span class="p">();</span>
+<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">msg</span><span class="p">();</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
