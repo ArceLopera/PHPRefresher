@@ -22,6 +22,21 @@ while($x <= 5) {
 ?>
 ```
 
+### endwhile
+
+The endwhile keyword is used to close the code block of a while loop which was started using the while(...): syntax.
+
+``` php
+<?php
+$x = 1;
+
+while($x <= 5):
+  echo "The number is: $x <br>";
+  $x++;
+endwhile;
+?>
+```
+
 ## do...while
 
 The do...while loop - Loops through a block of code once, and then repeats the loop as long as the specified condition is true.
@@ -51,6 +66,18 @@ for ($x = 0; $x <= 10; $x++) {
 ?>
 ```
 
+### endfor
+
+The endfor keyword is used to close the code block of a for loop which was started using the for(...): syntax.
+
+``` php
+<?php
+for($i = 0; $i < 10; $i += 2):
+  echo "$i <br>";
+endfor;
+?>
+```
+
 ## foreach
 
 The foreach loop - Loops through a block of code for each element in an array.
@@ -74,6 +101,20 @@ foreach($age as $x => $val) {
 }
 ?>
 ```	
+
+### endforeach
+
+The endforeach keyword is used to close the code block of a foreach loop which was started using the foreach(...): syntax.
+
+``` php
+<?php
+$cars = ["Ford", "Volvo", "BMW"];
+foreach($cars as $car):
+  echo "$car <br>";
+endforeach;
+?>
+```
+
 
 ## Break and Continue
 

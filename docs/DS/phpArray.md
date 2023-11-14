@@ -113,6 +113,31 @@ for ($row = 0; $row < 4; $row++) {
 ?>
 ```	
 
+### The list Function
+The list() function is used to create an array from a list of variables.
+
+If there are not enough elements in the array it will output a notice and assign null to the remaining variables.
+
+```php
+<?php
+list($a, $b, $c) = [1, 2, 3];
+echo "$a is " . $a . "<br>";
+echo "$b is " . $b . "<br>";
+echo "$c is " . $c . "<br>";
+?>
+```
+
+Since PHP 7.1.0, which elements are assigned to the variables can be selected using arrow => syntax.
+
+```php
+<?php
+list(2 => $a, 0 => $b, 1 => $c) = [1, 2, 3];
+echo "$a is " . $a . "<br>";
+echo "$b is " . $b . "<br>";
+echo "$c is " . $c . "<br>";
+?>
+```
+
 
 ## The Array Functions
 The PHP array functions are used to perform operations on arrays.

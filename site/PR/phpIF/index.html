@@ -691,12 +691,38 @@
     if...elseif...else statement
   </a>
   
+    <nav class="md-nav" aria-label="if...elseif...else statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endif" class="md-nav__link">
+    endif
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#switch-statement" class="md-nav__link">
     switch statement
   </a>
+  
+    <nav class="md-nav" aria-label="switch statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endswitch" class="md-nav__link">
+    endswitch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -962,6 +988,62 @@
     <li class="md-nav__item">
       <a href="../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
       </a>
     </li>
   
@@ -1279,6 +1361,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Adv/phpFile/" class="md-nav__link">
         File Management
       </a>
@@ -1386,12 +1482,38 @@
     if...elseif...else statement
   </a>
   
+    <nav class="md-nav" aria-label="if...elseif...else statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endif" class="md-nav__link">
+    endif
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#switch-statement" class="md-nav__link">
     switch statement
   </a>
+  
+    <nav class="md-nav" aria-label="switch statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endswitch" class="md-nav__link">
+    endswitch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1458,6 +1580,26 @@
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="endif">endif</h4>
+<p>The endif keyword is used to mark the end of an if conditional which was started with the if(...): syntax. It also applies to any variation of the if conditional, such as if...elseif and if...else.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$a</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;Less than five&quot;</span><span class="p">;</span>
+<span class="k">endif</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nv">$a</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;Less than five&quot;</span><span class="p">;</span>
+<span class="k">elseif</span><span class="p">(</span><span class="nv">$a</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;More than five but less than ten&quot;</span><span class="p">;</span>
+<span class="k">else</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;Greater than ten&quot;</span><span class="p">;</span>
+<span class="k">endif</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h3 id="switch-statement">switch statement</h3>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$favcolor</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">;</span>
@@ -1472,9 +1614,22 @@
   <span class="k">case</span> <span class="s2">&quot;green&quot;</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s2">&quot;Your favorite color is green!&quot;</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
+  <span class="c1">//Use default to handle unspecified cases in a switch block</span>
   <span class="k">default</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s2">&quot;Your favorite color is neither red, blue, nor green!&quot;</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="endswitch">endswitch</h4>
+<p>The endswitch keyword is used to mark the end of a switch conditional which was started with the switch(...): syntax.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">switch</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="k">echo</span> <span class="s2">&quot;One&quot;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="k">echo</span> <span class="s2">&quot;Two&quot;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="k">echo</span> <span class="s2">&quot;Three&quot;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+  <span class="k">default</span><span class="o">:</span> <span class="k">echo</span> <span class="s2">&quot;Many&quot;</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+<span class="k">endswitch</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 

@@ -82,6 +82,25 @@ echo "I have a $color $car.";
 </body>
 </html>
 ```
+
+### Include_once
+The include_once statement is similar to the include statement, except that it will only include the file once. If the file is already included, the include statement will not include it again.
+
+```php
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Welcome to my home page!</h1>
+<p>Some text.</p>
+<p>Some more text.</p>
+<?php include_once 'footer.php';?>
+
+</body>
+</html>
+```
+
+
 ## PHP include vs. require
 The require statement is also used to include a file into the PHP code.
 

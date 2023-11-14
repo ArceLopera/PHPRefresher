@@ -893,6 +893,62 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1257,6 +1313,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#include_once" class="md-nav__link">
+    Include_once
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1280,6 +1343,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpGoto/" class="md-nav__link">
+        Goto
+      </a>
     </li>
   
 
@@ -1407,6 +1484,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#include_once" class="md-nav__link">
+    Include_once
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1510,6 +1594,20 @@ Then, if we include the "vars.php" file, the variables can be used in the callin
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
 </code></pre></div>
+<h3 id="include_once">Include_once</h3>
+<p>The include_once statement is similar to the include statement, except that it will only include the file once. If the file is already included, the include statement will not include it again.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="x">&lt;p&gt;Some text.&lt;/p&gt;</span>
+<span class="x">&lt;p&gt;Some more text.&lt;/p&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">include_once</span> <span class="s1">&#39;footer.php&#39;</span><span class="p">;</span><span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
 <h2 id="php-include-vs-require">PHP include vs. require</h2>
 <p>The require statement is also used to include a file into the PHP code.</p>
 <p>However, there is one big difference between include and require; when a file is included with the include statement and PHP cannot find it, the script will continue to execute:</p>
@@ -1568,13 +1666,13 @@ Then, if we include the "vars.php" file, the variables can be used in the callin
       
       
         
-        <a href="../phpFile/" class="md-footer__link md-footer__link--next" aria-label="Next: File Management" rel="next">
+        <a href="../phpGoto/" class="md-footer__link md-footer__link--next" aria-label="Next: Goto" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              File Management
+              Goto
             </div>
           </div>
           <div class="md-footer__button md-icon">

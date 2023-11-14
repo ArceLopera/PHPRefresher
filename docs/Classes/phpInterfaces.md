@@ -27,6 +27,8 @@ To implement an interface, a class must use the implements keyword.
 
 A class that implements an interface must implement all of the interface's methods.
 
+The implements keyword is used to declare that a class must have the methods described in the specified interface. This is called polymorphism. Polymorphism makes it easy to use a variety of different objects in the same way.
+
 ``` php
 <?php
 interface Animal {

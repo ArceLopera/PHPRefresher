@@ -51,6 +51,32 @@ if ($t < "10") {
 ?>
 ```
 
+#### endif
+
+The endif keyword is used to mark the end of an if conditional which was started with the if(...): syntax. It also applies to any variation of the if conditional, such as if...elseif and if...else.
+
+``` php
+<?php
+$a = 4;
+if($a < 5):
+  echo "Less than five";
+endif;
+?>
+```
+
+``` php
+<?php
+$a = 4;
+if($a < 5):
+  echo "Less than five";
+elseif($a < 10):
+  echo "More than five but less than ten";
+else:
+  echo "Greater than ten";
+endif;
+?>
+```
+
 ### switch statement
 
 ``` php
@@ -67,8 +93,26 @@ switch ($favcolor) {
   case "green":
     echo "Your favorite color is green!";
     break;
+  //Use default to handle unspecified cases in a switch block
   default:
     echo "Your favorite color is neither red, blue, nor green!";
 }
 ?>
 ```
+
+#### endswitch
+
+The endswitch keyword is used to mark the end of a switch conditional which was started with the switch(...): syntax.
+
+``` php
+<?php
+$a = 4;
+switch($a):
+  case 1: echo "One"; break;
+  case 2: echo "Two"; break;
+  case 3: echo "Three"; break;
+  default: echo "Many"; break;
+endswitch;
+?>
+```
+

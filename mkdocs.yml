@@ -120,6 +120,10 @@ nav:
         - Callback: Func/phpCallback.md
         - JSON: Func/phpJSON.md
         - Exceptions: Func/phpExceptions.md
+        - Declare: Func/phpDeclare.md
+        - Empty: Func/phpEmpty.md
+        - Arrow Function: Func/phpArrowFunc.md
+        - Output Control: Func/phpOutput.md
      - User-Defined : Func/phpUserFunc.md
   - Data Structures:
      - Array: DS/phpArray.md
@@ -137,6 +141,7 @@ nav:
      - Namespaces: Classes/phpNamespaces.md
   - Advanced:
      - Include : Adv/phpInclude.md
+     - Goto: Adv/phpGoto.md
      - File Management: Adv/phpFile.md
      - MySQL : Adv/phpMySql.md
      - XML : Adv/phpXML.md
