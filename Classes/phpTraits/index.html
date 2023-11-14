@@ -893,6 +893,62 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1157,6 +1213,19 @@
     Trait Alias
   </a>
   
+    <nav class="md-nav" aria-label="Trait Alias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-insteadof-keyword" class="md-nav__link">
+    The insteadof Keyword
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1238,6 +1307,20 @@
     <li class="md-nav__item">
       <a href="../../Adv/phpInclude/" class="md-nav__link">
         Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
       </a>
     </li>
   
@@ -1342,6 +1425,19 @@
     Trait Alias
   </a>
   
+    <nav class="md-nav" aria-label="Trait Alias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-insteadof-keyword" class="md-nav__link">
+    The insteadof Keyword
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1426,6 +1522,41 @@
 
 <span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Welcome</span><span class="p">();</span>
 <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">msg</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="the-insteadof-keyword">The insteadof Keyword</h3>
+<p>The insteadof keyword allows you to select from which trait a method should be taken if more than one trait has a method with the same name.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">trait</span> <span class="nx">message1</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">msgA</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;My favorite color is red. &quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">msgB</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;My favorite number is 5. &quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">trait</span> <span class="nx">message2</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">msgA</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;My favorite color is blue. &quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">msgB</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;My favorite number is 7. &quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span> <span class="p">{</span>
+  <span class="k">use</span> <span class="nx">message1</span><span class="p">,</span> <span class="nx">message2</span> <span class="p">{</span>
+    <span class="nx">message1</span><span class="o">::</span><span class="na">msgA</span> <span class="nx">insteadof</span> <span class="nx">message2</span><span class="p">;</span>
+    <span class="nx">message2</span><span class="o">::</span><span class="na">msgB</span> <span class="nx">insteadof</span> <span class="nx">message1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyClass</span><span class="p">();</span>
+<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">msgA</span><span class="p">();</span>
+<span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">msgB</span><span class="p">();</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 

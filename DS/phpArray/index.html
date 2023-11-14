@@ -893,6 +893,62 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1010,6 +1066,19 @@
   <a href="#php-multidimensional-arrays" class="md-nav__link">
     PHP Multidimensional Arrays
   </a>
+  
+    <nav class="md-nav" aria-label="PHP Multidimensional Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-list-function" class="md-nav__link">
+    The list Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1380,6 +1449,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Adv/phpFile/" class="md-nav__link">
         File Management
       </a>
@@ -1485,6 +1568,19 @@
   <a href="#php-multidimensional-arrays" class="md-nav__link">
     PHP Multidimensional Arrays
   </a>
+  
+    <nav class="md-nav" aria-label="PHP Multidimensional Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-list-function" class="md-nav__link">
+    The list Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1707,6 +1803,24 @@ or:
   <span class="p">}</span>
   <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="the-list-function">The list Function</h3>
+<p>The list() function is used to create an array from a list of variables.</p>
+<p>If there are not enough elements in the array it will output a notice and assign null to the remaining variables.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$b</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$c</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Since PHP 7.1.0, which elements are assigned to the variables can be selected using arrow =&gt; syntax.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">list</span><span class="p">(</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="nv">$a</span><span class="p">,</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="nv">$b</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$b</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$c</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="the-array-functions">The Array Functions</h2>

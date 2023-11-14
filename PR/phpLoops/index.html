@@ -683,6 +683,19 @@
     while
   </a>
   
+    <nav class="md-nav" aria-label="while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endwhile" class="md-nav__link">
+    endwhile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -697,12 +710,38 @@
     for
   </a>
   
+    <nav class="md-nav" aria-label="for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endfor" class="md-nav__link">
+    endfor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#foreach" class="md-nav__link">
     foreach
   </a>
+  
+    <nav class="md-nav" aria-label="foreach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endforeach" class="md-nav__link">
+    endforeach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -976,6 +1015,62 @@
     <li class="md-nav__item">
       <a href="../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
       </a>
     </li>
   
@@ -1293,6 +1388,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Adv/phpFile/" class="md-nav__link">
         File Management
       </a>
@@ -1378,6 +1487,19 @@
     while
   </a>
   
+    <nav class="md-nav" aria-label="while">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endwhile" class="md-nav__link">
+    endwhile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1392,12 +1514,38 @@
     for
   </a>
   
+    <nav class="md-nav" aria-label="for">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endfor" class="md-nav__link">
+    endfor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#foreach" class="md-nav__link">
     foreach
   </a>
+  
+    <nav class="md-nav" aria-label="foreach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endforeach" class="md-nav__link">
+    endforeach
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1463,6 +1611,17 @@
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h3 id="endwhile">endwhile</h3>
+<p>The endwhile keyword is used to close the code block of a while loop which was started using the while(...): syntax.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="k">while</span><span class="p">(</span><span class="nv">$x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
+  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
+<span class="k">endwhile</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h2 id="dowhile">do...while</h2>
 <p>The do...while loop - Loops through a block of code once, and then repeats the loop as long as the specified condition is true.</p>
 <p>In a do...while loop the condition is tested AFTER executing the statements within the loop. This means that the do...while loop will execute its statements at least once, even if the condition is false. See example below.</p>
@@ -1483,6 +1642,14 @@
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h3 id="endfor">endfor</h3>
+<p>The endfor keyword is used to close the code block of a for loop which was started using the for(...): syntax.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">endfor</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h2 id="foreach">foreach</h2>
 <p>The foreach loop - Loops through a block of code for each element in an array.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -1499,6 +1666,15 @@
 <span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$val</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$x</span><span class="s2"> = </span><span class="si">$val</span><span class="s2">&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="endforeach">endforeach</h3>
+<p>The endforeach keyword is used to close the code block of a foreach loop which was started using the foreach(...): syntax.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">];</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$cars</span> <span class="k">as</span> <span class="nv">$car</span><span class="p">)</span><span class="o">:</span>
+  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$car</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">endforeach</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="break-and-continue">Break and Continue</h2>
