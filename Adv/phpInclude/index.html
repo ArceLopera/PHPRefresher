@@ -753,9 +753,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../Func/phpRegex/" class="md-nav__link">
-        Regex
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
       </a>
     </li>
   
@@ -768,8 +794,29 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpDate/" class="md-nav__link">
-        Date/Time
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
       </a>
     </li>
   
@@ -964,6 +1011,20 @@
     <li class="md-nav__item">
       <a href="../../Func/phpUserFunc/" class="md-nav__link">
         User-Defined
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
       </a>
     </li>
   
@@ -1330,6 +1391,19 @@
     PHP include vs. require
   </a>
   
+    <nav class="md-nav" aria-label="PHP include vs. require">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require_once" class="md-nav__link">
+    require_once
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1501,6 +1575,19 @@
     PHP include vs. require
   </a>
   
+    <nav class="md-nav" aria-label="PHP include vs. require">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require_once" class="md-nav__link">
+    require_once
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1630,6 +1717,20 @@ Then, if we include the "vars.php" file, the variables can be used in the callin
 <span class="cp">&lt;?php</span> <span class="k">require</span> <span class="s1">&#39;noFileExists.php&#39;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;I have a </span><span class="si">$color</span><span class="s2"> </span><span class="si">$car</span><span class="s2">.&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h3 id="require_once">require_once</h3>
+<p>The require_once keyword is used to embed PHP code from another file. If the file is not found, a fatal error is thrown and the program stops. If the file was already included previously, this statement will not include it again.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</span>
+<span class="x">&lt;p&gt;Some text.&lt;/p&gt;</span>
+<span class="x">&lt;p&gt;Some more text.&lt;/p&gt;</span>
+<span class="cp">&lt;?php</span> <span class="k">require_once</span> <span class="s1">&#39;footer.php&#39;</span><span class="p">;</span><span class="cp">?&gt;</span><span class="x"></span>
 
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
