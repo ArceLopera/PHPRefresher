@@ -111,8 +111,10 @@ nav:
   - Functions: 
      - Built-in:
         - All : Func/phpAll.md
+        - Time n Date : 
+            - Date/Time: Func/phpDate.md
+            - Calendar: Func/phpCalendar.md
         - Regex: Func/phpRegex.md
-        - Date/Time: Func/phpDate.md
         - Network: 
             - Cookies: Func/phpCookie.md
             - Sessions: Func/phpSessions.md
@@ -125,6 +127,7 @@ nav:
         - Arrow Function: Func/phpArrowFunc.md
         - Output Control: Func/phpOutput.md
      - User-Defined : Func/phpUserFunc.md
+     - Generators: Func/phpGenerators.md
   - Data Structures:
      - Array: DS/phpArray.md
      - Iterables: DS/phpIterables.md

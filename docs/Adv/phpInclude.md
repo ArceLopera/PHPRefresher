@@ -134,6 +134,25 @@ echo "I have a $color $car.";
 </html>
 ```
 
+### require_once
+
+The require_once keyword is used to embed PHP code from another file. If the file is not found, a fatal error is thrown and the program stops. If the file was already included previously, this statement will not include it again.
+
+```php
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Welcome to my home page!</h1>
+<p>Some text.</p>
+<p>Some more text.</p>
+<?php require_once 'footer.php';?>
+
+</body>
+</html>
+```
+
+
 ## Conclusion
 Use require when the file is required by the application.
 

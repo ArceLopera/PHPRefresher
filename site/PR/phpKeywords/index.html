@@ -841,9 +841,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../Func/phpRegex/" class="md-nav__link">
-        Regex
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
       </a>
     </li>
   
@@ -856,8 +882,29 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpDate/" class="md-nav__link">
-        Date/Time
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
       </a>
     </li>
   
@@ -1052,6 +1099,20 @@
     <li class="md-nav__item">
       <a href="../../Func/phpUserFunc/" class="md-nav__link">
         User-Defined
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
       </a>
     </li>
   
@@ -1639,10 +1700,6 @@
 <td>End a foreach block</td>
 </tr>
 <tr>
-<td>return</td>
-<td>Exit a function and return a value</td>
-</tr>
-<tr>
 <td><a href="../phpLoops/#break-and-continue">break</a></td>
 <td>Break <a href="../phpLoops/#break-and-continue">out of loops</a> and <a href="../phpIF/#switch-statement">switch statements</a></td>
 </tr>
@@ -1666,7 +1723,7 @@
 <td>Output text</td>
 </tr>
 <tr>
-<td>print</td>
+<td><a href="../../Func/phpOutput/#print">print</a></td>
 <td>Output text</td>
 </tr>
 </tbody>
@@ -1681,7 +1738,7 @@
 </thead>
 <tbody>
 <tr>
-<td>try</td>
+<td><a href="../../Func/phpExceptions/#the-trycatch-statement">try</a></td>
 <td>Create a try...catch structure</td>
 </tr>
 <tr>
@@ -1693,7 +1750,7 @@
 <td>Used in the try...catch statement</td>
 </tr>
 <tr>
-<td>throw</td>
+<td><a href="../../Func/phpExceptions/#throwing-an-exception">throw</a></td>
 <td>Throw an exception</td>
 </tr>
 </tbody>
@@ -1716,11 +1773,15 @@
 <td>Create a function</td>
 </tr>
 <tr>
-<td>yield</td>
+<td><a href="../../Func/phpUserFunc/#returning-values">return</a></td>
+<td>Exit a function and return a value</td>
+</tr>
+<tr>
+<td><a href="../../Func/phpGenerators/#the-yield-keyword">yield</a></td>
 <td>Used in generator functions</td>
 </tr>
 <tr>
-<td>yield from</td>
+<td><a href="../../Func/phpGenerators/#the-yield-from-keyword">yield from</a></td>
 <td>Used in generator functions</td>
 </tr>
 <tr>
@@ -1767,15 +1828,15 @@
 <td>Import variables from the global scope</td>
 </tr>
 <tr>
-<td>private</td>
+<td><a href="../../Classes/phpModifiers/">private</a></td>
 <td>Declare a property, method or constant as private</td>
 </tr>
 <tr>
-<td>protected</td>
+<td><a href="../../Classes/phpModifiers/">protected</a></td>
 <td>Declare a property, method or constant as protected</td>
 </tr>
 <tr>
-<td>public</td>
+<td><a href="../../Classes/phpModifiers/">public</a></td>
 <td>Declare a property, method or constant as public</td>
 </tr>
 <tr>
@@ -1799,20 +1860,20 @@
 <td>Declare an interface</td>
 </tr>
 <tr>
-<td>namespace</td>
+<td><a href="../../Classes/phpNamespaces/">namespace</a></td>
 <td>Declares a namespace</td>
 </tr>
 <tr>
-<td>new</td>
+<td><a href="../../Classes/phpCls/#objects">new</a></td>
 <td>Creates an object</td>
 </tr>
 <tr>
-<td>trait</td>
+<td><a href="../../Classes/phpTraits/">trait</a></td>
 <td>Declare a trait</td>
 </tr>
 <tr>
-<td>use</td>
-<td>Use a namespace</td>
+<td><a href="../../Classes/phpNamespaces/#namespace-alias">use</a></td>
+<td>Tells a class <a href="../../Classes/phpTraits/#trait-alias">to inherit a trait</a> and it gives an <a href="../../Classes/phpNamespaces/#namespace-alias">alias to a namespace</a></td>
 </tr>
 </tbody>
 </table>
@@ -1846,19 +1907,19 @@
 <td>Embed code from another file</td>
 </tr>
 <tr>
-<td>require</td>
+<td><a href="../../Adv/phpInclude/#php-include-vs-require">require</a></td>
 <td>Embed code from another file</td>
 </tr>
 <tr>
-<td>require_once</td>
+<td><a href="../../Adv/phpInclude/#require_once">require_once</a></td>
 <td>Embed code from another file</td>
 </tr>
 <tr>
-<td>unset</td>
+<td><a href="../phpVar1/#null">unset</a></td>
 <td>Delete a variable or array element</td>
 </tr>
 <tr>
-<td>var</td>
+<td><a href="../phpVar1/#creating-declaring-php-variables">var</a></td>
 <td>Declare a variable</td>
 </tr>
 <tr>

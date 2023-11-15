@@ -757,9 +757,35 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../phpRegex/" class="md-nav__link">
-        Regex
+      <a href="../phpDate/" class="md-nav__link">
+        Date/Time
       </a>
     </li>
   
@@ -772,8 +798,29 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpDate/" class="md-nav__link">
-        Date/Time
+      <a href="../phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpRegex/" class="md-nav__link">
+        Regex
       </a>
     </li>
   
@@ -982,6 +1029,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    print
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#php-output-control-functions" class="md-nav__link">
     PHP Output Control Functions
   </a>
@@ -1032,6 +1086,20 @@
     <li class="md-nav__item">
       <a href="../phpUserFunc/" class="md-nav__link">
         User-Defined
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpGenerators/" class="md-nav__link">
+        Generators
       </a>
     </li>
   
@@ -1430,6 +1498,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#print" class="md-nav__link">
+    print
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#php-output-control-functions" class="md-nav__link">
     PHP Output Control Functions
   </a>
@@ -1475,7 +1550,7 @@
 <p>PHP provides a set of functions that control what content is sent to the browser and when. This is referred to as output control.</p>
 <p>Output can come from any of the following sources:</p>
 <ul>
-<li><a href="#echo">echo</a>, print, printf, print_r... and other similar functions and statements</li>
+<li><a href="#echo">echo</a>, <a href="#print">print</a>, printf, print_r... and other similar functions and statements</li>
 <li>Notices, warnings and errors from PHP</li>
 <li>Any content outside of the &lt;?php ?&gt; tags</li>
 </ul>
@@ -1489,6 +1564,14 @@
 <span class="cp">&lt;?php</span>
 <span class="k">echo</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;I&#39;m about to learn PHP&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="print">print</h3>
+<p>The prin</p>
+<p>``t keyword is used to output text.</p>
+<p>Unlike echo, print can only output one string at a time. Unlike echo, print has a return value, which is always 1.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>PHP and the backend on which it is running may hold the output in a buffer before sending it to the user.</p>
@@ -1546,7 +1629,7 @@
 </thead>
 <tbody>
 <tr>
-<td>flush()</td>
+<td><a href="#flush">flush()</a></td>
 <td>Attempts to send content from the system's output buffer to the browser</td>
 </tr>
 <tr>

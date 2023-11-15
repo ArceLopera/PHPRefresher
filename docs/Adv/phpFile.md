@@ -322,3 +322,196 @@ if ($uploadOk == 0) {
 }
 ?>
 ```
+
+## PHP Directory Functions
+
+|Function	|Description|
+| ----- |-----|
+|[chdir()](#chdir)|	Changes the current directory|
+|[chroot()](#chroot)|	Changes the root directory|
+|[closedir()](#closedir)|	Closes a directory handle|
+|[dir()](#dir)|	Returns an instance of the Directory class|
+|[getcwd()](#getcwd)|	Returns the current working directory|
+|[opendir()](#opendir)|	Opens a directory handle|
+|[readdir()](#readdir)|	Returns an entry from a directory handle|
+|[rewinddir()](#rewinddir)|	Resets a directory handle|
+|[scandir()](#scandir)|	Returns an array of files and directories of a specified directory|
+
+### chdir()
+The chdir() function changes the current working directory.
+
+```php
+<?php
+// Get current directory
+echo getcwd() . "<br>";
+
+// Change directory
+chdir("images");
+
+// Get current directory
+echo getcwd();
+?>
+```
+
+### chroot()
+The chroot() function changes the root directory.
+
+```php
+<?php
+// Change root directory
+chroot("/path/to/chroot/");
+
+// Get current directory
+echo getcwd();
+?>
+```
+
+### closedir()
+The closedir() function closes a directory handle.
+
+```php
+<?php
+$dir = "/images/";
+
+// Open a directory, and read its contents
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    while (($file = readdir($dh)) !== false){
+      echo "filename:" . $file . "<br>";
+    }
+    closedir($dh);
+  }
+}
+?>
+```
+
+### dir()
+The dir() function returns an instance of the Directory class.
+
+```php
+<?php
+$d = dir(getcwd());
+
+echo "Handle: " . $d->handle . "<br>";
+echo "Path: " . $d->path . "<br>";
+
+while (($file = $d->read()) !== false){
+  echo "filename: " . $file . "<br>";
+}
+$d->close();
+?>
+```
+
+```
+Handle: Resource id #2
+Path: /etc/php
+filename: .
+filename: ..
+filename: ajax.gif
+filename: books.xml
+filename: cdcatalog.xml
+filename: cd_catalog.xml
+filename: default.asp
+filename: demo_array.asp
+filename: demo_array.htm
+...
+...
+...
+```
+
+### getcwd()
+The getcwd() function returns the current working directory.
+
+```php
+<?php
+echo getcwd();
+?>
+```
+
+```
+/home/username/public_html
+```
+
+### opendir()
+The opendir() function opens a directory handle.
+
+```php
+<?php
+$dir = "/images/";
+
+// Open a directory, and read its contents
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    while (($file = readdir($dh)) !== false){
+      echo "filename:" . $file . "<br>";
+    }
+    closedir($dh);
+  }
+}
+?>
+```
+
+### readdir()
+The readdir() function returns an entry from a directory handle.
+
+```php
+<?php
+$dir = "/images/";
+
+// Open a directory, and read its contents
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    while (($file = readdir($dh)) !== false){
+      echo "filename:" . $file . "<br>";
+    }
+    closedir($dh);
+  }
+}
+?>
+```
+### rewinddir()
+The rewinddir() function resets a directory handle.
+
+```php
+<?php
+$dir = "/images/";
+
+// Open a directory, and read its contents
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+    // List files in images directory
+    while (($file = readdir($dh)) !== false){
+      echo "filename:" . $file . "<br>";
+    }
+    rewinddir();
+    // List once again files in images directory
+    while (($file = readdir($dh)) !== false){
+      echo "filename:" . $file . "<br>";
+    }
+    closedir($dh);
+  }
+}
+?>
+```
+
+### scandir()
+The scandir() function returns an array of files and directories of a specified directory.
+
+```php
+<?php
+$dir = "/images/";
+
+// Sort in ascending order - this is default
+$a = scandir($dir);
+
+// Sort in descending order
+$b = scandir($dir,1);
+
+print_r($a);
+print_r($b);
+?>
+```
+
+
+
+

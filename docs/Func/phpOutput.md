@@ -2,7 +2,7 @@ PHP provides a set of functions that control what content is sent to the browser
 
 Output can come from any of the following sources:
 
-+ [echo](#echo), print, printf, print_r... and other similar functions and statements
++ [echo](#echo), [print](#print), printf, print_r... and other similar functions and statements
 + Notices, warnings and errors from PHP
 + Any content outside of the <?php ?> tags
 
@@ -24,6 +24,21 @@ echo "I'm about to learn PHP";
 ?>
 ```	
 
+### print
+
+The prin
+
+``t keyword is used to output text.
+
+Unlike echo, print can only output one string at a time. Unlike echo, print has a return value, which is always 1.
+
+``` php
+<?php
+print "Hello, World!";
+?>
+```
+
+
 PHP and the backend on which it is running may hold the output in a buffer before sending it to the user.
 
 The output control functions can create any number of output buffers. Output buffers catch output given by the program. Each new output buffer is placed on the top of a stack of output buffers, and any output it provides will be caught by the buffer below it. The output control functions handle only the topmost buffer, so the topmost buffer must be removed in order to control the buffers below it.
@@ -41,7 +56,7 @@ The behavior of output control functions is affected by settings in php.ini:
 ## PHP Output Control Functions
 |Method|	Function|
 |---|---|
-|flush()|	Attempts to send content from the system's output buffer to the browser|
+|[flush()](#flush)|	Attempts to send content from the system's output buffer to the browser|
 |ob_clean()|	Deletes all of the content from the topmost output buffer|
 |ob_end_clean()|	Deletes the topmost output buffer and all of its contents|
 |ob_end_flush()|	Deletes the topmost output buffer and outputs its contents|
