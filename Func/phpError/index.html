@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpOutput/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpError/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Output Control - PHP Refresher</title>
+        <title>Errors - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#echo" class="md-skip">
+        <a href="#runtime-configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Output Control
+              Errors
             
           </span>
         </div>
@@ -934,11 +934,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../phpError/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Errors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Errors
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-configuration" class="md-nav__link">
+    Runtime Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-error-and-logging-functions" class="md-nav__link">
+    PHP Error and Logging Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-predefined-error-and-logging-constants" class="md-nav__link">
+    PHP Predefined Error and Logging Constants
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1004,82 +1055,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Output Control
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../phpOutput/" class="md-nav__link">
         Output Control
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#echo" class="md-nav__link">
-    echo
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#print" class="md-nav__link">
-    print
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#php-output-control-functions" class="md-nav__link">
-    PHP Output Control Functions
-  </a>
-  
-    <nav class="md-nav" aria-label="PHP Output Control Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#flush" class="md-nav__link">
-    flush()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ob_clean" class="md-nav__link">
-    ob_clean()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1552,43 +1532,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#echo" class="md-nav__link">
-    echo
+  <a href="#runtime-configuration" class="md-nav__link">
+    Runtime Configuration
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#print" class="md-nav__link">
-    print
+  <a href="#php-error-and-logging-functions" class="md-nav__link">
+    PHP Error and Logging Functions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#php-output-control-functions" class="md-nav__link">
-    PHP Output Control Functions
+  <a href="#php-predefined-error-and-logging-constants" class="md-nav__link">
+    PHP Predefined Error and Logging Constants
   </a>
-  
-    <nav class="md-nav" aria-label="PHP Output Control Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#flush" class="md-nav__link">
-    flush()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ob_clean" class="md-nav__link">
-    ob_clean()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1606,184 +1566,280 @@
                 
 
 
-  <h1>Output Control</h1>
+  <h1>Errors</h1>
 
-<p>PHP provides a set of functions that control what content is sent to the browser and when. This is referred to as output control.</p>
-<p>Output can come from any of the following sources:</p>
-<ul>
-<li><a href="#echo">echo</a>, <a href="#print">print</a>, printf, print_r... and other similar functions and statements</li>
-<li>Notices, warnings and errors from PHP</li>
-<li>Any content outside of the &lt;?php ?&gt; tags</li>
-</ul>
-<h3 id="echo">echo</h3>
-<p>The echo statement sends output to the browser.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="x">//Use echo to output multiple strings:</span>
-<span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;I&#39;m about to learn PHP&quot;</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="print">print</h3>
-<p>The print keyword is used to output text.</p>
-<p>Unlike echo, print can only output one string at a time. Unlike echo, print has a return value, which is always 1.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">print</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>PHP and the backend on which it is running may hold the output in a buffer before sending it to the user.</p>
-<p>The output control functions can create any number of output buffers. Output buffers catch output given by the program. Each new output buffer is placed on the top of a stack of output buffers, and any output it provides will be caught by the buffer below it. The output control functions handle only the topmost buffer, so the topmost buffer must be removed in order to control the buffers below it.</p>
-<p>The behavior of output control functions is affected by settings in php.ini:</p>
+<p>The error functions are used to deal with error handling and logging.</p>
+<p>The error functions allow us to define own error handling rules, and modify the way the errors can be logged.</p>
+<p>The logging functions allow us to send messages directly to other machines, emails, or system logs.</p>
+<p>The error reporting functions allow us to customize what level and kind of error feedback is given.</p>
+<h2 id="runtime-configuration">Runtime Configuration</h2>
+<p>The behavior of the error functions is affected by settings in php.ini.</p>
+<p>Errors and logging configuration options:</p>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Default</th>
 <th>Description</th>
-<th>Version</th>
+<th>Changeable</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>output_buffering</td>
-<td>"0"</td>
-<td>Enables output buffering for all PHP files by default</td>
-<td>4</td>
-</tr>
-<tr>
-<td>output_handler</td>
+<td>error_reporting</td>
 <td>NULL</td>
-<td>Set the name of the default function which handles the output of all output buffers</td>
-<td>4</td>
+<td>Sets the error reporting level (either an integer or  named constants)</td>
+<td>PHP_INI_ALL</td>
 </tr>
 <tr>
-<td>implicit_flush</td>
+<td>display_errors</td>
+<td>"1"</td>
+<td>Specifies whether errors should be printed to the screen, or if they should be hidden from the user. Note: This feature should never be used on production systems (only to support your development)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>display_startup_errors</td>
 <td>"0"</td>
-<td>Enables implicit flush, which causes output to be sent directly to the browser on each output statement</td>
-<td>4</td>
+<td>Even when display_errors is on, errors that occur during PHP's startup sequence are not displayed Note: It is strongly recommended to keep display_startup_errors off, except for debugging</td>
+<td>PHP_INI_ALL</td>
 </tr>
 <tr>
-<td>url_rewriter.tags</td>
-<td>"a=href,area=href, frame=src,form=,fieldset="</td>
-<td>Indicates which HTML tags and attributes can be modified by the URL rewriter (the output_add_rewrite_var() function.)</td>
-<td>4.3</td>
+<td>log_errors</td>
+<td>"0"</td>
+<td>Defines whether script error messages should be logged to the server's error log or error_log. Note: It is strongly advised to use error logging instead of error displaying on production web sites</td>
+<td>PHP_INI_ALL</td>
 </tr>
 <tr>
-<td>url_rewriter.hosts</td>
-<td>The current value of $_SERVER['HTTP_HOST']</td>
-<td>URL rewriting is only done on the server's own URLs by default. To allow for rewriting URLs of other websites, set the hostnames of the other websites here.</td>
-<td>7.1</td>
+<td>log_errors_max_len</td>
+<td>"1024"</td>
+<td>Sets the maximum length of log_errors in bytes. The value "0" can be used to not apply any maximum length at all. This length is applied to logged errors, displayed errors, and also to $php_errormsg (available since PHP 4.3)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>ignore_repeated_errors</td>
+<td>"0"</td>
+<td>Specifies whether to log repeated error messages. When set to "1" it will not log errors with repeated errors from the same file on the same line (available since PHP 4.3)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>ignore_repeated_source</td>
+<td>"0"</td>
+<td>Specifies whether to log repeated error messages. When set to "1" it will not log errors with repeated errors from different files or source lines (available since PHP 4.3)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>report_memleaks</td>
+<td>"1"</td>
+<td>If set to "1" (the default), this parameter will show a report of memory leaks detected by the Zend memory manager (available since PHP 4.3)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>track_errors</td>
+<td>"0"</td>
+<td>If set to "1", the last error message will always be present in the variable $php_errormsg</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>html_errors</td>
+<td>"1"</td>
+<td>Turns off HTML tags in error messages</td>
+<td>PHP_INI_ALL PHP_INI_SYSTEM in PHP &lt;= 4.2.3.</td>
+</tr>
+<tr>
+<td>xmlrpc_errors</td>
+<td>"0"</td>
+<td>Turns off normal error reporting and formats errors as XML-RPC error message (available since PHP 4.1)</td>
+<td>PHP_INI_SYSTEM</td>
+</tr>
+<tr>
+<td>xmlrpc_error_number</td>
+<td>"0"</td>
+<td>Used as the value of the XML-RPC faultCode element (available since PHP 4.1)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>docref_root</td>
+<td>""</td>
+<td>(available since PHP 4.3)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>docref_ext</td>
+<td>""</td>
+<td>(available since PHP 4.3.2)</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>error_prepend_string</td>
+<td>NULL</td>
+<td>Specifies a string to output before an error message</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>error_append_string</td>
+<td>NULL</td>
+<td>Specifies a string to output after an error message</td>
+<td>PHP_INI_ALL</td>
+</tr>
+<tr>
+<td>error_log</td>
+<td>NULL</td>
+<td>Specifies the name of the file where script errors should be logged. The file should be writable by the web server's user. If the special value syslog is used, the errors are sent to the system logger instead</td>
+<td>PHP_INI_ALL</td>
 </tr>
 </tbody>
 </table>
-<h2 id="php-output-control-functions">PHP Output Control Functions</h2>
+<h2 id="php-error-and-logging-functions">PHP Error and Logging Functions</h2>
 <table>
 <thead>
 <tr>
-<th>Method</th>
 <th>Function</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="#flush">flush()</a></td>
-<td>Attempts to send content from the system's output buffer to the browser</td>
+<td>debug_backtrace()</td>
+<td>Generates a backtrace</td>
 </tr>
 <tr>
-<td><a href="#ob_clean">ob_clean()</a></td>
-<td>Deletes all of the content from the topmost output buffer</td>
+<td>debug_print_backtrace()</td>
+<td>Prints a backtrace</td>
 </tr>
 <tr>
-<td>ob_end_clean()</td>
-<td>Deletes the topmost output buffer and all of its contents</td>
+<td>error_clear_last()</td>
+<td>Clears the last error</td>
 </tr>
 <tr>
-<td>ob_end_flush()</td>
-<td>Deletes the topmost output buffer and outputs its contents</td>
+<td>error_get_last()</td>
+<td>Returns the last error that occurred</td>
 </tr>
 <tr>
-<td>ob_flush()</td>
-<td>Outputs the contents of the topmost output buffer and clears the buffer</td>
+<td>error_log()</td>
+<td>Sends an error message to a log, to a file, or to a mail account</td>
 </tr>
 <tr>
-<td>ob_get_clean()</td>
-<td>Returns all of the contents of the topmost output buffer and clears the buffer</td>
+<td>error_reporting()</td>
+<td>Specifies which errors are reported</td>
 </tr>
 <tr>
-<td>ob_get_contents()</td>
-<td>Returns the contents of the topmost output buffer</td>
+<td>restore_error_handler()</td>
+<td>Restores the previous error handler</td>
 </tr>
 <tr>
-<td>ob_get_flush()</td>
-<td>Outputs and returns the contents of the topmost output buffer and then deletes the buffer</td>
+<td>restore_exception_handler()</td>
+<td>Restores the previous exception handler</td>
 </tr>
 <tr>
-<td>ob_get_length()</td>
-<td>Returns the number of bytes of data that are in the topmost output buffer</td>
+<td>set_error_handler()</td>
+<td>Sets a user-defined error handler function</td>
 </tr>
 <tr>
-<td>ob_get_level()</td>
-<td>Returns a number indicating how many output buffers are on the stack</td>
+<td>set_exception_handler()</td>
+<td>Sets a user-defined exception handler function</td>
 </tr>
 <tr>
-<td>ob_get_status()</td>
-<td>Returns information about the output buffers</td>
+<td>trigger_error()</td>
+<td>Creates a user-level error message</td>
 </tr>
 <tr>
-<td>ob_gzhandler()</td>
-<td>Used as a callback function for ob_start() to compress the contents of the buffer when sending it to the browser</td>
-</tr>
-<tr>
-<td>ob_implicit_flush()</td>
-<td>Turns implicit flushing on or off</td>
-</tr>
-<tr>
-<td>ob_list_handlers()</td>
-<td>Returns an array of callback function names that are being used by the topmost output buffer</td>
-</tr>
-<tr>
-<td>ob_start()</td>
-<td>Creates a new output buffer and adds it to the top of the stack</td>
-</tr>
-<tr>
-<td>output_add_rewrite_var()</td>
-<td>Used to append query string parameters to any URL in the output</td>
-</tr>
-<tr>
-<td>output_reset_rewrite_vars()</td>
-<td>Removes all variables added by output_add_rewrite_var()</td>
+<td>user_error()</td>
+<td>Alias of trigger_error()</td>
 </tr>
 </tbody>
 </table>
-<h3 id="flush">flush()</h3>
-<p>Output a string to the browser before the script has finished running:
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// Some browsers will not display the content if it is too short</span>
-<span class="c1">// We use str_pad() to make the output long enough</span>
-<span class="k">echo</span> <span class="nb">str_pad</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="mi">4096</span><span class="p">);</span>
-
-<span class="c1">// Use flush() to send the string to the browser</span>
-<span class="nb">flush</span><span class="p">();</span>
-
-<span class="c1">// Display the rest of the content three seconds later</span>
-<span class="nb">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div></p>
-<h3 id="ob_clean">ob_clean()</h3>
-<p>The ob_clean() function deletes all of the contents of the topmost output buffer, preventing them from getting sent to the browser.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nb">ob_start</span><span class="p">();</span>
-<span class="k">echo</span> <span class="s2">&quot;This output will not be sent to the browser&quot;</span><span class="p">;</span>
-<span class="nb">ob_clean</span><span class="p">();</span>
-<span class="k">echo</span> <span class="s2">&quot;This output will be sent to the browser&quot;</span><span class="p">;</span>
-<span class="nb">ob_end_flush</span><span class="p">();</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
+<h2 id="php-predefined-error-and-logging-constants">PHP Predefined Error and Logging Constants</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>E_ERROR</td>
+<td>Fatal run-time errors. Errors that cannot be recovered from. Execution of the script is halted</td>
+</tr>
+<tr>
+<td>2</td>
+<td>E_WARNING</td>
+<td>Run-time warnings (non-fatal errors). Execution of the script is not halted</td>
+</tr>
+<tr>
+<td>4</td>
+<td>E_PARSE</td>
+<td>Compile-time parse errors. Parse errors should only be generated by the parser</td>
+</tr>
+<tr>
+<td>8</td>
+<td>E_NOTICE</td>
+<td>Run-time notices. The script found something that might be an error, but could also happen when running a script normally</td>
+</tr>
+<tr>
+<td>16</td>
+<td>E_CORE_ERROR</td>
+<td>Fatal errors at PHP startup. This is like E_ERROR, except it is generated by the core of PHP</td>
+</tr>
+<tr>
+<td>32</td>
+<td>E_CORE_WARNING</td>
+<td>Non-fatal errors at PHP startup. This is like E_WARNING, except it is generated by the core of PHP</td>
+</tr>
+<tr>
+<td>64</td>
+<td>E_COMPILE_ERROR</td>
+<td>Fatal compile-time errors. This is like E_ERROR, except it is generated by the Zend Scripting Engine</td>
+</tr>
+<tr>
+<td>128</td>
+<td>E_COMPILE_WARNING</td>
+<td>Non-fatal compile-time errors. This is like E_WARNING, except it is generated by the Zend Scripting Engine</td>
+</tr>
+<tr>
+<td>256</td>
+<td>E_USER_ERROR</td>
+<td>Fatal user-generated error. This is like E_ERROR, except it is generated in PHP code by using the PHP function trigger_error()</td>
+</tr>
+<tr>
+<td>512</td>
+<td>E_USER_WARNING</td>
+<td>Non-fatal user-generated warning. This is like E_WARNING, except it is generated in PHP code by using the PHP function trigger_error()</td>
+</tr>
+<tr>
+<td>1024</td>
+<td>E_USER_NOTICE</td>
+<td>User-generated notice. This is like E_NOTICE, except it is generated in PHP code by using the PHP function trigger_error()</td>
+</tr>
+<tr>
+<td>2048</td>
+<td>E_STRICT</td>
+<td>Enable to have PHP suggest changes to your code which will ensure the best interoperability and forward compatibility of your code (Since PHP 5 but not included in E_ALL until PHP 5.4)</td>
+</tr>
+<tr>
+<td>4096</td>
+<td>E_RECOVERABLE_ERROR</td>
+<td>Catchable fatal error. Indicates that a probably dangerous error occurred, but did not leave the Engine in an unstable state. If the error is not caught by a user defined handle, the application aborts as it was an E_ERROR (Since PHP 5.2)</td>
+</tr>
+<tr>
+<td>8192</td>
+<td>E_DEPRECATED</td>
+<td>Run-time notices. Enable this to receive warnings about code that will not work in future versions (Since PHP 5.3)</td>
+</tr>
+<tr>
+<td>16384</td>
+<td>E_USER_DEPRECATED</td>
+<td>User-generated warning message. This is like E_DEPRECATED, except it is generated in PHP code by using the PHP function trigger_error() (Since PHP 5.3)</td>
+</tr>
+<tr>
+<td>32767</td>
+<td>E_ALL</td>
+<td>Enable all PHP errors and warnings (except E_STRICT in versions &lt; 5.4)</td>
+</tr>
+</tbody>
+</table>
 
               
             </article>
@@ -1797,7 +1853,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpArrowFunc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Arrow Function" rel="prev">
+        <a href="../phpJSON/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JSON" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1806,20 +1862,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Arrow Function
+              JSON
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpUserFunc/" class="md-footer__link md-footer__link--next" aria-label="Next: User-Defined" rel="next">
+        <a href="../phpExceptions/" class="md-footer__link md-footer__link--next" aria-label="Next: Exceptions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              User-Defined
+              Exceptions
             </div>
           </div>
           <div class="md-footer__button md-icon">
