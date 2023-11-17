@@ -26,9 +26,7 @@ echo "I'm about to learn PHP";
 
 ### print
 
-The prin
-
-``t keyword is used to output text.
+The print keyword is used to output text.
 
 Unlike echo, print can only output one string at a time. Unlike echo, print has a return value, which is always 1.
 
@@ -57,7 +55,7 @@ The behavior of output control functions is affected by settings in php.ini:
 |Method|	Function|
 |---|---|
 |[flush()](#flush)|	Attempts to send content from the system's output buffer to the browser|
-|ob_clean()|	Deletes all of the content from the topmost output buffer|
+|[ob_clean()](#ob_clean)|	Deletes all of the content from the topmost output buffer|
 |ob_end_clean()|	Deletes the topmost output buffer and all of its contents|
 |ob_end_flush()|	Deletes the topmost output buffer and outputs its contents|
 |ob_flush()|	Outputs the contents of the topmost output buffer and clears the buffer|

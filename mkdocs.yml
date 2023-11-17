@@ -121,6 +121,7 @@ nav:
         - Filters: Func/phpFilters.md
         - Callback: Func/phpCallback.md
         - JSON: Func/phpJSON.md
+        - Errors: Func/phpError.md
         - Exceptions: Func/phpExceptions.md
         - Declare: Func/phpDeclare.md
         - Empty: Func/phpEmpty.md
