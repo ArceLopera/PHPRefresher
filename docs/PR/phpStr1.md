@@ -1,5 +1,7 @@
 PHP contains many useful built-in functions and methods to accomplish common tasks.
 
+
+
 ## Most Common Functions
 ### strlen()
 

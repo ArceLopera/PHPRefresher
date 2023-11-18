@@ -30,6 +30,11 @@ split("name"); //works
 ## PHP Resources
  
 1.   The website <http://www.php.net> is the official website for the PHP language,  and [Docs](https://www.php.net/manual/en/index.php)
+2.   The [PHP  cookbook](https://www.oreilly.com/library/view/php-cookbook-3rd/9781449363741/)
+3.   [Composer](https://getcomposer.org): Composer is a dependency manager for PHP that provides a structured way both to declare dependencies in your project and to install them.
+4. [PHP: The Right Way](https://phptherightway.com/): A quick reference that attempts to be a comprehensive source of PHP best practices. A great place to start if you’re wondering about the idiomatic way to do something
+in PHP.
+
 
 ##  PHP Syntax
 A PHP script can be placed anywhere in the document.

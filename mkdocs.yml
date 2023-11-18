@@ -101,6 +101,7 @@ nav:
      - Globals : PR/phpSuperGlobals.md
      - Forms : PR/phpForms.md
      - Strings:
+        - Basics: PR/phpStr.md
         - Functions: PR/phpStr1.md
      - Numerical: PR/phpNum1.md
      - Math : PR/phpMath1.md
