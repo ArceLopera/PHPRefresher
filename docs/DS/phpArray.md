@@ -245,7 +245,7 @@ echo count($cars);
 |Function	|Description|
 |---|---|
 |array_multisort()|	Sorts multiple or multi-dimensional arrays|
-|array_reverse()|	Returns an array in the reverse order|
+|[array_reverse()](../PR/phpStr1.md#reverse-by-words)|	Returns an array in the reverse order|
 |[arsort()](#arsort)|	Sorts an associative array in descending order, according to the value|
 |[asort()](#asort)|	Sorts an associative array in ascending order, according to the value|
 |[krsort()](#krsort)	|Sorts an associative array in descending order, according to the key|

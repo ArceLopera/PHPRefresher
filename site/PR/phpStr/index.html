@@ -650,6 +650,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#processing-a-string-one-byte-at-a-time" class="md-nav__link">
+    Processing a String One Byte at a Time
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing a String One Byte at a Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-look-and-say-algorithm" class="md-nav__link">
+    The "Look and Say" Algorithm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1735,6 +1755,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#processing-a-string-one-byte-at-a-time" class="md-nav__link">
+    Processing a String One Byte at a Time
+  </a>
+  
+    <nav class="md-nav" aria-label="Processing a String One Byte at a Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-look-and-say-algorithm" class="md-nav__link">
+    The "Look and Say" Algorithm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1901,6 +1941,61 @@ The expression needs to continue on the next line, so you don’t use a semicolo
 <li>Heredoc strings are like double-quoted strings without escaping.</li>
 <li>Nowdoc strings are like single-quoted strings without escaping.</li>
 </ul>
+<h2 id="processing-a-string-one-byte-at-a-time">Processing a String One Byte at a Time</h2>
+<p>Loop through each byte in the string with for.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string = &quot;This weekend, I&#39;m going shopping for a pet chicken.&quot;;</span>
+<span class="x">$vowels = 0;</span>
+<span class="x">for ($i = 0, $j = strlen($string); $i &lt; $j; $i++) {</span>
+<span class="x"> if (strstr(&#39;aeiouAEIOU&#39;,$string[$i])) {</span>
+<span class="x"> $vowels++;</span>
+<span class="x"> }</span>
+<span class="x">}</span>
+<span class="x">?&gt;</span>
+</code></pre></div>
+<h3 id="the-look-and-say-algorithm">The "Look and Say" Algorithm</h3>
+<div class="highlight"><pre><span></span><code><span class="x">function lookandsay($s) {</span>
+<span class="x"> // initialize the return value to the empty string</span>
+<span class="x"> $r = &#39;&#39;;</span>
+<span class="x"> // $m holds the character we&#39;re counting, initialize to the first</span>
+<span class="x"> // character in the string</span>
+<span class="x"> $m = $s[0];</span>
+<span class="x"> // $n is the number of $m&#39;s we&#39;ve seen, initialize to 1</span>
+<span class="x"> $n = 1;</span>
+<span class="x"> for ($i = 1, $j = strlen($s); $i &lt; $j; $i++) {</span>
+<span class="x"> // if this character is the same as the last one</span>
+<span class="x"> if ($s[$i] == $m) {</span>
+<span class="x"> // increment the count of this character</span>
+<span class="x"> $n++;</span>
+<span class="x"> } else {</span>
+<span class="x"> // otherwise, add the count and character to the return value</span>
+<span class="x"> $r .= $n.$m;</span>
+<span class="x"> // set the character we&#39;re looking for to the current one</span>
+<span class="x"> $m = $s[$i];</span>
+<span class="x"> // and reset the count to 1</span>
+<span class="x"> $n = 1;</span>
+<span class="x"> }</span>
+<span class="x"> }</span>
+<span class="x"> // return the built up string as well as the last count and character</span>
+<span class="x"> return $r.$n.$m;</span>
+<span class="x">}</span>
+<span class="x">for ($i = 0, $s = 1; $i &lt; 10; $i++) {</span>
+<span class="x"> $s = lookandsay($s);</span>
+<span class="x"> print &quot;$s\n&quot;;</span>
+<span class="x">}</span>
+
+<span class="x">?&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1
+11
+21
+1211
+111221
+312211
+13112221
+1113213211
+31131211131221
+</code></pre></div>
+<p>It’s called the “Look and Say” sequence because each element is what you get by looking at the previous element and saying what’s in it. For example, looking at the first element, 1, you say “one one.” So the second element is “11.” That’s two ones, so the third element is “21.” Similarly, that’s one two and one one, so the fourth element is “1211,” and so on.</p>
 
               
             </article>

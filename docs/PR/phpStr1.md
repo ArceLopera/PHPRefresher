@@ -25,13 +25,41 @@ echo str_word_count("Hello world!"); // outputs 2
 
 ### strrev() 
 
-The PHP strrev() function reverses a string.
+#### Reverse by byte
+The PHP strrev() function reverses a string by byte.
 
 ```php
 <?php
 echo strrev("Hello world!"); // outputs !dlrow olleH
 ?>
 ```
+#### Reverse by words
+To reverse by words, explode the string by word boundary, reverse the words, and then rejoin.
+
+```php
+<?php
+echo implode(" ", array_reverse(explode(" ", "Hello world!"))); // outputs world! Hello
+?>
+```
+
+``` php
+<?php
+$s = "Once upon a time there was a turtle.";
+// break the string up into words
+$words = explode(' ',$s);
+// reverse the array of words
+$words = array_reverse($words);
+// rebuild the string
+$s = implode(' ',$words);
+print $s;
+?>
+```
+
+
+```
+turtle. a was there time a upon Once
+```
+
 
 ### strpos() 
 
@@ -43,6 +71,93 @@ echo strpos("Hello world!", "world"); // outputs 6
 ?>
 ```	
 The first character position in a string is 0 (not 1).
+
+You want to know if a string contains a particular substring. For example, you want to find out if an email address contains a @.
+
+```php
+<?php
+if (strpos($_POST['email'], '@') === false) {
+ print 'There was no @ in the e-mail address!';
+}
+
+?>
+```
+
+To differentiate between return values of 0 and false, you must use the identity operator (===) or the not–identity operator (!==) instead of regular equals (==) or not-equals (!=).
+
+### substr()
+
+The PHP substr() function extracts a part of a string and returns the extracted part as a new string.
+
+You want to extract part of a string, starting at a particular place in the string. For example, you want the first eight characters of a username entered into a form. If $start and $length are positive, substr() returns $length characters in the string, starting at $start. 
+
+If $start is negative, the string is counted from the end of the string. If $length is negative, the string is counted from the end of the string.
+
+```php
+<?php
+//$substring = substr($string,$start,$length);
+$username = substr($_GET['username'],0,8);
+
+?>
+```
+### substr_replace()
+
+The PHP substr_replace() function replaces part of a string with another string.
+
+You want to replace a substring with a different string. For example, you want to obscure all but the last four digits of a credit card number before printing it.
+
+```php
+<?php
+// Everything from position $start to the end of $old_string
+// becomes $new_substring
+$new_string = substr_replace($old_string,$new_substring,$start);
+//$length characters, starting at position $start, become $new_substring
+$new_string = substr_replace($old_string,$new_substring,$start,$length);
+?>
+```
+
+Without the $length argument, substr_replace() replaces everything from $start to the end of the string. If $length is specified, only that many characters are replaced.
+
+```	php
+<?php
+print substr_replace('My pet is a blue dog.','fish.',12);
+print substr_replace('My pet is a blue dog.','green',12,4);
+$credit_card = '4111 1111 1111 1111';
+print substr_replace($credit_card,'xxxx ',0,strlen($credit_card)-4);
+
+?>
+```
+
+```
+My pet is a fish.
+My pet is a green dog.
+xxxx 1111
+```
+
+If $start is negative, the new substring is placed by counting $start characters from the end of $old_string, not from the beginning.
+
+If $start and $length are 0, the new substring is inserted at the start of $old_string.
+
+The function substr_replace() is useful when you’ve got text that’s too big to display all at once, and you want to display some of the text with a link to the rest.
+
+```php
+<?php
+/*
+Displays the first 25 characters of a message with an ellipsis after it as a link to a page
+that displays more text
+*/
+$r = mysql_query("SELECT id,message FROM messages WHERE id = $id") or die();
+$ob = mysql_fetch_object($r);
+printf('<a href="more-text.php?id=%d">%s</a>',
+ $ob->id, substr_replace($ob->message,' ...',25));
+?>
+
+/* 
+The more-text.php page referenced can use the message ID passed in
+the query string to retrieve the full message and display it.
+*/
+
+```
 
 ### str_replace()
 
@@ -106,7 +221,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |crc32()|	Calculates a 32-bit CRC for a string|
 |crypt()|	One-way string hashing|
 |echo()|	Outputs one or more strings|
-|explode()|	Breaks a string into an array|
+|[explode()](#reverse-by-words)|	Breaks a string into an array|
 |fprintf()|	Writes a formatted string to a specified output stream|
 |get_html_translation_table()|	Returns the translation table used by htmlspecialchars() and htmlentities()|
 |hebrev()|	Converts Hebrew text to visual text|
@@ -116,7 +231,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |htmlentities()|	Converts characters to HTML entities|
 |htmlspecialchars_decode()|	Converts some predefined HTML entities to characters|
 |htmlspecialchars()|	Converts some predefined characters to HTML entities|
-|implode()|	Returns a string from the elements of an array|
+|[implode()](#reverse-by-words)|	Returns a string from the elements of an array|
 |join()|	Alias of implode()|
 |lcfirst()|	Converts the first character of a string to lowercase|
 |levenshtein()|	Returns the Levenshtein distance between two strings|
@@ -180,10 +295,10 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |strtolower()|	Converts a string to lowercase letters|
 |strtoupper()|	Converts a string to uppercase letters|
 |strtr()|	Translates certain characters in a string|
-|substr()|	Returns a part of a string|
+|[substr()](#substr)|	Returns a part of a string|
 |substr_compare()|	Compares two strings from a specified start position (binary safe and optionally case-sensitive)|
 |substr_count()	|Counts the number of times a substring occurs in a string|
-|substr_replace()|	Replaces a part of a string with another string|
+|[substr_replace()](#substr_replace)|	Replaces a part of a string with another string|
 |trim()|	Removes whitespace or other characters from both sides of a string|
 |ucfirst()|	Converts the first character of a string to uppercase|
 |ucwords()|	Converts the first character of each word in a string to uppercase|
