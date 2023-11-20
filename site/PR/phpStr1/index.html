@@ -678,6 +678,19 @@
     str_replace()
   </a>
   
+    <nav class="md-nav" aria-label="str_replace()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expanding-and-compressing-tabs" class="md-nav__link">
+    Expanding and Compressing Tabs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -697,6 +710,41 @@
           <li class="md-nav__item">
   <a href="#str_shuffle" class="md-nav__link">
     str_shuffle()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str_rand" class="md-nav__link">
+    str_rand()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucfirst" class="md-nav__link">
+    ucfirst()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucwords" class="md-nav__link">
+    ucwords()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strtolower" class="md-nav__link">
+    strtolower()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strtoupper" class="md-nav__link">
+    strtoupper()
   </a>
   
 </li>
@@ -1798,6 +1846,19 @@
     str_replace()
   </a>
   
+    <nav class="md-nav" aria-label="str_replace()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expanding-and-compressing-tabs" class="md-nav__link">
+    Expanding and Compressing Tabs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1817,6 +1878,41 @@
           <li class="md-nav__item">
   <a href="#str_shuffle" class="md-nav__link">
     str_shuffle()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str_rand" class="md-nav__link">
+    str_rand()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucfirst" class="md-nav__link">
+    ucfirst()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucwords" class="md-nav__link">
+    ucwords()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strtolower" class="md-nav__link">
+    strtolower()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strtoupper" class="md-nav__link">
+    strtoupper()
   </a>
   
 </li>
@@ -1964,6 +2060,69 @@ xxxx 1111
 <span class="k">echo</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs Hello Earth!</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="expanding-and-compressing-tabs">Expanding and Compressing Tabs</h4>
+<p>You want to change spaces to tabs (or tabs to spaces) in a string while keeping text aligned with tab stops. For example, you want to display formatted text to users in a standardized way.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//  Switching tabs and spaces</span>
+<span class="nv">$rows</span> <span class="o">=</span> <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT message FROM messages WHERE id = 1&#39;</span><span class="p">);</span>
+<span class="nv">$obj</span> <span class="o">=</span> <span class="nv">$rows</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_OBJ</span><span class="p">);</span>
+<span class="nv">$tabbed</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span> <span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+<span class="nv">$spaced</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="p">,</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+<span class="k">print</span> <span class="s2">&quot;With Tabs: &lt;pre&gt;</span><span class="si">$tabbed</span><span class="s2">&lt;/pre&gt;&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;With Spaces: &lt;pre&gt;</span><span class="si">$spaced</span><span class="s2">&lt;/pre&gt;&quot;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Using str_replace() for conversion, however, doesn’t respect tab stops. If you want tab stops every eight characters, a line beginning with a five-letter word and a tab should have that tab replaced with three spaces, not one. Use the tab_expand() function shown below to turn tabs to spaces in a way that respects tab stops.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">tab_expand</span><span class="p">(</span><span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">strstr</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$text</span> <span class="o">=</span> <span class="nb">preg_replace_callback</span><span class="p">(</span><span class="s1">&#39;/^([^\t\n]*)(\t+)/m&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;tab_expand_helper&#39;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$text</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">function</span> <span class="nf">tab_expand_helper</span><span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$tab_stop</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span>
+    <span class="nb">str_repeat</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span>
+    <span class="nv">$tab_stop</span> <span class="o">-</span> <span class="p">(</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="nv">$tab_stop</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nv">$spaced</span> <span class="o">=</span> <span class="nx">tab_expand</span><span class="p">(</span><span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>You can use the tab_unexpand() function shown below to reverse the process to turn spaces back
+to tabs.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">tab_unexpand</span><span class="p">(</span><span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$tab_stop</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="nv">$lines</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="nv">$text</span><span class="p">);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$lines</span> <span class="k">as</span> <span class="nv">$i</span> <span class="o">=&gt;</span> <span class="nv">$line</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Expand any tabs to spaces</span>
+    <span class="nv">$line</span> <span class="o">=</span> <span class="nx">tab_expand</span><span class="p">(</span><span class="nv">$line</span><span class="p">);</span>
+    <span class="nv">$chunks</span> <span class="o">=</span> <span class="nb">str_split</span><span class="p">(</span><span class="nv">$line</span><span class="p">,</span> <span class="nv">$tab_stop</span><span class="p">);</span>
+    <span class="nv">$chunkCount</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$chunks</span><span class="p">);</span>
+    <span class="c1">// Scan all but the last chunk</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nv">$chunkCount</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$chunks</span><span class="p">[</span><span class="nv">$j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="s1">&#39;/ {2,}$/&#39;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span><span class="nv">$chunks</span><span class="p">[</span><span class="nv">$j</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="c1">// If the last chunk is a tab-stop&#39;s worth of spaces</span>
+    <span class="c1">// convert it to a tab; Otherwise, leave it alone</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$chunks</span><span class="p">[</span><span class="nv">$chunkCount</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="nb">str_repeat</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nv">$tab_stop</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$chunks</span><span class="p">[</span><span class="nv">$chunkCount</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Recombine the chunks</span>
+    <span class="nv">$lines</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nv">$chunks</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Recombine the lines</span>
+    <span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="nv">$lines</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nv">$tabbed</span> <span class="o">=</span> <span class="nx">tab_unexpand</span><span class="p">(</span><span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Each function assumes tab stops are every eight spaces, but that can be modified by changing the setting of the $tab_stop variable.</p>
+<p>The regular expression in tab_expand() matches both a group of tabs and all the text in a line before that group of tabs. It needs to match the text before the tabs because the length of that text affects how many spaces the tabs should be replaced with so that subsequent text is aligned with the next tab stop. The function doesn’t just replace each tab with eight spaces; it adjusts text after tabs to line up with tab stops.</p>
+<p>Similarly, tab_unexpand() doesn’t just look for eight consecutive spaces and then replace them with one tab character. It divides up each line into eight-character chunks and then substitutes ending whitespace in those chunks (at least two spaces) with tabs. This not only preserves text alignment with tab stops; it also saves space in the string.</p>
 <h3 id="str_repeat">str_repeat()</h3>
 <p>The str_repeat() function repeats a string a specified number of times.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -1980,6 +2139,55 @@ xxxx 1111
 <p>The str_shuffle() function randomly shuffles all the characters of a string.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">echo</span> <span class="nb">str_shuffle</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs !Wdroel loHl</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="str_rand">str_rand()</h3>
+<p>The str_rand() function returns a random string of specified length.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">str_rand</span><span class="p">(</span><span class="nv">$length</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span><span class="nv">$characters</span> <span class="o">=</span> <span class="s1">&#39;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$length</span><span class="p">)</span> <span class="o">||</span> <span class="nv">$length</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$characters_length</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$characters</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nv">$string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$length</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$string</span> <span class="o">.=</span> <span class="nv">$characters</span><span class="p">[</span><span class="nb">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$characters_length</span><span class="p">)];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+PHP has native functions for generating random numbers, but nothing for random strings. The str_rand() function returns a 32-character string constructed from letters and numbers.
+Pass in an integer to change the length of the returned string. To use an alternative set of characters, pass them as a string as the second argument. For example, to get a 16-digit Morse Code:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nx">str_rand</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;.-&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>.--..-.-.--.----
+</code></pre></div>
+<h3 id="ucfirst">ucfirst()</h3>
+<p>The PHP ucfirst() function capitalizes the first character of a string.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs Hello world!</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="ucwords">ucwords()</h3>
+<p>The PHP ucwords() function capitalizes the first character of each word in a string.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">ucwords</span><span class="p">(</span><span class="s2">&quot;hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs Hello World!</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="strtolower">strtolower()</h3>
+<p>The PHP strtolower() function converts a string to lowercase.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">strtolower</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs hello world!</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="strtoupper">strtoupper()</h3>
+<p>The PHP strtoupper() function converts a string to uppercase.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">);</span> <span class="c1">// outputs HELLO WORLD!</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="all-string-functions">All String Functions</h2>
@@ -2330,11 +2538,11 @@ xxxx 1111
 <td>Splits a string into smaller strings</td>
 </tr>
 <tr>
-<td>strtolower()</td>
+<td><a href="#strtolower">strtolower()</a></td>
 <td>Converts a string to lowercase letters</td>
 </tr>
 <tr>
-<td>strtoupper()</td>
+<td><a href="#strtoupper">strtoupper()</a></td>
 <td>Converts a string to uppercase letters</td>
 </tr>
 <tr>
@@ -2362,11 +2570,11 @@ xxxx 1111
 <td>Removes whitespace or other characters from both sides of a string</td>
 </tr>
 <tr>
-<td>ucfirst()</td>
+<td><a href="#ucfirst">ucfirst()</a></td>
 <td>Converts the first character of a string to uppercase</td>
 </tr>
 <tr>
-<td>ucwords()</td>
+<td><a href="#ucwords">ucwords()</a></td>
 <td>Converts the first character of each word in a string to uppercase</td>
 </tr>
 <tr>

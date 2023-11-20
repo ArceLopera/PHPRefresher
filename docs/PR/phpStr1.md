@@ -169,6 +169,82 @@ echo str_replace("world", "Earth", "Hello world!"); // outputs Hello Earth!
 ?>
 ```
 
+#### Expanding and Compressing Tabs
+
+You want to change spaces to tabs (or tabs to spaces) in a string while keeping text aligned with tab stops. For example, you want to display formatted text to users in a standardized way.
+
+```php
+<?php
+//  Switching tabs and spaces
+$rows = $db->query('SELECT message FROM messages WHERE id = 1');
+$obj = $rows->fetch(PDO::FETCH_OBJ);
+$tabbed = str_replace(' ' , "\t", $obj->message);
+$spaced = str_replace("\t", ' ' , $obj->message);
+print "With Tabs: <pre>$tabbed</pre>";
+print "With Spaces: <pre>$spaced</pre>";
+
+?>
+```
+
+Using str_replace() for conversion, however, doesn’t respect tab stops. If you want tab stops every eight characters, a line beginning with a five-letter word and a tab should have that tab replaced with three spaces, not one. Use the tab_expand() function shown below to turn tabs to spaces in a way that respects tab stops.
+
+```php
+<?php
+function tab_expand($text) {
+    while (strstr($text,"\t")) {
+    $text = preg_replace_callback('/^([^\t\n]*)(\t+)/m',
+    'tab_expand_helper', $text);
+    }
+    return $text;
+}
+function tab_expand_helper($matches) {
+    $tab_stop = 8;
+    return $matches[1] .
+    str_repeat(' ',strlen($matches[2]) *
+    $tab_stop - (strlen($matches[1]) % $tab_stop));
+}
+$spaced = tab_expand($obj->message);
+?>
+```	
+
+You can use the tab_unexpand() function shown below to reverse the process to turn spaces back
+to tabs.
+
+```php
+<?php
+function tab_unexpand($text) {
+    $tab_stop = 8;
+    $lines = explode("\n",$text);
+    foreach ($lines as $i => $line) {
+    // Expand any tabs to spaces
+    $line = tab_expand($line);
+    $chunks = str_split($line, $tab_stop);
+    $chunkCount = count($chunks);
+    // Scan all but the last chunk
+    for ($j = 0; $j < $chunkCount - 1; $j++) {
+        $chunks[$j] = preg_replace('/ {2,}$/',"\t",$chunks[$j]);
+    }
+    // If the last chunk is a tab-stop's worth of spaces
+    // convert it to a tab; Otherwise, leave it alone
+    if ($chunks[$chunkCount-1] == str_repeat(' ', $tab_stop)) {
+        $chunks[$chunkCount-1] = "\t";
+    }
+    // Recombine the chunks
+    $lines[$i] = implode('',$chunks);
+    }
+    // Recombine the lines
+    return implode("\n",$lines);
+    }
+    $tabbed = tab_unexpand($obj->message);
+?>
+```
+
+Each function assumes tab stops are every eight spaces, but that can be modified by changing the setting of the $tab_stop variable.
+
+The regular expression in tab_expand() matches both a group of tabs and all the text in a line before that group of tabs. It needs to match the text before the tabs because the length of that text affects how many spaces the tabs should be replaced with so that subsequent text is aligned with the next tab stop. The function doesn’t just replace each tab with eight spaces; it adjusts text after tabs to line up with tab stops.
+
+Similarly, tab_unexpand() doesn’t just look for eight consecutive spaces and then replace them with one tab character. It divides up each line into eight-character chunks and then substitutes ending whitespace in those chunks (at least two spaces) with tabs. This not only preserves text alignment with tab stops; it also saves space in the string.
+
 ### str_repeat()
 
 The str_repeat() function repeats a string a specified number of times.
@@ -198,6 +274,80 @@ The str_shuffle() function randomly shuffles all the characters of a string.
 echo str_shuffle("Hello world!"); // outputs !Wdroel loHl
 ?>
 ```
+
+### str_rand()
+
+The str_rand() function returns a random string of specified length.
+
+```php
+<?php
+function str_rand($length = 32,$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
+    if (!is_int($length) || $length < 0) {
+    return false;
+    }
+    $characters_length = strlen($characters) - 1;
+    $string = '';
+    for ($i = $length; $i > 0; $i--) {
+        $string .= $characters[mt_rand(0, $characters_length)];
+    }
+    return $string;
+}
+
+?>
+```
+PHP has native functions for generating random numbers, but nothing for random strings. The str_rand() function returns a 32-character string constructed from letters and numbers.
+Pass in an integer to change the length of the returned string. To use an alternative set of characters, pass them as a string as the second argument. For example, to get a 16-digit Morse Code:
+
+```php
+<?php
+print str_rand(16, '.-');
+?>
+```
+
+```
+.--..-.-.--.----
+```
+
+### ucfirst()
+
+The PHP ucfirst() function capitalizes the first character of a string.
+
+```php
+<?php
+echo ucfirst("hello world!"); // outputs Hello world!
+?>
+```
+
+### ucwords()
+
+The PHP ucwords() function capitalizes the first character of each word in a string.
+
+```php
+<?php
+echo ucwords("hello world!"); // outputs Hello World!
+?>
+```
+
+### strtolower()
+
+The PHP strtolower() function converts a string to lowercase.
+
+```php
+<?php
+echo strtolower("Hello world!"); // outputs hello world!
+?>
+```
+
+### strtoupper()
+
+The PHP strtoupper() function converts a string to uppercase.
+
+```php
+<?php
+echo strtoupper("Hello world!"); // outputs HELLO WORLD!
+?>
+```
+
 
 
 ## All String Functions
@@ -292,16 +442,16 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |strspn()|	Returns the number of characters found in a string that contains only characters from a specified charlist|
 |strstr()|	Finds the first occurrence of a string inside another string (case-sensitive)|
 |strtok()|	Splits a string into smaller strings|
-|strtolower()|	Converts a string to lowercase letters|
-|strtoupper()|	Converts a string to uppercase letters|
+|[strtolower()](#strtolower)|	Converts a string to lowercase letters|
+|[strtoupper()](#strtoupper)|	Converts a string to uppercase letters|
 |strtr()|	Translates certain characters in a string|
 |[substr()](#substr)|	Returns a part of a string|
 |substr_compare()|	Compares two strings from a specified start position (binary safe and optionally case-sensitive)|
 |substr_count()	|Counts the number of times a substring occurs in a string|
 |[substr_replace()](#substr_replace)|	Replaces a part of a string with another string|
 |trim()|	Removes whitespace or other characters from both sides of a string|
-|ucfirst()|	Converts the first character of a string to uppercase|
-|ucwords()|	Converts the first character of each word in a string to uppercase|
+|[ucfirst()](#ucfirst)|	Converts the first character of a string to uppercase|
+|[ucwords()](#ucwords)|	Converts the first character of each word in a string to uppercase|
 |vfprintf()|	Writes a formatted string to a specified output stream|
 |vprintf()|	Outputs a formatted string|
 |vsprintf()|	Writes a formatted string to a variable|
