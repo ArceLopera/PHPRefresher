@@ -85,6 +85,49 @@ if (strpos($_POST['email'], '@') === false) {
 
 To differentiate between return values of 0 and false, you must use the identity operator (===) or the not–identity operator (!==) instead of regular equals (==) or not-equals (!=).
 
+## Fixed-Width Field Data Records
+
+### pack()
+
+The PHP pack() function converts an array into a binary string. When you need to format data records such that each field takes up a set amount of characters.
+
+Use pack() with a format string that specifies a sequence of space-padded strings.
+
+```php
+<?php
+//Generating fixed-width field data records
+$books = array( array('Elmer Gantry', 'Sinclair Lewis', 1927),
+ array('The Scarlatti Inheritance','Robert Ludlum', 1971),
+ array('The Parsifal Mosaic','William Styron', 1979) );
+foreach ($books as $book) {
+ print pack('A25A15A4', $book[0], $book[1], $book[2]) . "\n";
+}
+
+?>
+```	
+
+The format string A25A14A4 tells pack() to transform its subsequent arguments into a 25-character space-padded string, a 14-character space-padded string, and a 4-character space-padded string. For space-padded fields in fixed-width records, pack() provides a concise solution.
+
+### str_pad()
+
+To pad fields with something other than a space, however, use substr() to ensure that the field values aren’t too long and str_pad() to ensure that the field values aren’t too short.
+
+```php
+<?php
+//Generating fixed-width field data records without pack( )
+$books = array( array('Elmer Gantry', 'Sinclair Lewis', 1927),
+ array('The Scarlatti Inheritance','Robert Ludlum', 1971),
+ array('The Parsifal Mosaic','William Styron', 1979) );
+foreach ($books as $book) {
+ $title = str_pad(substr($book[0], 0, 25), 25, '.');
+ $author = str_pad(substr($book[1], 0, 15), 15, '.');
+ $year = str_pad(substr($book[2], 0, 4), 4, '.');
+ print "$title$author$year\n";
+}
+?>
+```
+
+
 ### substr()
 
 The PHP substr() function extracts a part of a string and returns the extracted part as a new string.
@@ -100,6 +143,156 @@ $username = substr($_GET['username'],0,8);
 
 ?>
 ```
+
+When you need to break apart fixed-width records in strings and parsing Fixed-Width Field Data Records, use substr() instead of explode().
+
+``` php
+<?php
+
+Parsing fixed-width records with substr( )
+$fp = fopen('fixed-width-records.txt','r',true) or die ("can't open file");
+while ($s = fgets($fp,1024)) {
+ $fields[1] = substr($s,0,25); // first field: first 25 characters of the line
+ $fields[2] = substr($s,25,15); // second field: next 15 characters of the line
+ $fields[3] = substr($s,40,4); // third field: next 4 characters of the line
+ $fields = array_map('rtrim', $fields); // strip the trailing whitespace
+ // a function to do something with the fields
+ process_fields($fields);
+}
+fclose($fp) or die("can't close file");
+?>
+```
+
+### unpack()
+
+``` php
+<?php
+//Parsing fixed-width records with unpack( )
+function fixed_width_unpack($format_string,$data) {
+ $r = array();
+ for ($i = 0, $j = count($data); $i < $j; $i++) {
+ $r[$i] = unpack($format_string,$data[$i]);
+ }
+ return $r;
+}
+
+?>
+
+```
+
+Data in which each field is allotted a fixed number of characters per line may look like this list of books, titles, and publication dates:
+
+```
+$booklist=<<<END
+Elmer Gantry Sinclair Lewis 1927
+The Scarlatti InheritanceRobert Ludlum 1971
+The Parsifal Mosaic Robert Ludlum 1982
+Sophie's Choice William Styron 1979
+END;
+```
+
+In each line, the title occupies the first 25 characters, the author’s name the next 15 characters, and the publication year the next 4 characters. Knowing those field widths, you can easily use substr() to parse the fields into an array:
+
+```php
+<?php
+$books = explode("\n",$booklist);
+for($i = 0, $j = count($books); $i < $j; $i++) {
+ $book_array[$i]['title'] = substr($books[$i],0,25);
+ $book_array[$i]['author'] = substr($books[$i],25,15);
+ $book_array[$i]['publication_year'] = substr($books[$i],40,4);
+}
+?>
+```
+
+Exploding $booklist into an array of lines makes the looping code the same whether it’s operating over a string or a series of lines read in from a file.
+
+The loop can be made more flexible by specifying the field names and widths in a
+separate array that can be passed to a parsing function, as shown in the
+fixed_width_substr() function below.
+
+```php
+<?php
+//fixed_width_substr( )
+function fixed_width_substr($fields,$data) {
+ $r = array();
+ for ($i = 0, $j = count($data); $i < $j; $i++) {
+ $line_pos = 0;
+ foreach($fields as $field_name => $field_length) {
+ $r[$i][$field_name] = rtrim(substr($data[$i],$line_pos,$field_length));
+ $line_pos += $field_length;
+ }
+ }
+ return $r;
+}
+$book_fields = array('title' => 25,'author' => 15, 'publication_year' => 4);
+$book_array = fixed_width_substr($book_fields,$booklist);
+?>
+
+```
+
+The variable $line_pos keeps track of the start of each field and is advanced by the previous field’s width as the code moves through each line. Use rtrim() to remove trailing whitespace from each field.
+
+You can use unpack() as a substitute for substr() to extract fields. Instead of specifying the field names and widths as an associative array, create a format string for unpack(). A fixed-width field extractor using unpack() looks like the fixed_width_unpack() function below.
+
+```php
+<?php
+//fixed_width_unpack( )
+function fixed_width_unpack($format_string,$data) {
+ $r = array();
+ for ($i = 0, $j = count($data); $i < $j; $i++) {
+ $r[$i] = unpack($format_string,$data[$i]);
+ }
+ return $r;
+}
+
+?>
+
+```
+
+Because the A format to unpack() means space-padded string, there’s no need to rtrim() off the trailing spaces.
+
+
+Once the fields have been parsed into $book_array by either function, the data can be printed as an HTML table, for example:
+
+```php
+<?php
+$book_array = fixed_width_unpack('A25title/A15author/A4publication_year',
+ $books);
+print "<table>\n";
+// print a header row
+print '<tr><td>';
+print join('</td><td>',array_keys($book_array[0]));
+print "</td></tr>\n";
+// print each data row
+foreach ($book_array as $row) {
+ print '<tr><td>';
+ print join('</td><td>',array_values($row));
+ print "</td></tr>\n";
+}
+print "</table>\n";
+?>
+```	
+Both substr() and unpack() have equivalent capabilities when the fixed-width fields are strings, but unpack() is the better solution when the elements of the fields aren’t just strings.
+
+### str_split()
+
+If all of your fields are the same size, str_split() is a handy shortcut for chopping up
+incoming data. It returns an array made up of sections of a string.
+
+```php
+<?php
+$book_array = str_split($booklist,25);
+?>
+```
+
+The str_split() function splits a string into an array.
+
+```php
+<?php
+echo str_split("Hello world!"); // outputs ["H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
+?>
+```
+
 ### substr_replace()
 
 The PHP substr_replace() function replaces part of a string with another string.
@@ -255,16 +448,6 @@ echo str_repeat("Hello ", 3); // outputs Hello Hello Hello
 ?>
 ```
 
-### str_split()
-
-The str_split() function splits a string into an array.
-
-```php
-<?php
-echo str_split("Hello world!"); // outputs ["H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
-?>
-```
-
 ### str_shuffle()
 
 The str_shuffle() function randomly shuffles all the characters of a string.
@@ -308,6 +491,8 @@ print str_rand(16, '.-');
 .--..-.-.--.----
 ```
 
+## Case Conversion
+
 ### ucfirst()
 
 The PHP ucfirst() function capitalizes the first character of a string.
@@ -348,6 +533,173 @@ echo strtoupper("Hello world!"); // outputs HELLO WORLD!
 ?>
 ```
 
+##  Trimming Blanks from a String
+
+You want to remove whitespace from the beginning or end of a string. For example, you want to clean up user input before validating it.
+
+Use ltrim(), rtrim(), or trim(). The ltrim() function removes whitespace from the beginning of a string, rtrim() from the end of a string, and trim() from both the beginning and end of a string.
+
+For these functions, whitespace is defined as the following characters: newline, carriage return, space, horizontal and vertical tab, and null.
+Trimming whitespace off of strings saves storage space and can make for more precise display of formatted data or text.
+
+The trim() functions can also remove user-specified characters from strings. Pass the characters you want to remove as a second argument. You can indicate a range of characters with two dots between the first and last characters in the range.
+
+```php
+<?php
+// Remove numerals and space from the beginning of the line
+print ltrim('10 PRINT A$',' 0..9');
+// Remove semicolon from the end of the line
+print rtrim('SELECT * FROM turtles;',';');
+
+?>
+```
+
+### ltrim()
+
+The PHP ltrim() function removes leading whitespace from a string.
+
+```php
+<?php
+echo ltrim("   Hello world!"); // outputs "Hello world!"
+?>
+```
+
+### rtrim()
+
+The PHP rtrim() function removes trailing whitespace from a string.
+
+```php
+<?php
+echo rtrim("Hello world!   "); // outputs "Hello world!"
+?>
+```
+
+### trim()
+
+The PHP trim() function removes leading and trailing whitespace from a string.
+
+```php
+<?php
+echo trim("   Hello world!   "); // outputs "Hello world!"
+?>
+```
+
+## Formatting to CSV
+
+### fgetcsv()
+
+The PHP str_getcsv() function parses a CSV string into an array. Parsing Comma-Separated Data.
+
+You have data in comma-separated values (CSV) format—for example, a file exported from Excel or a database—and you want to extract the records and fields into a format you can manipulate in PHP.
+
+If the CSV data is in a file (or available via a URL), open the file with fopen() and read in the data with fgetcsv().
+
+```php
+<?php
+//Reading CSV data from a file
+$fp = fopen($filename,'r') or die("can't open file");
+print "<table>\n";
+while($csv_line = fgetcsv($fp)) {
+ print '<tr>';
+ for ($i = 0, $j = count($csv_line); $i < $j; $i++) {
+ print '<td>'.htmlentities($csv_line[$i]).'</td>';
+ }
+ print "</tr>\n";
+}
+print "</table>\n";
+fclose($fp) or die("can't close file");
+?>
+```
+
+By default, fgetcsv() reads in an entire line of data. If your average line length is more than 8,192 bytes, your program may run faster if you specify an explicit line length instead of letting PHP figure it out. Do this by providing a second argument to fgetcsv() that is a value larger than the maximum length of a line in your CSV file. (Don’t forget to count the end-of-line whitespace.) If you pass a line length of 0, PHP will use the default behavior. 
+
+You can pass fgetcsv() an optional third argument, a delimiter to use instead of a comma (,). However, using a different delimiter somewhat defeats the purpose of CSV as an easy way to exchange tabular data.
+Don’t be tempted to bypass fgetcsv() and just read a line in and explode() on the commas. CSV is more complicated than that so that it can deal with field values that have, for example, literal commas in them that should not be treated as field delimiters. Using fgetcsv() protects you and your code from subtle errors.
+
+### str_getcsv()
+
+The PHP str_getcsv() function parses a CSV string into an array. Parsing Comma-Separated Data.
+
+Use str_getcsv() only when you have the CSV already as a string in your program.
+
+```php
+<?php
+
+$string = 'PHP,Java,Python,Kotlin,Swift';
+$data = str_getcsv($string);
+
+var_dump($data);
+?>
+```	
+
+
+
+### fputcsv()
+
+The PHP fputcsv() function converts an array into a CSV string and generating Comma-Separated Data.
+
+You want to format data as comma-separated values (CSV) so that it can be imported by a spreadsheet or database.
+
+```php
+<?php
+$sales = array( array('Northeast','2005-01-01','2005-02-01',12.54),
+ array('Northwest','2005-01-01','2005-02-01',546.33),
+ array('Southeast','2005-01-01','2005-02-01',93.26),
+ array('Southwest','2005-01-01','2005-02-01',945.21),
+ array('All Regions','--','--',1597.34) );
+$filename = './sales.csv';
+$fh = fopen($filename,'w') or die("Can't open $filename");
+foreach ($sales as $sales_line) {
+ if (fputcsv($fh, $sales_line) === false) {
+ die("Can't write CSV line");
+ }
+}
+fclose($fh) or die("Can't close $filename");
+?>
+```
+
+To print the CSV-formatted data instead of writing it to a file, use the special output stream php://output . 
+
+```php
+<?php
+$sales = array( array('Northeast','2005-01-01','2005-02-01',12.54),
+ array('Northwest','2005-01-01','2005-02-01',546.33),
+ array('Southeast','2005-01-01','2005-02-01',93.26),
+ array('Southwest','2005-01-01','2005-02-01',945.21),
+ array('All Regions','--','--',1597.34) );
+$fh = fopen('php://output','w');
+foreach ($sales as $sales_line) {
+ if (fputcsv($fh, $sales_line) === false) {
+ die("Can't write CSV line");
+ }
+}
+fclose($fh);
+
+?>
+```
+
+To put the CSV-formatted data into a string instead of printing it or writing it to a file.
+
+```php
+<?php
+$sales = array( array('Northeast','2005-01-01','2005-02-01',12.54),
+ array('Northwest','2005-01-01','2005-02-01',546.33),
+ array('Southeast','2005-01-01','2005-02-01',93.26),
+ array('Southwest','2005-01-01','2005-02-01',945.21),
+ array('All Regions','--','--',1597.34) );
+ob_start();
+$fh = fopen('php://output','w') or die("Can't open php://output");
+foreach ($sales as $sales_line) {
+ if (fputcsv($fh, $sales_line) === false) {
+ die("Can't write CSV line");
+ }
+}
+fclose($fh) or die("Can't close php://output");
+$output = ob_get_contents();
+ob_end_clean();
+
+?>
+```	
 
 
 ## All String Functions
@@ -361,7 +713,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |addcslashes()	|Returns a string with backslashes in front of the specified characters|
 |addslashes()	|Returns a string with backslashes in front of predefined characters|
 |bin2hex()	|Converts a string of ASCII characters to hexadecimal values|
-|chop()|	Removes whitespace or other characters from the right end of a string|
+|[chop()](#rtrim)|	Removes whitespace or other characters from the right end of a string|
 |chr()	|Returns a character from a specified ASCII value|
 |chunk_split()|	Splits a string into a series of smaller parts|
 |convert_cyr_string()|	Converts a string from one Cyrillic character-set to another|
@@ -370,7 +722,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |count_chars()|	Returns information about characters used in a string|
 |crc32()|	Calculates a 32-bit CRC for a string|
 |crypt()|	One-way string hashing|
-|echo()|	Outputs one or more strings|
+|[echo()](../Func/phpOutput.md#echo)|	Outputs one or more strings|
 |[explode()](#reverse-by-words)|	Breaks a string into an array|
 |fprintf()|	Writes a formatted string to a specified output stream|
 |get_html_translation_table()|	Returns the translation table used by htmlspecialchars() and htmlentities()|
@@ -386,7 +738,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |lcfirst()|	Converts the first character of a string to lowercase|
 |levenshtein()|	Returns the Levenshtein distance between two strings|
 |localeconv()|	Returns locale numeric and monetary formatting information|
-|ltrim()|	Removes whitespace or other characters from the left side of a string|
+|[ltrim()](#ltrim)|	Removes whitespace or other characters from the left side of a string|
 |md5()|	Calculates the MD5 hash of a string|
 |md5_file()|	Calculates the MD5 hash of a file|
 |metaphone()|	Calculates the metaphone key of a string|
@@ -401,7 +753,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |quoted_printable_decode()|	Converts a quoted-printable string to an 8-bit string|
 |quoted_printable_encode()|	Converts an 8-bit string to a quoted printable string|
 |quotemeta()|	Quotes meta characters|
-|rtrim()|	Removes whitespace or other characters from the right side of a string|
+|[rtrim()](#rtrim)|	Removes whitespace or other characters from the right side of a string|
 |setlocale()|	Sets locale information|
 |sha1()|	Calculates the SHA-1 hash of a string|
 |sha1_file()|	Calculates the SHA-1 hash of a file|
@@ -409,9 +761,9 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |soundex()|	Calculates the soundex key of a string|
 |sprintf()|	Writes a formatted string to a variable|
 |sscanf()|	Parses input from a string according to a format|
-|str_getcsv()|	Parses a CSV string into an array|
+|[str_getcsv()](#str_getcsv)|	Parses a CSV string into an array|
 |str_ireplace()|	Replaces some characters in a string (case-insensitive)
-|str_pad()|	Pads a string to a new length|
+|[str_pad()](#str_pad)|	Pads a string to a new length|
 |[str_repeat()](#str_repeat)|	Repeats a string a specified number of times|
 |[str_replace()](#str_replace)|	Replaces some characters in a string (case-sensitive)|
 |str_rot13()|	Performs the ROT13 encoding on a string|
@@ -449,7 +801,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |substr_compare()|	Compares two strings from a specified start position (binary safe and optionally case-sensitive)|
 |substr_count()	|Counts the number of times a substring occurs in a string|
 |[substr_replace()](#substr_replace)|	Replaces a part of a string with another string|
-|trim()|	Removes whitespace or other characters from both sides of a string|
+|[trim()](#trim)|	Removes whitespace or other characters from both sides of a string|
 |[ucfirst()](#ucfirst)|	Converts the first character of a string to uppercase|
 |[ucwords()](#ucwords)|	Converts the first character of each word in a string to uppercase|
 |vfprintf()|	Writes a formatted string to a specified output stream|
