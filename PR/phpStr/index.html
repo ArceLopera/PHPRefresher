@@ -651,6 +651,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#interpolating-functions-and-expressions-within-strings" class="md-nav__link">
+    Interpolating Functions and Expressions Within Strings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#processing-a-string-one-byte-at-a-time" class="md-nav__link">
     Processing a String One Byte at a Time
   </a>
@@ -1756,6 +1763,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#interpolating-functions-and-expressions-within-strings" class="md-nav__link">
+    Interpolating Functions and Expressions Within Strings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#processing-a-string-one-byte-at-a-time" class="md-nav__link">
     Processing a String One Byte at a Time
   </a>
@@ -1941,6 +1955,49 @@ The expression needs to continue on the next line, so you don’t use a semicolo
 <li>Heredoc strings are like double-quoted strings without escaping.</li>
 <li>Nowdoc strings are like single-quoted strings without escaping.</li>
 </ul>
+<h2 id="interpolating-functions-and-expressions-within-strings">Interpolating Functions and Expressions Within Strings</h2>
+<p>You want to include the results of executing a function or expression within a string.</p>
+<p>Use the string concatenation operator (.), when the value you want to include can’t be inside the string.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//String concatenation</span>
+<span class="k">print</span> <span class="s1">&#39;You have &#39;</span><span class="o">.</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;boys&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;girls&#39;</span><span class="p">])</span><span class="o">.</span><span class="s1">&#39; children.&#39;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;The word &#39;</span><span class="si">$word</span><span class="s2">&#39; is &quot;</span><span class="o">.</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$word</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39; characters long.&#39;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s1">&#39;You owe &#39;</span><span class="o">.</span><span class="nv">$amounts</span><span class="p">[</span><span class="s1">&#39;payment&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39; immediately.&#39;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;My circle&#39;s diameter is &quot;</span><span class="o">.</span><span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">getDiameter</span><span class="p">()</span><span class="o">.</span><span class="s1">&#39; inches.&#39;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>You can put variables, object properties, and array elements (if the subscript is unquo‐
+ted) directly in double-quoted strings.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="s2">&quot;I have </span><span class="si">$children</span><span class="s2"> children.&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;You owe </span><span class="si">$amounts[payment]</span><span class="s2"> immediately.&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;My circle&#39;s diameter is </span><span class="si">$circle-&gt;diameter</span><span class="s2"> inches.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Interpolation with double-quoted strings places some limitations on the syntax of what
+can be interpolated. In the previous example, $amounts['payment'] had to be written
+as $amounts[payment] so it would be interpolated properly. Use curly braces around
+more complicated expressions to interpolate them into a string. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="s2">&quot;I have </span><span class="si">{</span><span class="nv">$children</span><span class="si">}</span><span class="s2"> children.&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;You owe </span><span class="si">{</span><span class="nv">$amounts</span><span class="p">[</span><span class="s1">&#39;payment&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> immediately.&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;My circle&#39;s diameter is </span><span class="si">{</span><span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">getDiameter</span><span class="p">()</span><span class="si">}</span><span class="s2"> inches.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Direct interpolation or using string concatenation also works with heredocs. Interpo‐
+lating with string concatenation in heredocs can look a little strange because the closing
+heredoc delimiter and the string concatenation operator have to be on separate lines:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="o">&lt;&lt;&lt;</span> <span class="nx">END</span>
+<span class="nx">Right</span> <span class="nx">now</span><span class="p">,</span> <span class="nx">the</span> <span class="nb">time</span> <span class="nx">is</span>
+<span class="nx">END</span>
+<span class="o">.</span> <span class="nb">strftime</span><span class="p">(</span><span class="s1">&#39;%c&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="o">&lt;&lt;&lt;</span> <span class="nx">END</span>
+<span class="nx">but</span> <span class="nx">tomorrow</span> <span class="nx">it</span> <span class="nx">will</span> <span class="nx">be</span>
+<span class="nx">END</span>
+<span class="o">.</span> <span class="nb">strftime</span><span class="p">(</span><span class="s1">&#39;%c&#39;</span><span class="p">,</span><span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">86400</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Also, if you’re interpolating with heredocs, make sure to include appropriate spacing for the whole string to appear properly. In the previous example, Right now, the time is has to include a trailing space, and but tomorrow it will be has to include leading and trailing spaces.</p>
 <h2 id="processing-a-string-one-byte-at-a-time">Processing a String One Byte at a Time</h2>
 <p>Loop through each byte in the string with for.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$string = &quot;This weekend, I&#39;m going shopping for a pet chicken.&quot;;</span>
