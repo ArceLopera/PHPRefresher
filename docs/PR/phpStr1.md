@@ -93,6 +93,31 @@ The PHP pack() function converts an array into a binary string. When you need to
 
 Use pack() with a format string that specifies a sequence of space-padded strings.
 
+#### Format characters for pack( ) and unpack( )
+|Format| character |Data type|
+|---|---|---|
+|a| NUL-padded string|
+|A| Space-padded string|
+|h| Hex string, low nibble first|
+|H| Hex string, high nibble first|
+|c| signed char|
+|C| unsigned char|
+|s| signed short (16 bit, machine byte order)|
+|S| unsigned short (16 bit, machine byte order)|
+|n| unsigned short (16 bit, big endian byte order)|
+|v| unsigned short (16 bit, little endian byte order)|
+|i| signed int (machine-dependent size and byte order)|
+|I| unsigned int (machine-dependent size and byte order)|
+|l| signed long (32 bit, machine byte order)|
+|L| unsigned long (32 bit, machine byte order)|
+|N| unsigned long (32 bit, big endian byte order)|
+|V| unsigned long (32 bit, little endian byte order)|
+|f| float (machine-dependent size and representation)|
+|d| double (machine-dependent size and representation)|
+|x| NUL byte|
+|X| Back up one byte|
+|@| NUL-fill to absolute position|
+
 ```php
 <?php
 //Generating fixed-width field data records
@@ -107,6 +132,27 @@ foreach ($books as $book) {
 ```	
 
 The format string A25A14A4 tells pack() to transform its subsequent arguments into a 25-character space-padded string, a 14-character space-padded string, and a 4-character space-padded string. For space-padded fields in fixed-width records, pack() provides a concise solution.
+
+#### Storing Binary Data in Strings
+
+You can use pack() to store binary data in strings.
+When you want to parse a string that contains values encoded as a binary structure or encode values into a string. For example, you want to store numbers in their binary representation instead of as sequences of ASCII characters.
+
+```php
+<?php
+$packed = pack('S4',1974,106,28225,32725);
+?>
+```
+
+Use [unpack()](#unpack) to extract binary data from a string:
+
+```php
+<?php
+$nums = unpack('S4',$packed);
+print_r($nums);
+?>
+```
+
 
 ### str_pad()
 
@@ -164,6 +210,29 @@ fclose($fp) or die("can't close file");
 ```
 
 ### unpack()
+
+The PHP unpack() function unpacks binary data from a string.
+
+Multiple format characters must be separated with / in unpack():
+
+```php
+<?php
+$packed = pack('S4',1974,106,28225,32725);
+$nums = unpack('S1a/S1b/S1c/S1d',$packed);
+print_r($nums);
+
+?>
+```
+
+```
+Array
+(
+ [a] => 1974
+ [b] => 106
+ [c] => 28225
+ [d] => 32725
+)
+```
 
 ``` php
 <?php
@@ -274,7 +343,109 @@ print "</table>\n";
 ```	
 Both substr() and unpack() have equivalent capabilities when the fixed-width fields are strings, but unpack() is the better solution when the elements of the fields aren’t just strings.
 
+## Taking Strings Apart
+
+When you need to break a string into pieces. For example, you want to access each line that a
+user enters in a textarea form field.
+
+
+### explode()
+
+Use explode() if what separates the pieces is a constant string:
+
+``` php	
+$words = explode(' ','My sentence is not very complicated');
+```	
+
+The simplest solution of the bunch is explode(). Pass it your separator string, the string to be separated, and an optional limit on how many elements should be returned:
+
+```php
+<?php
+$dwarves = 'dopey,sleepy,happy,grumpy,sneezy,bashful,doc';
+$dwarf_array = explode(',',$dwarves);
+
+?>
+```	
+
+```php
+Array
+(
+ [0] => dopey
+ [1] => sleepy
+ [2] => happy
+ [3] => grumpy
+ [4] => sneezy
+ [5] => bashful
+ [6] => doc
+)
+
+```
+
+If the specified limit is less than the number of possible chunks, the last chunk contains the remainder:
+
+```php
+<?php
+$dwarves = 'dopey,sleepy,happy,grumpy,sneezy,bashful,doc';
+$dwarf_array = explode(',', $dwarves, 5);
+print_r($dwarf_array);
+?>
+```
+
+```
+Array
+(
+ [0] => dopey
+ [1] => sleepy
+ [2] => happy
+ [3] => grumpy
+ [4] => sneezy,bashful,doc
+)
+```
+
+The separator is treated literally by explode(). If you specify a comma and a space as a separator, it breaks the string only on a comma followed by a space, not on a comma or a space.
+
+With [preg_split()](../Func/phpRegex.md#preg_split), you have more flexibility. Instead of a string literal as a separator, it uses a Perl-compatible regular expression engine. With preg_split(), you can take advantage of various Perl-ish regular expression extensions, as well as tricks such as including the separator text in the returned array of strings:
+
+```php
+<?php
+$math = "3 + 2 / 7 - 9";
+$stack = preg_split('/ *([+\-\/*]) */',$math,-1,PREG_SPLIT_DELIM_CAPTURE);
+print_r($stack);
+?>
+```
+
+```
+Array
+(
+ [0] => 3
+ [1] => +
+ [2] => 2
+ [3] => /
+ [4] => 7
+ [5] => -
+ [6] => 9
+)
+```
+
+The separator regular expression looks for the four mathematical operators (+, -, /, *), surrounded by optional leading or trailing spaces. The PREG_SPLIT_DELIM_CAPTURE flag tells preg_split() to include the matches as part of the separator regular expression in parentheses in the returned array of strings. Only the mathematical operator character class is in parentheses, so the returned array doesn’t have any spaces in it.
+
 ### str_split()
+
+Use preg_split() if you need a Perl-compatible regular expression to describe the
+separator:
+
+```	php
+$words = preg_split('/\d\. /','my day: 1. get up 2. get dressed 3. eat toast');
+$lines = preg_split('/[\n\r]+/',$_POST['textarea']);
+```	
+
+Use the /i flag to preg_split() for case-insensitive separator matching:
+
+```	php
+$words = preg_split('/ x /i','31 inches x 22 inches X 9 inches');
+```
+
+
 
 If all of your fields are the same size, str_split() is a handy shortcut for chopping up
 incoming data. It returns an array made up of sections of a string.
@@ -700,6 +871,81 @@ ob_end_clean();
 
 ?>
 ```	
+##  Wrapping Text at a Certain Line Length
+
+When you need to wrap lines in a string. For example, you want to display text by using  the pre tags but have it stay within a regularly sized browser window.
+
+
+
+### wordwrap()
+
+```php
+<?php
+$s = "Four score and seven years ago our fathers brought forth on this continent ↵
+a new nation, conceived in liberty and dedicated to the proposition ↵
+that all men are created equal.";
+print "<pre>\n".wordwrap($s)."\n</pre>";
+?>
+```	
+
+```
+<pre>
+Four score and seven years ago our fathers brought forth on this continent
+a new nation, conceived in liberty and dedicated to the proposition that
+all men are created equal.
+</pre>
+```
+
+By default, wordwrap() wraps text at 75 characters per line. An optional second argu‐
+ment specifies a different line length:
+
+```php
+<?php
+print wordwrap($s,50);
+?>
+```
+
+```
+Four score and seven years ago our fathers brought
+forth on this continent a new nation, conceived in
+liberty and dedicated to the proposition that all
+men are created equal.
+```
+
+Other characters besides \n can be used for line breaks. For double spacing, use "\n\n":
+
+```php
+<?php
+print wordwrap($s,50,"\n\n");
+?>
+```
+
+This prints:
+```	
+Four score and seven years ago our fathers brought
+forth on this continent a new nation, conceived in
+liberty and dedicated to the proposition that all
+men are created equal.
+```
+
+There is an optional fourth argument to wordwrap() that controls the treatment of words that are longer than the specified line length. If this argument is 1, these words are wrapped. Otherwise, they span past the specified line length:
+
+```php
+<?php
+
+print wordwrap('jabberwocky',5) . "\n";
+print wordwrap('jabberwocky',5,"\n",1);
+?>
+```
+
+This prints:
+
+```php
+jabberwocky
+jabbe
+rwock
+y
+```
 
 
 ## All String Functions
@@ -723,7 +969,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |crc32()|	Calculates a 32-bit CRC for a string|
 |crypt()|	One-way string hashing|
 |[echo()](../Func/phpOutput.md#echo)|	Outputs one or more strings|
-|[explode()](#reverse-by-words)|	Breaks a string into an array|
+|[explode()](#explode)|	Breaks a string into an array|
 |fprintf()|	Writes a formatted string to a specified output stream|
 |get_html_translation_table()|	Returns the translation table used by htmlspecialchars() and htmlentities()|
 |hebrev()|	Converts Hebrew text to visual text|
@@ -807,4 +1053,4 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |vfprintf()|	Writes a formatted string to a specified output stream|
 |vprintf()|	Outputs a formatted string|
 |vsprintf()|	Writes a formatted string to a variable|
-|wordwrap()|	Wraps a string to a given number of characters|
+|[wordwrap()](#wordwrap)|	Wraps a string to a given number of characters|

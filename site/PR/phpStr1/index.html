@@ -677,6 +677,26 @@
     pack()
   </a>
   
+    <nav class="md-nav" aria-label="pack()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-characters-for-pack-and-unpack" class="md-nav__link">
+    Format characters for pack( ) and unpack( )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-binary-data-in-strings" class="md-nav__link">
+    Storing Binary Data in Strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -696,6 +716,26 @@
           <li class="md-nav__item">
   <a href="#unpack" class="md-nav__link">
     unpack()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taking-strings-apart" class="md-nav__link">
+    Taking Strings Apart
+  </a>
+  
+    <nav class="md-nav" aria-label="Taking Strings Apart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explode" class="md-nav__link">
+    explode()
   </a>
   
 </li>
@@ -860,6 +900,26 @@
           <li class="md-nav__item">
   <a href="#fputcsv" class="md-nav__link">
     fputcsv()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-text-at-a-certain-line-length" class="md-nav__link">
+    Wrapping Text at a Certain Line Length
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Text at a Certain Line Length">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wordwrap" class="md-nav__link">
+    wordwrap()
   </a>
   
 </li>
@@ -1960,6 +2020,26 @@
     pack()
   </a>
   
+    <nav class="md-nav" aria-label="pack()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format-characters-for-pack-and-unpack" class="md-nav__link">
+    Format characters for pack( ) and unpack( )
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-binary-data-in-strings" class="md-nav__link">
+    Storing Binary Data in Strings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1979,6 +2059,26 @@
           <li class="md-nav__item">
   <a href="#unpack" class="md-nav__link">
     unpack()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taking-strings-apart" class="md-nav__link">
+    Taking Strings Apart
+  </a>
+  
+    <nav class="md-nav" aria-label="Taking Strings Apart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explode" class="md-nav__link">
+    explode()
   </a>
   
 </li>
@@ -2153,6 +2253,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#wrapping-text-at-a-certain-line-length" class="md-nav__link">
+    Wrapping Text at a Certain Line Length
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Text at a Certain Line Length">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wordwrap" class="md-nav__link">
+    wordwrap()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#all-string-functions" class="md-nav__link">
     All String Functions
   </a>
@@ -2235,6 +2355,123 @@ The first character position in a string is 0 (not 1).</p>
 <h3 id="pack">pack()</h3>
 <p>The PHP pack() function converts an array into a binary string. When you need to format data records such that each field takes up a set amount of characters.</p>
 <p>Use pack() with a format string that specifies a sequence of space-padded strings.</p>
+<h4 id="format-characters-for-pack-and-unpack">Format characters for pack( ) and unpack( )</h4>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>character</th>
+<th>Data type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>NUL-padded string</td>
+<td></td>
+</tr>
+<tr>
+<td>A</td>
+<td>Space-padded string</td>
+<td></td>
+</tr>
+<tr>
+<td>h</td>
+<td>Hex string, low nibble first</td>
+<td></td>
+</tr>
+<tr>
+<td>H</td>
+<td>Hex string, high nibble first</td>
+<td></td>
+</tr>
+<tr>
+<td>c</td>
+<td>signed char</td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>unsigned char</td>
+<td></td>
+</tr>
+<tr>
+<td>s</td>
+<td>signed short (16 bit, machine byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>S</td>
+<td>unsigned short (16 bit, machine byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>n</td>
+<td>unsigned short (16 bit, big endian byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>v</td>
+<td>unsigned short (16 bit, little endian byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>i</td>
+<td>signed int (machine-dependent size and byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>I</td>
+<td>unsigned int (machine-dependent size and byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>l</td>
+<td>signed long (32 bit, machine byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>L</td>
+<td>unsigned long (32 bit, machine byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>N</td>
+<td>unsigned long (32 bit, big endian byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>V</td>
+<td>unsigned long (32 bit, little endian byte order)</td>
+<td></td>
+</tr>
+<tr>
+<td>f</td>
+<td>float (machine-dependent size and representation)</td>
+<td></td>
+</tr>
+<tr>
+<td>d</td>
+<td>double (machine-dependent size and representation)</td>
+<td></td>
+</tr>
+<tr>
+<td>x</td>
+<td>NUL byte</td>
+<td></td>
+</tr>
+<tr>
+<td>X</td>
+<td>Back up one byte</td>
+<td></td>
+</tr>
+<tr>
+<td>@</td>
+<td>NUL-fill to absolute position</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">//Generating fixed-width field data records</span>
 <span class="nv">$books</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Elmer Gantry&#39;</span><span class="p">,</span> <span class="s1">&#39;Sinclair Lewis&#39;</span><span class="p">,</span> <span class="mi">1927</span><span class="p">),</span>
@@ -2247,6 +2484,19 @@ The first character position in a string is 0 (not 1).</p>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>The format string A25A14A4 tells pack() to transform its subsequent arguments into a 25-character space-padded string, a 14-character space-padded string, and a 4-character space-padded string. For space-padded fields in fixed-width records, pack() provides a concise solution.</p>
+<h4 id="storing-binary-data-in-strings">Storing Binary Data in Strings</h4>
+<p>You can use pack() to store binary data in strings.
+When you want to parse a string that contains values encoded as a binary structure or encode values into a string. For example, you want to store numbers in their binary representation instead of as sequences of ASCII characters.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$packed</span> <span class="o">=</span> <span class="nb">pack</span><span class="p">(</span><span class="s1">&#39;S4&#39;</span><span class="p">,</span><span class="mi">1974</span><span class="p">,</span><span class="mi">106</span><span class="p">,</span><span class="mi">28225</span><span class="p">,</span><span class="mi">32725</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use <a href="#unpack">unpack()</a> to extract binary data from a string:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$nums</span> <span class="o">=</span> <span class="nb">unpack</span><span class="p">(</span><span class="s1">&#39;S4&#39;</span><span class="p">,</span><span class="nv">$packed</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$nums</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h3 id="str_pad">str_pad()</h3>
 <p>To pad fields with something other than a space, however, use substr() to ensure that the field values aren’t too long and str_pad() to ensure that the field values aren’t too short.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -2289,6 +2539,23 @@ The first character position in a string is 0 (not 1).</p>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h3 id="unpack">unpack()</h3>
+<p>The PHP unpack() function unpacks binary data from a string.</p>
+<p>Multiple format characters must be separated with / in unpack():</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$packed</span> <span class="o">=</span> <span class="nb">pack</span><span class="p">(</span><span class="s1">&#39;S4&#39;</span><span class="p">,</span><span class="mi">1974</span><span class="p">,</span><span class="mi">106</span><span class="p">,</span><span class="mi">28225</span><span class="p">,</span><span class="mi">32725</span><span class="p">);</span>
+<span class="nv">$nums</span> <span class="o">=</span> <span class="nb">unpack</span><span class="p">(</span><span class="s1">&#39;S1a/S1b/S1c/S1d&#39;</span><span class="p">,</span><span class="nv">$packed</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$nums</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Array
+(
+ [a] =&gt; 1974
+ [b] =&gt; 106
+ [c] =&gt; 28225
+ [d] =&gt; 32725
+)
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">//Parsing fixed-width records with unpack( )</span>
 <span class="k">function</span> <span class="nf">fixed_width_unpack</span><span class="p">(</span><span class="nv">$format_string</span><span class="p">,</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
@@ -2374,7 +2641,76 @@ fixed_width_substr() function below.</p>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 Both substr() and unpack() have equivalent capabilities when the fixed-width fields are strings, but unpack() is the better solution when the elements of the fields aren’t just strings.</p>
+<h2 id="taking-strings-apart">Taking Strings Apart</h2>
+<p>When you need to break a string into pieces. For example, you want to access each line that a
+user enters in a textarea form field.</p>
+<h3 id="explode">explode()</h3>
+<p>Use explode() if what separates the pieces is a constant string:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$words = explode(&#39; &#39;,&#39;My sentence is not very complicated&#39;);</span>
+</code></pre></div>
+<p>The simplest solution of the bunch is explode(). Pass it your separator string, the string to be separated, and an optional limit on how many elements should be returned:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$dwarves</span> <span class="o">=</span> <span class="s1">&#39;dopey,sleepy,happy,grumpy,sneezy,bashful,doc&#39;</span><span class="p">;</span>
+<span class="nv">$dwarf_array</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="nv">$dwarves</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x"> [0] =&gt; dopey</span>
+<span class="x"> [1] =&gt; sleepy</span>
+<span class="x"> [2] =&gt; happy</span>
+<span class="x"> [3] =&gt; grumpy</span>
+<span class="x"> [4] =&gt; sneezy</span>
+<span class="x"> [5] =&gt; bashful</span>
+<span class="x"> [6] =&gt; doc</span>
+<span class="x">)</span>
+</code></pre></div>
+<p>If the specified limit is less than the number of possible chunks, the last chunk contains the remainder:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$dwarves</span> <span class="o">=</span> <span class="s1">&#39;dopey,sleepy,happy,grumpy,sneezy,bashful,doc&#39;</span><span class="p">;</span>
+<span class="nv">$dwarf_array</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$dwarves</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$dwarf_array</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Array
+(
+ [0] =&gt; dopey
+ [1] =&gt; sleepy
+ [2] =&gt; happy
+ [3] =&gt; grumpy
+ [4] =&gt; sneezy,bashful,doc
+)
+</code></pre></div>
+<p>The separator is treated literally by explode(). If you specify a comma and a space as a separator, it breaks the string only on a comma followed by a space, not on a comma or a space.</p>
+<p>With <a href="../../Func/phpRegex/#preg_split">preg_split()</a>, you have more flexibility. Instead of a string literal as a separator, it uses a Perl-compatible regular expression engine. With preg_split(), you can take advantage of various Perl-ish regular expression extensions, as well as tricks such as including the separator text in the returned array of strings:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$math</span> <span class="o">=</span> <span class="s2">&quot;3 + 2 / 7 - 9&quot;</span><span class="p">;</span>
+<span class="nv">$stack</span> <span class="o">=</span> <span class="nb">preg_split</span><span class="p">(</span><span class="s1">&#39;/ *([+\-\/*]) */&#39;</span><span class="p">,</span><span class="nv">$math</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nx">PREG_SPLIT_DELIM_CAPTURE</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$stack</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Array
+(
+ [0] =&gt; 3
+ [1] =&gt; +
+ [2] =&gt; 2
+ [3] =&gt; /
+ [4] =&gt; 7
+ [5] =&gt; -
+ [6] =&gt; 9
+)
+</code></pre></div>
+<p>The separator regular expression looks for the four mathematical operators (+, -, /, *), surrounded by optional leading or trailing spaces. The PREG_SPLIT_DELIM_CAPTURE flag tells preg_split() to include the matches as part of the separator regular expression in parentheses in the returned array of strings. Only the mathematical operator character class is in parentheses, so the returned array doesn’t have any spaces in it.</p>
 <h3 id="str_split">str_split()</h3>
+<p>Use preg_split() if you need a Perl-compatible regular expression to describe the
+separator:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$words = preg_split(&#39;/\d\. /&#39;,&#39;my day: 1. get up 2. get dressed 3. eat toast&#39;);</span>
+<span class="x">$lines = preg_split(&#39;/[\n\r]+/&#39;,$_POST[&#39;textarea&#39;]);</span>
+</code></pre></div>
+<p>Use the /i flag to preg_split() for case-insensitive separator matching:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$words = preg_split(&#39;/ x /i&#39;,&#39;31 inches x 22 inches X 9 inches&#39;);</span>
+</code></pre></div>
 <p>If all of your fields are the same size, str_split() is a handy shortcut for chopping up
 incoming data. It returns an array made up of sections of a string.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -2682,6 +3018,57 @@ Don’t be tempted to bypass fgetcsv() and just read a line in and explode() on 
 
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h2 id="wrapping-text-at-a-certain-line-length">Wrapping Text at a Certain Line Length</h2>
+<p>When you need to wrap lines in a string. For example, you want to display text by using  the pre tags but have it stay within a regularly sized browser window.</p>
+<h3 id="wordwrap">wordwrap()</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$s</span> <span class="o">=</span> <span class="s2">&quot;Four score and seven years ago our fathers brought forth on this continent ↵</span>
+<span class="s2">a new nation, conceived in liberty and dedicated to the proposition ↵</span>
+<span class="s2">that all men are created equal.&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;&lt;pre&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="nb">wordwrap</span><span class="p">(</span><span class="nv">$s</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&lt;/pre&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;pre&gt;
+Four score and seven years ago our fathers brought forth on this continent
+a new nation, conceived in liberty and dedicated to the proposition that
+all men are created equal.
+&lt;/pre&gt;
+</code></pre></div>
+<p>By default, wordwrap() wraps text at 75 characters per line. An optional second argu‐
+ment specifies a different line length:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nb">wordwrap</span><span class="p">(</span><span class="nv">$s</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Four score and seven years ago our fathers brought
+forth on this continent a new nation, conceived in
+liberty and dedicated to the proposition that all
+men are created equal.
+</code></pre></div>
+<p>Other characters besides \n can be used for line breaks. For double spacing, use "\n\n":</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nb">wordwrap</span><span class="p">(</span><span class="nv">$s</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This prints:
+<div class="highlight"><pre><span></span><code>Four score and seven years ago our fathers brought
+forth on this continent a new nation, conceived in
+liberty and dedicated to the proposition that all
+men are created equal.
+</code></pre></div></p>
+<p>There is an optional fourth argument to wordwrap() that controls the treatment of words that are longer than the specified line length. If this argument is 1, these words are wrapped. Otherwise, they span past the specified line length:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">print</span> <span class="nb">wordwrap</span><span class="p">(</span><span class="s1">&#39;jabberwocky&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="nb">wordwrap</span><span class="p">(</span><span class="s1">&#39;jabberwocky&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This prints:</p>
+<div class="highlight"><pre><span></span><code><span class="x">jabberwocky</span>
+<span class="x">jabbe</span>
+<span class="x">rwock</span>
+<span class="x">y</span>
+</code></pre></div>
 <h2 id="all-string-functions">All String Functions</h2>
 <p>The PHP string functions are part of the PHP core. No installation is required to use these functions.</p>
 <p>For more information, see <a href="https://www.php.net/manual/en/ref.strings.php">PHP String Functions</a></p>
@@ -2746,7 +3133,7 @@ Don’t be tempted to bypass fgetcsv() and just read a line in and explode() on 
 <td>Outputs one or more strings</td>
 </tr>
 <tr>
-<td><a href="#reverse-by-words">explode()</a></td>
+<td><a href="#explode">explode()</a></td>
 <td>Breaks a string into an array</td>
 </tr>
 <tr>
@@ -3082,7 +3469,7 @@ Don’t be tempted to bypass fgetcsv() and just read a line in and explode() on 
 <td>Writes a formatted string to a variable</td>
 </tr>
 <tr>
-<td>wordwrap()</td>
+<td><a href="#wordwrap">wordwrap()</a></td>
 <td>Wraps a string to a given number of characters</td>
 </tr>
 </tbody>

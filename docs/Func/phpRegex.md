@@ -4,9 +4,16 @@ A regular expression is a sequence of characters that forms a search pattern. Wh
 
 |Function	|Description|
 |--------|--------|
+|preg_filter()|	Returns a string or an array with pattern matches replaced, but only if matches were found|
+|preg_grep()|	Returns an array consisting only of elements from the input array which matched the pattern|
+|preg_last_error()|	Returns an error code indicating the reason that the most recent regular expression call failed|
 |[preg_match()](#preg_match)|	Returns 1 if the pattern was found in the string and 0 if not|
 |[preg_match_all()](#preg_match_all)|Returns the number of times the pattern was found in the string, which may also be 0|
 |[preg_replace()](#preg_replace)	|Returns a new string where matched patterns have been replaced with another string|
+|preg_replace_callback()|	Given an expression and a callback, returns a string where all matches of the expression are replaced with the substring returned by the callback|
+|preg_replace_callback_array()|	Given an array associating expressions with callbacks, returns a string where all matches of each expression are replaced with the substring returned by the callback|
+|[preg_split()](#preg_split)|	Breaks a string into an array using matches of a regular expression as separators|
+|preg_quote()|	Escapes characters that have a special meaning in regular expressions by putting a backslash in front of them|
 
 ### preg_match()
 
@@ -35,6 +42,16 @@ echo preg_match_all($pattern, $str); // Outputs 4
 $str = "Visit Microsoft!";
 $pattern = "/microsoft/i";
 echo preg_replace($pattern, "ME", $str); // Outputs "Visit ME!"
+?>
+```
+
+### preg_split()
+
+```php
+<?php
+$str = "Hello World!";
+$pattern = "/ /";
+echo preg_split($pattern, $str); // Outputs array("Hello", "World!")
 ?>
 ```
 

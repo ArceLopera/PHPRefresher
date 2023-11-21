@@ -905,6 +905,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#preg_split" class="md-nav__link">
+    preg_split()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1711,6 +1718,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#preg_split" class="md-nav__link">
+    preg_split()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1778,6 +1792,18 @@
 </thead>
 <tbody>
 <tr>
+<td>preg_filter()</td>
+<td>Returns a string or an array with pattern matches replaced, but only if matches were found</td>
+</tr>
+<tr>
+<td>preg_grep()</td>
+<td>Returns an array consisting only of elements from the input array which matched the pattern</td>
+</tr>
+<tr>
+<td>preg_last_error()</td>
+<td>Returns an error code indicating the reason that the most recent regular expression call failed</td>
+</tr>
+<tr>
 <td><a href="#preg_match">preg_match()</a></td>
 <td>Returns 1 if the pattern was found in the string and 0 if not</td>
 </tr>
@@ -1788,6 +1814,22 @@
 <tr>
 <td><a href="#preg_replace">preg_replace()</a></td>
 <td>Returns a new string where matched patterns have been replaced with another string</td>
+</tr>
+<tr>
+<td>preg_replace_callback()</td>
+<td>Given an expression and a callback, returns a string where all matches of the expression are replaced with the substring returned by the callback</td>
+</tr>
+<tr>
+<td>preg_replace_callback_array()</td>
+<td>Given an array associating expressions with callbacks, returns a string where all matches of each expression are replaced with the substring returned by the callback</td>
+</tr>
+<tr>
+<td><a href="#preg_split">preg_split()</a></td>
+<td>Breaks a string into an array using matches of a regular expression as separators</td>
+</tr>
+<tr>
+<td>preg_quote()</td>
+<td>Escapes characters that have a special meaning in regular expressions by putting a backslash in front of them</td>
 </tr>
 </tbody>
 </table>
@@ -1810,6 +1852,13 @@
 <span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit Microsoft!&quot;</span><span class="p">;</span>
 <span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/microsoft/i&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="s2">&quot;ME&quot;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs &quot;Visit ME!&quot;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="preg_split">preg_split()</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ /&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">preg_split</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs array(&quot;Hello&quot;, &quot;World!&quot;)</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="regular-expression-modifiers">Regular Expression Modifiers</h2>
