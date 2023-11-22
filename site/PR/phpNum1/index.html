@@ -19,7 +19,7 @@
     
     
       
-        <title>Numerical - PHP Refresher</title>
+        <title>Basics - PHP Refresher</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Numerical
+              Basics
             
           </span>
         </div>
@@ -594,6 +594,34 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -601,12 +629,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Numerical
+          Basics
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Numerical
+        Basics
       </a>
       
         
@@ -699,8 +727,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#php-numerical-strings" class="md-nav__link">
-    PHP Numerical Strings
+  <a href="#numerical-strings-is_numeric" class="md-nav__link">
+    Numerical Strings - is_numeric()
   </a>
   
 </li>
@@ -733,8 +761,15 @@
   
     <li class="md-nav__item">
       <a href="../phpMath1/" class="md-nav__link">
-        Math
+        Functions
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -763,18 +798,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" data-md-state="indeterminate" type="checkbox" id="__nav_2_10" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_2_10">
+        <label class="md-nav__link" for="__nav_2_9">
           Control Flow
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_10">
+        <label class="md-nav__title" for="__nav_2_9">
           <span class="md-nav__icon md-icon"></span>
           Control Flow
         </label>
@@ -1783,8 +1818,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#php-numerical-strings" class="md-nav__link">
-    PHP Numerical Strings
+  <a href="#numerical-strings-is_numeric" class="md-nav__link">
+    Numerical Strings - is_numeric()
   </a>
   
 </li>
@@ -1815,7 +1850,7 @@
                 
 
 
-  <h1>Numerical</h1>
+  <h1>Basics</h1>
 
 <h2 id="php-numbers">PHP Numbers</h2>
 <p>One thing to notice about PHP is that it provides automatic data type conversion.</p>
@@ -1827,31 +1862,41 @@
 <p>Integers can be specified in three formats: decimal (10-based), hexadecimal (16-based - prefixed with 0x) or octal (8-based - prefixed with 0)</p>
 <h4 id="php-integer-constants">PHP Integer Constants</h4>
 <p>PHP has the following predefined constants for integers:</p>
-<p>PHP_INT_MAX - The largest integer supported
-PHP_INT_MIN - The smallest integer supported
-PHP_INT_SIZE -  The size of an integer in bytes</p>
+<ul>
+<li>PHP_INT_MAX - The largest integer supported</li>
+<li>PHP_INT_MIN - The smallest integer supported</li>
+<li>PHP_INT_SIZE -  The size of an integer in bytes</li>
+</ul>
 <h4 id="php-integer-functions">PHP Integer Functions</h4>
 <p>PHP has the following functions to check if the type of a variable is integer:</p>
-<p>is_int()
-is_integer() - alias of is_int()
-is_long() - alias of is_int()</p>
+<ul>
+<li>is_int()</li>
+<li>is_integer() - alias of is_int()</li>
+<li>is_long() - alias of is_int()</li>
+</ul>
 <h3 id="php-floats">PHP Floats</h3>
 <p>The float data type can commonly store a value up to 1.7976931348623E+308 (platform dependent), and have a maximum precision of 14 digits.</p>
 <h4 id="php-float-constants">PHP Float Constants</h4>
 <p>PHP has the following predefined constants for floats (from PHP 7.2):</p>
-<p>PHP_FLOAT_MAX - The largest representable floating point number
-PHP_FLOAT_MIN - The smallest representable positive floating point number
-PHP_FLOAT_DIG - The number of decimal digits that can be rounded into a float and back without precision loss
-PHP_FLOAT_EPSILON - The smallest representable positive number x, so that x + 1.0 != 1.0</p>
+<ul>
+<li>PHP_FLOAT_MAX - The largest representable floating point number</li>
+<li>PHP_FLOAT_MIN - The smallest representable positive floating point number</li>
+<li>PHP_FLOAT_DIG - The number of decimal digits that can be rounded into a float and back without precision loss</li>
+<li>PHP_FLOAT_EPSILON - The smallest representable positive number x, so that x + 1.0 != 1.0</li>
+</ul>
 <h4 id="php-float-functions">PHP Float Functions</h4>
 <p>PHP has the following functions to check if the type of a variable is float:</p>
-<p>is_float()
-is_double() - alias of is_float()</p>
+<ul>
+<li>is_float()</li>
+<li>is_double() - alias of is_float()</li>
+</ul>
 <h3 id="php-infinity">PHP Infinity</h3>
 <p>A numeric value that is larger than PHP_FLOAT_MAX is considered infinite.</p>
 <p>PHP has the following functions to check if a numeric value is finite or infinite:</p>
-<p>is_finite()
-is_infinite()</p>
+<ul>
+<li>is_finite()</li>
+<li>is_infinite()</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
 <span class="x">&lt;html&gt;</span>
 <span class="x">&lt;body&gt;</span>
@@ -1869,7 +1914,9 @@ is_infinite()</p>
 <p>NaN stands for Not a Number.</p>
 <p>NaN is used for impossible mathematical operations.</p>
 <p>PHP has the following functions to check if a value is not a number:</p>
-<p>is_nan()</p>
+<ul>
+<li>is_nan()</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
 <span class="x">&lt;html&gt;</span>
 <span class="x">&lt;body&gt;</span>
@@ -1883,7 +1930,7 @@ is_infinite()</p>
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<h3 id="php-numerical-strings">PHP Numerical Strings</h3>
+<h3 id="numerical-strings-is_numeric">Numerical Strings - is_numeric()</h3>
 <p>The PHP is_numeric() function can be used to find whether a variable is numeric. The function returns true if the variable is a number or a numeric string, false otherwise.</p>
 <p>From PHP 7.0: The is_numeric() function will return FALSE for numeric strings in hexadecimal form (e.g. 0xf4c3b00c), as they are no longer considered as numeric strings.</p>
 <div class="highlight"><pre><span></span><code><span class="x">&lt;!DOCTYPE html&gt;</span>
@@ -1913,6 +1960,43 @@ is_infinite()</p>
 
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<p>When you want to ensure that a variable contains a number, even if it’s typed as a string.
+Alternatively, you want to check if a variable is not only a number, but is also specifically
+typed as one.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;05&#39;</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="s1">&#39;16.7&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="mh">0xDECAFBAD</span><span class="p">,</span> <span class="s1">&#39;10e200&#39;</span><span class="p">]</span>
+ <span class="k">as</span> <span class="nv">$maybeNumber</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$isItNumeric</span> <span class="o">=</span> <span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$maybeNumber</span><span class="p">);</span>
+ <span class="nv">$actualType</span> <span class="o">=</span> <span class="nb">gettype</span><span class="p">(</span><span class="nv">$maybeNumber</span><span class="p">);</span>
+ <span class="k">print</span> <span class="s2">&quot;Is the </span><span class="si">$actualType</span><span class="s2"> </span><span class="si">$maybeNumber</span><span class="s2"> numeric? &quot;</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$maybeNumber</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;yes&quot;</span><span class="p">;</span>
+ <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;no&quot;</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Is the integer 5 numeric? yes
+Is the string 5 numeric? yes
+Is the string 05 numeric? yes
+Is the double 12.3 numeric? yes
+Is the string 16.7 numeric? yes
+Is the string five numeric? no
+Is the integer 3737844653 numeric? yes
+Is the string 10e200 numeric? yes
+</code></pre></div></p>
+<p>Helpfully, is_numeric() properly parses decimal numbers, such as 5.1; however, numbers with thousands separators, such as 5,100, cause is_numeric() to return false. To strip the thousands separators from your number before calling is_numeric(), use <a href="../phpStr1/#str_replace">str_replace()</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="s2">&quot;5,100&quot;</span><span class="p">;</span>
+<span class="c1">// This is_numeric() call returns false</span>
+<span class="nv">$withCommas</span> <span class="o">=</span> <span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+<span class="c1">// This is_numeric() call returns true</span>
+<span class="nv">$withoutCommas</span> <span class="o">=</span> <span class="nb">is_numeric</span><span class="p">(</span><span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nv">$number</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="php-casting-to-integers">PHP Casting to Integers</h2>
 <p>Sometimes you need to cast a numerical value into another data type.</p>
@@ -1967,13 +2051,13 @@ is_infinite()</p>
       
       
         
-        <a href="../phpMath1/" class="md-footer__link md-footer__link--next" aria-label="Next: Math" rel="next">
+        <a href="../phpMath1/" class="md-footer__link md-footer__link--next" aria-label="Next: Functions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Math
+              Functions
             </div>
           </div>
           <div class="md-footer__button md-icon">

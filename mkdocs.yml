@@ -103,8 +103,9 @@ nav:
      - Strings:
         - Basics: PR/phpStr.md
         - Functions: PR/phpStr1.md
-     - Numerical: PR/phpNum1.md
-     - Math : PR/phpMath1.md
+     - Numbers:
+        - Basics: PR/phpNum1.md
+        - Functions : PR/phpMath1.md
      - Operators : PR/phpOperators1.md
      - Control Flow:
         - Conditionals: PR/phpIF.md
