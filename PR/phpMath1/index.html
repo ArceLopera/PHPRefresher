@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#most-common-functions" class="md-skip">
+        <a href="#comparing-floating-point-numbers" class="md-skip">
           Skip to content
         </a>
       
@@ -665,6 +665,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#comparing-floating-point-numbers" class="md-nav__link">
+    Comparing Floating-Point Numbers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#most-common-functions" class="md-nav__link">
     Most Common Functions
   </a>
@@ -721,6 +728,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mt_srand" class="md-nav__link">
+    mt_srand()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-biased-random-numbers" class="md-nav__link">
+    Generating Biased Random Numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-between-bases" class="md-nav__link">
+    Converting Between Bases
+  </a>
+  
+    <nav class="md-nav" aria-label="Converting Between Bases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base_convert" class="md-nav__link">
+    base_convert()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -730,6 +771,47 @@
   <a href="#all-math-functions" class="md-nav__link">
     All Math Functions
   </a>
+  
+    <nav class="md-nav" aria-label="All Math Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-conversion" class="md-nav__link">
+    Base Conversion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigonometric-functions" class="md-nav__link">
+    Trigonometric Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-number-functions" class="md-nav__link">
+    Random Number Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#power-functions" class="md-nav__link">
+    Power Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-functions" class="md-nav__link">
+    Miscellaneous Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1723,6 +1805,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#comparing-floating-point-numbers" class="md-nav__link">
+    Comparing Floating-Point Numbers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#most-common-functions" class="md-nav__link">
     Most Common Functions
   </a>
@@ -1779,6 +1868,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mt_srand" class="md-nav__link">
+    mt_srand()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-biased-random-numbers" class="md-nav__link">
+    Generating Biased Random Numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#converting-between-bases" class="md-nav__link">
+    Converting Between Bases
+  </a>
+  
+    <nav class="md-nav" aria-label="Converting Between Bases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base_convert" class="md-nav__link">
+    base_convert()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1788,6 +1911,47 @@
   <a href="#all-math-functions" class="md-nav__link">
     All Math Functions
   </a>
+  
+    <nav class="md-nav" aria-label="All Math Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-conversion" class="md-nav__link">
+    Base Conversion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigonometric-functions" class="md-nav__link">
+    Trigonometric Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#random-number-functions" class="md-nav__link">
+    Random Number Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#power-functions" class="md-nav__link">
+    Power Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#miscellaneous-functions" class="md-nav__link">
+    Miscellaneous Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1814,6 +1978,18 @@
 
   <h1>Functions</h1>
 
+<h2 id="comparing-floating-point-numbers">Comparing Floating-Point Numbers</h2>
+<p>Floating-point numbers are represented in binary form with only a finite number of bits for the mantissa and the exponent. You get overflows when you exceed those bits. As a result, sometimes PHP (just like some other languages) doesn’t believe that two equal numbers are actually equal because they may differ toward the very end. To avoid this problem, instead of checking if $a == <span class="arithmatex">\(b, make sure the first number is within a very small amount (\)</span>delta) of the second one. The size of your delta should be the smallest amount of difference you care about between two numbers. Then use <a href="#abs">abs()</a> to get the absolute value of the difference.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mf">1.00000001</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="mf">1.00000000</span><span class="p">;</span>    
+<span class="nv">$delta</span> <span class="o">=</span> <span class="mf">0.00001</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nv">$a</span> <span class="o">-</span> <span class="nv">$b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nv">$delta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;The numbers are almost equal&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h2 id="most-common-functions">Most Common Functions</h2>
 <h3 id="pi">pi()</h3>
 <p>The pi() function returns the value of PI.</p>
@@ -1853,14 +2029,139 @@
 <span class="k">echo</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">3.7</span><span class="p">));</span> <span class="c1">// returns 4</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>If a number falls exactly between two integers, PHP rounds away from 0:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Rounding a positive number rounds up: %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">);</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Rounding a negative number rounds down: %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Rounding a positive number rounds up: 3
+Rounding a negative number rounds down: -3
+</code></pre></div></p>
+<p>To keep a set number of digits after the decimal point, round() accepts an optional precision argument. For example, perhaps you are calculating the total price for the items in a user’s shopping cart:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cart</span> <span class="o">=</span> <span class="mf">54.23</span><span class="p">;</span>
+<span class="nv">$tax</span> <span class="o">=</span> <span class="nv">$cart</span> <span class="o">*</span> <span class="o">.</span><span class="mo">05</span><span class="p">;</span>
+<span class="nv">$total</span> <span class="o">=</span> <span class="nv">$cart</span> <span class="o">+</span> <span class="nv">$tax</span><span class="p">;</span>
+<span class="nv">$final</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$total</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">print</span> <span class="s2">&quot;Tax calculation uses all the digits it needs: </span><span class="si">$total</span><span class="s2">, but &quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;round() trims it to two decimal places: </span><span class="si">$final</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Tax calculation uses all the digits it needs: 56.9415, but 
+round() trims it to two decimal places: 56.94
+</code></pre></div>
 <h3 id="rand">rand()</h3>
 <p>The rand() function generates a random number.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">echo</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">));</span> <span class="c1">// returns a random number between 1 and 10 (inclusive)</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>mt_rand() is less predictable and faster than rand().</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$lower</span> <span class="o">=</span> <span class="mi">65</span><span class="p">;</span>
+<span class="nv">$upper</span> <span class="o">=</span> <span class="mi">97</span><span class="p">;</span>
+<span class="c1">// random number between $upper and $lower, inclusive</span>
+<span class="nv">$random_number</span> <span class="o">=</span> <span class="nb">mt_rand</span><span class="p">(</span><span class="nv">$lower</span><span class="p">,</span> <span class="nv">$upper</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="mt_srand">mt_srand()</h3>
+<p>The mt_srand() function is used to seed the random number generator.
+When you want to make the random number generate predictable numbers so you can guarantee repeatable behavior. </p>
+<p>Seed the random number generator with a known value using mt_srand() (or srand()):</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">pick_color</span><span class="p">()</span> <span class="p">{</span>
+ <span class="nv">$colors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span><span class="s1">&#39;violet&#39;</span><span class="p">);</span>
+ <span class="nv">$i</span> <span class="o">=</span> <span class="nb">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$colors</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="k">return</span> <span class="nv">$colors</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="nb">mt_srand</span><span class="p">(</span><span class="mi">34534</span><span class="p">);</span>
+<span class="nv">$first</span> <span class="o">=</span> <span class="nx">pick_color</span><span class="p">();</span>
+<span class="nv">$second</span> <span class="o">=</span> <span class="nx">pick_color</span><span class="p">();</span>
+<span class="c1">// Because a specific value was passed to mt_srand(), we can be</span>
+<span class="c1">// sure the same colors will get picked each time: red and yellow</span>
+<span class="k">print</span> <span class="s2">&quot;</span><span class="si">$first</span><span class="s2"> is red and </span><span class="si">$second</span><span class="s2"> is yellow.&quot;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>For unpredictable random numbers, letting PHP generate the seed is perfect. But seeding your random number generator with a known value is useful when you want the random number generator to generate a predictable series of values. This is handy when writing tests for your code. If you are writing a unit test to verify the behavior of a function that retrieves a random element from an array, the condition you’re testing for will change each time the test runs if your numbers are really random. But by calling
+mt_srand() (or srand()) with a specific value at the beginning of your test, you can ensure that the sequence of random numbers that is generated is the same each time the test is run.</p>
+<h3 id="generating-biased-random-numbers">Generating Biased Random Numbers</h3>
+<p>You want to generate random numbers, but you want these numbers to be somewhat biased, so that numbers in certain ranges appear more frequently than others. For example, you want to spread out a series of banner ad impressions in proportion to the number of impressions remaining for each ad campaign.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// returns the weighted randomly selected key</span>
+<span class="k">function</span> <span class="nf">rand_weighted</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="nv">$numbers</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$weight</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$total</span> <span class="o">+=</span> <span class="nv">$weight</span><span class="p">;</span>
+ <span class="nv">$distribution</span><span class="p">[</span><span class="nv">$number</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$total</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="nv">$rand</span> <span class="o">=</span> <span class="nb">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$total</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="nv">$distribution</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$weights</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nv">$rand</span> <span class="o">&lt;</span> <span class="nv">$weights</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$number</span><span class="p">;</span> <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>With a generator in PHP 5.5, you could select the weighted random number without having to build the distribution array first:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">incremental_total</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="nv">$numbers</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$weight</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$total</span> <span class="o">+=</span> <span class="nv">$weight</span><span class="p">;</span>
+ <span class="k">yield</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$total</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// returns the weighted randomly selected key</span>
+<span class="k">function</span> <span class="nf">rand_weighted_generator</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$total</span> <span class="o">=</span> <span class="nb">array_sum</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">);</span>
+ <span class="nv">$rand</span> <span class="o">=</span> <span class="nb">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$total</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="nx">incremental_total</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$number</span> <span class="o">=&gt;</span> <span class="nv">$weight</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nv">$rand</span> <span class="o">&lt;</span> <span class="nv">$weight</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$number</span><span class="p">;</span> <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="converting-between-bases">Converting Between Bases</h2>
+<h3 id="base_convert">base_convert()</h3>
+<p>The PHP base_convert() function converts a number from one base to another. The base_convert() function changes a string representing a number in one base to the correct string in another base. It works for all bases from 2 to 36 inclusive, using the letters a through z as additional symbols for bases above 10. The first argument is the number to be converted, followed by the base it is in and the base you want it to become.</p>
+<p>There are also a few specialized functions for conversions to and from base 10 and the most commonly used other bases of 2, 8, and 16. They’re bindec() and decbin(), octdec() and decoct(), and hexdec() and dechex():</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nb">base_convert</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// outputs 1100100</span>
+<span class="c1">// hexadecimal number (base 16)</span>
+<span class="nv">$hex</span> <span class="o">=</span> <span class="s1">&#39;a1&#39;</span><span class="p">;</span>
+<span class="c1">// convert from base 16 to base 10</span>
+<span class="c1">// $decimal is &#39;161&#39;</span>
+<span class="nv">$decimal</span> <span class="o">=</span> <span class="nb">base_convert</span><span class="p">(</span><span class="nv">$hex</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="c1">// convert from base 2 to base 10</span>
+<span class="c1">// $a = 27</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="nb">bindec</span><span class="p">(</span><span class="mi">11011</span><span class="p">);</span>
+<span class="c1">// convert from base 8 to base 10</span>
+<span class="c1">// $b = 27</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="nb">octdec</span><span class="p">(</span><span class="mi">33</span><span class="p">);</span>
+<span class="c1">// convert from base 16 to base 10</span>
+<span class="c1">// $c = 27</span>
+<span class="nv">$c</span> <span class="o">=</span> <span class="nb">hexdec</span><span class="p">(</span><span class="s1">&#39;1b&#39;</span><span class="p">);</span>
+<span class="c1">// convert from base 10 to base 2</span>
+<span class="c1">// $d = &#39;11011&#39;</span>
+<span class="nv">$d</span> <span class="o">=</span> <span class="nb">decbin</span><span class="p">(</span><span class="mi">27</span><span class="p">);</span>
+<span class="c1">// $e = &#39;33&#39;</span>
+<span class="nv">$e</span> <span class="o">=</span> <span class="nb">decoct</span><span class="p">(</span><span class="mi">27</span><span class="p">);</span>
+<span class="c1">// $f = &#39;1b&#39;</span>
+<span class="nv">$f</span> <span class="o">=</span> <span class="nb">dechex</span><span class="p">(</span><span class="mi">27</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Note that the specialized functions that convert to base 10 return integers. The functions that convert from base 10 return strings.</p>
+<p>Another alternative is to use the <a href="../phpStr1/#printf">printf()</a> family of functions.</p>
 <h2 id="all-math-functions">All Math Functions</h2>
 <p>The PHP math functions are part of the PHP core. No installation is required to use these functions.</p>
+<h3 id="base-conversion">Base Conversion</h3>
 <table>
 <thead>
 <tr>
@@ -1870,9 +2171,52 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="#abs">abs()</a></td>
-<td>Returns the absolute (positive) value of a number</td>
+<td><a href="#base_convert">base_convert()</a></td>
+<td>Converts a number from one number base to another</td>
 </tr>
+<tr>
+<td>bindec()</td>
+<td>Converts a binary number to a decimal number</td>
+</tr>
+<tr>
+<td>decbin()</td>
+<td>Converts a decimal number to a binary number</td>
+</tr>
+<tr>
+<td>dechex()</td>
+<td>Converts a decimal number to a hexadecimal number</td>
+</tr>
+<tr>
+<td>hexdec()</td>
+<td>Converts a hexadecimal number to a decimal number</td>
+</tr>
+<tr>
+<td>decoct()</td>
+<td>Converts a decimal number to an octal number</td>
+</tr>
+<tr>
+<td>octdec()</td>
+<td>Converts an octal number to a decimal number</td>
+</tr>
+<tr>
+<td>deg2rad()</td>
+<td>Converts a degree value to a radian value</td>
+</tr>
+<tr>
+<td>rad2deg()</td>
+<td>Converts a radian value to a degree value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trigonometric-functions">Trigonometric Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>acos()</td>
 <td>Returns the arc cosine of a number</td>
@@ -1902,18 +2246,6 @@
 <td>Returns the inverse hyperbolic tangent of a number</td>
 </tr>
 <tr>
-<td>base_convert()</td>
-<td>Converts a number from one number base to another</td>
-</tr>
-<tr>
-<td>bindec()</td>
-<td>Converts a binary number to a decimal number</td>
-</tr>
-<tr>
-<td><a href="#floor-and-ceil">ceil()</a></td>
-<td>Rounds a number up to the nearest integer</td>
-</tr>
-<tr>
 <td>cos()</td>
 <td>Returns the cosine of a number</td>
 </tr>
@@ -1922,21 +2254,75 @@
 <td>Returns the hyperbolic cosine of a number</td>
 </tr>
 <tr>
-<td>decbin()</td>
-<td>Converts a decimal number to a binary number</td>
+<td>hypot()</td>
+<td>Calculates the hypotenuse of a right-angle triangle</td>
 </tr>
 <tr>
-<td>dechex()</td>
-<td>Converts a decimal number to a hexadecimal number</td>
+<td>sin()</td>
+<td>Returns the sine of a number</td>
 </tr>
 <tr>
-<td>decoct()</td>
-<td>Converts a decimal number to an octal number</td>
+<td>sinh()</td>
+<td>Returns the hyperbolic sine of a number</td>
 </tr>
 <tr>
-<td>deg2rad()</td>
-<td>Converts a degree value to a radian value</td>
+<td>tan()</td>
+<td>Returns the tangent of a number</td>
 </tr>
+<tr>
+<td>tanh()</td>
+<td>Returns the hyperbolic tangent of a number</td>
+</tr>
+</tbody>
+</table>
+<h3 id="random-number-functions">Random Number Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getrandmax()</td>
+<td>Returns the largest possible value returned by rand()</td>
+</tr>
+<tr>
+<td>lcg_value()</td>
+<td>Returns a pseudo random number in a range between 0 and 1</td>
+</tr>
+<tr>
+<td>mt_getrandmax()</td>
+<td>Returns the largest possible value returned by mt_rand()</td>
+</tr>
+<tr>
+<td><a href="#rand">mt_rand()</a></td>
+<td>Generates a random integer using Mersenne Twister algorithm</td>
+</tr>
+<tr>
+<td><a href="#mt_srand">mt_srand()</a></td>
+<td>Seeds the Mersenne Twister random number generator</td>
+</tr>
+<tr>
+<td><a href="#rand">rand()</a></td>
+<td>Generates a random integer</td>
+</tr>
+<tr>
+<td><a href="#mt_srand">srand()</a></td>
+<td>Seeds the random number generator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="power-functions">Power Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>exp()</td>
 <td>Calculates the exponent of e</td>
@@ -1946,24 +2332,51 @@
 <td>Returns exp(x) - 1</td>
 </tr>
 <tr>
+<td>log()</td>
+<td>Returns the natural logarithm of a number</td>
+</tr>
+<tr>
+<td>log10()</td>
+<td>Returns the base-10 logarithm of a number</td>
+</tr>
+<tr>
+<td>log1p()</td>
+<td>Returns log(1+number)</td>
+</tr>
+<tr>
+<td>pow()</td>
+<td>Returns x raised to the power of y</td>
+</tr>
+<tr>
+<td><a href="#sqrt">sqrt()</a></td>
+<td>Returns the square root of a number</td>
+</tr>
+</tbody>
+</table>
+<h3 id="miscellaneous-functions">Miscellaneous Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#abs">abs()</a></td>
+<td>Returns the absolute (positive) value of a number</td>
+</tr>
+<tr>
+<td><a href="#floor-and-ceil">ceil()</a></td>
+<td>Rounds a number up to the nearest integer</td>
+</tr>
+<tr>
 <td><a href="#floor-and-ceil">floor()</a></td>
 <td>Rounds a number down to the nearest integer</td>
 </tr>
 <tr>
 <td>fmod()</td>
 <td>Returns the remainder of x/y</td>
-</tr>
-<tr>
-<td>getrandmax()</td>
-<td>Returns the largest possible value returned by rand()</td>
-</tr>
-<tr>
-<td>hexdec()</td>
-<td>Converts a hexadecimal number to a decimal number</td>
-</tr>
-<tr>
-<td>hypot()</td>
-<td>Calculates the hypotenuse of a right-angle triangle</td>
 </tr>
 <tr>
 <td>intdiv()</td>
@@ -1982,22 +2395,6 @@
 <td>Checks whether a value is 'not-a-number'</td>
 </tr>
 <tr>
-<td>lcg_value()</td>
-<td>Returns a pseudo random number in a range between 0 and 1</td>
-</tr>
-<tr>
-<td>log()</td>
-<td>Returns the natural logarithm of a number</td>
-</tr>
-<tr>
-<td>log10()</td>
-<td>Returns the base-10 logarithm of a number</td>
-</tr>
-<tr>
-<td>log1p()</td>
-<td>Returns log(1+number)</td>
-</tr>
-<tr>
 <td><a href="#min-and-max">max()</a></td>
 <td>Returns the highest value in an array, or the highest value of several specified values</td>
 </tr>
@@ -2006,64 +2403,12 @@
 <td>Returns the lowest value in an array, or the lowest value of several specified values</td>
 </tr>
 <tr>
-<td>mt_getrandmax()</td>
-<td>Returns the largest possible value returned by mt_rand()</td>
-</tr>
-<tr>
-<td>mt_rand()</td>
-<td>Generates a random integer using Mersenne Twister algorithm</td>
-</tr>
-<tr>
-<td>mt_srand()</td>
-<td>Seeds the Mersenne Twister random number generator</td>
-</tr>
-<tr>
-<td>octdec()</td>
-<td>Converts an octal number to a decimal number</td>
-</tr>
-<tr>
 <td><a href="#pi">pi()</a></td>
 <td>Returns the value of PI</td>
 </tr>
 <tr>
-<td>pow()</td>
-<td>Returns x raised to the power of y</td>
-</tr>
-<tr>
-<td>rad2deg()</td>
-<td>Converts a radian value to a degree value</td>
-</tr>
-<tr>
-<td><a href="#rand">rand()</a></td>
-<td>Generates a random integer</td>
-</tr>
-<tr>
 <td><a href="#round">round()</a></td>
 <td>Rounds a floating-point number</td>
-</tr>
-<tr>
-<td>sin()</td>
-<td>Returns the sine of a number</td>
-</tr>
-<tr>
-<td>sinh()</td>
-<td>Returns the hyperbolic sine of a number</td>
-</tr>
-<tr>
-<td><a href="#sqrt">sqrt()</a></td>
-<td>Returns the square root of a number</td>
-</tr>
-<tr>
-<td>srand()</td>
-<td>Seeds the random number generator</td>
-</tr>
-<tr>
-<td>tan()</td>
-<td>Returns the tangent of a number</td>
-</tr>
-<tr>
-<td>tanh()</td>
-<td>Returns the hyperbolic tangent of a number</td>
 </tr>
 </tbody>
 </table>

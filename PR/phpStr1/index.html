@@ -930,6 +930,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#formatting-numbers" class="md-nav__link">
+    Formatting Numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="Formatting Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#number_format" class="md-nav__link">
+    number_format()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numberformatter" class="md-nav__link">
+    NumberFormatter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    printf()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#all-string-functions" class="md-nav__link">
     All String Functions
   </a>
@@ -2306,6 +2340,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#formatting-numbers" class="md-nav__link">
+    Formatting Numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="Formatting Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#number_format" class="md-nav__link">
+    number_format()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numberformatter" class="md-nav__link">
+    NumberFormatter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    printf()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#all-string-functions" class="md-nav__link">
     All String Functions
   </a>
@@ -3102,6 +3170,91 @@ men are created equal.
 <span class="x">rwock</span>
 <span class="x">y</span>
 </code></pre></div>
+<h2 id="formatting-numbers">Formatting Numbers</h2>
+<p>When you have a number and you want to print it with thousands and decimal separators. For example, you want to display the number of people who have viewed a page, or the percentage of people who have voted for an option in a poll.</p>
+<h3 id="number_format">number_format()</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="mf">1234.56</span><span class="p">;</span>
+<span class="c1">// $formatted1 is &quot;1,235&quot; - 1234.56 gets rounded up and , is</span>
+<span class="c1">// the thousands separator&quot;);</span>
+<span class="nv">$formatted1</span> <span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+<span class="c1">// Second argument specifies number of decimal places to use.</span>
+<span class="c1">// $formatted2 is 1,234.56</span>
+<span class="nv">$formatted2</span> <span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$number</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Third argument specifies decimal point character</span>
+<span class="c1">// Fourth argument specifies thousands separator</span>
+<span class="c1">// $formatted3 is 1.234,56</span>
+<span class="nv">$formatted3</span> <span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$number</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The number_format() function formats a number with decimal and thousands sepa‐
+rators. By default, it rounds the number to the nearest integer. If you want to preserve
+the entire number, but you don’t know ahead of time how many digits follow the decimal
+point in your number:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="mf">31415.92653</span><span class="p">;</span> <span class="c1">// your number</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$int</span><span class="p">,</span> <span class="nv">$dec</span><span class="p">)</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="nv">$number</span><span class="p">);</span>
+<span class="c1">// $formatted is 31,415.92653</span>
+<span class="nv">$formatted</span> <span class="o">=</span> <span class="nb">number_format</span><span class="p">(</span><span class="nv">$number</span><span class="p">,</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$dec</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="numberformatter">NumberFormatter</h3>
+<p>If you need to generate appropriate formats for a particular locale, use NumberFormatter:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="s1">&#39;1234.56&#39;</span><span class="p">;</span>
+<span class="c1">// $formatted1 is 1,234.56</span>
+<span class="nv">$usa</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NumberFormatter</span><span class="p">(</span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span> <span class="nx">NumberFormatter</span><span class="o">::</span><span class="na">DEFAULT_STYLE</span><span class="p">);</span>
+<span class="nv">$formatted1</span> <span class="o">=</span> <span class="nv">$usa</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+<span class="c1">// $formatted2 is 1 234,56</span>
+<span class="c1">// Note that it&#39;s a &quot;non breaking space (\u00A0) between the 1 and the 2</span>
+<span class="nv">$france</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NumberFormatter</span><span class="p">(</span><span class="s2">&quot;fr-FR&quot;</span><span class="p">,</span> <span class="nx">NumberFormatter</span><span class="o">::</span><span class="na">DEFAULT_STYLE</span><span class="p">);</span>
+<span class="nv">$formatted2</span> <span class="o">=</span> <span class="nv">$france</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The NumberFormatter class, part of the intl extension, uses the extensive formatting rules that are part of the ICU library to give you an easy and powerful way to format numbers appropriately for anywhere in the world. You can even do fancy things such as spell out a number in words.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="s1">&#39;1234.56&#39;</span><span class="p">;</span>
+<span class="nv">$france</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NumberFormatter</span><span class="p">(</span><span class="s2">&quot;fr-FR&quot;</span><span class="p">,</span> <span class="nx">NumberFormatter</span><span class="o">::</span><span class="na">SPELLOUT</span><span class="p">);</span>
+<span class="c1">// $formatted is &quot;mille-deux-cent-trente-quatre virgule cinq six&quot;</span>
+<span class="nv">$formatted</span> <span class="o">=</span> <span class="nv">$france</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>When you have a number and you want to print it with thousands and decimal separators. For
+instance, you want to display prices for items in a shopping cart.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="mf">1234.56</span><span class="p">;</span>
+<span class="c1">// US uses $ , and .</span>
+<span class="c1">// $formatted1 is $1,234.56</span>
+<span class="nv">$usa</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NumberFormatter</span><span class="p">(</span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span> <span class="nx">NumberFormatter</span><span class="o">::</span><span class="na">CURRENCY</span><span class="p">);</span>
+<span class="nv">$formatted1</span> <span class="o">=</span> <span class="nv">$usa</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+<span class="c1">// France uses , and €</span>
+<span class="c1">// $formatted2 is 1 234,56 €</span>
+<span class="nv">$france</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NumberFormatter</span><span class="p">(</span><span class="s2">&quot;fr-FR&quot;</span><span class="p">,</span> <span class="nx">NumberFormatter</span><span class="o">::</span><span class="na">CURRENCY</span><span class="p">);</span>
+<span class="nv">$formatted2</span> <span class="o">=</span> <span class="nv">$france</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nv">$number</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The NumberFormatter::CURRENCY format style formats a number by inserting the correct currency symbol, decimal, and thousands separators for the locale used to create the NumberFormatter object instance. It assumes that the currency to use is the one native to the locale—US Dollars for the en-US locale, Euro for the fr-FR locale, and soon.
+To produce the right format for a currency other than the locale’s native currency, use the formatCurrency() method. Its second argument lets you specify the currency to use. For example, what’s the correct way, in the USA, to format the price of something in Euro?</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$number</span> <span class="o">=</span> <span class="mf">1234.56</span><span class="p">;</span>
+<span class="c1">// US uses € , and . for Euro</span>
+<span class="c1">// $formatted is €1,234.56</span>
+<span class="nv">$usa</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NumberFormatter</span><span class="p">(</span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span> <span class="nx">NumberFormatter</span><span class="o">::</span><span class="na">CURRENCY</span><span class="p">);</span>
+<span class="nv">$formatted</span> <span class="o">=</span> <span class="nv">$usa</span><span class="o">-&gt;</span><span class="na">formatCurrency</span><span class="p">(</span><span class="nv">$number</span><span class="p">,</span> <span class="s1">&#39;EUR&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="printf">printf()</h3>
+<p>printf() family of functions, which allows you to convert decimal numbers to binary, octal, and hexadecimal numbers with a wide range of formatting, such as leading zeros and a choice between upper- and lowercase letters for hexadecimal numbers.</p>
+<p>For instance, say you want to print out HTML color values. You can use the %02X format specifier.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$red</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$green</span> <span class="o">=</span> <span class="mi">102</span><span class="p">;</span>
+<span class="nv">$blue</span> <span class="o">=</span> <span class="mi">204</span><span class="p">;</span>
+<span class="c1">// $color is &#39;#0066CC&#39;</span>
+<span class="nv">$color</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;#%02X%02X%02X&#39;</span><span class="p">,</span> <span class="nv">$red</span><span class="p">,</span> <span class="nv">$green</span><span class="p">,</span> <span class="nv">$blue</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h2 id="all-string-functions">All String Functions</h2>
 <p>The PHP string functions are part of the PHP core. No installation is required to use these functions.</p>
 <p>For more information, see <a href="https://www.php.net/manual/en/ref.strings.php">PHP String Functions</a></p>
@@ -3254,7 +3407,7 @@ men are created equal.
 <td>Inserts HTML line breaks in front of each newline in a string</td>
 </tr>
 <tr>
-<td>number_format()</td>
+<td><a href="#number_format">number_format()</a></td>
 <td>Formats a number with grouped thousands</td>
 </tr>
 <tr>
@@ -3266,11 +3419,11 @@ men are created equal.
 <td>Parses a query string into variables</td>
 </tr>
 <tr>
-<td>print()</td>
+<td><a href="../../Func/phpOutput/#print">print()</a></td>
 <td>Outputs one or more strings</td>
 </tr>
 <tr>
-<td>printf()</td>
+<td><a href="#printf">printf()</a></td>
 <td>Outputs a formatted string</td>
 </tr>
 <tr>
