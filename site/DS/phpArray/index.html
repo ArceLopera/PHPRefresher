@@ -1293,6 +1293,19 @@
     Modifying Arrays
   </a>
   
+    <nav class="md-nav" aria-label="Modifying Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    range
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1842,6 +1855,19 @@
     Modifying Arrays
   </a>
   
+    <nav class="md-nav" aria-label="Modifying Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    range
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2127,11 +2153,37 @@ or:
 <td>Create array containing variables and their values</td>
 </tr>
 <tr>
-<td>range()</td>
+<td><a href="#range">range()</a></td>
 <td>Creates an array containing a range of elements</td>
 </tr>
 </tbody>
 </table>
+<h4 id="range">range</h4>
+<p>The range() function creates an array containing a range of elements.
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<p>The advantage of using range() is its brevity, but this technique has a disadvantage: a large array can take up unnecessary memory.</p>
+<p>If you want range to skip steps, provide a third argument indicating how big each step should be. For example, range(1, 10, 2) returns an array containing 1, 3, 5, 7,9. It’s also valid for $start to be larger than $end. In this case, the numbers returned by range() are in descending order.
+range() can also be used to retrieve character sequences:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">l</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">m</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">n</span>
+ <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">o</span>
+ <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">p</span>
+<span class="p">)</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h3 id="update-information-in-arrays">Update Information in Arrays</h3>
 <table>
 <thead>

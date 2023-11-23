@@ -135,7 +135,40 @@ The PHP array functions are used to perform operations on arrays.
 |array_unique()|	Removes duplicate values from an array|
 |array_unshift()|	Adds one or more elements to the beginning of an array|
 |compact()|	Create array containing variables and their values|
-|range()|	Creates an array containing a range of elements|
+|[range()](#range)|	Creates an array containing a range of elements|
+
+#### range
+The range() function creates an array containing a range of elements.
+```php
+<?php
+$numbers = range(1, 10);
+print_r($numbers);
+?>
+```
+
+The advantage of using range() is its brevity, but this technique has a disadvantage: a large array can take up unnecessary memory.
+
+If you want range to skip steps, provide a third argument indicating how big each step should be. For example, range(1, 10, 2) returns an array containing 1, 3, 5, 7,9. It’s also valid for $start to be larger than $end. In this case, the numbers returned by range() are in descending order.
+range() can also be used to retrieve character sequences:
+```php
+<?php
+print_r(range('l', 'p'));
+?>
+```
+
+```php
+<?php
+Array
+(
+ [0] => l
+ [1] => m
+ [2] => n
+ [3] => o
+ [4] => p
+)
+
+?>
+```
 
 ### Update Information in Arrays
 |Function	|Description|

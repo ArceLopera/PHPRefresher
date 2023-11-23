@@ -947,6 +947,116 @@ rwock
 y
 ```
 
+##  Formatting Numbers
+
+When you have a number and you want to print it with thousands and decimal separators. For example, you want to display the number of people who have viewed a page, or the percentage of people who have voted for an option in a poll.
+
+### number_format()
+
+```php
+<?php
+$number = 1234.56;
+// $formatted1 is "1,235" - 1234.56 gets rounded up and , is
+// the thousands separator");
+$formatted1 = number_format($number);
+// Second argument specifies number of decimal places to use.
+// $formatted2 is 1,234.56
+$formatted2 = number_format($number, 2);
+// Third argument specifies decimal point character
+// Fourth argument specifies thousands separator
+// $formatted3 is 1.234,56
+$formatted3 = number_format($number, 2, ",", ".");
+?>
+```
+
+The number_format() function formats a number with decimal and thousands sepa‐
+rators. By default, it rounds the number to the nearest integer. If you want to preserve
+the entire number, but you don’t know ahead of time how many digits follow the decimal
+point in your number:
+
+```php
+<?php
+$number = 31415.92653; // your number
+list($int, $dec) = explode('.', $number);
+// $formatted is 31,415.92653
+$formatted = number_format($number, strlen($dec));
+?>
+```
+
+### NumberFormatter
+
+If you need to generate appropriate formats for a particular locale, use NumberFormatter:
+
+```php
+<?php
+$number = '1234.56';
+// $formatted1 is 1,234.56
+$usa = new NumberFormatter("en-US", NumberFormatter::DEFAULT_STYLE);
+$formatted1 = $usa->format($number);
+// $formatted2 is 1 234,56
+// Note that it's a "non breaking space (\u00A0) between the 1 and the 2
+$france = new NumberFormatter("fr-FR", NumberFormatter::DEFAULT_STYLE);
+$formatted2 = $france->format($number);
+
+?>
+```
+
+The NumberFormatter class, part of the intl extension, uses the extensive formatting rules that are part of the ICU library to give you an easy and powerful way to format numbers appropriately for anywhere in the world. You can even do fancy things such as spell out a number in words.
+
+```php
+<?php
+$number = '1234.56';
+$france = new NumberFormatter("fr-FR", NumberFormatter::SPELLOUT);
+// $formatted is "mille-deux-cent-trente-quatre virgule cinq six"
+$formatted = $france->format($number);
+?>
+```
+
+When you have a number and you want to print it with thousands and decimal separators. For
+instance, you want to display prices for items in a shopping cart.
+
+```php
+<?php
+$number = 1234.56;
+// US uses $ , and .
+// $formatted1 is $1,234.56
+$usa = new NumberFormatter("en-US", NumberFormatter::CURRENCY);
+$formatted1 = $usa->format($number);
+// France uses , and €
+// $formatted2 is 1 234,56 €
+$france = new NumberFormatter("fr-FR", NumberFormatter::CURRENCY);
+$formatted2 = $france->format($number);
+?>
+```
+
+The NumberFormatter::CURRENCY format style formats a number by inserting the correct currency symbol, decimal, and thousands separators for the locale used to create the NumberFormatter object instance. It assumes that the currency to use is the one native to the locale—US Dollars for the en-US locale, Euro for the fr-FR locale, and soon.
+To produce the right format for a currency other than the locale’s native currency, use the formatCurrency() method. Its second argument lets you specify the currency to use. For example, what’s the correct way, in the USA, to format the price of something in Euro?
+
+```php
+<?php
+$number = 1234.56;
+// US uses € , and . for Euro
+// $formatted is €1,234.56
+$usa = new NumberFormatter("en-US", NumberFormatter::CURRENCY);
+$formatted = $usa->formatCurrency($number, 'EUR');
+?>
+```
+
+### printf()
+
+printf() family of functions, which allows you to convert decimal numbers to binary, octal, and hexadecimal numbers with a wide range of formatting, such as leading zeros and a choice between upper- and lowercase letters for hexadecimal numbers.
+
+For instance, say you want to print out HTML color values. You can use the %02X format specifier.
+
+```php
+<?php
+$red = 0;
+$green = 102;
+$blue = 204;
+// $color is '#0066CC'
+$color = sprintf('#%02X%02X%02X', $red, $green, $blue);
+?>
+```
 
 ## All String Functions
 The PHP string functions are part of the PHP core. No installation is required to use these functions.
@@ -991,11 +1101,11 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |money_format()|	Returns a string formatted as a currency string|
 |nl_langinfo()|	Returns specific local information|
 |nl2br()|	Inserts HTML line breaks in front of each newline in a string|
-|number_format()|	Formats a number with grouped thousands|
+|[number_format()](#number_format)|	Formats a number with grouped thousands|
 |ord()|	Returns the ASCII value of the first character of a string|
 |parse_str()|	Parses a query string into variables|
-|print()|	Outputs one or more strings|
-|printf()|	Outputs a formatted string|
+|[print()](../Func/phpOutput.md#print)|	Outputs one or more strings|
+|[printf()](#printf)|	Outputs a formatted string|
 |quoted_printable_decode()|	Converts a quoted-printable string to an 8-bit string|
 |quoted_printable_encode()|	Converts an 8-bit string to a quoted printable string|
 |quotemeta()|	Quotes meta characters|

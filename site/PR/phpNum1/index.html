@@ -745,6 +745,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#handling-very-large-or-very-small-numbers" class="md-nav__link">
+    Handling Very Large or Very Small Numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Very Large or Very Small Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bcmath" class="md-nav__link">
+    Using BCMath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gmp" class="md-nav__link">
+    Using GMP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pecls-big_int-library" class="md-nav__link">
+    PECL’s big_int library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1836,6 +1870,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#handling-very-large-or-very-small-numbers" class="md-nav__link">
+    Handling Very Large or Very Small Numbers
+  </a>
+  
+    <nav class="md-nav" aria-label="Handling Very Large or Very Small Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-bcmath" class="md-nav__link">
+    Using BCMath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-gmp" class="md-nav__link">
+    Using GMP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pecls-big_int-library" class="md-nav__link">
+    PECL’s big_int library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2021,6 +2089,57 @@ Is the string 10e200 numeric? yes
 
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h2 id="handling-very-large-or-very-small-numbers">Handling Very Large or Very Small Numbers</h2>
+<p>You need to use numbers that are too large (or small) for PHP’s built-in floating-point numbers.
+Use either the BCMath or GMP libraries.</p>
+<h3 id="using-bcmath">Using BCMath</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// $sum = &quot;9999999999999999&quot;</span>
+<span class="nv">$sum</span> <span class="o">=</span> <span class="nb">bcadd</span><span class="p">(</span><span class="s1">&#39;1234567812345678&#39;</span><span class="p">,</span> <span class="s1">&#39;8765432187654321&#39;</span><span class="p">);</span>
+<span class="c1">// $sum is now a string</span>
+<span class="k">print</span> <span class="nv">$sum</span><span class="p">;</span> <span class="c1">// prints 9999999999999999</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The BCMath library is easy to use. You pass in your numbers as strings, and the function returns the sum (or difference, product, etc.) as a string. However, the range of actions you can apply to numbers using BCMath is limited to basic arithmetic.</p>
+<h3 id="using-gmp">Using GMP</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$sum</span> <span class="o">=</span> <span class="nb">gmp_add</span><span class="p">(</span><span class="s1">&#39;1234567812345678&#39;</span><span class="p">,</span> <span class="s1">&#39;8765432187654321&#39;</span><span class="p">);</span>
+<span class="c1">// $sum is now a GMP resource, not a string; use gmp_strval() to convert</span>
+<span class="k">print</span> <span class="nb">gmp_strval</span><span class="p">(</span><span class="nv">$sum</span><span class="p">);</span> <span class="c1">// prints 9999999999999999</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>While most members of the GMP family of functions accept integers and strings as arguments, they prefer to pass numbers around as resources, which are essentially pointers to internal representations of the numbers. So unlike BCMath functions, which return strings, GMP functions return only resources. You then pass the resource to any GMP function, and it acts as your number.</p>
+<p>The only downside is that when you want to view or use the resource with a non-GMP function, you need to explicitly convert it using gmp_strval() or gmp_intval().</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//Adding numbers using GMP</span>
+<span class="nv">$four</span> <span class="o">=</span> <span class="nb">gmp_add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// You can pass integers</span>
+<span class="nv">$eight</span> <span class="o">=</span> <span class="nb">gmp_add</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">);</span> <span class="c1">// Or strings</span>
+<span class="nv">$twelve</span> <span class="o">=</span> <span class="nb">gmp_add</span><span class="p">(</span><span class="nv">$four</span><span class="p">,</span> <span class="nv">$eight</span><span class="p">);</span> <span class="c1">// Or GMP resources</span>
+
+<span class="c1">// Raising a number to a power</span>
+<span class="nv">$pow</span> <span class="o">=</span> <span class="nb">gmp_pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="c1">// Computing large factorials very quickly</span>
+<span class="nv">$factorial</span> <span class="o">=</span> <span class="nb">gmp_fact</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="c1">// Finding a GCD</span>
+<span class="nv">$gcd</span> <span class="o">=</span> <span class="nb">gmp_gcd</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="mi">456</span><span class="p">);</span>
+<span class="c1">// Other fancy mathematical stuff</span>
+<span class="nv">$legendre</span> <span class="o">=</span> <span class="nb">gmp_legendre</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The BCMath and GMP libraries aren’t necessarily enabled with all PHP configurations. BCMath is bundled with PHP, so it’s likely to be available. However, GMP isn’t bundled with PHP, so you’ll need to download, install it, and instruct PHP to use it during the configuration process. Check the values of function_defined('bcadd') and function_defined('gmp_init') to see if you can use BCMath and GMP.</p>
+<h3 id="pecls-big_int-library">PECL’s big_int library</h3>
+<p>It’s faster than BCMath, and almost as powerful as GMP. However, whereas GMP is licensed under the LGPL, big_int is under a BSD-style license.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$two</span> <span class="o">=</span> <span class="nx">bi_from_str</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">);</span>
+<span class="nv">$four</span> <span class="o">=</span> <span class="nx">bi_add</span><span class="p">(</span><span class="nv">$two</span><span class="p">,</span> <span class="nv">$two</span><span class="p">);</span>
+<span class="c1">// Use bi_to_str() to get strings from big_int resources</span>
+<span class="k">print</span> <span class="nx">bi_to_str</span><span class="p">(</span><span class="nv">$four</span><span class="p">);</span> <span class="c1">// prints 4</span>
+<span class="c1">// Computing large factorials very quickly</span>
+<span class="nv">$factorial</span> <span class="o">=</span> <span class="nx">bi_fact</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
               

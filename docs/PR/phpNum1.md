@@ -205,3 +205,73 @@ echo $int_cast;
 </body>
 </html>
 ```
+
+##  Handling Very Large or Very Small Numbers
+
+You need to use numbers that are too large (or small) for PHP’s built-in floating-point numbers.
+Use either the BCMath or GMP libraries.
+
+### Using BCMath
+
+``` php
+<?php
+// $sum = "9999999999999999"
+$sum = bcadd('1234567812345678', '8765432187654321');
+// $sum is now a string
+print $sum; // prints 9999999999999999
+?>
+```
+
+The BCMath library is easy to use. You pass in your numbers as strings, and the function returns the sum (or difference, product, etc.) as a string. However, the range of actions you can apply to numbers using BCMath is limited to basic arithmetic.
+
+
+### Using GMP
+
+``` php
+<?php
+$sum = gmp_add('1234567812345678', '8765432187654321');
+// $sum is now a GMP resource, not a string; use gmp_strval() to convert
+print gmp_strval($sum); // prints 9999999999999999
+?>
+```
+
+While most members of the GMP family of functions accept integers and strings as arguments, they prefer to pass numbers around as resources, which are essentially pointers to internal representations of the numbers. So unlike BCMath functions, which return strings, GMP functions return only resources. You then pass the resource to any GMP function, and it acts as your number.
+
+The only downside is that when you want to view or use the resource with a non-GMP function, you need to explicitly convert it using gmp_strval() or gmp_intval().
+
+``` php
+<?php
+//Adding numbers using GMP
+$four = gmp_add(2, 2); // You can pass integers
+$eight = gmp_add('4', '4'); // Or strings
+$twelve = gmp_add($four, $eight); // Or GMP resources
+
+// Raising a number to a power
+$pow = gmp_pow(2, 10);
+// Computing large factorials very quickly
+$factorial = gmp_fact(20);
+// Finding a GCD
+$gcd = gmp_gcd(123, 456);
+// Other fancy mathematical stuff
+$legendre = gmp_legendre(1, 7);
+
+?>
+```
+
+The BCMath and GMP libraries aren’t necessarily enabled with all PHP configurations. BCMath is bundled with PHP, so it’s likely to be available. However, GMP isn’t bundled with PHP, so you’ll need to download, install it, and instruct PHP to use it during the configuration process. Check the values of function_defined('bcadd') and function_defined('gmp_init') to see if you can use BCMath and GMP.
+
+###  PECL’s big_int library
+
+It’s faster than BCMath, and almost as powerful as GMP. However, whereas GMP is licensed under the LGPL, big_int is under a BSD-style license.
+
+``` php
+<?php
+$two = bi_from_str('2');
+$four = bi_add($two, $two);
+// Use bi_to_str() to get strings from big_int resources
+print bi_to_str($four); // prints 4
+// Computing large factorials very quickly
+$factorial = bi_fact(20);
+
+?>
+```	
