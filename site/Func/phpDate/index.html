@@ -911,8 +911,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-date-with-mktime" class="md-nav__link">
-    Create a Date With mktime()
+  <a href="#datetime-object" class="md-nav__link">
+    DateTime Object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getdate" class="md-nav__link">
+    getdate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localtime" class="md-nav__link">
+    localtime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mktime" class="md-nav__link">
+    mktime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmktime" class="md-nav__link">
+    gmktime()
   </a>
   
 </li>
@@ -920,6 +948,13 @@
         <li class="md-nav__item">
   <a href="#create-a-date-from-a-string-with-strtotime" class="md-nav__link">
     Create a Date From a String With strtotime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printing-a-date-or-time-in-a-specified-format" class="md-nav__link">
+    Printing a Date or Time in a Specified Format
   </a>
   
 </li>
@@ -1731,8 +1766,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-date-with-mktime" class="md-nav__link">
-    Create a Date With mktime()
+  <a href="#datetime-object" class="md-nav__link">
+    DateTime Object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getdate" class="md-nav__link">
+    getdate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localtime" class="md-nav__link">
+    localtime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mktime" class="md-nav__link">
+    mktime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmktime" class="md-nav__link">
+    gmktime()
   </a>
   
 </li>
@@ -1740,6 +1803,13 @@
         <li class="md-nav__item">
   <a href="#create-a-date-from-a-string-with-strtotime" class="md-nav__link">
     Create a Date From a String With strtotime()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printing-a-date-or-time-in-a-specified-format" class="md-nav__link">
+    Printing a Date or Time in a Specified Format
   </a>
   
 </li>
@@ -1761,6 +1831,7 @@
   <h1>Date/Time</h1>
 
 <p>The PHP date() function is used to format a date and/or a time.</p>
+<p>The function date() (and the DateTime object) can produce a variety of formatted time and date strings.</p>
 <h2 id="date-function">Date() Function</h2>
 <p>The PHP date() function formats a timestamp to a more readable date and time.</p>
 <p>date(format,timestamp)</p>
@@ -1823,15 +1894,238 @@
 <span class="k">echo</span> <span class="s2">&quot;The time is &quot;</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;h:i:sa&quot;</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div></p>
-<h2 id="create-a-date-with-mktime">Create a Date With mktime()</h2>
+<h2 id="datetime-object">DateTime Object</h2>
+<p>The DateTime object can be used to format a date and/or a time.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use getdate() or localtime() if you want time parts.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$now_1</span> <span class="o">=</span> <span class="nb">getdate</span><span class="p">();</span>
+<span class="nv">$now_2</span> <span class="o">=</span> <span class="nb">localtime</span><span class="p">();</span>
+<span class="k">print</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$now_1</span><span class="p">[</span><span class="s1">&#39;hours&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nv">$now_1</span><span class="p">[</span><span class="s1">&#39;minutes&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nv">$now_1</span><span class="p">[</span><span class="s1">&#39;seconds&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;</span><span class="si">$now_2[2]</span><span class="s2">:</span><span class="si">$now_2[1]</span><span class="s2">:</span><span class="si">$now_2[0]</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>18:23:45
+18:23:45
+</code></pre></div>
+<p>Use DateTime::createFromFormat() if you want date parts.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// 7:45:03 PM on March 10, 1975, in a particular timezone</span>
+<span class="nv">$then</span> <span class="o">=</span> <span class="nx">DateTime</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="nx">DateTime</span><span class="o">::</span><span class="na">ATOM</span><span class="p">,</span> <span class="s2">&quot;1975-03-10T19:45:03-04:00&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The createFromFormat() method of the DateTime class behaves more flexibly. Instead of accepting already-chopped-up time parts, you give it a formatted time or date string and tell it the structure of that string. It then decomposes the parts properly and calculates the correct timestamp. In addition to the format strings listed in Recipe 3.4 that the date() function understands, createFromFormat() also uses the characters listed below.</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>space or tab</td>
+<td></td>
+</tr>
+<tr>
+<td>#</td>
+<td>Any one of the separation bytes ;, :, /, ., ,, -, (, )</td>
+</tr>
+<tr>
+<td>;, :, /, ., ,, -, (, )</td>
+<td>Literal character</td>
+</tr>
+<tr>
+<td>?</td>
+<td>Any byte (not a character, just one byte)</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Any number of bytes until the next digit or separation character</td>
+</tr>
+<tr>
+<td>!</td>
+<td>Resetall fieldsto“startof Unixepoch”values(without this,anyunspecifiedfieldswillbeset tothecurrent</td>
+</tr>
+<tr>
+<td>date/time)</td>
+<td></td>
+</tr>
+<tr>
+<td>|</td>
+<td>Reset any unparsed fields to “start of Unix epoch” values</td>
+</tr>
+<tr>
+<td>+</td>
+<td>Treat unparsed trailing data as a warning rather than an error</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$text</span> <span class="o">=</span> <span class="s2">&quot;Birthday: May 11, 1918.&quot;</span><span class="p">;</span>
+<span class="nv">$when</span> <span class="o">=</span> <span class="nx">DateTime</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s2">&quot;*: F j, Y.|&quot;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+<span class="c1">// $formatted is &quot;Saturday, 11-May-18 00:00:00 UTC&quot;</span>
+<span class="nv">$formatted</span> <span class="o">=</span> <span class="nv">$when</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DateTime</span><span class="o">::</span><span class="na">RFC850</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$when</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s2">&quot;@163727100&quot;</span><span class="p">);</span>
+<span class="nv">$when</span><span class="o">-&gt;</span><span class="na">setTimezone</span><span class="p">(</span><span class="k">new</span> <span class="nx">DateTimeZone</span><span class="p">(</span><span class="s1">&#39;America/Los_Angeles&#39;</span><span class="p">));</span>
+<span class="nv">$parts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nv">$when</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y/m/d/H/i/s&#39;</span><span class="p">));</span>
+<span class="c1">// Year, month, day, hour, minute, second</span>
+<span class="c1">// $parts is array(&#39;1975&#39;, &#39;03&#39;,&#39;10&#39;, &#39;16&#39;,&#39;45&#39;, &#39;00&#39;))</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+The @ character tells DateTime that the rest of the argument to the constructor is an epoch timestamp. When specifying a timestamp as the initial value, DateTime ignores any time zone also passed to the constructor, so setting that requires an additional call to setTimezone(). Once that’s done, format() can generate any parts you need.</p>
+<h2 id="getdate">getdate()</h2>
+<p>Both localtime() and getdate() return arrays whose elements are the different pieces of the specified date and time. The associative array getdate() returns the key/value pairs listed below.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seconds</td>
+<td>Seconds</td>
+</tr>
+<tr>
+<td>minutes</td>
+<td>Minutes</td>
+</tr>
+<tr>
+<td>hours</td>
+<td>Hours</td>
+</tr>
+<tr>
+<td>mday</td>
+<td>Day of the month</td>
+</tr>
+<tr>
+<td>wday</td>
+<td>Day of the week, numeric (Sunday is 0, Saturday is 6)</td>
+</tr>
+<tr>
+<td>mon</td>
+<td>Month, numeric</td>
+</tr>
+<tr>
+<td>year</td>
+<td>Year, numeric (4 digits)</td>
+</tr>
+<tr>
+<td>yday</td>
+<td>Day of the year, numeric (e.g., 299)</td>
+</tr>
+<tr>
+<td>weekday</td>
+<td>Day of the week, textual, full (e.g., “Friday”)</td>
+</tr>
+<tr>
+<td>month</td>
+<td>Month, textual, full (e.g., “January”)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Seconds since epoch (what time() returns)</td>
+</tr>
+</tbody>
+</table>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//Finding the month, day, and year</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="nb">getdate</span><span class="p">();</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;%s %d, %d&#39;</span><span class="p">,</span><span class="nv">$a</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">],</span><span class="nv">$a</span><span class="p">[</span><span class="s1">&#39;mday&#39;</span><span class="p">],</span><span class="nv">$a</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>January 10, 2023
+</code></pre></div></p>
+<h2 id="localtime">localtime()</h2>
+<p>The function localtime() also returns an array of time and date parts. It also takes an epoch timestamp as an optional first argument, as well as a boolean as an optional second argument. If that second argument is true, localtime() returns an associative array instead of a numerically indexed array. The keys of that array are the same as the members of the tm_struct structure that the C function localtime() returns, as shown below.</p>
+<table>
+<thead>
+<tr>
+<th>Numeric position</th>
+<th>Key Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>tm_sec Second</td>
+</tr>
+<tr>
+<td>1</td>
+<td>tm_min Minutes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>tm_hour Hour</td>
+</tr>
+<tr>
+<td>3</td>
+<td>tm_mday Day of the month</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tm_mon Month of the year (January is 0)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>tm_year Years since 1900</td>
+</tr>
+<tr>
+<td>6</td>
+<td>tm_wday Day of the week (Sunday is 0)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>tm_yday Day of the year</td>
+</tr>
+<tr>
+<td>8</td>
+<td>tm_isdst Is daylight saving time in effect?</td>
+</tr>
+</tbody>
+</table>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="nb">localtime</span><span class="p">();</span>
+<span class="nv">$a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$a</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1900</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;</span><span class="si">$a[4]</span><span class="s2">/</span><span class="si">$a[3]</span><span class="s2">/</span><span class="si">$a[5]</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>1/10/2023
+</code></pre></div></p>
+<p>The month is incremented by 1 before printing because localtime() starts counting months with 0 for January, but we want to display 1 if the current month is January. Similarly, the year is incremented by 1900 because localtime() starts counting years with 0 for 1900.</p>
+<p>The functions getdate() and localtime() both use the same internal implementation to generate the returned date and time parts. They differ only in the format of the returned arrays and in some of the information they return. (For example, local time() includes whether DST is in effect at the specified time.)</p>
+<h2 id="mktime">mktime()</h2>
 <p>The optional timestamp parameter in the date() function specifies a timestamp. If omitted, the current date and time will be used (as in the examples above).</p>
 <p>The PHP mktime() function returns the Unix timestamp for a date. The Unix timestamp contains the number of seconds between the Unix Epoch (January 1 1970 00:00:00 GMT) and the time specified.</p>
+<p>Use mktime() if your time and date parts are in the local time zone.</p>
 <p>Syntax
 <div class="highlight"><pre><span></span><code><span class="x">mktime(hour, minute, second, month, day, year)</span>
 </code></pre></div></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$d</span><span class="o">=</span><span class="nb">mktime</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">2014</span><span class="p">);</span>
 <span class="k">echo</span> <span class="s2">&quot;Created date is &quot;</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;Y-m-d h:i:sa&quot;</span><span class="p">,</span> <span class="nv">$d</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The functions mktime() and gmmktime() each take a date and time’s parts (hour, minute, second, month, day, year) and return the appropriate Unix epoch timestamp. The components are treated as local time by mktime(), while gmmktime() treats them as a date and time in UTC.</p>
+<h2 id="gmktime">gmktime()</h2>
+<p>Use gmmktime() if your time and date parts are in the GMT time zone.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// 7:45:03 PM on March 10, 1975, in GMT</span>
+<span class="nv">$then</span> <span class="o">=</span> <span class="nb">gmmktime</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1975</span><span class="p">);</span>
+
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="create-a-date-from-a-string-with-strtotime">Create a Date From a String With strtotime()</h2>
@@ -1874,6 +2168,329 @@
 <span class="k">echo</span> <span class="s2">&quot;There are &quot;</span> <span class="o">.</span> <span class="nv">$d2</span> <span class="o">.</span><span class="s2">&quot; days until 4th of July.&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h2 id="printing-a-date-or-time-in-a-specified-format">Printing a Date or Time in a Specified Format</h2>
+<p>Both date() and DateTime::format() use the same code internally for generating formatted time and date strings. They are flexible functions that can produce a formatted time string with a variety of components. The format characters for these functions are listed below.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Character</th>
+<th>Description</th>
+<th>Range or examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hour</td>
+<td>H</td>
+<td>Hour, numeric, 24-hour clock, leading zero</td>
+<td>00–23</td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>h</td>
+<td>Hour, numeric, 12-hour clock, leading zero</td>
+<td>01–12</td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>G</td>
+<td>Hour, numeric, 24-hour clock</td>
+<td>0–23</td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>g</td>
+<td>Hour, numeric, 12-hour clock</td>
+<td>1–12</td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>A</td>
+<td>Ante/Post Meridiem designation</td>
+<td>AM, PM</td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>a</td>
+<td>Ante/Post Meridiem designation</td>
+<td>am, pm</td>
+</tr>
+<tr>
+<td>Minute</td>
+<td>i</td>
+<td>Minute, numeric</td>
+<td>00–59</td>
+</tr>
+<tr>
+<td>Second</td>
+<td>s</td>
+<td>Second, numeric</td>
+<td>00–59</td>
+</tr>
+<tr>
+<td>Second</td>
+<td>u</td>
+<td>Microseconds, string</td>
+<td>000000–999999</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>d</td>
+<td>Day of the month, numeric, leading zero</td>
+<td>01–31</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>j</td>
+<td>Day of the month, numeric</td>
+<td>1–31</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>z</td>
+<td>Day of the year, numeric</td>
+<td>0–365</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>N</td>
+<td>Day of the week, numeric (Monday is 1)</td>
+<td>1–7</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>w</td>
+<td>Day of the week, numeric (Sunday is 0)</td>
+<td>0–6</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>S</td>
+<td>Englishordinalsuffixfordayofthemonth,textual</td>
+<td>“st,” “th,” “nd,” “rd”</td>
+</tr>
+<tr>
+<td>Week</td>
+<td>D</td>
+<td>Abbreviated weekday name</td>
+<td>Mon, Tue, Wed, Thu, Fri, Sat, Sun</td>
+</tr>
+<tr>
+<td>Week</td>
+<td>l</td>
+<td>Full weekday name</td>
+<td>Monday, Tuesday, Wednesday Thursday, Friday, Saturday, Sunday</td>
+</tr>
+<tr>
+<td>Week</td>
+<td>W</td>
+<td>ISO8601:1988 week number in the year,numeric, week 1 is the first week that has at least 4 days in the current year, Monday is the first day of the week</td>
+<td>1–53</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>F</td>
+<td>Full month name</td>
+<td>January–December</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>M</td>
+<td>Abbreviated month name</td>
+<td>Jan–Dec</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>m</td>
+<td>Month, numeric, leading zero</td>
+<td>01–12</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>n</td>
+<td>Month, numeric</td>
+<td>1–12</td>
+</tr>
+<tr>
+<td>Month</td>
+<td>t</td>
+<td>Month length in days, numeric</td>
+<td>28, 29, 30, 31</td>
+</tr>
+<tr>
+<td>Year</td>
+<td>Y</td>
+<td>Year, numeric, including century</td>
+<td>e.g., 2016</td>
+</tr>
+<tr>
+<td>Year</td>
+<td>y</td>
+<td>Year without century, numeric</td>
+<td>e.g., 16</td>
+</tr>
+<tr>
+<td>Year</td>
+<td>o</td>
+<td>ISO 8601 year with century; numeric; the fourdigityearcorrespondingtotheISOweek number; sameas Y exceptiftheISOweek number belongs to the previous or next year, that year is used instead</td>
+<td>e.g. 2016</td>
+</tr>
+<tr>
+<td>Year</td>
+<td>L</td>
+<td>Leap year flag (yes is 1)</td>
+<td>0, 1</td>
+</tr>
+<tr>
+<td>Time zone</td>
+<td>O</td>
+<td>Hour offset from GMT, ±HHMM (e.g., −0400, +0230)</td>
+<td>−1200–+1200</td>
+</tr>
+<tr>
+<td>Time zone</td>
+<td>P</td>
+<td>Like O, but with a colon −12:00</td>
+<td>–+12:00</td>
+</tr>
+<tr>
+<td>Time zone</td>
+<td>Z</td>
+<td>Seconds offset from GMT; west of GMT is negative, east of GMT is positive</td>
+<td>-43200–50400</td>
+</tr>
+<tr>
+<td>Time zone</td>
+<td>e</td>
+<td>Time zone identifier</td>
+<td>e.g., America/New_York</td>
+</tr>
+<tr>
+<td>Time zone</td>
+<td>T</td>
+<td>Time zone abbreviation</td>
+<td>e.g., EDT</td>
+</tr>
+<tr>
+<td>Time zone</td>
+<td>I</td>
+<td>Daylight saving time flag (yes is 1)</td>
+<td>0, 1</td>
+</tr>
+<tr>
+<td>Compound</td>
+<td>c</td>
+<td>ISO 8601–formatted date and time</td>
+<td>e.g., 2012-09-06T15:29:34+0000</td>
+</tr>
+<tr>
+<td>Compound</td>
+<td>r</td>
+<td>RFC 2822–formatted date</td>
+<td>e.g., Thu, 22 Aug 2002 16:01:07 +0200</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>U</td>
+<td>Seconds since the Unix epoch</td>
+<td>0−2147483647</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>B</td>
+<td>Swatch Internet time</td>
+<td>000–999</td>
+</tr>
+</tbody>
+</table>
+<p>Format characters such as F, M, or D, which generate words, not numbers, produce output
+in English.</p>
+<p>There are also some handy constants for common date formats that represent the format
+string to be passed to date() or DateTime::format(). These constants are listed below.</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Class constant</th>
+<th>Value</th>
+<th>Example</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE_ATOM</td>
+<td>DateTime::ATOM</td>
+<td>Y-m-d<br>TH:i:sP</td>
+<td>2013-02-22<br>T20:25:31+00:00</td>
+<td>Atom Syndication format</td>
+</tr>
+<tr>
+<td>DATE_ISO8601</td>
+<td>DateTime::ISO8601</td>
+<td>Y-m-d<br>TH:i:sO</td>
+<td>2013-02-22<br>T20:25:31+0000</td>
+<td>ISO 8601</td>
+</tr>
+<tr>
+<td>DATE_RFC822</td>
+<td>DateTime::RFC822</td>
+<td>D, d M y <br> H:i:s O</td>
+<td>Fri, 22 Feb 13 <br>20:25:31 +0000</td>
+<td>Email messages</td>
+</tr>
+<tr>
+<td>DATE_RFC850</td>
+<td>DateTime::RFC850</td>
+<td>l, d-M-y <br> H:i:s T</td>
+<td>Friday, 22-Feb-13 <br>20:25:31 UTC</td>
+<td>Usenet messages</td>
+</tr>
+<tr>
+<td>DATE_RFC1036</td>
+<td>DateTime::RFC1036</td>
+<td>D, d M y <br> H:i:s O</td>
+<td>Fri, 22 Feb 13 <br>20:25:31 +0000</td>
+<td>Usenet messages</td>
+</tr>
+<tr>
+<td>DATE_RFC1123</td>
+<td>DateTime::RFC1123</td>
+<td>D, d M Y <br>H:i:s O</td>
+<td>Fri, 22 Feb 2013 <br>20:25:31 +0000</td>
+<td></td>
+</tr>
+<tr>
+<td>DATE_RFC2822</td>
+<td>DateTime::RFC2822</td>
+<td>D, d M Y <br>H:i:s O</td>
+<td>Fri, 22 Feb 2013 <br>20:25:31 +0000</td>
+<td>E-mail messages</td>
+</tr>
+<tr>
+<td>DATE_RFC3339</td>
+<td>DateTime::RFC3339</td>
+<td>Y-m-d<br>TH:i:sP</td>
+<td>2013-02-22<br>T20:25:31+00:00</td>
+<td></td>
+</tr>
+<tr>
+<td>DATE_RSS</td>
+<td>DateTime::RSS</td>
+<td>D, d M Y <br>H:i:s O</td>
+<td>Fri, 22 Feb 2013 <br>20:25:31 +0000</td>
+<td>RSS feeds</td>
+</tr>
+<tr>
+<td>DATE_W3C</td>
+<td>DateTime::W3C</td>
+<td>Y-m-d<br>TH:i:sP</td>
+<td>2013-02-22<br>T20:25:31+00:00</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
               
             </article>
