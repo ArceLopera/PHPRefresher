@@ -290,6 +290,31 @@ echo "There are " . $d2 ." days until 4th of July.";
 ?>
 ```
 
+If you find yourself with a date or time string with a known format, but that is not parseable by strtotime(), you can still create DateTime objects based on the string by using DateTime::createFromFormat().
+
+``` php
+<?php
+$dates = array('01/02/2015', '03/06/2015', '09/08/2015');
+foreach ($dates as $date) {
+ $default = new DateTime($date);
+ $day_first = DateTime::createFromFormat('d/m/Y|', $date);
+ printf("The default interpretation is %s\n but day-first is %s.\n",
+ $default->format(DateTime::RFC850),
+ $day_first->format(DateTime::RFC850));
+}
+
+?>
+```
+
+```
+The default interpretation is Friday, 02-Jan-15 00:00:00 UTC
+ but day-first is Sunday, 01-Feb-15 00:00:00 UTC.
+The default interpretation is Friday, 06-Mar-15 00:00:00 UTC
+ but day-first is Wednesday, 03-Jun-15 00:00:00 UTC.
+The default interpretation is Tuesday, 08-Sep-15 00:00:00 UTC
+ but day-first is Sunday, 09-Aug-15 00:00:00 UTC.
+```
+
 ## Printing a Date or Time in a Specified Format
 
 Both date() and DateTime::format() use the same code internally for generating formatted time and date strings. They are flexible functions that can produce a formatted time string with a variety of components. The format characters for these functions are listed below.
@@ -353,3 +378,228 @@ string to be passed to date() or DateTime::format(). These constants are listed 
 |DATE_RSS| DateTime::RSS| D, d M Y <br>H:i:s O|Fri, 22 Feb 2013 <br>20:25:31 +0000| RSS feeds|
 |DATE_W3C| DateTime::W3C| Y-m-d<br>TH:i:sP| 2013-02-22<br>T20:25:31+00:00| |
 
+##  Calculating the difference between two dates
+
+```php
+<?php
+// 7:32:56 pm on May 10, 1965
+$first = new DateTime("1965-05-10 7:32:56pm",
+ new DateTimeZone('America/New_York'));
+// 4:29:11 am on November 20, 1962
+$second = new DateTime("1962-11-20 4:29:11am",
+ new DateTimeZone('America/New_York'));
+$diff = $second->diff($first);
+printf("The two dates have %d weeks, %s days, " .
+ "%d hours, %d minutes, and %d seconds " .
+ "elapsed between them.",
+ floor($diff->format('%a') / 7),
+ $diff->format('%a') % 7,
+ $diff->format('%h'),
+ $diff->format('%i'),
+ $diff->format('%s'));
+?>
+```
+
+```
+The two dates have 128 weeks, 6 days, 15 hours, 3 minutes, and 45 seconds elapsed between them.
+```
+
+```php
+<?php
+//Calculating the elapsed-time difference between two dates
+// 7:32:56 pm on May 10, 1965
+$first_local = new DateTime("1965-05-10 7:32:56pm",
+ new DateTimeZone('America/New_York'));
+ // 4:29:11 am on November 20, 1962
+$second_local = new DateTime("1962-11-20 4:29:11am",
+ new DateTimeZone('America/New_York'));
+$first = new DateTime('@' . $first_local->getTimestamp());
+$second = new DateTime('@' . $second_local->getTimestamp());
+$diff = $second->diff($first);
+printf("The two dates have %d weeks, %s days, " .
+ "%d hours, %d minutes, and %d seconds " .
+ "elapsed between them.",
+ floor($diff->format('%a') / 7),
+ $diff->format('%a') % 7,
+ $diff->format('%h'),
+ $diff->format('%i'),
+ $diff->format('%s'));
+
+?>
+```
+
+```
+The two dates have 128 weeks, 6 days, 14 hours, 3 minutes, and 45 seconds elapsed between them.
+```
+
+The DateTime objects created with a format string of @ plus an epoch timestamp always have a time zone of UTC, so their difference is not affected by any daylight saving time or other local time adjustments.
+
+## Adding and subtracting a date interval
+
+The add() and sub() methods of DateTime modify the DateTime method they are called on by whatever amount is specified in the interval. The average human gestation time is 40 weeks, so an interval of P40W walks back the birthday to 40 weeks earlier, approximating conception time.
+
+```php
+<?php
+$birthday = new DateTime('March 10, 1975');
+// When is 40 weeks before $birthday?
+$human_gestation = new DateInterval('P40W');
+$birthday->sub($human_gestation);
+print $birthday->format(DateTime::RFC850);
+print "\n";
+// What if it was an elephant, not a human?
+$elephant_gestation = new DateInterval('P616D');
+$birthday->add($elephant_gestation);
+print $birthday->format(DateTime::RFC850);
+
+?>
+```
+
+A DateTime object’s modify() method accepts, instead of a DateInterval object, a string that strtotime() understands. This provides an easy way to find relative dates like “next Tuesday” from a given object.
+
+``` php
+<?php
+$year = 2016;
+$when = new DateTime("November 1, $year");
+if ($when->format('D') != 'Mon') {
+ $when->modify("next Monday");
+}
+$when->modify("next Tuesday");
+print "In $year, US election day is on the " .
+ $when->format('jS') . ' day of November.';
+
+?>
+```
+
+
+##  Finding the Day in a Week, Month, or Year
+
+When you want to know the day or week of the year, the day of the week, or the day of the month. For example, you want to print a special message every Monday, or on the first of every month.
+
+```php
+<?php
+print "Today is day " . date('d') . ' of the month and ' . date('z') .
+ ' of the year.';
+print "\n";
+$birthday = new DateTime('January 17, 1706', new DateTimeZone('America/New_York'));
+print "Benjamin Franklin was born on a " . $birthday->format('l') . ", " .
+"day " . $birthday->format('N') . " of the week.";
+
+?>
+```
+
+The functions date() and DateTime::format() use the same format characters.
+
+|Type| Character| Description| Range|
+|---|---|---|---|
+|Day| d| Day of the month, numeric, leading zero |01–31|
+|Day| j| Day of the month, numeric |1–31|
+|Day| z| Day of the year, numeric |0–365|
+|Day |N| Day of the week, numeric (Monday is 1)| 1–7|
+|Day| w| Day of the week, numeric (Sunday is 0) |0–6|
+|Day |S| English ordinal suffix for day of the month, textual |st, th,nd, rd|
+|Week| D| Abbreviated weekday name |Mon, Tue, Wed, Thu, Fri, Sat, Sun|
+|Week| l| Full weekday name| Monday, Tuesday, Wednesday, Thursday, Friday, Saturday,Sunday|
+|Week| W| ISO 8601:1988 week number in the year, numeric, week 1 is the first week that has at least 4 days in the current year, Monday is the first day of the week|1–53|
+
+## Validating Dates
+
+The function checkdate() returns true if $month is between 1 and 12, $year is between 1 and 32767, and $day is between 1 and the correct maximum number of days for $month and $year. Leap years are correctly handled by checkdate(), and dates are rendered using the Gregorian calendar.
+
+```php
+<?php
+// $ok is true - March 10, 1993 is a valid date
+$ok = checkdate(3, 10, 1993);
+// $not_ok is false - February 30, 1962 is not a valid date
+$not_ok = checkdate(2, 30, 1962);
+?>
+```
+
+```php
+<?php
+checkbirthdate()
+function checkbirthdate($month,$day,$year) {
+ $min_age = 18;
+ $max_age = 122;
+ if (! checkdate($month,$day,$year)) {
+ return false;
+ }
+ $now = new DateTime();
+ $then_formatted = sprintf("%d-%d-%d", $year, $month, $day);
+ $then = DateTime::createFromFormat("Y-n-j|",$then_formatted);
+ $age = $now->diff($then);
+ if (($age->y < $min_age)|| ($age->y > $max_age)) {
+ return FALSE;
+ }
+ else {
+ return TRUE;
+ }
+}
+// check December 3, 1974
+if (checkbirthdate(12,3,1974)) {
+ print "You may use this web site.";
+} else {
+ print "You are too young (or too old!!) to proceed.";
+}
+?>
+```
+
+##  Generating a High-Precision Time
+
+When you need to measure time with finer than one-second resolution—for example, to gen‐
+erate a unique ID or benchmark a function call.
+
+```php
+<?php
+$start = microtime(true);
+for ($i = 0; $i < 1000; $i++) {
+ preg_match('/age=\d{1,5}/',$_SERVER['QUERY_STRING']);
+}
+$end = microtime(true);
+$elapsed = $end - $start;
+?>
+```
+
+## Generating Time Ranges
+
+When you need to generate a range of dates or times. Use the DatePeriod class, available starting with PHP 5.3.0. Its constructor accepts a flexible combination of options that lets you control the range length, time between items in the range, and how many items there are in the range.
+
+```php
+<?php
+// Start on August 1
+$start = new DateTime('August 1, 2014');
+// End date is exclusive, so this will stop on August 31
+$end = new DateTime('September 1, 2014');
+// Go 1 day at a time
+$interval = new DateInterval('P1D');
+$range1 = new DatePeriod($start, $interval, $end);
+?>
+```
+
+Here’s another way to do the same thing:
+
+```php
+<?php
+// Start on August 1
+$start = new DateTime('August 1, 2014');
+// Go 1 day at a time
+$interval= new DateInterval('P1D');
+
+// Recur 30 times more after the first occurrence.
+$recurrences = 30;
+$range2 = new DatePeriod($start, $interval, $recurrences);
+
+?>
+```
+
+and a third way:
+
+```php
+<?php
+// using the ISO 8601 specified format for describing date ranges
+$range3 = new DatePeriod('R30/2014-08-01T00:00:00Z/P1D');
+
+foreach ($range1 as $d) {
+ print "A day in August is " . $d->format('d') . "\n";
+}
+?>
+```
