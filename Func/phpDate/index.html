@@ -959,6 +959,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#calculating-the-difference-between-two-dates" class="md-nav__link">
+    Calculating the difference between two dates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-and-subtracting-a-date-interval" class="md-nav__link">
+    Adding and subtracting a date interval
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-the-day-in-a-week-month-or-year" class="md-nav__link">
+    Finding the Day in a Week, Month, or Year
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-dates" class="md-nav__link">
+    Validating Dates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-high-precision-time" class="md-nav__link">
+    Generating a High-Precision Time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-time-ranges" class="md-nav__link">
+    Generating Time Ranges
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1814,6 +1856,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#calculating-the-difference-between-two-dates" class="md-nav__link">
+    Calculating the difference between two dates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-and-subtracting-a-date-interval" class="md-nav__link">
+    Adding and subtracting a date interval
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-the-day-in-a-week-month-or-year" class="md-nav__link">
+    Finding the Day in a Week, Month, or Year
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validating-dates" class="md-nav__link">
+    Validating Dates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-a-high-precision-time" class="md-nav__link">
+    Generating a High-Precision Time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-time-ranges" class="md-nav__link">
+    Generating Time Ranges
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2168,6 +2252,26 @@ The @ character tells DateTime that the rest of the argument to the constructor 
 <span class="k">echo</span> <span class="s2">&quot;There are &quot;</span> <span class="o">.</span> <span class="nv">$d2</span> <span class="o">.</span><span class="s2">&quot; days until 4th of July.&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>If you find yourself with a date or time string with a known format, but that is not parseable by strtotime(), you can still create DateTime objects based on the string by using DateTime::createFromFormat().</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$dates</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;01/02/2015&#39;</span><span class="p">,</span> <span class="s1">&#39;03/06/2015&#39;</span><span class="p">,</span> <span class="s1">&#39;09/08/2015&#39;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$dates</span> <span class="k">as</span> <span class="nv">$date</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$default</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="nv">$date</span><span class="p">);</span>
+ <span class="nv">$day_first</span> <span class="o">=</span> <span class="nx">DateTime</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s1">&#39;d/m/Y|&#39;</span><span class="p">,</span> <span class="nv">$date</span><span class="p">);</span>
+ <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;The default interpretation is %s</span><span class="se">\n</span><span class="s2"> but day-first is %s.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+ <span class="nv">$default</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DateTime</span><span class="o">::</span><span class="na">RFC850</span><span class="p">),</span>
+ <span class="nv">$day_first</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DateTime</span><span class="o">::</span><span class="na">RFC850</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The default interpretation is Friday, 02-Jan-15 00:00:00 UTC
+ but day-first is Sunday, 01-Feb-15 00:00:00 UTC.
+The default interpretation is Friday, 06-Mar-15 00:00:00 UTC
+ but day-first is Wednesday, 03-Jun-15 00:00:00 UTC.
+The default interpretation is Tuesday, 08-Sep-15 00:00:00 UTC
+ but day-first is Sunday, 09-Aug-15 00:00:00 UTC.
+</code></pre></div>
 <h2 id="printing-a-date-or-time-in-a-specified-format">Printing a Date or Time in a Specified Format</h2>
 <p>Both date() and DateTime::format() use the same code internally for generating formatted time and date strings. They are flexible functions that can produce a formatted time string with a variety of components. The format characters for these functions are listed below.</p>
 <table>
@@ -2491,6 +2595,243 @@ string to be passed to date() or DateTime::format(). These constants are listed 
 </tr>
 </tbody>
 </table>
+<h2 id="calculating-the-difference-between-two-dates">Calculating the difference between two dates</h2>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// 7:32:56 pm on May 10, 1965</span>
+<span class="nv">$first</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s2">&quot;1965-05-10 7:32:56pm&quot;</span><span class="p">,</span>
+ <span class="k">new</span> <span class="nx">DateTimeZone</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">));</span>
+<span class="c1">// 4:29:11 am on November 20, 1962</span>
+<span class="nv">$second</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s2">&quot;1962-11-20 4:29:11am&quot;</span><span class="p">,</span>
+ <span class="k">new</span> <span class="nx">DateTimeZone</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">));</span>
+<span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$second</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$first</span><span class="p">);</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;The two dates have %d weeks, %s days, &quot;</span> <span class="o">.</span>
+ <span class="s2">&quot;%d hours, %d minutes, and %d seconds &quot;</span> <span class="o">.</span>
+ <span class="s2">&quot;elapsed between them.&quot;</span><span class="p">,</span>
+ <span class="nb">floor</span><span class="p">(</span><span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%a&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">7</span><span class="p">),</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%a&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span><span class="p">,</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%h&#39;</span><span class="p">),</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%i&#39;</span><span class="p">),</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%s&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The two dates have 128 weeks, 6 days, 15 hours, 3 minutes, and 45 seconds elapsed between them.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//Calculating the elapsed-time difference between two dates</span>
+<span class="c1">// 7:32:56 pm on May 10, 1965</span>
+<span class="nv">$first_local</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s2">&quot;1965-05-10 7:32:56pm&quot;</span><span class="p">,</span>
+ <span class="k">new</span> <span class="nx">DateTimeZone</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">));</span>
+ <span class="c1">// 4:29:11 am on November 20, 1962</span>
+<span class="nv">$second_local</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s2">&quot;1962-11-20 4:29:11am&quot;</span><span class="p">,</span>
+ <span class="k">new</span> <span class="nx">DateTimeZone</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">));</span>
+<span class="nv">$first</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;@&#39;</span> <span class="o">.</span> <span class="nv">$first_local</span><span class="o">-&gt;</span><span class="na">getTimestamp</span><span class="p">());</span>
+<span class="nv">$second</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;@&#39;</span> <span class="o">.</span> <span class="nv">$second_local</span><span class="o">-&gt;</span><span class="na">getTimestamp</span><span class="p">());</span>
+<span class="nv">$diff</span> <span class="o">=</span> <span class="nv">$second</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$first</span><span class="p">);</span>
+<span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;The two dates have %d weeks, %s days, &quot;</span> <span class="o">.</span>
+ <span class="s2">&quot;%d hours, %d minutes, and %d seconds &quot;</span> <span class="o">.</span>
+ <span class="s2">&quot;elapsed between them.&quot;</span><span class="p">,</span>
+ <span class="nb">floor</span><span class="p">(</span><span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%a&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">7</span><span class="p">),</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%a&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span><span class="p">,</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%h&#39;</span><span class="p">),</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%i&#39;</span><span class="p">),</span>
+ <span class="nv">$diff</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;%s&#39;</span><span class="p">));</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>The two dates have 128 weeks, 6 days, 14 hours, 3 minutes, and 45 seconds elapsed between them.
+</code></pre></div>
+<p>The DateTime objects created with a format string of @ plus an epoch timestamp always have a time zone of UTC, so their difference is not affected by any daylight saving time or other local time adjustments.</p>
+<h2 id="adding-and-subtracting-a-date-interval">Adding and subtracting a date interval</h2>
+<p>The add() and sub() methods of DateTime modify the DateTime method they are called on by whatever amount is specified in the interval. The average human gestation time is 40 weeks, so an interval of P40W walks back the birthday to 40 weeks earlier, approximating conception time.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$birthday</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;March 10, 1975&#39;</span><span class="p">);</span>
+<span class="c1">// When is 40 weeks before $birthday?</span>
+<span class="nv">$human_gestation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateInterval</span><span class="p">(</span><span class="s1">&#39;P40W&#39;</span><span class="p">);</span>
+<span class="nv">$birthday</span><span class="o">-&gt;</span><span class="na">sub</span><span class="p">(</span><span class="nv">$human_gestation</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$birthday</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DateTime</span><span class="o">::</span><span class="na">RFC850</span><span class="p">);</span>
+<span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="c1">// What if it was an elephant, not a human?</span>
+<span class="nv">$elephant_gestation</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateInterval</span><span class="p">(</span><span class="s1">&#39;P616D&#39;</span><span class="p">);</span>
+<span class="nv">$birthday</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$elephant_gestation</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$birthday</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="nx">DateTime</span><span class="o">::</span><span class="na">RFC850</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>A DateTime object’s modify() method accepts, instead of a DateInterval object, a string that strtotime() understands. This provides an easy way to find relative dates like “next Tuesday” from a given object.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$year</span> <span class="o">=</span> <span class="mi">2016</span><span class="p">;</span>
+<span class="nv">$when</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s2">&quot;November 1, </span><span class="si">$year</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$when</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;Mon&#39;</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$when</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s2">&quot;next Monday&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$when</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s2">&quot;next Tuesday&quot;</span><span class="p">);</span>
+<span class="k">print</span> <span class="s2">&quot;In </span><span class="si">$year</span><span class="s2">, US election day is on the &quot;</span> <span class="o">.</span>
+ <span class="nv">$when</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;jS&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39; day of November.&#39;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="finding-the-day-in-a-week-month-or-year">Finding the Day in a Week, Month, or Year</h2>
+<p>When you want to know the day or week of the year, the day of the week, or the day of the month. For example, you want to print a special message every Monday, or on the first of every month.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="s2">&quot;Today is day &quot;</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39; of the month and &#39;</span> <span class="o">.</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span> <span class="o">.</span>
+ <span class="s1">&#39; of the year.&#39;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="nv">$birthday</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;January 17, 1706&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DateTimeZone</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">));</span>
+<span class="k">print</span> <span class="s2">&quot;Benjamin Franklin was born on a &quot;</span> <span class="o">.</span> <span class="nv">$birthday</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span>
+<span class="s2">&quot;day &quot;</span> <span class="o">.</span> <span class="nv">$birthday</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot; of the week.&quot;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The functions date() and DateTime::format() use the same format characters.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Character</th>
+<th>Description</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Day</td>
+<td>d</td>
+<td>Day of the month, numeric, leading zero</td>
+<td>01–31</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>j</td>
+<td>Day of the month, numeric</td>
+<td>1–31</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>z</td>
+<td>Day of the year, numeric</td>
+<td>0–365</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>N</td>
+<td>Day of the week, numeric (Monday is 1)</td>
+<td>1–7</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>w</td>
+<td>Day of the week, numeric (Sunday is 0)</td>
+<td>0–6</td>
+</tr>
+<tr>
+<td>Day</td>
+<td>S</td>
+<td>English ordinal suffix for day of the month, textual</td>
+<td>st, th,nd, rd</td>
+</tr>
+<tr>
+<td>Week</td>
+<td>D</td>
+<td>Abbreviated weekday name</td>
+<td>Mon, Tue, Wed, Thu, Fri, Sat, Sun</td>
+</tr>
+<tr>
+<td>Week</td>
+<td>l</td>
+<td>Full weekday name</td>
+<td>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday,Sunday</td>
+</tr>
+<tr>
+<td>Week</td>
+<td>W</td>
+<td>ISO 8601:1988 week number in the year, numeric, week 1 is the first week that has at least 4 days in the current year, Monday is the first day of the week</td>
+<td>1–53</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validating-dates">Validating Dates</h2>
+<p>The function checkdate() returns true if $month is between 1 and 12, $year is between 1 and 32767, and $day is between 1 and the correct maximum number of days for $month and $year. Leap years are correctly handled by checkdate(), and dates are rendered using the Gregorian calendar.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// $ok is true - March 10, 1993 is a valid date</span>
+<span class="nv">$ok</span> <span class="o">=</span> <span class="nb">checkdate</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1993</span><span class="p">);</span>
+<span class="c1">// $not_ok is false - February 30, 1962 is not a valid date</span>
+<span class="nv">$not_ok</span> <span class="o">=</span> <span class="nb">checkdate</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1962</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nx">checkbirthdate</span><span class="p">()</span>
+<span class="k">function</span> <span class="nf">checkbirthdate</span><span class="p">(</span><span class="nv">$month</span><span class="p">,</span><span class="nv">$day</span><span class="p">,</span><span class="nv">$year</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$min_age</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+ <span class="nv">$max_age</span> <span class="o">=</span> <span class="mi">122</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nb">checkdate</span><span class="p">(</span><span class="nv">$month</span><span class="p">,</span><span class="nv">$day</span><span class="p">,</span><span class="nv">$year</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="nv">$now</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+ <span class="nv">$then_formatted</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%d-%d-%d&quot;</span><span class="p">,</span> <span class="nv">$year</span><span class="p">,</span> <span class="nv">$month</span><span class="p">,</span> <span class="nv">$day</span><span class="p">);</span>
+ <span class="nv">$then</span> <span class="o">=</span> <span class="nx">DateTime</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s2">&quot;Y-n-j|&quot;</span><span class="p">,</span><span class="nv">$then_formatted</span><span class="p">);</span>
+ <span class="nv">$age</span> <span class="o">=</span> <span class="nv">$now</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$then</span><span class="p">);</span>
+ <span class="k">if</span> <span class="p">((</span><span class="nv">$age</span><span class="o">-&gt;</span><span class="na">y</span> <span class="o">&lt;</span> <span class="nv">$min_age</span><span class="p">)</span><span class="o">||</span> <span class="p">(</span><span class="nv">$age</span><span class="o">-&gt;</span><span class="na">y</span> <span class="o">&gt;</span> <span class="nv">$max_age</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="k">FALSE</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">else</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="k">TRUE</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// check December 3, 1974</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">checkbirthdate</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1974</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;You may use this web site.&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;You are too young (or too old!!) to proceed.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="generating-a-high-precision-time">Generating a High-Precision Time</h2>
+<p>When you need to measure time with finer than one-second resolution—for example, to gen‐
+erate a unique ID or benchmark a function call.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$start</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/age=\d{1,5}/&#39;</span><span class="p">,</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;QUERY_STRING&#39;</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="nv">$end</span> <span class="o">=</span> <span class="nb">microtime</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="nv">$elapsed</span> <span class="o">=</span> <span class="nv">$end</span> <span class="o">-</span> <span class="nv">$start</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="generating-time-ranges">Generating Time Ranges</h2>
+<p>When you need to generate a range of dates or times. Use the DatePeriod class, available starting with PHP 5.3.0. Its constructor accepts a flexible combination of options that lets you control the range length, time between items in the range, and how many items there are in the range.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Start on August 1</span>
+<span class="nv">$start</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;August 1, 2014&#39;</span><span class="p">);</span>
+<span class="c1">// End date is exclusive, so this will stop on August 31</span>
+<span class="nv">$end</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;September 1, 2014&#39;</span><span class="p">);</span>
+<span class="c1">// Go 1 day at a time</span>
+<span class="nv">$interval</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateInterval</span><span class="p">(</span><span class="s1">&#39;P1D&#39;</span><span class="p">);</span>
+<span class="nv">$range1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DatePeriod</span><span class="p">(</span><span class="nv">$start</span><span class="p">,</span> <span class="nv">$interval</span><span class="p">,</span> <span class="nv">$end</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Here’s another way to do the same thing:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Start on August 1</span>
+<span class="nv">$start</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">(</span><span class="s1">&#39;August 1, 2014&#39;</span><span class="p">);</span>
+<span class="c1">// Go 1 day at a time</span>
+<span class="nv">$interval</span><span class="o">=</span> <span class="k">new</span> <span class="nx">DateInterval</span><span class="p">(</span><span class="s1">&#39;P1D&#39;</span><span class="p">);</span>
+
+<span class="c1">// Recur 30 times more after the first occurrence.</span>
+<span class="nv">$recurrences</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+<span class="nv">$range2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DatePeriod</span><span class="p">(</span><span class="nv">$start</span><span class="p">,</span> <span class="nv">$interval</span><span class="p">,</span> <span class="nv">$recurrences</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>and a third way:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// using the ISO 8601 specified format for describing date ranges</span>
+<span class="nv">$range3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DatePeriod</span><span class="p">(</span><span class="s1">&#39;R30/2014-08-01T00:00:00Z/P1D&#39;</span><span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$range1</span> <span class="k">as</span> <span class="nv">$d</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;A day in August is &quot;</span> <span class="o">.</span> <span class="nv">$d</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 
               
             </article>
