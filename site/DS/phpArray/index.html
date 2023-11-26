@@ -1264,6 +1264,19 @@
     PHP Indexed Arrays
   </a>
   
+    <nav class="md-nav" aria-label="PHP Indexed Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-an-array-not-beginning-at-element-0" class="md-nav__link">
+    Specifying an Array Not Beginning at Element 0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1339,6 +1352,27 @@
           <li class="md-nav__item">
   <a href="#count" class="md-nav__link">
     count()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterating-through-an-array" class="md-nav__link">
+    Iterating Through an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#each" class="md-nav__link">
+    each()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_map" class="md-nav__link">
+    array_map()
   </a>
   
 </li>
@@ -1826,6 +1860,19 @@
     PHP Indexed Arrays
   </a>
   
+    <nav class="md-nav" aria-label="PHP Indexed Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-an-array-not-beginning-at-element-0" class="md-nav__link">
+    Specifying an Array Not Beginning at Element 0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1901,6 +1948,27 @@
           <li class="md-nav__item">
   <a href="#count" class="md-nav__link">
     count()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterating-through-an-array" class="md-nav__link">
+    Iterating Through an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#each" class="md-nav__link">
+    each()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_map" class="md-nav__link">
+    array_map()
   </a>
   
 </li>
@@ -2000,7 +2068,8 @@
 
   <h1>Array</h1>
 
-<p>An array stores multiple values in one single variable.</p>
+<p>An array stores multiple values in one single variable. </p>
+<p>In PHP, numerical arrays are associative arrays, and associative arrays are numerical arrays. So which kind are they really? Both and neither. The line between them constantly blurs back and forth from one to another. </p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
 <span class="k">echo</span> <span class="s2">&quot;I like &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; and &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
@@ -2036,6 +2105,35 @@ $cars[2] = "Toyota";</p>
     <span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="nv">$x</span><span class="p">];</span>
     <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="specifying-an-array-not-beginning-at-element-0">Specifying an Array Not Beginning at Element 0</h3>
+<p>When specifying an array, you can specify the array not beginning at element 0.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$presidents</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="s1">&#39;Adams&#39;</span><span class="p">,</span> <span class="s1">&#39;Jefferson&#39;</span><span class="p">,</span> <span class="s1">&#39;Madison&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>PHP even allows you to use negative numbers in the array() call. (In fact, this method works for noninteger keys, too.) What you’ll get is technically an associative array, although as we said, the line between numeric arrays and associative arrays is often blurred in PHP; this is just another one of these cases:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$us_leaders</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;George II&#39;</span><span class="p">,</span> <span class="s1">&#39;George III&#39;</span><span class="p">,</span> <span class="s1">&#39;Washington&#39;</span><span class="p">);</span>
+<span class="c1">// alternatively,</span>
+<span class="nv">$us_leaders</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;George II&#39;</span><span class="p">,</span> <span class="s1">&#39;George III&#39;</span><span class="p">,</span> <span class="s1">&#39;Washington&#39;</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Of course, you can mix and match numeric and string keys in one array() definition,
+but it’s confusing and very rarely needed:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$presidents</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="s1">&#39;Adams&#39;</span><span class="p">,</span> <span class="s1">&#39;Honest&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Lincoln&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jefferson&#39;</span><span class="p">);</span>
+<span class="c1">// alternatively,</span>
+<span class="nv">$presidents</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="s1">&#39;Adams&#39;</span><span class="p">,</span> <span class="s1">&#39;Honest&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Lincoln&#39;</span><span class="p">,</span> <span class="s1">&#39;Jefferson&#39;</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$presidents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Washington&#39;</span><span class="p">;</span> <span class="c1">// Key is 1</span>
+<span class="nv">$presidents</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;Adams&#39;</span><span class="p">;</span> <span class="c1">// Key is 1 + 1 =&gt; 2</span>
+<span class="nv">$presidents</span><span class="p">[</span><span class="s1">&#39;Honest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Lincoln&#39;</span><span class="p">;</span> <span class="c1">// Key is &#39;Honest&#39;</span>
+<span class="nv">$presidents</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;Jefferson&#39;</span><span class="p">;</span> <span class="c1">// Key is 2 + 1 =&gt; 3</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="php-associative-arrays">PHP Associative Arrays</h2>
@@ -2210,7 +2308,7 @@ range() can also be used to retrieve character sequences:
 <td>Flips/Exchanges all keys with their associated values in an array</td>
 </tr>
 <tr>
-<td>array_map()</td>
+<td><a href="#array_map">array_map()</a></td>
 <td>Sends each value of an array to a user-made function, which returns new values</td>
 </tr>
 <tr>
@@ -2347,6 +2445,74 @@ range() can also be used to retrieve character sequences:
 <span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="iterating-through-an-array">Iterating Through an Array</h4>
+<p>When you want to cycle though an array and operate on all or some of the elements inside.</p>
+<p>Use foreach:
+<div class="highlight"><pre><span></span><code><span class="x">foreach ($array as $value) {</span>
+<span class="x"> // Act on $value</span>
+<span class="x">}</span>
+</code></pre></div>
+Or to get an array’s keys and values:
+<div class="highlight"><pre><span></span><code><span class="x">foreach ($array as $key =&gt; $value) {</span>
+<span class="x"> // Act II</span>
+<span class="x">}</span>
+</code></pre></div>
+Another technique is to use for:
+<div class="highlight"><pre><span></span><code><span class="x">for ($key = 0, $size = count($array); $key &lt; $size; $key++) {</span>
+<span class="x"> // Act III</span>
+<span class="x">}</span>
+</code></pre></div>
+Finally, you can use each() in combination with list() and while:
+<div class="highlight"><pre><span></span><code><span class="x">reset($array); // reset internal pointer to beginning of array</span>
+<span class="x">while (list($key, $value) = each ($array)) {</span>
+<span class="x"> // Final Act</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<h4 id="each">each()</h4>
+<p>The each() function is used to return the current key and value pair from an array.</p>
+<p>With foreach, PHP iterates over a copy of the array instead of the actual array. In contrast, when using each() and for, PHP iterates over the original array. So if you modify the array inside the loop, you may (or may not) get the behavior you expect.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$items</span> <span class="k">as</span> <span class="nv">$item</span> <span class="o">=&gt;</span> <span class="nv">$cost</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">in_stock</span><span class="p">(</span><span class="nv">$item</span><span class="p">))</span> <span class="p">{</span>
+ <span class="nb">unset</span><span class="p">(</span><span class="nv">$items</span><span class="p">[</span><span class="nv">$item</span><span class="p">]);</span> <span class="c1">// address the array directly</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The variables returned by foreach() aren’t aliases for the original values in the array: they’re copies, so if you modify them, it’s not reflected in the array. That’s why you need to modify <span class="arithmatex">\(items[\)</span>item] instead of $cost.</p>
+<p>When using each(), PHP keeps track of where you are inside the loop. After completing a first pass through, to begin again at the start, call reset() to move the pointer back to the front of the array. Otherwise, each() returns false.</p>
+<p>The for loop works only for arrays with consecutive integer keys. Unless you’re modifying the size of your array, it’s inefficient to recompute the count() of $items each time through the loop, so we always use a $size variable to hold the array’s size:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$item</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$size</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$items</span><span class="p">);</span> <span class="nv">$item</span> <span class="o">&lt;</span> <span class="nv">$size</span><span class="p">;</span> <span class="nv">$item</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If you prefer to count efficiently with one variable, count backward:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$item</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$item</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$item</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The associative array version of the for loop is:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nb">reset</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="nv">$key</span> <span class="o">=</span> <span class="nb">key</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This fails if any element holds a string that evaluates to false, so a perfectly normal value such as 0 causes the loop to end early. Therefore, this syntax is rarely used, and is included only to help you understand older PHP code.</p>
+<h4 id="array_map">array_map()</h4>
+<p>Finally, use array_map() to hand off each element to a function for processing:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// lowercase all words</span>
+<span class="nv">$lc</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="s1">&#39;strtolower&#39;</span><span class="p">,</span> <span class="nv">$words</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.</p>
 <h3 id="comparing-arrays">Comparing Arrays</h3>
 <table>
 <thead>

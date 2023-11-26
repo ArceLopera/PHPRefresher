@@ -1,4 +1,6 @@
-An array stores multiple values in one single variable.
+An array stores multiple values in one single variable. 
+
+In PHP, numerical arrays are associative arrays, and associative arrays are numerical arrays. So which kind are they really? Both and neither. The line between them constantly blurs back and forth from one to another. 
 
 ``` php
 <?php
@@ -47,6 +49,50 @@ for($x = 0; $x < $arrlength; $x++) {
 }
 ?>
 ```
+
+### Specifying an Array Not Beginning at Element 0
+
+When specifying an array, you can specify the array not beginning at element 0.
+
+```php
+<?php
+$presidents = array(1 => 'Washington', 'Adams', 'Jefferson', 'Madison');
+?>
+```
+
+PHP even allows you to use negative numbers in the array() call. (In fact, this method works for noninteger keys, too.) What you’ll get is technically an associative array, although as we said, the line between numeric arrays and associative arrays is often blurred in PHP; this is just another one of these cases:
+
+```php
+<?php
+$us_leaders = array(-1 => 'George II', 'George III', 'Washington');
+// alternatively,
+$us_leaders = [-1 => 'George II', 'George III', 'Washington'];
+?>
+```	
+
+Of course, you can mix and match numeric and string keys in one array() definition,
+but it’s confusing and very rarely needed:
+
+```php
+<?php
+$presidents = array(1 => 'Washington', 'Adams', 'Honest' => 'Lincoln',
+ 'Jefferson');
+// alternatively,
+$presidents = [1 => 'Washington', 'Adams', 'Honest' => 'Lincoln', 'Jefferson'];
+?>
+```
+
+``` php
+<?php
+$presidents[1] = 'Washington'; // Key is 1
+$presidents[] = 'Adams'; // Key is 1 + 1 => 2
+$presidents['Honest'] = 'Lincoln'; // Key is 'Honest'
+$presidents[] = 'Jefferson'; // Key is 2 + 1 => 3
+?>
+
+```
+
+
 
 ## PHP Associative Arrays
 Associative arrays are arrays with named keys.
@@ -177,7 +223,7 @@ Array
 |array_fill()|	Fills an array with values|
 |array_fill_keys()|	Fills an array with values, specifying keys|
 |array_flip()|	Flips/Exchanges all keys with their associated values in an array|
-|array_map()|	Sends each value of an array to a user-made function, which returns new values|
+|[array_map()](#array_map)|	Sends each value of an array to a user-made function, which returns new values|
 |array_replace()|	Replaces the values of the first array with the values from following arrays|
 |array_replace_recursive()|	Replaces the values of the first array with the values from following arrays recursively|
 |array_walk()|	Applies a user function to every member of an array|
@@ -241,6 +287,105 @@ $cars = array("Volvo", "BMW", "Toyota");
 echo count($cars);
 ?>
 ```	
+
+#### Iterating Through an Array
+When you want to cycle though an array and operate on all or some of the elements inside.
+
+Use foreach:
+``` php
+foreach ($array as $value) {
+ // Act on $value
+}
+```
+Or to get an array’s keys and values:
+``` php
+foreach ($array as $key => $value) {
+ // Act II
+}
+```
+Another technique is to use for:
+``` php
+for ($key = 0, $size = count($array); $key < $size; $key++) {
+ // Act III
+}
+```
+Finally, you can use each() in combination with list() and while:
+``` php
+reset($array); // reset internal pointer to beginning of array
+while (list($key, $value) = each ($array)) {
+ // Final Act
+}
+```
+
+
+
+#### each()
+The each() function is used to return the current key and value pair from an array.
+
+With foreach, PHP iterates over a copy of the array instead of the actual array. In contrast, when using each() and for, PHP iterates over the original array. So if you modify the array inside the loop, you may (or may not) get the behavior you expect.
+
+```php
+<?php
+foreach ($items as $item => $cost) {
+ if (! in_stock($item)) {
+ unset($items[$item]); // address the array directly
+ }
+}
+?>
+```
+
+The variables returned by foreach() aren’t aliases for the original values in the array: they’re copies, so if you modify them, it’s not reflected in the array. That’s why you need to modify $items[$item] instead of $cost.
+
+When using each(), PHP keeps track of where you are inside the loop. After completing a first pass through, to begin again at the start, call reset() to move the pointer back to the front of the array. Otherwise, each() returns false.
+
+The for loop works only for arrays with consecutive integer keys. Unless you’re modifying the size of your array, it’s inefficient to recompute the count() of $items each time through the loop, so we always use a $size variable to hold the array’s size:
+
+```php
+<?php
+for ($item = 0, $size = count($items); $item < $size; $item++) {
+ // ...
+}
+
+?>
+```
+
+If you prefer to count efficiently with one variable, count backward:
+
+```php
+<?php
+for ($item = count($items) - 1; $item >= 0; $item--) {
+ // ...
+}
+
+?>
+```
+
+The associative array version of the for loop is:
+
+```php
+<?php
+for (reset($array); $key = key($array); next($array) ) {
+ // ...
+}
+?>
+```
+
+This fails if any element holds a string that evaluates to false, so a perfectly normal value such as 0 causes the loop to end early. Therefore, this syntax is rarely used, and is included only to help you understand older PHP code.
+
+#### array_map()
+
+Finally, use array_map() to hand off each element to a function for processing:
+
+```php
+<?php
+// lowercase all words
+$lc = array_map('strtolower', $words);
+?>
+```
+
+The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.
+
+
 
 ### Comparing Arrays
 |Function	|Description|
