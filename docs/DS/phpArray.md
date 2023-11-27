@@ -177,11 +177,101 @@ The PHP array functions are used to perform operations on arrays.
 |array_pop()|	Deletes the last element of an array|
 |array_push()|	Inserts one or more elements to the end of an array|
 |array_shift()|	Removes the first element from an array, and returns the value of the removed element|
-|array_splice()|	Removes and replaces specified elements of an array|
+|[array_splice()](#array_splice)|	Removes and replaces specified elements of an array|
 |array_unique()|	Removes duplicate values from an array|
 |array_unshift()|	Adds one or more elements to the beginning of an array|
 |compact()|	Create array containing variables and their values|
 |[range()](#range)|	Creates an array containing a range of elements|
+
+#### array_splice
+The array_splice() function removes and replaces specified elements of an array.
+
+The array_splice() function removes selected elements from an array and replaces it with new elements. The function also returns an array with the removed elements.
+
+Tip: If the function does not remove any elements (length=0), the replaced array will be inserted from the position of the start parameter (See Example 2).
+
+Note: The keys in the replaced array are not preserved.
+
+
+```php
+<?php
+
+$a1=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+$a2=array("a"=>"purple","b"=>"orange");
+array_splice($a1,0,2,$a2);
+print_r($a1);
+
+?>
+```
+
+
+```php
+<?php
+$a1=array("0"=>"red","1"=>"green");
+$a2=array("0"=>"purple","1"=>"orange");
+array_splice($a1,1,0,$a2);
+print_r($a1);
+?>
+```
+
+If you unset() an element, PHP adjusts the array so that looping still works correctly. It doesn’t compact the array to fill in the missing holes. This is what we mean when we say that all arrays are associative, even when they appear to be numeric. Here’s an example:
+
+```php
+<?php
+// create a "numeric" array
+$animals = array('ant', 'bee', 'cat', 'dog', 'elk', 'fox');
+print $animals[1]; // prints 'bee'
+print $animals[2]; // prints 'cat'
+count($animals); // returns 6
+// unset()
+unset($animals[1]); // removes element $animals[1] = 'bee'
+print $animals[1]; // prints nothing and throws an E_NOTICE error
+print $animals[2]; // still prints 'cat'
+count($animals); // returns 5, even though $array[5] is 'fox'
+// add new element
+$animals[] = 'gnu'; // add new element (not Unix)
+print $animals[1]; // prints nothing, still throws an E_NOTICE error
+print $animals[6]; // prints 'gnu', this is where 'gnu' ended up
+count($animals); // returns 6
+// assign ''
+$animals[2] = ''; // zero out value
+print $animals[2]; // prints ''
+count($animals); // returns 6, count does not decrease
+?>
+```
+
+To compact the array into a densely filled numeric array, use array_values():
+
+```php
+<?php
+$animals = array_values($animals);
+?>
+```
+
+Alternatively, array_splice() automatically reindexes arrays to avoid leaving holes:
+
+```php
+<?php
+// create a "numeric" array
+$animals = array('ant', 'bee', 'cat', 'dog', 'elk', 'fox');
+array_splice($animals, 2, 2);
+print_r($animals);
+?>
+```
+```
+Array
+(
+ [0] => ant
+ [1] => bee
+ [2] => elk
+ [3] => fox
+)
+
+```
+
+This is useful if you’re using the array as a queue and want to remove items from the
+queue while still allowing random access. To safely remove the first or last element from
+an array, use array_shift() and array_pop(), respectively.
 
 #### range
 The range() function creates an array containing a range of elements.
@@ -191,6 +281,8 @@ $numbers = range(1, 10);
 print_r($numbers);
 ?>
 ```
+
+
 
 The advantage of using range() is its brevity, but this technique has a disadvantage: a large array can take up unnecessary memory.
 
@@ -229,6 +321,35 @@ Array
 |array_walk()|	Applies a user function to every member of an array|
 |array_walk_recursive()|	Applies a user function recursively to every member of an array|
 |[list()](#the-list-function)|	Assigns variables as if they were an array|
+
+#### Deleting Elements from an Array
+
+When you want to remove one or more elements from an array. 
+
+To delete one element, use [unset()](../PR/phpVar4.md#unset):
+
+```php
+<?php
+unset($array[3]);
+unset($array['foo']);
+?>
+```
+To delete multiple noncontiguous elements, also use [unset()](../PR/phpVar4.md#unset):
+
+```php
+<?php
+unset($array[3], $array[5]);
+unset($array['foo'], $array['bar']);
+?>
+```
+
+To delete multiple contiguous elements, use array_splice():
+
+```php
+<?php
+array_splice($array, $offset, $length);
+?>
+```
 
 #### The list Function
 The list() function is used to create an array from a list of variables.
@@ -271,12 +392,23 @@ echo "$c is " . $c . "<br>";
 |current()|	Returns the current element in an array|
 |key()|	Returns the current key in an array|
 |array_sum()|	Returns the sum of the values in an array|
-|array_values()|	Returns all the values of an array|
+|[array_values()](#array_values)|	Returns all the values of an array|
 |[count()](#count)|	Returns the number of elements in an array|
 |sizeof()|	Alias of count()|
 |each()|	Deprecated from PHP 7.2. Returns the current key and value pair from an array|
 |extract()| Imports variables into the current symbol table from an array|
 |in_array()|	Checks if a specified value exists in an array|
+
+#### array_values()
+The array_values() function is used to return all the values of an array.
+
+```php
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+print_r(array_values($cars));
+?>
+```
+
 
 #### count()
 The count() function is used to return the length (the number of elements) of an array.

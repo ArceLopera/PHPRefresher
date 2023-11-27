@@ -35,6 +35,46 @@ The PHP variable handling functions are part of the PHP core. No installation is
 |settype()|	Converts a variable to a specific type|
 |strval()|	Returns the string value of a variable|
 |unserialize()|	Converts serialized data back into actual data|
-|unset()|	Unsets a variable|
-|var_dump()	|Dumps information about one or more variables|
+|[unset()](#unset)|	Unsets a variable|
+|[var_dump()](#var_dump)	|Dumps information about one or more variables|
 |var_export()|	Returns structured information (valid PHP code) about a variable|
+
+### unset()
+
+```php
+<?php
+$a = "Hello world!";
+echo "The value of variable 'a' before unset: " . $a . "<br>";
+unset($a);
+echo "The value of variable 'a' after unset: " . $a;
+?>
+```
+
+### var_dump()
+
+Dump information about different variables.
+
+
+```php
+<?php
+
+$a = 32;
+echo var_dump($a) . "<br>";
+
+$b = "Hello world!";
+echo var_dump($b) . "<br>";
+
+$c = 32.5;
+echo var_dump($c) . "<br>";
+
+$d = array("red", "green", "blue");
+echo var_dump($d) . "<br>";
+
+$e = array(32, "Hello world!", 32.5, array("red", "green", "blue"));
+echo var_dump($e) . "<br>";
+
+// Dump two variables
+echo var_dump($a, $b) . "<br>";
+
+?>
+```
