@@ -171,9 +171,9 @@ The PHP array functions are used to perform operations on arrays.
 |array()|	Creates an array|
 |array_chunk()|	Splits an array into chunks of arrays|
 |array_combine()|	Creates an array by using the elements from one "keys" array and one "values" array|
-|array_merge()|	Merges one or more arrays into one array|
+|[array_merge()](#array_merge)|	Merges one or more arrays into one array|
 |array_merge_recursive()|	Merges one or more arrays into one array recursively|
-|array_pad()|	Inserts a specified number of items, with a specified value, to an array|
+|[array_pad()](#array_pad)|	Inserts a specified number of items, with a specified value, to an array|
 |array_pop()|	Deletes the last element of an array|
 |array_push()|	Inserts one or more elements to the end of an array|
 |array_shift()|	Removes the first element from an array, and returns the value of the removed element|
@@ -182,6 +182,118 @@ The PHP array functions are used to perform operations on arrays.
 |array_unshift()|	Adds one or more elements to the beginning of an array|
 |compact()|	Create array containing variables and their values|
 |[range()](#range)|	Creates an array containing a range of elements|
+
+#### array_merge
+
+The array_merge() function works with both predefined arrays and arrays defined in place using array():
+
+```php
+<?php
+$p_languages = array('Perl', 'PHP');
+$p_languages = array_merge($p_languages, array('Python'));
+print_r($p_languages);
+Array
+(
+ [0] => Perl
+ [1] => PHP
+ [2] => Python
+)
+
+?>
+```
+
+Accordingly, merged arrays can be either preexisting arrays, as with $p_languages, or anonymous arrays, as with array('Python').
+
+You can’t use array_push(), because PHP won’t automatically flatten out the array into a series of independent variables, and you’ll end up with a nested array. 
+
+
+```php
+<?php
+array_push($p_languages, array('Python'));
+print_r($p_languages);
+Array
+(
+ [0] => Perl
+ [1] => PHP
+ [2] => Array
+ (
+ [0] => Python
+ )
+)
+?>
+```
+
+Merging arrays with only numerical keys causes the arrays to get renumbered, so values aren’t lost. Merging arrays with string keys causes the second array to overwrite the value of any duplicated keys. Arrays with both types of keys exhibit both types of behavior.
+
+``` php
+<?php
+$lc = array('a', 'b' => 'b'); // lowercase letters as values
+$uc = array('A', 'b' => 'B'); // uppercase letters as values
+$ac = array_merge($lc, $uc); // all-cases?
+print_r($ac);
+Array
+(
+ [0] => a
+ [b] => B
+ [1] => A
+)
+?>
+
+```
+
+The uppercase A has been renumbered from index 0 to index 1, to avoid a collision, and merged onto the end. The uppercase B has overwritten the lowercase b and replaced it in the original place within the array.
+
+The + operator can also merge arrays. For any identically named keys found in both arrays, the value from the left will be used. It doesn’t do any reordering to prevent collisions.
+
+```php
+<?php
+print_r($uc + $lc);
+print_r($lc + $uc);
+Array
+(
+ [0] => A
+ [b] => B
+)
+Array
+(
+ [0] => a
+ [b] => b
+)   
+?>
+
+```
+
+Because a and A both have a key of 0, and b and B both have a key of b, you end up with a total of only two elements in the merged arrays. In the first case, $a + $b becomes just $b, and in the other, $b + $a becomes $a. However, if you had two distinctly keyed arrays, this wouldn’t be a problem, and the new array would be the union of the two arrays.
+
+#### array_pad
+
+When you want to modify the size of an array, either by making it larger or smaller than its
+current size. Arrays aren’t a predeclared size in PHP, so you can resize them on the fly.
+
+
+Use array_pad() to make an array grow:
+
+```php
+<?php
+// start at three
+$array = array('apple', 'banana', 'coconut');
+// grow to five
+$array = array_pad($array, 5, '');
+
+?>
+```
+
+Now, count($array) is 5, and the last two elements, $array[3] and $array[4], contain
+the empty string.
+
+To reduce an array, you can use array_splice():
+```php
+<?php
+// no assignment to $array
+array_splice($array, 2);
+?>
+```
+This removes all but the first two elements from $array.
 
 #### array_splice
 The array_splice() function removes and replaces specified elements of an array.
