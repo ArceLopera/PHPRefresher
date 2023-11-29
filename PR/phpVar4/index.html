@@ -505,6 +505,26 @@
     Variable Handling Functions
   </a>
   
+    <nav class="md-nav" aria-label="Variable Handling Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unset" class="md-nav__link">
+    unset()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var_dump" class="md-nav__link">
+    var_dump()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1658,6 +1678,26 @@
     Variable Handling Functions
   </a>
   
+    <nav class="md-nav" aria-label="Variable Handling Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unset" class="md-nav__link">
+    unset()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var_dump" class="md-nav__link">
+    var_dump()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1815,11 +1855,11 @@
 <td>Converts serialized data back into actual data</td>
 </tr>
 <tr>
-<td>unset()</td>
+<td><a href="#unset">unset()</a></td>
 <td>Unsets a variable</td>
 </tr>
 <tr>
-<td>var_dump()</td>
+<td><a href="#var_dump">var_dump()</a></td>
 <td>Dumps information about one or more variables</td>
 </tr>
 <tr>
@@ -1828,6 +1868,38 @@
 </tr>
 </tbody>
 </table>
+<h3 id="unset">unset()</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;The value of variable &#39;a&#39; before unset: &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;The value of variable &#39;a&#39; after unset: &quot;</span> <span class="o">.</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="var_dump">var_dump()</h3>
+<p>Dump information about different variables.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$b</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$b</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$c</span> <span class="o">=</span> <span class="mf">32.5</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$d</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$d</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="nv">$e</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">));</span>
+<span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$e</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="c1">// Dump two variables</span>
+<span class="k">echo</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 
               
             </article>

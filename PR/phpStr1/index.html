@@ -653,6 +653,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    join()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#strpos" class="md-nav__link">
     strpos()
   </a>
@@ -2063,6 +2070,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    join()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#strpos" class="md-nav__link">
     strpos()
   </a>
@@ -2435,6 +2449,23 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>turtle. a was there time a upon Once
+</code></pre></div>
+<h3 id="join">join()</h3>
+<p>When you have an array, and you want to convert it into a nicely formatted string.</p>
+<p>Use join():</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// make a comma delimited list</span>
+<span class="nv">$string</span> <span class="o">=</span> <span class="nb">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Or loop yourself:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$string</span> <span class="o">.=</span> <span class="s2">&quot;,</span><span class="si">$value</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nv">$string</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// remove leading &quot;,&quot;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h3 id="strpos">strpos()</h3>
 <p>The PHP strpos() function searches for a specific text within a string. If a match is found, the function returns the character position of the first match. If no match is found, it will return FALSE.</p>
@@ -3363,7 +3394,7 @@ To produce the right format for a currency other than the locale’s native curr
 <td>Returns a string from the elements of an array</td>
 </tr>
 <tr>
-<td>join()</td>
+<td><a href="#join">join()</a></td>
 <td>Alias of implode()</td>
 </tr>
 <tr>
