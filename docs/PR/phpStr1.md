@@ -59,7 +59,30 @@ print $s;
 ```
 turtle. a was there time a upon Once
 ```
+### join()
 
+When you have an array, and you want to convert it into a nicely formatted string.
+
+Use join():
+
+```php
+<?php
+// make a comma delimited list
+$string = join(',', $array);
+?>
+```
+
+Or loop yourself:
+
+```php
+<?php
+$string = '';
+foreach ($array as $key => $value) {
+ $string .= ",$value";
+}
+$string = substr($string, 1); // remove leading ","
+?>
+```
 
 ### strpos() 
 
@@ -1090,7 +1113,7 @@ For more information, see [PHP String Functions](https://www.php.net/manual/en/r
 |htmlspecialchars_decode()|	Converts some predefined HTML entities to characters|
 |htmlspecialchars()|	Converts some predefined characters to HTML entities|
 |[implode()](#reverse-by-words)|	Returns a string from the elements of an array|
-|join()|	Alias of implode()|
+|[join()](#join)|	Alias of implode()|
 |lcfirst()|	Converts the first character of a string to lowercase|
 |levenshtein()|	Returns the Levenshtein distance between two strings|
 |localeconv()|	Returns locale numeric and monetary formatting information|
