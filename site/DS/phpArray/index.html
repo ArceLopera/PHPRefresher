@@ -1378,6 +1378,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#array_key_exists" class="md-nav__link">
+    array_key_exists()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#array_values" class="md-nav__link">
     array_values()
   </a>
@@ -2009,6 +2016,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#array_key_exists" class="md-nav__link">
+    array_key_exists()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#array_values" class="md-nav__link">
     array_values()
   </a>
@@ -2614,7 +2628,7 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <td>Filters the values of an array using a callback function</td>
 </tr>
 <tr>
-<td>array_key_exists()</td>
+<td><a href="#array_key_exists">array_key_exists()</a></td>
 <td>Checks if the specified key exists in the array</td>
 </tr>
 <tr>
@@ -2679,6 +2693,25 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 </tr>
 </tbody>
 </table>
+<h4 id="array_key_exists">array_key_exists()</h4>
+<p>The array_key_exists() function is used to check if the specified key exists in the array. Use array_key_exists() to check for a key no matter what the associated value is.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$cars</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;Key 1 exists!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The array_key_exists() function completely ignores array values—it just reports whether there is an element in the array with a particular key.</p>
+<p>The <a href="../../Func/phpEmpty/#isset-function">isset() function</a> is used to check if the specified key exists in the array. Use isset() to find a key whose associated value is anything but null.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;Key exists!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>isset(), however, behaves the same way on array keys as it does with other variables. A null value causes is set() to return false.</p>
 <h4 id="array_values">array_values()</h4>
 <p>The array_values() function is used to return all the values of an array.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>

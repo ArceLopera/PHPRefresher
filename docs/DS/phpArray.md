@@ -494,7 +494,7 @@ echo "$c is " . $c . "<br>";
 |array_column()|	Returns the values from a single column in the input array|
 |array_count_values()|	Counts all the values of an array|
 |array_filter()|	Filters the values of an array using a callback function|
-|array_key_exists()|	Checks if the specified key exists in the array|
+|[array_key_exists()](#array_key_exists)|	Checks if the specified key exists in the array|
 |array_keys()|	Returns all the keys of an array|
 |array_product()|	Calculates the product of the values in an array|
 |array_rand()|	Returns one or more random keys from an array|
@@ -510,6 +510,33 @@ echo "$c is " . $c . "<br>";
 |each()|	Deprecated from PHP 7.2. Returns the current key and value pair from an array|
 |extract()| Imports variables into the current symbol table from an array|
 |in_array()|	Checks if a specified value exists in an array|
+
+#### array_key_exists()
+The array_key_exists() function is used to check if the specified key exists in the array. Use array_key_exists() to check for a key no matter what the associated value is.
+
+```php
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+if (array_key_exists(1, $cars)) {
+ echo "Key 1 exists!";
+}
+?>
+```
+
+The array_key_exists() function completely ignores array values—it just reports whether there is an element in the array with a particular key.
+
+The [isset() function](../Func/phpEmpty.md#isset-function) is used to check if the specified key exists in the array. Use isset() to find a key whose associated value is anything but null.
+
+```php
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+if (isset($cars[1])) {
+ echo "Key exists!";
+}
+?>
+```
+
+isset(), however, behaves the same way on array keys as it does with other variables. A null value causes is set() to return false.
 
 #### array_values()
 The array_values() function is used to return all the values of an array.
