@@ -426,7 +426,7 @@ Array
 |array_change_key_case()|	Changes all keys in an array to lowercase or uppercase|
 |array_fill()|	Fills an array with values|
 |array_fill_keys()|	Fills an array with values, specifying keys|
-|array_flip()|	Flips/Exchanges all keys with their associated values in an array|
+|[array_flip()](#array_flip)|	Flips/Exchanges all keys with their associated values in an array|
 |[array_map()](#array_map)|	Sends each value of an array to a user-made function, which returns new values|
 |array_replace()|	Replaces the values of the first array with the values from following arrays|
 |array_replace_recursive()|	Replaces the values of the first array with the values from following arrays recursively|
@@ -488,6 +488,19 @@ echo "$c is " . $c . "<br>";
 ?>
 ```
 
+#### array_map()
+
+Use array_map() to hand off each element to a function for processing:
+
+```php
+<?php
+// lowercase all words
+$lc = array_map('strtolower', $words);
+?>
+```
+
+The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.
+
 ### Extracting Information from Arrays
 |Function	|Description|
 |---|---|
@@ -499,7 +512,7 @@ echo "$c is " . $c . "<br>";
 |array_product()|	Calculates the product of the values in an array|
 |array_rand()|	Returns one or more random keys from an array|
 |array_reduce()|	Returns an array as a string, using a user-defined function|
-|array_search()|	Searches an array for a given value and returns the key|
+|[array_search()](#array_search)|	Searches an array for a given value and returns the key|
 |array_slice()|	Returns selected parts of an array|
 |current()|	Returns the current element in an array|
 |key()|	Returns the current key in an array|
@@ -509,7 +522,7 @@ echo "$c is " . $c . "<br>";
 |sizeof()|	Alias of count()|
 |each()|	Deprecated from PHP 7.2. Returns the current key and value pair from an array|
 |extract()| Imports variables into the current symbol table from an array|
-|in_array()|	Checks if a specified value exists in an array|
+|[in_array()](#in_array)|	Checks if a specified value exists in an array|
 
 #### array_key_exists()
 The array_key_exists() function is used to check if the specified key exists in the array. Use array_key_exists() to check for a key no matter what the associated value is.
@@ -537,6 +550,36 @@ if (isset($cars[1])) {
 ```
 
 isset(), however, behaves the same way on array keys as it does with other variables. A null value causes is set() to return false.
+
+
+#### array_search()
+The array_search() function is used to search for a specified value in an array. Use array_search() to find a value in an array no matter what the associated key is.  It returns the key of the found value. If the value is not in the array, it returns false.
+
+```php
+<?php
+$cars = array("Volvo", "BMW", "Toyota");
+$found = array_search("BMW", $cars);
+echo $found;
+?>
+```
+
+Use in_array() to find if an array contains a value; use array_search() to discover where that value is located. However, because array_search() gracefully handles searches in which the value isn’t found, it’s better to use array_search() instead of in_array(). The speed difference is minute, and the extra information is potentially useful.
+
+```php
+<?php
+$favorite_foods = array(1 => 'artichokes', 'bread', 'cauliflower', 'deviled eggs');
+$food = 'cauliflower';
+$position = array_search($food, $favorite_foods);
+if ($position !== false) {
+ echo "My #$position favorite food is $food";
+} else {
+ echo "Blech! I hate $food!";
+}
+
+?>
+```
+
+Use the !== check against false because if your string is found in the array at position 0, the if evaluates to a logical false, which isn’t what is meant or wanted. If a value is in the array multiple times, array_search() is only guaranteed to return one of the instances, not the first instance.
 
 #### array_values()
 The array_values() function is used to return all the values of an array.
@@ -643,20 +686,63 @@ for (reset($array); $key = key($array); next($array) ) {
 
 This fails if any element holds a string that evaluates to false, so a perfectly normal value such as 0 causes the loop to end early. Therefore, this syntax is rarely used, and is included only to help you understand older PHP code.
 
-#### array_map()
-
-Finally, use array_map() to hand off each element to a function for processing:
+#### in_array()
+The in_array() function is used to check if a value exists in an array.
 
 ```php
 <?php
-// lowercase all words
-$lc = array_map('strtolower', $words);
+$book_collection = array('Emma', 'Pride and Prejudice', 'Northhanger Abbey');
+$book = 'Sense and Sensibility';
+if (in_array($book, $book_collection)) {
+ echo 'Own it.';
+} else {
+ echo 'Need it.';
+}
+
 ?>
 ```
 
-The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.
+The default behavior of in_array() is to compare items using the == operator. To use the strict equality check, ===, pass true as the third parameter to in_array().
+
+```php
+<?php
+$array = array(1, '2', 'three');
+in_array(0, $array); // true!
+in_array(0, $array, true); // false
+in_array(1, $array); // true
+in_array(1, $array, true); // true
+in_array(2, $array); // true
+in_array(2, $array, true); // false
+?>
+```
+
+The first check, in_array(0, $array), evaluates to true because to compare the number 0 against the string three, PHP casts three to an integer. Because three isn’t a numeric string, as is 2, it becomes 0. Therefore, in_array() thinks there’s a match.
+
+Consequently, when comparing numbers against data that may contain strings, it’s safest to use a strict comparison. If you find yourself calling in_array() multiple times on the same array, it may be better
+to use an associative array, with the original array elements as the keys in the new associative array. Looking up entries using in_array() takes linear time; with an associative array, it takes constant time.
+
+#### array_flip()
+
+If you can’t create the associative array directly but need to convert from a traditional one with integer keys, use array_flip() to swap the keys and values of an array.
 
 
+```php
+<?php
+$book_collection = array('Emma',
+ 'Pride and Prejudice',
+'Northhanger Abbey');
+// convert from numeric array to associative array
+$book_collection = array_flip($book_collection);
+$book = 'Sense and Sensibility';
+if (isset($book_collection[$book])) {
+ echo 'Own it.';
+} else {
+ echo 'Need it.';
+}
+
+?>
+```	
+Note that doing this condenses multiple keys with the same value into one element in the flipped array.
 
 ### Comparing Arrays
 |Function	|Description|
