@@ -1364,6 +1364,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#array_map" class="md-nav__link">
+    array_map()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1380,6 +1387,13 @@
           <li class="md-nav__item">
   <a href="#array_key_exists" class="md-nav__link">
     array_key_exists()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_search" class="md-nav__link">
+    array_search()
   </a>
   
 </li>
@@ -1413,8 +1427,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#array_map" class="md-nav__link">
-    array_map()
+  <a href="#in_array" class="md-nav__link">
+    in_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_flip" class="md-nav__link">
+    array_flip()
   </a>
   
 </li>
@@ -2002,6 +2023,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#array_map" class="md-nav__link">
+    array_map()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2018,6 +2046,13 @@
           <li class="md-nav__item">
   <a href="#array_key_exists" class="md-nav__link">
     array_key_exists()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_search" class="md-nav__link">
+    array_search()
   </a>
   
 </li>
@@ -2051,8 +2086,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#array_map" class="md-nav__link">
-    array_map()
+  <a href="#in_array" class="md-nav__link">
+    in_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_flip" class="md-nav__link">
+    array_flip()
   </a>
   
 </li>
@@ -2540,7 +2582,7 @@ range() can also be used to retrieve character sequences:
 <td>Fills an array with values, specifying keys</td>
 </tr>
 <tr>
-<td>array_flip()</td>
+<td><a href="#array_flip">array_flip()</a></td>
 <td>Flips/Exchanges all keys with their associated values in an array</td>
 </tr>
 <tr>
@@ -2606,6 +2648,14 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$c</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="array_map">array_map()</h4>
+<p>Use array_map() to hand off each element to a function for processing:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// lowercase all words</span>
+<span class="nv">$lc</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="s1">&#39;strtolower&#39;</span><span class="p">,</span> <span class="nv">$words</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.</p>
 <h3 id="extracting-information-from-arrays">Extracting Information from Arrays</h3>
 <table>
 <thead>
@@ -2648,7 +2698,7 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <td>Returns an array as a string, using a user-defined function</td>
 </tr>
 <tr>
-<td>array_search()</td>
+<td><a href="#array_search">array_search()</a></td>
 <td>Searches an array for a given value and returns the key</td>
 </tr>
 <tr>
@@ -2688,7 +2738,7 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <td>Imports variables into the current symbol table from an array</td>
 </tr>
 <tr>
-<td>in_array()</td>
+<td><a href="#in_array">in_array()</a></td>
 <td>Checks if a specified value exists in an array</td>
 </tr>
 </tbody>
@@ -2712,6 +2762,28 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>isset(), however, behaves the same way on array keys as it does with other variables. A null value causes is set() to return false.</p>
+<h4 id="array_search">array_search()</h4>
+<p>The array_search() function is used to search for a specified value in an array. Use array_search() to find a value in an array no matter what the associated key is.  It returns the key of the found value. If the value is not in the array, it returns false.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nv">$found</span> <span class="o">=</span> <span class="nb">array_search</span><span class="p">(</span><span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="nv">$cars</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$found</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use in_array() to find if an array contains a value; use array_search() to discover where that value is located. However, because array_search() gracefully handles searches in which the value isn’t found, it’s better to use array_search() instead of in_array(). The speed difference is minute, and the extra information is potentially useful.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$favorite_foods</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;artichokes&#39;</span><span class="p">,</span> <span class="s1">&#39;bread&#39;</span><span class="p">,</span> <span class="s1">&#39;cauliflower&#39;</span><span class="p">,</span> <span class="s1">&#39;deviled eggs&#39;</span><span class="p">);</span>
+<span class="nv">$food</span> <span class="o">=</span> <span class="s1">&#39;cauliflower&#39;</span><span class="p">;</span>
+<span class="nv">$position</span> <span class="o">=</span> <span class="nb">array_search</span><span class="p">(</span><span class="nv">$food</span><span class="p">,</span> <span class="nv">$favorite_foods</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$position</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;My #</span><span class="si">$position</span><span class="s2"> favorite food is </span><span class="si">$food</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;Blech! I hate </span><span class="si">$food</span><span class="s2">!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use the !== check against false because if your string is found in the array at position 0, the if evaluates to a logical false, which isn’t what is meant or wanted. If a value is in the array multiple times, array_search() is only guaranteed to return one of the instances, not the first instance.</p>
 <h4 id="array_values">array_values()</h4>
 <p>The array_values() function is used to return all the values of an array.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -2786,14 +2858,51 @@ Finally, you can use each() in combination with list() and while:
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>This fails if any element holds a string that evaluates to false, so a perfectly normal value such as 0 causes the loop to end early. Therefore, this syntax is rarely used, and is included only to help you understand older PHP code.</p>
-<h4 id="array_map">array_map()</h4>
-<p>Finally, use array_map() to hand off each element to a function for processing:</p>
+<h4 id="in_array">in_array()</h4>
+<p>The in_array() function is used to check if a value exists in an array.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// lowercase all words</span>
-<span class="nv">$lc</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="s1">&#39;strtolower&#39;</span><span class="p">,</span> <span class="nv">$words</span><span class="p">);</span>
+<span class="nv">$book_collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Emma&#39;</span><span class="p">,</span> <span class="s1">&#39;Pride and Prejudice&#39;</span><span class="p">,</span> <span class="s1">&#39;Northhanger Abbey&#39;</span><span class="p">);</span>
+<span class="nv">$book</span> <span class="o">=</span> <span class="s1">&#39;Sense and Sensibility&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$book</span><span class="p">,</span> <span class="nv">$book_collection</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Own it.&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Need it.&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<p>The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.</p>
+<p>The default behavior of in_array() is to compare items using the == operator. To use the strict equality check, ===, pass true as the third parameter to in_array().</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">);</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span> <span class="c1">// true!</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$array</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$array</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$array</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The first check, in_array(0, $array), evaluates to true because to compare the number 0 against the string three, PHP casts three to an integer. Because three isn’t a numeric string, as is 2, it becomes 0. Therefore, in_array() thinks there’s a match.</p>
+<p>Consequently, when comparing numbers against data that may contain strings, it’s safest to use a strict comparison. If you find yourself calling in_array() multiple times on the same array, it may be better
+to use an associative array, with the original array elements as the keys in the new associative array. Looking up entries using in_array() takes linear time; with an associative array, it takes constant time.</p>
+<h4 id="array_flip">array_flip()</h4>
+<p>If you can’t create the associative array directly but need to convert from a traditional one with integer keys, use array_flip() to swap the keys and values of an array.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$book_collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Emma&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Pride and Prejudice&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Northhanger Abbey&#39;</span><span class="p">);</span>
+<span class="c1">// convert from numeric array to associative array</span>
+<span class="nv">$book_collection</span> <span class="o">=</span> <span class="nb">array_flip</span><span class="p">(</span><span class="nv">$book_collection</span><span class="p">);</span>
+<span class="nv">$book</span> <span class="o">=</span> <span class="s1">&#39;Sense and Sensibility&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$book_collection</span><span class="p">[</span><span class="nv">$book</span><span class="p">]))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Own it.&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Need it.&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+Note that doing this condenses multiple keys with the same value into one element in the flipped array.</p>
 <h3 id="comparing-arrays">Comparing Arrays</h3>
 <table>
 <thead>
