@@ -506,7 +506,7 @@ The first argument to array_map() is a function to modify an individual element,
 |---|---|
 |array_column()|	Returns the values from a single column in the input array|
 |array_count_values()|	Counts all the values of an array|
-|array_filter()|	Filters the values of an array using a callback function|
+|[array_filter()](#array_filter)|	Filters the values of an array using a callback function|
 |[array_key_exists()](#array_key_exists)|	Checks if the specified key exists in the array|
 |array_keys()|	Returns all the keys of an array|
 |array_product()|	Calculates the product of the values in an array|
@@ -523,6 +523,30 @@ The first argument to array_map() is a function to modify an individual element,
 |each()|	Deprecated from PHP 7.2. Returns the current key and value pair from an array|
 |extract()| Imports variables into the current symbol table from an array|
 |[in_array()](#in_array)|	Checks if a specified value exists in an array|
+
+#### array_filter()
+The array_filter() function is used to remove elements from an array that don’t pass a certain test.
+When you want to locate entries in an array that meet certain requirements.
+
+
+```php
+//Use a foreach loop:
+<?php
+$movies = array(/*...*/);
+foreach ($movies as $movie) {
+ if ($movie['box_office_gross'] < 5000000) { $flops[] = $movie; }
+}
+//Or array_filter():
+$movies = array(/* ... */);
+$flops = array_filter($movies, function ($movie) {
+ return ($movie['box_office_gross'] < 5000000) ? 1 : 0;
+});
+?>
+```
+
+With array_filter(), however, you first create an anonymous function that returns true for values you want to keep and false for values you don’t. Using array_filter(), you then instruct PHP to process the array as you do in the foreach.
+
+
 
 #### array_key_exists()
 The array_key_exists() function is used to check if the specified key exists in the array. Use array_key_exists() to check for a key no matter what the associated value is.

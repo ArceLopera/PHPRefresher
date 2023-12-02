@@ -1385,6 +1385,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#array_filter" class="md-nav__link">
+    array_filter()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#array_key_exists" class="md-nav__link">
     array_key_exists()
   </a>
@@ -2044,6 +2051,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#array_filter" class="md-nav__link">
+    array_filter()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#array_key_exists" class="md-nav__link">
     array_key_exists()
   </a>
@@ -2674,7 +2688,7 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <td>Counts all the values of an array</td>
 </tr>
 <tr>
-<td>array_filter()</td>
+<td><a href="#array_filter">array_filter()</a></td>
 <td>Filters the values of an array using a callback function</td>
 </tr>
 <tr>
@@ -2743,6 +2757,23 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 </tr>
 </tbody>
 </table>
+<h4 id="array_filter">array_filter()</h4>
+<p>The array_filter() function is used to remove elements from an array that don’t pass a certain test.
+When you want to locate entries in an array that meet certain requirements.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//Use a foreach loop:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$movies</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="cm">/*...*/</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$movies</span> <span class="k">as</span> <span class="nv">$movie</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nv">$movie</span><span class="p">[</span><span class="s1">&#39;box_office_gross&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5000000</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$flops</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$movie</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//Or array_filter():</span>
+<span class="nv">$movies</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">);</span>
+<span class="nv">$flops</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$movies</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$movie</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="p">(</span><span class="nv">$movie</span><span class="p">[</span><span class="s1">&#39;box_office_gross&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5000000</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>With array_filter(), however, you first create an anonymous function that returns true for values you want to keep and false for values you don’t. Using array_filter(), you then instruct PHP to process the array as you do in the foreach.</p>
 <h4 id="array_key_exists">array_key_exists()</h4>
 <p>The array_key_exists() function is used to check if the specified key exists in the array. Use array_key_exists() to check for a key no matter what the associated value is.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
