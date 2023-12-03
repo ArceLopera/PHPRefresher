@@ -1337,6 +1337,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#array_unique" class="md-nav__link">
+    array_unique
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1371,6 +1378,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#array_walk" class="md-nav__link">
+    array_walk()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_walk_recursive" class="md-nav__link">
+    array_walk_recursive()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1383,6 +1404,13 @@
   
     <nav class="md-nav" aria-label="Extracting Information from Arrays">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-the-largest-or-smallest-valued-element-in-an-array" class="md-nav__link">
+    Finding the Largest or Smallest Valued Element in an Array
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#array_filter" class="md-nav__link">
@@ -1496,6 +1524,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#natsort" class="md-nav__link">
+    natsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ksort" class="md-nav__link">
     ksort()
   </a>
@@ -1512,6 +1547,27 @@
           <li class="md-nav__item">
   <a href="#krsort" class="md-nav__link">
     krsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-an-array-by-a-computable-field" class="md-nav__link">
+    Sorting an Array by a Computable Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_multisort" class="md-nav__link">
+    array_multisort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle()
   </a>
   
 </li>
@@ -2003,6 +2059,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#array_unique" class="md-nav__link">
+    array_unique
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2037,6 +2100,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#array_walk" class="md-nav__link">
+    array_walk()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_walk_recursive" class="md-nav__link">
+    array_walk_recursive()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2049,6 +2126,13 @@
   
     <nav class="md-nav" aria-label="Extracting Information from Arrays">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-the-largest-or-smallest-valued-element-in-an-array" class="md-nav__link">
+    Finding the Largest or Smallest Valued Element in an Array
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#array_filter" class="md-nav__link">
@@ -2162,6 +2246,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#natsort" class="md-nav__link">
+    natsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ksort" class="md-nav__link">
     ksort()
   </a>
@@ -2178,6 +2269,27 @@
           <li class="md-nav__item">
   <a href="#krsort" class="md-nav__link">
     krsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-an-array-by-a-computable-field" class="md-nav__link">
+    Sorting an Array by a Computable Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_multisort" class="md-nav__link">
+    array_multisort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle()
   </a>
   
 </li>
@@ -2574,6 +2686,38 @@ range() can also be used to retrieve character sequences:
 
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="array_unique">array_unique</h4>
+<p>When you want to eliminate duplicates from an array.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nv">$unique_numbers</span> <span class="o">=</span> <span class="nb">array_unique</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$unique_numbers</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If the array is already complete, use array_unique(), which returns a new array that
+contains no duplicate values. </p>
+<p>If you create the array while processing results, here is a technique for numerical arrays:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nv">$unique_numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$numbers</span> <span class="k">as</span> <span class="nv">$number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$number</span><span class="p">,</span> <span class="nv">$unique_numbers</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$unique_numbers</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$number</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$unique_numbers</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Here’s one for associative arrays:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;fruits&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$fruit</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$array</span><span class="p">[</span><span class="nv">$fruit</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$fruit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>An even faster method than using in_array() is to create a hybrid array in which the key and the value for each element are the same. This eliminates the linear check of in_array() but still allows you to take advantage of the array family of functions that operate over the values of an array instead of the keys.</p>
+<p>In fact, it’s faster to use the associative array method and then call array_values() on the result (or, for that matter, array_keys(), but array_values() is slightly faster) than to create a numeric array directly with the overhead of in_array().</p>
 <h3 id="update-information-in-arrays">Update Information in Arrays</h3>
 <table>
 <thead>
@@ -2612,11 +2756,11 @@ range() can also be used to retrieve character sequences:
 <td>Replaces the values of the first array with the values from following arrays recursively</td>
 </tr>
 <tr>
-<td>array_walk()</td>
+<td><a href="#array_walk">array_walk()</a></td>
 <td>Applies a user function to every member of an array</td>
 </tr>
 <tr>
-<td>array_walk_recursive()</td>
+<td><a href="#array_walk_recursive">array_walk_recursive()</a></td>
 <td>Applies a user function recursively to every member of an array</td>
 </tr>
 <tr>
@@ -2670,6 +2814,23 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.</p>
+<h4 id="array_walk">array_walk()</h4>
+<p>Use array_walk() to hand off each element to a function for processing. When you want to apply a function or method to each element in an array. This allows you to transform the input data for the entire set all at once.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// uppercase all words</span>
+<span class="nb">array_walk</span><span class="p">(</span><span class="nv">$words</span><span class="p">,</span> <span class="s1">&#39;strtoupper&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This function takes an array and a callback function, which is the function that processes the elements of the array. The callback function takes two parameters: a value and a key. It can also take an optional third parameter, which is any additional data you wish to expose within the callback. Because array_walk operates in-place instead of returning a modified copy of the array, you must pass in values by reference when you want to modify the elements. </p>
+<h4 id="array_walk_recursive">array_walk_recursive()</h4>
+<p>When you have a series of nested arrays, use the array_walk_recursive() function to iterate through them.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// uppercase all words</span>
+<span class="nb">array_walk_recursive</span><span class="p">(</span><span class="nv">$words</span><span class="p">,</span> <span class="s1">&#39;strtoupper&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The array_walk_recursive() function only passes nonarray elements to the callback,
+so you don’t need to modify a callback when switching from array_walk().</p>
 <h3 id="extracting-information-from-arrays">Extracting Information from Arrays</h3>
 <table>
 <thead>
@@ -2757,6 +2918,23 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 </tr>
 </tbody>
 </table>
+<h4 id="finding-the-largest-or-smallest-valued-element-in-an-array">Finding the Largest or Smallest Valued Element in an Array</h4>
+<p>When you have an array of elements, and you want to find the largest or smallest valued element. For example, you want to find the appropriate scale when creating a histogram.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//To find the largest element, use max():</span>
+<span class="nv">$largest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="c1">//To find the smallest element, use min():</span>
+<span class="nv">$smallest</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Normally, <a href="../../PR/phpMath1/#min-and-max">max()</a> returns the larger of two elements, but if you pass it an array, it searches the entire array instead. Unfortunately, there’s no way to find the index of the largest element using max(). To do that, you must sort the array in reverse order to put the largest element in position 0.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">arsort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="c1">//The value of the largest element is $array[0]</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h4 id="array_filter">array_filter()</h4>
 <p>The array_filter() function is used to remove elements from an array that don’t pass a certain test.
 When you want to locate entries in an array that meet certain requirements.</p>
@@ -3058,7 +3236,7 @@ Note that doing this condenses multiple keys with the same value into one elemen
 </thead>
 <tbody>
 <tr>
-<td>array_multisort()</td>
+<td><a href="#array_multisort">array_multisort()</a></td>
 <td>Sorts multiple or multi-dimensional arrays</td>
 </tr>
 <tr>
@@ -3086,7 +3264,7 @@ Note that doing this condenses multiple keys with the same value into one elemen
 <td>Sorts an array using a case insensitive "natural order" algorithm</td>
 </tr>
 <tr>
-<td>natsort()</td>
+<td><a href="#natsort">natsort()</a></td>
 <td>Sorts an array using a "natural order" algorithm</td>
 </tr>
 <tr>
@@ -3094,7 +3272,7 @@ Note that doing this condenses multiple keys with the same value into one elemen
 <td>Sorts an indexed array in descending order</td>
 </tr>
 <tr>
-<td>shuffle()</td>
+<td><a href="#shuffle">shuffle()</a></td>
 <td>Shuffles an array</td>
 </tr>
 <tr>
@@ -3110,8 +3288,8 @@ Note that doing this condenses multiple keys with the same value into one elemen
 <td>Sorts an array by keys using a user-defined comparison function</td>
 </tr>
 <tr>
-<td>usort()    Sorts an array by values using a user-defined comparison function</td>
-<td></td>
+<td><a href="#sorting-an-array-by-a-computable-field">usort()</a></td>
+<td>Sorts an array by values using a user-defined comparison function</td>
 </tr>
 </tbody>
 </table>
@@ -3123,6 +3301,13 @@ Note that doing this condenses multiple keys with the same value into one elemen
 <span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>To sort numerically, pass SORT_NUMERIC as the second argument to sort().</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$scores</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$scores</span><span class="p">,</span> <span class="nx">SORT_NUMERIC</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+This resorts the numbers in ascending order (1, 2, 10, 20) instead of lexicographical order (1, 10, 2, 20).</p>
 <h4 id="rsort">rsort()</h4>
 <p>The rsort() function sorts an array in descending order.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -3133,6 +3318,15 @@ Note that doing this condenses multiple keys with the same value into one elemen
 </code></pre></div>
 <h4 id="asort">asort()</h4>
 <p>The asort() function sorts an associative array in ascending order, according to the value.</p>
+<p>The sort() function doesn’t preserve the key/value association between elements; instead, entries are reindexed starting at 0 and going upward. To preserve the key/value links, use asort(). The asort() function is normally used for associative arrays, but it can also be useful when the indexes of the entries are meaningful.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$states</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Delaware&#39;</span><span class="p">,</span> <span class="s1">&#39;Pennsylvania&#39;</span><span class="p">,</span> <span class="s1">&#39;New Jersey&#39;</span><span class="p">);</span>
+<span class="nb">asort</span><span class="p">(</span><span class="nv">$states</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="k">list</span><span class="p">(</span><span class="nv">$rank</span><span class="p">,</span> <span class="nv">$state</span><span class="p">)</span> <span class="o">=</span> <span class="nb">each</span><span class="p">(</span><span class="nv">$states</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$state</span><span class="s2"> was the #</span><span class="si">$rank</span><span class="s2"> state to join the United States</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
 <span class="nb">asort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
@@ -3142,6 +3336,15 @@ Note that doing this condenses multiple keys with the same value into one elemen
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="natsort">natsort()</h4>
+<p>The natsort() function sorts an array using a "natural order" algorithm. Use natsort() to sort the array using a natural sorting algorithm. Under natural sorting, you can mix strings and numbers inside your elements and still get the right answer:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$tests</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test1.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test10.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test11.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test2.php&#39;</span><span class="p">);</span>
+<span class="nb">natsort</span><span class="p">(</span><span class="nv">$tests</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$tests</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The elements are now ordered 'test1.php', 'test2.php', 'test10.php', and 'test11.php'. With natural sorting, the number 10 comes after the number 2; the opposite occurs under traditional sorting. For case-insensitive natural sorting, use natcasesort().</p>
 <h4 id="ksort">ksort()</h4>
 <p>The ksort() function sorts an associative array in ascending order, according to the key.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -3173,6 +3376,99 @@ Note that doing this condenses multiple keys with the same value into one elemen
   <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
   <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="sorting-an-array-by-a-computable-field">Sorting an Array by a Computable Field</h4>
+<p>Use usort() in combination with a custom comparison function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$tests</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test1.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test10.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test11.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test2.php&#39;</span><span class="p">);</span>
+<span class="c1">// sort in reverse natural order</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$tests</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">strnatcmp</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span> <span class="nv">$a</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$tests</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>When you want to define a custom sorting routine to order an array. However, instead of using
+a function, you want to use an object method. As with a custom sort function, the object method needs to take two input arguments and return 1, 0, or −1, depending on whether the first parameter is larger than, equal to, or less than the second.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">sort</span> <span class="p">{</span>
+ <span class="c1">// reverse-order string comparison</span>
+ <span class="k">static</span> <span class="k">function</span> <span class="nf">strrcmp</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">strcmp</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span> <span class="nv">$a</span><span class="p">);</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$words</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;sort&#39;</span><span class="p">,</span> <span class="s1">&#39;strrcmp&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>It must also be declared as static. Alternatively, you can use an instantiated object:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Dates</span> <span class="p">{</span>
+ <span class="k">public</span> <span class="k">function</span> <span class="nf">compare</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* compare here */</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nv">$dates</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dates</span><span class="p">;</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$access_times</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$dates</span><span class="p">,</span> <span class="s1">&#39;compare&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="array_multisort">array_multisort()</h4>
+<p>The array_multisort() function sorts an array of values using multiple keys. When you want to sort multiple arrays or an array with multiple dimensions.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$colors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">);</span>
+<span class="nv">$cities</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Boston&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">);</span>
+<span class="nb">array_multisort</span><span class="p">(</span><span class="nv">$colors</span><span class="p">,</span> <span class="nv">$cities</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$colors</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$cities</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Blue</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Red</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">White</span>
+<span class="p">)</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Chicago</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Boston</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">New</span> <span class="nx">York</span>
+<span class="p">)</span>
+<span class="c1">//To sort multiple dimensions within a single array, pass the specific array elements:</span>
+<span class="nv">$stuff</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;cities&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Boston&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">));</span>
+<span class="nb">array_multisort</span><span class="p">(</span><span class="nv">$stuff</span><span class="p">[</span><span class="s1">&#39;colors&#39;</span><span class="p">],</span> <span class="nv">$stuff</span><span class="p">[</span><span class="s1">&#39;cities&#39;</span><span class="p">]);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$stuff</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="nx">colors</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">Array</span>
+ <span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Blue</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Red</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">White</span>
+ <span class="p">)</span>
+ <span class="p">[</span><span class="nx">cities</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">Array</span>
+ <span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Chicago</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Boston</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">New</span> <span class="nx">York</span>
+ <span class="p">)</span>
+<span class="p">)</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>To modify the sort type, as in sort(), pass in SORT_REGULAR, SORT_NUMERIC, or SORT_STRING after the array. To modify the sort order, unlike in sort(), pass in SORT_ASC or SORT_DESC after the array. You can also pass in both a sort type and a sort order after the array.</p>
+<p>The array_multisort() function can sort several arrays at once or a multidimensional array by one or more dimensions. The arrays are treated as columns of a table to be sorted by rows. The first array is the main one to sort by; all the items in the other arrays are reordered based on the sorted order of the first array. If items in the first array compare as equal, the sort order is determined by the second array, and so on.</p>
+<p>The default sorting values are SORT_REGULAR and SORT_ASC, and they’re reset after each array, so there’s no reason to pass either of these two values, except for clarity:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nv">$letters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">);</span>
+<span class="nb">array_multisort</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">,</span> <span class="nx">SORT_NUMERIC</span><span class="p">,</span> <span class="nx">SORT_DESC</span><span class="p">,</span>
+ <span class="nv">$letters</span><span class="p">,</span> <span class="nx">SORT_STRING</span> <span class="p">,</span> <span class="nx">SORT_DESC</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This example reverses the arrays.</p>
+<h4 id="shuffle">shuffle()</h4>
+<p>When you want to scramble the elements of an array in a random order.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$colors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">);</span>
+<span class="nb">shuffle</span><span class="p">(</span><span class="nv">$colors</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$colors</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 

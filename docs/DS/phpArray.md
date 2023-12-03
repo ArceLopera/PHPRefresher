@@ -420,6 +420,52 @@ Array
 ?>
 ```
 
+#### array_unique
+
+When you want to eliminate duplicates from an array.
+
+```php
+<?php
+$numbers = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$unique_numbers = array_unique($numbers);
+print_r($unique_numbers);
+?>
+```
+
+If the array is already complete, use array_unique(), which returns a new array that
+contains no duplicate values. 
+
+If you create the array while processing results, here is a technique for numerical arrays:
+
+```php
+<?php
+$numbers = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$unique_numbers = array();
+foreach ($numbers as $number) {
+    if (!in_array($number, $unique_numbers)) {
+        $unique_numbers[] = $number;
+    }
+}
+print_r($unique_numbers);
+?>
+```
+
+Here’s one for associative arrays:
+
+```php
+<?php
+foreach ($_GET['fruits'] as $fruit) {
+ $array[$fruit] = $fruit;
+}
+
+?>
+```
+
+An even faster method than using in_array() is to create a hybrid array in which the key and the value for each element are the same. This eliminates the linear check of in_array() but still allows you to take advantage of the array family of functions that operate over the values of an array instead of the keys.
+
+In fact, it’s faster to use the associative array method and then call array_values() on the result (or, for that matter, array_keys(), but array_values() is slightly faster) than to create a numeric array directly with the overhead of in_array().
+
+
 ### Update Information in Arrays
 |Function	|Description|
 |---|---|
@@ -430,8 +476,8 @@ Array
 |[array_map()](#array_map)|	Sends each value of an array to a user-made function, which returns new values|
 |array_replace()|	Replaces the values of the first array with the values from following arrays|
 |array_replace_recursive()|	Replaces the values of the first array with the values from following arrays recursively|
-|array_walk()|	Applies a user function to every member of an array|
-|array_walk_recursive()|	Applies a user function recursively to every member of an array|
+|[array_walk()](#array_walk)|	Applies a user function to every member of an array|
+|[array_walk_recursive()](#array_walk_recursive)|	Applies a user function recursively to every member of an array|
 |[list()](#the-list-function)|	Assigns variables as if they were an array|
 
 #### Deleting Elements from an Array
@@ -501,6 +547,39 @@ $lc = array_map('strtolower', $words);
 
 The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.
 
+#### array_walk()
+
+Use array_walk() to hand off each element to a function for processing. When you want to apply a function or method to each element in an array. This allows you to transform the input data for the entire set all at once.
+
+```php
+<?php
+// uppercase all words
+array_walk($words, 'strtoupper');
+?>
+```
+
+This function takes an array and a callback function, which is the function that processes the elements of the array. The callback function takes two parameters: a value and a key. It can also take an optional third parameter, which is any additional data you wish to expose within the callback. Because array_walk operates in-place instead of returning a modified copy of the array, you must pass in values by reference when you want to modify the elements. 
+
+#### array_walk_recursive()
+
+When you have a series of nested arrays, use the array_walk_recursive() function to iterate through them.
+
+```php
+<?php
+// uppercase all words
+array_walk_recursive($words, 'strtoupper');
+?>
+```
+
+The array_walk_recursive() function only passes nonarray elements to the callback,
+so you don’t need to modify a callback when switching from array_walk().
+
+
+
+
+
+
+
 ### Extracting Information from Arrays
 |Function	|Description|
 |---|---|
@@ -523,6 +602,33 @@ The first argument to array_map() is a function to modify an individual element,
 |each()|	Deprecated from PHP 7.2. Returns the current key and value pair from an array|
 |extract()| Imports variables into the current symbol table from an array|
 |[in_array()](#in_array)|	Checks if a specified value exists in an array|
+
+
+#### Finding the Largest or Smallest Valued Element in an Array
+
+When you have an array of elements, and you want to find the largest or smallest valued element. For example, you want to find the appropriate scale when creating a histogram.
+
+
+```php
+<?php
+//To find the largest element, use max():
+$largest = max($array);
+//To find the smallest element, use min():
+$smallest = min($array);
+
+?>
+```
+
+Normally, [max()](../PR/phpMath1.md#min-and-max) returns the larger of two elements, but if you pass it an array, it searches the entire array instead. Unfortunately, there’s no way to find the index of the largest element using max(). To do that, you must sort the array in reverse order to put the largest element in position 0.
+
+
+```php
+<?php
+arsort($array);
+//The value of the largest element is $array[0]
+
+?>
+```
 
 #### array_filter()
 The array_filter() function is used to remove elements from an array that don’t pass a certain test.
@@ -803,20 +909,20 @@ Note that doing this condenses multiple keys with the same value into one elemen
 ### Sorting Arrays
 |Function	|Description|
 |---|---|
-|array_multisort()|	Sorts multiple or multi-dimensional arrays|
+|[array_multisort()](#array_multisort)|	Sorts multiple or multi-dimensional arrays|
 |[array_reverse()](../PR/phpStr1.md#reverse-by-words)|	Returns an array in the reverse order|
 |[arsort()](#arsort)|	Sorts an associative array in descending order, according to the value|
 |[asort()](#asort)|	Sorts an associative array in ascending order, according to the value|
 |[krsort()](#krsort)	|Sorts an associative array in descending order, according to the key|
 |[ksort()](#ksort) |	Sorts an associative array in ascending order, according to the key|
 |natcasesort()|	Sorts an array using a case insensitive "natural order" algorithm|
-|natsort()|	Sorts an array using a "natural order" algorithm|
+|[natsort()](#natsort)|	Sorts an array using a "natural order" algorithm|
 |[rsort()](#rsort)|	Sorts an indexed array in descending order|
-|shuffle()|	Shuffles an array|
+|[shuffle()](#shuffle)|	Shuffles an array|
 |[sort()](#sort)|	Sorts an indexed array in ascending order|
 |uasort()|	Sorts an array by values using a user-defined comparison function and maintains the index association|
 |uksort()|	Sorts an array by keys using a user-defined comparison function|
-|usort()	Sorts an array by values using a user-defined comparison function|
+|[usort()](#sorting-an-array-by-a-computable-field)|	Sorts an array by values using a user-defined comparison function|
 
 #### sort()
 The sort() function sorts an array alphabetically.
@@ -828,6 +934,16 @@ sort($cars);
 echo $cars[0];
 ?>
 ```
+
+To sort numerically, pass SORT_NUMERIC as the second argument to sort().
+
+```php
+<?php
+$scores = array(1, 10, 2, 20);
+sort($scores, SORT_NUMERIC);
+?>
+```
+This resorts the numbers in ascending order (1, 2, 10, 20) instead of lexicographical order (1, 10, 2, 20).
 
 #### rsort()
 The rsort() function sorts an array in descending order.
@@ -843,6 +959,19 @@ echo $cars[0];
 #### asort()
 The asort() function sorts an associative array in ascending order, according to the value.
 
+The sort() function doesn’t preserve the key/value association between elements; instead, entries are reindexed starting at 0 and going upward. To preserve the key/value links, use asort(). The asort() function is normally used for associative arrays, but it can also be useful when the indexes of the entries are meaningful.
+
+```php
+<?php
+$states = array(1 => 'Delaware', 'Pennsylvania', 'New Jersey');
+asort($states);
+while (list($rank, $state) = each($states)) {
+ print "$state was the #$rank state to join the United States\n";
+}
+?>
+```
+
+
 ```php
 <?php
 $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
@@ -853,6 +982,20 @@ foreach($age as $x => $x_value) {
 }
 ?>
 ```
+
+#### natsort()
+The natsort() function sorts an array using a "natural order" algorithm. Use natsort() to sort the array using a natural sorting algorithm. Under natural sorting, you can mix strings and numbers inside your elements and still get the right answer:
+
+```php
+<?php
+$tests = array('test1.php', 'test10.php', 'test11.php', 'test2.php');
+natsort($tests);
+print_r($tests);
+?>
+```
+
+
+The elements are now ordered 'test1.php', 'test2.php', 'test10.php', and 'test11.php'. With natural sorting, the number 10 comes after the number 2; the opposite occurs under traditional sorting. For case-insensitive natural sorting, use natcasesort().
 
 #### ksort()
 The ksort() function sorts an associative array in ascending order, according to the key.
@@ -893,5 +1036,126 @@ foreach($age as $x => $x_value) {
   echo "Key=" . $x . ", Value=" . $x_value;
   echo "<br>";
 }
+?>
+```
+
+####  Sorting an Array by a Computable Field
+
+Use usort() in combination with a custom comparison function:
+
+```php
+<?php
+$tests = array('test1.php', 'test10.php', 'test11.php', 'test2.php');
+// sort in reverse natural order
+usort($tests, function ($a, $b) {
+ return strnatcmp($b, $a);
+});
+print_r($tests);
+?>
+```
+
+When you want to define a custom sorting routine to order an array. However, instead of using
+a function, you want to use an object method. As with a custom sort function, the object method needs to take two input arguments and return 1, 0, or −1, depending on whether the first parameter is larger than, equal to, or less than the second.
+
+
+```php
+<?php
+class sort {
+ // reverse-order string comparison
+ static function strrcmp($a, $b) {
+ return strcmp($b, $a);
+ }
+}
+usort($words, array('sort', 'strrcmp'));
+?>
+```
+
+It must also be declared as static. Alternatively, you can use an instantiated object:
+
+
+```php
+<?php
+class Dates {
+ public function compare($a, $b) { /* compare here */ }
+}
+$dates = new Dates;
+usort($access_times, array($dates, 'compare'));
+?>
+```
+
+
+#### array_multisort()
+The array_multisort() function sorts an array of values using multiple keys. When you want to sort multiple arrays or an array with multiple dimensions.
+
+
+```php
+<?php
+$colors = array('Red', 'White', 'Blue');
+$cities = array('Boston', 'New York', 'Chicago');
+array_multisort($colors, $cities);
+print_r($colors);
+print_r($cities);
+Array
+(
+ [0] => Blue
+ [1] => Red
+ [2] => White
+)
+Array
+(
+ [0] => Chicago
+ [1] => Boston
+ [2] => New York
+)
+//To sort multiple dimensions within a single array, pass the specific array elements:
+$stuff = array('colors' => array('Red', 'White', 'Blue'),
+ 'cities' => array('Boston', 'New York', 'Chicago'));
+array_multisort($stuff['colors'], $stuff['cities']);
+print_r($stuff);
+Array
+(
+ [colors] => Array
+ (
+ [0] => Blue
+ [1] => Red
+ [2] => White
+ )
+ [cities] => Array
+ (
+ [0] => Chicago
+ [1] => Boston
+ [2] => New York
+ )
+)
+?>
+```
+
+To modify the sort type, as in sort(), pass in SORT_REGULAR, SORT_NUMERIC, or SORT_STRING after the array. To modify the sort order, unlike in sort(), pass in SORT_ASC or SORT_DESC after the array. You can also pass in both a sort type and a sort order after the array.
+
+The array_multisort() function can sort several arrays at once or a multidimensional array by one or more dimensions. The arrays are treated as columns of a table to be sorted by rows. The first array is the main one to sort by; all the items in the other arrays are reordered based on the sorted order of the first array. If items in the first array compare as equal, the sort order is determined by the second array, and so on.
+
+The default sorting values are SORT_REGULAR and SORT_ASC, and they’re reset after each array, so there’s no reason to pass either of these two values, except for clarity:
+
+```php
+<?php
+$numbers = array(0, 1, 2, 3);
+$letters = array('a', 'b', 'c', 'd');
+array_multisort($numbers, SORT_NUMERIC, SORT_DESC,
+ $letters, SORT_STRING , SORT_DESC);
+?>
+```
+
+This example reverses the arrays.
+
+
+#### shuffle()
+
+When you want to scramble the elements of an array in a random order.
+
+```php
+<?php
+$colors = array('Red', 'White', 'Blue');
+shuffle($colors);
+print_r($colors);
 ?>
 ```
