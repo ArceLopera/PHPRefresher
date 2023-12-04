@@ -875,9 +875,12 @@ if (isset($book_collection[$book])) {
 Note that doing this condenses multiple keys with the same value into one element in the flipped array.
 
 ### Comparing Arrays
+
+When you have a pair of arrays, and you want to find their union (all the elements), intersection (elements in both, not just one), or difference (in one but not both).
+
 |Function	|Description|
 |---|---|
-|array_diff()|	Compare arrays, and returns the differences (compare values only)|
+|[array_diff()](#array_diff)|	Compare arrays, and returns the differences (compare values only)|
 |array_diff_assoc()|	Compare arrays, and returns the differences (compare keys and values)|
 |array_diff_key()|	Compare arrays, and returns the differences (compare keys only)|
 |array_diff_uassoc()|	Compare arrays, and returns the differences (compare keys and values, using a user-defined key comparison function)|
@@ -893,6 +896,89 @@ Note that doing this condenses multiple keys with the same value into one elemen
 |array_uintersect()|	Compare arrays, and returns the matches (compare values only, using a user-defined key comparison function)|
 |array_uintersect_assoc()|	Compare arrays, and returns the matches (compare keys and values, using a built-in function to compare the keys and a user-defined function to compare the values)|
 |array_uintersect_uassoc()|	Compare arrays, and returns the matches (compare keys and values, using two user-defined key comparison functions)|
+
+
+
+```php
+//To compute the union:
+$union = array_unique(array_merge($a, $b));
+//To compute the intersection:
+$intersection = array_intersect($a, $b);
+//To find the simple difference:
+$difference = array_diff($a, $b);
+//And for the symmetric difference:
+$difference = array_merge(array_diff($a, $b), array_diff($b, $a));
+```
+
+Many necessary components for these calculations are built into PHP; it’s just a matter of combining them in the proper sequence.
+
+To find the union, you merge the two arrays to create one giant array with all of the values. But array_merge() allows duplicate values when merging two numeric arrays, so you call array_unique() to filter them out. This can leave gaps between entries because array_unique() doesn’t compact the array. It isn’t a problem, however, because foreach and each() handle sparsely filled arrays without a hitch.
+The function to calculate the intersection is simply named array_intersect() and requires no additional work on your part. 
+
+#### array_diff()
+
+The array_diff() function returns an array containing all the unique elements in $old that aren’t in $new. This is known as the simple difference:
+
+
+```php
+$old = array('To', 'be', 'or', 'not', 'to', 'be');
+$new = array('To', 'be', 'or', 'whatever');
+$difference = array_diff($old, $new);
+print_r($difference);
+```
+
+The resulting array, $difference, contains 'not' and 'to' because array_diff() is case sensitive. It doesn’t contain 'whatever' because it doesn’t appear in $old.
+
+To get a reverse difference, or in other words, to find the unique elements in $new that are lacking in $old, flip the arguments:
+
+
+```php
+$old = array('To', 'be', 'or', 'not', 'to', 'be');
+$new = array('To', 'be', 'or', 'whatever');
+$difference = array_diff($new, $old);
+print_r($difference);
+```
+
+The $reverse_diff array contains only 'whatever'.
+If you want to apply a function or other filter to array_diff(), roll your own difference algorithm:
+
+
+```php
+// implement case-insensitive diff; diff -i
+$seen = array();
+foreach ($new as $n) {
+ $seen[strtolower($n)]++;
+}
+foreach ($old as $o) {
+ $o = strtolower($o);
+ if (!$seen[$o]) { $diff[$o] = $o; }
+}
+```
+
+The first foreach builds an associative array lookup table. You then loop through $old and, if you can’t find an entry in your lookup, add the element to $diff.
+
+It can be a little faster to combine array_diff() with array_map():
+
+
+```php
+$old = array('To', 'be', 'or', 'not', 'to', 'be');
+$new = array('To', 'be', 'or', 'whatever');
+$diff = array_diff(array_map('strtolower', $old), array_map('strtolower', $new));
+print_r($diff);
+```
+
+The symmetric difference is what’s in $a but not $b, and what’s in $b but not $a:
+
+```php
+$old = array('To', 'be', 'or', 'not', 'to', 'be');
+$new = array('To', 'be', 'or', 'whatever');
+$symmetric_diff = array_merge(array_diff($a, $b), array_diff($b, $a));
+print_r($symmetric_diff);
+```
+
+Once stated, the algorithm is straightforward. You call array_diff() twice and find the two differences. Then you merge them together into one array. There’s no need to call array_unique() because you’ve intentionally constructed these arrays to have nothing in common.
+
+
 
 ### Pointer Functions
 |Function	|Description|
@@ -1159,3 +1245,5 @@ shuffle($colors);
 print_r($colors);
 ?>
 ```
+
+

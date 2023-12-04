@@ -260,3 +260,107 @@ class LineIterator implements Iterator {
 ```
 
 This flexibility does come at a cost, however: generators are forward-only iterators, and cannot be rewound once iteration has started. This also means that the same generator can't be iterated over multiple times: the generator will need to be rebuilt by calling the generator function again.
+
+
+##  Iterating Efficiently over Large or Expensive Datasets
+
+When you want to iterate through a list of items, but the entire list takes up a lot of memory
+or is very slow to generate.
+
+Use a generator:
+
+```php
+<?php
+function FileLineGenerator($file) {
+ if (!$fh = fopen($file, 'r')) {
+ return;
+ }
+ while (false !== ($line = fgets($fh))) {
+ yield $line;
+ }
+ fclose($fh);
+}
+$file = FileLineGenerator('log.txt');
+foreach ($file as $line) {
+ if (preg_match('/^rasmus: /', $line)) { print $line; }
+}
+?>
+```
+
+Generators provide a simple way to efficiently loop over items without the overhead and expense of loading all the data into an array. 
+
+A perfect use of a generator is processing all the lines in a file. The simplest way is to use the file() function. This open the file, loads each line into an element of an array, and closes it. However, then you store the entire file in memory.
+
+```php
+<?php
+$file = file('log.txt');
+foreach ($file as $line) {
+ if (preg_match('/^rasmus: /', $line)) { print $line; }
+}
+?>
+```
+
+Another option is to use the standard file reading functions, but then your code for reading from the file and acting on each line gets intertwined. This doesn’t make for reusable or easy-to-read code:
+
+
+```php
+<?php
+function print_matching_lines($file, $regex) {
+ if (!$fh = fopen('log.txt','r')) {
+ return;
+ }
+ while(false !== ($line = fgets($fh))) {
+ if (preg_match($regex, $line)) { print $line; }
+ }
+ fclose($fh);
+}
+print_matching_lines('log.txt', '/^rasmus: /');
+
+?>
+```
+
+However, if you wrap the code to process the file into a generator, you get the best of both options—a general function to efficiently iterate through lines of a file and then clean syntax as if all the data is stored in an array:
+
+
+```php
+<?php
+function FileLineGenerator($file) {
+ if (!$fh = fopen($file, 'r')) {
+ return;
+ }
+ while (false !== ($line = fgets($fh))) {
+    yield $line;
+ }
+ fclose($fh);
+}
+$file = FileLineGenerator('log.txt');
+foreach ($file as $line) {
+ if (preg_match('/^rasmus: /', $line)) { print $line; }
+}
+?>
+```
+
+In a generator, control passes back and forth between the loop and the function via the yield statement. The first time the generator is called, control begins at the top of the function and pauses when it reaches a yield statement, returning the value.
+
+In this example, the FileLineGenerator() generator function loops through lines of a file. After the file is opened, fgets() is called in a loop. As long as there are more lines, the loop yields $line back to the iterator. At the end of the file, the loop terminates, the file is closed, and the function terminates. Because nothing is yielded back, the foreach() exits.
+
+Now, FileLineGenerator() can be used any time you want to loop through a file. The previous example prints lines beginning with rasmus: . The following one prints a random line from the file:
+
+
+```php
+<?php
+$line_number = 0;
+foreach (FileLineGenerator('sayings.txt') as $line) {
+ $line_number++;
+ if (mt_rand(0, $line_number - 1) == 0) {
+ $selected = $line;
+ }
+}
+print $selected . "\n";
+
+?>
+```
+
+Despite a completely different use case, FileLineGenerator() is reusable without modifications. In this example, the generator is invoked from within the foreach loop instead of storing it in a variable.
+You cannot rewind a generator. They only iterate forward.
+

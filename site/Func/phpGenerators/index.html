@@ -1254,6 +1254,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iterating-efficiently-over-large-or-expensive-datasets" class="md-nav__link">
+    Iterating Efficiently over Large or Expensive Datasets
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1756,6 +1763,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#iterating-efficiently-over-large-or-expensive-datasets" class="md-nav__link">
+    Iterating Efficiently over Large or Expensive Datasets
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1995,6 +2009,84 @@ function countTo2() {
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>This flexibility does come at a cost, however: generators are forward-only iterators, and cannot be rewound once iteration has started. This also means that the same generator can't be iterated over multiple times: the generator will need to be rebuilt by calling the generator function again.</p>
+<h2 id="iterating-efficiently-over-large-or-expensive-datasets">Iterating Efficiently over Large or Expensive Datasets</h2>
+<p>When you want to iterate through a list of items, but the entire list takes up a lot of memory
+or is very slow to generate.</p>
+<p>Use a generator:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">FileLineGenerator</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">return</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">while</span> <span class="p">(</span><span class="k">false</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fh</span><span class="p">)))</span> <span class="p">{</span>
+ <span class="k">yield</span> <span class="nv">$line</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nx">FileLineGenerator</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$file</span> <span class="k">as</span> <span class="nv">$line</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/^rasmus: /&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">))</span> <span class="p">{</span> <span class="k">print</span> <span class="nv">$line</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Generators provide a simple way to efficiently loop over items without the overhead and expense of loading all the data into an array. </p>
+<p>A perfect use of a generator is processing all the lines in a file. The simplest way is to use the file() function. This open the file, loads each line into an element of an array, and closes it. However, then you store the entire file in memory.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nb">file</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$file</span> <span class="k">as</span> <span class="nv">$line</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/^rasmus: /&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">))</span> <span class="p">{</span> <span class="k">print</span> <span class="nv">$line</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Another option is to use the standard file reading functions, but then your code for reading from the file and acting on each line gets intertwined. This doesn’t make for reusable or easy-to-read code:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">print_matching_lines</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="nv">$regex</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">return</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">while</span><span class="p">(</span><span class="k">false</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fh</span><span class="p">)))</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$regex</span><span class="p">,</span> <span class="nv">$line</span><span class="p">))</span> <span class="p">{</span> <span class="k">print</span> <span class="nv">$line</span><span class="p">;</span> <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">print_matching_lines</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;/^rasmus: /&#39;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>However, if you wrap the code to process the file into a generator, you get the best of both options—a general function to efficiently iterate through lines of a file and then clean syntax as if all the data is stored in an array:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">FileLineGenerator</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">return</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">while</span> <span class="p">(</span><span class="k">false</span> <span class="o">!==</span> <span class="p">(</span><span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fh</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="k">yield</span> <span class="nv">$line</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nx">FileLineGenerator</span><span class="p">(</span><span class="s1">&#39;log.txt&#39;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$file</span> <span class="k">as</span> <span class="nv">$line</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/^rasmus: /&#39;</span><span class="p">,</span> <span class="nv">$line</span><span class="p">))</span> <span class="p">{</span> <span class="k">print</span> <span class="nv">$line</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>In a generator, control passes back and forth between the loop and the function via the yield statement. The first time the generator is called, control begins at the top of the function and pauses when it reaches a yield statement, returning the value.</p>
+<p>In this example, the FileLineGenerator() generator function loops through lines of a file. After the file is opened, fgets() is called in a loop. As long as there are more lines, the loop yields $line back to the iterator. At the end of the file, the loop terminates, the file is closed, and the function terminates. Because nothing is yielded back, the foreach() exits.</p>
+<p>Now, FileLineGenerator() can be used any time you want to loop through a file. The previous example prints lines beginning with rasmus: . The following one prints a random line from the file:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$line_number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nx">FileLineGenerator</span><span class="p">(</span><span class="s1">&#39;sayings.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$line</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$line_number</span><span class="o">++</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$line_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$selected</span> <span class="o">=</span> <span class="nv">$line</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">print</span> <span class="nv">$selected</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Despite a completely different use case, FileLineGenerator() is reusable without modifications. In this example, the generator is invoked from within the foreach loop instead of storing it in a variable.
+You cannot rewind a generator. They only iterate forward.</p>
 
               
             </article>

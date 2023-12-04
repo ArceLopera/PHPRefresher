@@ -1485,6 +1485,19 @@
     Comparing Arrays
   </a>
   
+    <nav class="md-nav" aria-label="Comparing Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array_diff" class="md-nav__link">
+    array_diff()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2206,6 +2219,19 @@
   <a href="#comparing-arrays" class="md-nav__link">
     Comparing Arrays
   </a>
+  
+    <nav class="md-nav" aria-label="Comparing Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array_diff" class="md-nav__link">
+    array_diff()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3113,6 +3139,7 @@ to use an associative array, with the original array elements as the keys in the
 </code></pre></div>
 Note that doing this condenses multiple keys with the same value into one element in the flipped array.</p>
 <h3 id="comparing-arrays">Comparing Arrays</h3>
+<p>When you have a pair of arrays, and you want to find their union (all the elements), intersection (elements in both, not just one), or difference (in one but not both).</p>
 <table>
 <thead>
 <tr>
@@ -3122,7 +3149,7 @@ Note that doing this condenses multiple keys with the same value into one elemen
 </thead>
 <tbody>
 <tr>
-<td>array_diff()</td>
+<td><a href="#array_diff">array_diff()</a></td>
 <td>Compare arrays, and returns the differences (compare values only)</td>
 </tr>
 <tr>
@@ -3187,6 +3214,58 @@ Note that doing this condenses multiple keys with the same value into one elemen
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code><span class="x">//To compute the union:</span>
+<span class="x">$union = array_unique(array_merge($a, $b));</span>
+<span class="x">//To compute the intersection:</span>
+<span class="x">$intersection = array_intersect($a, $b);</span>
+<span class="x">//To find the simple difference:</span>
+<span class="x">$difference = array_diff($a, $b);</span>
+<span class="x">//And for the symmetric difference:</span>
+<span class="x">$difference = array_merge(array_diff($a, $b), array_diff($b, $a));</span>
+</code></pre></div>
+<p>Many necessary components for these calculations are built into PHP; it’s just a matter of combining them in the proper sequence.</p>
+<p>To find the union, you merge the two arrays to create one giant array with all of the values. But array_merge() allows duplicate values when merging two numeric arrays, so you call array_unique() to filter them out. This can leave gaps between entries because array_unique() doesn’t compact the array. It isn’t a problem, however, because foreach and each() handle sparsely filled arrays without a hitch.
+The function to calculate the intersection is simply named array_intersect() and requires no additional work on your part. </p>
+<h4 id="array_diff">array_diff()</h4>
+<p>The array_diff() function returns an array containing all the unique elements in $old that aren’t in $new. This is known as the simple difference:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$difference = array_diff($old, $new);</span>
+<span class="x">print_r($difference);</span>
+</code></pre></div>
+<p>The resulting array, $difference, contains 'not' and 'to' because array_diff() is case sensitive. It doesn’t contain 'whatever' because it doesn’t appear in $old.</p>
+<p>To get a reverse difference, or in other words, to find the unique elements in $new that are lacking in $old, flip the arguments:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$difference = array_diff($new, $old);</span>
+<span class="x">print_r($difference);</span>
+</code></pre></div>
+<p>The $reverse_diff array contains only 'whatever'.
+If you want to apply a function or other filter to array_diff(), roll your own difference algorithm:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// implement case-insensitive diff; diff -i</span>
+<span class="x">$seen = array();</span>
+<span class="x">foreach ($new as $n) {</span>
+<span class="x"> $seen[strtolower($n)]++;</span>
+<span class="x">}</span>
+<span class="x">foreach ($old as $o) {</span>
+<span class="x"> $o = strtolower($o);</span>
+<span class="x"> if (!$seen[$o]) { $diff[$o] = $o; }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The first foreach builds an associative array lookup table. You then loop through $old and, if you can’t find an entry in your lookup, add the element to $diff.</p>
+<p>It can be a little faster to combine array_diff() with array_map():</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$diff = array_diff(array_map(&#39;strtolower&#39;, $old), array_map(&#39;strtolower&#39;, $new));</span>
+<span class="x">print_r($diff);</span>
+</code></pre></div>
+<p>The symmetric difference is what’s in $a but not $b, and what’s in $b but not $a:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$symmetric_diff = array_merge(array_diff($a, $b), array_diff($b, $a));</span>
+<span class="x">print_r($symmetric_diff);</span>
+</code></pre></div>
+<p>Once stated, the algorithm is straightforward. You call array_diff() twice and find the two differences. Then you merge them together into one array. There’s no need to call array_unique() because you’ve intentionally constructed these arrays to have nothing in common.</p>
 <h3 id="pointer-functions">Pointer Functions</h3>
 <table>
 <thead>
