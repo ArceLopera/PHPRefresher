@@ -513,6 +513,19 @@
     unset()
   </a>
   
+    <nav class="md-nav" aria-label="unset()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-that-evaluate-to-false" class="md-nav__link">
+    Values that evaluate to false
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1686,6 +1699,19 @@
     unset()
   </a>
   
+    <nav class="md-nav" aria-label="unset()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values-that-evaluate-to-false" class="md-nav__link">
+    Values that evaluate to false
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1869,6 +1895,16 @@
 </tbody>
 </table>
 <h3 id="unset">unset()</h3>
+<p>A variable is either set or unset. A variable with any value assigned to it, true or false, empty or nonempty, is set. The function isset() returns true when passed a variable that’s set. To turn a variable that’s set into one that’s unset, call unset() on the variable or assign null to the variable. Scalars, arrays, and objects can all be passed to unset(). You can also pass unset() multiple variables to unset them all:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$vegetables</span><span class="p">);</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$fruits</span><span class="p">[</span><span class="mi">12</span><span class="p">]);</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$earth</span><span class="p">,</span> <span class="nv">$moon</span><span class="p">,</span> <span class="nv">$stars</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>All unset variables are also empty. Set variables may be empty or nonempty. Empty
+variables have values that evaluate to false as a boolean.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;The value of variable &#39;a&#39; before unset: &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
@@ -1876,6 +1912,49 @@
 <span class="k">echo</span> <span class="s2">&quot;The value of variable &#39;a&#39; after unset: &quot;</span> <span class="o">.</span> <span class="nv">$a</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h4 id="values-that-evaluate-to-false">Values that evaluate to false</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>integer</td>
+<td>0</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>string</td>
+<td>“” (empty string)</td>
+</tr>
+<tr>
+<td>string</td>
+<td>“0”</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>array</td>
+<td>array() (empty array)</td>
+</tr>
+<tr>
+<td>null</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>object</td>
+<td>An object with no properties, only prior to PHP 5</td>
+</tr>
+</tbody>
+</table>
 <h3 id="var_dump">var_dump()</h3>
 <p>Dump information about different variables.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
