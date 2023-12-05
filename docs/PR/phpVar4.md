@@ -41,6 +41,24 @@ The PHP variable handling functions are part of the PHP core. No installation is
 
 ### unset()
 
+A variable is either set or unset. A variable with any value assigned to it, true or false, empty or nonempty, is set. The function isset() returns true when passed a variable that’s set. To turn a variable that’s set into one that’s unset, call unset() on the variable or assign null to the variable. Scalars, arrays, and objects can all be passed to unset(). You can also pass unset() multiple variables to unset them all:
+
+
+```php
+<?php
+unset($vegetables);
+unset($fruits[12]);
+unset($earth, $moon, $stars);
+
+?>
+```
+
+All unset variables are also empty. Set variables may be empty or nonempty. Empty
+variables have values that evaluate to false as a boolean.
+
+
+
+
 ```php
 <?php
 $a = "Hello world!";
@@ -49,6 +67,19 @@ unset($a);
 echo "The value of variable 'a' after unset: " . $a;
 ?>
 ```
+
+#### Values that evaluate to false
+|Type| Value|
+|---|---|
+|integer| 0|
+|double| 0.0|
+|string| “” (empty string)|
+|string| “0”|
+|boolean| false|
+|array| array() (empty array)|
+|null| NULL|
+|object| An object with no properties, only prior to PHP 5|
+
 
 ### var_dump()
 
