@@ -39,6 +39,34 @@ The basic assignment operator in PHP is "=". It means that the left operand gets
 | `/=` | Division Assignment | $x = $x / $y | Divide $x by $y and assign the result to $x |
 | `%=` | Modulus Assignment | $x = $x % $y | Modulus of $x divided by $y and assign the result to $x |
 
+### Avoiding == Versus = Confusion
+
+Use:
+
+```php
+if (12 == $dwarves) { ... }
+```
+instead of:
+
+```php
+if ($dwarves == 12) { ... }
+```
+Putting the constant on the left triggers a parse error with the assignment operator. In
+other words, PHP complains when you write:
+
+```php
+if (12 = $dwarves) { ... }
+```
+but:
+
+```php
+if ($dwarves = 12) { ... }
+```
+silently executes, assigning 12 to the variable dwarves, and then executing the code
+inside the block. ($dwarves = 12 evaluates to 12, which is true.)
+
+Putting a constant on the left side of a comparison coerces the comparison to the type of the constant. This causes problems when you are comparing an integer with a variable that could be an integer or a string. 0 == $dwarves is true when $dwarves is 0, but it’s also true when $dwarves is sleepy. Because an integer (0) is on the left side of the comparison, PHP converts what’s on the right (the string sleepy) to an integer (0) before comparing. To avoid this, use the identity operator, 0 === $dwarves, instead.
+
 ## PHP Comparison Operators
 
 The PHP comparison operators are used to compare two values (number or string):

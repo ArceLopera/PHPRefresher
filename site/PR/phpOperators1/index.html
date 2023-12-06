@@ -695,6 +695,19 @@
     PHP Assignment Operators
   </a>
   
+    <nav class="md-nav" aria-label="PHP Assignment Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoiding-versus-confusion" class="md-nav__link">
+    Avoiding == Versus = Confusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1712,6 +1725,19 @@
     PHP Assignment Operators
   </a>
   
+    <nav class="md-nav" aria-label="PHP Assignment Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoiding-versus-confusion" class="md-nav__link">
+    Avoiding == Versus = Confusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1885,6 +1911,23 @@
 </tr>
 </tbody>
 </table>
+<h3 id="avoiding-versus-confusion">Avoiding == Versus = Confusion</h3>
+<p>Use:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">if (12 == $dwarves) { ... }</span>
+</code></pre></div>
+instead of:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">if ($dwarves == 12) { ... }</span>
+</code></pre></div>
+Putting the constant on the left triggers a parse error with the assignment operator. In
+other words, PHP complains when you write:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">if (12 = $dwarves) { ... }</span>
+</code></pre></div>
+but:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">if ($dwarves = 12) { ... }</span>
+</code></pre></div>
+silently executes, assigning 12 to the variable dwarves, and then executing the code
+inside the block. ($dwarves = 12 evaluates to 12, which is true.)</p>
+<p>Putting a constant on the left side of a comparison coerces the comparison to the type of the constant. This causes problems when you are comparing an integer with a variable that could be an integer or a string. 0 == $dwarves is true when $dwarves is 0, but it’s also true when $dwarves is sleepy. Because an integer (0) is on the left side of the comparison, PHP converts what’s on the right (the string sleepy) to an integer (0) before comparing. To avoid this, use the identity operator, 0 === $dwarves, instead.</p>
 <h2 id="php-comparison-operators">PHP Comparison Operators</h2>
 <p>The PHP comparison operators are used to compare two values (number or string):</p>
 <table>
