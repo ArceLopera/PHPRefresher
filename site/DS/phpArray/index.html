@@ -2825,13 +2825,34 @@ To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#u
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>Since PHP 7.1.0, which elements are assigned to the variables can be selected using arrow =&gt; syntax.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">list</span><span class="p">(</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="nv">$a</span><span class="p">,</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="nv">$b</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$b</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$c</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+When you want to exchange the values in two variables without using additional variables for
+storage.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="s1">&#39;Bob&#39;</span><span class="p">;</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span><span class="nv">$b</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span><span class="nv">$a</span><span class="p">);</span>
+<span class="c1">// now $a is Bob and $b is Alice</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>PHP’s list() language construct lets you assign values from an array to individual variables. Its counterpart on the right side of the expression, array(), lets you construct arrays from individual values. Assigning the array that array() returns to the variables in the list() lets you juggle the order of those values. This works with more than two values, as well:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$yesterday</span> <span class="o">=</span> <span class="s1">&#39;pleasure&#39;</span><span class="p">;</span>
+<span class="nv">$today</span> <span class="o">=</span> <span class="s1">&#39;sorrow&#39;</span><span class="p">;</span>
+<span class="nv">$tomorrow</span> <span class="o">=</span> <span class="s1">&#39;celebrate&#39;</span><span class="p">;</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$yesterday</span><span class="p">,</span><span class="nv">$today</span><span class="p">,</span><span class="nv">$tomorrow</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$today</span><span class="p">,</span><span class="nv">$tomorrow</span><span class="p">,</span><span class="nv">$yesterday</span><span class="p">);</span>
+<span class="c1">// now $yesterday is &#39;sorrow&#39;, $today is &#39;celebrate&#39;</span>
+<span class="c1">// and $tomorrow is &#39;pleasure&#39;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This method isn’t faster than using temporary variables, so you should use it for clarity,
+but not speed.</p>
 <h4 id="array_map">array_map()</h4>
 <p>Use array_map() to hand off each element to a function for processing:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>

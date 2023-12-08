@@ -533,6 +533,37 @@ echo "$b is " . $b . "<br>";
 echo "$c is " . $c . "<br>";
 ?>
 ```
+When you want to exchange the values in two variables without using additional variables for
+storage.
+
+```php
+<?php
+$a = 'Alice';
+$b = 'Bob';
+list($a,$b) = array($b,$a);
+// now $a is Bob and $b is Alice
+?>
+```
+
+
+
+PHP’s list() language construct lets you assign values from an array to individual variables. Its counterpart on the right side of the expression, array(), lets you construct arrays from individual values. Assigning the array that array() returns to the variables in the list() lets you juggle the order of those values. This works with more than two values, as well:
+
+```php
+<?php
+$yesterday = 'pleasure';
+$today = 'sorrow';
+$tomorrow = 'celebrate';
+list($yesterday,$today,$tomorrow) = array($today,$tomorrow,$yesterday);
+// now $yesterday is 'sorrow', $today is 'celebrate'
+// and $tomorrow is 'pleasure'
+?>
+```
+
+This method isn’t faster than using temporary variables, so you should use it for clarity,
+but not speed.
+
+
 
 #### array_map()
 
