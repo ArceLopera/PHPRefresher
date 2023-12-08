@@ -1740,6 +1740,57 @@
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>When you want to assign a default value to a variable that doesn’t already have a value. It often happens that you want a hardcoded default value for a variable that can be overridden from form input or through an environment variable.</p>
+<p>Use isset() to assign a default to a variable that may already have a value:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$cars</span><span class="p">))</span> <span class="p">{</span>
+ <span class="nv">$cars</span> <span class="o">=</span> <span class="nv">$default_cars</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use the ternary (a ? b : c) operator to give a new variable a (possibly default) value:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$default_cars</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Using isset() is essential when assigning default values. Without it, the nondefault value can’t be 0 or anything else that evaluates to false. Consider this assignment:</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$default_cars</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+If $_GET['cars'] is 0, cars is set to default_cars even though 0 may be a valid value for cars.
+An alternative syntax for checking arrays is the array_key_exists() function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="nb">array_key_exists</span><span class="p">(</span><span class="s1">&#39;cars&#39;</span><span class="p">,</span> <span class="nv">$_GET</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$default_cars</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The one difference between isset() and array_key_exists() is that when a key exists but its value is null, then array_key_exists() returns true, whereas isset() returns false:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$vehicles</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;cars&#39;</span> <span class="o">=&gt;</span> <span class="k">null</span><span class="p">);</span>
+<span class="c1">// array_key_exists() returns TRUE because the key is present.</span>
+<span class="nv">$ake_result</span> <span class="o">=</span> <span class="nb">array_key_exists</span><span class="p">(</span><span class="s1">&#39;cars&#39;</span><span class="p">,</span> <span class="nv">$vehicles</span><span class="p">);</span>
+<span class="c1">// isset() returns values because the key&#39;s value is NULL</span>
+<span class="nv">$isset_result</span> <span class="o">=</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$vehicles</span><span class="p">[</span><span class="s1">&#39;cars&#39;</span><span class="p">]);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use an array of defaults to set multiple default values easily. The keys in the defaults array are variable names, and the values in the array are the defaults for each variable:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$defaults</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;emperors&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Rudolf II&#39;</span><span class="p">,</span><span class="s1">&#39;Caligula&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;vegetable&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;celery&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;acres&#39;</span> <span class="o">=&gt;</span> <span class="mi">15</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$defaults</span> <span class="k">as</span> <span class="nv">$k</span> <span class="o">=&gt;</span> <span class="nv">$v</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$GLOBALS</span><span class="p">[</span><span class="nv">$k</span><span class="p">]))</span> <span class="p">{</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="nv">$k</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$v</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Because the variables are set in the global namespace, the previous code doesn’t work for setting default variables private within a function. To do that, use variable variables:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$defaults</span> <span class="k">as</span> <span class="nv">$k</span> <span class="o">=&gt;</span> <span class="nv">$v</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$$k</span><span class="p">))</span> <span class="p">{</span> <span class="nv">$$k</span> <span class="o">=</span> <span class="nv">$v</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>In this example, the first time through the loop, $k is emperors, so $$k is $emperors.</p>
 
               
             </article>
