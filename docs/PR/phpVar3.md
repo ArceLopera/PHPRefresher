@@ -99,3 +99,24 @@ myTest();
 Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.
 
 Note: The variable is still local to the function.
+
+###  Persisting a Local Variable’s Value Across Function Invocations
+
+When you want a local variable to retain its value between invocations of a function.
+
+Declare the variable as static:
+
+``` php
+<?php
+function track_times_called() {
+ static $i = 0;
+ $i++;
+ return $i;
+}
+
+echo track_times_called();
+echo track_times_called();
+echo track_times_called();
+?>
+```
+Though static variables retain their values between function calls, they do so only during one invocation of a script. A static variable accessed in one request doesn’t keep its value for the next request to the same page.
