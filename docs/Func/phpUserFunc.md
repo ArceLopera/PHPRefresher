@@ -2,6 +2,34 @@
 + A function will not execute automatically when a page loads.
 + A function will be executed by a call to the function.
 
+
+A PHP function is made of three things:
+
+1. Its code
+2. Its documentation (using PHPDoc)
+3. Its prototype
+
+In PHP, a function prototype (also called “signature”) is made of the name, arguments and, since PHP 7, its return type.
+
+Arguments can be typed, we call this “type-hint”, and since PHP 7 we can type an argument with scalar types (bool, int, string…), but since early PHP has objects, we can type-hint with a class. Also, arguments can have a default value.
+
+When you want to access the values passed to a function.
+
+```php
+<?php
+//Use the names from the function prototype:
+function commercial_sponsorship($letter, $number) {
+ print "This episode of Sesame Street is brought to you by ";
+ print "the letter $letter and number $number.\n";
+}
+commercial_sponsorship('G', 3);
+$another_letter = 'X';
+$another_number = 15;
+commercial_sponsorship($another_letter, $another_number);
+?>
+```
+
+
 ## Create a User Defined Function
 
 ```php
@@ -89,6 +117,49 @@ setHeight(135);
 setHeight(80);
 ?>
 ```
+
+There are two important things to remember when assigning default values. First, all parameters with default values must appear after parameters without defaults. Otherwise, PHP can’t tell which parameters are omitted and should take the default value and which arguments are overriding the default.
+
+```php
+<?php
+function wrap_in_html_tag($tag = 'strong', $text)
+{
+  return "<$tag>$text</$tag>";
+}
+echo wrap_in_html_tag('p', 'Hello World');
+echo wrap_in_html_tag('em', 'Hello World');
+?>
+```
+
+If you do this and pass wrap_in_html_tag() only a single argument, PHP assigns the value to $tag and issues a warning complaining of a missing second argument.
+
+Second, the assigned value must be a constant, such as a string or a number. It can’t be a variable. Again, using wrap_in_html_tag(), such as our example, you can’t do this:
+
+```php
+<?php
+$my_favorite_html_tag = 'blink';
+function wrap_in_html_tag($text, $tag = $my_favorite_html_tag) {
+ return "<$tag>$text</$tag>";
+}
+echo wrap_in_html_tag('Hello World');
+echo wrap_in_html_tag('Hello World', 'blink');
+?>
+```
+
+If you want to assign a default of nothing, one solution is to assign the empty string to your parameter:
+
+```php
+<?php
+function wrap_in_html_tag($text, $tag = '') {
+ if (empty($tag)) { return $text; }
+ return "<$tag>$text</$tag>";
+}
+echo wrap_in_html_tag('Hello World');
+echo wrap_in_html_tag('Hello World', 'blink');
+?>
+```
+
+This function returns the original string, if no value is passed in for the $tag. If a nonempty tag is passed in, it returns the string wrapped inside of tags.
 
 ## Returning values
 To let a function return a value, use the return statement
