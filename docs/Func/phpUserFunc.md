@@ -214,6 +214,53 @@ echo $num;
 ?>
 ```
 
+## Returning Values by Reference
+
+When you want to return a value by reference, not by value. This allows you to avoid making a duplicate copy of a variable.
+
+The syntax for returning a variable by reference is similar to passing it by reference. However, instead of placing an & before the parameter, place it before the name of the function:
+
+```php
+<?php
+function &array_find_value($needle, &$haystack) {
+ foreach ($haystack as $key => $value) {
+ if ($needle == $value) {
+ return $haystack[$key];
+ }
+ }
+}
+?>
+```
+
+Also, you must use the =& assignment operator instead of plain = when invoking the function:
+
+```php
+<?php
+$band =& array_find_value('The Doors', $artists);
+echo $band;
+?>
+```
+
+##  Returning More Than One Value
+
+Return an array and use list() to separate elements:
+
+```php
+<?php
+function array_stats($values) {
+ $min = min($values);
+ $max = max($values);
+ $mean = array_sum($values) / count($values);
+ return array($min, $max, $mean);
+}
+$values = array(1,3,5,9,13,1442);
+list($min, $max, $mean) = array_stats($values);
+echo "Min: $min, Max: $max, Mean: $mean";
+?>
+```
+
+
+
 ## PHP callable Keyword
 
 Use callable to require a callback function as an argument.
@@ -239,3 +286,26 @@ printFormatted("exclaim", "Hello World");
 ?>
 ```
 
+## Creating Dynamic Functions
+
+When you want to create and define a function as your program is running. Use the closure syntax to define a function and store it in a variable:
+
+```php
+<?php
+$increment = 7;
+$add = function($i, $j) use ($increment) { return $i + $j + $increment; };
+$sum = $add(1, 2);
+echo $sum;
+?>
+```
+
+$sum is now 10. If you are using a version of PHP earlier than 5.3.0, use create_function() instead:
+
+```php
+<?php
+$increment = 7;
+$add = create_function('$i,$j', 'return $i+$j + ' . $increment. ';');
+$sum = $add(1, 2);
+echo $sum;
+?>
+```
