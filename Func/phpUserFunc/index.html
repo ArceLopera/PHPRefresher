@@ -293,6 +293,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+        Moodle
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -1233,8 +1249,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#returning-values-by-reference" class="md-nav__link">
+    Returning Values by Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-more-than-one-value" class="md-nav__link">
+    Returning More Than One Value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#php-callable-keyword" class="md-nav__link">
     PHP callable Keyword
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-dynamic-functions" class="md-nav__link">
+    Creating Dynamic Functions
   </a>
   
 </li>
@@ -1690,6 +1727,68 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1776,8 +1875,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#returning-values-by-reference" class="md-nav__link">
+    Returning Values by Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-more-than-one-value" class="md-nav__link">
+    Returning More Than One Value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#php-callable-keyword" class="md-nav__link">
     PHP callable Keyword
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-dynamic-functions" class="md-nav__link">
+    Creating Dynamic Functions
   </a>
   
 </li>
@@ -1803,6 +1923,27 @@
 <li>A function will not execute automatically when a page loads.</li>
 <li>A function will be executed by a call to the function.</li>
 </ul>
+<p>A PHP function is made of three things:</p>
+<ol>
+<li>Its code</li>
+<li>Its documentation (using PHPDoc)</li>
+<li>Its prototype</li>
+</ol>
+<p>In PHP, a function prototype (also called “signature”) is made of the name, arguments and, since PHP 7, its return type.</p>
+<p>Arguments can be typed, we call this “type-hint”, and since PHP 7 we can type an argument with scalar types (bool, int, string…), but since early PHP has objects, we can type-hint with a class. Also, arguments can have a default value.</p>
+<p>When you want to access the values passed to a function.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//Use the names from the function prototype:</span>
+<span class="k">function</span> <span class="nf">commercial_sponsorship</span><span class="p">(</span><span class="nv">$letter</span><span class="p">,</span> <span class="nv">$number</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;This episode of Sesame Street is brought to you by &quot;</span><span class="p">;</span>
+ <span class="k">print</span> <span class="s2">&quot;the letter </span><span class="si">$letter</span><span class="s2"> and number </span><span class="si">$number</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">commercial_sponsorship</span><span class="p">(</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nv">$another_letter</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span><span class="p">;</span>
+<span class="nv">$another_number</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+<span class="nx">commercial_sponsorship</span><span class="p">(</span><span class="nv">$another_letter</span><span class="p">,</span> <span class="nv">$another_number</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h2 id="create-a-user-defined-function">Create a User Defined Function</h2>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">function</span> <span class="nf">writeMsg</span><span class="p">()</span> <span class="p">{</span>
@@ -1871,6 +2012,38 @@
 <span class="nx">setHeight</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>There are two important things to remember when assigning default values. First, all parameters with default values must appear after parameters without defaults. Otherwise, PHP can’t tell which parameters are omitted and should take the default value and which arguments are overriding the default.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">wrap_in_html_tag</span><span class="p">(</span><span class="nv">$tag</span> <span class="o">=</span> <span class="s1">&#39;strong&#39;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">$tag</span><span class="s2">&gt;</span><span class="si">$text</span><span class="s2">&lt;/</span><span class="si">$tag</span><span class="s2">&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nx">wrap_in_html_tag</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">wrap_in_html_tag</span><span class="p">(</span><span class="s1">&#39;em&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If you do this and pass wrap_in_html_tag() only a single argument, PHP assigns the value to $tag and issues a warning complaining of a missing second argument.</p>
+<p>Second, the assigned value must be a constant, such as a string or a number. It can’t be a variable. Again, using wrap_in_html_tag(), such as our example, you can’t do this:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$my_favorite_html_tag</span> <span class="o">=</span> <span class="s1">&#39;blink&#39;</span><span class="p">;</span>
+<span class="k">function</span> <span class="nf">wrap_in_html_tag</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span> <span class="nv">$tag</span> <span class="o">=</span> <span class="nv">$my_favorite_html_tag</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">$tag</span><span class="s2">&gt;</span><span class="si">$text</span><span class="s2">&lt;/</span><span class="si">$tag</span><span class="s2">&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nx">wrap_in_html_tag</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">wrap_in_html_tag</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="s1">&#39;blink&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If you want to assign a default of nothing, one solution is to assign the empty string to your parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">wrap_in_html_tag</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span> <span class="nv">$tag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$tag</span><span class="p">))</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$text</span><span class="p">;</span> <span class="p">}</span>
+ <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">$tag</span><span class="s2">&gt;</span><span class="si">$text</span><span class="s2">&lt;/</span><span class="si">$tag</span><span class="s2">&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">echo</span> <span class="nx">wrap_in_html_tag</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">wrap_in_html_tag</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">,</span> <span class="s1">&#39;blink&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This function returns the original string, if no value is passed in for the $tag. If a nonempty tag is passed in, it returns the string wrapped inside of tags.</p>
 <h2 id="returning-values">Returning values</h2>
 <p>To let a function return a value, use the return statement</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -1910,6 +2083,39 @@
 <span class="k">echo</span> <span class="nv">$num</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h2 id="returning-values-by-reference">Returning Values by Reference</h2>
+<p>When you want to return a value by reference, not by value. This allows you to avoid making a duplicate copy of a variable.</p>
+<p>The syntax for returning a variable by reference is similar to passing it by reference. However, instead of placing an &amp; before the parameter, place it before the name of the function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="o">&amp;</span><span class="nf">array_find_value</span><span class="p">(</span><span class="nv">$needle</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$haystack</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="nv">$haystack</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nv">$needle</span> <span class="o">==</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nv">$haystack</span><span class="p">[</span><span class="nv">$key</span><span class="p">];</span>
+ <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Also, you must use the =&amp; assignment operator instead of plain = when invoking the function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$band</span> <span class="o">=&amp;</span> <span class="nx">array_find_value</span><span class="p">(</span><span class="s1">&#39;The Doors&#39;</span><span class="p">,</span> <span class="nv">$artists</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$band</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="returning-more-than-one-value">Returning More Than One Value</h2>
+<p>Return an array and use list() to separate elements:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">array_stats</span><span class="p">(</span><span class="nv">$values</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+ <span class="nv">$max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+ <span class="nv">$mean</span> <span class="o">=</span> <span class="nb">array_sum</span><span class="p">(</span><span class="nv">$values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+ <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="nv">$min</span><span class="p">,</span> <span class="nv">$max</span><span class="p">,</span> <span class="nv">$mean</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nv">$values</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1442</span><span class="p">);</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$min</span><span class="p">,</span> <span class="nv">$max</span><span class="p">,</span> <span class="nv">$mean</span><span class="p">)</span> <span class="o">=</span> <span class="nx">array_stats</span><span class="p">(</span><span class="nv">$values</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;Min: </span><span class="si">$min</span><span class="s2">, Max: </span><span class="si">$max</span><span class="s2">, Mean: </span><span class="si">$mean</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <h2 id="php-callable-keyword">PHP callable Keyword</h2>
 <p>Use callable to require a callback function as an argument.</p>
 <p>The callable keyword is used to force a function argument to be a reference to a function.</p>
@@ -1928,6 +2134,23 @@
 
 <span class="k">function</span> <span class="nf">exclaim</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$str</span> <span class="o">.</span> <span class="s2">&quot;!&quot;</span><span class="p">;</span> <span class="p">}</span>
 <span class="nx">printFormatted</span><span class="p">(</span><span class="s2">&quot;exclaim&quot;</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="creating-dynamic-functions">Creating Dynamic Functions</h2>
+<p>When you want to create and define a function as your program is running. Use the closure syntax to define a function and store it in a variable:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$increment</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="nv">$add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$i</span><span class="p">,</span> <span class="nv">$j</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$increment</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$i</span> <span class="o">+</span> <span class="nv">$j</span> <span class="o">+</span> <span class="nv">$increment</span><span class="p">;</span> <span class="p">};</span>
+<span class="nv">$sum</span> <span class="o">=</span> <span class="nv">$add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$sum</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>$sum is now 10. If you are using a version of PHP earlier than 5.3.0, use create_function() instead:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$increment</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="nv">$add</span> <span class="o">=</span> <span class="nb">create_function</span><span class="p">(</span><span class="s1">&#39;$i,$j&#39;</span><span class="p">,</span> <span class="s1">&#39;return $i+$j + &#39;</span> <span class="o">.</span> <span class="nv">$increment</span><span class="o">.</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>
+<span class="nv">$sum</span> <span class="o">=</span> <span class="nv">$add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$sum</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 

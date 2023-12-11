@@ -293,6 +293,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+        Moodle
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -517,6 +533,19 @@
   <a href="#php-the-static-keyword" class="md-nav__link">
     PHP The static Keyword
   </a>
+  
+    <nav class="md-nav" aria-label="PHP The static Keyword">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persisting-a-local-variables-value-across-function-invocations" class="md-nav__link">
+    Persisting a Local Variable’s Value Across Function Invocations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1656,6 +1685,68 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1711,6 +1802,19 @@
   <a href="#php-the-static-keyword" class="md-nav__link">
     PHP The static Keyword
   </a>
+  
+    <nav class="md-nav" aria-label="PHP The static Keyword">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persisting-a-local-variables-value-across-function-invocations" class="md-nav__link">
+    Persisting a Local Variable’s Value Across Function Invocations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1813,6 +1917,22 @@ You can have local variables with the same name in different functions, because 
 </code></pre></div></p>
 <p>Then, each time the function is called, that variable will still have the information it contained from the last time the function was called.</p>
 <p>Note: The variable is still local to the function.</p>
+<h3 id="persisting-a-local-variables-value-across-function-invocations">Persisting a Local Variable’s Value Across Function Invocations</h3>
+<p>When you want a local variable to retain its value between invocations of a function.</p>
+<p>Declare the variable as static:</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">track_times_called</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">static</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+ <span class="k">return</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="nx">track_times_called</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">track_times_called</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">track_times_called</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+Though static variables retain their values between function calls, they do so only during one invocation of a script. A static variable accessed in one request doesn’t keep its value for the next request to the same page.</p>
 
               
             </article>
