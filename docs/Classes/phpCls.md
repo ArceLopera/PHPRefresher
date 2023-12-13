@@ -30,6 +30,7 @@ class Person
     public function greeting()
     {
         echo "Hello, my name is " . $this->name;
+        
     }
 }
 ?>
