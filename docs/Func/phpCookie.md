@@ -1,5 +1,7 @@
 A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.
 
+HTTP requests aren’t “stateful”; each request isn’t connected to a previous one. A cookie, however, can link different requests by the same user. This makes it easier to build features such as shopping carts or to keep track of a user’s search history.
+
 ## setcookie()
 
 ```
