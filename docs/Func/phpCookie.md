@@ -4,11 +4,40 @@ HTTP requests aren’t “stateful”; each request isn’t connected to a previ
 
 ## setcookie()
 
-```
+When you want to set a cookie so that your website can recognize subsequent requests from the same web browser. Call setcookie() with a cookie name and value:
+
+``` php
 setcookie($name, $value = "", $expire = "", $path = "", $domain = "", $secure = "", $httponly = "");
 ```
 
-Only the name parameter is required. All other parameters are optional.
+Only the name parameter is required. All other parameters are optional. Cookies are sent with the HTTP headers, so if you’re not using output buffering, set cookie() must be called before any output is generated. . The third argument to setcookie() is an expiration time, expressed as an epoch timestamp. For example, this cookie expires at noon GMT on December 3, 2014:
+
+``` php
+setcookie('flavor','chocolate chip',1417608000);
+```
+
+If the third argument to setcookie() is missing (or empty), the cookie expires when the browser is closed. Also, many systems can’t handle a cookie expiration time greater than 2147483647, because that’s the largest epoch timestamp that fits in a 32-bit integer.
+
+The fourth argument to setcookie() is a path. The cookie is sent back to the server only when pages whose path begin with the specified string are requested. For example, a cookie sent back only to pages whose path begins with /products/:
+
+``` php
+setcookie('flavor','chocolate chip',1417608000,'/products/');
+```	
+
+The page that’s setting the cookie doesn’t have to have a URL whose path component begins with /products/, but the cookie is sent back only to pages that do.
+
+The fifth argument to setcookie() is a domain. The cookie is sent back to the server only when pages whose hostname ends with the specified domain are requested. Here the first cookie is sent back to all hosts in the example.com domain, but the second cookie is sent only with requests to the host carlos.example.com:
+
+``` php
+setcookie('flavor','chocolate chip',1417608000,'/products/','example.com');
+setcookie('flavor','chocolate chip',1417608000,'/products/','carlos.example.com');
+```
+
+If the first cookie’s domain was just example.com instead of .example.com, it would be sent only to the single host example.com (and not www.example.com or carlos.example.com). If a domain is not specified when setcookie() is called, the browser sends back the cookie only with requests to the same hostname as the request in which the cookie was set.
+
+The last optional argument to setcookie() is a flag that, if set to true, instructs the browser only to send the cookie over an SSL connection. This can be useful if the cookie contains sensitive information, but remember that the data in the cookie is stored as unencrypted plain text on the user’s computer.
+
+Different browsers handle cookies in slightly different ways, especially with regard to how strictly they match path and domain strings and how they determine priority between different cookies of the same name.
 
 ### Create/Retrieve a Cookie
 The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).
