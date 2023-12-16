@@ -70,6 +70,21 @@ The setcookie() function must appear BEFORE the html tag.
 
 The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).
 
+A cookie’s value isn’t available in $_COOKIE during the request in which the cookie is set.
+In other words, calling the setcookie() function doesn’t alter the value of $_COOKIE. On subsequent requests, however, each cookie sent back to the server is stored in $_COOKIE.
+
+When a browser sends a cookie back to the server, it sends only the value. You can’t access the cookie’s domain, path, expiration time, or secure status through $_COOKIE because the browser doesn’t send that to the server.
+
+To print the names and values of all cookies sent in a particular request, loop through the $_COOKIE array:
+
+```php
+<?php
+foreach ($_COOKIE as $cookie_name => $cookie_value) {
+ print "$cookie_name = $cookie_value <br/>";
+}
+?>
+```
+
 ### Modify a Cookie Value
 To modify a cookie, just set (again) the cookie using the setcookie() function:
 
@@ -96,6 +111,9 @@ if(!isset($_COOKIE[$cookie_name])) {
 ```
 
 ### Delete a Cookie
+
+When you want to delete a cookie so a browser doesn’t send it back to the server. For example, you’re using cookies to track whether a user is logged in to your website, and a user logs out.
+
 To delete a cookie, use the setcookie() function with an expiration date in the past:
 
 ```php
@@ -113,6 +131,8 @@ echo "Cookie 'user' is deleted.";
 </body>
 </html>
 ```
+
+
 
 ### Check if Cookies are Enabled
 The following example creates a small script that checks whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the $_COOKIE array variable:
