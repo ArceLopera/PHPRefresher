@@ -39,7 +39,7 @@ The last optional argument to setcookie() is a flag that, if set to true, instru
 
 Different browsers handle cookies in slightly different ways, especially with regard to how strictly they match path and domain strings and how they determine priority between different cookies of the same name.
 
-### Create/Retrieve a Cookie
+## Create/Retrieve a Cookie
 The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).
 
 We then retrieve the value of the cookie "user" (using the global variable $_COOKIE). We also use the isset() function to find out if the cookie is set:
@@ -85,7 +85,7 @@ foreach ($_COOKIE as $cookie_name => $cookie_value) {
 ?>
 ```
 
-### Modify a Cookie Value
+## Modify a Cookie Value
 To modify a cookie, just set (again) the cookie using the setcookie() function:
 
 ```php
@@ -110,7 +110,7 @@ if(!isset($_COOKIE[$cookie_name])) {
 </html>
 ```
 
-### Delete a Cookie
+## Delete a Cookie
 
 When you want to delete a cookie so a browser doesn’t send it back to the server. For example, you’re using cookies to track whether a user is logged in to your website, and a user logs out.
 
@@ -134,7 +134,7 @@ echo "Cookie 'user' is deleted.";
 
 
 
-### Check if Cookies are Enabled
+## Check if Cookies are Enabled
 The following example creates a small script that checks whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the $_COOKIE array variable:
 
 ```php
@@ -156,4 +156,19 @@ if(count($_COOKIE) > 0) {
 </html>
 ```
 
+## Using Cookie Authentication
 
+When you want more control over the user login procedure, such as presenting your own login form.
+
+Store authentication status in a cookie or as part of a session. When a user logs in successfully, put her username (or another unique value) in a cookie. Also include a hash of the username and a secret word so a user can’t just make up an authentication cookie with a username in it:
+
+```php
+<?php
+$secret_word = 'if i ate spinach';
+if (validate($_POST['username'],$_POST['password'])) {
+ setcookie('login',
+ $_POST['username'].','.md5($_POST['username'].$secret_word));
+}
+?>
+
+```
