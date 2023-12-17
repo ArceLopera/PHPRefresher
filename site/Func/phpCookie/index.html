@@ -972,39 +972,40 @@
     setcookie()
   </a>
   
-    <nav class="md-nav" aria-label="setcookie()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#createretrieve-a-cookie" class="md-nav__link">
     Create/Retrieve a Cookie
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#modify-a-cookie-value" class="md-nav__link">
     Modify a Cookie Value
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#delete-a-cookie" class="md-nav__link">
     Delete a Cookie
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#check-if-cookies-are-enabled" class="md-nav__link">
     Check if Cookies are Enabled
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#using-cookie-authentication" class="md-nav__link">
+    Using Cookie Authentication
+  </a>
   
 </li>
       
@@ -1772,39 +1773,40 @@
     setcookie()
   </a>
   
-    <nav class="md-nav" aria-label="setcookie()">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#createretrieve-a-cookie" class="md-nav__link">
     Create/Retrieve a Cookie
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#modify-a-cookie-value" class="md-nav__link">
     Modify a Cookie Value
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#delete-a-cookie" class="md-nav__link">
     Delete a Cookie
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#check-if-cookies-are-enabled" class="md-nav__link">
     Check if Cookies are Enabled
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#using-cookie-authentication" class="md-nav__link">
+    Using Cookie Authentication
+  </a>
   
 </li>
       
@@ -1845,7 +1847,7 @@
 <p>If the first cookie’s domain was just example.com instead of .example.com, it would be sent only to the single host example.com (and not www.example.com or carlos.example.com). If a domain is not specified when setcookie() is called, the browser sends back the cookie only with requests to the same hostname as the request in which the cookie was set.</p>
 <p>The last optional argument to setcookie() is a flag that, if set to true, instructs the browser only to send the cookie over an SSL connection. This can be useful if the cookie contains sensitive information, but remember that the data in the cookie is stored as unencrypted plain text on the user’s computer.</p>
 <p>Different browsers handle cookies in slightly different ways, especially with regard to how strictly they match path and domain strings and how they determine priority between different cookies of the same name.</p>
-<h3 id="createretrieve-a-cookie">Create/Retrieve a Cookie</h3>
+<h2 id="createretrieve-a-cookie">Create/Retrieve a Cookie</h2>
 <p>The following example creates a cookie named "user" with the value "John Doe". The cookie will expire after 30 days (86400 * 30). The "/" means that the cookie is available in entire website (otherwise, select the directory you prefer).</p>
 <p>We then retrieve the value of the cookie "user" (using the global variable $_COOKIE). We also use the isset() function to find out if the cookie is set:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -1870,7 +1872,17 @@
 </code></pre></div>
 <p>The setcookie() function must appear BEFORE the html tag.</p>
 <p>The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).</p>
-<h3 id="modify-a-cookie-value">Modify a Cookie Value</h3>
+<p>A cookie’s value isn’t available in $_COOKIE during the request in which the cookie is set.
+In other words, calling the setcookie() function doesn’t alter the value of $_COOKIE. On subsequent requests, however, each cookie sent back to the server is stored in $_COOKIE.</p>
+<p>When a browser sends a cookie back to the server, it sends only the value. You can’t access the cookie’s domain, path, expiration time, or secure status through $_COOKIE because the browser doesn’t send that to the server.</p>
+<p>To print the names and values of all cookies sent in a particular request, loop through the $_COOKIE array:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$_COOKIE</span> <span class="k">as</span> <span class="nv">$cookie_name</span> <span class="o">=&gt;</span> <span class="nv">$cookie_value</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$cookie_name</span><span class="s2"> = </span><span class="si">$cookie_value</span><span class="s2"> &lt;br/&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="modify-a-cookie-value">Modify a Cookie Value</h2>
 <p>To modify a cookie, just set (again) the cookie using the setcookie() function:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$cookie_name</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span><span class="p">;</span>
@@ -1892,7 +1904,8 @@
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<h3 id="delete-a-cookie">Delete a Cookie</h3>
+<h2 id="delete-a-cookie">Delete a Cookie</h2>
+<p>When you want to delete a cookie so a browser doesn’t send it back to the server. For example, you’re using cookies to track whether a user is logged in to your website, and a user logs out.</p>
 <p>To delete a cookie, use the setcookie() function with an expiration date in the past:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">// set the expiration date to one hour ago</span>
@@ -1908,7 +1921,7 @@
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
 </code></pre></div>
-<h3 id="check-if-cookies-are-enabled">Check if Cookies are Enabled</h3>
+<h2 id="check-if-cookies-are-enabled">Check if Cookies are Enabled</h2>
 <p>The following example creates a small script that checks whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the $_COOKIE array variable:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nb">setcookie</span><span class="p">(</span><span class="s2">&quot;test_cookie&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3600</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
@@ -1926,6 +1939,17 @@
 
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<h2 id="using-cookie-authentication">Using Cookie Authentication</h2>
+<p>When you want more control over the user login procedure, such as presenting your own login form.</p>
+<p>Store authentication status in a cookie or as part of a session. When a user logs in successfully, put her username (or another unique value) in a cookie. Also include a hash of the username and a secret word so a user can’t just make up an authentication cookie with a username in it:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$secret_word</span> <span class="o">=</span> <span class="s1">&#39;if i ate spinach&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">validate</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">],</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]))</span> <span class="p">{</span>
+ <span class="nb">setcookie</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">,</span>
+ <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="nb">md5</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">.</span><span class="nv">$secret_word</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 
               
