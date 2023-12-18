@@ -158,6 +158,7 @@ if(count($_COOKIE) > 0) {
 
 ## Using Cookie Authentication
 
+
 When you want more control over the user login procedure, such as presenting your own login form.
 
 Store authentication status in a cookie or as part of a session. When a user logs in successfully, put her username (or another unique value) in a cookie. Also include a hash of the username and a secret word so a user can’t just make up an authentication cookie with a username in it:
@@ -170,5 +171,6 @@ if (validate($_POST['username'],$_POST['password'])) {
  $_POST['username'].','.md5($_POST['username'].$secret_word));
 }
 ?>
+
 
 ```
