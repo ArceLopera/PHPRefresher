@@ -126,6 +126,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/Func/phpConfVar/</loc>
+         <lastmod>2023-12-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Func/phpCookie/</loc>
          <lastmod>2023-12-19</lastmod>
          <changefreq>daily</changefreq>
