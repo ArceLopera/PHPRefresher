@@ -1082,6 +1082,26 @@
     PHP Error and Logging Functions
   </a>
   
+    <nav class="md-nav" aria-label="PHP Error and Logging Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_print_backtrace" class="md-nav__link">
+    debug_print_backtrace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_backtrace" class="md-nav__link">
+    debug_backtrace()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1757,6 +1777,26 @@
     PHP Error and Logging Functions
   </a>
   
+    <nav class="md-nav" aria-label="PHP Error and Logging Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_print_backtrace" class="md-nav__link">
+    debug_print_backtrace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug_backtrace" class="md-nav__link">
+    debug_backtrace()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1962,6 +2002,49 @@
 </tr>
 </tbody>
 </table>
+<h3 id="debug_print_backtrace">debug_print_backtrace()</h3>
+<p>The handy debug_print_backtrace() function allows you to quickly get a sense of what has been been going on in your application immediately before you called a particular function.</p>
+<p>The output from debug_print_backtrace() includes, by default, the arguments passed to each function. If those arguments are big arrays or complicated objects, it can make the output unwieldy. You can pass the constant DEBUG_BACKTRACE_IGNORE_ARGS as a first argument to debug_print_backtrace() to have arguments eliminated from the output. If you only need to keep track of the sequence of functions called, this is perfect.</p>
+<h3 id="debug_backtrace">debug_backtrace()</h3>
+<p>A companion to debug_print_backtrace() is debug_backtrace(). Instead of outputting the backtrace, debug_backtrace() returns it as an array, one element per stackframe. This is useful if you only need to print certain elements of the backtrace, or you want to manipulate it programmatically.</p>
+<div class="highlight"><pre><span></span><code><span class="x">function print_parsed_backtrace() {</span>
+<span class="x"> $backtrace = debug_backtrace();</span>
+<span class="x"> for ($i = 1, $j = count($backtrace); $i &lt; $j; $i++) {</span>
+<span class="x"> $frame = $backtrace[$i];</span>
+<span class="x"> if (isset($frame[&#39;class&#39;])) {</span>
+<span class="x"> $function = $frame[&#39;class&#39;] . $frame[&#39;type&#39;] . $frame[&#39;function&#39;];</span>
+<span class="x"> } else {</span>
+<span class="x"> $function = $frame[&#39;function&#39;];</span>
+<span class="x"> }</span>
+<span class="x"> print $function . &#39;()&#39;;</span>
+<span class="x"> if ($i != ($j - 1)) {</span>
+<span class="x"> print &#39;, &#39;;</span>
+<span class="x"> }</span>
+<span class="x"> }</span>
+<span class="x">}</span>
+<span class="x">function stooges() {</span>
+<span class="x"> print &quot;woo woo woo!\n&quot;;</span>
+<span class="x"> Fine::larry();</span>
+<span class="x">}</span>
+<span class="x">class Fine {</span>
+<span class="x"> static function larry() {</span>
+<span class="x"> $brothers = new Howard;</span>
+<span class="x"> $brothers-&gt;curly();</span>
+<span class="x"> }</span>
+<span class="x">}</span>
+<span class="x">class Howard {</span>
+<span class="x"> function curly() {</span>
+<span class="x"> $this-&gt;moe();</span>
+<span class="x"> }</span>
+<span class="x"> function moe() {</span>
+<span class="x"> print_parsed_backtrace();</span>
+<span class="x"> }</span>
+<span class="x">}</span>
+<span class="x">stooges();</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>woo woo woo!
+Howard-&gt;moe(), Howard-&gt;curly(), Fine::larry(), stooges()
+</code></pre></div>
 <h2 id="php-predefined-error-and-logging-constants">PHP Predefined Error and Logging Constants</h2>
 <table>
 <thead>
