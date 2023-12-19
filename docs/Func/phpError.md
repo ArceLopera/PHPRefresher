@@ -47,6 +47,59 @@ Errors and logging configuration options:
 |trigger_error()	|Creates a user-level error message|
 |user_error()|	Alias of trigger_error()|
 
+### debug_print_backtrace()
+
+The handy debug_print_backtrace() function allows you to quickly get a sense of what has been been going on in your application immediately before you called a particular function.
+
+
+The output from debug_print_backtrace() includes, by default, the arguments passed to each function. If those arguments are big arrays or complicated objects, it can make the output unwieldy. You can pass the constant DEBUG_BACKTRACE_IGNORE_ARGS as a first argument to debug_print_backtrace() to have arguments eliminated from the output. If you only need to keep track of the sequence of functions called, this is perfect.
+
+### debug_backtrace()
+
+A companion to debug_print_backtrace() is debug_backtrace(). Instead of outputting the backtrace, debug_backtrace() returns it as an array, one element per stackframe. This is useful if you only need to print certain elements of the backtrace, or you want to manipulate it programmatically.
+
+```php
+function print_parsed_backtrace() {
+ $backtrace = debug_backtrace();
+ for ($i = 1, $j = count($backtrace); $i < $j; $i++) {
+ $frame = $backtrace[$i];
+ if (isset($frame['class'])) {
+ $function = $frame['class'] . $frame['type'] . $frame['function'];
+ } else {
+ $function = $frame['function'];
+ }
+ print $function . '()';
+ if ($i != ($j - 1)) {
+ print ', ';
+ }
+ }
+}
+function stooges() {
+ print "woo woo woo!\n";
+ Fine::larry();
+}
+class Fine {
+ static function larry() {
+ $brothers = new Howard;
+ $brothers->curly();
+ }
+}
+class Howard {
+ function curly() {
+ $this->moe();
+ }
+ function moe() {
+ print_parsed_backtrace();
+ }
+}
+stooges();
+```
+
+```	
+woo woo woo!
+Howard->moe(), Howard->curly(), Fine::larry(), stooges()
+```
+
 ## PHP Predefined Error and Logging Constants
 |Value	|Constant|	Description|
 |---|---|---|
