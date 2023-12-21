@@ -56,3 +56,28 @@ $original = get_cfg_var('sendmail_from'); // have we changed our address?
 ```
 The value returned by get_cfg_var() is the same as what appears in the global_val
 ue element of the array returned by ini_get_all().
+
+## Setting Configuration Variables
+
+When you want to change the value of a PHP configuration setting.
+
+Use ini_set():
+
+```php
+
+// add a directory to the include path
+ini_set('include_path', ini_get('include_path') . ':/home/fezzik/php');
+
+```
+
+Configuration variables are not permanently changed by ini_set(). The new value lasts only for the duration of the request in which ini_set() is called. To make a persistent modification, alter the values stored in the php.ini file.
+
+It isn’t meaningful to alter certain variables, such as asp_tags, because by the time you call ini_set() to modify the setting, it’s too late to change the behavior the setting affects. If a variable can’t be changed, ini_set() returns false.
+
+However, it is useful to alter configuration variables in certain pages. For example, if you’re running a script from the command line, set html_errors to off. 
+
+To reset a variable back to its original setting, use ini_restore():
+
+```php
+ini_restore('sendmail_from'); // go back to the default value
+```

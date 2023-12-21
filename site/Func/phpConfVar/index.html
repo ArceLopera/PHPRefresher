@@ -1151,6 +1151,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setting-configuration-variables" class="md-nav__link">
+    Setting Configuration Variables
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1811,6 +1818,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setting-configuration-variables" class="md-nav__link">
+    Setting Configuration Variables
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1890,6 +1904,18 @@ You can also get variables belonging to a specific extension by passing the exte
 </code></pre></div>
 The value returned by get_cfg_var() is the same as what appears in the global_val
 ue element of the array returned by ini_get_all().</p>
+<h2 id="setting-configuration-variables">Setting Configuration Variables</h2>
+<p>When you want to change the value of a PHP configuration setting.</p>
+<p>Use ini_set():</p>
+<div class="highlight"><pre><span></span><code><span class="x">// add a directory to the include path</span>
+<span class="x">ini_set(&#39;include_path&#39;, ini_get(&#39;include_path&#39;) . &#39;:/home/fezzik/php&#39;);</span>
+</code></pre></div>
+<p>Configuration variables are not permanently changed by ini_set(). The new value lasts only for the duration of the request in which ini_set() is called. To make a persistent modification, alter the values stored in the php.ini file.</p>
+<p>It isn’t meaningful to alter certain variables, such as asp_tags, because by the time you call ini_set() to modify the setting, it’s too late to change the behavior the setting affects. If a variable can’t be changed, ini_set() returns false.</p>
+<p>However, it is useful to alter configuration variables in certain pages. For example, if you’re running a script from the command line, set html_errors to off. </p>
+<p>To reset a variable back to its original setting, use ini_restore():</p>
+<div class="highlight"><pre><span></span><code><span class="x">ini_restore(&#39;sendmail_from&#39;); // go back to the default value</span>
+</code></pre></div>
 
               
             </article>
