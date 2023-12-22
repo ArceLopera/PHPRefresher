@@ -1139,6 +1139,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#hiding-error-messages-from-users" class="md-nav__link">
+    Hiding Error Messages from Users
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1855,6 +1862,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#hiding-error-messages-from-users" class="md-nav__link">
+    Hiding Error Messages from Users
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2186,6 +2200,30 @@ Howard-&gt;moe(), Howard-&gt;curly(), Fine::larry(), stooges()
 </tr>
 </tbody>
 </table>
+<h2 id="hiding-error-messages-from-users">Hiding Error Messages from Users</h2>
+<p>When you don’t want PHP error messages to be visible to users.</p>
+<p>Set the following values in your php.ini or web server configuration file:</p>
+<p>display_errors =off</p>
+<p>log_errors =on</p>
+<p>You can also set these values using ini_set() if you don’t have access to edit your server’s php.ini file:</p>
+<div class="highlight"><pre><span></span><code><span class="x">ini_set(&#39;display_errors&#39;, &#39;off&#39;);</span>
+<span class="x">ini_set(&#39;log_errors&#39;, &#39;on&#39;);</span>
+</code></pre></div>
+<p>These settings tell PHP not to display errors as HTML to the browser but to put them in the server’s error log.</p>
+<p>When log_errors is set to on, error messages are written to the server’s error log. If you want PHP errors to be written to a separate file, set the error_log configuration directive with the name of that file:</p>
+<p>error_log = /var/log/php.error.log</p>
+<p>or:</p>
+<p>ini_set('error_log', '/var/log/php.error.log');</p>
+<p>If error_log is set to syslog, PHP error messages are sent to the system logger using syslog(3) on Unix and to the Event Log on Windows. If error_log is not set, error messages are sent to a default location, usually your web server’s error log file. (For the command-line PHP program, the default error location is the standard error output stream.)</p>
+<p>There are lots of error messages you want to show your users, such as telling them they’ve filled in a form incorrectly, but you should shield your users from internal errors that may reflect a problem with your code. There are two reasons for this. First, these errors appear unprofessional (to expert users) and confusing (to novice users). If something goes wrong when saving form input to a database, check the return code from the database query and display a message to your users apologizing and asking them to
+come back later. Showing them a cryptic error message straight from PHP doesn’t inspire confidence in your website.</p>
+<p>Second, displaying these errors to users is a security risk. Depending on your database and the type of error, the error message may contain information about how to log in to your database or server and how it is structured. Malicious users can use this information to mount an attack on your website.</p>
+<p>For example, if your database server is down, and you attempt to connect to it with mysql_connect(), PHP generates the following warning:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Warning<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>: Can&#39;t connect to MySQL server on &#39;db.example.com&#39; (111) in
+<span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>/www/docroot/example.php<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> on line <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>If this warning message is sent to a user’s browser, he learns that your database server is called db.example.com and can focus his cracking efforts on it.</p>
 
               
             </article>

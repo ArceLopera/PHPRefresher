@@ -119,3 +119,51 @@ Howard->moe(), Howard->curly(), Fine::larry(), stooges()
 |8192	|E_DEPRECATED|	Run-time notices. Enable this to receive warnings about code that will not work in future versions (Since PHP 5.3)|
 |16384	|E_USER_DEPRECATED|	User-generated warning message. This is like E_DEPRECATED, except it is generated in PHP code by using the PHP function trigger_error() (Since PHP 5.3)|
 |32767	|E_ALL|	Enable all PHP errors and warnings (except E_STRICT in versions < 5.4)|
+
+##  Hiding Error Messages from Users
+
+When you don’t want PHP error messages to be visible to users.
+
+Set the following values in your php.ini or web server configuration file:
+
+display_errors =off
+
+log_errors =on
+
+You can also set these values using ini_set() if you don’t have access to edit your server’s php.ini file:
+
+
+```php
+
+ini_set('display_errors', 'off');
+ini_set('log_errors', 'on');
+
+```
+
+These settings tell PHP not to display errors as HTML to the browser but to put them in the server’s error log.
+
+When log_errors is set to on, error messages are written to the server’s error log. If you want PHP errors to be written to a separate file, set the error_log configuration directive with the name of that file:
+
+error_log = /var/log/php.error.log
+
+or:
+
+ini_set('error_log', '/var/log/php.error.log');
+
+If error_log is set to syslog, PHP error messages are sent to the system logger using syslog(3) on Unix and to the Event Log on Windows. If error_log is not set, error messages are sent to a default location, usually your web server’s error log file. (For the command-line PHP program, the default error location is the standard error output stream.)
+
+There are lots of error messages you want to show your users, such as telling them they’ve filled in a form incorrectly, but you should shield your users from internal errors that may reflect a problem with your code. There are two reasons for this. First, these errors appear unprofessional (to expert users) and confusing (to novice users). If something goes wrong when saving form input to a database, check the return code from the database query and display a message to your users apologizing and asking them to
+come back later. Showing them a cryptic error message straight from PHP doesn’t inspire confidence in your website.
+
+Second, displaying these errors to users is a security risk. Depending on your database and the type of error, the error message may contain information about how to log in to your database or server and how it is structured. Malicious users can use this information to mount an attack on your website.
+
+For example, if your database server is down, and you attempt to connect to it with mysql_connect(), PHP generates the following warning:
+
+
+```html
+<br>
+<b>Warning</b>: Can't connect to MySQL server on 'db.example.com' (111) in
+<b>/www/docroot/example.php</b> on line <b>3</b><br>
+```
+
+If this warning message is sent to a user’s browser, he learns that your database server is called db.example.com and can focus his cracking efforts on it.
