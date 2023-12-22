@@ -74,10 +74,14 @@ Configuration variables are not permanently changed by ini_set(). The new value 
 
 It isn’t meaningful to alter certain variables, such as asp_tags, because by the time you call ini_set() to modify the setting, it’s too late to change the behavior the setting affects. If a variable can’t be changed, ini_set() returns false.
 
-However, it is useful to alter configuration variables in certain pages. For example, if you’re running a script from the command line, set html_errors to off. 
+However, it is useful to alter configuration variables in certain pages. 
 
-To reset a variable back to its original setting, use ini_restore():
+For example, if you’re running a script from the command line, set html_errors to off. 
+
+
+To reset a variable back to its original setting, use ini_restore() and pass the variable name as an argument:
 
 ```php
-ini_restore('sendmail_from'); // go back to the default value
+ini_restore('sendmail_from'); 
+// go back to the default value
 ```
