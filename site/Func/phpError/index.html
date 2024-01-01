@@ -1153,6 +1153,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-a-custom-error-handler" class="md-nav__link">
+    Using a Custom Error Handler
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1883,6 +1890,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#using-a-custom-error-handler" class="md-nav__link">
+    Using a Custom Error Handler
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2269,6 +2283,28 @@ A custom error-handling function can parse errors based on their type and take a
 </tr>
 </tbody>
 </table>
+<h2 id="using-a-custom-error-handler">Using a Custom Error Handler</h2>
+<p>When you want to create a custom error handler that lets you control how PHP reports errors.</p>
+<p>A custom error handling function can parse errors based on their type and take the appropriate action.
+Pass set_error_handler() the name of a function, and PHP forwards all errors to that function. The error handling function can take up to five parameters. The first parameter is the error type, such as 8 for E_NOTICE. The second is the message thrown by the error, such as “Undefined variable: html.” The third and fourth arguments are the name of the file and the line number in which PHP detected the error. The final parameter is an array holding all the variables defined in the current scope and their values.
+For example, in this code, $html is appended to without first being assigned an initial value:</p>
+<div class="highlight"><pre><span></span><code><span class="x">error_reporting(E_ALL);</span>
+<span class="x">set_error_handler(&#39;pc_error_handler&#39;);</span>
+<span class="x">function pc_error_handler($errno, $error, $file, $line, $context) {</span>
+<span class="x"> $message = &quot;[ERROR][$errno][$error][$file:$line]&quot;;</span>
+<span class="x"> print &quot;$message&quot;;</span>
+<span class="x"> print_r($context);</span>
+<span class="x">}</span>
+<span class="x">$form = array(&#39;one&#39;,&#39;two&#39;);</span>
+<span class="x">foreach ($form as $line) {</span>
+<span class="x"> $html .= &quot;&lt;b&gt;$line&lt;/b&gt;&quot;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>When the “Undefined variable” error is generated, pc_error_handler() prints:</p>
+<div class="highlight"><pre><span></span><code>[ERROR][8][Undefined variable: html][err-all.php:16]
+</code></pre></div>
+<p>After the initial error message, pc_error_handler() also prints a large array containing all the global, environment, request, and session variables.
+Errors labeled catchable can be processed by the function registered using set_error_handler(). The others indicate such a serious problem that they’re not safe to be handled by users and PHP must take care of them.</p>
 
               
             </article>

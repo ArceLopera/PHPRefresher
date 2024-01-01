@@ -218,3 +218,35 @@ A custom error-handling function can parse errors based on their type and take a
 |8192	|E_DEPRECATED|	Run-time notices. Enable this to receive warnings about code that will not work in future versions (Since PHP 5.3)|
 |16384	|E_USER_DEPRECATED|	User-generated warning message. This is like E_DEPRECATED, except it is generated in PHP code by using the PHP function trigger_error() (Since PHP 5.3)|
 |32767	|E_ALL|	Enable all PHP errors and warnings (except E_STRICT in versions < 5.4)|
+
+##  Using a Custom Error Handler
+
+When you want to create a custom error handler that lets you control how PHP reports errors.
+
+A custom error handling function can parse errors based on their type and take the appropriate action.
+Pass set_error_handler() the name of a function, and PHP forwards all errors to that function. The error handling function can take up to five parameters. The first parameter is the error type, such as 8 for E_NOTICE. The second is the message thrown by the error, such as “Undefined variable: html.” The third and fourth arguments are the name of the file and the line number in which PHP detected the error. The final parameter is an array holding all the variables defined in the current scope and their values.
+For example, in this code, $html is appended to without first being assigned an initial value:
+
+```php
+error_reporting(E_ALL);
+set_error_handler('pc_error_handler');
+function pc_error_handler($errno, $error, $file, $line, $context) {
+ $message = "[ERROR][$errno][$error][$file:$line]";
+ print "$message";
+ print_r($context);
+}
+$form = array('one','two');
+foreach ($form as $line) {
+ $html .= "<b>$line</b>";
+}
+```
+
+When the “Undefined variable” error is generated, pc_error_handler() prints:
+
+```
+[ERROR][8][Undefined variable: html][err-all.php:16]
+
+```
+
+After the initial error message, pc_error_handler() also prints a large array containing all the global, environment, request, and session variables.
+Errors labeled catchable can be processed by the function registered using set_error_handler(). The others indicate such a serious problem that they’re not safe to be handled by users and PHP must take care of them.
