@@ -250,3 +250,45 @@ When the “Undefined variable” error is generated, pc_error_handler() prints:
 
 After the initial error message, pc_error_handler() also prints a large array containing all the global, environment, request, and session variables.
 Errors labeled catchable can be processed by the function registered using set_error_handler(). The others indicate such a serious problem that they’re not safe to be handled by users and PHP must take care of them.
+
+## Logging Errors
+
+Logging errors facilitates debugging. Smart error logging makes it easier to fix bugs.
+Always log information about what caused the error:
+
+```php
+$r = mysql_query($sql);
+if (! $r) {
+ $error = mysql_error();
+ error_log('[DB: query @'.$_SERVER['REQUEST_URI']."][$sql]: $error");
+} else {
+ // process results
+}
+
+```
+
+You’re not getting all the debugging help you could be if you simply log that an error
+occurred without any supporting information:
+
+```php
+$r = mysql_query($sql);
+if (! $r) {
+ error_log("bad query");
+} else {
+ // process result
+}
+```
+
+Another useful technique is to include the \__FILE__, \__LINE__, \__FUNCTION__,
+\__CLASS__, and \__METHOD__ “magic” constants in your error messages:
+
+```php
+error_log('['.__FILE__.']['.__LINE__."]: $error");
+
+```
+
+The \__FILE__ constant is the current filename, \__LINE__ is the current line number,
+\__FUNCTION__ is the current function name, \__METHOD__ is the current method name
+(if any), and \__CLASS__ is the current class name (if any). Starting with PHP 5.3.0,
+\__DIR__ is the directory that \__FILE__ is in and \__NAMESPACE__ is the current name‐
+space. Starting in PHP 5.4.0, \__TRAIT__ is the current trait name (if any).
