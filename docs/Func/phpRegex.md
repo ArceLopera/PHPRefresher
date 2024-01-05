@@ -1,4 +1,7 @@
-A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for.
+A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for. Regular expressions are an intricate and powerful tool for matching patterns and manipulating text. Though not as fast as plain-vanilla string matching, regular expressions are extremely flexible. Think of a regular expression as a program in a very restrictive programming language.
+The only task of a regular expression program is to match a pattern in text. In regular expression patterns, most characters just match themselves.
+
+REF [docs](https://www.php.net/pcre)
 
 ## Regular Expressions Functions
 
