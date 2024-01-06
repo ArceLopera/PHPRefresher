@@ -141,10 +141,14 @@ foreach($matches[1] as $match) {
 ```
 
 Because the preg_match() function stops after it finds one match, you need to use preg_match_all() instead if you’re looking for additional matches. The preg_match_all() function returns the number of full pattern matches it finds. If it finds no matches, it returns 0. If it encounters an error, such as a syntax problem in the pattern, it returns false.
+
+
 The third argument to preg_match_all() is populated with an array holding information about the various substrings that the pattern has matched. . The first element holds an array of matches of the complete pattern. For example, this means that $matches[0] holds the parts of $todo that match /\d\. ([^\d]+)/: 1. Get Dressed, 2. Eat Jelly, and 3. Squash every week into a day.
 
-Subsequent elements of the $matches array hold arrays of text matched by each parenthesized subpattern. The pattern in Example 23-4 has just one subpattern ([^\d\]+). 
+Subsequent elements of the $matches array hold arrays of text matched by each parenthesized subpattern. The pattern in the example has just one subpattern ([^\d\]+). 
 So $matches[1] is an array of strings that match that subpattern: Get Dressed, Eat Jelly, and Squash every week into a day.
+
+
 If there were a second subpattern, the substrings that it matched would be in $matches[2], a third subpattern’s matches would be in $matches[3], and so on.
 Instead of returning an array divided into full matches and then submatches, preg_match_all() can return an array divided by matches, with each submatch inside.
 To trigger this, pass PREG_SET_ORDER in as the fourth argument. This is particularly useful when you’ve got multiple captured subpatterns and you want to iterate through the subpattern groups one group at a time.
@@ -172,3 +176,50 @@ The last action is Squash every week into a day
 
 With PREG_SET_ORDER, each value of $match in the foreach loop contains all the subpatterns: $match[0] is the entire matched string, $match[1] the bit before the =, and $match[2] the bit after the =.
 
+## Choosing Greedy or Nongreedy Matches
+
+When you want your pattern to match the smallest possible string instead of the largest. Place a ? after a quantifier to alter that portion of the pattern. 
+
+```php	
+// find all <em>emphasized</em> sections
+preg_match_all('@<em>.+?</em>@', $html, $matches);
+```	
+
+Or use the U pattern-modifier ending to invert all quantifiers from greedy (“match as many characters as possible”) to nongreedy (“match as few characters as possible”). 
+
+```php
+// find all <em>emphasized</em> sections
+preg_match_all('@<em>.+</em>@U', $html, $matches);
+
+```
+
+By default, all regular expression quantifiers in PHP are greedy. For example, consider the pattern <em>.</em>, which matches "<em>, one or more characters, </em>,” matching against the string I simply <em>love</em> your <em>work</em>. A greedy regular expression finds one match, because after it matches the opening <em>, its .+ slurps up as much as possible, finally grinding to a halt at the final </em>. The .+ matches love</em> your <em>work.
+
+A nongreedy regular expression, on the other hand, finds a pair of matches. The first <em> is matched as before, but then .+ stops as soon as it can, only matching love. A second match then goes ahead: the next .+ matches work.
+
+```	php
+$html = 'I simply <em>love</em> your <em>work</em>';
+// Greedy
+$matchCount = preg_match_all('@<em>.+</em>@', $html, $matches);
+print "Greedy count: " . $matchCount . "\n";
+// Nongreedy
+$matchCount = preg_match_all('@<em>.+?</em>@', $html, $matches);
+print "First non-greedy count: " . $matchCount . "\n";
+// Nongreedy
+$matchCount = preg_match_all('@<em>.+</em>@U', $html, $matches);
+print "Second non-greedy count: " . $matchCount . "\n";
+```
+
+```
+Greedy count: 1
+First non-greedy count: 2
+Second non-greedy count: 1
+```	
+
+Greedy matching is also known as maximal matching and nongreedy matching can be called minimal matching, because these methods match either the maximum or minimum number of characters possible.
+
+Although nongreedy matching is useful for simplistic HTML parsing, it can break down if your markup isn’t 100 percent valid and there are, for example, stray <em> tags lying around.
+
+If your goal is just to remove all (or some) HTML tags from a block of text, you’re better off not using a regular expression. Instead, use the built-in function strip_tags(); it’s faster and it works correctly.
+
+Finally, even though the idea of nongreedy matching comes from Perl, the U modifier is incompatible with Perl and is unique to PHP’s Perl-compatible regular expressions. It inverts all quantifiers, turning them from greedy to nongreedy and also the reverse. So to get a greedy quantifier inside of a pattern operating under a trailing /U, just add a ? to the end, the same way you would normally turn a greedy quantifier into a non‐greedy one.
