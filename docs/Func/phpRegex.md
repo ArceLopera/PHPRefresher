@@ -119,3 +119,56 @@ $pattern = "/ba(na){2}/i";
 echo preg_match($pattern, $str); // Outputs 1
 ?>  
 ```	
+
+
+##  Finding the nth Occurrence of a Match
+
+Use preg_match_all() to pull all the matches into an array; then pick out the specific matches in which you’re interested.
+
+```php
+<?php
+$todo = "1. Get Dressed 2. Eat Jelly 3. Squash every week into a day";
+preg_match_all("/\d\. ([^\d]+)/", $todo, $matches);
+print "The second item on the todo list is: ";
+// $matches[1] is an array of each substring captured by ([^\d]+)
+print $matches[1][1] . "\n";
+print "The entire todo list is: ";
+foreach($matches[1] as $match) {
+ print "$match\n";
+}
+
+?>
+```
+
+Because the preg_match() function stops after it finds one match, you need to use preg_match_all() instead if you’re looking for additional matches. The preg_match_all() function returns the number of full pattern matches it finds. If it finds no matches, it returns 0. If it encounters an error, such as a syntax problem in the pattern, it returns false.
+The third argument to preg_match_all() is populated with an array holding information about the various substrings that the pattern has matched. . The first element holds an array of matches of the complete pattern. For example, this means that $matches[0] holds the parts of $todo that match /\d\. ([^\d]+)/: 1. Get Dressed, 2. Eat Jelly, and 3. Squash every week into a day.
+
+Subsequent elements of the $matches array hold arrays of text matched by each parenthesized subpattern. The pattern in Example 23-4 has just one subpattern ([^\d\]+). 
+So $matches[1] is an array of strings that match that subpattern: Get Dressed, Eat Jelly, and Squash every week into a day.
+If there were a second subpattern, the substrings that it matched would be in $matches[2], a third subpattern’s matches would be in $matches[3], and so on.
+Instead of returning an array divided into full matches and then submatches, preg_match_all() can return an array divided by matches, with each submatch inside.
+To trigger this, pass PREG_SET_ORDER in as the fourth argument. This is particularly useful when you’ve got multiple captured subpatterns and you want to iterate through the subpattern groups one group at a time.
+
+```php
+<?php
+$todo = "
+first=Get Dressed
+next=Eat Jelly
+last=Squash every week into a day
+";
+preg_match_all("/([a-zA-Z]+)=(.*)/", $todo, $matches, PREG_SET_ORDER);
+foreach ($matches as $match) {
+ print "The {$match[1]} action is {$match[2]}\n";
+}
+
+?>
+```
+
+```php
+The first action is Get Dressed
+The next action is Eat Jelly
+The last action is Squash every week into a day
+```
+
+With PREG_SET_ORDER, each value of $match in the foreach loop contains all the subpatterns: $match[0] is the entire matched string, $match[1] the bit before the =, and $match[2] the bit after the =.
+

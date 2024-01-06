@@ -1001,6 +1001,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#finding-the-nth-occurrence-of-a-match" class="md-nav__link">
+    Finding the nth Occurrence of a Match
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1923,6 +1930,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#finding-the-nth-occurrence-of-a-match" class="md-nav__link">
+    Finding the nth Occurrence of a Match
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1939,7 +1953,9 @@
 
   <h1>Regex</h1>
 
-<p>A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for.</p>
+<p>A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for. Regular expressions are an intricate and powerful tool for matching patterns and manipulating text. Though not as fast as plain-vanilla string matching, regular expressions are extremely flexible. Think of a regular expression as a program in a very restrictive programming language.
+The only task of a regular expression program is to match a pattern in text. In regular expression patterns, most characters just match themselves.</p>
+<p>REF <a href="https://www.php.net/pcre">docs</a></p>
 <h2 id="regular-expressions-functions">Regular Expressions Functions</h2>
 <table>
 <thead>
@@ -2161,6 +2177,46 @@
 <span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
 <span class="cp">?&gt;</span><span class="x">  </span>
 </code></pre></div>
+<h2 id="finding-the-nth-occurrence-of-a-match">Finding the nth Occurrence of a Match</h2>
+<p>Use preg_match_all() to pull all the matches into an array; then pick out the specific matches in which you’re interested.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$todo</span> <span class="o">=</span> <span class="s2">&quot;1. Get Dressed 2. Eat Jelly 3. Squash every week into a day&quot;</span><span class="p">;</span>
+<span class="nb">preg_match_all</span><span class="p">(</span><span class="s2">&quot;/\d\. ([^\d]+)/&quot;</span><span class="p">,</span> <span class="nv">$todo</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">);</span>
+<span class="k">print</span> <span class="s2">&quot;The second item on the todo list is: &quot;</span><span class="p">;</span>
+<span class="c1">// $matches[1] is an array of each substring captured by ([^\d]+)</span>
+<span class="k">print</span> <span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">print</span> <span class="s2">&quot;The entire todo list is: &quot;</span><span class="p">;</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$match</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$match\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Because the preg_match() function stops after it finds one match, you need to use preg_match_all() instead if you’re looking for additional matches. The preg_match_all() function returns the number of full pattern matches it finds. If it finds no matches, it returns 0. If it encounters an error, such as a syntax problem in the pattern, it returns false.
+The third argument to preg_match_all() is populated with an array holding information about the various substrings that the pattern has matched. . The first element holds an array of matches of the complete pattern. For example, this means that $matches[0] holds the parts of $todo that match /\d. ([^\d]+)/: 1. Get Dressed, 2. Eat Jelly, and 3. Squash every week into a day.</p>
+<p>Subsequent elements of the $matches array hold arrays of text matched by each parenthesized subpattern. The pattern in Example 23-4 has just one subpattern ([^\d]+). 
+So $matches[1] is an array of strings that match that subpattern: Get Dressed, Eat Jelly, and Squash every week into a day.
+If there were a second subpattern, the substrings that it matched would be in $matches[2], a third subpattern’s matches would be in $matches[3], and so on.
+Instead of returning an array divided into full matches and then submatches, preg_match_all() can return an array divided by matches, with each submatch inside.
+To trigger this, pass PREG_SET_ORDER in as the fourth argument. This is particularly useful when you’ve got multiple captured subpatterns and you want to iterate through the subpattern groups one group at a time.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$todo</span> <span class="o">=</span> <span class="s2">&quot;</span>
+<span class="s2">first=Get Dressed</span>
+<span class="s2">next=Eat Jelly</span>
+<span class="s2">last=Squash every week into a day</span>
+<span class="s2">&quot;</span><span class="p">;</span>
+<span class="nb">preg_match_all</span><span class="p">(</span><span class="s2">&quot;/([a-zA-Z]+)=(.*)/&quot;</span><span class="p">,</span> <span class="nv">$todo</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">,</span> <span class="nx">PREG_SET_ORDER</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$matches</span> <span class="k">as</span> <span class="nv">$match</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;The </span><span class="si">{</span><span class="nv">$match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> action is </span><span class="si">{</span><span class="nv">$match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">The first action is Get Dressed</span>
+<span class="x">The next action is Eat Jelly</span>
+<span class="x">The last action is Squash every week into a day</span>
+</code></pre></div>
+<p>With PREG_SET_ORDER, each value of $match in the foreach loop contains all the subpatterns: $match[0] is the entire matched string, $match[1] the bit before the =, and $match[2] the bit after the =.</p>
 
               
             </article>
