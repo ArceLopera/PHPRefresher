@@ -934,6 +934,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#preg_replace_callback" class="md-nav__link">
+    preg_replace_callback()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_quote" class="md-nav__link">
+    preg_quote()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_grep" class="md-nav__link">
+    preg_grep()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#preg_match" class="md-nav__link">
     preg_match()
   </a>
@@ -1870,6 +1891,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#preg_replace_callback" class="md-nav__link">
+    preg_replace_callback()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_quote" class="md-nav__link">
+    preg_quote()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_grep" class="md-nav__link">
+    preg_grep()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#preg_match" class="md-nav__link">
     preg_match()
   </a>
@@ -1984,7 +2026,7 @@ The only task of a regular expression program is to match a pattern in text. In 
 <td>Returns a string or an array with pattern matches replaced, but only if matches were found</td>
 </tr>
 <tr>
-<td>preg_grep()</td>
+<td><a href="#preg_grep">preg_grep()</a></td>
 <td>Returns an array consisting only of elements from the input array which matched the pattern</td>
 </tr>
 <tr>
@@ -2004,7 +2046,7 @@ The only task of a regular expression program is to match a pattern in text. In 
 <td>Returns a new string where matched patterns have been replaced with another string</td>
 </tr>
 <tr>
-<td>preg_replace_callback()</td>
+<td><a href="#preg_replace_callback">preg_replace_callback()</a></td>
 <td>Given an expression and a callback, returns a string where all matches of the expression are replaced with the substring returned by the callback</td>
 </tr>
 <tr>
@@ -2016,11 +2058,95 @@ The only task of a regular expression program is to match a pattern in text. In 
 <td>Breaks a string into an array using matches of a regular expression as separators</td>
 </tr>
 <tr>
-<td>preg_quote()</td>
+<td><a href="#preg_quote">preg_quote()</a></td>
 <td>Escapes characters that have a special meaning in regular expressions by putting a backslash in front of them</td>
 </tr>
 </tbody>
 </table>
+<h3 id="preg_replace_callback">preg_replace_callback()</h3>
+<p>When you want to process matched text with a PHP function. For example, you want to decode all HTML entities in captured subpatterns.</p>
+<p>Use preg_replace_callback(). Instead of a replacement pattern, give it a callback function. This callback function is passed an array of matched subpatterns and should return an appropriate replacement string.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Generating replacement strings with a callback function</span>
+<span class="nv">$h</span> <span class="o">=</span> <span class="s1">&#39;The &amp;lt;b&amp;gt; tag makes text bold: &lt;code&gt;&amp;lt;b&amp;gt;bold&amp;lt;/b&amp;gt;&lt;/code&gt;&#39;</span><span class="p">;</span>
+<span class="k">print</span> <span class="nb">preg_replace_callback</span><span class="p">(</span><span class="s1">&#39;@&lt;code&gt;(.*?)&lt;/code&gt;@&#39;</span><span class="p">,</span><span class="s1">&#39;decode&#39;</span><span class="p">,</span> <span class="nv">$h</span><span class="p">);</span>
+<span class="c1">// $matches[0] is the entire matched string</span>
+<span class="c1">// $matches[1] is the first captured subpattern</span>
+<span class="k">function</span> <span class="nf">decode</span><span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">html_entity_decode</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="p">}</span>   
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+This prints:
+<div class="highlight"><pre><span></span><code>The &lt;b&gt; tag makes text bold: &lt;b&gt;bold&lt;/b&gt;
+</code></pre></div></p>
+<p>The second argument to preg_replace_callback() specifies the function that is to be called to calculate replacement strings. Like everywhere the PHP “callable” pseudotype is used, this argument can be a string or an array. Use a string to specify a function name. To use an object instance method as a callback, pass an array whose first element is the object and whose second element is a string containing the method name. </p>
+<p>To use a static class method as a callback, pass an array of two strings: the class name and the method name. In PHP 5.4.0 and later, you can pass a variable containing an anonymous function, or define the function inline with the call to preg_replace_callback().</p>
+<p>The callback function is passed one argument: an array of matches. Element 0 of this array is always the text that matched the entire pattern. If the pattern given to preg_replace_callback() has any parenthesized subpatterns, these are present in subsequent elements of the $matches array. The keys of the $matches array are numeric, even if there are named subpatterns in the pattern.</p>
+<p>If you are providing an anonymous function as a callback, it can be memory intensive if the function creation is inline with the call to preg_replace_callback() and inside a loop. If you want to use an anonymous function with preg_replace_callback(), store the anonymous function callback in a variable. Then, provide the variable to preg_replace_callback() as the callback function.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Generating replacement strings with an anonymous function</span>
+<span class="nv">$callbackFunction</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">html_entity_decode</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">};</span>
+<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/html-to-decode.html&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span> <span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
+ <span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+ <span class="k">print</span> <span class="nb">preg_replace_callback</span><span class="p">(</span><span class="s1">&#39;@&lt;code&gt;(.*?)&lt;/code&gt;@&#39;</span><span class="p">,</span><span class="nv">$callbackFunction</span><span class="p">,</span> <span class="nv">$line</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x">  </span>
+</code></pre></div>
+<h3 id="preg_quote">preg_quote()</h3>
+<p>Escapes characters that have a special meaning in regular expressions by putting a backslash in front of them. When you want to have characters such as * or + treated as literals, not as metacharacters,
+inside a regular expression. This is useful when allowing users to type in search strings you want to use inside a regular expression.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$pattern</span> <span class="o">=</span> <span class="nb">preg_quote</span><span class="p">(</span><span class="s1">&#39;The Education of H*Y*M*A*N K*A*P*L*A*N&#39;</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;:(\d+)&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">$pattern</span><span class="s2">/&quot;</span><span class="p">,</span><span class="nv">$book_rank</span><span class="p">,</span><span class="nv">$matches</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;Leo Rosten&#39;s book ranked: &quot;</span><span class="o">.</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Here are the characters that preg_quote() escapes:</p>
+<p>. \ + * ? ^ $ [ ] () { } &lt; &gt; = ! | :</p>
+<p>It escapes the metacharacters with a backslash.</p>
+<p>You can also pass preg_quote() an additional character to escape as a second argument. It’s useful to pass your pattern delimiter (usually /) as this argument so it also gets escaped. This is important if you incorporate user input into a regular expression pattern. The following code expects $_GET['search_term'] from a web form and searches for words beginning with $_GET['search_term'] in a string $s:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$search_term</span> <span class="o">=</span> <span class="nb">preg_quote</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search_term&#39;</span><span class="p">],</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/\b</span><span class="si">$search_term</span><span class="s2">/i&quot;</span><span class="p">,</span><span class="nv">$s</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s1">&#39;match!&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Using preg_quote() ensures the regular expression is interpreted properly if, for example, a Magnum, P.I. fan enters t.c as a search term. Without preg_quote(), this matches tic, tucker, and any other words whose first letter is t and third letter is c.</p>
+<p>Passing the pattern delimiter to preg_quote() as well makes sure that user input with forward slashes in it, such as CP/M, is also handled correctly.</p>
+<h3 id="preg_grep">preg_grep()</h3>
+<p>When you want to find all the lines in a file that match a pattern.</p>
+<p>There are two ways to do this. First example is faster, but uses more memory. It uses
+the file() function to put each line of the file into an array and preg_grep() to filter
+out the nonmatching lines.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Efficiently finding lines that match a pattern</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/\bo&#39;reilly\b/i&quot;</span><span class="p">;</span> <span class="c1">// only O&#39;Reilly books</span>
+<span class="nv">$ora_books</span> <span class="o">=</span> <span class="nb">preg_grep</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nb">file</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.txt&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The next example is slower, but more memory efficient. It reads the file a line at a time and
+uses preg_match() to check each line after it’s read.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//Efficiently finding lines that match a pattern</span>
+<span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="nv">$php_errormsg</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fh</span><span class="p">))</span> <span class="p">{</span>
+ <span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$line</span><span class="p">))</span> <span class="p">{</span> <span class="nv">$ora_books</span><span class="p">[</span> <span class="p">]</span> <span class="o">=</span> <span class="nv">$line</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Keep in mind that because both methods operate on individual lines of the file, they can’t successfully use patterns that match text that spans multiple lines.</p>
 <h3 id="preg_match">preg_match()</h3>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit arcelopera.github.io&quot;</span><span class="p">;</span>
@@ -2035,6 +2161,19 @@ The only task of a regular expression program is to match a pattern in text. In 
 <span class="k">echo</span> <span class="nb">preg_match_all</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 4</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>For example, when you want to capture text inside HTML tags, you can find all the heading tags in an HTML document.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Capturing HTML headings</span>
+<span class="nv">$html</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/example.html&#39;</span><span class="p">);</span>
+<span class="nb">preg_match_all</span><span class="p">(</span><span class="s1">&#39;@&lt;h([1-6])&gt;(.+?)&lt;/h\1&gt;@is&#39;</span><span class="p">,</span> <span class="nv">$html</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;Heading: </span><span class="si">$text\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Robust parsing of HTML is difficult using a simple regular expression. This is one advantage of using XHTML; it’s significantly easier to validate and parse.</p>
+<p>Regular expressions can be moderately useful for parsing small amounts of HTML, especially if the structure of that HTML is reasonably constrained (or you’re generating it yourself). For more generalized and robust HTML parsing, use the <a href="https://www.php.net/tidy">Tidy</a> extension. </p>
+<p>It provides an interface to the popular libtidy HTML cleanup library. After Tidy has cleaned up your HTML, you can use its methods for getting at parts of the document. Or if you’ve told Tidy to convert your HTML to XHTML, you can use all of the XML manipulation power of SimpleXML or the DOM extension to slice and dice your HTML document.</p>
 <h3 id="preg_replace">preg_replace()</h3>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit Microsoft!&quot;</span><span class="p">;</span>
@@ -2049,6 +2188,45 @@ The only task of a regular expression program is to match a pattern in text. In 
 <span class="k">echo</span> <span class="nb">preg_split</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs array(&quot;Hello&quot;, &quot;World!&quot;)</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<p>When you want to read in records from a file, in which each record is separated by a pattern you can match with a regular expression.</p>
+<p>Read the entire file into a string and then split on the regular expression:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$contents</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.txt&#39;</span><span class="p">);</span>
+<span class="nv">$records</span> <span class="o">=</span> <span class="nb">preg_split</span><span class="p">(</span><span class="s1">&#39;/[0-9]+\) /&#39;</span><span class="p">,</span> <span class="nv">$contents</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This breaks apart a numbered list and places the individual list items into array elements.
+So if you have a list like this:
+1) Gödel
+2) Escher
+3) Bach
+you end up with a four-element array, with an empty opening element. That’s because
+preg_split() assumes the delimiters are between items, but in this case, the numbers
+are before items:</p>
+<div class="highlight"><pre><span></span><code><span class="x">array(4) {</span>
+<span class="x"> [0]=&gt;</span>
+<span class="x"> string(0) &quot;&quot;</span>
+<span class="x"> [1]=&gt;</span>
+<span class="x"> string(7) &quot;Gödel</span>
+<span class="x">&quot;</span>
+<span class="x"> [2]=&gt;</span>
+<span class="x"> string(7) &quot;Escher</span>
+<span class="x">&quot;</span>
+<span class="x"> [3]=&gt;</span>
+<span class="x"> string(5) &quot;Bach</span>
+<span class="x">&quot;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>From one point of view, this can be a feature, not a bug, because the nth element holds the nth item. But, to compact the array, you can eliminate the first element:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$records = preg_split(&#39;/[0-9]+\) /&#39;, $contents);</span>
+<span class="x">array_shift($records);</span>
+</code></pre></div>
+<p>Another modification you might want is to strip newlines from the elements and substitute the empty string instead:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$records = preg_split(&#39;/[0-9]+\) /&#39;, str_replace(&quot;\n&quot;,&#39;&#39;,$contents));</span>
+<span class="x">array_shift($records);</span>
+</code></pre></div>
+<p>PHP doesn’t allow you to change the input record separator to anything other than a newline, so this technique is also useful for breaking apart records divided by strings. However, if you find yourself splitting on a string instead of a regular expression, substitute explode() for preg_split() for a more efficient operation.</p>
 <h2 id="regular-expression-modifiers">Regular Expression Modifiers</h2>
 <table>
 <thead>
