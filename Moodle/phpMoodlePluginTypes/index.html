@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpRegex/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodlePluginTypes/">
       
       <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Regex - PHP Refresher</title>
+        <title>Plugin Types - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#regular-expressions-functions" class="md-skip">
+        <a href="#general-naming-conventions" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Regex
+              Plugin Types
             
           </span>
         </div>
@@ -223,8 +223,6 @@
         
   
   
-    
-  
 
 
   
@@ -236,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../phpAll/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -296,13 +294,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
         Moodle
       </a>
     </li>
@@ -763,14 +763,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -791,14 +789,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
       
       
       
@@ -821,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpAll/" class="md-nav__link">
+      <a href="../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -861,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpDate/" class="md-nav__link">
+      <a href="../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -875,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCalendar/" class="md-nav__link">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
         Calendar
       </a>
     </li>
@@ -894,152 +890,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Regex
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
-  </a>
-  
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace_callback" class="md-nav__link">
-    preg_replace_callback()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_quote" class="md-nav__link">
-    preg_quote()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_grep" class="md-nav__link">
-    preg_grep()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_split" class="md-nav__link">
-    preg_split()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#finding-the-nth-occurrence-of-a-match" class="md-nav__link">
-    Finding the nth Occurrence of a Match
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#choosing-greedy-or-nongreedy-matches" class="md-nav__link">
-    Choosing Greedy or Nongreedy Matches
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1077,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCookie/" class="md-nav__link">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -1091,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpSessions/" class="md-nav__link">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -1105,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpFTP/" class="md-nav__link">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
         FTP
       </a>
     </li>
@@ -1119,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMail/" class="md-nav__link">
+      <a href="../../Func/phpMail/" class="md-nav__link">
         Mail
       </a>
     </li>
@@ -1140,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpFilters/" class="md-nav__link">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -1154,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCallback/" class="md-nav__link">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -1168,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpJSON/" class="md-nav__link">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1208,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpError/" class="md-nav__link">
+      <a href="../../Func/phpError/" class="md-nav__link">
         Errors
       </a>
     </li>
@@ -1222,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpExceptions/" class="md-nav__link">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -1243,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpConfVar/" class="md-nav__link">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
         Config Variables
       </a>
     </li>
@@ -1257,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpDeclare/" class="md-nav__link">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
         Declare
       </a>
     </li>
@@ -1271,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpEmpty/" class="md-nav__link">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
         Empty
       </a>
     </li>
@@ -1285,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMisc/" class="md-nav__link">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
         Misc
       </a>
     </li>
@@ -1299,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpOutput/" class="md-nav__link">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
         Output Control
       </a>
     </li>
@@ -1346,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpUserFunc/" class="md-nav__link">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1360,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpArrowFunc/" class="md-nav__link">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
         Arrow Function
       </a>
     </li>
@@ -1374,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpGenerators/" class="md-nav__link">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
         Generators
       </a>
     </li>
@@ -1802,12 +1657,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1830,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+      <a href="../phpMoodle/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -1844,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -1856,11 +1713,125 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginTypes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Plugin Types
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-naming-conventions" class="md-nav__link">
+    General Naming Conventions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-activity-modules" class="md-nav__link">
+    1. Activity Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-blocks" class="md-nav__link">
+    2. Blocks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-themes" class="md-nav__link">
+    3. Themes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-reports" class="md-nav__link">
+    4. Reports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-auth-plugins" class="md-nav__link">
+    5. Auth Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-enrol-plugins" class="md-nav__link">
+    6. Enrol Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-local-plugins" class="md-nav__link">
+    7. Local Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-admin-tools" class="md-nav__link">
+    8. Admin Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-course-formats" class="md-nav__link">
+    9. Course Formats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-question-types" class="md-nav__link">
+    10. Question Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1897,112 +1868,85 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#regular-expressions-functions" class="md-nav__link">
-    Regular Expressions Functions
-  </a>
-  
-    <nav class="md-nav" aria-label="Regular Expressions Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace_callback" class="md-nav__link">
-    preg_replace_callback()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_quote" class="md-nav__link">
-    preg_quote()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_grep" class="md-nav__link">
-    preg_grep()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match" class="md-nav__link">
-    preg_match()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_match_all" class="md-nav__link">
-    preg_match_all()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_replace" class="md-nav__link">
-    preg_replace()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#preg_split" class="md-nav__link">
-    preg_split()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regular-expression-modifiers" class="md-nav__link">
-    Regular Expression Modifiers
+  <a href="#general-naming-conventions" class="md-nav__link">
+    General Naming Conventions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#regular-expression-patterns" class="md-nav__link">
-    Regular Expression Patterns
+  <a href="#1-activity-modules" class="md-nav__link">
+    1. Activity Modules
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#metacharacters" class="md-nav__link">
-    Metacharacters
+  <a href="#2-blocks" class="md-nav__link">
+    2. Blocks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#quantifiers" class="md-nav__link">
-    Quantifiers
+  <a href="#3-themes" class="md-nav__link">
+    3. Themes
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grouping" class="md-nav__link">
-    Grouping
+  <a href="#4-reports" class="md-nav__link">
+    4. Reports
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#finding-the-nth-occurrence-of-a-match" class="md-nav__link">
-    Finding the nth Occurrence of a Match
+  <a href="#5-auth-plugins" class="md-nav__link">
+    5. Auth Plugins
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-greedy-or-nongreedy-matches" class="md-nav__link">
-    Choosing Greedy or Nongreedy Matches
+  <a href="#6-enrol-plugins" class="md-nav__link">
+    6. Enrol Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-local-plugins" class="md-nav__link">
+    7. Local Plugins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-admin-tools" class="md-nav__link">
+    8. Admin Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-course-formats" class="md-nav__link">
+    9. Course Formats
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-question-types" class="md-nav__link">
+    10. Question Types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
   </a>
   
 </li>
@@ -2021,438 +1965,466 @@
                 
 
 
-  <h1>Regex</h1>
+  <h1>Plugin Types</h1>
 
-<p>A regular expression is a sequence of characters that forms a search pattern. When you search for data in a text, you can use this search pattern to describe what you are searching for. Regular expressions are an intricate and powerful tool for matching patterns and manipulating text. Though not as fast as plain-vanilla string matching, regular expressions are extremely flexible. Think of a regular expression as a program in a very restrictive programming language.
-The only task of a regular expression program is to match a pattern in text. In regular expression patterns, most characters just match themselves.</p>
-<p>REF <a href="https://www.php.net/pcre">docs</a></p>
-<h2 id="regular-expressions-functions">Regular Expressions Functions</h2>
+<p>Understanding the different types of Moodle plugins is crucial for developing the right kind of functionality to extend Moodle. Each plugin type serves a specific purpose and integrates with Moodle in a unique way. By exploring existing plugins and their source code, you can gain insights into best practices and common patterns used in Moodle plugin development. For the official documentation of each plugin type, see the <a href="https://moodledev.io/docs/4.4/apis/plugintypes">Moodle documentation</a>.</p>
+<h3 id="general-naming-conventions">General Naming Conventions</h3>
+<ol>
+<li><strong>Component Name</strong>: The component name of a plugin follows the format <code>plugin_type_pluginname</code>. For example, an assignment activity module might be named <code>mod_assignment</code>.</li>
+<li><strong>Directory and File Names</strong>: The directory name of the plugin should match the plugin name part of the component name. For example, the directory for an assignment plugin should be <code>mod/assignment</code>.</li>
+</ol>
+<p>The plugin name must meet the following rules:</p>
+<ul>
+<li>It must start with a lowercase latin letter</li>
+<li>It may contain only lowercase latin letters, numbers, and underscores</li>
+<li>It must end with a lowercase latin letter, or a number</li>
+<li>The hyphen, and minus character - are not allowed</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th>Function</th>
-<th>Description</th>
+<th align="left">Plugin type</th>
+<th align="left">Component name (Frankenstyle)</th>
+<th align="left">Moodle path</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>preg_filter()</td>
-<td>Returns a string or an array with pattern matches replaced, but only if matches were found</td>
+<td align="left"><a href="#1-activity-modules">Activity modules</a></td>
+<td align="left">mod</td>
+<td align="left">/mod</td>
+<td align="left">Activity modules are essential types of plugins in Moodle as they provide activities in courses. For example: Forum, Quiz and Assignment.</td>
 </tr>
 <tr>
-<td><a href="#preg_grep">preg_grep()</a></td>
-<td>Returns an array consisting only of elements from the input array which matched the pattern</td>
+<td align="left">Antivirus plugins</td>
+<td align="left">antivirus</td>
+<td align="left">/lib/antivirus</td>
+<td align="left">Antivirus scanner plugins provide functionality for virus scanning user uploaded files using third-party virus scanning tools in Moodle. For example: ClamAV.</td>
 </tr>
 <tr>
-<td>preg_last_error()</td>
-<td>Returns an error code indicating the reason that the most recent regular expression call failed</td>
+<td align="left">Assignment submission plugins</td>
+<td align="left">assignsubmission</td>
+<td align="left">/mod/assign/submission</td>
+<td align="left">Different forms of assignment submissions</td>
 </tr>
 <tr>
-<td><a href="#preg_match">preg_match()</a></td>
-<td>Returns 1 if the pattern was found in the string and 0 if not</td>
+<td align="left">Assignment</td>
+<td align="left">feedback plugins</td>
+<td align="left">assignfeedback</td>
+<td align="left">/mod/assign/feedback</td>
 </tr>
 <tr>
-<td><a href="#preg_match_all">preg_match_all()</a></td>
-<td>Returns the number of times the pattern was found in the string, which may also be 0</td>
+<td align="left">Book tools</td>
+<td align="left">booktool</td>
+<td align="left">/mod/book/tool</td>
+<td align="left">Small information-displays or tools that can be moved around pages</td>
 </tr>
 <tr>
-<td><a href="#preg_replace">preg_replace()</a></td>
-<td>Returns a new string where matched patterns have been replaced with another string</td>
+<td align="left">Custom fields</td>
+<td align="left">customfield</td>
+<td align="left">/customfield/field</td>
+<td align="left">Custom field types, used in Custom course fields</td>
 </tr>
 <tr>
-<td><a href="#preg_replace_callback">preg_replace_callback()</a></td>
-<td>Given an expression and a callback, returns a string where all matches of the expression are replaced with the substring returned by the callback</td>
+<td align="left">Database fields</td>
+<td align="left">datafield</td>
+<td align="left">/mod/data/field</td>
+<td align="left">Different types of data that may be added to the Database activity module</td>
 </tr>
 <tr>
-<td>preg_replace_callback_array()</td>
-<td>Given an array associating expressions with callbacks, returns a string where all matches of each expression are replaced with the substring returned by the callback</td>
+<td align="left">Database presets</td>
+<td align="left">datapreset</td>
+<td align="left">/mod/data/preset</td>
+<td align="left">Pre-defined templates for the Database activity module</td>
 </tr>
 <tr>
-<td><a href="#preg_split">preg_split()</a></td>
-<td>Breaks a string into an array using matches of a regular expression as separators</td>
+<td align="left">LTI sources</td>
+<td align="left">ltisource</td>
+<td align="left">/mod/lti/source</td>
+<td align="left">LTI providers can be added to external tools easily through the external tools interface see Documentation on External Tools. This type of plugin is specific to LTI providers that need a plugin that can register custom handlers to process LTI messages</td>
 </tr>
 <tr>
-<td><a href="#preg_quote">preg_quote()</a></td>
-<td>Escapes characters that have a special meaning in regular expressions by putting a backslash in front of them</td>
+<td align="left">File Converters</td>
+<td align="left">fileconverter</td>
+<td align="left">/files/converter</td>
+<td align="left">Allow conversion between different types of user-submitted file. For example from .doc to PDF.</td>
+</tr>
+<tr>
+<td align="left">LTI services</td>
+<td align="left">ltiservice</td>
+<td align="left">/mod/lti/service</td>
+<td align="left">Allows the implementation of LTI services as described by the IMS LTI specification</td>
+</tr>
+<tr>
+<td align="left">Machine learning backends</td>
+<td align="left">mlbackend</td>
+<td align="left">/lib/mlbackend</td>
+<td align="left">Prediction processors for analytics API</td>
+</tr>
+<tr>
+<td align="left">Forum reports</td>
+<td align="left">forumreport</td>
+<td align="left">/mod/forum/report</td>
+<td align="left">Display various reports in the forum activity</td>
+</tr>
+<tr>
+<td align="left">Quiz reports</td>
+<td align="left">quiz</td>
+<td align="left">/mod/quiz/report</td>
+<td align="left">Display and analyse the results of quizzes, or just plug miscellaneous behaviour into the quiz module</td>
+</tr>
+<tr>
+<td align="left">Quiz access rules</td>
+<td align="left">quizaccess</td>
+<td align="left">/mod/quiz/accessrule</td>
+<td align="left">Add conditions to when or where quizzes can be attempted, for example only from some IP addresses, or student must enter a password first</td>
+</tr>
+<tr>
+<td align="left">SCORM reports</td>
+<td align="left">scormreport</td>
+<td align="left">/mod/scorm/report</td>
+<td align="left">Analysis of SCORM attempts</td>
+</tr>
+<tr>
+<td align="left">Workshop grading strategies</td>
+<td align="left">workshopform</td>
+<td align="left">/mod/workshop/form</td>
+<td align="left">Define the type of the grading form and implement the calculation of the grade for submission in the Workshop module</td>
+</tr>
+<tr>
+<td align="left">Workshop allocation methods</td>
+<td align="left">workshopallocation</td>
+<td align="left">/mod/workshop/allocation</td>
+<td align="left">Define ways how submissions are assigned for assessment in the Workshop module</td>
+</tr>
+<tr>
+<td align="left">Workshop evaluation methods</td>
+<td align="left">workshopeval</td>
+<td align="left">/mod/workshop/eval</td>
+<td align="left">Implement the calculation of the grade for assessment (grading grade) in the Workshop module</td>
+</tr>
+<tr>
+<td align="left">Blocks</td>
+<td align="left">block</td>
+<td align="left">/blocks</td>
+<td align="left">Small information-displays or tools that can be moved around pages</td>
+</tr>
+<tr>
+<td align="left">Question types</td>
+<td align="left">qtype</td>
+<td align="left">/question/type</td>
+<td align="left">Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities</td>
+</tr>
+<tr>
+<td align="left">Question behaviours</td>
+<td align="left">qbehaviour</td>
+<td align="left">/question/behaviour</td>
+<td align="left">Control how student interact with questions during an attempt</td>
+</tr>
+<tr>
+<td align="left">Question import/export formats</td>
+<td align="left">qformat</td>
+<td align="left">/question/format</td>
+<td align="left">Import and export question definitions to/from the question bank</td>
+</tr>
+<tr>
+<td align="left">Text filters</td>
+<td align="left">filter</td>
+<td align="left">/filter</td>
+<td align="left">Automatically convert, highlight, and transmogrify text posted into Moodle.</td>
+</tr>
+<tr>
+<td align="left">Editors</td>
+<td align="left">editor</td>
+<td align="left">/lib/editor</td>
+<td align="left">Alternative text editors for editing content</td>
+</tr>
+<tr>
+<td align="left">Atto editor plugins</td>
+<td align="left">atto</td>
+<td align="left">/lib/editor/atto/plugins</td>
+<td align="left">Extra functionality for the Atto text editor</td>
+</tr>
+<tr>
+<td align="left">Enrolment plugins</td>
+<td align="left">enrol</td>
+<td align="left">/enrol</td>
+<td align="left">Ways to control who is enrolled in courses</td>
+</tr>
+<tr>
+<td align="left">Authentication plugins</td>
+<td align="left">auth</td>
+<td align="left">/auth</td>
+<td align="left">Allows connection to external sources of authentication</td>
+</tr>
+<tr>
+<td align="left">Admin tools</td>
+<td align="left">tool</td>
+<td align="left">/admin/tool</td>
+<td align="left">Provides utility scripts useful for various site administration and maintenance tasks</td>
+</tr>
+<tr>
+<td align="left">Log stores</td>
+<td align="left">logstore</td>
+<td align="left">/admin/tool/log/store</td>
+<td align="left">Event logs storage back-ends</td>
+</tr>
+<tr>
+<td align="left">Availability conditions</td>
+<td align="left">availability</td>
+<td align="left">/availability/condition</td>
+<td align="left">Conditions to restrict user access to activities and sections.</td>
+</tr>
+<tr>
+<td align="left">Calendar types</td>
+<td align="left">calendartype</td>
+<td align="left">/calendar/type</td>
+<td align="left">Defines how dates are displayed throughout Moodle</td>
+</tr>
+<tr>
+<td align="left">Messaging consumers</td>
+<td align="left">message</td>
+<td align="left">/message/output</td>
+<td align="left">Represent various targets where messages and notifications can be sent to (email, sms, jabber, ...)</td>
+</tr>
+<tr>
+<td align="left">Course formats</td>
+<td align="left">format</td>
+<td align="left">/course/format</td>
+<td align="left">Different ways of laying out the activities and blocks in a course</td>
+</tr>
+<tr>
+<td align="left">Data formats</td>
+<td align="left">dataformat</td>
+<td align="left">/dataformat</td>
+<td align="left">Formats for data exporting and downloading</td>
+</tr>
+<tr>
+<td align="left">User profile fields</td>
+<td align="left">profilefield</td>
+<td align="left">/user/profile/field</td>
+<td align="left">Add new types of data to user profiles</td>
+</tr>
+<tr>
+<td align="left">Reports</td>
+<td align="left">report</td>
+<td align="left">/report</td>
+<td align="left">Provides useful views of data in a Moodle site for admins and teachers</td>
+</tr>
+<tr>
+<td align="left">Course reports</td>
+<td align="left">coursereport</td>
+<td align="left">/course/report</td>
+<td align="left">Reports of activity within the course</td>
+</tr>
+<tr>
+<td align="left">Gradebook export</td>
+<td align="left">gradeexport</td>
+<td align="left">/grade/export</td>
+<td align="left">Export grades in various formats</td>
+</tr>
+<tr>
+<td align="left">Gradebook import</td>
+<td align="left">gradeimport</td>
+<td align="left">/grade/import</td>
+<td align="left">Import grades in various formats</td>
+</tr>
+<tr>
+<td align="left">Gradebook reports</td>
+<td align="left">gradereport</td>
+<td align="left">/grade/report</td>
+<td align="left">Display/edit grades in various layouts and reports</td>
+</tr>
+<tr>
+<td align="left">Advanced grading methods</td>
+<td align="left">gradingform</td>
+<td align="left">/grade/grading/form</td>
+<td align="left">Interfaces for actually performing grading in activity modules (for example Rubrics)</td>
+</tr>
+<tr>
+<td align="left">MNet services</td>
+<td align="left">mnetservice</td>
+<td align="left">/mnet/service</td>
+<td align="left">Allows to implement remote services for the MNet environment (deprecated, use web services instead)</td>
+</tr>
+<tr>
+<td align="left">Webservice protocols</td>
+<td align="left">webservice</td>
+<td align="left">/webservice</td>
+<td align="left">Define new protocols for web service communication (such as SOAP, XML-RPC, JSON, REST ...)</td>
+</tr>
+<tr>
+<td align="left">Repository plugins</td>
+<td align="left"></td>
+<td align="left">repository</td>
+<td align="left">/repository</td>
+</tr>
+<tr>
+<td align="left">Portfolio plugins</td>
+<td align="left">portfolio</td>
+<td align="left">/portfolio</td>
+<td align="left">Connect external portfolio services as destinations for users to store Moodle content</td>
+</tr>
+<tr>
+<td align="left">Search engines</td>
+<td align="left">search</td>
+<td align="left">/search/engine</td>
+<td align="left">Search engine backends to index Moodle's contents.</td>
+</tr>
+<tr>
+<td align="left">Media players</td>
+<td align="left">media</td>
+<td align="left">/media/player</td>
+<td align="left">Pluggable media players</td>
+</tr>
+<tr>
+<td align="left">Plagiarism plugins</td>
+<td align="left">plagiarism</td>
+<td align="left">/plagiarism</td>
+<td align="left">Define external services to process submitted files and content</td>
+</tr>
+<tr>
+<td align="left">Cache store</td>
+<td align="left">cachestore</td>
+<td align="left">/cache/stores</td>
+<td align="left">Cache storage back-ends.</td>
+</tr>
+<tr>
+<td align="left">Cache locks</td>
+<td align="left">cachelock</td>
+<td align="left">/cache/locks</td>
+<td align="left">Cache lock implementations.</td>
+</tr>
+<tr>
+<td align="left">Themes</td>
+<td align="left">theme</td>
+<td align="left">/theme</td>
+<td align="left">Change the look of Moodle by changing the the HTML and the CSS.</td>
+</tr>
+<tr>
+<td align="left">Local plugins</td>
+<td align="left">local</td>
+<td align="left">/local</td>
+<td align="left">Generic plugins for local customisations</td>
+</tr>
+<tr>
+<td align="left">Content bank content types</td>
+<td align="left">contenttype</td>
+<td align="left">/contentbank/contenttype</td>
+<td align="left">Content types to upload, create or edit in the content bank and use all over the Moodle site</td>
+</tr>
+<tr>
+<td align="left">H5P libraries</td>
+<td align="left">h5plib</td>
+<td align="left">/h5p/h5plib</td>
+<td align="left">Plugin type for the particular versions of the H5P integration library.</td>
+</tr>
+<tr>
+<td align="left">Question bank plugins</td>
+<td align="left">qbank</td>
+<td align="left">/question/bank</td>
+<td align="left">Plugin type for extending question bank functionality.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="preg_replace_callback">preg_replace_callback()</h3>
-<p>When you want to process matched text with a PHP function. For example, you want to decode all HTML entities in captured subpatterns.</p>
-<p>Use preg_replace_callback(). Instead of a replacement pattern, give it a callback function. This callback function is passed an array of matched subpatterns and should return an appropriate replacement string.</p>
-<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// Generating replacement strings with a callback function</span>
-<span class="nv">$h</span> <span class="o">=</span> <span class="s1">&#39;The &amp;lt;b&amp;gt; tag makes text bold: &lt;code&gt;&amp;lt;b&amp;gt;bold&amp;lt;/b&amp;gt;&lt;/code&gt;&#39;</span><span class="p">;</span>
-<span class="k">print</span> <span class="nb">preg_replace_callback</span><span class="p">(</span><span class="s1">&#39;@&lt;code&gt;(.*?)&lt;/code&gt;@&#39;</span><span class="p">,</span><span class="s1">&#39;decode&#39;</span><span class="p">,</span> <span class="nv">$h</span><span class="p">);</span>
-<span class="c1">// $matches[0] is the entire matched string</span>
-<span class="c1">// $matches[1] is the first captured subpattern</span>
-<span class="k">function</span> <span class="nf">decode</span><span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="p">{</span>
- <span class="k">return</span> <span class="nb">html_entity_decode</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-<span class="p">}</span>
-<span class="p">}</span>   
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-This prints:
-<div class="highlight"><pre><span></span><code>The &lt;b&gt; tag makes text bold: &lt;b&gt;bold&lt;/b&gt;
-</code></pre></div></p>
-<p>The second argument to preg_replace_callback() specifies the function that is to be called to calculate replacement strings. Like everywhere the PHP “callable” pseudotype is used, this argument can be a string or an array. Use a string to specify a function name. To use an object instance method as a callback, pass an array whose first element is the object and whose second element is a string containing the method name. </p>
-<p>To use a static class method as a callback, pass an array of two strings: the class name and the method name. In PHP 5.4.0 and later, you can pass a variable containing an anonymous function, or define the function inline with the call to preg_replace_callback().</p>
-<p>The callback function is passed one argument: an array of matches. Element 0 of this array is always the text that matched the entire pattern. If the pattern given to preg_replace_callback() has any parenthesized subpatterns, these are present in subsequent elements of the $matches array. The keys of the $matches array are numeric, even if there are named subpatterns in the pattern.</p>
-<p>If you are providing an anonymous function as a callback, it can be memory intensive if the function creation is inline with the call to preg_replace_callback() and inside a loop. If you want to use an anonymous function with preg_replace_callback(), store the anonymous function callback in a variable. Then, provide the variable to preg_replace_callback() as the callback function.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// Generating replacement strings with an anonymous function</span>
-<span class="nv">$callbackFunction</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$matches</span><span class="p">)</span> <span class="p">{</span>
- <span class="k">return</span> <span class="nb">html_entity_decode</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-<span class="p">};</span>
-<span class="nv">$fp</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/html-to-decode.html&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
-<span class="k">while</span> <span class="p">(</span><span class="o">!</span> <span class="nb">feof</span><span class="p">(</span><span class="nv">$fp</span><span class="p">))</span> <span class="p">{</span>
- <span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
- <span class="k">print</span> <span class="nb">preg_replace_callback</span><span class="p">(</span><span class="s1">&#39;@&lt;code&gt;(.*?)&lt;/code&gt;@&#39;</span><span class="p">,</span><span class="nv">$callbackFunction</span><span class="p">,</span> <span class="nv">$line</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fp</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
-</code></pre></div>
-<h3 id="preg_quote">preg_quote()</h3>
-<p>Escapes characters that have a special meaning in regular expressions by putting a backslash in front of them. When you want to have characters such as * or + treated as literals, not as metacharacters,
-inside a regular expression. This is useful when allowing users to type in search strings you want to use inside a regular expression.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="nb">preg_quote</span><span class="p">(</span><span class="s1">&#39;The Education of H*Y*M*A*N K*A*P*L*A*N&#39;</span><span class="p">)</span><span class="o">.</span><span class="s1">&#39;:(\d+)&#39;</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">$pattern</span><span class="s2">/&quot;</span><span class="p">,</span><span class="nv">$book_rank</span><span class="p">,</span><span class="nv">$matches</span><span class="p">))</span> <span class="p">{</span>
- <span class="k">print</span> <span class="s2">&quot;Leo Rosten&#39;s book ranked: &quot;</span><span class="o">.</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>Here are the characters that preg_quote() escapes:</p>
-<p>. \ + * ? ^ $ [ ] () { } &lt; &gt; = ! | :</p>
-<p>It escapes the metacharacters with a backslash.</p>
-<p>You can also pass preg_quote() an additional character to escape as a second argument. It’s useful to pass your pattern delimiter (usually /) as this argument so it also gets escaped. This is important if you incorporate user input into a regular expression pattern. The following code expects $_GET['search_term'] from a web form and searches for words beginning with $_GET['search_term'] in a string $s:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$search_term</span> <span class="o">=</span> <span class="nb">preg_quote</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search_term&#39;</span><span class="p">],</span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/\b</span><span class="si">$search_term</span><span class="s2">/i&quot;</span><span class="p">,</span><span class="nv">$s</span><span class="p">))</span> <span class="p">{</span>
- <span class="k">print</span> <span class="s1">&#39;match!&#39;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>Using preg_quote() ensures the regular expression is interpreted properly if, for example, a Magnum, P.I. fan enters t.c as a search term. Without preg_quote(), this matches tic, tucker, and any other words whose first letter is t and third letter is c.</p>
-<p>Passing the pattern delimiter to preg_quote() as well makes sure that user input with forward slashes in it, such as CP/M, is also handled correctly.</p>
-<h3 id="preg_grep">preg_grep()</h3>
-<p>When you want to find all the lines in a file that match a pattern.</p>
-<p>There are two ways to do this. First example is faster, but uses more memory. It uses
-the file() function to put each line of the file into an array and preg_grep() to filter
-out the nonmatching lines.</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Efficiently finding lines that match a pattern</span>
-<span class="cp">&lt;?php</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/\bo&#39;reilly\b/i&quot;</span><span class="p">;</span> <span class="c1">// only O&#39;Reilly books</span>
-<span class="nv">$ora_books</span> <span class="o">=</span> <span class="nb">preg_grep</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nb">file</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.txt&#39;</span><span class="p">));</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>The next example is slower, but more memory efficient. It reads the file a line at a time and
-uses preg_match() to check each line after it’s read.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">//Efficiently finding lines that match a pattern</span>
-<span class="nv">$fh</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="nv">$php_errormsg</span><span class="p">);</span>
-<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="nb">feof</span><span class="p">(</span><span class="nv">$fh</span><span class="p">))</span> <span class="p">{</span>
- <span class="nv">$line</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
- <span class="k">if</span> <span class="p">(</span><span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$line</span><span class="p">))</span> <span class="p">{</span> <span class="nv">$ora_books</span><span class="p">[</span> <span class="p">]</span> <span class="o">=</span> <span class="nv">$line</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-<span class="nb">fclose</span><span class="p">(</span><span class="nv">$fh</span><span class="p">);</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>Keep in mind that because both methods operate on individual lines of the file, they can’t successfully use patterns that match text that spans multiple lines.</p>
-<h3 id="preg_match">preg_match()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit arcelopera.github.io&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/arce/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="preg_match_all">preg_match_all()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;The rain in SPAIN falls mainly on the plains.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ain/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match_all</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 4</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>For example, when you want to capture text inside HTML tags, you can find all the heading tags in an HTML document.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// Capturing HTML headings</span>
-<span class="nv">$html</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/example.html&#39;</span><span class="p">);</span>
-<span class="nb">preg_match_all</span><span class="p">(</span><span class="s1">&#39;@&lt;h([1-6])&gt;(.+?)&lt;/h\1&gt;@is&#39;</span><span class="p">,</span> <span class="nv">$html</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">);</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$text</span><span class="p">)</span> <span class="p">{</span>
- <span class="k">print</span> <span class="s2">&quot;Heading: </span><span class="si">$text\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>Robust parsing of HTML is difficult using a simple regular expression. This is one advantage of using XHTML; it’s significantly easier to validate and parse.</p>
-<p>Regular expressions can be moderately useful for parsing small amounts of HTML, especially if the structure of that HTML is reasonably constrained (or you’re generating it yourself). For more generalized and robust HTML parsing, use the <a href="https://www.php.net/tidy">Tidy</a> extension. </p>
-<p>It provides an interface to the popular libtidy HTML cleanup library. After Tidy has cleaned up your HTML, you can use its methods for getting at parts of the document. Or if you’ve told Tidy to convert your HTML to XHTML, you can use all of the XML manipulation power of SimpleXML or the DOM extension to slice and dice your HTML document.</p>
-<h3 id="preg_replace">preg_replace()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Visit Microsoft!&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/microsoft/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_replace</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="s2">&quot;ME&quot;</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs &quot;Visit ME!&quot;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="preg_split">preg_split()</h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Hello World!&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ /&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_split</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs array(&quot;Hello&quot;, &quot;World!&quot;)</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>When you want to read in records from a file, in which each record is separated by a pattern you can match with a regular expression.</p>
-<p>Read the entire file into a string and then split on the regular expression:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$contents</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">&#39;/path/to/your/file.txt&#39;</span><span class="p">);</span>
-<span class="nv">$records</span> <span class="o">=</span> <span class="nb">preg_split</span><span class="p">(</span><span class="s1">&#39;/[0-9]+\) /&#39;</span><span class="p">,</span> <span class="nv">$contents</span><span class="p">);</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>This breaks apart a numbered list and places the individual list items into array elements.
-So if you have a list like this:
-1) Gödel
-2) Escher
-3) Bach
-you end up with a four-element array, with an empty opening element. That’s because
-preg_split() assumes the delimiters are between items, but in this case, the numbers
-are before items:</p>
-<div class="highlight"><pre><span></span><code><span class="x">array(4) {</span>
-<span class="x"> [0]=&gt;</span>
-<span class="x"> string(0) &quot;&quot;</span>
-<span class="x"> [1]=&gt;</span>
-<span class="x"> string(7) &quot;Gödel</span>
-<span class="x">&quot;</span>
-<span class="x"> [2]=&gt;</span>
-<span class="x"> string(7) &quot;Escher</span>
-<span class="x">&quot;</span>
-<span class="x"> [3]=&gt;</span>
-<span class="x"> string(5) &quot;Bach</span>
-<span class="x">&quot;</span>
-<span class="x">}</span>
-</code></pre></div>
-<p>From one point of view, this can be a feature, not a bug, because the nth element holds the nth item. But, to compact the array, you can eliminate the first element:</p>
-<div class="highlight"><pre><span></span><code><span class="x">$records = preg_split(&#39;/[0-9]+\) /&#39;, $contents);</span>
-<span class="x">array_shift($records);</span>
-</code></pre></div>
-<p>Another modification you might want is to strip newlines from the elements and substitute the empty string instead:</p>
-<div class="highlight"><pre><span></span><code><span class="x">$records = preg_split(&#39;/[0-9]+\) /&#39;, str_replace(&quot;\n&quot;,&#39;&#39;,$contents));</span>
-<span class="x">array_shift($records);</span>
-</code></pre></div>
-<p>PHP doesn’t allow you to change the input record separator to anything other than a newline, so this technique is also useful for breaking apart records divided by strings. However, if you find yourself splitting on a string instead of a regular expression, substitute explode() for preg_split() for a more efficient operation.</p>
-<h2 id="regular-expression-modifiers">Regular Expression Modifiers</h2>
-<table>
-<thead>
-<tr>
-<th>Modifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>i</td>
-<td>Performs a case-insensitive search</td>
-</tr>
-<tr>
-<td>m</td>
-<td>Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)</td>
-</tr>
-<tr>
-<td>u</td>
-<td>Enables correct matching of UTF-8 encoded patterns</td>
-</tr>
-</tbody>
-</table>
-<h2 id="regular-expression-patterns">Regular Expression Patterns</h2>
-<p>Brackets are used to find a range of characters:</p>
-<table>
-<thead>
-<tr>
-<th>Expression</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[abc]</td>
-<td>Find one character from the options between the brackets</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>Find any character NOT between the brackets</td>
-</tr>
-<tr>
-<td>[0-9]</td>
-<td>Find one character from the range 0 to 9</td>
-</tr>
-</tbody>
-</table>
-<h2 id="metacharacters">Metacharacters</h2>
-<p>Metacharacters are characters with a special meaning.</p>
-<table>
-<thead>
-<tr>
-<th>Metacharacter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>|</td>
-<td>Find a match for any one of the patterns separated by | as in: cat|dog|fish</td>
-</tr>
-<tr>
-<td>.</td>
-<td>Find just one instance of any character</td>
-</tr>
-<tr>
-<td>^</td>
-<td>Finds a match as the beginning of a string as in: ^Hello</td>
-</tr>
-<tr>
-<td>$</td>
-<td>Finds a match at the end of the string as in: World$</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>Find a digit</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>Find a whitespace character</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b</td>
-</tr>
-<tr>
-<td>\uxxxx</td>
-<td>Find the Unicode character specified by the hexadecimal number xxxx</td>
-</tr>
-</tbody>
-</table>
-<h2 id="quantifiers">Quantifiers</h2>
-<p>Quantifiers define quantities</p>
-<table>
-<thead>
-<tr>
-<th>Quantifier</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>n+</td>
-<td>Find one or more n</td>
-</tr>
-<tr>
-<td>n*</td>
-<td>Find zero or more n</td>
-</tr>
-<tr>
-<td>n?</td>
-<td>Find zero or one n</td>
-</tr>
-<tr>
-<td>n{x}</td>
-<td>Matches any string that contains a sequence of X n's</td>
-</tr>
-<tr>
-<td>n{x,}</td>
-<td>Matches any string that contains a sequence of at least X n's</td>
-</tr>
-<tr>
-<td>n{,y}</td>
-<td>Matches any string that contains a sequence of up to Y n's</td>
-</tr>
-<tr>
-<td>n{x,y}</td>
-<td>Matches any string that contains a sequence of X to Y n's</td>
-</tr>
-</tbody>
-</table>
-<p>If your expression needs to search for one of the special characters you can use a backslash ( \ ) to escape them. For example, to search for one or more question marks you can use the following expression: 
-<div class="highlight"><pre><span></span><code><span class="x">$pattern = &#39;/\?+/&#39;;</span>
-</code></pre></div></p>
-<h2 id="grouping">Grouping</h2>
-<p>You can use parentheses ( ) to apply quantifiers to entire patterns. They also can be used to select parts of the pattern to be used as a match.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;Apples and bananas.&quot;</span><span class="p">;</span>
-<span class="nv">$pattern</span> <span class="o">=</span> <span class="s2">&quot;/ba(na){2}/i&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nb">preg_match</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">,</span> <span class="nv">$str</span><span class="p">);</span> <span class="c1">// Outputs 1</span>
-<span class="cp">?&gt;</span><span class="x">  </span>
-</code></pre></div>
-<h2 id="finding-the-nth-occurrence-of-a-match">Finding the nth Occurrence of a Match</h2>
-<p>Use preg_match_all() to pull all the matches into an array; then pick out the specific matches in which you’re interested.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$todo</span> <span class="o">=</span> <span class="s2">&quot;1. Get Dressed 2. Eat Jelly 3. Squash every week into a day&quot;</span><span class="p">;</span>
-<span class="nb">preg_match_all</span><span class="p">(</span><span class="s2">&quot;/\d\. ([^\d]+)/&quot;</span><span class="p">,</span> <span class="nv">$todo</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">);</span>
-<span class="k">print</span> <span class="s2">&quot;The second item on the todo list is: &quot;</span><span class="p">;</span>
-<span class="c1">// $matches[1] is an array of each substring captured by ([^\d]+)</span>
-<span class="k">print</span> <span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">print</span> <span class="s2">&quot;The entire todo list is: &quot;</span><span class="p">;</span>
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$matches</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$match</span><span class="p">)</span> <span class="p">{</span>
- <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$match\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<p>Because the preg_match() function stops after it finds one match, you need to use preg_match_all() instead if you’re looking for additional matches. The preg_match_all() function returns the number of full pattern matches it finds. If it finds no matches, it returns 0. If it encounters an error, such as a syntax problem in the pattern, it returns false.</p>
-<p>The third argument to preg_match_all() is populated with an array holding information about the various substrings that the pattern has matched. . The first element holds an array of matches of the complete pattern. For example, this means that $matches[0] holds the parts of $todo that match /\d. ([^\d]+)/: 1. Get Dressed, 2. Eat Jelly, and 3. Squash every week into a day.</p>
-<p>Subsequent elements of the $matches array hold arrays of text matched by each parenthesized subpattern. The pattern in the example has just one subpattern ([^\d]+). 
-So $matches[1] is an array of strings that match that subpattern: Get Dressed, Eat Jelly, and Squash every week into a day.</p>
-<p>If there were a second subpattern, the substrings that it matched would be in $matches[2], a third subpattern’s matches would be in $matches[3], and so on.
-Instead of returning an array divided into full matches and then submatches, preg_match_all() can return an array divided by matches, with each submatch inside.
-To trigger this, pass PREG_SET_ORDER in as the fourth argument. This is particularly useful when you’ve got multiple captured subpatterns and you want to iterate through the subpattern groups one group at a time.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$todo</span> <span class="o">=</span> <span class="s2">&quot;</span>
-<span class="s2">first=Get Dressed</span>
-<span class="s2">next=Eat Jelly</span>
-<span class="s2">last=Squash every week into a day</span>
-<span class="s2">&quot;</span><span class="p">;</span>
-<span class="nb">preg_match_all</span><span class="p">(</span><span class="s2">&quot;/([a-zA-Z]+)=(.*)/&quot;</span><span class="p">,</span> <span class="nv">$todo</span><span class="p">,</span> <span class="nv">$matches</span><span class="p">,</span> <span class="nx">PREG_SET_ORDER</span><span class="p">);</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$matches</span> <span class="k">as</span> <span class="nv">$match</span><span class="p">)</span> <span class="p">{</span>
- <span class="k">print</span> <span class="s2">&quot;The </span><span class="si">{</span><span class="nv">$match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> action is </span><span class="si">{</span><span class="nv">$match</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="x">The first action is Get Dressed</span>
-<span class="x">The next action is Eat Jelly</span>
-<span class="x">The last action is Squash every week into a day</span>
-</code></pre></div>
-<p>With PREG_SET_ORDER, each value of $match in the foreach loop contains all the subpatterns: $match[0] is the entire matched string, $match[1] the bit before the =, and $match[2] the bit after the =.</p>
-<h2 id="choosing-greedy-or-nongreedy-matches">Choosing Greedy or Nongreedy Matches</h2>
-<p>When you want your pattern to match the smallest possible string instead of the largest. Place a ? after a quantifier to alter that portion of the pattern. </p>
-<div class="highlight"><pre><span></span><code><span class="x">// find all &lt;em&gt;emphasized&lt;/em&gt; sections</span>
-<span class="x">preg_match_all(&#39;@&lt;em&gt;.+?&lt;/em&gt;@&#39;, $html, $matches);</span>
-</code></pre></div>
-<p>Or use the U pattern-modifier ending to invert all quantifiers from greedy (“match as many characters as possible”) to nongreedy (“match as few characters as possible”). </p>
-<div class="highlight"><pre><span></span><code><span class="x">// find all &lt;em&gt;emphasized&lt;/em&gt; sections</span>
-<span class="x">preg_match_all(&#39;@&lt;em&gt;.+&lt;/em&gt;@U&#39;, $html, $matches);</span>
-</code></pre></div>
-<p>By default, all regular expression quantifiers in PHP are greedy. For example, consider the pattern <em>.</em>, which matches "<em>, one or more characters, </em>,” matching against the string I simply <em>love</em> your <em>work</em>. A greedy regular expression finds one match, because after it matches the opening <em>, its .+ slurps up as much as possible, finally grinding to a halt at the final </em>. The .+ matches love</em> your <em>work.</p>
-<p>A nongreedy regular expression, on the other hand, finds a pair of matches. The first <em> is matched as before, but then .+ stops as soon as it can, only matching love. A second match then goes ahead: the next .+ matches work.</p>
-<div class="highlight"><pre><span></span><code><span class="x">$html = &#39;I simply &lt;em&gt;love&lt;/em&gt; your &lt;em&gt;work&lt;/em&gt;&#39;;</span>
-<span class="x">// Greedy</span>
-<span class="x">$matchCount = preg_match_all(&#39;@&lt;em&gt;.+&lt;/em&gt;@&#39;, $html, $matches);</span>
-<span class="x">print &quot;Greedy count: &quot; . $matchCount . &quot;\n&quot;;</span>
-<span class="x">// Nongreedy</span>
-<span class="x">$matchCount = preg_match_all(&#39;@&lt;em&gt;.+?&lt;/em&gt;@&#39;, $html, $matches);</span>
-<span class="x">print &quot;First non-greedy count: &quot; . $matchCount . &quot;\n&quot;;</span>
-<span class="x">// Nongreedy</span>
-<span class="x">$matchCount = preg_match_all(&#39;@&lt;em&gt;.+&lt;/em&gt;@U&#39;, $html, $matches);</span>
-<span class="x">print &quot;Second non-greedy count: &quot; . $matchCount . &quot;\n&quot;;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Greedy count: 1
-First non-greedy count: 2
-Second non-greedy count: 1
-</code></pre></div>
-<p>Greedy matching is also known as maximal matching and nongreedy matching can be called minimal matching, because these methods match either the maximum or minimum number of characters possible.</p>
-<p>Although nongreedy matching is useful for simplistic HTML parsing, it can break down if your markup isn’t 100 percent valid and there are, for example, stray <em> tags lying around.</p>
-<p>If your goal is just to remove all (or some) HTML tags from a block of text, you’re better off not using a regular expression. Instead, use the built-in function strip_tags(); it’s faster and it works correctly.</p>
-<p>Finally, even though the idea of nongreedy matching comes from Perl, the U modifier is incompatible with Perl and is unique to PHP’s Perl-compatible regular expressions. It inverts all quantifiers, turning them from greedy to nongreedy and also the reverse. So to get a greedy quantifier inside of a pattern operating under a trailing /U, just add a ? to the end, the same way you would normally turn a greedy quantifier into a non‐greedy one.</p>
+<h3 id="1-activity-modules">1. Activity Modules</h3>
+<p><strong>Purpose</strong>: Add new types of activities or resources to courses.</p>
+<p><strong>Component Name</strong>: <code>mod_pluginname</code></p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Assignment (<code>mod_assign</code>)</strong>: Allows teachers to collect work from students, review it, and provide feedback including grades.</li>
+<li><strong>Quiz (<code>mod_quiz</code>)</strong>: Enables the creation of quizzes with a variety of question types like multiple choice, true/false, and short answer.</li>
+<li><strong>Forum (<code>mod_forum</code>)</strong>: Facilitates discussions among students and teachers within a course.</li>
+<li><strong>H5P Interactive Content (<code>mod_h5pactivity</code>)</strong>: Integrates H5P activities, which are interactive HTML5 content types like quizzes, interactive videos, and presentations.</li>
+<li><strong>Scheduler (<code>mod_scheduler</code>)</strong>: Allows teachers to schedule appointments with students.</li>
+</ul>
+<h3 id="2-blocks">2. Blocks</h3>
+<p><strong>Purpose</strong>: Add new blocks to the side regions of Moodle pages, providing additional information or functionality.</p>
+<p><strong>Component Name</strong>: <code>block_pluginname</code></p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>HTML Block (<code>block_html</code>)</strong>: Allows custom HTML content to be displayed in a block.</li>
+<li><strong>Calendar Block (<code>block_calendar_month</code>)</strong>: Shows the calendar for the current month with links to detailed day views.</li>
+<li><strong>Progress Bar (<code>block_progress</code>)</strong>: Displays a progress bar showing the completion status of activities within a course.</li>
+<li><strong>Quickmail (<code>block_quickmail</code>)</strong>: Provides an easy way for teachers to send emails to students within a course.</li>
+</ul>
+<h3 id="3-themes">3. Themes</h3>
+<p><strong>Purpose</strong>: Customize the look and feel of the Moodle site by changing the design, layout, and styles.</p>
+<p><strong>Component Name</strong>: <code>theme_pluginname</code></p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Boost (<code>theme_boost</code>)</strong>: A modern, responsive theme based on Bootstrap 4, providing a clean and intuitive interface.</li>
+<li><strong>Classic (<code>theme_classic</code>)</strong>: A traditional theme with a simple, familiar layout.</li>
+<li><strong>Fordson (<code>theme_fordson</code>)</strong>: A highly customizable theme with additional layout options and enhanced usability features.</li>
+<li><strong>Moove (<code>theme_moove</code>)</strong>: A modern, responsive theme with a focus on simplicity and user experience.</li>
+</ul>
+<h3 id="4-reports">4. Reports</h3>
+<p><strong>Purpose</strong>: Create new reports for data analysis and tracking within Moodle.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Logs (<code>report_log</code>)</strong>: Provides access to the logs of all activities on the site, courses, and users.</li>
+<li><strong>Activity Report (<code>report_activity</code>)</strong>: Shows detailed activity reports for a course.</li>
+<li><strong>Configurable Reports (<code>report_customsql</code>)</strong>: Allows admins to create custom reports using SQL queries.</li>
+<li><strong>Completion Progress (<code>report_completion</code>)</strong>: Provides a visual overview of students' progress in completing course activities.</li>
+</ul>
+<h3 id="5-auth-plugins">5. Auth Plugins</h3>
+<p><strong>Purpose</strong>: Implement custom authentication methods for logging into Moodle.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Email-based Self-registration (<code>auth_email</code>)</strong>: Allows users to create their own accounts using their email addresses.</li>
+<li><strong>LDAP Server (<code>auth_ldap</code>)</strong>: Authenticates users against an LDAP server, commonly used in organizations.</li>
+<li><strong>OAuth2 (<code>auth_oauth2</code>)</strong>: Allows users to log in using their accounts from external services like Google, Microsoft, and Facebook.</li>
+<li><strong>CAS Server (<code>auth_cas</code>)</strong>: Integrates Moodle with a CAS (Central Authentication Service) server for single sign-on.</li>
+</ul>
+<h3 id="6-enrol-plugins">6. Enrol Plugins</h3>
+<p><strong>Purpose</strong>: Implement custom enrollment methods for courses.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Manual Enrolment (<code>enrol_manual</code>)</strong>: Allows teachers to manually enroll students in their courses.</li>
+<li><strong>Self Enrolment (<code>enrol_self</code>)</strong>: Allows users to enroll themselves in courses, optionally using an enrollment key.</li>
+<li><strong>Stripe Payment (<code>enrol_stripepayment</code>)</strong>: Allows users to pay for course enrollment using the Stripe payment gateway.</li>
+<li><strong>PayPal (<code>enrol_paypal</code>)</strong>: Integrates PayPal for paid course enrollments.</li>
+</ul>
+<h3 id="7-local-plugins">7. Local Plugins</h3>
+<p><strong>Purpose</strong>: Provide additional functionalities that don't fit into other plugin categories.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Moodle Mobile Additional Features (<code>local_mobile</code>)</strong>: Adds additional features to the Moodle Mobile app.</li>
+<li><strong>Moodle Integrity Essentials (<code>local_integrity</code>)</strong>: Provides tools to help maintain the integrity of the Moodle environment.</li>
+<li><strong>Cron Locking Improvements (<code>local_cronlock</code>)</strong>: Enhances the performance and reliability of Moodle's cron system.</li>
+<li><strong>User Cleanup (<code>local_usercleanup</code>)</strong>: Automates the cleanup and deletion of inactive or unwanted user accounts.</li>
+</ul>
+<h3 id="8-admin-tools">8. Admin Tools</h3>
+<p><strong>Purpose</strong>: Provide tools and utilities for site administrators to manage and maintain the Moodle site.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Database Search (<code>tool_datasearch</code>)</strong>: Allows administrators to search and manage the database directly from the Moodle interface.</li>
+<li><strong>Security Overview (<code>tool_securityoverview</code>)</strong>: Provides a report highlighting potential security issues and recommendations.</li>
+<li><strong>Task Scheduler (<code>tool_taskscheduler</code>)</strong>: Allows administrators to schedule and manage various tasks within Moodle.</li>
+<li><strong>Multi-factor Authentication (<code>tool_mfa</code>)</strong>: Implements multi-factor authentication for increased security.</li>
+</ul>
+<h3 id="9-course-formats">9. Course Formats</h3>
+<p><strong>Purpose</strong>: Define the layout and structure of courses within Moodle.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Weekly Format (<code>format_weeks</code>)</strong>: Organizes course content by weeks.</li>
+<li><strong>Topics Format (<code>format_topics</code>)</strong>: Organizes course content by topics.</li>
+<li><strong>Grid Format (<code>format_grid</code>)</strong>: Displays course sections as a grid of icons, enhancing the visual appeal.</li>
+<li><strong>Collapsed Topics (<code>format_collapsedtopics</code>)</strong>: Allows course sections to be collapsed and expanded for better navigation.</li>
+</ul>
+<h3 id="10-question-types">10. Question Types</h3>
+<p><strong>Purpose</strong>: Add new types of questions for quizzes and other activities.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li><strong>Multiple Choice (<code>qtype_multichoice</code>)</strong>: Standard multiple-choice question type.</li>
+<li><strong>True/False (<code>qtype_truefalse</code>)</strong>: Simple true/false question type.</li>
+<li><strong>Drag and Drop onto Image (<code>qtype_ddimageortext</code>)</strong>: Allows users to drag and drop text or images onto predefined areas of an image.</li>
+<li><strong>Gapfill (<code>qtype_gapfill</code>)</strong>: Provides a fill-in-the-gap question type for cloze tests.</li>
+</ul>
+<h3 id="summary">Summary</h3>
+<p>Understanding the types of plugins available in Moodle allows you to choose the right type for your needs and extend Moodle's functionality effectively. Whether you're adding new activities, customizing the look and feel, or creating new reports, there's a specific plugin type designed to help you achieve your goals. By exploring existing plugins and their source code, you can gain insights into best practices and common patterns used in Moodle plugin development.</p>
+<p>Naming conventions in Moodle plugins are crucial for maintaining consistency, avoiding conflicts, and ensuring that plugins are easily identifiable and properly integrated within the Moodle ecosystem. Each plugin type in Moodle has specific naming conventions that developers need to follow. Here is a detailed explanation of the naming conventions for various Moodle plugin types:</p>
 
               
             </article>
@@ -2466,7 +2438,7 @@ Second non-greedy count: 1
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpCalendar/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Calendar" rel="prev">
+        <a href="../phpMoodleInstall/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2475,26 +2447,11 @@ Second non-greedy count: 1
               <span class="md-footer__direction">
                 Previous
               </span>
-              Calendar
+              Installation
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../phpCookie/" class="md-footer__link md-footer__link--next" aria-label="Next: Cookies" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Cookies
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
