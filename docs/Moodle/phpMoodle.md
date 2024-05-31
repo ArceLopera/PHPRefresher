@@ -51,7 +51,7 @@ Developing a plugin for Moodle involves several steps, from setting up your deve
 - **Moodle Installation**: You need a local Moodle instance for development and testing.
 
 
-### Understanding Moodle Plugin Types
+### [Understanding Moodle Plugin Types](phpMoodlePluginTypes.md)
 
 Moodle supports various types of plugins:
 
