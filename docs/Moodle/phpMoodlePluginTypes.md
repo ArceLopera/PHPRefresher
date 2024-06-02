@@ -14,7 +14,7 @@ The plugin name must meet the following rules:
 
 |Plugin type|Component name (Frankenstyle)|Moodle path|Description|
 | :--- | :--- | :--- | :---|
-|[Activity modules](#1-activity-modules)	|mod	|/mod	|Activity modules are essential types of plugins in Moodle as they provide activities in courses. For example: Forum, Quiz and Assignment.|
+|[Activity modules](./Plugin/phpMoodlePlugin_mod.md)	|mod	|/mod	|Activity modules are essential types of plugins in Moodle as they provide activities in courses. For example: Forum, Quiz and Assignment.|
 |Antivirus plugins|	antivirus|	/lib/antivirus|	Antivirus scanner plugins provide functionality for virus scanning user uploaded files using third-party virus scanning tools in Moodle. For example: ClamAV.|
 |Assignment submission plugins	|assignsubmission	|/mod/assign/submission	|Different forms of assignment submissions|
 |Assignment |feedback plugins	|assignfeedback	|/mod/assign/feedback	|Different forms of assignment feedbacks|
@@ -33,24 +33,24 @@ The plugin name must meet the following rules:
 |Workshop grading strategies	|workshopform	|/mod/workshop/form	|Define the type of the grading form and implement the calculation of the grade for submission in the Workshop module|
 |Workshop allocation methods	|workshopallocation	|/mod/workshop/allocation	|Define ways how submissions are assigned for assessment in the Workshop module|
 |Workshop evaluation methods	|workshopeval	|/mod/workshop/eval	|Implement the calculation of the grade for assessment (grading grade) in the Workshop module|
-|Blocks	|block	|/blocks	|Small information-displays or tools that can be moved around pages|
-|Question types	|qtype	|/question/type	|Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities|
+|[Blocks](#2-blocks)	|block	|/blocks	|Small information-displays or tools that can be moved around pages|
+|[Question types](#10-question-types)	|qtype	|/question/type	|Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities|
 |Question behaviours	|qbehaviour	|/question/behaviour	|Control how student interact with questions during an attempt|
 |Question import/export formats|qformat	|/question/format	|Import and export question definitions to/from the question bank|
 |Text filters	|filter	|/filter	|Automatically convert, highlight, and transmogrify text posted into Moodle.|
 |Editors	|editor	|/lib/editor	|Alternative text editors for editing content|
 |Atto editor plugins	|atto	|/lib/editor/atto/plugins	|Extra functionality for the Atto text editor|
-|Enrolment plugins	|enrol	|/enrol	|Ways to control who is enrolled in courses|
-|Authentication plugins	|auth	|/auth	|Allows connection to external sources of authentication|
-|Admin tools	|tool	|/admin/tool	|Provides utility scripts useful for various site administration and maintenance tasks|
+|[Enrolment plugins](#6-enrol-plugins)	|enrol	|/enrol	|Ways to control who is enrolled in courses|
+|[Authentication plugins](#5-auth-plugins)	|auth	|/auth	|Allows connection to external sources of authentication|
+|[Admin tools](#8-admin-tools)	|tool	|/admin/tool	|Provides utility scripts useful for various site administration and maintenance tasks|
 |Log stores	|logstore	|/admin/tool/log/store	|Event logs storage back-ends|
 |Availability conditions	|availability	|/availability/condition	|Conditions to restrict user access to activities and sections.|
 |Calendar types	|calendartype	|/calendar/type	|Defines how dates are displayed throughout Moodle|
 |Messaging consumers	|message	|/message/output	|Represent various targets where messages and notifications can be sent to (email, sms, jabber, ...)|
-|Course formats	|format	|/course/format	|Different ways of laying out the activities and blocks in a course|
+|[Course formats](#9-course-formats)	|format	|/course/format	|Different ways of laying out the activities and blocks in a course|
 |Data formats	|dataformat	|/dataformat	|Formats for data exporting and downloading|
 |User profile fields	|profilefield	|/user/profile/field	|Add new types of data to user profiles|
-|Reports	|report	|/report	|Provides useful views of data in a Moodle site for admins and teachers|
+|[Reports](#4-reports)	|report	|/report	|Provides useful views of data in a Moodle site for admins and teachers|
 |Course reports	|coursereport	|/course/report	|Reports of activity within the course|
 |Gradebook export	|gradeexport	|/grade/export	|Export grades in various formats|
 |Gradebook import	|gradeimport	|/grade/import	|Import grades in various formats|
@@ -65,15 +65,15 @@ The plugin name must meet the following rules:
 |Plagiarism plugins	|plagiarism	|/plagiarism	|Define external services to process submitted files and content|
 |Cache store	|cachestore	|/cache/stores	|Cache storage back-ends.|
 |Cache locks	|cachelock	|/cache/locks	|Cache lock implementations.|
-|Themes	|theme	|/theme	|Change the look of Moodle by changing the the HTML and the CSS.|
-|Local plugins	|local	|/local	|Generic plugins for local customisations|
+|[Themes](#3-themes)	|theme	|/theme	|Change the look of Moodle by changing the the HTML and the CSS.|
+|[Local plugins](#7-local-plugins)	|local	|/local	|Generic plugins for local customisations|
 |Content bank content types	|contenttype	|/contentbank/contenttype	|Content types to upload, create or edit in the content bank and use all over the Moodle site|
 |H5P libraries	|h5plib	|/h5p/h5plib	|Plugin type for the particular versions of the H5P integration library.|
 |Question bank plugins	|qbank	|/question/bank	|Plugin type for extending question bank functionality.|
 
 
 
-### 1. Activity Modules
+### [1. Activity modules](./Plugin/phpMoodlePlugin_mod.md)
 
 **Purpose**: Add new types of activities or resources to courses.
 

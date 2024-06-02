@@ -164,5 +164,7 @@ nav:
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
-     - Plugin Types: Moodle/phpMoodlePluginTypes.md
+     - Plugin Types: 
+            - General: Moodle/phpMoodlePluginTypes.md
+            - Activity: Moodle/Plugin/phpMoodlePlugin_mod.md
 
