@@ -19,7 +19,7 @@
     
     
       
-        <title>Plugin Types - PHP Refresher</title>
+        <title>General - PHP Refresher</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Plugin Types
+              General
             
           </span>
         </div>
@@ -1716,6 +1716,34 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -1723,12 +1751,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Plugin Types
+          General
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Plugin Types
+        General
       </a>
       
         
@@ -1753,7 +1781,7 @@
       
         <li class="md-nav__item">
   <a href="#1-activity-modules" class="md-nav__link">
-    1. Activity Modules
+    1. Activity modules
   </a>
   
 </li>
@@ -1837,6 +1865,27 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1876,7 +1925,7 @@
       
         <li class="md-nav__item">
   <a href="#1-activity-modules" class="md-nav__link">
-    1. Activity Modules
+    1. Activity modules
   </a>
   
 </li>
@@ -1965,7 +2014,7 @@
                 
 
 
-  <h1>Plugin Types</h1>
+  <h1>General</h1>
 
 <p>Understanding the different types of Moodle plugins is crucial for developing the right kind of functionality to extend Moodle. Each plugin type serves a specific purpose and integrates with Moodle in a unique way. By exploring existing plugins and their source code, you can gain insights into best practices and common patterns used in Moodle plugin development. For the official documentation of each plugin type, see the <a href="https://moodledev.io/docs/4.4/apis/plugintypes">Moodle documentation</a>.</p>
 <h3 id="general-naming-conventions">General Naming Conventions</h3>
@@ -1991,7 +2040,7 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"><a href="#1-activity-modules">Activity modules</a></td>
+<td align="left"><a href="../Plugin/phpMoodlePlugin_mod/">Activity modules</a></td>
 <td align="left">mod</td>
 <td align="left">/mod</td>
 <td align="left">Activity modules are essential types of plugins in Moodle as they provide activities in courses. For example: Forum, Quiz and Assignment.</td>
@@ -2105,13 +2154,13 @@
 <td align="left">Implement the calculation of the grade for assessment (grading grade) in the Workshop module</td>
 </tr>
 <tr>
-<td align="left">Blocks</td>
+<td align="left"><a href="#2-blocks">Blocks</a></td>
 <td align="left">block</td>
 <td align="left">/blocks</td>
 <td align="left">Small information-displays or tools that can be moved around pages</td>
 </tr>
 <tr>
-<td align="left">Question types</td>
+<td align="left"><a href="#10-question-types">Question types</a></td>
 <td align="left">qtype</td>
 <td align="left">/question/type</td>
 <td align="left">Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities</td>
@@ -2147,19 +2196,19 @@
 <td align="left">Extra functionality for the Atto text editor</td>
 </tr>
 <tr>
-<td align="left">Enrolment plugins</td>
+<td align="left"><a href="#6-enrol-plugins">Enrolment plugins</a></td>
 <td align="left">enrol</td>
 <td align="left">/enrol</td>
 <td align="left">Ways to control who is enrolled in courses</td>
 </tr>
 <tr>
-<td align="left">Authentication plugins</td>
+<td align="left"><a href="#5-auth-plugins">Authentication plugins</a></td>
 <td align="left">auth</td>
 <td align="left">/auth</td>
 <td align="left">Allows connection to external sources of authentication</td>
 </tr>
 <tr>
-<td align="left">Admin tools</td>
+<td align="left"><a href="#8-admin-tools">Admin tools</a></td>
 <td align="left">tool</td>
 <td align="left">/admin/tool</td>
 <td align="left">Provides utility scripts useful for various site administration and maintenance tasks</td>
@@ -2189,7 +2238,7 @@
 <td align="left">Represent various targets where messages and notifications can be sent to (email, sms, jabber, ...)</td>
 </tr>
 <tr>
-<td align="left">Course formats</td>
+<td align="left"><a href="#9-course-formats">Course formats</a></td>
 <td align="left">format</td>
 <td align="left">/course/format</td>
 <td align="left">Different ways of laying out the activities and blocks in a course</td>
@@ -2207,7 +2256,7 @@
 <td align="left">Add new types of data to user profiles</td>
 </tr>
 <tr>
-<td align="left">Reports</td>
+<td align="left"><a href="#4-reports">Reports</a></td>
 <td align="left">report</td>
 <td align="left">/report</td>
 <td align="left">Provides useful views of data in a Moodle site for admins and teachers</td>
@@ -2297,13 +2346,13 @@
 <td align="left">Cache lock implementations.</td>
 </tr>
 <tr>
-<td align="left">Themes</td>
+<td align="left"><a href="#3-themes">Themes</a></td>
 <td align="left">theme</td>
 <td align="left">/theme</td>
 <td align="left">Change the look of Moodle by changing the the HTML and the CSS.</td>
 </tr>
 <tr>
-<td align="left">Local plugins</td>
+<td align="left"><a href="#7-local-plugins">Local plugins</a></td>
 <td align="left">local</td>
 <td align="left">/local</td>
 <td align="left">Generic plugins for local customisations</td>
@@ -2328,7 +2377,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="1-activity-modules">1. Activity Modules</h3>
+<h3 id="1-activity-modules"><a href="../Plugin/phpMoodlePlugin_mod/">1. Activity modules</a></h3>
 <p><strong>Purpose</strong>: Add new types of activities or resources to courses.</p>
 <p><strong>Component Name</strong>: <code>mod_pluginname</code></p>
 <p><strong>Examples</strong>:</p>
@@ -2452,6 +2501,21 @@
           </div>
         </a>
       
+      
+        
+        <a href="../Plugin/phpMoodlePlugin_mod/" class="md-footer__link md-footer__link--next" aria-label="Next: Activity" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Activity
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
