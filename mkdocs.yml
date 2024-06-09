@@ -167,4 +167,6 @@ nav:
      - Plugin Types: 
             - General: Moodle/phpMoodlePluginTypes.md
             - Activity: Moodle/Plugin/phpMoodlePlugin_mod.md
+     - Skeleton: Moodle/phpMoodlePluginSkeleton.md
+     - Essential Files: Moodle/phpMoodlePluginFiles.md
 

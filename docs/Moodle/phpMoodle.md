@@ -64,9 +64,9 @@ Moodle supports various types of plugins:
 
 Choose the plugin type based on the functionality you want to add.
 
-### Creating the Plugin Skeleton
+### [Creating the Plugin Skeleton](phpMoodlePluginSkeleton.md)
 
-Moodle provides a command-line tool to generate the initial plugin skeleton. You can also manually create the necessary files and folders.
+Moodle provides a command-line tool and plugin to generate the initial plugin skeleton. You can also manually create the necessary files and folders.
 
 #### Directory Structure
 Each plugin type has a specific directory structure. For example, for an activity module:
@@ -88,6 +88,8 @@ moodle/
 │   │   ├── ...
 ```
 
+### [Writing Your Plugin Code](phpMoodlePluginFiles.md)
+
 #### Essential Files
 - **version.php**: Defines the plugin version and other metadata.
 - **db/install.xml**: Defines database tables needed by your plugin.
@@ -95,8 +97,6 @@ moodle/
 - **index.php**: Entry point for your plugin.
 - **view.php**: Displays the main content.
 - **lib.php**: Contains core functions used by your plugin.
-
-### Writing Your Plugin Code
 
 #### version.php
 ```php
@@ -190,6 +190,7 @@ Enable debugging in Moodle (`$CFG->debug = DEBUG_DEVELOPER;`) to see detailed er
 ### Packaging and Distributing
 
 To distribute your plugin:
+
 1. **Create a ZIP file** of your plugin directory.
 2. **Ensure all necessary files** are included and version numbers are correct.
 3. **Upload your plugin** to the Moodle Plugin Directory for sharing with the Moodle community.
