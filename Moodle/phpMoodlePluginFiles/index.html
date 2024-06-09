@@ -19,7 +19,7 @@
     
     
       
-        <title>Essential Files - PHP Refresher</title>
+        <title>Common Files - PHP Refresher</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Essential Files
+              Common Files
             
           </span>
         </div>
@@ -1798,12 +1798,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Essential Files
+          Common Files
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Essential Files
+        Common Files
       </a>
       
         
@@ -1956,7 +1956,7 @@
                 
 
 
-  <h1>Essential Files</h1>
+  <h1>Common Files</h1>
 
 <p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. </p>
 <ul>
@@ -1968,25 +1968,92 @@
 <li><a href="#libphp"><strong>lib.php</strong></a>: Contains core functions used by your plugin.</li>
 </ul>
 <h3 id="versionphp"><code>version.php</code></h3>
-<p>The <code>version.php</code> file defines the plugin version, required Moodle version, component name, and other metadata. This file is essential for Moodle to recognize and manage the plugin.</p>
-<p><strong>Example Content</strong></p>
+<p>The <code>version.php</code> file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.</p>
+<p><strong>Structure of <code>version.php</code></strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
 
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">version</span>   <span class="o">=</span> <span class="mi">2024053000</span><span class="p">;</span>  <span class="c1">// The current plugin version (Date: YYYYMMDDXX).</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">requires</span>  <span class="o">=</span> <span class="mi">2021051700</span><span class="p">;</span>  <span class="c1">// Requires this Moodle version.</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">component</span> <span class="o">=</span> <span class="s1">&#39;mod_yourpluginname&#39;</span><span class="p">;</span> <span class="c1">// Full name of the plugin (used for diagnostics).</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">maturity</span>  <span class="o">=</span> <span class="nx">MATURITY_STABLE</span><span class="p">;</span>  <span class="c1">// This is considered as stable.</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">release</span>   <span class="o">=</span> <span class="s1">&#39;v1.0&#39;</span><span class="p">;</span>  <span class="c1">// This is our first version.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">version</span>   <span class="o">=</span> <span class="mi">2024053001</span><span class="p">;</span>  <span class="c1">// Updated version for new release.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">requires</span>  <span class="o">=</span> <span class="mi">2021051700</span><span class="p">;</span>  <span class="c1">// Minimum Moodle version required.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">component</span> <span class="o">=</span> <span class="s1">&#39;mod_yourpluginname&#39;</span><span class="p">;</span> <span class="c1">// Unique name of the plugin.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">maturity</span>  <span class="o">=</span> <span class="nx">MATURITY_STABLE</span><span class="p">;</span>  <span class="c1">// Indicates stability of the plugin.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">release</span>   <span class="o">=</span> <span class="s1">&#39;v1.1&#39;</span><span class="p">;</span>  <span class="c1">// Human-readable version number.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;mod_otherplugin&#39;</span> <span class="o">=&gt;</span> <span class="mi">2023031500</span><span class="p">,</span>  <span class="c1">// This plugin depends on another plugin.</span>
+    <span class="s1">&#39;mod_anotherplugin&#39;</span> <span class="o">=&gt;</span> <span class="mi">2022010100</span><span class="p">,</span>  <span class="c1">// Another dependency.</span>
+<span class="p">];</span>
 </code></pre></div>
-<p><strong>Considerations</strong></p>
 <ul>
-<li><strong>version</strong>: This should be updated with each new release of your plugin. The format is typically <code>YYYYMMDDXX</code> where <code>XX</code> is a sequence number for multiple releases on the same day.</li>
-<li><strong>requires</strong>: The minimum Moodle version required for your plugin to function correctly.</li>
-<li><strong>component</strong>: The name of your plugin, usually in the format <code>mod_pluginname</code>.</li>
-<li><strong>maturity</strong>: Indicates the stability of the plugin (e.g., <code>MATURITY_ALPHA</code>, <code>MATURITY_BETA</code>, <code>MATURITY_RC</code>, <code>MATURITY_STABLE</code>).</li>
-<li><strong>release</strong>: A human-readable version number.</li>
+<li><strong>File Guard</strong> - Required</li>
 </ul>
+<p><div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
+</code></pre></div>
+   Ensures the file is accessed through the Moodle system and not directly via a URL, enhancing security.
+   Always include this line at the beginning of your <code>version.php</code> file.</p>
+<ul>
+<li><strong>Version</strong> - Required</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;version = 2024053000;</span>
+</code></pre></div>
+<p>Specifies the current version of your plugin. The format <code>YYYYMMDDXX</code> (Year, Month, Day, Incremental Sequence) is typically used.
+Update this value for every new release or update of your plugin. The format helps in sorting and identifying the latest version easily.</p>
+<ul>
+<li><strong>Requires</strong> - Recommended</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;requires = 2021051700;</span>
+</code></pre></div>
+Defines the minimum version of Moodle required for your plugin to work correctly.
+Set this to the earliest Moodle version that supports all the features and APIs used by your plugin. Always verify compatibility during testing.</p>
+<ul>
+<li><strong>Component</strong> - Required</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;component = &#39;mod_yourpluginname&#39;;</span>
+</code></pre></div>
+<p>Specifies the full name of the plugin, including its type and name. The format is usually <code>type_pluginname</code> (e.g., <code>mod_yourpluginname</code> for an activity plugin). The component value contains the name of the plugin in its full frankenstyle format.
+This name must be unique across all plugins in Moodle. It helps in identifying the plugin during installation, upgrade, and diagnostics.</p>
+<ul>
+<li><strong>Maturity</strong> - Recommended</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;maturity = MATURITY_STABLE;</span>
+</code></pre></div>
+<p>Indicates the stability and readiness level of the plugin. Common values are <code>MATURITY_ALPHA</code>, <code>MATURITY_BETA</code>, <code>MATURITY_RC</code> (Release Candidate), and <code>MATURITY_STABLE</code>.
+Set this appropriately based on the development stage of your plugin. Use <code>MATURITY_STABLE</code> for production-ready versions, and other values for pre-release stages.</p>
+<ul>
+<li><strong>Release</strong> - Recommended</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;release = &#39;v1.0&#39;;</span>
+</code></pre></div>
+<p>Provides a human-readable version number for your plugin. This is useful for administrators and users to understand the versioning scheme and changes at a glance.
+Follow semantic versioning principles (e.g., <code>v1.0</code>, <code>v1.1</code>, <code>v2.0</code>) to indicate major, minor, and patch updates clearly.</p>
+<ul>
+<li><strong>Peer Dependencies</strong> - Optional</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;dependencies = array(</span>
+<span class="x">    &#39;mod_otherplugin&#39; =&gt; 2023031500,</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Specifies other plugins that your plugin depends on, including their required versions. This ensures that the necessary plugins are present and meet the required versions for your plugin to function correctly.
+List all dependencies with their respective minimum required versions. This helps prevent conflicts and ensures a smooth installation process.</p>
+<ul>
+<li><strong>Supported versions</strong> - Optional</li>
+</ul>
+<p>A set of branch numbers to specify the lowest and highest branches of Moodle that the plugin supports. These value are inclusive.</p>
+<div class="highlight"><pre><span></span><code><span class="x"> $plugin-&gt;supported = [</span>
+
+<span class="x">     // Support from the Moodle 3.11 series.</span>
+<span class="x">     311,</span>
+
+<span class="x">     // To the Moodle 4.0 series.</span>
+<span class="x">     400,</span>
+<span class="x"> ];</span>
+</code></pre></div>
+<ul>
+<li><strong>Incompatible versions</strong> - Optional</li>
+</ul>
+<p>The earliest incompatible version of Moodle that the plugin cannot support the specified branch of Moodle.</p>
+<p>The plugin will not be installable on any versions of Moodle from this point on.</p>
+<div class="highlight"><pre><span></span><code><span class="x"> $plugin-&gt;incompatible = [401];</span>
+</code></pre></div>
 <h3 id="dbinstallxml"><code>db/install.xml</code></h3>
 <p>The <code>install.xml</code> file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.</p>
 <p><strong>Example Content</strong></p>
