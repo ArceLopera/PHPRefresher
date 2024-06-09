@@ -1760,13 +1760,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#essential-files" class="md-nav__link">
-    Essential Files
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1779,6 +1772,13 @@
   
     <nav class="md-nav" aria-label="Writing Your Plugin Code">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-files" class="md-nav__link">
+    Essential Files
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#versionphp" class="md-nav__link">
@@ -1950,6 +1950,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginFiles/" class="md-nav__link">
+        Essential Files
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2024,13 +2052,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#essential-files" class="md-nav__link">
-    Essential Files
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2043,6 +2064,13 @@
   
     <nav class="md-nav" aria-label="Writing Your Plugin Code">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-files" class="md-nav__link">
+    Essential Files
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#versionphp" class="md-nav__link">
@@ -2204,8 +2232,8 @@
 <li><strong>Enrol Plugins</strong>: Implement custom enrollment methods.</li>
 </ul>
 <p>Choose the plugin type based on the functionality you want to add.</p>
-<h3 id="creating-the-plugin-skeleton">Creating the Plugin Skeleton</h3>
-<p>Moodle provides a command-line tool to generate the initial plugin skeleton. You can also manually create the necessary files and folders.</p>
+<h3 id="creating-the-plugin-skeleton"><a href="../phpMoodlePluginSkeleton/">Creating the Plugin Skeleton</a></h3>
+<p>Moodle provides a command-line tool and plugin to generate the initial plugin skeleton. You can also manually create the necessary files and folders.</p>
 <h4 id="directory-structure">Directory Structure</h4>
 <p>Each plugin type has a specific directory structure. For example, for an activity module:</p>
 <div class="highlight"><pre><span></span><code>moodle/
@@ -2223,6 +2251,7 @@
 │   │   ├── settings.php
 │   │   ├── ...
 </code></pre></div>
+<h3 id="writing-your-plugin-code"><a href="../phpMoodlePluginFiles/">Writing Your Plugin Code</a></h3>
 <h4 id="essential-files">Essential Files</h4>
 <ul>
 <li><strong>version.php</strong>: Defines the plugin version and other metadata.</li>
@@ -2232,7 +2261,6 @@
 <li><strong>view.php</strong>: Displays the main content.</li>
 <li><strong>lib.php</strong>: Contains core functions used by your plugin.</li>
 </ul>
-<h3 id="writing-your-plugin-code">Writing Your Plugin Code</h3>
 <h4 id="versionphp">version.php</h4>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
@@ -2309,10 +2337,12 @@
 <h3 id="testing-and-debugging">Testing and Debugging</h3>
 <p>Enable debugging in Moodle (<code>$CFG-&gt;debug = DEBUG_DEVELOPER;</code>) to see detailed error messages. Test your plugin thoroughly by creating different scenarios and ensuring all functionalities work as expected.</p>
 <h3 id="packaging-and-distributing">Packaging and Distributing</h3>
-<p>To distribute your plugin:
-1. <strong>Create a ZIP file</strong> of your plugin directory.
-2. <strong>Ensure all necessary files</strong> are included and version numbers are correct.
-3. <strong>Upload your plugin</strong> to the Moodle Plugin Directory for sharing with the Moodle community.</p>
+<p>To distribute your plugin:</p>
+<ol>
+<li><strong>Create a ZIP file</strong> of your plugin directory.</li>
+<li><strong>Ensure all necessary files</strong> are included and version numbers are correct.</li>
+<li><strong>Upload your plugin</strong> to the Moodle Plugin Directory for sharing with the Moodle community.</li>
+</ol>
 <h3 id="documentation-and-maintenance">Documentation and Maintenance</h3>
 <p>Provide clear documentation for your plugin, including installation instructions, usage guides, and troubleshooting tips. Regularly maintain and update your plugin to ensure compatibility with new Moodle versions.</p>
 <h3 id="additional-resources">Additional Resources</h3>
