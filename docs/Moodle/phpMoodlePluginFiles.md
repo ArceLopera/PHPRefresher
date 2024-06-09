@@ -9,28 +9,112 @@ Writing the code for a Moodle plugin involves creating and configuring several e
 
 ### `version.php`
 
-The `version.php` file defines the plugin version, required Moodle version, component name, and other metadata. This file is essential for Moodle to recognize and manage the plugin.
+The `version.php` file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.
 
-**Example Content**
+**Structure of `version.php`**
 
 ```php
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2024053000;  // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2021051700;  // Requires this Moodle version.
-$plugin->component = 'mod_yourpluginname'; // Full name of the plugin (used for diagnostics).
-$plugin->maturity  = MATURITY_STABLE;  // This is considered as stable.
-$plugin->release   = 'v1.0';  // This is our first version.
+$plugin->version   = 2024053001;  // Updated version for new release.
+$plugin->requires  = 2021051700;  // Minimum Moodle version required.
+$plugin->component = 'mod_yourpluginname'; // Unique name of the plugin.
+$plugin->maturity  = MATURITY_STABLE;  // Indicates stability of the plugin.
+$plugin->release   = 'v1.1';  // Human-readable version number.
+$plugin->dependencies = [
+    'mod_otherplugin' => 2023031500,  // This plugin depends on another plugin.
+    'mod_anotherplugin' => 2022010100,  // Another dependency.
+];
 ```
 
-**Considerations**
++ **File Guard** - Required
 
-- **version**: This should be updated with each new release of your plugin. The format is typically `YYYYMMDDXX` where `XX` is a sequence number for multiple releases on the same day.
-- **requires**: The minimum Moodle version required for your plugin to function correctly.
-- **component**: The name of your plugin, usually in the format `mod_pluginname`.
-- **maturity**: Indicates the stability of the plugin (e.g., `MATURITY_ALPHA`, `MATURITY_BETA`, `MATURITY_RC`, `MATURITY_STABLE`).
-- **release**: A human-readable version number.
+   ```php
+   defined('MOODLE_INTERNAL') || die();
+   ```
+   Ensures the file is accessed through the Moodle system and not directly via a URL, enhancing security.
+   Always include this line at the beginning of your `version.php` file.
+
++ **Version** - Required
+
+   ```php
+   $plugin->version = 2024053000;
+   ```
+
+Specifies the current version of your plugin. The format `YYYYMMDDXX` (Year, Month, Day, Incremental Sequence) is typically used.
+Update this value for every new release or update of your plugin. The format helps in sorting and identifying the latest version easily.
+
++ **Requires** - Recommended
+
+   ```php
+   $plugin->requires = 2021051700;
+   ```
+Defines the minimum version of Moodle required for your plugin to work correctly.
+Set this to the earliest Moodle version that supports all the features and APIs used by your plugin. Always verify compatibility during testing.
+
++ **Component** - Required
+
+   ```php
+   $plugin->component = 'mod_yourpluginname';
+   ```
+
+Specifies the full name of the plugin, including its type and name. The format is usually `type_pluginname` (e.g., `mod_yourpluginname` for an activity plugin). The component value contains the name of the plugin in its full frankenstyle format.
+This name must be unique across all plugins in Moodle. It helps in identifying the plugin during installation, upgrade, and diagnostics.
+
++ **Maturity** - Recommended
+
+   ```php
+   $plugin->maturity = MATURITY_STABLE;
+   ```
+
+Indicates the stability and readiness level of the plugin. Common values are `MATURITY_ALPHA`, `MATURITY_BETA`, `MATURITY_RC` (Release Candidate), and `MATURITY_STABLE`.
+Set this appropriately based on the development stage of your plugin. Use `MATURITY_STABLE` for production-ready versions, and other values for pre-release stages.
+
++ **Release** - Recommended
+
+   ```php
+   $plugin->release = 'v1.0';
+   ```
+
+Provides a human-readable version number for your plugin. This is useful for administrators and users to understand the versioning scheme and changes at a glance.
+Follow semantic versioning principles (e.g., `v1.0`, `v1.1`, `v2.0`) to indicate major, minor, and patch updates clearly.
+
++ **Peer Dependencies** - Optional
+
+   ```php
+   $plugin->dependencies = array(
+       'mod_otherplugin' => 2023031500,
+   );
+   ```
+
+Specifies other plugins that your plugin depends on, including their required versions. This ensures that the necessary plugins are present and meet the required versions for your plugin to function correctly.
+List all dependencies with their respective minimum required versions. This helps prevent conflicts and ensures a smooth installation process.
+
++ **Supported versions** - Optional
+
+A set of branch numbers to specify the lowest and highest branches of Moodle that the plugin supports. These value are inclusive.
+
+   ```php
+    $plugin->supported = [
+
+        // Support from the Moodle 3.11 series.
+        311,
+
+        // To the Moodle 4.0 series.
+        400,
+    ];
+   ```
+
++ **Incompatible versions** - Optional
+
+The earliest incompatible version of Moodle that the plugin cannot support the specified branch of Moodle.
+
+The plugin will not be installable on any versions of Moodle from this point on.
+
+   ```php
+    $plugin->incompatible = [401];
+   ```
 
 ### `db/install.xml`
 

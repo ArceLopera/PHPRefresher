@@ -1750,19 +1750,6 @@
     Creating the Plugin Skeleton
   </a>
   
-    <nav class="md-nav" aria-label="Creating the Plugin Skeleton">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directory-structure" class="md-nav__link">
-    Directory Structure
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -1776,34 +1763,6 @@
           <li class="md-nav__item">
   <a href="#essential-files" class="md-nav__link">
     Essential Files
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#versionphp" class="md-nav__link">
-    version.php
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dbinstallxml" class="md-nav__link">
-    db/install.xml
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#langenyourpluginnamephp" class="md-nav__link">
-    lang/en/yourpluginname.php
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#indexphp" class="md-nav__link">
-    index.php
   </a>
   
 </li>
@@ -1971,7 +1930,7 @@
   
     <li class="md-nav__item">
       <a href="../phpMoodlePluginFiles/" class="md-nav__link">
-        Essential Files
+        Common Files
       </a>
     </li>
   
@@ -2042,19 +2001,6 @@
     Creating the Plugin Skeleton
   </a>
   
-    <nav class="md-nav" aria-label="Creating the Plugin Skeleton">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directory-structure" class="md-nav__link">
-    Directory Structure
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -2068,34 +2014,6 @@
           <li class="md-nav__item">
   <a href="#essential-files" class="md-nav__link">
     Essential Files
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#versionphp" class="md-nav__link">
-    version.php
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dbinstallxml" class="md-nav__link">
-    db/install.xml
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#langenyourpluginnamephp" class="md-nav__link">
-    lang/en/yourpluginname.php
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#indexphp" class="md-nav__link">
-    index.php
   </a>
   
 </li>
@@ -2234,23 +2152,6 @@
 <p>Choose the plugin type based on the functionality you want to add.</p>
 <h3 id="creating-the-plugin-skeleton"><a href="../phpMoodlePluginSkeleton/">Creating the Plugin Skeleton</a></h3>
 <p>Moodle provides a command-line tool and plugin to generate the initial plugin skeleton. You can also manually create the necessary files and folders.</p>
-<h4 id="directory-structure">Directory Structure</h4>
-<p>Each plugin type has a specific directory structure. For example, for an activity module:</p>
-<div class="highlight"><pre><span></span><code>moodle/
-├── mod/
-│   ├── yourpluginname/
-│   │   ├── db/
-│   │   ├── lang/
-│   │   ├── backup/
-│   │   ├── classes/
-│   │   ├── pix/
-│   │   ├── version.php
-│   │   ├── index.php
-│   │   ├── view.php
-│   │   ├── lib.php
-│   │   ├── settings.php
-│   │   ├── ...
-</code></pre></div>
 <h3 id="writing-your-plugin-code"><a href="../phpMoodlePluginFiles/">Writing Your Plugin Code</a></h3>
 <h4 id="essential-files">Essential Files</h4>
 <ul>
@@ -2261,58 +2162,6 @@
 <li><strong>view.php</strong>: Displays the main content.</li>
 <li><strong>lib.php</strong>: Contains core functions used by your plugin.</li>
 </ul>
-<h4 id="versionphp">version.php</h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
-
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">version</span>   <span class="o">=</span> <span class="mi">2024053000</span><span class="p">;</span> <span class="c1">// The current plugin version (Date: YYYYMMDDXX).</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">requires</span>  <span class="o">=</span> <span class="mi">2021051700</span><span class="p">;</span> <span class="c1">// Requires this Moodle version.</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">component</span> <span class="o">=</span> <span class="s1">&#39;mod_yourpluginname&#39;</span><span class="p">;</span> <span class="c1">// Full name of the plugin (used for diagnostics).</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">maturity</span>  <span class="o">=</span> <span class="nx">MATURITY_STABLE</span><span class="p">;</span>
-<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">release</span>   <span class="o">=</span> <span class="s1">&#39;v1.0&#39;</span><span class="p">;</span>
-</code></pre></div>
-<h4 id="dbinstallxml">db/install.xml</h4>
-<p>Define your database schema:
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;mod/yourpluginname/db&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;2024053000&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Your plugin description&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;TABLES&gt;</span>
-        <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;yourpluginname_table&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;FIELDS&gt;</span>
-                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;name&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;char&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;255&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
-                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;intro&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;timecreated&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/FIELDS&gt;</span>
-            <span class="nt">&lt;KEYS&gt;</span>
-                <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;/KEYS&gt;</span>
-        <span class="nt">&lt;/TABLE&gt;</span>
-    <span class="nt">&lt;/TABLES&gt;</span>
-<span class="nt">&lt;/XMLDB&gt;</span>
-</code></pre></div></p>
-<h4 id="langenyourpluginnamephp">lang/en/yourpluginname.php</h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulenameplural&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Names&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;pluginname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
-</code></pre></div>
-<h4 id="indexphp">index.php</h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">require</span><span class="p">(</span><span class="s1">&#39;../../config.php&#39;</span><span class="p">);</span>
-<span class="k">require_once</span><span class="p">(</span><span class="nv">$CFG</span><span class="o">-&gt;</span><span class="na">dirroot</span><span class="o">.</span><span class="s1">&#39;/mod/yourpluginname/lib.php&#39;</span><span class="p">);</span>
-
-<span class="nv">$id</span> <span class="o">=</span> <span class="nx">required_param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">PARAM_INT</span><span class="p">);</span>
-
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_url</span><span class="p">(</span><span class="s1">&#39;/mod/yourpluginname/index.php&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">));</span>
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_title</span><span class="p">(</span><span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">);</span>
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_heading</span><span class="p">(</span><span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">header</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">heading</span><span class="p">(</span><span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="s1">&#39;Hello, Moodle!&#39;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">footer</span><span class="p">();</span>
-</code></pre></div>
 <h3 id="adding-functionality">Adding Functionality</h3>
 <p>Depending on your plugin type, you will add different functionalities. For an activity module, you might need to create forms for adding and updating records, views to display data, and so on. Utilize Moodle's API for database operations, form handling, and more.</p>
 <h4 id="example-adding-a-form">Example: Adding a Form</h4>

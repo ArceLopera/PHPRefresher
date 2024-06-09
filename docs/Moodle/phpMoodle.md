@@ -68,95 +68,15 @@ Choose the plugin type based on the functionality you want to add.
 
 Moodle provides a command-line tool and plugin to generate the initial plugin skeleton. You can also manually create the necessary files and folders.
 
-#### Directory Structure
-Each plugin type has a specific directory structure. For example, for an activity module:
-
-```
-moodle/
-├── mod/
-│   ├── yourpluginname/
-│   │   ├── db/
-│   │   ├── lang/
-│   │   ├── backup/
-│   │   ├── classes/
-│   │   ├── pix/
-│   │   ├── version.php
-│   │   ├── index.php
-│   │   ├── view.php
-│   │   ├── lib.php
-│   │   ├── settings.php
-│   │   ├── ...
-```
-
 ### [Writing Your Plugin Code](phpMoodlePluginFiles.md)
 
-#### Essential Files
+#### Common Files
 - **version.php**: Defines the plugin version and other metadata.
 - **db/install.xml**: Defines database tables needed by your plugin.
 - **lang/en/yourpluginname.php**: Contains language strings.
 - **index.php**: Entry point for your plugin.
 - **view.php**: Displays the main content.
 - **lib.php**: Contains core functions used by your plugin.
-
-#### version.php
-```php
-<?php
-defined('MOODLE_INTERNAL') || die();
-
-$plugin->version   = 2024053000; // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2021051700; // Requires this Moodle version.
-$plugin->component = 'mod_yourpluginname'; // Full name of the plugin (used for diagnostics).
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v1.0';
-```
-
-#### db/install.xml
-Define your database schema:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<XMLDB PATH="mod/yourpluginname/db" VERSION="2024053000" COMMENT="Your plugin description">
-    <TABLES>
-        <TABLE NAME="yourpluginname_table">
-            <FIELDS>
-                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-                <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" DEFAULT=""/>
-                <FIELD NAME="intro" TYPE="text" NOTNULL="false"/>
-                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
-            </FIELDS>
-            <KEYS>
-                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-            </KEYS>
-        </TABLE>
-    </TABLES>
-</XMLDB>
-```
-
-#### lang/en/yourpluginname.php
-```php
-<?php
-$string['modulename'] = 'Your Plugin Name';
-$string['modulenameplural'] = 'Your Plugin Names';
-$string['pluginname'] = 'Your Plugin Name';
-```
-
-#### index.php
-```php
-<?php
-require('../../config.php');
-require_once($CFG->dirroot.'/mod/yourpluginname/lib.php');
-
-$id = required_param('id', PARAM_INT);
-
-$PAGE->set_url('/mod/yourpluginname/index.php', array('id' => $id));
-$PAGE->set_title('Your Plugin Name');
-$PAGE->set_heading('Your Plugin Name');
-
-echo $OUTPUT->header();
-echo $OUTPUT->heading('Your Plugin Name');
-
-echo 'Hello, Moodle!';
-echo $OUTPUT->footer();
-```
 
 ### Adding Functionality
 
