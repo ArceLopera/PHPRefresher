@@ -1827,15 +1827,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dbinstallxml" class="md-nav__link">
-    db/install.xml
+  <a href="#langenyourpluginnamephp" class="md-nav__link">
+    lang/en/yourpluginname.php
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#langenyourpluginnamephp" class="md-nav__link">
-    lang/en/yourpluginname.php
+  <a href="#dbinstallxml" class="md-nav__link">
+    db/install.xml
   </a>
   
 </li>
@@ -1908,15 +1908,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dbinstallxml" class="md-nav__link">
-    db/install.xml
+  <a href="#langenyourpluginnamephp" class="md-nav__link">
+    lang/en/yourpluginname.php
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#langenyourpluginnamephp" class="md-nav__link">
-    lang/en/yourpluginname.php
+  <a href="#dbinstallxml" class="md-nav__link">
+    db/install.xml
   </a>
   
 </li>
@@ -2054,6 +2054,92 @@ List all dependencies with their respective minimum required versions. This help
 <p>The plugin will not be installable on any versions of Moodle from this point on.</p>
 <div class="highlight"><pre><span></span><code><span class="x"> $plugin-&gt;incompatible = [401];</span>
 </code></pre></div>
+<h3 id="langenyourpluginnamephp"><code>lang/en/yourpluginname.php</code></h3>
+<p>The <code>lang/en/yourpluginname.php</code> file is crucial for handling the language strings used by your Moodle plugin. This file contains all the text that will be displayed to users, allowing for easy translation and localization. Properly managing this file ensures that your plugin can support multiple languages and provides a consistent user experience.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulenameplural&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Names&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;pluginname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename_help&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Use the Your Plugin Name module to do something useful.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:addinstance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Add a new Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:submit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Submit Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;View Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;someadminsetting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Some admin setting&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;someadminsetting_desc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Description of some admin setting.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;field_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;This field is required.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;error_invalidinput&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Invalid input provided.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;welcome_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Welcome to Your Plugin Name!&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;goodbye_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Thank you for using Your Plugin Name.&#39;</span><span class="p">;</span>
+</code></pre></div>
+The get_string API can be used to translate a string identifier back into a translated string.
+See the <a href="https://docs.moodle.org/dev/String_API#Adding_language_file_to_plugin">String API documentation</a> for more information on language files.</p>
+<ul>
+<li><strong>Module Name</strong></li>
+</ul>
+<p>Every plugin must define the name of the plugin, or its pluginname.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modulename&#39;] = &#39;Your Plugin Name&#39;;</span>
+<span class="x">$string[&#39;modulenameplural&#39;] = &#39;Your Plugin Names&#39;;</span>
+<span class="x">$string[&#39;pluginname&#39;] = &#39;Your Plugin Name&#39;;</span>
+</code></pre></div>
+<p>Defines the name of your plugin and its plural form, which Moodle uses in various parts of the interface, such as the activity chooser.
+Choose a clear and descriptive name that conveys the functionality of your plugin.</p>
+<p><strong>ACTIVITY MODULES ARE DIFFERENT</strong></p>
+<p>Activity modules do not use the frankenstyle name as a filename, they use the plugin name. For example the forum activity plugin:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Plugin type: `mod`</span>
+<span class="x">// Plugin name: `forum`</span>
+<span class="x">// Frankenstyle plugin name: `mod_forum`</span>
+<span class="x">// Plugin location: `mod/forum`</span>
+<span class="x">// Language string location: `mod/forum/lang/en/forum.php`</span>
+</code></pre></div>
+<ul>
+<li><strong>Help Strings</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modulename_help&#39;] = &#39;Use the Your Plugin Name module to do something useful.&#39;;</span>
+</code></pre></div>
+<p>Provides help text or tooltips that offer additional information about your plugin.
+ Write concise and informative help strings to assist users in understanding how to use the plugin.</p>
+<ul>
+<li><strong>Capability Strings</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;yourpluginname:addinstance&#39;] = &#39;Add a new Your Plugin Name&#39;;</span>
+<span class="x">$string[&#39;yourpluginname:submit&#39;] = &#39;Submit Your Plugin Name&#39;;</span>
+<span class="x">$string[&#39;yourpluginname:view&#39;] = &#39;View Your Plugin Name&#39;;</span>
+</code></pre></div>
+<p>Defines capability strings that are used for permissions and roles in Moodle. These strings describe the actions that users can perform with your plugin.
+ Clearly define the capabilities required for different user roles and ensure they are consistent with the plugin's functionality.</p>
+<ul>
+<li><strong>Admin Settings Strings</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;someadminsetting&#39;] = &#39;Some admin setting&#39;;</span>
+<span class="x">$string[&#39;someadminsetting_desc&#39;] = &#39;Description of some admin setting.&#39;;</span>
+</code></pre></div>
+<p>Defines language strings for admin settings, including descriptions that explain what each setting does.
+Provide clear and detailed descriptions to help administrators configure the plugin correctly.</p>
+<ul>
+<li><strong>Form Validation and Error Messages</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;field_required&#39;] = &#39;This field is required.&#39;;</span>
+<span class="x">$string[&#39;error_invalidinput&#39;] = &#39;Invalid input provided.&#39;;</span>
+</code></pre></div>
+<p>Provides language strings for form validation and error messages to inform users of required fields and input errors.
+ Use straightforward and unambiguous language to ensure users understand what is required or what went wrong.</p>
+<ul>
+<li><strong>Custom Messages</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;welcome_message&#39;] = &#39;Welcome to Your Plugin Name!&#39;;</span>
+<span class="x">$string[&#39;goodbye_message&#39;] = &#39;Thank you for using Your Plugin Name.&#39;;</span>
+</code></pre></div>
+<p>Defines custom messages that can be displayed to users at various points in your plugin.
+Tailor these messages to enhance the user experience and provide helpful information.</p>
+<p><strong>Best Practices for <code>lang/en/yourpluginname.php</code></strong></p>
+<ul>
+<li><strong>Consistency</strong>: Ensure that the language keys (<code>$string['key']</code>) are consistent and follow a clear naming convention, usually <code>pluginname:key</code>.</li>
+<li><strong>Localization</strong>: Include all user-facing text in this file to support easy localization and translation into other languages.</li>
+<li><strong>Clarity</strong>: Write clear and concise language strings that accurately describe the plugin's functionality and provide helpful information to users.</li>
+<li><strong>Documentation</strong>: Document each string with comments if necessary to explain its purpose and context, especially if the string's usage might not be immediately obvious.</li>
+<li><strong>Testing</strong>: Regularly test your plugin with different language packs to ensure that all strings are translated and displayed correctly.</li>
+</ul>
+<p>By following these guidelines, you can create a comprehensive and well-organized <code>lang/en/yourpluginname.php</code> file that supports effective localization and enhances the user experience of your Moodle plugin.</p>
 <h3 id="dbinstallxml"><code>db/install.xml</code></h3>
 <p>The <code>install.xml</code> file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.</p>
 <p><strong>Example Content</strong></p>
@@ -2083,24 +2169,6 @@ List all dependencies with their respective minimum required versions. This help
 <li><strong>KEYS</strong>: Define primary and foreign keys. Ensure each table has a primary key.</li>
 <li><strong>COMMENT</strong>: Include comments to describe the purpose of each table and field.</li>
 <li><strong>VERSION</strong>: This should match the version in <code>version.php</code>.</li>
-</ul>
-<h3 id="langenyourpluginnamephp"><code>lang/en/yourpluginname.php</code></h3>
-<p>The language file contains all the language strings used by your plugin. This allows for easy translation and localization.</p>
-<p><strong>Example Content</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulenameplural&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Names&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;pluginname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename_help&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Use the Your Plugin Name module to do something useful.&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:addinstance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Add a new Your Plugin Name&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:submit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Submit Your Plugin Name&#39;</span><span class="p">;</span>
-<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;View Your Plugin Name&#39;</span><span class="p">;</span>
-</code></pre></div>
-<p><strong>Considerations</strong></p>
-<ul>
-<li><strong>Naming</strong>: Use clear and descriptive names for strings. The keys should follow the format <code>pluginname:key</code>.</li>
-<li><strong>Localization</strong>: Ensure all user-facing text is included here to support easy localization.</li>
-<li><strong>Consistency</strong>: Keep the naming consistent with other plugins for ease of use.</li>
 </ul>
 <h3 id="indexphp"><code>index.php</code></h3>
 <p>The <code>index.php</code> file serves as an entry point for your plugin. It typically lists all instances of the plugin in a course.</p>
