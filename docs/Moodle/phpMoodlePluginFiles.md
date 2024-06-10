@@ -116,6 +116,114 @@ The plugin will not be installable on any versions of Moodle from this point on.
     $plugin->incompatible = [401];
    ```
 
+### `lang/en/yourpluginname.php`
+
+The `lang/en/yourpluginname.php` file is crucial for handling the language strings used by your Moodle plugin. This file contains all the text that will be displayed to users, allowing for easy translation and localization. Properly managing this file ensures that your plugin can support multiple languages and provides a consistent user experience.
+
+```php
+<?php
+$string['modulename'] = 'Your Plugin Name';
+$string['modulenameplural'] = 'Your Plugin Names';
+$string['pluginname'] = 'Your Plugin Name';
+$string['modulename_help'] = 'Use the Your Plugin Name module to do something useful.';
+$string['yourpluginname:addinstance'] = 'Add a new Your Plugin Name';
+$string['yourpluginname:submit'] = 'Submit Your Plugin Name';
+$string['yourpluginname:view'] = 'View Your Plugin Name';
+$string['someadminsetting'] = 'Some admin setting';
+$string['someadminsetting_desc'] = 'Description of some admin setting.';
+$string['field_required'] = 'This field is required.';
+$string['error_invalidinput'] = 'Invalid input provided.';
+$string['welcome_message'] = 'Welcome to Your Plugin Name!';
+$string['goodbye_message'] = 'Thank you for using Your Plugin Name.';
+```
+The get_string API can be used to translate a string identifier back into a translated string.
+See the [String API documentation](https://docs.moodle.org/dev/String_API#Adding_language_file_to_plugin) for more information on language files.
+
++ **Module Name**
+
+Every plugin must define the name of the plugin, or its pluginname.
+
+   ```php
+   $string['modulename'] = 'Your Plugin Name';
+   $string['modulenameplural'] = 'Your Plugin Names';
+   $string['pluginname'] = 'Your Plugin Name';
+   ```
+
+Defines the name of your plugin and its plural form, which Moodle uses in various parts of the interface, such as the activity chooser.
+Choose a clear and descriptive name that conveys the functionality of your plugin.
+
+**ACTIVITY MODULES ARE DIFFERENT**
+
+Activity modules do not use the frankenstyle name as a filename, they use the plugin name. For example the forum activity plugin:
+
+```php
+// Plugin type: `mod`
+// Plugin name: `forum`
+// Frankenstyle plugin name: `mod_forum`
+// Plugin location: `mod/forum`
+// Language string location: `mod/forum/lang/en/forum.php`
+```
+
++ **Help Strings**
+
+   ```php
+   $string['modulename_help'] = 'Use the Your Plugin Name module to do something useful.';
+   ```
+
+ Provides help text or tooltips that offer additional information about your plugin.
+ Write concise and informative help strings to assist users in understanding how to use the plugin.
+
++ **Capability Strings**
+
+   ```php
+   $string['yourpluginname:addinstance'] = 'Add a new Your Plugin Name';
+   $string['yourpluginname:submit'] = 'Submit Your Plugin Name';
+   $string['yourpluginname:view'] = 'View Your Plugin Name';
+   ```
+
+ Defines capability strings that are used for permissions and roles in Moodle. These strings describe the actions that users can perform with your plugin.
+ Clearly define the capabilities required for different user roles and ensure they are consistent with the plugin's functionality.
+
++ **Admin Settings Strings**
+
+   ```php
+   $string['someadminsetting'] = 'Some admin setting';
+   $string['someadminsetting_desc'] = 'Description of some admin setting.';
+   ```
+
+Defines language strings for admin settings, including descriptions that explain what each setting does.
+Provide clear and detailed descriptions to help administrators configure the plugin correctly.
+
++ **Form Validation and Error Messages**
+
+   ```php
+   $string['field_required'] = 'This field is required.';
+   $string['error_invalidinput'] = 'Invalid input provided.';
+   ```
+
+Provides language strings for form validation and error messages to inform users of required fields and input errors.
+ Use straightforward and unambiguous language to ensure users understand what is required or what went wrong.
+
++ **Custom Messages**
+
+   ```php
+   $string['welcome_message'] = 'Welcome to Your Plugin Name!';
+   $string['goodbye_message'] = 'Thank you for using Your Plugin Name.';
+   ```
+
+Defines custom messages that can be displayed to users at various points in your plugin.
+Tailor these messages to enhance the user experience and provide helpful information.
+
+**Best Practices for `lang/en/yourpluginname.php`**
+
+- **Consistency**: Ensure that the language keys (`$string['key']`) are consistent and follow a clear naming convention, usually `pluginname:key`.
+- **Localization**: Include all user-facing text in this file to support easy localization and translation into other languages.
+- **Clarity**: Write clear and concise language strings that accurately describe the plugin's functionality and provide helpful information to users.
+- **Documentation**: Document each string with comments if necessary to explain its purpose and context, especially if the string's usage might not be immediately obvious.
+- **Testing**: Regularly test your plugin with different language packs to ensure that all strings are translated and displayed correctly.
+
+By following these guidelines, you can create a comprehensive and well-organized `lang/en/yourpluginname.php` file that supports effective localization and enhances the user experience of your Moodle plugin.
+
 ### `db/install.xml`
 
 The `install.xml` file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.
@@ -150,29 +258,6 @@ The `install.xml` file defines the database schema for your plugin. This file is
 - **KEYS**: Define primary and foreign keys. Ensure each table has a primary key.
 - **COMMENT**: Include comments to describe the purpose of each table and field.
 - **VERSION**: This should match the version in `version.php`.
-
-### `lang/en/yourpluginname.php`
-
-The language file contains all the language strings used by your plugin. This allows for easy translation and localization.
-
-**Example Content**
-
-```php
-<?php
-$string['modulename'] = 'Your Plugin Name';
-$string['modulenameplural'] = 'Your Plugin Names';
-$string['pluginname'] = 'Your Plugin Name';
-$string['modulename_help'] = 'Use the Your Plugin Name module to do something useful.';
-$string['yourpluginname:addinstance'] = 'Add a new Your Plugin Name';
-$string['yourpluginname:submit'] = 'Submit Your Plugin Name';
-$string['yourpluginname:view'] = 'View Your Plugin Name';
-```
-
-**Considerations**
-
-- **Naming**: Use clear and descriptive names for strings. The keys should follow the format `pluginname:key`.
-- **Localization**: Ensure all user-facing text is included here to support easy localization.
-- **Consistency**: Keep the naming consistent with other plugins for ease of use.
 
 ### `index.php`
 
