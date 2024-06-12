@@ -1,11 +1,11 @@
 Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. 
 
 - [**version.php**](#versionphp): Defines the plugin version and other metadata.
-- [**db/install.xml**](#dbinstallxml): Defines database tables needed by your plugin.
 - [**lang/en/yourpluginname.php**](#langenyourpluginnamephp): Contains language strings.
+- [**lib.php**](#libphp): Contains core functions used by your plugin.
+- [**db/install.xml**](#dbinstallxml): Defines database tables needed by your plugin.
 - [**index.php**](#indexphp): Entry point for your plugin.
 - [**view.php**](#viewphp): Displays the main content.
-- [**lib.php**](#libphp): Contains core functions used by your plugin.
 
 ### `version.php`
 
@@ -224,6 +224,20 @@ Tailor these messages to enhance the user experience and provide helpful informa
 
 By following these guidelines, you can create a comprehensive and well-organized `lang/en/yourpluginname.php` file that supports effective localization and enhances the user experience of your Moodle plugin.
 
+### `lib.php`
+
+The `lib.php` file contains core functions used by your plugin, such as adding, updating, and deleting instances, and other helper functions. File path: /lib.php
+The lib.php file is a legacy file which acts as a bridge between Moodle core, and the plugin. In recent plugins it should only be used to define callbacks and related functionality which currently is not supported as an auto-loadable class. For example, the navigationlib loads lib.php files for all plugin types that are able to inject their own nodes into the navigation tree (the file must be loaded to see if the corresponding *_extend_navigation() function is provided).
+
+**PERFORMANCE IMPACT**
+Moodle core often loads all the lib.php files of a given plugin types. For performance reasons, it is strongly recommended to keep this file as small as possible and have just required code implemented in it. All the plugin's internal logic should be implemented in the auto-loaded classes. The best advice is to put as much of your code as possible into classes, so you can use the [automatic class loading](https://docs.moodle.org/dev/Automatic_class_loading)
+
+#### locallib.php
+Global support functions used by all plugins. File path: /locallib.php
+The use of this file is no longer recommended, and new uses of it will not be permitted in core code. Rather than creating global functions in a global namespace in a locallib.php file, you should use autoloaded classes which are located in the classes/ directory.
+
+
+
 ### `db/install.xml`
 
 The `install.xml` file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.
@@ -341,42 +355,3 @@ echo $OUTPUT->footer();
 - **Fetching Data**: Use Moodle's `get_record` or similar functions to fetch data from the database.
 - **Display**: Use Moodle's output functions (`$OUTPUT`) to render HTML safely and consistently.
 - **Security**: Ensure user permissions are checked before displaying content.
-
-### `lib.php`
-
-The `lib.php` file contains core functions used by your plugin, such as adding, updating, and deleting instances, and other helper functions.
-
-**Example Content**
-
-```php
-<?php
-defined('MOODLE_INTERNAL') || die();
-
-function yourpluginname_add_instance($yourpluginname) {
-    global $DB;
-    $yourpluginname->timecreated = time();
-    return $DB->insert_record('yourpluginname', $yourpluginname);
-}
-
-function yourpluginname_update_instance($yourpluginname) {
-    global $DB;
-    $yourpluginname->timemodified = time();
-    $yourpluginname->id = $yourpluginname->instance;
-    return $DB->update_record('yourpluginname', $yourpluginname);
-}
-
-function yourpluginname_delete_instance($id) {
-    global $DB;
-    if (!$yourpluginname = $DB->get_record('yourpluginname', array('id' => $id))) {
-        return false;
-    }
-    $DB->delete_records('yourpluginname', array('id' => $yourpluginname->id));
-    return true;
-}
-```
-
-**Considerations**
-
-- **Naming**: Function names should be prefixed with the plugin name to avoid conflicts.
-- **Database Operations**: Use Moodle's `$DB` object for all database operations to ensure consistency and security.
-- **Error Handling**: Check for errors and handle them gracefully, returning `false` or throwing exceptions as appropriate.

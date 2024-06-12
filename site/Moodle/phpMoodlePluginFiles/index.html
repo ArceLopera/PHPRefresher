@@ -1834,6 +1834,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#libphp" class="md-nav__link">
+    lib.php
+  </a>
+  
+    <nav class="md-nav" aria-label="lib.php">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locallibphp" class="md-nav__link">
+    locallib.php
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dbinstallxml" class="md-nav__link">
     db/install.xml
   </a>
@@ -1850,13 +1870,6 @@
         <li class="md-nav__item">
   <a href="#viewphp" class="md-nav__link">
     view.php
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#libphp" class="md-nav__link">
-    lib.php
   </a>
   
 </li>
@@ -1915,6 +1928,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#libphp" class="md-nav__link">
+    lib.php
+  </a>
+  
+    <nav class="md-nav" aria-label="lib.php">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locallibphp" class="md-nav__link">
+    locallib.php
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dbinstallxml" class="md-nav__link">
     db/install.xml
   </a>
@@ -1931,13 +1964,6 @@
         <li class="md-nav__item">
   <a href="#viewphp" class="md-nav__link">
     view.php
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#libphp" class="md-nav__link">
-    lib.php
   </a>
   
 </li>
@@ -1961,11 +1987,11 @@
 <p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. </p>
 <ul>
 <li><a href="#versionphp"><strong>version.php</strong></a>: Defines the plugin version and other metadata.</li>
-<li><a href="#dbinstallxml"><strong>db/install.xml</strong></a>: Defines database tables needed by your plugin.</li>
 <li><a href="#langenyourpluginnamephp"><strong>lang/en/yourpluginname.php</strong></a>: Contains language strings.</li>
+<li><a href="#libphp"><strong>lib.php</strong></a>: Contains core functions used by your plugin.</li>
+<li><a href="#dbinstallxml"><strong>db/install.xml</strong></a>: Defines database tables needed by your plugin.</li>
 <li><a href="#indexphp"><strong>index.php</strong></a>: Entry point for your plugin.</li>
 <li><a href="#viewphp"><strong>view.php</strong></a>: Displays the main content.</li>
-<li><a href="#libphp"><strong>lib.php</strong></a>: Contains core functions used by your plugin.</li>
 </ul>
 <h3 id="versionphp"><code>version.php</code></h3>
 <p>The <code>version.php</code> file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.</p>
@@ -2140,6 +2166,14 @@ Tailor these messages to enhance the user experience and provide helpful informa
 <li><strong>Testing</strong>: Regularly test your plugin with different language packs to ensure that all strings are translated and displayed correctly.</li>
 </ul>
 <p>By following these guidelines, you can create a comprehensive and well-organized <code>lang/en/yourpluginname.php</code> file that supports effective localization and enhances the user experience of your Moodle plugin.</p>
+<h3 id="libphp"><code>lib.php</code></h3>
+<p>The <code>lib.php</code> file contains core functions used by your plugin, such as adding, updating, and deleting instances, and other helper functions. File path: /lib.php
+The lib.php file is a legacy file which acts as a bridge between Moodle core, and the plugin. In recent plugins it should only be used to define callbacks and related functionality which currently is not supported as an auto-loadable class. For example, the navigationlib loads lib.php files for all plugin types that are able to inject their own nodes into the navigation tree (the file must be loaded to see if the corresponding *_extend_navigation() function is provided).</p>
+<p><strong>PERFORMANCE IMPACT</strong>
+Moodle core often loads all the lib.php files of a given plugin types. For performance reasons, it is strongly recommended to keep this file as small as possible and have just required code implemented in it. All the plugin's internal logic should be implemented in the auto-loaded classes. The best advice is to put as much of your code as possible into classes, so you can use the <a href="https://docs.moodle.org/dev/Automatic_class_loading">automatic class loading</a></p>
+<h4 id="locallibphp">locallib.php</h4>
+<p>Global support functions used by all plugins. File path: /locallib.php
+The use of this file is no longer recommended, and new uses of it will not be permitted in core code. Rather than creating global functions in a global namespace in a locallib.php file, you should use autoloaded classes which are located in the classes/ directory.</p>
 <h3 id="dbinstallxml"><code>db/install.xml</code></h3>
 <p>The <code>install.xml</code> file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.</p>
 <p><strong>Example Content</strong></p>
@@ -2242,40 +2276,6 @@ Tailor these messages to enhance the user experience and provide helpful informa
 <li><strong>Fetching Data</strong>: Use Moodle's <code>get_record</code> or similar functions to fetch data from the database.</li>
 <li><strong>Display</strong>: Use Moodle's output functions (<code>$OUTPUT</code>) to render HTML safely and consistently.</li>
 <li><strong>Security</strong>: Ensure user permissions are checked before displaying content.</li>
-</ul>
-<h3 id="libphp"><code>lib.php</code></h3>
-<p>The <code>lib.php</code> file contains core functions used by your plugin, such as adding, updating, and deleting instances, and other helper functions.</p>
-<p><strong>Example Content</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
-
-<span class="k">function</span> <span class="nf">yourpluginname_add_instance</span><span class="p">(</span><span class="nv">$yourpluginname</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">global</span> <span class="nv">$DB</span><span class="p">;</span>
-    <span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">timecreated</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
-    <span class="k">return</span> <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">insert_record</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="nv">$yourpluginname</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">yourpluginname_update_instance</span><span class="p">(</span><span class="nv">$yourpluginname</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">global</span> <span class="nv">$DB</span><span class="p">;</span>
-    <span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">timemodified</span> <span class="o">=</span> <span class="nb">time</span><span class="p">();</span>
-    <span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">instance</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">update_record</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="nv">$yourpluginname</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">function</span> <span class="nf">yourpluginname_delete_instance</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">global</span> <span class="nv">$DB</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$yourpluginname</span> <span class="o">=</span> <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">get_record</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">)))</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">delete_records</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">));</span>
-    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><strong>Considerations</strong></p>
-<ul>
-<li><strong>Naming</strong>: Function names should be prefixed with the plugin name to avoid conflicts.</li>
-<li><strong>Database Operations</strong>: Use Moodle's <code>$DB</code> object for all database operations to ensure consistency and security.</li>
-<li><strong>Error Handling</strong>: Check for errors and handle them gracefully, returning <code>false</code> or throwing exceptions as appropriate.</li>
 </ul>
 
               
