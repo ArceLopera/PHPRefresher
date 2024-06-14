@@ -169,4 +169,5 @@ nav:
             - Activity: Moodle/Plugin/phpMoodlePlugin_mod.md
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
+     - XMLDB tool: Moodle/phpMoodleXMLDB.md
 

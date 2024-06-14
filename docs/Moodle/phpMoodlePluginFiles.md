@@ -1,11 +1,5 @@
 Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. 
 
-- [**version.php**](#versionphp): Defines the plugin version and other metadata.
-- [**lang/en/yourpluginname.php**](#langenyourpluginnamephp): Contains language strings.
-- [**lib.php**](#libphp): Contains core functions used by your plugin.
-- [**db/install.xml**](#dbinstallxml): Defines database tables needed by your plugin.
-- [**index.php**](#indexphp): Entry point for your plugin.
-- [**view.php**](#viewphp): Displays the main content.
 
 ### `version.php`
 
@@ -290,85 +284,36 @@ In many cases you will be able to combine multiple upgrade steps into a single v
 
 When a version number increment is detected during an upgrade, the xmldb_[pluginname]_upgrade function is called with the old version number as the first argument.
 
-### `index.php`
+### `db/access.php` - Plugin capabilities
 
-The `index.php` file serves as an entry point for your plugin. It typically lists all instances of the plugin in a course.
+File path: /db/access.php
 
-**Example Content**
+The db/access.php file contains the initial configuration for a plugin's access control rules.
 
-```php
-<?php
-require('../../config.php');
-require_once($CFG->dirroot.'/mod/yourpluginname/lib.php');
+Access control is handled in Moodle by the use of Roles, and Capabilities. You can read more about these in the [Access API documentation](https://moodledev.io/docs/4.1/apis/subsystems/access).
 
-$id = required_param('id', PARAM_INT);  // Course Module ID.
+**CHANGING INITIAL CONFIGURATION**
 
-if (!$cm = get_coursemodule_from_id('yourpluginname', $id)) {
-    print_error('invalidcoursemodule');
-}
+If you make changes to the initial configuration of existing access control rules, these will only take effect for new installations of your plugin. Any existing installation **will not** be updated with the latest configuration.
 
-if (!$course = $DB->get_record('course', array('id' => $cm->course))) {
-    print_error('coursemisconf');
-}
-
-require_login($course, true, $cm);
-
-$PAGE->set_url('/mod/yourpluginname/index.php', array('id' => $id));
-$PAGE->set_title(get_string('modulename', 'yourpluginname'));
-$PAGE->set_heading($course->fullname);
-
-echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('modulename', 'yourpluginname'));
-
-// Display a list of instances.
-echo $OUTPUT->footer();
-```
-
-**Considerations**
-
-- **Parameters**: Use `required_param` and `optional_param` functions to handle input parameters safely.
-- **Error Handling**: Use Moodle's `print_error` function to handle errors gracefully.
-- **Permissions**: Ensure proper permission checks with `require_login` and other related functions.
-
-### `view.php`
-
-The `view.php` file displays the main content of your plugin. This is where the core functionality and data presentation occur.
-
-**Example Content**
+Updating existing capability configuration for an installed site is not recommended as it may have already been modified by an administrator.
 
 ```php
-<?php
-require('../../config.php');
-require_once($CFG->dirroot.'/mod/yourpluginname/lib.php');
-
-$id = required_param('id', PARAM_INT);  // Course Module ID.
-
-if (!$cm = get_coursemodule_from_id('yourpluginname', $id)) {
-    print_error('invalidcoursemodule');
-}
-
-if (!$course = $DB->get_record('course', array('id' => $cm->course))) {
-    print_error('coursemisconf');
-}
-
-require_login($course, true, $cm);
-
-$PAGE->set_url('/mod/yourpluginname/view.php', array('id' => $id));
-$PAGE->set_title(format_string($cm->name));
-$PAGE->set_heading($course->fullname);
-
-echo $OUTPUT->header();
-echo $OUTPUT->heading(format_string($cm->name));
-
-// Fetch and display the content of the module instance.
-$yourpluginname = $DB->get_record('yourpluginname', array('id' => $cm->instance));
-echo format_text($yourpluginname->intro, $yourpluginname->introformat);
-
-echo $OUTPUT->footer();
+$capabilities = [
+    // Ability to use the plugin.
+    'plugintype/pluginname:useplugininstance' => [
+        'riskbitmask' => RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+        ],
+    ],
+];
 ```
 
-**Considerations**
+- **Define Capabilities**: Specifies the actions that users can perform within the plugin.
+- **Assign Roles**: Associates capabilities with different Moodle roles (e.g., student, teacher, admin).
+- **Control Access**: Manages who can access and execute specific functionalities within the plugin.
 
-- **Fetching Data**: Use Moodle's `get_record` or similar functions to fetch data from the database.
-- **Display**: Use Moodle's output functions (`$OUTPUT`) to render HTML safely and consistently.
-- **Security**: Ensure user permissions are checked before displaying content.
