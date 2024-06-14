@@ -1874,6 +1874,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dbinstallphp-and-dbuninstallphp" class="md-nav__link">
+    db/install.php and db/uninstall.php
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1978,6 +1985,13 @@
         <li class="md-nav__item">
   <a href="#dbaccessphp-plugin-capabilities" class="md-nav__link">
     db/access.php - Plugin capabilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbinstallphp-and-dbuninstallphp" class="md-nav__link">
+    db/install.php and db/uninstall.php
   </a>
   
 </li>
@@ -2245,6 +2259,38 @@ The db/upgrade.php file contains upgrade steps, including database schema change
 <li><strong>Assign Roles</strong>: Associates capabilities with different Moodle roles (e.g., student, teacher, admin).</li>
 <li><strong>Control Access</strong>: Manages who can access and execute specific functionalities within the plugin.</li>
 </ul>
+<h3 id="dbinstallphp-and-dbuninstallphp"><code>db/install.php</code> and <code>db/uninstall.php</code></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>db/install.php</th>
+<th>db/uninstall.php</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hook</td>
+<td>Post-installation hook</td>
+<td>pre-uninstallation hook</td>
+</tr>
+<tr>
+<td>File path</td>
+<td>/CHANGES</td>
+<td>/db/uninstall.php</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Allows you to define a post-installation hook, which is called immediately after the initial creation of your database schema.</td>
+<td>Allows you to define a pre-uninstallation hook, which is called immediately before all table and data from your plugin are removed.</td>
+</tr>
+<tr>
+<td>CAUTION</td>
+<td>This file is not used at all after the initial installation of your plugin. It is not called during any upgrade.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
               
             </article>

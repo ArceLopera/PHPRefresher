@@ -317,3 +317,11 @@ $capabilities = [
 - **Assign Roles**: Associates capabilities with different Moodle roles (e.g., student, teacher, admin).
 - **Control Access**: Manages who can access and execute specific functionalities within the plugin.
 
+### `db/install.php` and `db/uninstall.php`
+
+|Type | db/install.php | db/uninstall.php |
+| --- | --- | --- |
+| Hook |Post-installation hook |  pre-uninstallation hook |
+| File path | /CHANGES | /db/uninstall.php |
+|Purpose |Allows you to define a post-installation hook, which is called immediately after the initial creation of your database schema.| Allows you to define a pre-uninstallation hook, which is called immediately before all table and data from your plugin are removed.|
+|CAUTION|This file is not used at all after the initial installation of your plugin. It is not called during any upgrade.||
