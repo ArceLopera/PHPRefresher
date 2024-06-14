@@ -1868,15 +1868,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#indexphp" class="md-nav__link">
-    index.php
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#viewphp" class="md-nav__link">
-    view.php
+  <a href="#dbaccessphp-plugin-capabilities" class="md-nav__link">
+    db/access.php - Plugin capabilities
   </a>
   
 </li>
@@ -1885,6 +1878,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB tool
+      </a>
     </li>
   
 
@@ -1969,15 +1976,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#indexphp" class="md-nav__link">
-    index.php
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#viewphp" class="md-nav__link">
-    view.php
+  <a href="#dbaccessphp-plugin-capabilities" class="md-nav__link">
+    db/access.php - Plugin capabilities
   </a>
   
 </li>
@@ -1999,14 +1999,6 @@
   <h1>Common Files</h1>
 
 <p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. </p>
-<ul>
-<li><a href="#versionphp"><strong>version.php</strong></a>: Defines the plugin version and other metadata.</li>
-<li><a href="#langenyourpluginnamephp"><strong>lang/en/yourpluginname.php</strong></a>: Contains language strings.</li>
-<li><a href="#libphp"><strong>lib.php</strong></a>: Contains core functions used by your plugin.</li>
-<li><a href="#dbinstallxml"><strong>db/install.xml</strong></a>: Defines database tables needed by your plugin.</li>
-<li><a href="#indexphp"><strong>index.php</strong></a>: Entry point for your plugin.</li>
-<li><a href="#viewphp"><strong>view.php</strong></a>: Displays the main content.</li>
-</ul>
 <h3 id="versionphp"><code>version.php</code></h3>
 <p>The <code>version.php</code> file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.</p>
 <p><strong>Structure of <code>version.php</code></strong></p>
@@ -2228,78 +2220,30 @@ The db/upgrade.php file contains upgrade steps, including database schema change
 </ul>
 <p>In many cases you will be able to combine multiple upgrade steps into a single version change.</p>
 <p>When a version number increment is detected during an upgrade, the xmldb_[pluginname]_upgrade function is called with the old version number as the first argument.</p>
-<h3 id="indexphp"><code>index.php</code></h3>
-<p>The <code>index.php</code> file serves as an entry point for your plugin. It typically lists all instances of the plugin in a course.</p>
-<p><strong>Example Content</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">require</span><span class="p">(</span><span class="s1">&#39;../../config.php&#39;</span><span class="p">);</span>
-<span class="k">require_once</span><span class="p">(</span><span class="nv">$CFG</span><span class="o">-&gt;</span><span class="na">dirroot</span><span class="o">.</span><span class="s1">&#39;/mod/yourpluginname/lib.php&#39;</span><span class="p">);</span>
-
-<span class="nv">$id</span> <span class="o">=</span> <span class="nx">required_param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">PARAM_INT</span><span class="p">);</span>  <span class="c1">// Course Module ID.</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$cm</span> <span class="o">=</span> <span class="nx">get_coursemodule_from_id</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="nv">$id</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">print_error</span><span class="p">(</span><span class="s1">&#39;invalidcoursemodule&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$course</span> <span class="o">=</span> <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">get_record</span><span class="p">(</span><span class="s1">&#39;course&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">course</span><span class="p">)))</span> <span class="p">{</span>
-    <span class="nx">print_error</span><span class="p">(</span><span class="s1">&#39;coursemisconf&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">require_login</span><span class="p">(</span><span class="nv">$course</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nv">$cm</span><span class="p">);</span>
-
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_url</span><span class="p">(</span><span class="s1">&#39;/mod/yourpluginname/index.php&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">));</span>
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_title</span><span class="p">(</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modulename&#39;</span><span class="p">,</span> <span class="s1">&#39;yourpluginname&#39;</span><span class="p">));</span>
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_heading</span><span class="p">(</span><span class="nv">$course</span><span class="o">-&gt;</span><span class="na">fullname</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">header</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">heading</span><span class="p">(</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modulename&#39;</span><span class="p">,</span> <span class="s1">&#39;yourpluginname&#39;</span><span class="p">));</span>
-
-<span class="c1">// Display a list of instances.</span>
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">footer</span><span class="p">();</span>
+<h3 id="dbaccessphp-plugin-capabilities"><code>db/access.php</code> - Plugin capabilities</h3>
+<p>File path: /db/access.php</p>
+<p>The db/access.php file contains the initial configuration for a plugin's access control rules.</p>
+<p>Access control is handled in Moodle by the use of Roles, and Capabilities. You can read more about these in the <a href="https://moodledev.io/docs/4.1/apis/subsystems/access">Access API documentation</a>.</p>
+<p><strong>CHANGING INITIAL CONFIGURATION</strong></p>
+<p>If you make changes to the initial configuration of existing access control rules, these will only take effect for new installations of your plugin. Any existing installation <strong>will not</strong> be updated with the latest configuration.</p>
+<p>Updating existing capability configuration for an installed site is not recommended as it may have already been modified by an administrator.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$capabilities = [</span>
+<span class="x">    // Ability to use the plugin.</span>
+<span class="x">    &#39;plugintype/pluginname:useplugininstance&#39; =&gt; [</span>
+<span class="x">        &#39;riskbitmask&#39; =&gt; RISK_XSS,</span>
+<span class="x">        &#39;captype&#39; =&gt; &#39;write&#39;,</span>
+<span class="x">        &#39;contextlevel&#39; =&gt; CONTEXT_COURSE,</span>
+<span class="x">        &#39;archetypes&#39; =&gt; [</span>
+<span class="x">            &#39;manager&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">            &#39;editingteacher&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
 </code></pre></div>
-<p><strong>Considerations</strong></p>
 <ul>
-<li><strong>Parameters</strong>: Use <code>required_param</code> and <code>optional_param</code> functions to handle input parameters safely.</li>
-<li><strong>Error Handling</strong>: Use Moodle's <code>print_error</code> function to handle errors gracefully.</li>
-<li><strong>Permissions</strong>: Ensure proper permission checks with <code>require_login</code> and other related functions.</li>
-</ul>
-<h3 id="viewphp"><code>view.php</code></h3>
-<p>The <code>view.php</code> file displays the main content of your plugin. This is where the core functionality and data presentation occur.</p>
-<p><strong>Example Content</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">require</span><span class="p">(</span><span class="s1">&#39;../../config.php&#39;</span><span class="p">);</span>
-<span class="k">require_once</span><span class="p">(</span><span class="nv">$CFG</span><span class="o">-&gt;</span><span class="na">dirroot</span><span class="o">.</span><span class="s1">&#39;/mod/yourpluginname/lib.php&#39;</span><span class="p">);</span>
-
-<span class="nv">$id</span> <span class="o">=</span> <span class="nx">required_param</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nx">PARAM_INT</span><span class="p">);</span>  <span class="c1">// Course Module ID.</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$cm</span> <span class="o">=</span> <span class="nx">get_coursemodule_from_id</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="nv">$id</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nx">print_error</span><span class="p">(</span><span class="s1">&#39;invalidcoursemodule&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$course</span> <span class="o">=</span> <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">get_record</span><span class="p">(</span><span class="s1">&#39;course&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">course</span><span class="p">)))</span> <span class="p">{</span>
-    <span class="nx">print_error</span><span class="p">(</span><span class="s1">&#39;coursemisconf&#39;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="nx">require_login</span><span class="p">(</span><span class="nv">$course</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nv">$cm</span><span class="p">);</span>
-
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_url</span><span class="p">(</span><span class="s1">&#39;/mod/yourpluginname/view.php&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">));</span>
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_title</span><span class="p">(</span><span class="nx">format_string</span><span class="p">(</span><span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">));</span>
-<span class="nv">$PAGE</span><span class="o">-&gt;</span><span class="na">set_heading</span><span class="p">(</span><span class="nv">$course</span><span class="o">-&gt;</span><span class="na">fullname</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">header</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">heading</span><span class="p">(</span><span class="nx">format_string</span><span class="p">(</span><span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">));</span>
-
-<span class="c1">// Fetch and display the content of the module instance.</span>
-<span class="nv">$yourpluginname</span> <span class="o">=</span> <span class="nv">$DB</span><span class="o">-&gt;</span><span class="na">get_record</span><span class="p">(</span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">instance</span><span class="p">));</span>
-<span class="k">echo</span> <span class="nx">format_text</span><span class="p">(</span><span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">intro</span><span class="p">,</span> <span class="nv">$yourpluginname</span><span class="o">-&gt;</span><span class="na">introformat</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$OUTPUT</span><span class="o">-&gt;</span><span class="na">footer</span><span class="p">();</span>
-</code></pre></div>
-<p><strong>Considerations</strong></p>
-<ul>
-<li><strong>Fetching Data</strong>: Use Moodle's <code>get_record</code> or similar functions to fetch data from the database.</li>
-<li><strong>Display</strong>: Use Moodle's output functions (<code>$OUTPUT</code>) to render HTML safely and consistently.</li>
-<li><strong>Security</strong>: Ensure user permissions are checked before displaying content.</li>
+<li><strong>Define Capabilities</strong>: Specifies the actions that users can perform within the plugin.</li>
+<li><strong>Assign Roles</strong>: Associates capabilities with different Moodle roles (e.g., student, teacher, admin).</li>
+<li><strong>Control Access</strong>: Manages who can access and execute specific functionalities within the plugin.</li>
 </ul>
 
               
@@ -2328,6 +2272,21 @@ The db/upgrade.php file contains upgrade steps, including database schema change
           </div>
         </a>
       
+      
+        
+        <a href="../phpMoodleXMLDB/" class="md-footer__link md-footer__link--next" aria-label="Next: XMLDB tool" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              XMLDB tool
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
