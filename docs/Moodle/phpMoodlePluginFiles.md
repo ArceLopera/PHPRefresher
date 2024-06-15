@@ -325,3 +325,207 @@ $capabilities = [
 | File path | /CHANGES | /db/uninstall.php |
 |Purpose |Allows you to define a post-installation hook, which is called immediately after the initial creation of your database schema.| Allows you to define a pre-uninstallation hook, which is called immediately before all table and data from your plugin are removed.|
 |CAUTION|This file is not used at all after the initial installation of your plugin. It is not called during any upgrade.||
+
+### `db/events.php` - Event observers
+
+File path: /db/events.php
+
+Events are atomic pieces of information describing something that happened in Moodle. Events are primarily the result of user actions, but could also be the result of the cron process or administration actions undertaken via the command line.
+
+When an action takes place, an event is created by a core API or plugin. The Events system then disseminates this event information to observers registered for this event. In this way, the events system acts as a communication backbone throughout the Moodle system. Event observers can not modify event data or interrupt the dispatching of events, it is a one way communication channel.
+
+Moodle supports a feature known as [Event observers](https://docs.moodle.org/dev/Events_API#Event_observers) to allow components to make changes when certain events take place. The db/events.php file allows you define any event subscriptions that your plugin needs to listen for. Event subscriptions are a convenient way to observe events generated elsewhere in Moodle.
+
+**COMMUNICATION BETWEEN COMPONENTS**
+
+You should not use event subscriptions to subscribe to events belonging to other plugins, without defining a dependency upon that plugin. See the [Component communication principles documentation](https://moodledev.io/general/development/policies/component-communication#event-observers) for a description of some of the risks of doing so. Any action in Moodle can trigger one or more events. In Moodle it is possible to register observers for events. An observer is notified when an event happens and receives the data related to that event. An observer can only act on the information in the event. It cannot modify the data for the event or prevent the action from occurring. The component containing the observer is communicating with the component that declared the event class. The normal rules for inter-component communication apply.
+
+In addition - event observers are a form of execution at a distance. It would be extremely difficult to read and maintain code heavily relying on event observers (especially if the observers perform actions that trigger more events).
+
+Additional rules for event observers:
+
+Events are not allowed to be observed by core or a core subsystem (there are some currently wrong observers in core that should be removed).
+
+Observers are described in db/events.php in the array $observers, the array is not indexed and contains a list of observers defined as an array with the following properties;
+
++ **eventname** – fully qualified event class name or "*" indicating all events, ex.: \plugintype_pluginname\event\something_happened.
++ **callback** - PHP callable type.
++ **includefile** - optional. File to be included before calling the observer. Path relative to dirroot.
++ **priority** - optional. Defaults to 0. Observers with higher priority are notified first.
++ **internal** - optional. Defaults to true. Non-internal observers are not called during database transactions, but instead after a successful commit of the transaction.
+
+```php
+$observers = [
+    [
+        'eventname' => '\core\event\course_module_created',
+        'callback'  => '\plugintype_pluginname\event\observer\course_module_created::store',
+        'priority'  => 1000,
+    ],
+    [
+        'eventname'   => '\core\event\sample_executed',
+        'callback'    => 'core_event_sample_observer::observe_one',
+    ],
+
+    [
+        'eventname'   => '\core\event\sample_executed',
+        'callback'    => 'core_event_sample_observer::external_observer',
+        'priority'    => 200,
+        'internal'    => false,
+    ],
+    [  
+        'eventname'   => '*',
+        'callback'    => 'core_event_sample_observer::observe_all',
+        'includefile' => null,
+        'internal'    => true,
+        'priority'    => 9999,
+    ],
+];
+```
+NOTE: Event observers are cached. If you add or change observers you need to purge the caches or they will not be recognised. Plugin developers need to bump up the version number to guarantee that the list of observers is reloaded during upgrade.
+
+### `db/messages.php` - Message provider configuration
+
+File path: /db/messages.php
+
+See the [Message API documentation](https://moodledev.io/docs/4.4/apis/core/message) for further information. Moodle components have the ability to send messages to users via the Moodle messaging system. Any type of component, for example a plugin or block, can register as a message producer then send messages to users. The db/messages.php file allows you to declare the messages that your plugin sends. The Message API code is contained within lib/messagelib.php and is automatically included for you during page setup. message_send() is the primary point of contact for the message API. Call it to send a message to a user.
+
+```php
+$messageproviders = [
+    'things' => [
+        'defaults' => [
+            'airnotifier' => MESSAGE_PERMITTED + MESSAGE_DEFAULT_ENABLED,
+        ],
+    ],
+];
+```
+mod/quiz/db/messages.php
+
+```php
+defined('MOODLE_INTERNAL') || die();
+$messageproviders = [
+    // Notify teacher that a student has submitted a quiz attempt
+    'submission' => [
+        'capability' => 'mod/quiz:emailnotifysubmission'
+    ],
+    // Confirm a student's quiz attempt
+    'confirmation' => [
+        'capability' => 'mod/quiz:emailconfirmsubmission'
+    ],
+];
+```
+The quiz can send two kinds of messages, quiz "submission" and "confirmation" notifications. Each message type is only available to users with the appropriate capability. Please note that the capability is checked at the system level context. Users who have this capability will have this message listed in their messaging preferences. You can omit the capability section if your message should be visible for all users. For example forum post notifications are available to all users.
+
+### `db/services.php` - Web service function declarations
+
+File path: /db/services.php
+
+The db/services.php file is used to describe the external functions available for use in web services. This includes web service functions defined for JavaScript, and for the Moodle Mobile App.
+
+**NOTE**
+Web services should be named following the naming convention for web services. For further information on external functions and web services, see:
+
++   [Adding a web service to a plugin](https://moodledev.io/docs/4.4/apis/subsystems/external/writing-a-service)
++   [External functions API](https://moodledev.io/docs/4.4/apis/subsystems/external/functions)
+
+```php
+$functions = [
+    'plugintype_pluginname_create_things' => [
+        'classname' => 'plugintype_pluginname\external\create_things',
+        'methodname' => 'execute',
+        'description' => 'Create a new thing',
+        'type' => 'write',
+        'capabilities' => 'plugintype/pluginname:create_things',
+        'ajax' => true,
+        'services' => [
+            MOODLE_OFFICIAL_MOBILE_SERVICE,
+        ],
+    ],
+];
+```
+
+### `db/tasks.php` - Task schedule configuration
+
+File path: /db/tasks.php
+
+The db/tasks.php file contains the initial schedule configuration for each of your plugins scheduled tasks. Adhoc tasks are not run on a regular schedule and therefore are not described in this file.
+
+**EDITING THE SCHEDULE FOR AN EXISTING TASK**
+
+If an existing task is edited, it will only be updated in the database if the administrator has not customised the schedule of that task in any way.
+
+If a plugin wants to configure scheduled task, two items are required:
+
++ a class extending the `\core\task\scheduled_task` class; and
++ the `db/tasks.php` file containing its initial configuration.
+
+#### Task configuration entries
+
+|entry|type|option|description|
+|---|---|---|---|
+|Classname|string| Required|The classname contains the fully-qualified class name where the scheduled task is located.|
+|Blocking|integer| Optional|Tasks can be configured to block the execution of all other tasks by setting the blocking property to a truthy value.|
+|disabled |integer| Optional|Tasks can be configured to be disabled by setting the disabled property to 1. Unless the administrator manually enables your task, it will not run.This is useful if a task is only required in certain situations and shouldn't run on every server that has your plugin installed.|
+|Date and time fields|String| Optional|A fixed random value can be selected by using a value of R. By specifying this option, a random day or time is chosen when the task is installed or updated. The same value will be used each time the task is scheduled.|
+
+The following date and time fields are available:
+
++ month
++ day
++ dayofweek
++ hour
++ month
+
+Each of these fields accepts one, or more values, and the format for each field is described as:
+
+```
+<fieldlist> := <range>(/<step>)(,<fieldlist>)
+<step>      := int
+<range>     := <any>|<int>|<min-max>|<random>
+<any>       := *
+<min-max>   := int-int
+<random>    := R
+```
+
+**RANDOM VALUES**
+A fixed random value can be selected by using a value of R. By specifying this option, a random day or time is chosen when the task is installed or updated. The same value will be used each time the task is scheduled.
+
+If no value is specified then the following defaults are used:
+
++ Month: * (Every month)
++ Day: * (Every day)
++ Day of the week: * (Every day of the week)
++ Hour: * (Every hour)
++ Minute: * (Every minute)
+
+**DAY AND DAY OF THE WEEK**
+If either field is set to * then use the other field, otherwise the soonest value is used.
+
+```php
+//Run at a fixed time each day, randomised during installation of the task
+$tasks = [
+    [
+        'classname' => 'mod_example\task\do_something',
+
+        // Every month.
+        'month' => '*',
+        // Every day.
+        'day' => '*',
+
+        // A fixed random hour and minute.
+        'hour' => 'R',
+        'month' => 'R',
+    ],
+];
+```
+
+```php
+Specifying multiple times in an hour
+$tasks = [
+    [
+        'classname' => 'mod_example\task\do_something',
+
+        // At two intervals in the hour.
+        'minute' => '5, 35',
+    ],
+];
+```
