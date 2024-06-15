@@ -1881,6 +1881,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dbeventsphp-event-observers" class="md-nav__link">
+    db/events.php - Event observers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbmessagesphp-message-provider-configuration" class="md-nav__link">
+    db/messages.php - Message provider configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbservicesphp-web-service-function-declarations" class="md-nav__link">
+    db/services.php - Web service function declarations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbtasksphp-task-schedule-configuration" class="md-nav__link">
+    db/tasks.php - Task schedule configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="db/tasks.php - Task schedule configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-configuration-entries" class="md-nav__link">
+    Task configuration entries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1993,6 +2034,47 @@
   <a href="#dbinstallphp-and-dbuninstallphp" class="md-nav__link">
     db/install.php and db/uninstall.php
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbeventsphp-event-observers" class="md-nav__link">
+    db/events.php - Event observers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbmessagesphp-message-provider-configuration" class="md-nav__link">
+    db/messages.php - Message provider configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbservicesphp-web-service-function-declarations" class="md-nav__link">
+    db/services.php - Web service function declarations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbtasksphp-task-schedule-configuration" class="md-nav__link">
+    db/tasks.php - Task schedule configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="db/tasks.php - Task schedule configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-configuration-entries" class="md-nav__link">
+    Task configuration entries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2291,6 +2373,200 @@ The db/upgrade.php file contains upgrade steps, including database schema change
 </tr>
 </tbody>
 </table>
+<h3 id="dbeventsphp-event-observers"><code>db/events.php</code> - Event observers</h3>
+<p>File path: /db/events.php</p>
+<p>Events are atomic pieces of information describing something that happened in Moodle. Events are primarily the result of user actions, but could also be the result of the cron process or administration actions undertaken via the command line.</p>
+<p>When an action takes place, an event is created by a core API or plugin. The Events system then disseminates this event information to observers registered for this event. In this way, the events system acts as a communication backbone throughout the Moodle system. Event observers can not modify event data or interrupt the dispatching of events, it is a one way communication channel.</p>
+<p>Moodle supports a feature known as <a href="https://docs.moodle.org/dev/Events_API#Event_observers">Event observers</a> to allow components to make changes when certain events take place. The db/events.php file allows you define any event subscriptions that your plugin needs to listen for. Event subscriptions are a convenient way to observe events generated elsewhere in Moodle.</p>
+<p><strong>COMMUNICATION BETWEEN COMPONENTS</strong></p>
+<p>You should not use event subscriptions to subscribe to events belonging to other plugins, without defining a dependency upon that plugin. See the <a href="https://moodledev.io/general/development/policies/component-communication#event-observers">Component communication principles documentation</a> for a description of some of the risks of doing so. Any action in Moodle can trigger one or more events. In Moodle it is possible to register observers for events. An observer is notified when an event happens and receives the data related to that event. An observer can only act on the information in the event. It cannot modify the data for the event or prevent the action from occurring. The component containing the observer is communicating with the component that declared the event class. The normal rules for inter-component communication apply.</p>
+<p>In addition - event observers are a form of execution at a distance. It would be extremely difficult to read and maintain code heavily relying on event observers (especially if the observers perform actions that trigger more events).</p>
+<p>Additional rules for event observers:</p>
+<p>Events are not allowed to be observed by core or a core subsystem (there are some currently wrong observers in core that should be removed).</p>
+<p>Observers are described in db/events.php in the array $observers, the array is not indexed and contains a list of observers defined as an array with the following properties;</p>
+<ul>
+<li><strong>eventname</strong> – fully qualified event class name or "*" indicating all events, ex.: \plugintype_pluginname\event\something_happened.</li>
+<li><strong>callback</strong> - PHP callable type.</li>
+<li><strong>includefile</strong> - optional. File to be included before calling the observer. Path relative to dirroot.</li>
+<li><strong>priority</strong> - optional. Defaults to 0. Observers with higher priority are notified first.</li>
+<li><strong>internal</strong> - optional. Defaults to true. Non-internal observers are not called during database transactions, but instead after a successful commit of the transaction.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="x">$observers = [</span>
+<span class="x">    [</span>
+<span class="x">        &#39;eventname&#39; =&gt; &#39;\core\event\course_module_created&#39;,</span>
+<span class="x">        &#39;callback&#39;  =&gt; &#39;\plugintype_pluginname\event\observer\course_module_created::store&#39;,</span>
+<span class="x">        &#39;priority&#39;  =&gt; 1000,</span>
+<span class="x">    ],</span>
+<span class="x">    [</span>
+<span class="x">        &#39;eventname&#39;   =&gt; &#39;\core\event\sample_executed&#39;,</span>
+<span class="x">        &#39;callback&#39;    =&gt; &#39;core_event_sample_observer::observe_one&#39;,</span>
+<span class="x">    ],</span>
+
+<span class="x">    [</span>
+<span class="x">        &#39;eventname&#39;   =&gt; &#39;\core\event\sample_executed&#39;,</span>
+<span class="x">        &#39;callback&#39;    =&gt; &#39;core_event_sample_observer::external_observer&#39;,</span>
+<span class="x">        &#39;priority&#39;    =&gt; 200,</span>
+<span class="x">        &#39;internal&#39;    =&gt; false,</span>
+<span class="x">    ],</span>
+<span class="x">    [  </span>
+<span class="x">        &#39;eventname&#39;   =&gt; &#39;*&#39;,</span>
+<span class="x">        &#39;callback&#39;    =&gt; &#39;core_event_sample_observer::observe_all&#39;,</span>
+<span class="x">        &#39;includefile&#39; =&gt; null,</span>
+<span class="x">        &#39;internal&#39;    =&gt; true,</span>
+<span class="x">        &#39;priority&#39;    =&gt; 9999,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+NOTE: Event observers are cached. If you add or change observers you need to purge the caches or they will not be recognised. Plugin developers need to bump up the version number to guarantee that the list of observers is reloaded during upgrade.</p>
+<h3 id="dbmessagesphp-message-provider-configuration"><code>db/messages.php</code> - Message provider configuration</h3>
+<p>File path: /db/messages.php</p>
+<p>See the <a href="https://moodledev.io/docs/4.4/apis/core/message">Message API documentation</a> for further information. Moodle components have the ability to send messages to users via the Moodle messaging system. Any type of component, for example a plugin or block, can register as a message producer then send messages to users. The db/messages.php file allows you to declare the messages that your plugin sends. The Message API code is contained within lib/messagelib.php and is automatically included for you during page setup. message_send() is the primary point of contact for the message API. Call it to send a message to a user.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$messageproviders = [</span>
+<span class="x">    &#39;things&#39; =&gt; [</span>
+<span class="x">        &#39;defaults&#39; =&gt; [</span>
+<span class="x">            &#39;airnotifier&#39; =&gt; MESSAGE_PERMITTED + MESSAGE_DEFAULT_ENABLED,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+mod/quiz/db/messages.php</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
+<span class="x">$messageproviders = [</span>
+<span class="x">    // Notify teacher that a student has submitted a quiz attempt</span>
+<span class="x">    &#39;submission&#39; =&gt; [</span>
+<span class="x">        &#39;capability&#39; =&gt; &#39;mod/quiz:emailnotifysubmission&#39;</span>
+<span class="x">    ],</span>
+<span class="x">    // Confirm a student&#39;s quiz attempt</span>
+<span class="x">    &#39;confirmation&#39; =&gt; [</span>
+<span class="x">        &#39;capability&#39; =&gt; &#39;mod/quiz:emailconfirmsubmission&#39;</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+The quiz can send two kinds of messages, quiz "submission" and "confirmation" notifications. Each message type is only available to users with the appropriate capability. Please note that the capability is checked at the system level context. Users who have this capability will have this message listed in their messaging preferences. You can omit the capability section if your message should be visible for all users. For example forum post notifications are available to all users.</p>
+<h3 id="dbservicesphp-web-service-function-declarations"><code>db/services.php</code> - Web service function declarations</h3>
+<p>File path: /db/services.php</p>
+<p>The db/services.php file is used to describe the external functions available for use in web services. This includes web service functions defined for JavaScript, and for the Moodle Mobile App.</p>
+<p><strong>NOTE</strong>
+Web services should be named following the naming convention for web services. For further information on external functions and web services, see:</p>
+<ul>
+<li><a href="https://moodledev.io/docs/4.4/apis/subsystems/external/writing-a-service">Adding a web service to a plugin</a></li>
+<li><a href="https://moodledev.io/docs/4.4/apis/subsystems/external/functions">External functions API</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">    &#39;plugintype_pluginname_create_things&#39; =&gt; [</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;plugintype_pluginname\external\create_things&#39;,</span>
+<span class="x">        &#39;methodname&#39; =&gt; &#39;execute&#39;,</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Create a new thing&#39;,</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;write&#39;,</span>
+<span class="x">        &#39;capabilities&#39; =&gt; &#39;plugintype/pluginname:create_things&#39;,</span>
+<span class="x">        &#39;ajax&#39; =&gt; true,</span>
+<span class="x">        &#39;services&#39; =&gt; [</span>
+<span class="x">            MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<h3 id="dbtasksphp-task-schedule-configuration"><code>db/tasks.php</code> - Task schedule configuration</h3>
+<p>File path: /db/tasks.php</p>
+<p>The db/tasks.php file contains the initial schedule configuration for each of your plugins scheduled tasks. Adhoc tasks are not run on a regular schedule and therefore are not described in this file.</p>
+<p><strong>EDITING THE SCHEDULE FOR AN EXISTING TASK</strong></p>
+<p>If an existing task is edited, it will only be updated in the database if the administrator has not customised the schedule of that task in any way.</p>
+<p>If a plugin wants to configure scheduled task, two items are required:</p>
+<ul>
+<li>a class extending the <code>\core\task\scheduled_task</code> class; and</li>
+<li>the <code>db/tasks.php</code> file containing its initial configuration.</li>
+</ul>
+<h4 id="task-configuration-entries">Task configuration entries</h4>
+<table>
+<thead>
+<tr>
+<th>entry</th>
+<th>type</th>
+<th>option</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classname</td>
+<td>string</td>
+<td>Required</td>
+<td>The classname contains the fully-qualified class name where the scheduled task is located.</td>
+</tr>
+<tr>
+<td>Blocking</td>
+<td>integer</td>
+<td>Optional</td>
+<td>Tasks can be configured to block the execution of all other tasks by setting the blocking property to a truthy value.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>integer</td>
+<td>Optional</td>
+<td>Tasks can be configured to be disabled by setting the disabled property to 1. Unless the administrator manually enables your task, it will not run.This is useful if a task is only required in certain situations and shouldn't run on every server that has your plugin installed.</td>
+</tr>
+<tr>
+<td>Date and time fields</td>
+<td>String</td>
+<td>Optional</td>
+<td>A fixed random value can be selected by using a value of R. By specifying this option, a random day or time is chosen when the task is installed or updated. The same value will be used each time the task is scheduled.</td>
+</tr>
+</tbody>
+</table>
+<p>The following date and time fields are available:</p>
+<ul>
+<li>month</li>
+<li>day</li>
+<li>dayofweek</li>
+<li>hour</li>
+<li>month</li>
+</ul>
+<p>Each of these fields accepts one, or more values, and the format for each field is described as:</p>
+<div class="highlight"><pre><span></span><code>&lt;fieldlist&gt; := &lt;range&gt;(/&lt;step&gt;)(,&lt;fieldlist&gt;)
+&lt;step&gt;      := int
+&lt;range&gt;     := &lt;any&gt;|&lt;int&gt;|&lt;min-max&gt;|&lt;random&gt;
+&lt;any&gt;       := *
+&lt;min-max&gt;   := int-int
+&lt;random&gt;    := R
+</code></pre></div>
+<p><strong>RANDOM VALUES</strong>
+A fixed random value can be selected by using a value of R. By specifying this option, a random day or time is chosen when the task is installed or updated. The same value will be used each time the task is scheduled.</p>
+<p>If no value is specified then the following defaults are used:</p>
+<ul>
+<li>Month: * (Every month)</li>
+<li>Day: * (Every day)</li>
+<li>Day of the week: * (Every day of the week)</li>
+<li>Hour: * (Every hour)</li>
+<li>Minute: * (Every minute)</li>
+</ul>
+<p><strong>DAY AND DAY OF THE WEEK</strong>
+If either field is set to * then use the other field, otherwise the soonest value is used.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//Run at a fixed time each day, randomised during installation of the task</span>
+<span class="x">$tasks = [</span>
+<span class="x">    [</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;mod_example\task\do_something&#39;,</span>
+
+<span class="x">        // Every month.</span>
+<span class="x">        &#39;month&#39; =&gt; &#39;*&#39;,</span>
+<span class="x">        // Every day.</span>
+<span class="x">        &#39;day&#39; =&gt; &#39;*&#39;,</span>
+
+<span class="x">        // A fixed random hour and minute.</span>
+<span class="x">        &#39;hour&#39; =&gt; &#39;R&#39;,</span>
+<span class="x">        &#39;month&#39; =&gt; &#39;R&#39;,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">Specifying multiple times in an hour</span>
+<span class="x">$tasks = [</span>
+<span class="x">    [</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;mod_example\task\do_something&#39;,</span>
+
+<span class="x">        // At two intervals in the hour.</span>
+<span class="x">        &#39;minute&#39; =&gt; &#39;5, 35&#39;,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
 
               
             </article>
