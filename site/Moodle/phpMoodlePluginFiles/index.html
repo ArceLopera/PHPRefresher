@@ -1922,6 +1922,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dbrenamedclassesphp-renamed-classes" class="md-nav__link">
+    db/renamedclasses.php - Renamed classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-autoloaded-classes" class="md-nav__link">
+    classes/ - Autoloaded classes
+  </a>
+  
+    <nav class="md-nav" aria-label="classes/ - Autoloaded classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2069,6 +2096,33 @@
           <li class="md-nav__item">
   <a href="#task-configuration-entries" class="md-nav__link">
     Task configuration entries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbrenamedclassesphp-renamed-classes" class="md-nav__link">
+    db/renamedclasses.php - Renamed classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-autoloaded-classes" class="md-nav__link">
+    classes/ - Autoloaded classes
+  </a>
+  
+    <nav class="md-nav" aria-label="classes/ - Autoloaded classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
   </a>
   
 </li>
@@ -2567,6 +2621,73 @@ If either field is set to * then use the other field, otherwise the soonest valu
 <span class="x">    ],</span>
 <span class="x">];</span>
 </code></pre></div>
+<h3 id="dbrenamedclassesphp-renamed-classes"><code>db/renamedclasses.php</code> - Renamed classes</h3>
+<p>File path: /db/renamedclasses.php</p>
+<p>Details of classes that have been renamed to fit in with autoloading. Adding renamed or moved classes to renamedclasses.php is only necessary when the class is part of the component's API where it can be reused by other components, especially by third-party plugins. This is to maintain backwards-compatibility in addition to autoloading purposes. To move a class so that is it auto-loaded and no longer needs to be manually included you would:</p>
+<ul>
+<li>Create a new php within the classes directory named as auto-loading requires.</li>
+<li>Copy the class code from its current location to the new location.</li>
+<li>Delete the class from the old location (do not delete the file).</li>
+<li>Creator edit db/renamedclasses.php and add a line for your class mapping its old name to its new name.</li>
+</ul>
+<p>If the renamed or moved class is private/internal to the component and is not subject for external use, there is no need to add it to renamedclasses.php.</p>
+<div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die;</span>
+
+<span class="x">$renamedclasses = [</span>
+<span class="x">    &#39;old_class_name&#39; =&gt; &#39;fully_qualified\\new\\name&#39;,</span>
+
+<span class="x">    // Examples:</span>
+<span class="x">    &#39;assign_header&#39; =&gt; &#39;mod_assign\\output\\header&#39;,</span>
+<span class="x">    &#39;\assign_header&#39; =&gt; &#39;mod_assign\\output\\header&#39;,</span>
+<span class="x">    &#39;\assign&#39; =&gt; &#39;mod_assign\\assignment&#39;,</span>
+
+<span class="x">    // Incorrect:</span>
+<span class="x">    // The new class name should _not_ have a leading \.</span>
+<span class="x">    &#39;assign_header&#39; =&gt; &#39;\\mod_assign\\output\\header&#39;,</span>
+<span class="x">];</span>
+</code></pre></div>
+<h3 id="classes-autoloaded-classes"><code>classes/</code> - Autoloaded classes</h3>
+<p>File path: /classes/</p>
+<p>Moodle supports, and recommends, the use of autoloaded PHP classes.</p>
+<p>By placing files within the classes directory or appropriate sub-directories, and with the correct PHP Namespace, and class name, Moodle is able to autoload classes without the need to manually require, or include them. </p>
+<h4 id="namespaces">Namespaces</h4>
+<p>Formal namespaces are required for any new classes in Moodle. The following exceptions apply:</p>
+<ul>
+<li>There is no requirement to move existing non-namespaced classes to a namespace; and</li>
+<li>Where an existing mechanism exists for loading a class, and that mechanism does not support the use of a namespaced class, the existing Frankenstyle prefix on the class name will be allowed.</li>
+</ul>
+<p>The use of a Frankenstyle prefix on class names is deprecated and should only be used in the above exceptions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// A namespace for the `mod_forum` plugin.</span>
+
+<span class="x">namespace mod_forum;</span>
+<span class="x">class example {</span>
+<span class="x">// Incorrect: class mod_forum_example</span>
+<span class="x">}</span>
+
+<span class="x">// A namespace for the `external` subsystem usage in the `mod_forum` plugin.</span>
+<span class="x">namespace mod_forum\external;</span>
+<span class="x">class example {</span>
+<span class="x">    // Incorrect: class mod_forum_external_example</span>
+<span class="x">}</span>
+
+<span class="x">// A namespace for the `core_user` core subsystem.</span>
+<span class="x">namespace core_user;</span>
+<span class="x">class example {</span>
+<span class="x">    // Incorrect: class core_user_example</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The use of namespaces must conform to the following rules:</p>
+<ul>
+<li>Classes belonging to a namespace must be created in a classes directory, for example:<ul>
+<li>Classes in the mod_forum plugin classes should be placed in <code>mod/forum/classes</code>;</li>
+<li>for core code, classes should be placed in <code>lib/classes</code>; or</li>
+<li>for a core subsystem, classes should be placed in <code>subsystemdir/classes</code>.</li>
+</ul>
+</li>
+<li>The classname and filename for all namespaced classes must conform to the automatic class loading rules. The use of formal PHP namespaces is required in all new code.</li>
+<li>Use at most one namespace declaration per file.</li>
+</ul>
+<p>More info of namespace rules can be found in the <a href="https://moodledev.io/general/development/policies/codingstyle#namespaces">Documentation</a> and <a href="https://docs.moodle.org/dev/Automatic_class_loading">Class naming documentation</a>.</p>
 
               
             </article>

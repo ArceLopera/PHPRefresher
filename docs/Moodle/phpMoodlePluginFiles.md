@@ -529,3 +529,82 @@ $tasks = [
     ],
 ];
 ```
+
+### `db/renamedclasses.php` - Renamed classes 
+
+File path: /db/renamedclasses.php
+
+Details of classes that have been renamed to fit in with autoloading. Adding renamed or moved classes to renamedclasses.php is only necessary when the class is part of the component's API where it can be reused by other components, especially by third-party plugins. This is to maintain backwards-compatibility in addition to autoloading purposes. To move a class so that is it auto-loaded and no longer needs to be manually included you would:
+
++ Create a new php within the classes directory named as auto-loading requires.
++ Copy the class code from its current location to the new location.
++ Delete the class from the old location (do not delete the file).
++ Creator edit db/renamedclasses.php and add a line for your class mapping its old name to its new name.
+
+If the renamed or moved class is private/internal to the component and is not subject for external use, there is no need to add it to renamedclasses.php.
+
+```php
+defined('MOODLE_INTERNAL') || die;
+
+$renamedclasses = [
+    'old_class_name' => 'fully_qualified\\new\\name',
+
+    // Examples:
+    'assign_header' => 'mod_assign\\output\\header',
+    '\assign_header' => 'mod_assign\\output\\header',
+    '\assign' => 'mod_assign\\assignment',
+
+    // Incorrect:
+    // The new class name should _not_ have a leading \.
+    'assign_header' => '\\mod_assign\\output\\header',
+];
+```
+
+### `classes/` - Autoloaded classes
+
+File path: /classes/
+
+Moodle supports, and recommends, the use of autoloaded PHP classes.
+
+By placing files within the classes directory or appropriate sub-directories, and with the correct PHP Namespace, and class name, Moodle is able to autoload classes without the need to manually require, or include them. 
+
+#### Namespaces
+
+Formal namespaces are required for any new classes in Moodle. The following exceptions apply:
+
++ There is no requirement to move existing non-namespaced classes to a namespace; and
++ Where an existing mechanism exists for loading a class, and that mechanism does not support the use of a namespaced class, the existing Frankenstyle prefix on the class name will be allowed.
+
+The use of a Frankenstyle prefix on class names is deprecated and should only be used in the above exceptions.
+
+```php
+// A namespace for the `mod_forum` plugin.
+
+namespace mod_forum;
+class example {
+// Incorrect: class mod_forum_example
+}
+
+// A namespace for the `external` subsystem usage in the `mod_forum` plugin.
+namespace mod_forum\external;
+class example {
+    // Incorrect: class mod_forum_external_example
+}
+
+// A namespace for the `core_user` core subsystem.
+namespace core_user;
+class example {
+    // Incorrect: class core_user_example
+}
+```
+
+The use of namespaces must conform to the following rules:
+
++ Classes belonging to a namespace must be created in a classes directory, for example:
+    + Classes in the mod_forum plugin classes should be placed in `mod/forum/classes`;
+    + for core code, classes should be placed in `lib/classes`; or
+    + for a core subsystem, classes should be placed in `subsystemdir/classes`.
++ The classname and filename for all namespaced classes must conform to the automatic class loading rules. The use of formal PHP namespaces is required in all new code.
++ Use at most one namespace declaration per file.
+
+More info of namespace rules can be found in the [Documentation](https://moodledev.io/general/development/policies/codingstyle#namespaces) and [Class naming documentation](https://docs.moodle.org/dev/Automatic_class_loading).
