@@ -608,3 +608,20 @@ The use of namespaces must conform to the following rules:
 + Use at most one namespace declaration per file.
 
 More info of namespace rules can be found in the [Documentation](https://moodledev.io/general/development/policies/codingstyle#namespaces) and [Class naming documentation](https://docs.moodle.org/dev/Automatic_class_loading).
+
+### `Cli` - CLI scripts
+
+File path: /cli/
+
+For plugins which make use of [CLI scripts](https://docs.moodle.org/dev/CLI_scripts), the convention is that these are placed into the cli folder to make their purpose clear, and easy to find.
+
+**All CLI scripts must declare themselves as being a CLI script by defining the CLI_SCRIPT constant to true before including config.php.**
+
+```php
+define('CLI_SCRIPT', true);
+
+require_once(__DIR__ . '/../../config.php');
+require_once("{$CFG->libdir}/clilib.php");
+
+// Your CLI features go here.
+```

@@ -1949,6 +1949,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cli-cli-scripts" class="md-nav__link">
+    Cli - CLI scripts
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2129,6 +2136,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-cli-scripts" class="md-nav__link">
+    Cli - CLI scripts
+  </a>
   
 </li>
       
@@ -2688,6 +2702,17 @@ If either field is set to * then use the other field, otherwise the soonest valu
 <li>Use at most one namespace declaration per file.</li>
 </ul>
 <p>More info of namespace rules can be found in the <a href="https://moodledev.io/general/development/policies/codingstyle#namespaces">Documentation</a> and <a href="https://docs.moodle.org/dev/Automatic_class_loading">Class naming documentation</a>.</p>
+<h3 id="cli-cli-scripts"><code>Cli</code> - CLI scripts</h3>
+<p>File path: /cli/</p>
+<p>For plugins which make use of <a href="https://docs.moodle.org/dev/CLI_scripts">CLI scripts</a>, the convention is that these are placed into the cli folder to make their purpose clear, and easy to find.</p>
+<p><strong>All CLI scripts must declare themselves as being a CLI script by defining the CLI_SCRIPT constant to true before including config.php.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">define(&#39;CLI_SCRIPT&#39;, true);</span>
+
+<span class="x">require_once(__DIR__ . &#39;/../../config.php&#39;);</span>
+<span class="x">require_once(&quot;{$CFG-&gt;libdir}/clilib.php&quot;);</span>
+
+<span class="x">// Your CLI features go here.</span>
+</code></pre></div>
 
               
             </article>
