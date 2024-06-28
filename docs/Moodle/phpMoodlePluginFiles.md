@@ -1,5 +1,15 @@
 Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. 
 
+|Basic Required|Basic Optional|Others|Other Optional|
+|---|---|---|---|
+|[version.php](#versionphp)|[db/install.xml](#dbinstallxml)|[lib.php](#libphp)|[locallib.php](#locallibphp)|
+|[lang/en/yourpluginname.php](#langenyourpluginnamephp)|[db/upgrade.php](#dbupgradephp)|[db/access.php](#dbaccessphp-plugin-capabilities)|[db/install.php](#dbinstallphp-and-dbuninstallphp)|
+|[db/services.php](#dbservicesphp-web-service-function-declarations)|[db/tasks.php](#dbtasksphp-task-schedule-configuration)|[db/events.php](#dbeventsphp-event-observers)|[db/messages.php](#dbmessagesphp-message-provider-configuration)|
+|[settings.php](#settingsphp-plugin-settings)|[Autoloaded classes](#classes-autoloaded-classes)|[CLI scripts](#cli-cli-scripts)|[db/renamedclasses.php](#dbrenamedclassesphp-renamed-classes)|
+|styles.css|[AMD](#amd-amd-javascript-modules)|backup|[YUI](#yui-yui-javascript-modules)|
+|README|pix/icon.svg|upgrade.txt|thirdpartylibs.xml|
+||CHANGES|environment.xml|readme_moodle.txt|
+
 
 ### `version.php`
 
@@ -625,3 +635,37 @@ require_once("{$CFG->libdir}/clilib.php");
 
 // Your CLI features go here.
 ```
+
+### `settings.php` - Plugin settings
+
+File path: /settings.php
+
+You can define settings for your plugin that the administrator can configure by creating a settings.php file in the root of your plugins' directory.
+
+Settings must named in the following format:
+
+```
+plugintype_pluginname/settingname
+```
+
+By following the correct naming, all settings will automatically be stored in the `config_plugins` database table.
+
+Full details on how to create settings are available in the [Admin settings documentation](https://moodledev.io/docs/4.1/apis/subsystems/admin).
+
+### `amd/` - AMD JavaScript modules
+
+File path: /amd/
+
+For plugins which make use of AMD JavaScript modules, the convention is that these are placed into the amd folder to make their purpose clear, and easy to find.
+
+JavaScript in Moodle is written in the ESM format, and transpiled into AMD modules for deployment.
+
+The [Moodle JavaScript Guide](https://moodledev.io/docs/4.5/guides/javascript) has detailed information and examples on writing JavaScript in Moodle. Further information is also available in the [JavaScript Modules documentation](https://moodledev.io/docs/4.5/guides/javascript/modules).
+
+**Although the AMD module format is supported, all new JavaScript is written in the EcmaScript Module (ESM) format.**
+
+### `yui/` - YUI JavaScript modules
+
+File path: /yui/
+
+In older versions of Moodle, JavaScript was written in the YUI format. This is being phased out in favour of JavaScript Modules, although some older uses still remain in Moodle core.
