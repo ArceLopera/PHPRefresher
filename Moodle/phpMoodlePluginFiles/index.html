@@ -1956,6 +1956,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#settingsphp-plugin-settings" class="md-nav__link">
+    settings.php - Plugin settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amd-amd-javascript-modules" class="md-nav__link">
+    amd/ - AMD JavaScript modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yui-yui-javascript-modules" class="md-nav__link">
+    yui/ - YUI JavaScript modules
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2146,6 +2167,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#settingsphp-plugin-settings" class="md-nav__link">
+    settings.php - Plugin settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amd-amd-javascript-modules" class="md-nav__link">
+    amd/ - AMD JavaScript modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yui-yui-javascript-modules" class="md-nav__link">
+    yui/ - YUI JavaScript modules
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2163,6 +2205,60 @@
   <h1>Common Files</h1>
 
 <p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. </p>
+<table>
+<thead>
+<tr>
+<th>Basic Required</th>
+<th>Basic Optional</th>
+<th>Others</th>
+<th>Other Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#versionphp">version.php</a></td>
+<td><a href="#dbinstallxml">db/install.xml</a></td>
+<td><a href="#libphp">lib.php</a></td>
+<td><a href="#locallibphp">locallib.php</a></td>
+</tr>
+<tr>
+<td><a href="#langenyourpluginnamephp">lang/en/yourpluginname.php</a></td>
+<td><a href="#dbupgradephp">db/upgrade.php</a></td>
+<td><a href="#dbaccessphp-plugin-capabilities">db/access.php</a></td>
+<td><a href="#dbinstallphp-and-dbuninstallphp">db/install.php</a></td>
+</tr>
+<tr>
+<td><a href="#dbservicesphp-web-service-function-declarations">db/services.php</a></td>
+<td><a href="#dbtasksphp-task-schedule-configuration">db/tasks.php</a></td>
+<td><a href="#dbeventsphp-event-observers">db/events.php</a></td>
+<td><a href="#dbmessagesphp-message-provider-configuration">db/messages.php</a></td>
+</tr>
+<tr>
+<td><a href="#settingsphp-plugin-settings">settings.php</a></td>
+<td><a href="#classes-autoloaded-classes">Autoloaded classes</a></td>
+<td><a href="#cli-cli-scripts">CLI scripts</a></td>
+<td><a href="#dbrenamedclassesphp-renamed-classes">db/renamedclasses.php</a></td>
+</tr>
+<tr>
+<td>styles.css</td>
+<td><a href="#amd-amd-javascript-modules">AMD</a></td>
+<td>backup</td>
+<td><a href="#yui-yui-javascript-modules">YUI</a></td>
+</tr>
+<tr>
+<td>README</td>
+<td>pix/icon.svg</td>
+<td>upgrade.txt</td>
+<td>thirdpartylibs.xml</td>
+</tr>
+<tr>
+<td></td>
+<td>CHANGES</td>
+<td>environment.xml</td>
+<td>readme_moodle.txt</td>
+</tr>
+</tbody>
+</table>
 <h3 id="versionphp"><code>version.php</code></h3>
 <p>The <code>version.php</code> file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.</p>
 <p><strong>Structure of <code>version.php</code></strong></p>
@@ -2713,6 +2809,23 @@ If either field is set to * then use the other field, otherwise the soonest valu
 
 <span class="x">// Your CLI features go here.</span>
 </code></pre></div>
+<h3 id="settingsphp-plugin-settings"><code>settings.php</code> - Plugin settings</h3>
+<p>File path: /settings.php</p>
+<p>You can define settings for your plugin that the administrator can configure by creating a settings.php file in the root of your plugins' directory.</p>
+<p>Settings must named in the following format:</p>
+<div class="highlight"><pre><span></span><code>plugintype_pluginname/settingname
+</code></pre></div>
+<p>By following the correct naming, all settings will automatically be stored in the <code>config_plugins</code> database table.</p>
+<p>Full details on how to create settings are available in the <a href="https://moodledev.io/docs/4.1/apis/subsystems/admin">Admin settings documentation</a>.</p>
+<h3 id="amd-amd-javascript-modules"><code>amd/</code> - AMD JavaScript modules</h3>
+<p>File path: /amd/</p>
+<p>For plugins which make use of AMD JavaScript modules, the convention is that these are placed into the amd folder to make their purpose clear, and easy to find.</p>
+<p>JavaScript in Moodle is written in the ESM format, and transpiled into AMD modules for deployment.</p>
+<p>The <a href="https://moodledev.io/docs/4.5/guides/javascript">Moodle JavaScript Guide</a> has detailed information and examples on writing JavaScript in Moodle. Further information is also available in the <a href="https://moodledev.io/docs/4.5/guides/javascript/modules">JavaScript Modules documentation</a>.</p>
+<p><strong>Although the AMD module format is supported, all new JavaScript is written in the EcmaScript Module (ESM) format.</strong></p>
+<h3 id="yui-yui-javascript-modules"><code>yui/</code> - YUI JavaScript modules</h3>
+<p>File path: /yui/</p>
+<p>In older versions of Moodle, JavaScript was written in the YUI format. This is being phased out in favour of JavaScript Modules, although some older uses still remain in Moodle core.</p>
 
               
             </article>
