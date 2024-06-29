@@ -6,7 +6,7 @@ Writing the code for a Moodle plugin involves creating and configuring several e
 |[lang/en/yourpluginname.php](#langenyourpluginnamephp)|[db/upgrade.php](#dbupgradephp)|[db/access.php](#dbaccessphp-plugin-capabilities)|[db/install.php](#dbinstallphp-and-dbuninstallphp)|
 |[db/services.php](#dbservicesphp-web-service-function-declarations)|[db/tasks.php](#dbtasksphp-task-schedule-configuration)|[db/events.php](#dbeventsphp-event-observers)|[db/messages.php](#dbmessagesphp-message-provider-configuration)|
 |[settings.php](#settingsphp-plugin-settings)|[Autoloaded classes](#classes-autoloaded-classes)|[CLI scripts](#cli-cli-scripts)|[db/renamedclasses.php](#dbrenamedclassesphp-renamed-classes)|
-|styles.css|[AMD](#amd-amd-javascript-modules)|backup|[YUI](#yui-yui-javascript-modules)|
+|[styles.css](#stylescss-css-style-sheet-for-your-plugin)|[AMD](#amd-amd-javascript-modules)|[backup](#backup-plugin-backup-configuration)|[YUI](#yui-yui-javascript-modules)|
 |README|pix/icon.svg|upgrade.txt|thirdpartylibs.xml|
 ||CHANGES|environment.xml|readme_moodle.txt|
 
@@ -669,3 +669,26 @@ The [Moodle JavaScript Guide](https://moodledev.io/docs/4.5/guides/javascript) h
 File path: /yui/
 
 In older versions of Moodle, JavaScript was written in the YUI format. This is being phased out in favour of JavaScript Modules, although some older uses still remain in Moodle core.
+
+### `backup/` - Plugin Backup configuration
+
+File path: /backup/
+
+If your plugin stores data then you may need to implement the Backup feature which allows the activity to backed up, restored, and duplicated.
+
+For more information on Backup and restore, see the following:
+
++ [Backup 2.0 for developers](https://docs.moodle.org/dev/Backup_2.0_for_developers)
++ [Restore 2.0 for developers](https://docs.moodle.org/dev/Restore_2.0_for_developer)
+
+### `styles.css` - CSS style sheet for your plugin
+
+File path: /styles.css
+
+Plugins may define a '/styles.css' to provide plugin-specific styling. See the following for further documentation:
+
++ [Plugin contribution checklist#CSS styles](https://moodledev.io/general/community/plugincontribution/checklist#css-styles)
++ [CSS Coding Style](https://docs.moodle.org/dev/CSS_Coding_Style)
+
+**AVOID CUSTOM STYLES WHERE POSSIBLE**
+Rather than writing custom CSS for your plugin, where possible apply Bootstrap classes to the DOM elements in your output. These will be easier to maintain and will adopt most colour, branding, and other customisations applied to a theme.
