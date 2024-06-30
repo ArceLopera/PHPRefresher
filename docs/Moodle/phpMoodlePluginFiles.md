@@ -692,3 +692,116 @@ Plugins may define a '/styles.css' to provide plugin-specific styling. See the f
 
 **AVOID CUSTOM STYLES WHERE POSSIBLE**
 Rather than writing custom CSS for your plugin, where possible apply Bootstrap classes to the DOM elements in your output. These will be easier to maintain and will adopt most colour, branding, and other customisations applied to a theme.
+
+### `pix/icon.svg`
+
+File path: /pix/
+
+Plugins can provide icons in several formats, and most plugin types require that a default icon be provided.
+
+Where a browser supports it, the svg format is used, falling back to png formats when an SVG is unavailable.
+
+Full details of the correct naming, sizing, and design guidelines for icons in Moodle can be found in the [Moodle icons documentation](https://docs.moodle.org/dev/Moodle_icons).
+
+### `thirdpartylibs.xml`
+
+File path: /thirdpartylibs.xml
+
+Details of all [third-party libraries](https://moodledev.io/general/community/plugincontribution/thirdpartylibraries) should be declared in the thirdpartylibs.xml file.
+
+This information is used to generate ignore file configuration for linting tools. For Moodle core it is also used to generate library information as part of release notes and credits.
+
+Within the XML the location is a file, or directory, relative to your plugin's root.
+
+**The license of any third-party code included in your plugin, and within the thirdpartylibs.xml file must be compatible with the GNU GPLv3.**
+
+```xml
+<?xml version="1.0"?>
+<libraries>
+    <library>
+        <location>javascript/html5shiv.js</location>
+        <name>Html5Shiv</name>
+        <version>3.6.2</version>
+        <license>Apache</license>
+        <licenseversion>2.0</licenseversion>
+    </library>
+    <library>
+        <location>vendor/guzzle/guzzle/</location>
+        <name>guzzle</name>
+        <version>v3.9.3</version>
+        <license>MIT</license>
+        <licenseversion></licenseversion>
+    </library>
+</libraries>
+```
+### `readme_moodle.txt`
+
+Third-party library import instructions
+
+File path: /*/readme_moodle.txt
+
+When importing a third-party library into your plugin, it is advisable to create a readme_moodle.txt file detailing relevant information, including:
+
++ Download URLs
++ Build instructions
+
+### `upgrade.txt`
+
+Significant changes for each version of your plugin
+
+File path: /*/upgrade.txt
+
+Each component and subsystem may make use of an upgrade.txt file in the top level folder. A section title is used to identify the Moodle version where the change was introduced, and significant changes for that version relating to that component or subsystem are noted.
+
+For example, given an API change is applied for the upcoming Moodle version 4.1 which is still in the main branch (4.1dev), the version number on the upgrade.txt's section title will be set to 4.1.
+
+```txt
+== 4.1 ==
+An API change to empower educators!
+```
+
+### `environment.xml`
+
+Plugin-specific environment requirements
+
+Upgradable
+
+File path: /environment.xml
+
+A plugin can declare its own environment requirements, in addition to those declared by Moodle core. These may includes features such as PHP extension requirements, version requirements, and similar items.
+
+Further information on this file and its format can be found in the [Environment checking documentation](https://docs.moodle.org/dev/Environment_checking).
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<COMPATIBILITY_MATRIX>
+  <PLUGIN name="plugintype_pluginname">
+    <PHP_EXTENSIONS>
+      <PHP_EXTENSION name="soap" level="required">
+      </PHP_EXTENSION>
+    </PHP_EXTENSIONS>
+  </PLUGIN>
+</COMPATIBILITY_MATRIX>
+```
+
+### `README`
+Plugin Information for Administrators
+
+File path: /README
+
+We recommend that you include any additional information for your plugin in a project readme file. Ideally this should act as an offline version of all information in your plugin's page in the Plugins directory.
+
+We recommend creating your readme file in either a README.md, or README.txt format.
+
+### `CHANGES`
+
+Plugin changelog
+
+File path: /CHANGES
+
+If your plugin includes a changelog in its root directory, this will be used to automatically pre-fill the release notes field when uploading new versions of your plugin to the Plugins directory. This file can be in any of the following locations:
+
++ CHANGES.md: as a markdown file; or
++ CHANGES.txt: as a text file; or
++ CHANGES.html: as an HTML file; or
++ CHANGES: as a text file.
