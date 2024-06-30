@@ -1977,6 +1977,69 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#backup-plugin-backup-configuration" class="md-nav__link">
+    backup/ - Plugin Backup configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stylescss-css-style-sheet-for-your-plugin" class="md-nav__link">
+    styles.css - CSS style sheet for your plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixiconsvg" class="md-nav__link">
+    pix/icon.svg
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thirdpartylibsxml" class="md-nav__link">
+    thirdpartylibs.xml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme_moodletxt" class="md-nav__link">
+    readme_moodle.txt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgradetxt" class="md-nav__link">
+    upgrade.txt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environmentxml" class="md-nav__link">
+    environment.xml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    README
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    CHANGES
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2188,6 +2251,69 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#backup-plugin-backup-configuration" class="md-nav__link">
+    backup/ - Plugin Backup configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stylescss-css-style-sheet-for-your-plugin" class="md-nav__link">
+    styles.css - CSS style sheet for your plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixiconsvg" class="md-nav__link">
+    pix/icon.svg
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thirdpartylibsxml" class="md-nav__link">
+    thirdpartylibs.xml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme_moodletxt" class="md-nav__link">
+    readme_moodle.txt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgradetxt" class="md-nav__link">
+    upgrade.txt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environmentxml" class="md-nav__link">
+    environment.xml
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    README
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes" class="md-nav__link">
+    CHANGES
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2240,9 +2366,9 @@
 <td><a href="#dbrenamedclassesphp-renamed-classes">db/renamedclasses.php</a></td>
 </tr>
 <tr>
-<td>styles.css</td>
+<td><a href="#stylescss-css-style-sheet-for-your-plugin">styles.css</a></td>
 <td><a href="#amd-amd-javascript-modules">AMD</a></td>
-<td>backup</td>
+<td><a href="#backup-plugin-backup-configuration">backup</a></td>
 <td><a href="#yui-yui-javascript-modules">YUI</a></td>
 </tr>
 <tr>
@@ -2826,6 +2952,99 @@ If either field is set to * then use the other field, otherwise the soonest valu
 <h3 id="yui-yui-javascript-modules"><code>yui/</code> - YUI JavaScript modules</h3>
 <p>File path: /yui/</p>
 <p>In older versions of Moodle, JavaScript was written in the YUI format. This is being phased out in favour of JavaScript Modules, although some older uses still remain in Moodle core.</p>
+<h3 id="backup-plugin-backup-configuration"><code>backup/</code> - Plugin Backup configuration</h3>
+<p>File path: /backup/</p>
+<p>If your plugin stores data then you may need to implement the Backup feature which allows the activity to backed up, restored, and duplicated.</p>
+<p>For more information on Backup and restore, see the following:</p>
+<ul>
+<li><a href="https://docs.moodle.org/dev/Backup_2.0_for_developers">Backup 2.0 for developers</a></li>
+<li><a href="https://docs.moodle.org/dev/Restore_2.0_for_developer">Restore 2.0 for developers</a></li>
+</ul>
+<h3 id="stylescss-css-style-sheet-for-your-plugin"><code>styles.css</code> - CSS style sheet for your plugin</h3>
+<p>File path: /styles.css</p>
+<p>Plugins may define a '/styles.css' to provide plugin-specific styling. See the following for further documentation:</p>
+<ul>
+<li><a href="https://moodledev.io/general/community/plugincontribution/checklist#css-styles">Plugin contribution checklist#CSS styles</a></li>
+<li><a href="https://docs.moodle.org/dev/CSS_Coding_Style">CSS Coding Style</a></li>
+</ul>
+<p><strong>AVOID CUSTOM STYLES WHERE POSSIBLE</strong>
+Rather than writing custom CSS for your plugin, where possible apply Bootstrap classes to the DOM elements in your output. These will be easier to maintain and will adopt most colour, branding, and other customisations applied to a theme.</p>
+<h3 id="pixiconsvg"><code>pix/icon.svg</code></h3>
+<p>File path: /pix/</p>
+<p>Plugins can provide icons in several formats, and most plugin types require that a default icon be provided.</p>
+<p>Where a browser supports it, the svg format is used, falling back to png formats when an SVG is unavailable.</p>
+<p>Full details of the correct naming, sizing, and design guidelines for icons in Moodle can be found in the <a href="https://docs.moodle.org/dev/Moodle_icons">Moodle icons documentation</a>.</p>
+<h3 id="thirdpartylibsxml"><code>thirdpartylibs.xml</code></h3>
+<p>File path: /thirdpartylibs.xml</p>
+<p>Details of all <a href="https://moodledev.io/general/community/plugincontribution/thirdpartylibraries">third-party libraries</a> should be declared in the thirdpartylibs.xml file.</p>
+<p>This information is used to generate ignore file configuration for linting tools. For Moodle core it is also used to generate library information as part of release notes and credits.</p>
+<p>Within the XML the location is a file, or directory, relative to your plugin's root.</p>
+<p><strong>The license of any third-party code included in your plugin, and within the thirdpartylibs.xml file must be compatible with the GNU GPLv3.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;libraries&gt;</span>
+    <span class="nt">&lt;library&gt;</span>
+        <span class="nt">&lt;location&gt;</span>javascript/html5shiv.js<span class="nt">&lt;/location&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Html5Shiv<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.6.2<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;license&gt;</span>Apache<span class="nt">&lt;/license&gt;</span>
+        <span class="nt">&lt;licenseversion&gt;</span>2.0<span class="nt">&lt;/licenseversion&gt;</span>
+    <span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;library&gt;</span>
+        <span class="nt">&lt;location&gt;</span>vendor/guzzle/guzzle/<span class="nt">&lt;/location&gt;</span>
+        <span class="nt">&lt;name&gt;</span>guzzle<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;version&gt;</span>v3.9.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;license&gt;</span>MIT<span class="nt">&lt;/license&gt;</span>
+        <span class="nt">&lt;licenseversion&gt;&lt;/licenseversion&gt;</span>
+    <span class="nt">&lt;/library&gt;</span>
+<span class="nt">&lt;/libraries&gt;</span>
+</code></pre></div>
+<h3 id="readme_moodletxt"><code>readme_moodle.txt</code></h3>
+<p>Third-party library import instructions</p>
+<p>File path: /*/readme_moodle.txt</p>
+<p>When importing a third-party library into your plugin, it is advisable to create a readme_moodle.txt file detailing relevant information, including:</p>
+<ul>
+<li>Download URLs</li>
+<li>Build instructions</li>
+</ul>
+<h3 id="upgradetxt"><code>upgrade.txt</code></h3>
+<p>Significant changes for each version of your plugin</p>
+<p>File path: /*/upgrade.txt</p>
+<p>Each component and subsystem may make use of an upgrade.txt file in the top level folder. A section title is used to identify the Moodle version where the change was introduced, and significant changes for that version relating to that component or subsystem are noted.</p>
+<p>For example, given an API change is applied for the upcoming Moodle version 4.1 which is still in the main branch (4.1dev), the version number on the upgrade.txt's section title will be set to 4.1.</p>
+<div class="highlight"><pre><span></span><code>== 4.1 ==
+An API change to empower educators!
+</code></pre></div>
+<h3 id="environmentxml"><code>environment.xml</code></h3>
+<p>Plugin-specific environment requirements</p>
+<p>Upgradable</p>
+<p>File path: /environment.xml</p>
+<p>A plugin can declare its own environment requirements, in addition to those declared by Moodle core. These may includes features such as PHP extension requirements, version requirements, and similar items.</p>
+<p>Further information on this file and its format can be found in the <a href="https://docs.moodle.org/dev/Environment_checking">Environment checking documentation</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;COMPATIBILITY_MATRIX&gt;</span>
+  <span class="nt">&lt;PLUGIN</span> <span class="na">name=</span><span class="s">&quot;plugintype_pluginname&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PHP_EXTENSIONS&gt;</span>
+      <span class="nt">&lt;PHP_EXTENSION</span> <span class="na">name=</span><span class="s">&quot;soap&quot;</span> <span class="na">level=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/PHP_EXTENSION&gt;</span>
+    <span class="nt">&lt;/PHP_EXTENSIONS&gt;</span>
+  <span class="nt">&lt;/PLUGIN&gt;</span>
+<span class="nt">&lt;/COMPATIBILITY_MATRIX&gt;</span>
+</code></pre></div>
+<h3 id="readme"><code>README</code></h3>
+<p>Plugin Information for Administrators</p>
+<p>File path: /README</p>
+<p>We recommend that you include any additional information for your plugin in a project readme file. Ideally this should act as an offline version of all information in your plugin's page in the Plugins directory.</p>
+<p>We recommend creating your readme file in either a README.md, or README.txt format.</p>
+<h3 id="changes"><code>CHANGES</code></h3>
+<p>Plugin changelog</p>
+<p>File path: /CHANGES</p>
+<p>If your plugin includes a changelog in its root directory, this will be used to automatically pre-fill the release notes field when uploading new versions of your plugin to the Plugins directory. This file can be in any of the following locations:</p>
+<ul>
+<li>CHANGES.md: as a markdown file; or</li>
+<li>CHANGES.txt: as a text file; or</li>
+<li>CHANGES.html: as an HTML file; or</li>
+<li>CHANGES: as a text file.</li>
+</ul>
 
               
             </article>
