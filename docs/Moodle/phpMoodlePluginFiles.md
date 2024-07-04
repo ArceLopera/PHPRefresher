@@ -4,14 +4,16 @@ Writing the code for a Moodle plugin involves creating and configuring several e
 |---|---|---|---|
 |[version.php](#versionphp)|[db/install.xml](#dbinstallxml)|[lib.php](#libphp)|[locallib.php](#locallibphp)|
 |[lang/en/yourpluginname.php](#langenyourpluginnamephp)|[db/upgrade.php](#dbupgradephp)|[db/access.php](#dbaccessphp-plugin-capabilities)|[db/install.php](#dbinstallphp-and-dbuninstallphp)|
-|[db/services.php](#dbservicesphp-web-service-function-declarations)|[db/tasks.php](#dbtasksphp-task-schedule-configuration)|[db/events.php](#dbeventsphp-event-observers)|[db/messages.php](#dbmessagesphp-message-provider-configuration)|
-|[settings.php](#settingsphp-plugin-settings)|[Autoloaded classes](#classes-autoloaded-classes)|[CLI scripts](#cli-cli-scripts)|[db/renamedclasses.php](#dbrenamedclassesphp-renamed-classes)|
-|[styles.css](#stylescss-css-style-sheet-for-your-plugin)|[AMD](#amd-amd-javascript-modules)|[backup](#backup-plugin-backup-configuration)|[YUI](#yui-yui-javascript-modules)|
-|README|pix/icon.svg|upgrade.txt|thirdpartylibs.xml|
-||CHANGES|environment.xml|readme_moodle.txt|
+||[db/services.php](#dbservicesphp-web-service-function-declarations)|[db/events.php](#dbeventsphp-event-observers)|[db/messages.php](#dbmessagesphp-message-provider-configuration)|
+||[settings.php](#settingsphp-plugin-settings)|[db/tasks.php](#dbtasksphp-task-schedule-configuration)|[db/renamedclasses.php](#dbrenamedclassesphp-renamed-classes)|
+||[Autoloaded classes](#classes-autoloaded-classes)|[CLI scripts](#cli-cli-scripts)|[backup](#backup-plugin-backup-configuration)|
+||[AMD](#amd-amd-javascript-modules)|[styles.css](#stylescss-css-style-sheet-for-your-plugin)|[YUI](#yui-yui-javascript-modules)|
+|[README](#readme)|[pix/icon.svg](#pixiconsvg)|[upgrade.txt](#upgradetxt)|[thirdpartylibs.xml](#thirdpartylibsxml)|
+||[CHANGES](#changes)|[environment.xml](#environmentxml)|[readme_moodle.txt](#readme_moodletxt)|
 
+## Basic
 
-### `version.php`
+##### `version.php`
 
 The `version.php` file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.
 
@@ -120,7 +122,7 @@ The plugin will not be installable on any versions of Moodle from this point on.
     $plugin->incompatible = [401];
    ```
 
-### `lang/en/yourpluginname.php`
+##### `lang/en/yourpluginname.php`
 
 The `lang/en/yourpluginname.php` file is crucial for handling the language strings used by your Moodle plugin. This file contains all the text that will be displayed to users, allowing for easy translation and localization. Properly managing this file ensures that your plugin can support multiple languages and provides a consistent user experience.
 
@@ -228,7 +230,7 @@ Tailor these messages to enhance the user experience and provide helpful informa
 
 By following these guidelines, you can create a comprehensive and well-organized `lang/en/yourpluginname.php` file that supports effective localization and enhances the user experience of your Moodle plugin.
 
-### `lib.php`
+##### `lib.php`
 
 The `lib.php` file contains core functions used by your plugin, such as adding, updating, and deleting instances, and other helper functions. File path: /lib.php
 The lib.php file is a legacy file which acts as a bridge between Moodle core, and the plugin. In recent plugins it should only be used to define callbacks and related functionality which currently is not supported as an auto-loadable class. For example, the navigationlib loads lib.php files for all plugin types that are able to inject their own nodes into the navigation tree (the file must be loaded to see if the corresponding *_extend_navigation() function is provided).
@@ -236,13 +238,13 @@ The lib.php file is a legacy file which acts as a bridge between Moodle core, an
 **PERFORMANCE IMPACT**
 Moodle core often loads all the lib.php files of a given plugin types. For performance reasons, it is strongly recommended to keep this file as small as possible and have just required code implemented in it. All the plugin's internal logic should be implemented in the auto-loaded classes. The best advice is to put as much of your code as possible into classes, so you can use the [automatic class loading](https://docs.moodle.org/dev/Automatic_class_loading)
 
-#### locallib.php
+###### locallib.php
 Global support functions used by all plugins. File path: /locallib.php
 The use of this file is no longer recommended, and new uses of it will not be permitted in core code. Rather than creating global functions in a global namespace in a locallib.php file, you should use autoloaded classes which are located in the classes/ directory.
 
+## DB
 
-
-### `db/install.xml`
+##### `db/install.xml`
 
 The `install.xml` file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.
 Always remember that when creating or updating the install.xml you must use the built-in [XMLDB editor](https://docs.moodle.org/dev/XMLDB_Documentation) within Moodle.
@@ -270,7 +272,7 @@ Always remember that when creating or updating the install.xml you must use the 
     </TABLES>
 </XMLDB>
 ```
-### `db/upgrade.php`
+##### `db/upgrade.php`
 
 File path: /db/upgrade.php
 The db/upgrade.php file contains upgrade steps, including database schema changes, changes to settings, and other steps which must be performed during upgrade.
@@ -294,7 +296,7 @@ In many cases you will be able to combine multiple upgrade steps into a single v
 
 When a version number increment is detected during an upgrade, the xmldb_[pluginname]_upgrade function is called with the old version number as the first argument.
 
-### `db/access.php` - Plugin capabilities
+##### `db/access.php` - Plugin capabilities
 
 File path: /db/access.php
 
@@ -327,7 +329,7 @@ $capabilities = [
 - **Assign Roles**: Associates capabilities with different Moodle roles (e.g., student, teacher, admin).
 - **Control Access**: Manages who can access and execute specific functionalities within the plugin.
 
-### `db/install.php` and `db/uninstall.php`
+##### `db/install.php` and `db/uninstall.php`
 
 |Type | db/install.php | db/uninstall.php |
 | --- | --- | --- |
@@ -336,7 +338,7 @@ $capabilities = [
 |Purpose |Allows you to define a post-installation hook, which is called immediately after the initial creation of your database schema.| Allows you to define a pre-uninstallation hook, which is called immediately before all table and data from your plugin are removed.|
 |CAUTION|This file is not used at all after the initial installation of your plugin. It is not called during any upgrade.||
 
-### `db/events.php` - Event observers
+##### `db/events.php` - Event observers
 
 File path: /db/events.php
 
@@ -393,7 +395,7 @@ $observers = [
 ```
 NOTE: Event observers are cached. If you add or change observers you need to purge the caches or they will not be recognised. Plugin developers need to bump up the version number to guarantee that the list of observers is reloaded during upgrade.
 
-### `db/messages.php` - Message provider configuration
+##### `db/messages.php` - Message provider configuration
 
 File path: /db/messages.php
 
@@ -425,7 +427,7 @@ $messageproviders = [
 ```
 The quiz can send two kinds of messages, quiz "submission" and "confirmation" notifications. Each message type is only available to users with the appropriate capability. Please note that the capability is checked at the system level context. Users who have this capability will have this message listed in their messaging preferences. You can omit the capability section if your message should be visible for all users. For example forum post notifications are available to all users.
 
-### `db/services.php` - Web service function declarations
+##### `db/services.php` - Web service function declarations
 
 File path: /db/services.php
 
@@ -453,7 +455,7 @@ $functions = [
 ];
 ```
 
-### `db/tasks.php` - Task schedule configuration
+##### `db/tasks.php` - Task schedule configuration
 
 File path: /db/tasks.php
 
@@ -468,7 +470,7 @@ If a plugin wants to configure scheduled task, two items are required:
 + a class extending the `\core\task\scheduled_task` class; and
 + the `db/tasks.php` file containing its initial configuration.
 
-#### Task configuration entries
+###### Task configuration entries
 
 |entry|type|option|description|
 |---|---|---|---|
@@ -540,7 +542,7 @@ $tasks = [
 ];
 ```
 
-### `db/renamedclasses.php` - Renamed classes 
+##### `db/renamedclasses.php` - Renamed classes 
 
 File path: /db/renamedclasses.php
 
@@ -570,7 +572,9 @@ $renamedclasses = [
 ];
 ```
 
-### `classes/` - Autoloaded classes
+## Other
+
+##### `classes/` - Autoloaded classes
 
 File path: /classes/
 
@@ -578,7 +582,7 @@ Moodle supports, and recommends, the use of autoloaded PHP classes.
 
 By placing files within the classes directory or appropriate sub-directories, and with the correct PHP Namespace, and class name, Moodle is able to autoload classes without the need to manually require, or include them. 
 
-#### Namespaces
+###### Namespaces
 
 Formal namespaces are required for any new classes in Moodle. The following exceptions apply:
 
@@ -619,7 +623,7 @@ The use of namespaces must conform to the following rules:
 
 More info of namespace rules can be found in the [Documentation](https://moodledev.io/general/development/policies/codingstyle#namespaces) and [Class naming documentation](https://docs.moodle.org/dev/Automatic_class_loading).
 
-### `Cli` - CLI scripts
+##### `Cli` - CLI scripts
 
 File path: /cli/
 
@@ -636,7 +640,7 @@ require_once("{$CFG->libdir}/clilib.php");
 // Your CLI features go here.
 ```
 
-### `settings.php` - Plugin settings
+##### `settings.php` - Plugin settings
 
 File path: /settings.php
 
@@ -652,7 +656,7 @@ By following the correct naming, all settings will automatically be stored in th
 
 Full details on how to create settings are available in the [Admin settings documentation](https://moodledev.io/docs/4.1/apis/subsystems/admin).
 
-### `amd/` - AMD JavaScript modules
+##### `amd/` - AMD JavaScript modules
 
 File path: /amd/
 
@@ -664,13 +668,13 @@ The [Moodle JavaScript Guide](https://moodledev.io/docs/4.5/guides/javascript) h
 
 **Although the AMD module format is supported, all new JavaScript is written in the EcmaScript Module (ESM) format.**
 
-### `yui/` - YUI JavaScript modules
+##### `yui/` - YUI JavaScript modules
 
 File path: /yui/
 
 In older versions of Moodle, JavaScript was written in the YUI format. This is being phased out in favour of JavaScript Modules, although some older uses still remain in Moodle core.
 
-### `backup/` - Plugin Backup configuration
+##### `backup/` - Plugin Backup configuration
 
 File path: /backup/
 
@@ -681,7 +685,7 @@ For more information on Backup and restore, see the following:
 + [Backup 2.0 for developers](https://docs.moodle.org/dev/Backup_2.0_for_developers)
 + [Restore 2.0 for developers](https://docs.moodle.org/dev/Restore_2.0_for_developer)
 
-### `styles.css` - CSS style sheet for your plugin
+##### `styles.css` - CSS style sheet for your plugin
 
 File path: /styles.css
 
@@ -693,7 +697,7 @@ Plugins may define a '/styles.css' to provide plugin-specific styling. See the f
 **AVOID CUSTOM STYLES WHERE POSSIBLE**
 Rather than writing custom CSS for your plugin, where possible apply Bootstrap classes to the DOM elements in your output. These will be easier to maintain and will adopt most colour, branding, and other customisations applied to a theme.
 
-### `pix/icon.svg`
+##### `pix/icon.svg`
 
 File path: /pix/
 
@@ -703,7 +707,7 @@ Where a browser supports it, the svg format is used, falling back to png formats
 
 Full details of the correct naming, sizing, and design guidelines for icons in Moodle can be found in the [Moodle icons documentation](https://docs.moodle.org/dev/Moodle_icons).
 
-### `thirdpartylibs.xml`
+##### `thirdpartylibs.xml`
 
 File path: /thirdpartylibs.xml
 
@@ -734,7 +738,7 @@ Within the XML the location is a file, or directory, relative to your plugin's r
     </library>
 </libraries>
 ```
-### `readme_moodle.txt`
+##### `readme_moodle.txt`
 
 Third-party library import instructions
 
@@ -745,7 +749,7 @@ When importing a third-party library into your plugin, it is advisable to create
 + Download URLs
 + Build instructions
 
-### `upgrade.txt`
+##### `upgrade.txt`
 
 Significant changes for each version of your plugin
 
@@ -760,7 +764,7 @@ For example, given an API change is applied for the upcoming Moodle version 4.1 
 An API change to empower educators!
 ```
 
-### `environment.xml`
+##### `environment.xml`
 
 Plugin-specific environment requirements
 
@@ -784,7 +788,7 @@ Further information on this file and its format can be found in the [Environment
 </COMPATIBILITY_MATRIX>
 ```
 
-### `README`
+##### `README`
 Plugin Information for Administrators
 
 File path: /README
@@ -793,7 +797,7 @@ We recommend that you include any additional information for your plugin in a pr
 
 We recommend creating your readme file in either a README.md, or README.txt format.
 
-### `CHANGES`
+##### `CHANGES`
 
 Plugin changelog
 
