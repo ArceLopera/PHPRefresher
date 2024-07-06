@@ -662,7 +662,7 @@ File path: /amd/
 
 For plugins which make use of AMD JavaScript modules, the convention is that these are placed into the amd folder to make their purpose clear, and easy to find.
 
-JavaScript in Moodle is written in the ESM format, and transpiled into AMD modules for deployment.
+[JavaScript in Moodle](./Javascript/phpMoodleJS.md) is written in the ESM format, and transpiled into AMD modules for deployment.
 
 The [Moodle JavaScript Guide](https://moodledev.io/docs/4.5/guides/javascript) has detailed information and examples on writing JavaScript in Moodle. Further information is also available in the [JavaScript Modules documentation](https://moodledev.io/docs/4.5/guides/javascript/modules).
 
