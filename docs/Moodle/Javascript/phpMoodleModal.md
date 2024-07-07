@@ -1,141 +1,283 @@
-Modal dialogues are useful in Moodle for displaying information, collecting user inputs, and performing various interactive tasks without leaving the current page. Moodle provides a robust way to implement modal dialogues using its core JavaScript libraries and AMD modules.
+Modal dialogues are a useful UI component in Moodle for displaying content and interacting with users without navigating away from the current page. They are typically used for forms, confirmations, alerts, and other content that needs user interaction.
 
-## Step 1: Create the AMD Module for the Modal
+1. **User Experience**: Enhance the user experience by providing information or requesting input without leaving the current page.
+2. **Focus**: Keep the user's focus on a specific task or piece of information.
+3. **Efficiency**: Reduce page loads and provide a smoother, more interactive experience.
 
-1. **Create the Directory Structure**:
-    - Navigate to your plugin directory and create the necessary subdirectories: `amd/src`.
+### Creating Modal Dialogues in Moodle
 
-2. **Write the JavaScript Code**:
-    - Create a JavaScript file, e.g., `amd/src/modal.js`.
+Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the `core/modal_factory` and `core/modal` AMD modules.
 
-    ```javascript
-    define(['jquery', 'core/modal_factory', 'core/modal_events'], function($, ModalFactory, ModalEvents) {
+1. **Load Required JavaScript Modules**
+
+    Load the necessary JavaScript modules using Moodle's AMD loader.
+
+    ```php
+    $PAGE->requires->js_call_amd('yourpluginname/modal_handler', 'init');
+    ```
+
+2. **Create the Modal Handler**
+
+    Create a JavaScript file in your plugin's `amd/src` directory, for example, `amd/src/modal_handler.js`.
+
+    ```js
+    define(['core/modal_factory', 'core/modal_events', 'core/str'], function(ModalFactory, ModalEvents, Str) {
         return {
             init: function() {
-                // Event listener for opening the modal
-                $('body').on('click', '#open-modal', function(e) {
-                    e.preventDefault();
-                    ModalFactory.create({
-                        type: ModalFactory.types.SAVE_CANCEL,
-                        title: 'Example Modal Title',
-                        body: '<p>This is an example modal content.</p>',
-                    }).done(function(modal) {
-                        modal.getRoot().on(ModalEvents.save, function() {
-                            // Action to perform when Save is clicked
-                            alert('Save clicked!');
-                        });
-                        modal.show();
+                // Define the content for the modal
+                var content = '<p>This is the content of the modal.</p>';
+
+                // Create the modal
+                ModalFactory.create({
+                    type: ModalFactory.types.DEFAULT,
+                    title: Str.get_string('modaltitle', 'yourpluginname'),
+                    body: content
+                }).done(function(modal) {
+                    // Add event listeners
+                    modal.getRoot().on(ModalEvents.hidden, function() {
+                        // Actions to perform when the modal is hidden
+                        console.log('Modal closed');
                     });
+
+                    // Show the modal
+                    modal.show();
                 });
             }
         };
     });
     ```
 
-## Step 2: Include JavaScript in Your Plugin
+3. **Add Strings for Internationalization**
 
-1. **Require the AMD Module**:
-    - In your plugin's PHP file (e.g., `view.php`), include the AMD module.
+    Define the strings used in your modal in the `lang/en/yourpluginname.php` file.
 
     ```php
-    $PAGE->requires->js_call_amd('yourpluginname/modal', 'init');
+    $string['modaltitle'] = 'Modal Title';
     ```
 
-2. **Add the Trigger Element in Your HTML**:
-    - Add an element that will trigger the modal when clicked. This can be a button or a link.
+4. **Trigger the Modal**
 
-    ```html
-    <button id="open-modal" class="btn btn-primary">Open Modal</button>
-    ```
+   Add the necessary HTML and JavaScript to trigger the modal when needed. For example, you can trigger the modal when a button is clicked.
 
-## Step 3: Compile the JavaScript
+``` html
+<button id="showModal">Show Modal</button>
+```
 
-1. **Compile Using Grunt**:
-    - Navigate to your Moodle root directory and run the following commands to compile your JavaScript.
 
-    ```bash
-    grunt amd
-    ```
+``` js
+document.getElementById('showModal').addEventListener('click', function() {
+    require(['yourpluginname/modal_handler'], function(modalHandler) {
+        modalHandler.init();
+    });
+});
+```
 
-    This will compile the JavaScript files from `amd/src` to `amd/build`.
+### Advanced Usage
 
-## Step 4: Define Modal Contents Dynamically (Optional)
+#### 1. **Form in a Modal**
 
-If you need to load modal content dynamically (e.g., via AJAX), you can modify the JavaScript code:
+You can also embed forms within a modal. Create a form as usual and place it in the modal content.
 
-```javascript
-define(['jquery', 'core/modal_factory', 'core/modal_events', 'core/ajax'], function($, ModalFactory, ModalEvents, Ajax) {
+```js
+define(['core/modal_factory', 'core/modal_events', 'core/str', 'core/ajax'], function(ModalFactory, ModalEvents, Str, Ajax) {
     return {
         init: function() {
-            $('body').on('click', '#open-modal', function(e) {
-                e.preventDefault();
-                Ajax.call([{
-                    methodname: 'yourpluginname_get_modal_content',
-                    args: {},
-                    done: function(response) {
-                        ModalFactory.create({
-                            type: ModalFactory.types.SAVE_CANCEL,
-                            title: 'Dynamic Modal Title',
-                            body: response.content,
-                        }).done(function(modal) {
-                            modal.getRoot().on(ModalEvents.save, function() {
-                                alert('Save clicked!');
-                            });
-                            modal.show();
-                        });
-                    },
-                    fail: function(error) {
-                        console.error(error);
-                    }
-                }]);
+            var content = '<form id="modalForm">' +
+                            '<label for="inputField">Input:</label>' +
+                            '<input type="text" id="inputField" name="inputField">' +
+                            '<button type="submit">Submit</button>' +
+                            '</form>';
+
+            ModalFactory.create({
+                type: ModalFactory.types.DEFAULT,
+                title: Str.get_string('modaltitle', 'yourpluginname'),
+                body: content
+            }).done(function(modal) {
+                modal.getRoot().on(ModalEvents.hidden, function() {
+                    console.log('Modal closed');
+                });
+
+                modal.getRoot().on('submit', '#modalForm', function(e) {
+                    e.preventDefault();
+                    var inputValue = document.getElementById('inputField').value;
+                    console.log('Form submitted with value:', inputValue);
+
+                    // Example AJAX request
+                    Ajax.call([{
+                        methodname: 'yourpluginname_submit_form',
+                        args: {input: inputValue},
+                        done: function(response) {
+                            console.log('Form submitted successfully:', response);
+                            modal.hide();
+                        },
+                        fail: function(error) {
+                            console.error('Form submission failed:', error);
+                        }
+                    }]);
+                });
+
+                modal.show();
             });
         }
     };
 });
 ```
 
-And in your PHP code, define the AJAX function:
+#### 2. **Custom Modal Types**
+
+Moodle provides different types of modals: `DEFAULT`, `SAVE_CANCEL`, and `ALERT`. You can use these to create different styles of modals.
+
+``` javascript
+ModalFactory.create({
+    type: ModalFactory.types.SAVE_CANCEL,
+    title: Str.get_string('modaltitle', 'yourpluginname'),
+    body: content
+}).done(function(modal) {
+    modal.getRoot().on(ModalEvents.hidden, function() {
+        console.log('Modal closed');
+    });
+
+    modal.getRoot().on(ModalEvents.save, function() {
+        console.log('Save button clicked');
+        modal.hide();
+    });
+
+    modal.show();
+});
+```
+
+#### 3. **Modal with Templates**
+
+Moodle's template system allows for more dynamic and maintainable code by separating HTML structure from JavaScript logic. This is particularly useful for creating complex modal dialogues. For example, you can dynamically choose which template to render based on the context or user interaction.
+
+- **Separation of Concerns**: Keep HTML and JavaScript separate for better readability and maintainability.
+- **Reusability**: Easily reuse templates across different parts of your plugin or even different plugins.
+- **Flexibility**: Dynamically render content based on context or user interaction.
+
+**Step 1: Create a Template**
+
+1. **Create the Template File**: Create a Mustache template file in your plugin’s `templates` directory. For example, `templates/modal_content.mustache`.
+
+    ```html
+    <div class="modal-body">
+        <p>{{message}}</p>
+        <form id="modalForm">
+            <label for="inputField">Input:</label>
+            <input type="text" id="inputField" name="inputField">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    ```
+
+**Step 2: Load and Render the Template in JavaScript**
+
+1. **Load Required JavaScript Modules**
+
+    Load the necessary JavaScript modules using Moodle's AMD loader. Create a JavaScript file in your plugin's `amd/src` directory, for example, `amd/src/modal_handler.js`.
+
+    ```javascript
+    define(['core/modal_factory', 'core/modal_events', 'core/str', 'core/templates', 'core/ajax'], function(ModalFactory, ModalEvents, Str, Templates, Ajax) {
+        return {
+            init: function() {
+                // Load the template and render it
+                Templates.render('yourpluginname/modal_content', {message: 'This is a message'}).done(function(html, js) {
+                    ModalFactory.create({
+                        type: ModalFactory.types.DEFAULT,
+                        title: Str.get_string('modaltitle', 'yourpluginname'),
+                        body: html
+                    }).done(function(modal) {
+                        modal.getRoot().on(ModalEvents.hidden, function() {
+                            console.log('Modal closed');
+                        });
+
+                        modal.getRoot().on('submit', '#modalForm', function(e) {
+                            e.preventDefault();
+                            var inputValue = document.getElementById('inputField').value;
+                            console.log('Form submitted with value:', inputValue);
+
+                            // Example AJAX request
+                            Ajax.call([{
+                                methodname: 'yourpluginname_submit_form',
+                                args: {input: inputValue},
+                                done: function(response) {
+                                    console.log('Form submitted successfully:', response);
+                                    modal.hide();
+                                },
+                                fail: function(error) {
+                                    console.error('Form submission failed:', error);
+                                }
+                            }]);
+                        });
+
+                        modal.show();
+                        Templates.runTemplateJS(js);
+                    });
+                }).fail(function() {
+                    console.error('Failed to load template');
+                });
+            }
+        };
+    });
+    ```
+
+2. **Include JavaScript in Your Plugin**
+
+    Add the following line to your `view.php` or another relevant PHP file to load the JavaScript module.
+
+    ```php
+    $PAGE->requires->js_call_amd('yourpluginname/modal_handler', 'init');
+    ```
+
+**Step 3: Define Strings for Internationalization**
+
+Define the strings used in your modal in the `lang/en/yourpluginname.php` file.
 
 ```php
-// Define the AJAX function in externallib.php or similar file
-public static function get_modal_content() {
-    // Your logic to generate the content
-    return array('content' => '<p>This is dynamically loaded content.</p>');
-}
-
-// Add to services.php
-$functions = array(
-    'yourpluginname_get_modal_content' => array(
-        'classname'   => 'yourpluginname_external',
-        'methodname'  => 'get_modal_content',
-        'classpath'   => 'path/to/externallib.php',
-        'description' => 'Get modal content',
-        'type'        => 'read',
-        'ajax'        => true,
-    ),
-);
+$string['modaltitle'] = 'Modal Title';
 ```
 
-## Step 5: Style the Modal (Optional)
+**Step 4: Trigger the Modal**
 
-You can add custom styles to your modal by including a CSS file in your plugin. Create a `styles.css` file in your plugin's root directory and add the following:
+Add the necessary HTML and JavaScript to trigger the modal when needed. For example, you can trigger the modal when a button is clicked.
 
-```css
-.modal-body {
-    font-size: 14px;
-}
-
-.modal-header {
-    background-color: #f5f5f5;
-}
+```html
+<button id="showModal">Show Modal</button>
 ```
 
-Include this CSS file in your PHP file:
-
-```php
-$PAGE->requires->css('/path/to/yourpluginname/styles.css');
+```javascript
+document.getElementById('showModal').addEventListener('click', function() {
+    require(['yourpluginname/modal_handler'], function(modalHandler) {
+        modalHandler.init();
+    });
+});
 ```
 
-## Summary
+**Advanced Usage**
 
-Implementing modal dialogues in Moodle involves creating an AMD module that utilizes Moodle's core modal libraries, including the module in your PHP files, and optionally adding custom styles. You can further enhance the functionality by loading modal content dynamically using AJAX. This approach ensures that your modal dialogues are modular, maintainable, and integrated seamlessly with Moodle's architecture.
+1. **Dynamic Content**: You can pass dynamic data to the template by modifying the context object passed to the `Templates.render` method.
+
+    ```javascript
+    var context = {
+        message: 'Dynamic message',
+        anotherfield: 'Another value'
+    };
+    Templates.render('yourpluginname/modal_content', context).done(function(html, js) {
+        // Proceed as before
+    });
+    ```
+
+2. **Handling Multiple Templates**: If your modal needs to load different templates based on the context, you can dynamically choose which template to render.
+
+    ```javascript
+    var templateName = condition ? 'yourpluginname/first_template' : 'yourpluginname/second_template';
+    Templates.render(templateName, context).done(function(html, js) {
+        // Proceed as before
+    });
+    ```
+
+3. **Complex Interactions**: For complex interactions, you can define additional JavaScript logic within the template and execute it using `Templates.runTemplateJS(js)` after the modal is shown.
+
+
+### Summary
+
+Modal dialogues in Moodle provide a powerful way to interact with users without navigating away from the current page. By using Moodle's `core/modal_factory` and `core/modal` modules, you can create dynamic and interactive modals for displaying information, capturing user input, and more. Always follow best practices for user experience, accessibility, and performance to ensure a high-quality implementation. For more detailed information and examples, refer to the [official Moodle documentation](https://moodledev.io/docs/4.5/guides/javascript/modal).

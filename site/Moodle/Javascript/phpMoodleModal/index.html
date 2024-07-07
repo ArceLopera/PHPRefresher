@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-1-create-the-amd-module-for-the-modal" class="md-skip">
+        <a href="#creating-modal-dialogues-in-moodle" class="md-skip">
           Skip to content
         </a>
       
@@ -1890,37 +1890,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1-create-the-amd-module-for-the-modal" class="md-nav__link">
-    Step 1: Create the AMD Module for the Modal
+  <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
+    Creating Modal Dialogues in Moodle
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-include-javascript-in-your-plugin" class="md-nav__link">
-    Step 2: Include JavaScript in Your Plugin
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-form-in-a-modal" class="md-nav__link">
+    1. Form in a Modal
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-compile-the-javascript" class="md-nav__link">
-    Step 3: Compile the JavaScript
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-modal-types" class="md-nav__link">
+    2. Custom Modal Types
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-define-modal-contents-dynamically-optional" class="md-nav__link">
-    Step 4: Define Modal Contents Dynamically (Optional)
+        
+          <li class="md-nav__item">
+  <a href="#3-modal-with-templates" class="md-nav__link">
+    3. Modal with Templates
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-style-the-modal-optional" class="md-nav__link">
-    Step 5: Style the Modal (Optional)
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2025,37 +2031,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1-create-the-amd-module-for-the-modal" class="md-nav__link">
-    Step 1: Create the AMD Module for the Modal
+  <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
+    Creating Modal Dialogues in Moodle
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-include-javascript-in-your-plugin" class="md-nav__link">
-    Step 2: Include JavaScript in Your Plugin
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-form-in-a-modal" class="md-nav__link">
+    1. Form in a Modal
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-compile-the-javascript" class="md-nav__link">
-    Step 3: Compile the JavaScript
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-modal-types" class="md-nav__link">
+    2. Custom Modal Types
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-define-modal-contents-dynamically-optional" class="md-nav__link">
-    Step 4: Define Modal Contents Dynamically (Optional)
+        
+          <li class="md-nav__item">
+  <a href="#3-modal-with-templates" class="md-nav__link">
+    3. Modal with Templates
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-style-the-modal-optional" class="md-nav__link">
-    Step 5: Style the Modal (Optional)
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2082,140 +2094,253 @@
 
   <h1>Modal Dialogues</h1>
 
-<p>Modal dialogues are useful in Moodle for displaying information, collecting user inputs, and performing various interactive tasks without leaving the current page. Moodle provides a robust way to implement modal dialogues using its core JavaScript libraries and AMD modules.</p>
-<h2 id="step-1-create-the-amd-module-for-the-modal">Step 1: Create the AMD Module for the Modal</h2>
+<p>Modal dialogues are a useful UI component in Moodle for displaying content and interacting with users without navigating away from the current page. They are typically used for forms, confirmations, alerts, and other content that needs user interaction.</p>
+<ol>
+<li><strong>User Experience</strong>: Enhance the user experience by providing information or requesting input without leaving the current page.</li>
+<li><strong>Focus</strong>: Keep the user's focus on a specific task or piece of information.</li>
+<li><strong>Efficiency</strong>: Reduce page loads and provide a smoother, more interactive experience.</li>
+</ol>
+<h3 id="creating-modal-dialogues-in-moodle">Creating Modal Dialogues in Moodle</h3>
+<p>Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the <code>core/modal_factory</code> and <code>core/modal</code> AMD modules.</p>
 <ol>
 <li>
-<p><strong>Create the Directory Structure</strong>:</p>
-<ul>
-<li>Navigate to your plugin directory and create the necessary subdirectories: <code>amd/src</code>.</li>
-</ul>
+<p><strong>Load Required JavaScript Modules</strong></p>
+<p>Load the necessary JavaScript modules using Moodle's AMD loader.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourpluginname/modal_handler&#39;, &#39;init&#39;);</span>
+</code></pre></div>
 </li>
 <li>
-<p><strong>Write the JavaScript Code</strong>:</p>
-<ul>
-<li>Create a JavaScript file, e.g., <code>amd/src/modal.js</code>.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<p><strong>Create the Modal Handler</strong></p>
+<p>Create a JavaScript file in your plugin's <code>amd/src</code> directory, for example, <code>amd/src/modal_handler.js</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// Event listener for opening the modal</span><span class="w"></span>
-<span class="w">            </span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#open-modal&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
-<span class="w">                </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">SAVE_CANCEL</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Example Modal Title&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;This is an example modal content.&lt;/p&gt;&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="c1">// Action to perform when Save is clicked</span><span class="w"></span>
-<span class="w">                        </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Save clicked!&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="p">});</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Define the content for the modal</span><span class="w"></span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;This is the content of the modal.&lt;/p&gt;&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1">// Create the modal</span><span class="w"></span>
+<span class="w">            </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="w"></span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="c1">// Add event listeners</span><span class="w"></span>
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="c1">// Actions to perform when the modal is hidden</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
 <span class="w">                </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                </span><span class="c1">// Show the modal</span><span class="w"></span>
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
 <span class="w">            </span><span class="p">});</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </li>
-</ol>
-<h2 id="step-2-include-javascript-in-your-plugin">Step 2: Include JavaScript in Your Plugin</h2>
-<ol>
 <li>
-<p><strong>Require the AMD Module</strong>:</p>
-<ul>
-<li>In your plugin's PHP file (e.g., <code>view.php</code>), include the AMD module.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourpluginname/modal&#39;, &#39;init&#39;);</span>
+<p><strong>Add Strings for Internationalization</strong></p>
+<p>Define the strings used in your modal in the <code>lang/en/yourpluginname.php</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modaltitle&#39;] = &#39;Modal Title&#39;;</span>
 </code></pre></div>
 </li>
 <li>
-<p><strong>Add the Trigger Element in Your HTML</strong>:</p>
-<ul>
-<li>Add an element that will trigger the modal when clicked. This can be a button or a link.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;open-modal&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="p">&gt;</span>Open Modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</code></pre></div>
+<p><strong>Trigger the Modal</strong></p>
 </li>
 </ol>
-<h2 id="step-3-compile-the-javascript">Step 3: Compile the JavaScript</h2>
-<ol>
-<li>
-<p><strong>Compile Using Grunt</strong>:</p>
-<ul>
-<li>Navigate to your Moodle root directory and run the following commands to compile your JavaScript.</li>
-</ul>
-<div class="highlight"><pre><span></span><code>grunt amd
+<p>Add the necessary HTML and JavaScript to trigger the modal when needed. For example, you can trigger the modal when a button is clicked.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;showModal&quot;</span><span class="p">&gt;</span>Show Modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>This will compile the JavaScript files from <code>amd/src</code> to <code>amd/build</code>.</p>
-</li>
-</ol>
-<h2 id="step-4-define-modal-contents-dynamically-optional">Step 4: Define Modal Contents Dynamically (Optional)</h2>
-<p>If you need to load modal content dynamically (e.g., via AJAX), you can modify the JavaScript code:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;showModal&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;yourpluginname/modal_handler&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">modalHandler</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalHandler</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h3 id="advanced-usage">Advanced Usage</h3>
+<h4 id="1-form-in-a-modal">1. <strong>Form in a Modal</strong></h4>
+<p>You can also embed forms within a modal. Create a form as usual and place it in the modal content.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">,</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#open-modal&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
-<span class="w">                </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname_get_modal_content&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
-<span class="w">                            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">SAVE_CANCEL</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Dynamic Modal Title&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                            </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                            </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                                </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Save clicked!&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">                            </span><span class="p">});</span><span class="w"></span>
-<span class="w">                            </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
-<span class="w">                        </span><span class="p">});</span><span class="w"></span>
-<span class="w">                    </span><span class="p">},</span><span class="w"></span>
-<span class="w">                    </span><span class="nx">fail</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
-<span class="w">                    </span><span class="p">}</span><span class="w"></span>
-<span class="w">                </span><span class="p">}]);</span><span class="w"></span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;form id=&quot;modalForm&quot;&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;label for=&quot;inputField&quot;&gt;Input:&lt;/label&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;input type=&quot;text&quot; id=&quot;inputField&quot; name=&quot;inputField&quot;&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;/form&gt;&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="w"></span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#modalForm&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
+<span class="w">                    </span><span class="kd">var</span><span class="w"> </span><span class="nx">inputValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;inputField&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted with value:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                    </span><span class="c1">// Example AJAX request</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname_submit_form&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">},</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted successfully:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">                        </span><span class="p">},</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">fail</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Form submission failed:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}]);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
 <span class="w">            </span><span class="p">});</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
-<p>And in your PHP code, define the AJAX function:</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Define the AJAX function in externallib.php or similar file</span>
-<span class="x">public static function get_modal_content() {</span>
-<span class="x">    // Your logic to generate the content</span>
-<span class="x">    return array(&#39;content&#39; =&gt; &#39;&lt;p&gt;This is dynamically loaded content.&lt;/p&gt;&#39;);</span>
-<span class="x">}</span>
+<h4 id="2-custom-modal-types">2. <strong>Custom Modal Types</strong></h4>
+<p>Moodle provides different types of modals: <code>DEFAULT</code>, <code>SAVE_CANCEL</code>, and <code>ALERT</code>. You can use these to create different styles of modals.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">SAVE_CANCEL</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
 
-<span class="x">// Add to services.php</span>
-<span class="x">$functions = array(</span>
-<span class="x">    &#39;yourpluginname_get_modal_content&#39; =&gt; array(</span>
-<span class="x">        &#39;classname&#39;   =&gt; &#39;yourpluginname_external&#39;,</span>
-<span class="x">        &#39;methodname&#39;  =&gt; &#39;get_modal_content&#39;,</span>
-<span class="x">        &#39;classpath&#39;   =&gt; &#39;path/to/externallib.php&#39;,</span>
-<span class="x">        &#39;description&#39; =&gt; &#39;Get modal content&#39;,</span>
-<span class="x">        &#39;type&#39;        =&gt; &#39;read&#39;,</span>
-<span class="x">        &#39;ajax&#39;        =&gt; true,</span>
-<span class="x">    ),</span>
-<span class="x">);</span>
-</code></pre></div>
-<h2 id="step-5-style-the-modal-optional">Step 5: Style the Modal (Optional)</h2>
-<p>You can add custom styles to your modal by including a CSS file in your plugin. Create a <code>styles.css</code> file in your plugin's root directory and add the following:</p>
-<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">modal-body</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Save button clicked&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
 
-<span class="p">.</span><span class="nc">modal-header</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f5f5f5</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 </code></pre></div>
-<p>Include this CSS file in your PHP file:</p>
-<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;css(&#39;/path/to/yourpluginname/styles.css&#39;);</span>
+<h4 id="3-modal-with-templates">3. <strong>Modal with Templates</strong></h4>
+<p>Moodle's template system allows for more dynamic and maintainable code by separating HTML structure from JavaScript logic. This is particularly useful for creating complex modal dialogues. For example, you can dynamically choose which template to render based on the context or user interaction.</p>
+<ul>
+<li><strong>Separation of Concerns</strong>: Keep HTML and JavaScript separate for better readability and maintainability.</li>
+<li><strong>Reusability</strong>: Easily reuse templates across different parts of your plugin or even different plugins.</li>
+<li><strong>Flexibility</strong>: Dynamically render content based on context or user interaction.</li>
+</ul>
+<p><strong>Step 1: Create a Template</strong></p>
+<ol>
+<li>
+<p><strong>Create the Template File</strong>: Create a Mustache template file in your plugin’s <code>templates</code> directory. For example, <code>templates/modal_content.mustache</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-body&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{message}}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;modalForm&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;inputField&quot;</span><span class="p">&gt;</span>Input:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;inputField&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;inputField&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
-<h2 id="summary">Summary</h2>
-<p>Implementing modal dialogues in Moodle involves creating an AMD module that utilizes Moodle's core modal libraries, including the module in your PHP files, and optionally adding custom styles. You can further enhance the functionality by loading modal content dynamically using AJAX. This approach ensures that your modal dialogues are modular, maintainable, and integrated seamlessly with Moodle's architecture.</p>
+</li>
+</ol>
+<p><strong>Step 2: Load and Render the Template in JavaScript</strong></p>
+<ol>
+<li>
+<p><strong>Load Required JavaScript Modules</strong></p>
+<p>Load the necessary JavaScript modules using Moodle's AMD loader. Create a JavaScript file in your plugin's <code>amd/src</code> directory, for example, <code>amd/src/modal_handler.js</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">,</span><span class="w"> </span><span class="nx">Templates</span><span class="p">,</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Load the template and render it</span><span class="w"></span>
+<span class="w">            </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;yourpluginname/modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is a message&#39;</span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">html</span><span class="w"></span>
+<span class="w">                </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#modalForm&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
+<span class="w">                        </span><span class="kd">var</span><span class="w"> </span><span class="nx">inputValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;inputField&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted with value:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                        </span><span class="c1">// Example AJAX request</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname_submit_form&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">},</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted successfully:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
+<span class="w">                                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">                            </span><span class="p">},</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">fail</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Form submission failed:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">                            </span><span class="p">}</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}]);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">runTemplateJS</span><span class="p">(</span><span class="nx">js</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Failed to load template&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Include JavaScript in Your Plugin</strong></p>
+<p>Add the following line to your <code>view.php</code> or another relevant PHP file to load the JavaScript module.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourpluginname/modal_handler&#39;, &#39;init&#39;);</span>
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Step 3: Define Strings for Internationalization</strong></p>
+<p>Define the strings used in your modal in the <code>lang/en/yourpluginname.php</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modaltitle&#39;] = &#39;Modal Title&#39;;</span>
+</code></pre></div>
+<p><strong>Step 4: Trigger the Modal</strong></p>
+<p>Add the necessary HTML and JavaScript to trigger the modal when needed. For example, you can trigger the modal when a button is clicked.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;showModal&quot;</span><span class="p">&gt;</span>Show Modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;showModal&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;yourpluginname/modal_handler&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">modalHandler</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalHandler</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Advanced Usage</strong></p>
+<ol>
+<li>
+<p><strong>Dynamic Content</strong>: You can pass dynamic data to the template by modifying the context object passed to the <code>Templates.render</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Dynamic message&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">anotherfield</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Another value&#39;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;yourpluginname/modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Proceed as before</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Handling Multiple Templates</strong>: If your modal needs to load different templates based on the context, you can dynamically choose which template to render.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">templateName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">condition</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;yourpluginname/first_template&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname/second_template&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">templateName</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Proceed as before</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Complex Interactions</strong>: For complex interactions, you can define additional JavaScript logic within the template and execute it using <code>Templates.runTemplateJS(js)</code> after the modal is shown.</p>
+</li>
+</ol>
+<h3 id="summary">Summary</h3>
+<p>Modal dialogues in Moodle provide a powerful way to interact with users without navigating away from the current page. By using Moodle's <code>core/modal_factory</code> and <code>core/modal</code> modules, you can create dynamic and interactive modals for displaying information, capturing user input, and more. Always follow best practices for user experience, accessibility, and performance to ensure a high-quality implementation. For more detailed information and examples, refer to the <a href="https://moodledev.io/docs/4.5/guides/javascript/modal">official Moodle documentation</a>.</p>
 
               
             </article>

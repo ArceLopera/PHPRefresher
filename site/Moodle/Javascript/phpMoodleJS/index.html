@@ -2128,6 +2128,14 @@
 <li>Validate forms before submission.</li>
 <li>Dynamically update content without reloading the page.</li>
 </ul>
+<p>All Moodle JavaScript can use the same Mustache templates and translated strings which are available to Moodle PHP code, and the standard Moodle web service framework can be used to fetch and store data.</p>
+<p>Moodle uses vanilla JavaScript combined with helpers for performing common actions, and a small collection of libraries for serving and managing dependencies.</p>
+<p>The JavaScript documentation available on the Mozilla Developer Network is one of the best reference documentations available. You may find the following references particularly useful:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN JavaScript guide</a>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">MDN JavaScript Reference</a>.</li>
+<li><a href="https://devhints.io/es6">ES2015+ Cheat-sheet</a>.</li>
+</ul>
 <h3 id="loading-javascript-in-moodle">Loading JavaScript in Moodle</h3>
 <p>Moodle uses the AMD (Asynchronous Module Definition) format for loading JavaScript modules. This approach ensures modularity and prevents conflicts between different scripts.</p>
 <h4 id="step-1-creating-an-amd-module">Step 1: Creating an AMD Module</h4>
@@ -2152,6 +2160,7 @@
 </li>
 </ol>
 <h4 id="step-2-using-the-module-in-your-plugin">Step 2: Using the Module in Your Plugin</h4>
+<p>All new JavaScript in Moodle should use the ES2015+ module format, which is transpiled into the CommonJS format. Modules are loaded in the browser using the RequireJS loader.</p>
 <ol>
 <li>
 <p><strong>Include JavaScript in Your Plugin</strong>:</p>
