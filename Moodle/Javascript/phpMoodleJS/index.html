@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#loading-javascript-in-moodle" class="md-skip">
+        <a href="#modules" class="md-skip">
           Skip to content
         </a>
       
@@ -1876,6 +1876,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#loading-javascript-in-moodle" class="md-nav__link">
     Loading JavaScript in Moodle
   </a>
@@ -1901,39 +1909,44 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#adding-javascript-to-forms" class="md-nav__link">
     Adding JavaScript to Forms
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#using-javascript-for-ajax-requests" class="md-nav__link">
     Using JavaScript for AJAX Requests
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#debugging-javascript-in-moodle" class="md-nav__link">
     Debugging JavaScript in Moodle
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#best-practices-for-using-javascript-in-moodle" class="md-nav__link">
     Best Practices for Using JavaScript in Moodle
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2045,6 +2058,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#loading-javascript-in-moodle" class="md-nav__link">
     Loading JavaScript in Moodle
   </a>
@@ -2070,39 +2091,44 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#adding-javascript-to-forms" class="md-nav__link">
     Adding JavaScript to Forms
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#using-javascript-for-ajax-requests" class="md-nav__link">
     Using JavaScript for AJAX Requests
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#debugging-javascript-in-moodle" class="md-nav__link">
     Debugging JavaScript in Moodle
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#best-practices-for-using-javascript-in-moodle" class="md-nav__link">
     Best Practices for Using JavaScript in Moodle
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2136,9 +2162,35 @@
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">MDN JavaScript Reference</a>.</li>
 <li><a href="https://devhints.io/es6">ES2015+ Cheat-sheet</a>.</li>
 </ul>
+<h2 id="modules">Modules</h2>
+<p>JavaScript in Moodle is structured into ES2015 modules which are transpiled into the CommonJS format.</p>
+<p>Like the PHP classes and Mustache templates, JavaScript modules each belong to a particular component and must be named according to standard name and namespace conventions.</p>
+<p>The naming scheme for Moodle's JavaScript fits into the pattern:</p>
+<p>[component_name]/[optional/sub/namespace/][modulename]</p>
+<p>The first directory in any subfolder must be either a Moodle API, or local.</p>
+<p>The following are examples of valid module names:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// For a module named `discussion` in the `mod_forum` component:</span>
+<span class="x">mod_forum/discussion</span>
+
+<span class="x">// For a module named `grader` in the `mod_assign` component which is</span>
+<span class="x">// part of the `grades` API:</span>
+<span class="x">mod_assign/grades/grader</span>
+
+<span class="x">// For a module named `confirmation` in the `block_newsitems` component</span>
+<span class="x">// which is a modal and not part of a core API:</span>
+<span class="x">block_newsitems/local/modal/confirmation</span>
+
+<span class="x">// For a module name `selectors` in the `core_user` component and relates</span>
+<span class="x">// to the `participants` module:</span>
+<span class="x">core_user/local/participants/selectors</span>
+</code></pre></div>
+<p>More on <a href="https://moodledev.io/docs/4.5/guides/javascript/modules">Modules</a>.</p>
 <h3 id="loading-javascript-in-moodle">Loading JavaScript in Moodle</h3>
 <p>Moodle uses the AMD (Asynchronous Module Definition) format for loading JavaScript modules. This approach ensures modularity and prevents conflicts between different scripts.</p>
 <h4 id="step-1-creating-an-amd-module">Step 1: Creating an AMD Module</h4>
+<p>The convention in Moodle is to have one JavaScript Module which is your initial entrypoint. This usually provides a function called init which you then export from the module. This init function will be called by Moodle.</p>
+<p>Your module will probably also have one or more dependencies which you will import.</p>
+<p>As you start to build out the structure of your code you will start to export more functions, as well as Objects, Classes, and other data structures.</p>
 <ol>
 <li>
 <p><strong>Create a Directory</strong>: Create a directory named <code>amd</code> in your plugin's root directory. Inside <code>amd</code>, create two subdirectories: <code>src</code> (for source files) and <code>build</code> (for compiled files).</p>
@@ -2146,22 +2198,102 @@
 <li>
 <p><strong>Write Your JavaScript Code</strong>:</p>
 <ul>
-<li>Create a JavaScript file in the <code>amd/src</code> directory. For example, <code>amd/src/example.js</code>.</li>
+<li>Create a JavaScript file in the <code>amd/src</code> directory. For example, <code>amd/src/example.js</code>. A module which calls to the browser console.log function would look like:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([],</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// Your code here</span><span class="w"></span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;AMD module loaded!&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
+<p>In this example a new variable called init is created and exported using the ES2015 export keyword. The variable is assigned an arrow function expression which takes no arguments, and when executed will call the browser console.log function with the text "Hello, world!".</p>
+<p><strong>Listen to a DOM Event</strong>
+Usually you will want to perform an action in response to a user interacting with the page.</p>
+<p>You can use the document.addEventListener() method to do this.</p>
+<p>To add a click listener to the entire body you would write:
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></p>
+<p>In this example any time that a user clicks anywhere on the document the item that was clicked on will be logged to the browser console.</p>
+<p>Usually you won't want to listen for every click in the document but only for some Elements in the page.</p>
+<p>If you wanted to display a browser alert every time a user clicks on a button, you might have a template like the following example:</p>
+<p><div class="highlight"><pre><span></span><code> <span class="p">&lt;</span><span class="nt">button</span> <span class="na">data-action</span><span class="o">=</span><span class="s">&quot;mod_example/helloworld-update_button&quot;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+You can write a listener which looks for clicks to this button:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">Selectors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">showAlertButton</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;[data-action=&quot;mod_example/helloworld-update_button&quot;]&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="nx">Selectors</span><span class="p">.</span><span class="nx">actions</span><span class="p">.</span><span class="nx">showAlertButton</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Thank you for clicking on the button&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<p>This example shows several conventions that are used in Moodle:</p>
+<ul>
+<li>CSS Selectors are often stored separate to the code in a Selectors object. This allows you to re-use a Selector and to group them together in different ways. It also places all selectors in one place so that they're easier to update.</li>
+<li>The Selectors object is stored in a const variable which is <em>not</em> exported. This means that it's private and only available within your module.</li>
+<li>A data-* attribute is used to identify the button in the JavaScript module. Moodle advises not to use class selectors when attaching event listeners because so that it's easier to restyle for different themes without any changes to the JavaScript later.</li>
+<li>A namespace is used for the data-action to identify what the button is intended for.</li>
+<li>By using e.target.closest() you can check whether the element that was clicked on, or any of its parent elements matches the supplied CSS Selector.</li>
+</ul>
+<p>Instead of having one event listener for every button in your page, you can have one event listener which checks which button was pressed. If you have a template like the following:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">data-action</span><span class="o">=</span><span class="s">&quot;mod_example/helloworld-update_button&quot;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">data-action</span><span class="o">=</span><span class="s">&quot;mod_example/helloworld-big_red_button&quot;</span><span class="p">&gt;</span>Do not click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Then you can write one event listener which looks at all buttons on the page. For example:</p>
+<p>in <code>amd/src/local/helloworld/selectors.js</code>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">showAlertButton</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;[data-action=&quot;mod_example/helloworld-update_button&quot;]&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">bigRedButton</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;[data-action=&quot;mod_example/helloworld-big_red_button&quot;]&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+and in <code>amd/src/helloworld.js</code>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Selectors</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./local/helloworld/selectors&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">registerEventListeners</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="nx">Selectors</span><span class="p">.</span><span class="nx">actions</span><span class="p">.</span><span class="nx">showAlertButton</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Thank you for clicking on the button&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">closest</span><span class="p">(</span><span class="nx">Selectors</span><span class="p">.</span><span class="nx">actions</span><span class="p">.</span><span class="nx">bigRedButton</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;You shouldn&#39;t have clicked on that one!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">registerEventListeners</span><span class="p">();</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></p>
+<p>You will notice several key differences in this example when compared with the previous one:</p>
+<ul>
+<li>The list of Selectors has been moved to a new Module which is included using the import keyword. The new selectors module is a dependency of the helloworld module.</li>
+<li>The call to document.addEventListener has been moved to a new registerEventListeners function. This is another Moodle convention which encourages you to structure your code so that each part has clear responsibilities.</li>
+<li>One event listener is present and it checks if the Element clicked on was one that it's interested in.</li>
+</ul>
 </li>
 </ol>
 <h4 id="step-2-using-the-module-in-your-plugin">Step 2: Using the Module in Your Plugin</h4>
-<p>All new JavaScript in Moodle should use the ES2015+ module format, which is transpiled into the CommonJS format. Modules are loaded in the browser using the RequireJS loader.</p>
+<p>All new JavaScript in Moodle should use the ES2015+ module format, which is transpiled into the CommonJS format. Modules are loaded in the browser using the RequireJS loader. Once you have written a JavaScript module you need a way to include it within your content.</p>
+<p>Moodle has three main ways to include your JavaScript and the best way will depend on your content. These are:</p>
 <ol>
+<li>from a template via requirejs;</li>
+<li>from PHP via the output requirements API; and</li>
+<li>
+<p>from other JavaScript via import or requirejs.</p>
+</li>
 <li>
 <p><strong>Include JavaScript in Your Plugin</strong>:</p>
 <ul>
