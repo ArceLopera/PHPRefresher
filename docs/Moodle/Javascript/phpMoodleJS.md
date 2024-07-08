@@ -14,31 +14,173 @@ The JavaScript documentation available on the Mozilla Developer Network is one o
 + [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
 + [ES2015+ Cheat-sheet](https://devhints.io/es6).
 
+## Modules
+
+JavaScript in Moodle is structured into ES2015 modules which are transpiled into the CommonJS format.
+
+Like the PHP classes and Mustache templates, JavaScript modules each belong to a particular component and must be named according to standard name and namespace conventions.
+
+The naming scheme for Moodle's JavaScript fits into the pattern:
+
+[component_name]/[optional/sub/namespace/][modulename]
+
+The first directory in any subfolder must be either a Moodle API, or local.
+
+The following are examples of valid module names:
+
+```php
+// For a module named `discussion` in the `mod_forum` component:
+mod_forum/discussion
+
+// For a module named `grader` in the `mod_assign` component which is
+// part of the `grades` API:
+mod_assign/grades/grader
+
+// For a module named `confirmation` in the `block_newsitems` component
+// which is a modal and not part of a core API:
+block_newsitems/local/modal/confirmation
+
+// For a module name `selectors` in the `core_user` component and relates
+// to the `participants` module:
+core_user/local/participants/selectors
+```
+
+More on [Modules](https://moodledev.io/docs/4.5/guides/javascript/modules).
+
 ### Loading JavaScript in Moodle
 
 Moodle uses the AMD (Asynchronous Module Definition) format for loading JavaScript modules. This approach ensures modularity and prevents conflicts between different scripts.
 
 #### Step 1: Creating an AMD Module
 
+The convention in Moodle is to have one JavaScript Module which is your initial entrypoint. This usually provides a function called init which you then export from the module. This init function will be called by Moodle.
+
+Your module will probably also have one or more dependencies which you will import.
+
+As you start to build out the structure of your code you will start to export more functions, as well as Objects, Classes, and other data structures.
+
 1. **Create a Directory**: Create a directory named `amd` in your plugin's root directory. Inside `amd`, create two subdirectories: `src` (for source files) and `build` (for compiled files).
 
 2. **Write Your JavaScript Code**:
-    - Create a JavaScript file in the `amd/src` directory. For example, `amd/src/example.js`.
+    - Create a JavaScript file in the `amd/src` directory. For example, `amd/src/example.js`. A module which calls to the browser console.log function would look like:
 
     ```javascript
-    define([], function() {
-        return {
-            init: function() {
-                // Your code here
-                console.log('AMD module loaded!');
-            }
-        };
-    });
+    export const init = () => {
+        window.console.log('Hello, world!');
+    };
     ```
+
+    In this example a new variable called init is created and exported using the ES2015 export keyword. The variable is assigned an arrow function expression which takes no arguments, and when executed will call the browser console.log function with the text "Hello, world!".
+    
+    **Listen to a DOM Event**
+    Usually you will want to perform an action in response to a user interacting with the page.
+
+    You can use the document.addEventListener() method to do this.
+
+    To add a click listener to the entire body you would write:
+    ```javascript
+        export const init = () => {
+            document.addEventListener('click', e => {
+                window.console.log(e.target);
+        });
+    };
+    ```
+
+    In this example any time that a user clicks anywhere on the document the item that was clicked on will be logged to the browser console.
+
+    Usually you won't want to listen for every click in the document but only for some Elements in the page.
+
+    If you wanted to display a browser alert every time a user clicks on a button, you might have a template like the following example:
+
+    ```html
+     <button data-action="mod_example/helloworld-update_button">Click me</button>
+    ```
+    You can write a listener which looks for clicks to this button:
+
+    ```javascript
+    const Selectors = {
+        actions: {
+            showAlertButton: '[data-action="mod_example/helloworld-update_button"]',
+        },
+    };
+
+    export const init = () => {
+        document.addEventListener('click', e => {
+            if (e.target.closest(Selectors.actions.showAlertButton)) {
+                window.alert("Thank you for clicking on the button");
+            }
+        });
+    };
+    ```
+
+    This example shows several conventions that are used in Moodle:
+
+    - CSS Selectors are often stored separate to the code in a Selectors object. This allows you to re-use a Selector and to group them together in different ways. It also places all selectors in one place so that they're easier to update.
+    - The Selectors object is stored in a const variable which is _not_ exported. This means that it's private and only available within your module.
+    - A data-* attribute is used to identify the button in the JavaScript module. Moodle advises not to use class selectors when attaching event listeners because so that it's easier to restyle for different themes without any changes to the JavaScript later.
+    - A namespace is used for the data-action to identify what the button is intended for.
+    - By using e.target.closest() you can check whether the element that was clicked on, or any of its parent elements matches the supplied CSS Selector.
+
+    Instead of having one event listener for every button in your page, you can have one event listener which checks which button was pressed. If you have a template like the following:
+
+    ```html
+
+    <div>
+        <button data-action="mod_example/helloworld-update_button">Click me</button>
+        <button data-action="mod_example/helloworld-big_red_button">Do not click me</button>
+    </div>
+
+    ```
+
+    Then you can write one event listener which looks at all buttons on the page. For example:
+
+    in `amd/src/local/helloworld/selectors.js`
+    ```javascript
+    export default {
+        actions: {
+            showAlertButton: '[data-action="mod_example/helloworld-update_button"]',
+            bigRedButton: '[data-action="mod_example/helloworld-big_red_button"]',
+        },
+    };
+    ```
+    and in `amd/src/helloworld.js`
+    ```javascript
+    import Selectors from './local/helloworld/selectors';
+
+    const registerEventListeners = () => {
+        document.addEventListener('click', e => {
+            if (e.target.closest(Selectors.actions.showAlertButton)) {
+                window.alert("Thank you for clicking on the button");
+            }
+
+            if (e.target.closest(Selectors.actions.bigRedButton)) {
+                window.alert("You shouldn't have clicked on that one!");
+            }
+        });
+    };
+
+    export const init = () => {
+        registerEventListeners();
+    };
+    ```
+
+    You will notice several key differences in this example when compared with the previous one:
+
+    - The list of Selectors has been moved to a new Module which is included using the import keyword. The new selectors module is a dependency of the helloworld module.
+    - The call to document.addEventListener has been moved to a new registerEventListeners function. This is another Moodle convention which encourages you to structure your code so that each part has clear responsibilities.
+    - One event listener is present and it checks if the Element clicked on was one that it's interested in.
+
 
 #### Step 2: Using the Module in Your Plugin
 
-All new JavaScript in Moodle should use the ES2015+ module format, which is transpiled into the CommonJS format. Modules are loaded in the browser using the RequireJS loader.
+All new JavaScript in Moodle should use the ES2015+ module format, which is transpiled into the CommonJS format. Modules are loaded in the browser using the RequireJS loader. Once you have written a JavaScript module you need a way to include it within your content.
+
+Moodle has three main ways to include your JavaScript and the best way will depend on your content. These are:
+
+1. from a template via requirejs;
+2. from PHP via the output requirements API; and
+3. from other JavaScript via import or requirejs.
+
 
 1. **Include JavaScript in Your Plugin**:
     - Moodle uses RequireJS to load AMD modules. Add the following line to your `view.php` or another relevant PHP file to load the JavaScript module.
