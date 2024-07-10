@@ -181,24 +181,82 @@ Moodle has three main ways to include your JavaScript and the best way will depe
 2. from PHP via the output requirements API; and
 3. from other JavaScript via import or requirejs.
 
+##### Including from a template
+Most recent code in Moodle makes heavy use of Mustache templates and you will often find that your JavaScript is directly linked to the content of one of your templates.
 
-1. **Include JavaScript in Your Plugin**:
-    - Moodle uses RequireJS to load AMD modules. Add the following line to your `view.php` or another relevant PHP file to load the JavaScript module.
+All JavaScript in Mustache templates must be places in a {{#js}} tag. This tag ensures that all JavaScript is called in a consistent and reliable way.
 
-    ```php
-    $PAGE->requires->js_call_amd('yourpluginname/example', 'init');
-    ```
+**You shouldn't add too much JavaScript directly to a template. JavaScript placed directly into Templates isn't transpiled for consistent use in all browsers and it isn't passed through minification processes. Some browser-specific features won't be available.**
 
-2. **Compile the JavaScript**:
-    - Moodle uses Grunt to compile JavaScript files. Ensure you have Node.js and npm installed, then install Grunt and the required dependencies.
+This simplest form of this is:
 
-    ```bash
-    cd path/to/your/moodle
-    npm install
-    grunt amd
-    ```
+```html
+<div>
+    <!—- Your template content goes here. —->
+</div>
 
-    This command compiles your JavaScript files from `amd/src` to `amd/build`.
+{{#js}}
+require(['mod_forum/discussion'], function(Discussion) {
+    Discussion.init();
+});
+{{/js}}
+```
+
+Any time that this template is rendered and placed on the page the mod_forum/discussion module will be fetched and the init() function called on it.
+
+Often you may want to link the JavaScript to a specific DOMElement in the template. You can use the {{uniqid}} Mustache tag to give that DOM Element a unique ID and then pass that into the Module.
+
+```html
+<div id="mod_forum-discussion-wrapper-{{uniqid}}">
+    <!—- Your template content goes here. —->
+</div>
+
+{{#js}}
+require(['mod_forum/discussion'], function(Discussion) {
+    Discussion.init(document.querySelector("mod_forum-discussion-wrapper-{{uniqid}}"));
+});
+{{/js}}
+```
+
+In this example you have added a new id to the div element. You then fetch the DOM Element using this id and pass it into the init function.
+
+**The {{uniqid}} tag gives a new unique string for each rendered template including all its children. It isn't a true unique id and must be combined with other information in the template to make it unique.**
+
+##### Including from PHP
+Much of Moodle's code still creates HTML content in PHP directly. This might be a simple echo statement or using the html_writer output functions. A lot of this content is being migrated to use Mustache Templates which are the recommended approach for new content.
+
+Where content is generated in PHP you will need to include your JavaScript at the same time.
+
+Although several older ways to include JavaScript from PHP, it's strongly recommended that all new JavaScript only use the js_call_amd function on the page_requirements_manager. This has a similar format to the version used in Templates:
+
+```php
+// Call the `init` function on `mod_forum/discussion`.
+$PAGE->requires->js_call_amd('mod_forum/discussion', 'init');
+```
+The js_call_amd function turns this into a requirejs call.
+
+You can also pass arguments to your function by passing an array as the third argument to js_call_amd, for example:
+
+```php
+// Call the `init` function on `mod_forum/discussion`.
+$PAGE->requires->js_call_amd('mod_forum/discussion', 'init', [$course->id]);
+```
+If you pass a multi-dimensional array as the third argument, then you can use Array destructuring within the JavaScript to get named values.
+
+```php
+$PAGE->requires->js_call_amd('mod_forum/discussion', 'init', [[
+    'courseid' => $course->id,
+    'categoryid' => $course->category,
+]]);
+```
+```	javascript
+export const init = ({courseid, category}) => {
+    window.console.log(courseid);
+    window.console.log(category);
+};
+```
+**A limit applies to the length of the parameters passed in the third argument. If data is already available elsewhere in the DOM, you should avoid passing it as a parameter.**
+
 
 ### Adding JavaScript to Forms
 
