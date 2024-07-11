@@ -1911,6 +1911,47 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passing-data-to-your-module" class="md-nav__link">
+    Passing data to your Module
+  </a>
+  
+    <nav class="md-nav" aria-label="Passing data to your Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using-data-attributes-in-html" class="md-nav__link">
+    1. Using data- Attributes in HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-passing-data-into-js_call_amd" class="md-nav__link">
+    2. Passing Data into js_call_amd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-using-web-services" class="md-nav__link">
+    3. Using Web Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#adding-javascript-to-forms" class="md-nav__link">
     Adding JavaScript to Forms
   </a>
@@ -1939,7 +1980,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#summary_1" class="md-nav__link">
     Summary
   </a>
   
@@ -2093,6 +2134,47 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passing-data-to-your-module" class="md-nav__link">
+    Passing data to your Module
+  </a>
+  
+    <nav class="md-nav" aria-label="Passing data to your Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-using-data-attributes-in-html" class="md-nav__link">
+    1. Using data- Attributes in HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-passing-data-into-js_call_amd" class="md-nav__link">
+    2. Passing Data into js_call_amd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-using-web-services" class="md-nav__link">
+    3. Using Web Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#adding-javascript-to-forms" class="md-nav__link">
     Adding JavaScript to Forms
   </a>
@@ -2121,7 +2203,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
+  <a href="#summary_1" class="md-nav__link">
     Summary
   </a>
   
@@ -2346,6 +2428,170 @@ If you pass a multi-dimensional array as the third argument, then you can use Ar
 <span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <strong>A limit applies to the length of the parameters passed in the third argument. If data is already available elsewhere in the DOM, you should avoid passing it as a parameter.</strong></p>
+<h3 id="passing-data-to-your-module">Passing data to your Module</h3>
+<p>You will often need to work with data as part of your JavaScript module. This might be simple data, like the a database id, or it may be more complex like full Objects.</p>
+<p>Moodle provides several ways to achieve this:</p>
+<ul>
+<li>you can pass a small amount of data into the module initialisation, but this is no longer recommended</li>
+<li>you can store this data in the DOM as a data attribute which is fetched in your code</li>
+<li>a Moodle Web Service can be used to fetch more complex data structures dynamically</li>
+</ul>
+<h4 id="1-using-data-attributes-in-html">1. Using <code>data-</code> Attributes in HTML</h4>
+<p><code>data-</code> attributes allow embedding custom data attributes directly into HTML elements. These attributes can then be accessed and manipulated using JavaScript. This method is simple and works well for passing static or small amounts of data.</p>
+<p><strong>How to Use:</strong></p>
+<ol>
+<li>
+<p><strong>Add <code>data-</code> Attributes in HTML:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myButton&quot;</span> <span class="na">data-userid</span><span class="o">=</span><span class="s">&quot;123&quot;</span> <span class="na">data-username</span><span class="o">=</span><span class="s">&quot;JohnDoe&quot;</span><span class="p">&gt;</span>Click me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Access <code>data-</code> Attributes in JavaScript:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myButton&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-userid&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-username&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User ID:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User Name:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">userName</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><strong>Simplicity</strong>: Easy to implement and understand.</li>
+<li><strong>Readability</strong>: Keeps HTML and JavaScript code clean and readable.</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li><strong>Static Data</strong>: Not suitable for dynamic data that changes frequently.</li>
+<li><strong>Security</strong>: Data is exposed in the HTML source and can be manipulated by users.</li>
+</ul>
+<h4 id="2-passing-data-into-js_call_amd">2. Passing Data into <code>js_call_amd</code></h4>
+<p>Moodle's <code>js_call_amd</code> function is used to load and initialize AMD (Asynchronous Module Definition) modules. You can pass data from PHP to JavaScript through this function.</p>
+<p><strong>How to Use:</strong></p>
+<ol>
+<li>
+<p><strong>Define Data in PHP:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">$data = array(</span>
+<span class="x">    &#39;userId&#39; =&gt; 123,</span>
+<span class="x">    &#39;userName&#39; =&gt; &#39;JohnDoe&#39;</span>
+<span class="x">);</span>
+<span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourpluginname/yourmodule&#39;, &#39;init&#39;, array($data));</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Receive Data in JavaScript:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([],</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User ID:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">userId</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User Name:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">userName</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><strong>Dynamic Data</strong>: Allows passing dynamic data generated on the server-side.</li>
+<li><strong>Encapsulation</strong>: Keeps data encapsulated within the module, enhancing security.</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li><strong>Data Size</strong>: Limited by the size of the data that can be reasonably included in the HTML output.</li>
+<li><strong>Serialization</strong>: Complex data structures might need to be serialized and deserialized, adding overhead.</li>
+</ul>
+<h4 id="3-using-web-services">3. Using Web Services</h4>
+<p>Web services are the most flexible and powerful method for passing data between server-side and client-side in Moodle. They allow for asynchronous communication and can handle complex data structures and large amounts of data.</p>
+<p><strong>How to Use:</strong></p>
+<ol>
+<li>
+<p><strong>Define a Web Service Function:</strong></p>
+<p>In <code>db/services.php</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = array(</span>
+<span class="x">    &#39;yourpluginname_get_user_data&#39; =&gt; array(</span>
+<span class="x">        &#39;classname&#39;   =&gt; &#39;yourpluginname_external&#39;,</span>
+<span class="x">        &#39;methodname&#39;  =&gt; &#39;get_user_data&#39;,</span>
+<span class="x">        &#39;classpath&#39;   =&gt; &#39;yourpluginname/externallib.php&#39;,</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Get user data&#39;,</span>
+<span class="x">        &#39;type&#39;        =&gt; &#39;read&#39;,</span>
+<span class="x">        &#39;ajax&#39;        =&gt; true</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+
+<span class="x">$services = array(</span>
+<span class="x">    &#39;Your Plugin Services&#39; =&gt; array(</span>
+<span class="x">        &#39;functions&#39; =&gt; array(&#39;yourpluginname_get_user_data&#39;),</span>
+<span class="x">        &#39;restrictedusers&#39; =&gt; 0,</span>
+<span class="x">        &#39;enabled&#39; =&gt; 1,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Implement the Web Service Function:</strong></p>
+<p>In <code>externallib.php</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class yourpluginname_external extends external_api {</span>
+<span class="x">    public static function get_user_data_parameters() {</span>
+<span class="x">        return new external_function_parameters(array());</span>
+<span class="x">    }</span>
+
+<span class="x">    public static function get_user_data() {</span>
+<span class="x">        global $USER;</span>
+<span class="x">        return array(&#39;userId&#39; =&gt; $USER-&gt;id, &#39;userName&#39; =&gt; $USER-&gt;username);</span>
+<span class="x">    }</span>
+
+<span class="x">    public static function get_user_data_returns() {</span>
+<span class="x">        return new external_single_structure(array(</span>
+<span class="x">            &#39;userId&#39; =&gt; new external_value(PARAM_INT, &#39;User ID&#39;),</span>
+<span class="x">            &#39;userName&#39; =&gt; new external_value(PARAM_TEXT, &#39;User Name&#39;),</span>
+<span class="x">        ));</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Call the Web Service in JavaScript:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/ajax&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Ajax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname_get_user_data&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">                </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User ID:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">userId</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User Name:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">userName</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nx">fail</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}]);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><strong>Flexibility</strong>: Handles complex and dynamic data structures.</li>
+<li><strong>Scalability</strong>: Suitable for large data transfers and asynchronous operations.</li>
+<li><strong>Security</strong>: Allows for secure data transfer with proper authentication and validation.</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li><strong>Complexity</strong>: Requires more setup and understanding of Moodle's web service API.</li>
+<li><strong>Performance</strong>: Additional overhead for making HTTP requests.</li>
+</ul>
+<h4 id="summary">Summary</h4>
+<p>Each method for passing data in Moodle plugin development has its own use cases, advantages, and limitations. </p>
+<ul>
+<li><strong><code>data-</code> Attributes</strong>: Best for static or small amounts of data, simple to implement but exposed in HTML.</li>
+<li><strong><code>js_call_amd</code></strong>: Suitable for passing dynamic data from PHP to JavaScript within reasonable size limits.</li>
+<li><strong>Web Services</strong>: The most flexible and powerful method, suitable for complex and large data, but requires more setup.</li>
+</ul>
+<p>Choose the method that best fits your requirements and follow Moodle's best practices for implementation. </p>
 <h3 id="adding-javascript-to-forms">Adding JavaScript to Forms</h3>
 <ol>
 <li>
@@ -2430,7 +2676,7 @@ Moodle provides a way to make AJAX calls using the <code>core/ajax</code> module
 <li><strong>Accessibility</strong>: Ensure that your JavaScript enhances accessibility and does not hinder it.</li>
 <li><strong>Security</strong>: Validate and sanitize inputs to prevent XSS and other security vulnerabilities.</li>
 </ol>
-<h3 id="summary">Summary</h3>
+<h3 id="summary_1">Summary</h3>
 <p>Using JavaScript in Moodle enhances the interactivity and functionality of your plugins. By following the AMD module format, integrating with Moodle forms, and making AJAX calls, you can create dynamic and responsive plugins. Always follow best practices for modularity, performance, accessibility, and security to ensure a high-quality user experience. For more detailed information and examples, refer to the <a href="https://moodledev.io/docs/4.4/guides/javascript">official Moodle documentation</a>.</p>
 
               

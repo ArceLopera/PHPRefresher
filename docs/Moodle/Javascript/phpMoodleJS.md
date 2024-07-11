@@ -257,6 +257,185 @@ export const init = ({courseid, category}) => {
 ```
 **A limit applies to the length of the parameters passed in the third argument. If data is already available elsewhere in the DOM, you should avoid passing it as a parameter.**
 
+### Passing data to your Module
+You will often need to work with data as part of your JavaScript module. This might be simple data, like the a database id, or it may be more complex like full Objects.
+
+Moodle provides several ways to achieve this:
+
++ you can pass a small amount of data into the module initialisation, but this is no longer recommended
++ you can store this data in the DOM as a data attribute which is fetched in your code
++ a Moodle Web Service can be used to fetch more complex data structures dynamically
+
+#### 1. Using `data-` Attributes in HTML
+
+`data-` attributes allow embedding custom data attributes directly into HTML elements. These attributes can then be accessed and manipulated using JavaScript. This method is simple and works well for passing static or small amounts of data.
+
+**How to Use:**
+
+1. **Add `data-` Attributes in HTML:**
+
+    ```html
+    <button id="myButton" data-userid="123" data-username="JohnDoe">Click me</button>
+    ```
+
+2. **Access `data-` Attributes in JavaScript:**
+
+    ```javascript
+    document.getElementById('myButton').addEventListener('click', function() {
+        var userId = this.getAttribute('data-userid');
+        var userName = this.getAttribute('data-username');
+        console.log('User ID:', userId);
+        console.log('User Name:', userName);
+    });
+    ```
+
+**Advantages:**
+
+- **Simplicity**: Easy to implement and understand.
+- **Readability**: Keeps HTML and JavaScript code clean and readable.
+
+**Limitations:**
+
+- **Static Data**: Not suitable for dynamic data that changes frequently.
+- **Security**: Data is exposed in the HTML source and can be manipulated by users.
+
+#### 2. Passing Data into `js_call_amd`
+
+Moodle's `js_call_amd` function is used to load and initialize AMD (Asynchronous Module Definition) modules. You can pass data from PHP to JavaScript through this function.
+
+**How to Use:**
+
+1. **Define Data in PHP:**
+
+    ```php
+    $data = array(
+        'userId' => 123,
+        'userName' => 'JohnDoe'
+    );
+    $PAGE->requires->js_call_amd('yourpluginname/yourmodule', 'init', array($data));
+    ```
+
+2. **Receive Data in JavaScript:**
+
+    ```javascript
+    define([], function() {
+        return {
+            init: function(data) {
+                console.log('User ID:', data.userId);
+                console.log('User Name:', data.userName);
+            }
+        };
+    });
+    ```
+
+**Advantages:**
+
+- **Dynamic Data**: Allows passing dynamic data generated on the server-side.
+- **Encapsulation**: Keeps data encapsulated within the module, enhancing security.
+
+**Limitations:**
+
+- **Data Size**: Limited by the size of the data that can be reasonably included in the HTML output.
+- **Serialization**: Complex data structures might need to be serialized and deserialized, adding overhead.
+
+#### 3. Using Web Services
+
+Web services are the most flexible and powerful method for passing data between server-side and client-side in Moodle. They allow for asynchronous communication and can handle complex data structures and large amounts of data.
+
+**How to Use:**
+
+1. **Define a Web Service Function:**
+
+    In `db/services.php`:
+
+    ```php
+    $functions = array(
+        'yourpluginname_get_user_data' => array(
+            'classname'   => 'yourpluginname_external',
+            'methodname'  => 'get_user_data',
+            'classpath'   => 'yourpluginname/externallib.php',
+            'description' => 'Get user data',
+            'type'        => 'read',
+            'ajax'        => true
+        ),
+    );
+
+    $services = array(
+        'Your Plugin Services' => array(
+            'functions' => array('yourpluginname_get_user_data'),
+            'restrictedusers' => 0,
+            'enabled' => 1,
+        ),
+    );
+    ```
+
+2. **Implement the Web Service Function:**
+
+    In `externallib.php`:
+
+    ```php
+    class yourpluginname_external extends external_api {
+        public static function get_user_data_parameters() {
+            return new external_function_parameters(array());
+        }
+
+        public static function get_user_data() {
+            global $USER;
+            return array('userId' => $USER->id, 'userName' => $USER->username);
+        }
+
+        public static function get_user_data_returns() {
+            return new external_single_structure(array(
+                'userId' => new external_value(PARAM_INT, 'User ID'),
+                'userName' => new external_value(PARAM_TEXT, 'User Name'),
+            ));
+        }
+    }
+    ```
+
+3. **Call the Web Service in JavaScript:**
+
+    ```javascript
+    define(['core/ajax'], function(Ajax) {
+        return {
+            init: function() {
+                Ajax.call([{
+                    methodname: 'yourpluginname_get_user_data',
+                    args: {},
+                    done: function(response) {
+                        console.log('User ID:', response.userId);
+                        console.log('User Name:', response.userName);
+                    },
+                    fail: function(error) {
+                        console.error('Error:', error);
+                    }
+                }]);
+            }
+        };
+    });
+    ```
+
+**Advantages:**
+
+- **Flexibility**: Handles complex and dynamic data structures.
+- **Scalability**: Suitable for large data transfers and asynchronous operations.
+- **Security**: Allows for secure data transfer with proper authentication and validation.
+
+**Limitations:**
+
+- **Complexity**: Requires more setup and understanding of Moodle's web service API.
+- **Performance**: Additional overhead for making HTTP requests.
+
+#### Summary
+
+Each method for passing data in Moodle plugin development has its own use cases, advantages, and limitations. 
+
+- **`data-` Attributes**: Best for static or small amounts of data, simple to implement but exposed in HTML.
+- **`js_call_amd`**: Suitable for passing dynamic data from PHP to JavaScript within reasonable size limits.
+- **Web Services**: The most flexible and powerful method, suitable for complex and large data, but requires more setup.
+
+Choose the method that best fits your requirements and follow Moodle's best practices for implementation. 
+
 
 ### Adding JavaScript to Forms
 
