@@ -105,39 +105,6 @@ define(['core/ajax'], function(Ajax) {
 });
 ```
 
-### Example Usage in Moodle
-
-Let’s consider a more detailed example where we create a function to load user data, process it, and handle any errors:
-
-```javascript
-define(['core/ajax'], function(Ajax) {
-    return {
-        loadUserData: function() {
-            return Ajax.call([{
-                methodname: 'yourpluginname_get_user_data',
-                args: {}
-            }]);
-        },
-
-        displayUserData: function() {
-            return this.loadUserData().then(function(response) {
-                // Process the response and display user data
-                var userId = response.userId;
-                var userName = response.userName;
-                console.log('User ID:', userId);
-                console.log('User Name:', userName);
-
-                // Assuming further processing or UI updates
-                return response; // Return the processed data for further chaining
-            }).catch(function(error) {
-                console.error('Error loading user data:', error);
-                // Handle the error, e.g., show an error message to the user
-            });
-        }
-    };
-});
-```
-
 In this example:
 
 1. **loadUserData**: This function creates and returns a promise for loading user data using an AJAX call.

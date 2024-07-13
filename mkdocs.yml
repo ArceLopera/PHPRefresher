@@ -172,6 +172,7 @@ nav:
      - XMLDB tool: Moodle/phpMoodleXMLDB.md
      - Javascript:
             - General: Moodle/Javascript/phpMoodleJS.md
+            - Tools: Moodle/Javascript/phpMoodleJSTools.md
             - Promises: Moodle/Javascript/phpMoodlePromises.md
             - Modal Dialogues: Moodle/Javascript/phpMoodleModal.md
      - Subsystems:
