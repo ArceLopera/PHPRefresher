@@ -1966,6 +1966,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#working-with-strings" class="md-nav__link">
+    Working with Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-vs-jquery-promises" class="md-nav__link">
+    NATIVE VS JQUERY PROMISES
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#debugging-javascript-in-moodle" class="md-nav__link">
     Debugging JavaScript in Moodle
   </a>
@@ -2199,6 +2219,26 @@
   <a href="#using-javascript-for-ajax-requests" class="md-nav__link">
     Using JavaScript for AJAX Requests
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-strings" class="md-nav__link">
+    Working with Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#native-vs-jquery-promises" class="md-nav__link">
+    NATIVE VS JQUERY PROMISES
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2668,6 +2708,33 @@ Moodle provides a way to make AJAX calls using the <code>core/ajax</code> module
 <span class="w">    </span><span class="p">};</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
+<h3 id="working-with-strings">Working with Strings</h3>
+<p>One of the most helpful core modules is core/str which allows you to fetch and render language Strings in JavaScript.</p>
+<p>The core/str module has several core methods to support fetching strings:</p>
+<ul>
+<li>getString - fetch a single string, returned in a native Promise</li>
+<li>getStrings - fetch a set of strings, returned in an array of native Promises</li>
+<li>get_string - fetch a single string, returned in a jQuery Promise</li>
+<li>get_strings - fetch a set of strings, returned in an array of jQuery Promises
+Strings are fetched on request from Moodle, and are then cached in LocalStorage.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">closeString</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">closeString</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">closeString</span><span class="p">;</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="p">.</span><span class="k">catch</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+<h4 id="native-vs-jquery-promises">NATIVE VS JQUERY PROMISES</h4>
+<p>The getString and getStrings methods should be preferred from Moodle 4.3 onwards. These return native Promises, which differ slightly in behaviour from jQuery Promises.</p>
+<p>Care should be taken in the following scenarios:</p>
+<ul>
+<li>when writing a plugin which supports Moodle 4.2 or earlier, you must use the get_string and get_strings methods</li>
+<li>you should never use .done or .fail as they do not exist in the native Promise specification, and their failure behaviour differs</li>
+</ul>
 <h3 id="debugging-javascript-in-moodle">Debugging JavaScript in Moodle</h3>
 <ol>
 <li>
