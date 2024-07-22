@@ -175,6 +175,7 @@ nav:
             - Tools: Moodle/Javascript/phpMoodleJSTools.md
             - Promises: Moodle/Javascript/phpMoodlePromises.md
             - Modal Dialogues: Moodle/Javascript/phpMoodleModal.md
+            - AJAX : Moodle/Javascript/phpMoodleAJAX.md
      - Subsystems:
             - External Services: Moodle/phpMoodleServices.md
 
