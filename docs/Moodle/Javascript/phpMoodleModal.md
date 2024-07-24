@@ -4,6 +4,14 @@ Modal dialogues are a useful UI component in Moodle for displaying content and i
 2. **Focus**: Keep the user's focus on a specific task or piece of information.
 3. **Efficiency**: Reduce page loads and provide a smoother, more interactive experience.
 
+The use of modal modules provides a simplified developer experience for creating modal dialogues within Moodle.
+
+The module attempts to ensure that all accessibility requirements are met, including applying the correct aria roles, focus control, aria hiding background elements, and locking keyboard navigation.
+
+Modals will fire events for common actions that occur within the modal for other code to listen to and react accordingly.
+
+Moodle ships with several standard modal types for you to re-use including a simple cancel modal, and a save/cancel modal.
+
 ### Creating Modal Dialogues in Moodle
 
 Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the `core/modal_factory` and `core/modal` AMD modules.
