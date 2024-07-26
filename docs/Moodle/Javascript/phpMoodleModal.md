@@ -12,6 +12,31 @@ Modals will fire events for common actions that occur within the modal for other
 
 Moodle ships with several standard modal types for you to re-use including a simple cancel modal, and a save/cancel modal.
 
+### Creating a basic modal - Since 4.3
+
+Modals can be created by calling the static create method on the modal type you wish to create, for example:
+
+
+```javascript
+// Creating a standard modal
+import Modal from 'core/modal';
+
+export const init = async () => {
+    const modal = await Modal.create({
+        title: 'Test title',
+        body: '<p>Example body content</p>',
+        footer: 'An example footer content',
+        show: true,
+        removeOnClose: true,
+    });
+}
+```
+
+Other standard options are described in the JS Documentation for the MoodleConfig type.
+
+**SUPPORT FOR EARLIER VERSIONS**
+If you are supporting an earlier version of Moodle, then you must use the Modal Factory and register your modal.
+
 ### Creating Modal Dialogues in Moodle
 
 Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the `core/modal_factory` and `core/modal` AMD modules.
