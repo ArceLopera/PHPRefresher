@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-modal-dialogues-in-moodle" class="md-skip">
+        <a href="#creating-a-basic-modal-since-43" class="md-skip">
           Skip to content
         </a>
       
@@ -1918,6 +1918,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#creating-a-basic-modal-since-43" class="md-nav__link">
+    Creating a basic modal - Since 4.3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
     Creating Modal Dialogues in Moodle
   </a>
@@ -2073,6 +2080,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#creating-a-basic-modal-since-43" class="md-nav__link">
+    Creating a basic modal - Since 4.3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
     Creating Modal Dialogues in Moodle
   </a>
@@ -2146,6 +2160,24 @@
 <p>The module attempts to ensure that all accessibility requirements are met, including applying the correct aria roles, focus control, aria hiding background elements, and locking keyboard navigation.</p>
 <p>Modals will fire events for common actions that occur within the modal for other code to listen to and react accordingly.</p>
 <p>Moodle ships with several standard modal types for you to re-use including a simple cancel modal, and a save/cancel modal.</p>
+<h3 id="creating-a-basic-modal-since-43">Creating a basic modal - Since 4.3</h3>
+<p>Modals can be created by calling the static create method on the modal type you wish to create, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Creating a standard modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Modal</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;Example body content&lt;/p&gt;&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">show</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">removeOnClose</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Other standard options are described in the JS Documentation for the MoodleConfig type.</p>
+<p><strong>SUPPORT FOR EARLIER VERSIONS</strong>
+If you are supporting an earlier version of Moodle, then you must use the Modal Factory and register your modal.</p>
 <h3 id="creating-modal-dialogues-in-moodle">Creating Modal Dialogues in Moodle</h3>
 <p>Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the <code>core/modal_factory</code> and <code>core/modal</code> AMD modules.</p>
 <ol>
