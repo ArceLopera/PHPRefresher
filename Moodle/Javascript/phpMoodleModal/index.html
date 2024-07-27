@@ -1925,6 +1925,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#modal-factory" class="md-nav__link">
+    Modal Factory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instantiating-modal-types" class="md-nav__link">
+    Instantiating modal types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-modal-type" class="md-nav__link">
+    Creating a custom modal type
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom modal type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-default-configuration" class="md-nav__link">
+    Overriding default configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
     Creating Modal Dialogues in Moodle
   </a>
@@ -2087,6 +2121,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#modal-factory" class="md-nav__link">
+    Modal Factory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instantiating-modal-types" class="md-nav__link">
+    Instantiating modal types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-modal-type" class="md-nav__link">
+    Creating a custom modal type
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom modal type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-default-configuration" class="md-nav__link">
+    Overriding default configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
     Creating Modal Dialogues in Moodle
   </a>
@@ -2178,6 +2246,210 @@
 <p>Other standard options are described in the JS Documentation for the MoodleConfig type.</p>
 <p><strong>SUPPORT FOR EARLIER VERSIONS</strong>
 If you are supporting an earlier version of Moodle, then you must use the Modal Factory and register your modal.</p>
+<h3 id="modal-factory">Modal Factory</h3>
+<p>The Modal Factory can be used to instantiate a new Modal. The factory provides a create function, accepting some configuration which is used to create the modal instance, and an optional trigger element. The create function returns a Promise that is resolved with the created modal.</p>
+<p>The configuration is provided as an object with key/value pairs. The options are:</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>the title to display in the modal header - note: this will render HTML</td>
+</tr>
+<tr>
+<td>body</td>
+<td>the main content to be rendered in the modal body</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>the content to be rendered in the modal footer</td>
+</tr>
+<tr>
+<td>type</td>
+<td>one of the modal types registered with the factory</td>
+</tr>
+<tr>
+<td>large</td>
+<td>a boolean to indicate if the modal should be wider than the default size</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// Basic instantiation of a modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;Example body content&lt;/p&gt;&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<p>Where text, language strings, or HTML is accepted, a Promise can also be provided.
+<div class="highlight"><pre><span></span><code><span class="c1">// Using a template to render the body</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Templates</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;mod_example/example_modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">}),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></p>
+<p>Using the 'trigger'
+Moodle Modals created using the Modal Factory support an optional trigger element. Whilst this is available, it is no longer recommended and support for it will likely be removed in Moodle 4.3.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Providing a trigger</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Templates</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">$</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jquery&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;mod_example/example_modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">}),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a.item-delete&#39;</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="instantiating-modal-types">Instantiating modal types</h3>
+<p>A number of commonly used modals are available as standard, these include:</p>
+<p>a Delete / Cancel modal
+a Save / Cancel modal
+a Cancel modal
+Moodle 4.3
+Moodle 4.2 and earlier
+NOTE
+If you are developing code for use in Moodle 4.2, or earlier, then you must continue to follow the 4.2 guidelines.</p>
+<p>To use these modals you can call the create method on the relevant Modal Class.
+<div class="highlight"><pre><span></span><code><span class="c1">// Creating a save/cancel modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_save_cancel&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">get_string</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;confirmchange&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mod_example&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></p>
+<p>Each type of modal may fire additional events to allow your code to handle the new functionality being offered -- for example, if you wanted to have a save/cancel modal that you did some form validation on before saving you could do something like the example below.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Listening to a Save event</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_save_cancel&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">get_string</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;confirmchange&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mod_example&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// ...</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="creating-a-custom-modal-type">Creating a custom modal type</h3>
+<p>In some situations it is desirable to write a brand new modal.</p>
+<p>There are two parts to this:</p>
+<p>a new Modal class which extends the core/modal class; and
+a template
+CUSTOM MODALS IN MOODLE 4.2 AND EARLIER
+Since Moodle 4.3, creating the Modal class is as simple as extending the core/modal class, and providing a TYPE property, and TEMPLATE property.</p>
+<p>For older versions of Moodle, refer to the Moodle 4.2 documentation.</p>
+<p>mod/example/amd/src/my_modal.js
+import Modal from 'core/modal';</p>
+<p>export default class MyModal extends Modal {
+    static TYPE = "mod_example/my_modal";
+    static TEMPLATE = "mod_example/my_modal";
+}</p>
+<p>The template should extend the core/modal core template and can override any of the title, body, or footer regions, for example:
+<div class="highlight"><pre><span></span><code><span class="c1">// mod/example/templates/my_modal.mustache</span><span class="w"></span>
+<span class="p">{{</span><span class="o">&lt;</span><span class="w"> </span><span class="nx">core</span><span class="o">/</span><span class="nx">modal</span><span class="w"> </span><span class="p">}}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="nx">$title</span><span class="p">}}{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}{{/title}}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="nx">$body</span><span class="p">}}</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">form</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-group row&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;inputEmail&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-2 col-form-label&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/label&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-10&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-control&quot;</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;inputEmail&quot;</span><span class="w"> </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;{{#str}} email {{/str}}&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-group row&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;inputPassword&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-2 col-form-label&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/label&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-10&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-control&quot;</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;inputPassword&quot;</span><span class="w"> </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;{{#str}} password {{/str}}&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">/form&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="err">/body}}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="nx">$footer</span><span class="p">}}</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;btn btn-primary&quot;</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">action</span><span class="o">=</span><span class="s2">&quot;login&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/button&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;btn btn-secondary&quot;</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">action</span><span class="o">=</span><span class="s2">&quot;cancel&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/button&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="err">/footer}}</span><span class="w"></span>
+<span class="p">{{</span><span class="err">/ core/modal }}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Once defined, the new modal can be instantiated using the standard create method, for example:
+<div class="highlight"><pre><span></span><code><span class="c1">// Instantiating a custom modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MyModal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;mod_example/my_modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">MyModal</span><span class="p">.</span><span class="nx">create</span><span class="p">({});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h4 id="overriding-default-configuration">Overriding default configuration</h4>
+<p>When creating your own modal type, you may wish to override the standard configuration. This can be achieved by overriding the configure class and providing your own options, for example:
+<div class="highlight"><pre><span></span><code><span class="c1">//Overriding standard options</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MyModal</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mod_example/my_modal&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">TEMPLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mod_example/my_modal&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">configure</span><span class="p">(</span><span class="nx">modalConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Show this modal on instantiation.</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalConfig</span><span class="p">.</span><span class="nx">show</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Remove from the DOM on close.</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalConfig</span><span class="p">.</span><span class="nx">removeOnClose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="nx">modalConfig</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Accept our own custom arguments too.</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">modalConfig</span><span class="p">.</span><span class="nx">someValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">setSomeValue</span><span class="p">(</span><span class="nx">someValue</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">setSomeValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">someValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
 <h3 id="creating-modal-dialogues-in-moodle">Creating Modal Dialogues in Moodle</h3>
 <p>Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the <code>core/modal_factory</code> and <code>core/modal</code> AMD modules.</p>
 <ol>
