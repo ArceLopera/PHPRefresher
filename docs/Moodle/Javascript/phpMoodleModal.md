@@ -102,7 +102,7 @@ export const init = async () => {
 
     // ...
 };
-```	
+```
 
 ### Instantiating modal types
 A number of commonly used modals are available as standard, these include:
@@ -129,7 +129,7 @@ export const init = async () => {
 
     // ...
 };
-```	
+```
 
 Each type of modal may fire additional events to allow your code to handle the new functionality being offered -- for example, if you wanted to have a save/cancel modal that you did some form validation on before saving you could do something like the example below.
 
@@ -204,7 +204,7 @@ The template should extend the core/modal core template and can override any of 
 ```
 
 Once defined, the new modal can be instantiated using the standard create method, for example:
-```javascript	
+```javascript
 // Instantiating a custom modal
 import MyModal from 'mod_example/my_modal';
 
@@ -214,7 +214,7 @@ export default const init = async() => {
 
     modal.show();
 }
-```	
+```
 
 #### Overriding default configuration
 When creating your own modal type, you may wish to override the standard configuration. This can be achieved by overriding the configure class and providing your own options, for example:
@@ -523,4 +523,6 @@ document.getElementById('showModal').addEventListener('click', function() {
 
 ### Summary
 
-Modal dialogues in Moodle provide a powerful way to interact with users without navigating away from the current page. By using Moodle's `core/modal_factory` and `core/modal` modules, you can create dynamic and interactive modals for displaying information, capturing user input, and more. Always follow best practices for user experience, accessibility, and performance to ensure a high-quality implementation. For more detailed information and examples, refer to the [official Moodle documentation](https://moodledev.io/docs/4.5/guides/javascript/modal).
+Modal dialogues in Moodle provide a powerful way to interact with users without navigating away from the current page. By using Moodle's `core/modal_factory` and `core/modal` modules, you can create dynamic and interactive modals for displaying information, capturing user input, and more. Always follow best practices for user experience, accessibility, and performance to ensure a high-quality implementation. For more detailed information and examples, refer to the [official Moodle documentation](https://moodledev.io/docs/4.5/guides/javascript/modal). It is possible to display moodleform in a popup or use AJAX form submission.
+
+Refer to the [Modal and AJAX forms](https://docs.moodle.org/dev/Modal_and_AJAX_forms) developer docs for details on their use case and how to use them in your code.

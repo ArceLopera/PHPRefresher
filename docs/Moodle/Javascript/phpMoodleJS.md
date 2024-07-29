@@ -14,7 +14,7 @@ The JavaScript documentation available on the Mozilla Developer Network is one o
 + [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
 + [ES2015+ Cheat-sheet](https://devhints.io/es6).
 
-## Modules
+### Modules Naming Scheme
 
 JavaScript in Moodle is structured into ES2015 modules which are transpiled into the CommonJS format.
 
@@ -71,7 +71,14 @@ As you start to build out the structure of your code you will start to export mo
     ```
 
     In this example a new variable called init is created and exported using the ES2015 export keyword. The variable is assigned an arrow function expression which takes no arguments, and when executed will call the browser console.log function with the text "Hello, world!".
-    
+
+    Other example: (The init() function takes 2 parameters named first and last.)
+    ```javascript
+    export const init = (first, last) => {
+        window.console.log(`Hello '${first} ${last}'`);
+    };
+    ```
+
     **Listen to a DOM Event**
     Usually you will want to perform an action in response to a user interacting with the page.
 
@@ -112,14 +119,20 @@ As you start to build out the structure of your code you will start to export mo
         });
     };
     ```
+#### Conventions
 
-    This example shows several conventions that are used in Moodle:
+    The previous example shows several conventions that are used in Moodle:
 
     - CSS Selectors are often stored separate to the code in a Selectors object. This allows you to re-use a Selector and to group them together in different ways. It also places all selectors in one place so that they're easier to update.
-    - The Selectors object is stored in a const variable which is _not_ exported. This means that it's private and only available within your module.
+    - The Selectors object is stored in a const variable which is **not** exported. This means that it's private and only available within your module.
     - A data-* attribute is used to identify the button in the JavaScript module. Moodle advises not to use class selectors when attaching event listeners because so that it's easier to restyle for different themes without any changes to the JavaScript later.
     - A namespace is used for the data-action to identify what the button is intended for.
     - By using e.target.closest() you can check whether the element that was clicked on, or any of its parent elements matches the supplied CSS Selector.
+
+    Other conventions:
+
+    - Place calls to Web Services in a repository module.
+    - Create submodules in the local/<modulename> directory for non-formal Moodle APIs.
 
     Instead of having one event listener for every button in your page, you can have one event listener which checks which button was pressed. If you have a template like the following:
 
@@ -222,6 +235,13 @@ In this example you have added a new id to the div element. You then fetch the D
 
 **The {{uniqid}} tag gives a new unique string for each rendered template including all its children. It isn't a true unique id and must be combined with other information in the template to make it unique.**
 
+Other example:
+```javascript
+{{#js}}
+require(['plugintype_pluginname/helloworld'], (module) => module.init('{{first}}', '{{last}}'));
+{{/js}}
+```
+
 ##### Including from PHP
 Much of Moodle's code still creates HTML content in PHP directly. This might be a simple echo statement or using the html_writer output functions. A lot of this content is being migrated to use Mustache Templates which are the recommended approach for new content.
 
@@ -256,6 +276,37 @@ export const init = ({courseid, category}) => {
 };
 ```
 **A limit applies to the length of the parameters passed in the third argument. If data is already available elsewhere in the DOM, you should avoid passing it as a parameter.**
+
+Other example:
+```php
+$PAGE->requires->js_call_amd($modulename, $functionname, $params);
+```
++ `$modulename` is the componentname/modulename.
++ `$functionname` is the name of a public function exposed by the amd module.
++ `$params` is an array of parameters passed as arguments to the function. These should be simple types that can be handled by json_encode() (no recursive arrays, or complex classes).
+
+```php
+$PAGE->requires->js_call_amd(
+    'plugintype_pluginname/helloworld',
+    'init',
+    [$first, $last]);
+```
+
+###### Including JS from JavaScript
+
+JavaScript can be included into other JavaScript using import or requirejs.
+
+Example: Including JS using import
+Here is a code snippet from mod/quiz/amd/src/submission_confirmation.js using import to include JS.
+
+``` javascript
+import {saveCancelPromise} from 'core/notification';
+import Prefetch from 'core/prefetch';
+import Templates from 'core/templates';
+import {getString} from 'core/str';
+
+/// ...
+```
 
 ### Passing data to your Module
 You will often need to work with data as part of your JavaScript module. This might be simple data, like the a database id, or it may be more complex like full Objects.
@@ -592,6 +643,30 @@ dropZone.init();
 2. **Moodle Debugging**:
     - Enable debugging in Moodle to get detailed error messages. Go to `Site administration > Development > Debugging` and set `Debug messages` to `DEVELOPER`.
 
+
+### Sample Code
+
+You can explore the code in the following [Github repository](https://github.com/moodleacademy/moodle-local_greetings/tree/dev-intermediate-js).
+
+The page that the user views is located at local_greetings/view.php.
+
++ This page loads the template local_greetings/greeting that displays the input controls and the greeting message.
+
+The greeting.mustache template file:
+
++ Contains a text input field, identified in JS by a data-region attribute.
++ Contains a button named "Go". It is identified in JS by a data-action attribute.
++ Contains a button named "Reset". It is identified in JS by a data-action attribute.
++ Contains a div region to display the greeting message. It is identified in JS by a data-region attribute.
++ Loads the local_greetings/greetings JS module.
+
+The local_greetings/greetings JS module:
+
++ Implements the main interaction in the greetings.js file.
++ Has a local/selectors.js file for the DOM elements which are identified by CSS Selectors.
++ If web service calls were required, they would be placed in the local/repository.js file.
+
+
 ### Best Practices for Using JavaScript in Moodle
 
 1. **Modularity**: Use AMD modules to keep your code modular and avoid conflicts.
@@ -599,6 +674,26 @@ dropZone.init();
 3. **Accessibility**: Ensure that your JavaScript enhances accessibility and does not hinder it.
 4. **Security**: Validate and sanitize inputs to prevent XSS and other security vulnerabilities.
 
+**Other preferences:**
+Here are some general recommendations and preferences when writing JS modules for Moodle:
+
++ Do not use var in ESM.
++ const/let is preferred over var.
++ const is preferred over let.
++ Promise.then is preferred over Promise.done.
++ Promise.catch is preferred over Promise.fail.
++ Promise.done and Promise.fail are jQuery-specific.
++ Promises are preferred over callbacks.
+
 ### Summary
 
 Using JavaScript in Moodle enhances the interactivity and functionality of your plugins. By following the AMD module format, integrating with Moodle forms, and making AJAX calls, you can create dynamic and responsive plugins. Always follow best practices for modularity, performance, accessibility, and security to ensure a high-quality user experience. For more detailed information and examples, refer to the [official Moodle documentation](https://moodledev.io/docs/4.4/guides/javascript).
+
+### Useful resources
+Here are some useful resources on JavaScript:
++ [MDN JavaScript guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
++ [Chrome dev tools](https://developer.chrome.com/docs/devtools/)
++ [Introduction to JavaScript source maps](https://developer.chrome.com/blog/sourcemaps/)
++ [JSDoc](https://jsdoc.app/)
++ [JavaScript style guide - AirBnB](https://github.com/airbnb/javascript)
++ [We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
