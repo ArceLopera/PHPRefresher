@@ -71,7 +71,7 @@ As you start to build out the structure of your code you will start to export mo
     ```
 
     In this example a new variable called init is created and exported using the ES2015 export keyword. The variable is assigned an arrow function expression which takes no arguments, and when executed will call the browser console.log function with the text "Hello, world!".
-    
+
     **Listen to a DOM Event**
     Usually you will want to perform an action in response to a user interacting with the page.
 
@@ -256,6 +256,22 @@ export const init = ({courseid, category}) => {
 };
 ```
 **A limit applies to the length of the parameters passed in the third argument. If data is already available elsewhere in the DOM, you should avoid passing it as a parameter.**
+
+###### Including JS from JavaScript
+
+JavaScript can be included into other JavaScript using import or requirejs.
+
+Example: Including JS using import
+Here is a code snippet from mod/quiz/amd/src/submission_confirmation.js using import to include JS.
+
+``` javascript
+import {saveCancelPromise} from 'core/notification';
+import Prefetch from 'core/prefetch';
+import Templates from 'core/templates';
+import {getString} from 'core/str';
+
+/// ...
+```
 
 ### Passing data to your Module
 You will often need to work with data as part of your JavaScript module. This might be simple data, like the a database id, or it may be more complex like full Objects.
