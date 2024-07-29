@@ -110,6 +110,29 @@ In this example:
 1. **loadUserData**: This function creates and returns a promise for loading user data using an AJAX call.
 2. **displayUserData**: This function calls `loadUserData`, processes the response, and handles any errors using `catch`.
 
+### Best Practices
+**Always return or throw**
+When writing promises they must:
+
++ Return another promise, or;
++ Return a synchronous value (or undefined), or;
++ Throw a synchronous error.
+
+**Chain rather than nest**
+Promises are a construct which help prevent the pyramid of doom and regain linear control flow and error handling.
+
++ Promises should not be nested.
++ Promises should be chained rather than nested.
+
+**Avoid mixing callbacks and promises**
+Avoid mixing callbacks and promises.
+Design code to embrace promise-y patterns for asynchronous code to make maximum use of promises.
+
+Additional reading:
+
++ [User talk: Poltawski/Javascript promises](https://docs.moodle.org/dev/User_talk:Poltawski/Javascript_promises).
++ [We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html).
+
 ### Summary
 
 Promises in Moodle are a powerful way to handle asynchronous operations. By using `then` for handling successful resolutions, `catch` for error handling, and ensuring functions return promises when appropriate, you can create maintainable and readable asynchronous code. Always remember to return a value or another promise at the end of a `then` block to allow for proper chaining and further processing. Avoid using `done`, `fail`, or `always` functions, as they are specific to jQuery and not part of the native Promise implementation.
