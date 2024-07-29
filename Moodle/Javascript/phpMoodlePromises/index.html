@@ -1952,6 +1952,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
@@ -2128,6 +2135,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     Summary
   </a>
@@ -2240,6 +2254,28 @@
 <li><strong>loadUserData</strong>: This function creates and returns a promise for loading user data using an AJAX call.</li>
 <li><strong>displayUserData</strong>: This function calls <code>loadUserData</code>, processes the response, and handles any errors using <code>catch</code>.</li>
 </ol>
+<h3 id="best-practices">Best Practices</h3>
+<p><strong>Always return or throw</strong>
+When writing promises they must:</p>
+<ul>
+<li>Return another promise, or;</li>
+<li>Return a synchronous value (or undefined), or;</li>
+<li>Throw a synchronous error.</li>
+</ul>
+<p><strong>Chain rather than nest</strong>
+Promises are a construct which help prevent the pyramid of doom and regain linear control flow and error handling.</p>
+<ul>
+<li>Promises should not be nested.</li>
+<li>Promises should be chained rather than nested.</li>
+</ul>
+<p><strong>Avoid mixing callbacks and promises</strong>
+Avoid mixing callbacks and promises.
+Design code to embrace promise-y patterns for asynchronous code to make maximum use of promises.</p>
+<p>Additional reading:</p>
+<ul>
+<li><a href="https://docs.moodle.org/dev/User_talk:Poltawski/Javascript_promises">User talk: Poltawski/Javascript promises</a>.</li>
+<li><a href="https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html">We have a problem with promises</a>.</li>
+</ul>
 <h3 id="summary">Summary</h3>
 <p>Promises in Moodle are a powerful way to handle asynchronous operations. By using <code>then</code> for handling successful resolutions, <code>catch</code> for error handling, and ensuring functions return promises when appropriate, you can create maintainable and readable asynchronous code. Always remember to return a value or another promise at the end of a <code>then</code> block to allow for proper chaining and further processing. Avoid using <code>done</code>, <code>fail</code>, or <code>always</code> functions, as they are specific to jQuery and not part of the native Promise implementation.</p>
 
