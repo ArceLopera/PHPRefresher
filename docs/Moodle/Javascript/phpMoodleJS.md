@@ -691,9 +691,10 @@ Using JavaScript in Moodle enhances the interactivity and functionality of your 
 
 ### Useful resources
 Here are some useful resources on JavaScript:
-+ [MDN JavaScript guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-+ [Chrome dev tools](https://developer.chrome.com/docs/devtools/)
-+ [Introduction to JavaScript source maps](https://developer.chrome.com/blog/sourcemaps/)
-+ [JSDoc](https://jsdoc.app/)
-+ [JavaScript style guide - AirBnB](https://github.com/airbnb/javascript)
-+ [We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
+
+- [MDN JavaScript guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Chrome dev tools](https://developer.chrome.com/docs/devtools/)
+- [Introduction to JavaScript source maps](https://developer.chrome.com/blog/sourcemaps/)
+- [JSDoc](https://jsdoc.app/)
+- [JavaScript style guide - AirBnB](https://github.com/airbnb/javascript)
+- [We have a problem with promises](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
