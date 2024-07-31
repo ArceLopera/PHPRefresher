@@ -1,0 +1,4078 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/DS/phpArray/">
+      
+      <link rel="icon" href="../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Array - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#create-an-array-in-php" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Array
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Array
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Array
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-array-in-php" class="md-nav__link">
+    Create an Array in PHP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-indexed-arrays" class="md-nav__link">
+    PHP Indexed Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP Indexed Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-an-array-not-beginning-at-element-0" class="md-nav__link">
+    Specifying an Array Not Beginning at Element 0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-associative-arrays" class="md-nav__link">
+    PHP Associative Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-multidimensional-arrays" class="md-nav__link">
+    PHP Multidimensional Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-array-functions" class="md-nav__link">
+    The Array Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="The Array Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifying-arrays" class="md-nav__link">
+    Modifying Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array_merge" class="md-nav__link">
+    array_merge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_pad" class="md-nav__link">
+    array_pad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_splice" class="md-nav__link">
+    array_splice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_unique" class="md-nav__link">
+    array_unique
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-information-in-arrays" class="md-nav__link">
+    Update Information in Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Information in Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deleting-elements-from-an-array" class="md-nav__link">
+    Deleting Elements from an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-list-function" class="md-nav__link">
+    The list Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_map" class="md-nav__link">
+    array_map()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_walk" class="md-nav__link">
+    array_walk()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_walk_recursive" class="md-nav__link">
+    array_walk_recursive()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-information-from-arrays" class="md-nav__link">
+    Extracting Information from Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Extracting Information from Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-the-largest-or-smallest-valued-element-in-an-array" class="md-nav__link">
+    Finding the Largest or Smallest Valued Element in an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_filter" class="md-nav__link">
+    array_filter()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_key_exists" class="md-nav__link">
+    array_key_exists()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_search" class="md-nav__link">
+    array_search()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_values" class="md-nav__link">
+    array_values()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterating-through-an-array" class="md-nav__link">
+    Iterating Through an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#each" class="md-nav__link">
+    each()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_array" class="md-nav__link">
+    in_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_flip" class="md-nav__link">
+    array_flip()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-arrays" class="md-nav__link">
+    Comparing Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array_diff" class="md-nav__link">
+    array_diff()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-functions" class="md-nav__link">
+    Pointer Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-arrays" class="md-nav__link">
+    Sorting Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    sort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsort" class="md-nav__link">
+    rsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asort" class="md-nav__link">
+    asort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natsort" class="md-nav__link">
+    natsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ksort" class="md-nav__link">
+    ksort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arsort" class="md-nav__link">
+    arsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#krsort" class="md-nav__link">
+    krsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-an-array-by-a-computable-field" class="md-nav__link">
+    Sorting an Array by a Computable Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_multisort" class="md-nav__link">
+    array_multisort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodlePluginFiles/" class="md-nav__link">
+        Common Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_7" data-md-state="indeterminate" type="checkbox" id="__nav_7_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_7">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_7">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/Javascript/phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/Javascript/phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/Javascript/phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/Javascript/phpMoodleModal/" class="md-nav__link">
+        Modal Dialogues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/Javascript/phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Subsystems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Subsystems" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Subsystems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moodle/phpMoodleServices/" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-array-in-php" class="md-nav__link">
+    Create an Array in PHP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-indexed-arrays" class="md-nav__link">
+    PHP Indexed Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="PHP Indexed Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-an-array-not-beginning-at-element-0" class="md-nav__link">
+    Specifying an Array Not Beginning at Element 0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-associative-arrays" class="md-nav__link">
+    PHP Associative Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#php-multidimensional-arrays" class="md-nav__link">
+    PHP Multidimensional Arrays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-array-functions" class="md-nav__link">
+    The Array Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="The Array Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifying-arrays" class="md-nav__link">
+    Modifying Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Modifying Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array_merge" class="md-nav__link">
+    array_merge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_pad" class="md-nav__link">
+    array_pad
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_splice" class="md-nav__link">
+    array_splice
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    range
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_unique" class="md-nav__link">
+    array_unique
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-information-in-arrays" class="md-nav__link">
+    Update Information in Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Update Information in Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deleting-elements-from-an-array" class="md-nav__link">
+    Deleting Elements from an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-list-function" class="md-nav__link">
+    The list Function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_map" class="md-nav__link">
+    array_map()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_walk" class="md-nav__link">
+    array_walk()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_walk_recursive" class="md-nav__link">
+    array_walk_recursive()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-information-from-arrays" class="md-nav__link">
+    Extracting Information from Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Extracting Information from Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-the-largest-or-smallest-valued-element-in-an-array" class="md-nav__link">
+    Finding the Largest or Smallest Valued Element in an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_filter" class="md-nav__link">
+    array_filter()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_key_exists" class="md-nav__link">
+    array_key_exists()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_search" class="md-nav__link">
+    array_search()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_values" class="md-nav__link">
+    array_values()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterating-through-an-array" class="md-nav__link">
+    Iterating Through an Array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#each" class="md-nav__link">
+    each()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in_array" class="md-nav__link">
+    in_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_flip" class="md-nav__link">
+    array_flip()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-arrays" class="md-nav__link">
+    Comparing Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#array_diff" class="md-nav__link">
+    array_diff()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-functions" class="md-nav__link">
+    Pointer Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-arrays" class="md-nav__link">
+    Sorting Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sort" class="md-nav__link">
+    sort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsort" class="md-nav__link">
+    rsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asort" class="md-nav__link">
+    asort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natsort" class="md-nav__link">
+    natsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ksort" class="md-nav__link">
+    ksort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arsort" class="md-nav__link">
+    arsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#krsort" class="md-nav__link">
+    krsort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting-an-array-by-a-computable-field" class="md-nav__link">
+    Sorting an Array by a Computable Field
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array_multisort" class="md-nav__link">
+    array_multisort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Array</h1>
+
+<p>An array stores multiple values in one single variable. </p>
+<p>In PHP, numerical arrays are associative arrays, and associative arrays are numerical arrays. So which kind are they really? Both and neither. The line between them constantly blurs back and forth from one to another. </p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;I like &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; and &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="create-an-array-in-php">Create an Array in PHP</h2>
+<p>In PHP, the array() function is used to create an array:
+<div class="highlight"><pre><span></span><code><span class="x">array();</span>
+</code></pre></div>
+In PHP, there are three types of arrays:</p>
+<ul>
+<li><a href="#php-indexed-arrays">Indexed arrays</a> - Arrays with a numeric index</li>
+<li><a href="#php-associative-arrays">Associative arrays</a> - Arrays with named keys</li>
+<li><a href="#php-multidimensional-arrays">Multidimensional arrays</a> - Arrays containing one or more arrays</li>
+</ul>
+<h2 id="php-indexed-arrays">PHP Indexed Arrays</h2>
+<p>There are two ways to create indexed arrays:</p>
+<p>The index can be assigned automatically (index always starts at 0), like this:</p>
+<p>$cars = array("Volvo", "BMW", "Toyota");
+or the index can be assigned manually:</p>
+<p>$cars[0] = "Volvo";
+$cars[1] = "BMW";
+$cars[2] = "Toyota";</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;I like &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;, &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; and &quot;</span> <span class="o">.</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nv">$arrlength</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;</span> <span class="nv">$arrlength</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="nv">$x</span><span class="p">];</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="specifying-an-array-not-beginning-at-element-0">Specifying an Array Not Beginning at Element 0</h3>
+<p>When specifying an array, you can specify the array not beginning at element 0.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$presidents</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="s1">&#39;Adams&#39;</span><span class="p">,</span> <span class="s1">&#39;Jefferson&#39;</span><span class="p">,</span> <span class="s1">&#39;Madison&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>PHP even allows you to use negative numbers in the array() call. (In fact, this method works for noninteger keys, too.) What you’ll get is technically an associative array, although as we said, the line between numeric arrays and associative arrays is often blurred in PHP; this is just another one of these cases:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$us_leaders</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;George II&#39;</span><span class="p">,</span> <span class="s1">&#39;George III&#39;</span><span class="p">,</span> <span class="s1">&#39;Washington&#39;</span><span class="p">);</span>
+<span class="c1">// alternatively,</span>
+<span class="nv">$us_leaders</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;George II&#39;</span><span class="p">,</span> <span class="s1">&#39;George III&#39;</span><span class="p">,</span> <span class="s1">&#39;Washington&#39;</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Of course, you can mix and match numeric and string keys in one array() definition,
+but it’s confusing and very rarely needed:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$presidents</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="s1">&#39;Adams&#39;</span><span class="p">,</span> <span class="s1">&#39;Honest&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Lincoln&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Jefferson&#39;</span><span class="p">);</span>
+<span class="c1">// alternatively,</span>
+<span class="nv">$presidents</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="s1">&#39;Adams&#39;</span><span class="p">,</span> <span class="s1">&#39;Honest&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Lincoln&#39;</span><span class="p">,</span> <span class="s1">&#39;Jefferson&#39;</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$presidents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Washington&#39;</span><span class="p">;</span> <span class="c1">// Key is 1</span>
+<span class="nv">$presidents</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;Adams&#39;</span><span class="p">;</span> <span class="c1">// Key is 1 + 1 =&gt; 2</span>
+<span class="nv">$presidents</span><span class="p">[</span><span class="s1">&#39;Honest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Lincoln&#39;</span><span class="p">;</span> <span class="c1">// Key is &#39;Honest&#39;</span>
+<span class="nv">$presidents</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;Jefferson&#39;</span><span class="p">;</span> <span class="c1">// Key is 2 + 1 =&gt; 3</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="php-associative-arrays">PHP Associative Arrays</h2>
+<p>Associative arrays are arrays with named keys.</p>
+<p>There are two ways to create an associative array: </p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$age = array(&quot;Peter&quot;=&gt;&quot;35&quot;, &quot;Ben&quot;=&gt;&quot;37&quot;, &quot;Joe&quot;=&gt;&quot;43&quot;);</span>
+</code></pre></div>
+or:
+<div class="highlight"><pre><span></span><code><span class="x">$age[&#39;Peter&#39;] = &quot;35&quot;;</span>
+<span class="x">$age[&#39;Ben&#39;] = &quot;37&quot;;</span>
+<span class="x">$age[&#39;Joe&#39;] = &quot;43&quot;;</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s2">&quot;Peter is &quot;</span> <span class="o">.</span> <span class="nv">$age</span><span class="p">[</span><span class="s1">&#39;Peter&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot; years old.&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="php-multidimensional-arrays">PHP Multidimensional Arrays</h2>
+<p>Multidimensional arrays are arrays containing one or more arrays.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span>
+  <span class="p">(</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">),</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;BMW&quot;</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">),</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Saab&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+  <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Land Rover&quot;</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+  <span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;: In stock: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;, sold: &quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;.&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$row</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;p&gt;&lt;b&gt;Row number </span><span class="si">$row</span><span class="s2">&lt;/b&gt;&lt;/p&gt;&quot;</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;ul&gt;&quot;</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nv">$col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$col</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;li&gt;&quot;</span><span class="o">.</span><span class="nv">$cars</span><span class="p">[</span><span class="nv">$row</span><span class="p">][</span><span class="nv">$col</span><span class="p">]</span><span class="o">.</span><span class="s2">&quot;&lt;/li&gt;&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;/ul&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="the-array-functions">The Array Functions</h2>
+<p>The PHP array functions are used to perform operations on arrays.</p>
+<h3 id="modifying-arrays">Modifying Arrays</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array()</td>
+<td>Creates an array</td>
+</tr>
+<tr>
+<td>array_chunk()</td>
+<td>Splits an array into chunks of arrays</td>
+</tr>
+<tr>
+<td>array_combine()</td>
+<td>Creates an array by using the elements from one "keys" array and one "values" array</td>
+</tr>
+<tr>
+<td><a href="#array_merge">array_merge()</a></td>
+<td>Merges one or more arrays into one array</td>
+</tr>
+<tr>
+<td>array_merge_recursive()</td>
+<td>Merges one or more arrays into one array recursively</td>
+</tr>
+<tr>
+<td><a href="#array_pad">array_pad()</a></td>
+<td>Inserts a specified number of items, with a specified value, to an array</td>
+</tr>
+<tr>
+<td>array_pop()</td>
+<td>Deletes the last element of an array</td>
+</tr>
+<tr>
+<td>array_push()</td>
+<td>Inserts one or more elements to the end of an array</td>
+</tr>
+<tr>
+<td>array_shift()</td>
+<td>Removes the first element from an array, and returns the value of the removed element</td>
+</tr>
+<tr>
+<td><a href="#array_splice">array_splice()</a></td>
+<td>Removes and replaces specified elements of an array</td>
+</tr>
+<tr>
+<td>array_unique()</td>
+<td>Removes duplicate values from an array</td>
+</tr>
+<tr>
+<td>array_unshift()</td>
+<td>Adds one or more elements to the beginning of an array</td>
+</tr>
+<tr>
+<td>compact()</td>
+<td>Create array containing variables and their values</td>
+</tr>
+<tr>
+<td><a href="#range">range()</a></td>
+<td>Creates an array containing a range of elements</td>
+</tr>
+</tbody>
+</table>
+<h4 id="array_merge">array_merge</h4>
+<p>The array_merge() function works with both predefined arrays and arrays defined in place using array():</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$p_languages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Perl&#39;</span><span class="p">,</span> <span class="s1">&#39;PHP&#39;</span><span class="p">);</span>
+<span class="nv">$p_languages</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$p_languages</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span><span class="p">));</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$p_languages</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Perl</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">PHP</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Python</span>
+<span class="p">)</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Accordingly, merged arrays can be either preexisting arrays, as with $p_languages, or anonymous arrays, as with array('Python').</p>
+<p>You can’t use array_push(), because PHP won’t automatically flatten out the array into a series of independent variables, and you’ll end up with a nested array. </p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">array_push</span><span class="p">(</span><span class="nv">$p_languages</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span><span class="p">));</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$p_languages</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Perl</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">PHP</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">Array</span>
+ <span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Python</span>
+ <span class="p">)</span>
+<span class="p">)</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Merging arrays with only numerical keys causes the arrays to get renumbered, so values aren’t lost. Merging arrays with string keys causes the second array to overwrite the value of any duplicated keys. Arrays with both types of keys exhibit both types of behavior.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$lc</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;b&#39;</span><span class="p">);</span> <span class="c1">// lowercase letters as values</span>
+<span class="nv">$uc</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;B&#39;</span><span class="p">);</span> <span class="c1">// uppercase letters as values</span>
+<span class="nv">$ac</span> <span class="o">=</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$lc</span><span class="p">,</span> <span class="nv">$uc</span><span class="p">);</span> <span class="c1">// all-cases?</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$ac</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">a</span>
+ <span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">B</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">A</span>
+<span class="p">)</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The uppercase A has been renumbered from index 0 to index 1, to avoid a collision, and merged onto the end. The uppercase B has overwritten the lowercase b and replaced it in the original place within the array.</p>
+<p>The + operator can also merge arrays. For any identically named keys found in both arrays, the value from the left will be used. It doesn’t do any reordering to prevent collisions.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$uc</span> <span class="o">+</span> <span class="nv">$lc</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$lc</span> <span class="o">+</span> <span class="nv">$uc</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">A</span>
+ <span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">B</span>
+<span class="p">)</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">a</span>
+ <span class="p">[</span><span class="nx">b</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">b</span>
+<span class="p">)</span>   
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Because a and A both have a key of 0, and b and B both have a key of b, you end up with a total of only two elements in the merged arrays. In the first case, $a + $b becomes just $b, and in the other, $b + $a becomes $a. However, if you had two distinctly keyed arrays, this wouldn’t be a problem, and the new array would be the union of the two arrays.</p>
+<h4 id="array_pad">array_pad</h4>
+<p>When you want to modify the size of an array, either by making it larger or smaller than its
+current size. Arrays aren’t a predeclared size in PHP, so you can resize them on the fly.</p>
+<p>Use array_pad() to make an array grow:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// start at three</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;coconut&#39;</span><span class="p">);</span>
+<span class="c1">// grow to five</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="nb">array_pad</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Now, count($array) is 5, and the last two elements, $array[3] and $array[4], contain
+the empty string.</p>
+<p>To reduce an array, you can use array_splice():
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// no assignment to $array</span>
+<span class="nb">array_splice</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+This removes all but the first two elements from $array.</p>
+<h4 id="array_splice">array_splice</h4>
+<p>The array_splice() function removes and replaces specified elements of an array.</p>
+<p>The array_splice() function removes selected elements from an array and replaces it with new elements. The function also returns an array with the removed elements.</p>
+<p>Tip: If the function does not remove any elements (length=0), the replaced array will be inserted from the position of the start parameter (See Example 2).</p>
+<p>Note: The keys in the replaced array are not preserved.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$a1</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;yellow&quot;</span><span class="p">);</span>
+<span class="nv">$a2</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;orange&quot;</span><span class="p">);</span>
+<span class="nb">array_splice</span><span class="p">(</span><span class="nv">$a1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nv">$a2</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$a1</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a1</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;green&quot;</span><span class="p">);</span>
+<span class="nv">$a2</span><span class="o">=</span><span class="k">array</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;purple&quot;</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;orange&quot;</span><span class="p">);</span>
+<span class="nb">array_splice</span><span class="p">(</span><span class="nv">$a1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nv">$a2</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$a1</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If you unset() an element, PHP adjusts the array so that looping still works correctly. It doesn’t compact the array to fill in the missing holes. This is what we mean when we say that all arrays are associative, even when they appear to be numeric. Here’s an example:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// create a &quot;numeric&quot; array</span>
+<span class="nv">$animals</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;ant&#39;</span><span class="p">,</span> <span class="s1">&#39;bee&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;elk&#39;</span><span class="p">,</span> <span class="s1">&#39;fox&#39;</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// prints &#39;bee&#39;</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// prints &#39;cat&#39;</span>
+<span class="nb">count</span><span class="p">(</span><span class="nv">$animals</span><span class="p">);</span> <span class="c1">// returns 6</span>
+<span class="c1">// unset()</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$animals</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// removes element $animals[1] = &#39;bee&#39;</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// prints nothing and throws an E_NOTICE error</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// still prints &#39;cat&#39;</span>
+<span class="nb">count</span><span class="p">(</span><span class="nv">$animals</span><span class="p">);</span> <span class="c1">// returns 5, even though $array[5] is &#39;fox&#39;</span>
+<span class="c1">// add new element</span>
+<span class="nv">$animals</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;gnu&#39;</span><span class="p">;</span> <span class="c1">// add new element (not Unix)</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="c1">// prints nothing, still throws an E_NOTICE error</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span> <span class="c1">// prints &#39;gnu&#39;, this is where &#39;gnu&#39; ended up</span>
+<span class="nb">count</span><span class="p">(</span><span class="nv">$animals</span><span class="p">);</span> <span class="c1">// returns 6</span>
+<span class="c1">// assign &#39;&#39;</span>
+<span class="nv">$animals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="c1">// zero out value</span>
+<span class="k">print</span> <span class="nv">$animals</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// prints &#39;&#39;</span>
+<span class="nb">count</span><span class="p">(</span><span class="nv">$animals</span><span class="p">);</span> <span class="c1">// returns 6, count does not decrease</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>To compact the array into a densely filled numeric array, use array_values():</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$animals</span> <span class="o">=</span> <span class="nb">array_values</span><span class="p">(</span><span class="nv">$animals</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Alternatively, array_splice() automatically reindexes arrays to avoid leaving holes:</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// create a &quot;numeric&quot; array</span>
+<span class="nv">$animals</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;ant&#39;</span><span class="p">,</span> <span class="s1">&#39;bee&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;elk&#39;</span><span class="p">,</span> <span class="s1">&#39;fox&#39;</span><span class="p">);</span>
+<span class="nb">array_splice</span><span class="p">(</span><span class="nv">$animals</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$animals</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Array
+(
+ [0] =&gt; ant
+ [1] =&gt; bee
+ [2] =&gt; elk
+ [3] =&gt; fox
+)
+</code></pre></div></p>
+<p>This is useful if you’re using the array as a queue and want to remove items from the
+queue while still allowing random access. To safely remove the first or last element from
+an array, use array_shift() and array_pop(), respectively.</p>
+<h4 id="range">range</h4>
+<p>The range() function creates an array containing a range of elements.
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<p>The advantage of using range() is its brevity, but this technique has a disadvantage: a large array can take up unnecessary memory.</p>
+<p>If you want range to skip steps, provide a third argument indicating how big each step should be. For example, range(1, 10, 2) returns an array containing 1, 3, 5, 7,9. It’s also valid for $start to be larger than $end. In this case, the numbers returned by range() are in descending order.
+range() can also be used to retrieve character sequences:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">l</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">m</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">n</span>
+ <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">o</span>
+ <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">p</span>
+<span class="p">)</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="array_unique">array_unique</h4>
+<p>When you want to eliminate duplicates from an array.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nv">$unique_numbers</span> <span class="o">=</span> <span class="nb">array_unique</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$unique_numbers</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If the array is already complete, use array_unique(), which returns a new array that
+contains no duplicate values. </p>
+<p>If you create the array while processing results, here is a technique for numerical arrays:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nv">$unique_numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$numbers</span> <span class="k">as</span> <span class="nv">$number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$number</span><span class="p">,</span> <span class="nv">$unique_numbers</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$unique_numbers</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$number</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$unique_numbers</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Here’s one for associative arrays:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;fruits&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$fruit</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nv">$array</span><span class="p">[</span><span class="nv">$fruit</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$fruit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>An even faster method than using in_array() is to create a hybrid array in which the key and the value for each element are the same. This eliminates the linear check of in_array() but still allows you to take advantage of the array family of functions that operate over the values of an array instead of the keys.</p>
+<p>In fact, it’s faster to use the associative array method and then call array_values() on the result (or, for that matter, array_keys(), but array_values() is slightly faster) than to create a numeric array directly with the overhead of in_array().</p>
+<h3 id="update-information-in-arrays">Update Information in Arrays</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array_change_key_case()</td>
+<td>Changes all keys in an array to lowercase or uppercase</td>
+</tr>
+<tr>
+<td>array_fill()</td>
+<td>Fills an array with values</td>
+</tr>
+<tr>
+<td>array_fill_keys()</td>
+<td>Fills an array with values, specifying keys</td>
+</tr>
+<tr>
+<td><a href="#array_flip">array_flip()</a></td>
+<td>Flips/Exchanges all keys with their associated values in an array</td>
+</tr>
+<tr>
+<td><a href="#array_map">array_map()</a></td>
+<td>Sends each value of an array to a user-made function, which returns new values</td>
+</tr>
+<tr>
+<td>array_replace()</td>
+<td>Replaces the values of the first array with the values from following arrays</td>
+</tr>
+<tr>
+<td>array_replace_recursive()</td>
+<td>Replaces the values of the first array with the values from following arrays recursively</td>
+</tr>
+<tr>
+<td><a href="#array_walk">array_walk()</a></td>
+<td>Applies a user function to every member of an array</td>
+</tr>
+<tr>
+<td><a href="#array_walk_recursive">array_walk_recursive()</a></td>
+<td>Applies a user function recursively to every member of an array</td>
+</tr>
+<tr>
+<td><a href="#the-list-function">list()</a></td>
+<td>Assigns variables as if they were an array</td>
+</tr>
+</tbody>
+</table>
+<h4 id="deleting-elements-from-an-array">Deleting Elements from an Array</h4>
+<p>When you want to remove one or more elements from an array. </p>
+<p>To delete one element, use <a href="../../PR/phpVar4/#unset">unset()</a>:</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+To delete multiple noncontiguous elements, also use <a href="../../PR/phpVar4/#unset">unset()</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="nb">unset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">],</span> <span class="nv">$array</span><span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">]);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>To delete multiple contiguous elements, use array_splice():</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">array_splice</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">,</span> <span class="nv">$length</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="the-list-function">The list Function</h4>
+<p>The list() function is used to create an array from a list of variables.</p>
+<p>If there are not enough elements in the array it will output a notice and assign null to the remaining variables.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">,</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$b</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$c</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Since PHP 7.1.0, which elements are assigned to the variables can be selected using arrow =&gt; syntax.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">list</span><span class="p">(</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="nv">$a</span><span class="p">,</span> <span class="mi">0</span> <span class="o">=&gt;</span> <span class="nv">$b</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="nv">$c</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$a</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$b</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$b</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$c</span><span class="s2"> is &quot;</span> <span class="o">.</span> <span class="nv">$c</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+When you want to exchange the values in two variables without using additional variables for
+storage.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="s1">&#39;Bob&#39;</span><span class="p">;</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span><span class="nv">$b</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span><span class="nv">$a</span><span class="p">);</span>
+<span class="c1">// now $a is Bob and $b is Alice</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>PHP’s list() language construct lets you assign values from an array to individual variables. Its counterpart on the right side of the expression, array(), lets you construct arrays from individual values. Assigning the array that array() returns to the variables in the list() lets you juggle the order of those values. This works with more than two values, as well:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$yesterday</span> <span class="o">=</span> <span class="s1">&#39;pleasure&#39;</span><span class="p">;</span>
+<span class="nv">$today</span> <span class="o">=</span> <span class="s1">&#39;sorrow&#39;</span><span class="p">;</span>
+<span class="nv">$tomorrow</span> <span class="o">=</span> <span class="s1">&#39;celebrate&#39;</span><span class="p">;</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$yesterday</span><span class="p">,</span><span class="nv">$today</span><span class="p">,</span><span class="nv">$tomorrow</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="nv">$today</span><span class="p">,</span><span class="nv">$tomorrow</span><span class="p">,</span><span class="nv">$yesterday</span><span class="p">);</span>
+<span class="c1">// now $yesterday is &#39;sorrow&#39;, $today is &#39;celebrate&#39;</span>
+<span class="c1">// and $tomorrow is &#39;pleasure&#39;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This method isn’t faster than using temporary variables, so you should use it for clarity,
+but not speed.</p>
+<h4 id="array_map">array_map()</h4>
+<p>Use array_map() to hand off each element to a function for processing:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// lowercase all words</span>
+<span class="nv">$lc</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="s1">&#39;strtolower&#39;</span><span class="p">,</span> <span class="nv">$words</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The first argument to array_map() is a function to modify an individual element, and the second is the array to be iterated through.</p>
+<h4 id="array_walk">array_walk()</h4>
+<p>Use array_walk() to hand off each element to a function for processing. When you want to apply a function or method to each element in an array. This allows you to transform the input data for the entire set all at once.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// uppercase all words</span>
+<span class="nb">array_walk</span><span class="p">(</span><span class="nv">$words</span><span class="p">,</span> <span class="s1">&#39;strtoupper&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This function takes an array and a callback function, which is the function that processes the elements of the array. The callback function takes two parameters: a value and a key. It can also take an optional third parameter, which is any additional data you wish to expose within the callback. Because array_walk operates in-place instead of returning a modified copy of the array, you must pass in values by reference when you want to modify the elements. </p>
+<h4 id="array_walk_recursive">array_walk_recursive()</h4>
+<p>When you have a series of nested arrays, use the array_walk_recursive() function to iterate through them.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// uppercase all words</span>
+<span class="nb">array_walk_recursive</span><span class="p">(</span><span class="nv">$words</span><span class="p">,</span> <span class="s1">&#39;strtoupper&#39;</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The array_walk_recursive() function only passes nonarray elements to the callback,
+so you don’t need to modify a callback when switching from array_walk().</p>
+<h3 id="extracting-information-from-arrays">Extracting Information from Arrays</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>array_column()</td>
+<td>Returns the values from a single column in the input array</td>
+</tr>
+<tr>
+<td>array_count_values()</td>
+<td>Counts all the values of an array</td>
+</tr>
+<tr>
+<td><a href="#array_filter">array_filter()</a></td>
+<td>Filters the values of an array using a callback function</td>
+</tr>
+<tr>
+<td><a href="#array_key_exists">array_key_exists()</a></td>
+<td>Checks if the specified key exists in the array</td>
+</tr>
+<tr>
+<td>array_keys()</td>
+<td>Returns all the keys of an array</td>
+</tr>
+<tr>
+<td>array_product()</td>
+<td>Calculates the product of the values in an array</td>
+</tr>
+<tr>
+<td>array_rand()</td>
+<td>Returns one or more random keys from an array</td>
+</tr>
+<tr>
+<td>array_reduce()</td>
+<td>Returns an array as a string, using a user-defined function</td>
+</tr>
+<tr>
+<td><a href="#array_search">array_search()</a></td>
+<td>Searches an array for a given value and returns the key</td>
+</tr>
+<tr>
+<td>array_slice()</td>
+<td>Returns selected parts of an array</td>
+</tr>
+<tr>
+<td>current()</td>
+<td>Returns the current element in an array</td>
+</tr>
+<tr>
+<td>key()</td>
+<td>Returns the current key in an array</td>
+</tr>
+<tr>
+<td>array_sum()</td>
+<td>Returns the sum of the values in an array</td>
+</tr>
+<tr>
+<td><a href="#array_values">array_values()</a></td>
+<td>Returns all the values of an array</td>
+</tr>
+<tr>
+<td><a href="#count">count()</a></td>
+<td>Returns the number of elements in an array</td>
+</tr>
+<tr>
+<td>sizeof()</td>
+<td>Alias of count()</td>
+</tr>
+<tr>
+<td>each()</td>
+<td>Deprecated from PHP 7.2. Returns the current key and value pair from an array</td>
+</tr>
+<tr>
+<td>extract()</td>
+<td>Imports variables into the current symbol table from an array</td>
+</tr>
+<tr>
+<td><a href="#in_array">in_array()</a></td>
+<td>Checks if a specified value exists in an array</td>
+</tr>
+</tbody>
+</table>
+<h4 id="finding-the-largest-or-smallest-valued-element-in-an-array">Finding the Largest or Smallest Valued Element in an Array</h4>
+<p>When you have an array of elements, and you want to find the largest or smallest valued element. For example, you want to find the appropriate scale when creating a histogram.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">//To find the largest element, use max():</span>
+<span class="nv">$largest</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="c1">//To find the smallest element, use min():</span>
+<span class="nv">$smallest</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Normally, <a href="../../PR/phpMath1/#min-and-max">max()</a> returns the larger of two elements, but if you pass it an array, it searches the entire array instead. Unfortunately, there’s no way to find the index of the largest element using max(). To do that, you must sort the array in reverse order to put the largest element in position 0.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">arsort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="c1">//The value of the largest element is $array[0]</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="array_filter">array_filter()</h4>
+<p>The array_filter() function is used to remove elements from an array that don’t pass a certain test.
+When you want to locate entries in an array that meet certain requirements.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//Use a foreach loop:</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$movies</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="cm">/*...*/</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$movies</span> <span class="k">as</span> <span class="nv">$movie</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="nv">$movie</span><span class="p">[</span><span class="s1">&#39;box_office_gross&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5000000</span><span class="p">)</span> <span class="p">{</span> <span class="nv">$flops</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$movie</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//Or array_filter():</span>
+<span class="nv">$movies</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">);</span>
+<span class="nv">$flops</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$movies</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$movie</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="p">(</span><span class="nv">$movie</span><span class="p">[</span><span class="s1">&#39;box_office_gross&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5000000</span><span class="p">)</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>With array_filter(), however, you first create an anonymous function that returns true for values you want to keep and false for values you don’t. Using array_filter(), you then instruct PHP to process the array as you do in the foreach.</p>
+<h4 id="array_key_exists">array_key_exists()</h4>
+<p>The array_key_exists() function is used to check if the specified key exists in the array. Use array_key_exists() to check for a key no matter what the associated value is.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">array_key_exists</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$cars</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;Key 1 exists!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The array_key_exists() function completely ignores array values—it just reports whether there is an element in the array with a particular key.</p>
+<p>The <a href="../../Func/phpEmpty/#isset-function">isset() function</a> is used to check if the specified key exists in the array. Use isset() to find a key whose associated value is anything but null.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$cars</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;Key exists!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>isset(), however, behaves the same way on array keys as it does with other variables. A null value causes is set() to return false.</p>
+<h4 id="array_search">array_search()</h4>
+<p>The array_search() function is used to search for a specified value in an array. Use array_search() to find a value in an array no matter what the associated key is.  It returns the key of the found value. If the value is not in the array, it returns false.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nv">$found</span> <span class="o">=</span> <span class="nb">array_search</span><span class="p">(</span><span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="nv">$cars</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$found</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use in_array() to find if an array contains a value; use array_search() to discover where that value is located. However, because array_search() gracefully handles searches in which the value isn’t found, it’s better to use array_search() instead of in_array(). The speed difference is minute, and the extra information is potentially useful.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$favorite_foods</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;artichokes&#39;</span><span class="p">,</span> <span class="s1">&#39;bread&#39;</span><span class="p">,</span> <span class="s1">&#39;cauliflower&#39;</span><span class="p">,</span> <span class="s1">&#39;deviled eggs&#39;</span><span class="p">);</span>
+<span class="nv">$food</span> <span class="o">=</span> <span class="s1">&#39;cauliflower&#39;</span><span class="p">;</span>
+<span class="nv">$position</span> <span class="o">=</span> <span class="nb">array_search</span><span class="p">(</span><span class="nv">$food</span><span class="p">,</span> <span class="nv">$favorite_foods</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$position</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;My #</span><span class="si">$position</span><span class="s2"> favorite food is </span><span class="si">$food</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s2">&quot;Blech! I hate </span><span class="si">$food</span><span class="s2">!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>Use the !== check against false because if your string is found in the array at position 0, the if evaluates to a logical false, which isn’t what is meant or wanted. If a value is in the array multiple times, array_search() is only guaranteed to return one of the instances, not the first instance.</p>
+<h4 id="array_values">array_values()</h4>
+<p>The array_values() function is used to return all the values of an array.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nb">array_values</span><span class="p">(</span><span class="nv">$cars</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="count">count()</h4>
+<p>The count() function is used to return the length (the number of elements) of an array.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="iterating-through-an-array">Iterating Through an Array</h4>
+<p>When you want to cycle though an array and operate on all or some of the elements inside.</p>
+<p>Use foreach:
+<div class="highlight"><pre><span></span><code><span class="x">foreach ($array as $value) {</span>
+<span class="x"> // Act on $value</span>
+<span class="x">}</span>
+</code></pre></div>
+Or to get an array’s keys and values:
+<div class="highlight"><pre><span></span><code><span class="x">foreach ($array as $key =&gt; $value) {</span>
+<span class="x"> // Act II</span>
+<span class="x">}</span>
+</code></pre></div>
+Another technique is to use for:
+<div class="highlight"><pre><span></span><code><span class="x">for ($key = 0, $size = count($array); $key &lt; $size; $key++) {</span>
+<span class="x"> // Act III</span>
+<span class="x">}</span>
+</code></pre></div>
+Finally, you can use each() in combination with list() and while:
+<div class="highlight"><pre><span></span><code><span class="x">reset($array); // reset internal pointer to beginning of array</span>
+<span class="x">while (list($key, $value) = each ($array)) {</span>
+<span class="x"> // Final Act</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<h4 id="each">each()</h4>
+<p>The each() function is used to return the current key and value pair from an array.</p>
+<p>With foreach, PHP iterates over a copy of the array instead of the actual array. In contrast, when using each() and for, PHP iterates over the original array. So if you modify the array inside the loop, you may (or may not) get the behavior you expect.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$items</span> <span class="k">as</span> <span class="nv">$item</span> <span class="o">=&gt;</span> <span class="nv">$cost</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="o">!</span> <span class="nx">in_stock</span><span class="p">(</span><span class="nv">$item</span><span class="p">))</span> <span class="p">{</span>
+ <span class="nb">unset</span><span class="p">(</span><span class="nv">$items</span><span class="p">[</span><span class="nv">$item</span><span class="p">]);</span> <span class="c1">// address the array directly</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The variables returned by foreach() aren’t aliases for the original values in the array: they’re copies, so if you modify them, it’s not reflected in the array. That’s why you need to modify <span class="arithmatex">\(items[\)</span>item] instead of $cost.</p>
+<p>When using each(), PHP keeps track of where you are inside the loop. After completing a first pass through, to begin again at the start, call reset() to move the pointer back to the front of the array. Otherwise, each() returns false.</p>
+<p>The for loop works only for arrays with consecutive integer keys. Unless you’re modifying the size of your array, it’s inefficient to recompute the count() of $items each time through the loop, so we always use a $size variable to hold the array’s size:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$item</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$size</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$items</span><span class="p">);</span> <span class="nv">$item</span> <span class="o">&lt;</span> <span class="nv">$size</span><span class="p">;</span> <span class="nv">$item</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>If you prefer to count efficiently with one variable, count backward:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$item</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$item</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$item</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The associative array version of the for loop is:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nb">reset</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="nv">$key</span> <span class="o">=</span> <span class="nb">key</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="nb">next</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+ <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This fails if any element holds a string that evaluates to false, so a perfectly normal value such as 0 causes the loop to end early. Therefore, this syntax is rarely used, and is included only to help you understand older PHP code.</p>
+<h4 id="in_array">in_array()</h4>
+<p>The in_array() function is used to check if a value exists in an array.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$book_collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Emma&#39;</span><span class="p">,</span> <span class="s1">&#39;Pride and Prejudice&#39;</span><span class="p">,</span> <span class="s1">&#39;Northhanger Abbey&#39;</span><span class="p">);</span>
+<span class="nv">$book</span> <span class="o">=</span> <span class="s1">&#39;Sense and Sensibility&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$book</span><span class="p">,</span> <span class="nv">$book_collection</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Own it.&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Need it.&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The default behavior of in_array() is to compare items using the == operator. To use the strict equality check, ===, pass true as the third parameter to in_array().</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">);</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span> <span class="c1">// true!</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$array</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$array</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$array</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nb">in_array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nv">$array</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The first check, in_array(0, $array), evaluates to true because to compare the number 0 against the string three, PHP casts three to an integer. Because three isn’t a numeric string, as is 2, it becomes 0. Therefore, in_array() thinks there’s a match.</p>
+<p>Consequently, when comparing numbers against data that may contain strings, it’s safest to use a strict comparison. If you find yourself calling in_array() multiple times on the same array, it may be better
+to use an associative array, with the original array elements as the keys in the new associative array. Looking up entries using in_array() takes linear time; with an associative array, it takes constant time.</p>
+<h4 id="array_flip">array_flip()</h4>
+<p>If you can’t create the associative array directly but need to convert from a traditional one with integer keys, use array_flip() to swap the keys and values of an array.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$book_collection</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Emma&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Pride and Prejudice&#39;</span><span class="p">,</span>
+<span class="s1">&#39;Northhanger Abbey&#39;</span><span class="p">);</span>
+<span class="c1">// convert from numeric array to associative array</span>
+<span class="nv">$book_collection</span> <span class="o">=</span> <span class="nb">array_flip</span><span class="p">(</span><span class="nv">$book_collection</span><span class="p">);</span>
+<span class="nv">$book</span> <span class="o">=</span> <span class="s1">&#39;Sense and Sensibility&#39;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$book_collection</span><span class="p">[</span><span class="nv">$book</span><span class="p">]))</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Own it.&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+ <span class="k">echo</span> <span class="s1">&#39;Need it.&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+Note that doing this condenses multiple keys with the same value into one element in the flipped array.</p>
+<h3 id="comparing-arrays">Comparing Arrays</h3>
+<p>When you have a pair of arrays, and you want to find their union (all the elements), intersection (elements in both, not just one), or difference (in one but not both).</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#array_diff">array_diff()</a></td>
+<td>Compare arrays, and returns the differences (compare values only)</td>
+</tr>
+<tr>
+<td>array_diff_assoc()</td>
+<td>Compare arrays, and returns the differences (compare keys and values)</td>
+</tr>
+<tr>
+<td>array_diff_key()</td>
+<td>Compare arrays, and returns the differences (compare keys only)</td>
+</tr>
+<tr>
+<td>array_diff_uassoc()</td>
+<td>Compare arrays, and returns the differences (compare keys and values, using a user-defined key comparison function)</td>
+</tr>
+<tr>
+<td>array_diff_ukey()</td>
+<td>Compare arrays, and returns the differences (compare keys only, using a user-defined key comparison function)</td>
+</tr>
+<tr>
+<td>array_intersect()</td>
+<td>Compare arrays, and returns the matches (compare values only)</td>
+</tr>
+<tr>
+<td>array_intersect_assoc()</td>
+<td>Compare arrays and returns the matches (compare keys and values)</td>
+</tr>
+<tr>
+<td>array_intersect_key()</td>
+<td>Compare arrays, and returns the matches (compare keys only)</td>
+</tr>
+<tr>
+<td>array_intersect_uassoc()</td>
+<td>Compare arrays, and returns the matches (compare keys and values, using a user-defined key comparison function)</td>
+</tr>
+<tr>
+<td>array_intersect_ukey()</td>
+<td>Compare arrays, and returns the matches (compare keys only, using a user-defined key comparison function)</td>
+</tr>
+<tr>
+<td>array_udiff()</td>
+<td>Compare arrays, and returns the differences (compare values only, using a user-defined key comparison function)</td>
+</tr>
+<tr>
+<td>array_udiff_assoc()</td>
+<td>Compare arrays, and returns the differences (compare keys and values, using a built-in function to compare the keys and a user-defined function to compare the values)</td>
+</tr>
+<tr>
+<td>array_udiff_uassoc()</td>
+<td>Compare arrays, and returns the differences (compare keys and values, using two user-defined key comparison functions)</td>
+</tr>
+<tr>
+<td>array_uintersect()</td>
+<td>Compare arrays, and returns the matches (compare values only, using a user-defined key comparison function)</td>
+</tr>
+<tr>
+<td>array_uintersect_assoc()</td>
+<td>Compare arrays, and returns the matches (compare keys and values, using a built-in function to compare the keys and a user-defined function to compare the values)</td>
+</tr>
+<tr>
+<td>array_uintersect_uassoc()</td>
+<td>Compare arrays, and returns the matches (compare keys and values, using two user-defined key comparison functions)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="x">//To compute the union:</span>
+<span class="x">$union = array_unique(array_merge($a, $b));</span>
+<span class="x">//To compute the intersection:</span>
+<span class="x">$intersection = array_intersect($a, $b);</span>
+<span class="x">//To find the simple difference:</span>
+<span class="x">$difference = array_diff($a, $b);</span>
+<span class="x">//And for the symmetric difference:</span>
+<span class="x">$difference = array_merge(array_diff($a, $b), array_diff($b, $a));</span>
+</code></pre></div>
+<p>Many necessary components for these calculations are built into PHP; it’s just a matter of combining them in the proper sequence.</p>
+<p>To find the union, you merge the two arrays to create one giant array with all of the values. But array_merge() allows duplicate values when merging two numeric arrays, so you call array_unique() to filter them out. This can leave gaps between entries because array_unique() doesn’t compact the array. It isn’t a problem, however, because foreach and each() handle sparsely filled arrays without a hitch.
+The function to calculate the intersection is simply named array_intersect() and requires no additional work on your part. </p>
+<h4 id="array_diff">array_diff()</h4>
+<p>The array_diff() function returns an array containing all the unique elements in $old that aren’t in $new. This is known as the simple difference:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$difference = array_diff($old, $new);</span>
+<span class="x">print_r($difference);</span>
+</code></pre></div>
+<p>The resulting array, $difference, contains 'not' and 'to' because array_diff() is case sensitive. It doesn’t contain 'whatever' because it doesn’t appear in $old.</p>
+<p>To get a reverse difference, or in other words, to find the unique elements in $new that are lacking in $old, flip the arguments:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$difference = array_diff($new, $old);</span>
+<span class="x">print_r($difference);</span>
+</code></pre></div>
+<p>The $reverse_diff array contains only 'whatever'.
+If you want to apply a function or other filter to array_diff(), roll your own difference algorithm:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// implement case-insensitive diff; diff -i</span>
+<span class="x">$seen = array();</span>
+<span class="x">foreach ($new as $n) {</span>
+<span class="x"> $seen[strtolower($n)]++;</span>
+<span class="x">}</span>
+<span class="x">foreach ($old as $o) {</span>
+<span class="x"> $o = strtolower($o);</span>
+<span class="x"> if (!$seen[$o]) { $diff[$o] = $o; }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The first foreach builds an associative array lookup table. You then loop through $old and, if you can’t find an entry in your lookup, add the element to $diff.</p>
+<p>It can be a little faster to combine array_diff() with array_map():</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$diff = array_diff(array_map(&#39;strtolower&#39;, $old), array_map(&#39;strtolower&#39;, $new));</span>
+<span class="x">print_r($diff);</span>
+</code></pre></div>
+<p>The symmetric difference is what’s in $a but not $b, and what’s in $b but not $a:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$old = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;not&#39;, &#39;to&#39;, &#39;be&#39;);</span>
+<span class="x">$new = array(&#39;To&#39;, &#39;be&#39;, &#39;or&#39;, &#39;whatever&#39;);</span>
+<span class="x">$symmetric_diff = array_merge(array_diff($a, $b), array_diff($b, $a));</span>
+<span class="x">print_r($symmetric_diff);</span>
+</code></pre></div>
+<p>Once stated, the algorithm is straightforward. You call array_diff() twice and find the two differences. Then you merge them together into one array. There’s no need to call array_unique() because you’ve intentionally constructed these arrays to have nothing in common.</p>
+<h3 id="pointer-functions">Pointer Functions</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>current()</td>
+<td>Returns the current element in an array</td>
+</tr>
+<tr>
+<td>pos()</td>
+<td>Alias of current()</td>
+</tr>
+<tr>
+<td>key()</td>
+<td>Returns the current key in an array</td>
+</tr>
+<tr>
+<td>next()</td>
+<td>Advances the internal array pointer of an array</td>
+</tr>
+<tr>
+<td>prev()</td>
+<td>Rewinds the internal array pointer</td>
+</tr>
+<tr>
+<td>reset()</td>
+<td>Sets the internal pointer of an array to its first element</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>Sets the internal pointer of an array to its last element</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sorting-arrays">Sorting Arrays</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#array_multisort">array_multisort()</a></td>
+<td>Sorts multiple or multi-dimensional arrays</td>
+</tr>
+<tr>
+<td><a href="../../PR/phpStr1/#reverse-by-words">array_reverse()</a></td>
+<td>Returns an array in the reverse order</td>
+</tr>
+<tr>
+<td><a href="#arsort">arsort()</a></td>
+<td>Sorts an associative array in descending order, according to the value</td>
+</tr>
+<tr>
+<td><a href="#asort">asort()</a></td>
+<td>Sorts an associative array in ascending order, according to the value</td>
+</tr>
+<tr>
+<td><a href="#krsort">krsort()</a></td>
+<td>Sorts an associative array in descending order, according to the key</td>
+</tr>
+<tr>
+<td><a href="#ksort">ksort()</a></td>
+<td>Sorts an associative array in ascending order, according to the key</td>
+</tr>
+<tr>
+<td>natcasesort()</td>
+<td>Sorts an array using a case insensitive "natural order" algorithm</td>
+</tr>
+<tr>
+<td><a href="#natsort">natsort()</a></td>
+<td>Sorts an array using a "natural order" algorithm</td>
+</tr>
+<tr>
+<td><a href="#rsort">rsort()</a></td>
+<td>Sorts an indexed array in descending order</td>
+</tr>
+<tr>
+<td><a href="#shuffle">shuffle()</a></td>
+<td>Shuffles an array</td>
+</tr>
+<tr>
+<td><a href="#sort">sort()</a></td>
+<td>Sorts an indexed array in ascending order</td>
+</tr>
+<tr>
+<td>uasort()</td>
+<td>Sorts an array by values using a user-defined comparison function and maintains the index association</td>
+</tr>
+<tr>
+<td>uksort()</td>
+<td>Sorts an array by keys using a user-defined comparison function</td>
+</tr>
+<tr>
+<td><a href="#sorting-an-array-by-a-computable-field">usort()</a></td>
+<td>Sorts an array by values using a user-defined comparison function</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sort">sort()</h4>
+<p>The sort() function sorts an array alphabetically.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>To sort numerically, pass SORT_NUMERIC as the second argument to sort().</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$scores</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="nb">sort</span><span class="p">(</span><span class="nv">$scores</span><span class="p">,</span> <span class="nx">SORT_NUMERIC</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+This resorts the numbers in ascending order (1, 2, 10, 20) instead of lexicographical order (1, 10, 2, 20).</p>
+<h4 id="rsort">rsort()</h4>
+<p>The rsort() function sorts an array in descending order.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
+<span class="nb">rsort</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$cars</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="asort">asort()</h4>
+<p>The asort() function sorts an associative array in ascending order, according to the value.</p>
+<p>The sort() function doesn’t preserve the key/value association between elements; instead, entries are reindexed starting at 0 and going upward. To preserve the key/value links, use asort(). The asort() function is normally used for associative arrays, but it can also be useful when the indexes of the entries are meaningful.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$states</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="s1">&#39;Delaware&#39;</span><span class="p">,</span> <span class="s1">&#39;Pennsylvania&#39;</span><span class="p">,</span> <span class="s1">&#39;New Jersey&#39;</span><span class="p">);</span>
+<span class="nb">asort</span><span class="p">(</span><span class="nv">$states</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="k">list</span><span class="p">(</span><span class="nv">$rank</span><span class="p">,</span> <span class="nv">$state</span><span class="p">)</span> <span class="o">=</span> <span class="nb">each</span><span class="p">(</span><span class="nv">$states</span><span class="p">))</span> <span class="p">{</span>
+ <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$state</span><span class="s2"> was the #</span><span class="si">$rank</span><span class="s2"> state to join the United States</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">asort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="natsort">natsort()</h4>
+<p>The natsort() function sorts an array using a "natural order" algorithm. Use natsort() to sort the array using a natural sorting algorithm. Under natural sorting, you can mix strings and numbers inside your elements and still get the right answer:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$tests</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test1.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test10.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test11.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test2.php&#39;</span><span class="p">);</span>
+<span class="nb">natsort</span><span class="p">(</span><span class="nv">$tests</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$tests</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>The elements are now ordered 'test1.php', 'test2.php', 'test10.php', and 'test11.php'. With natural sorting, the number 10 comes after the number 2; the opposite occurs under traditional sorting. For case-insensitive natural sorting, use natcasesort().</p>
+<h4 id="ksort">ksort()</h4>
+<p>The ksort() function sorts an associative array in ascending order, according to the key.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">ksort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="arsort">arsort()</h4>
+<p>The arsort() function sorts an associative array in descending order, according to the value.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">arsort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="krsort">krsort()</h4>
+<p>The krsort() function sorts an associative array in descending order, according to the key.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
+<span class="nb">krsort</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$x_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s2">&quot;Key=&quot;</span> <span class="o">.</span> <span class="nv">$x</span> <span class="o">.</span> <span class="s2">&quot;, Value=&quot;</span> <span class="o">.</span> <span class="nv">$x_value</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="sorting-an-array-by-a-computable-field">Sorting an Array by a Computable Field</h4>
+<p>Use usort() in combination with a custom comparison function:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$tests</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test1.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test10.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test11.php&#39;</span><span class="p">,</span> <span class="s1">&#39;test2.php&#39;</span><span class="p">);</span>
+<span class="c1">// sort in reverse natural order</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$tests</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">strnatcmp</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span> <span class="nv">$a</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$tests</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>When you want to define a custom sorting routine to order an array. However, instead of using
+a function, you want to use an object method. As with a custom sort function, the object method needs to take two input arguments and return 1, 0, or −1, depending on whether the first parameter is larger than, equal to, or less than the second.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">sort</span> <span class="p">{</span>
+ <span class="c1">// reverse-order string comparison</span>
+ <span class="k">static</span> <span class="k">function</span> <span class="nf">strrcmp</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nb">strcmp</span><span class="p">(</span><span class="nv">$b</span><span class="p">,</span> <span class="nv">$a</span><span class="p">);</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$words</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;sort&#39;</span><span class="p">,</span> <span class="s1">&#39;strrcmp&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>It must also be declared as static. Alternatively, you can use an instantiated object:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Dates</span> <span class="p">{</span>
+ <span class="k">public</span> <span class="k">function</span> <span class="nf">compare</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* compare here */</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nv">$dates</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dates</span><span class="p">;</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$access_times</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$dates</span><span class="p">,</span> <span class="s1">&#39;compare&#39;</span><span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h4 id="array_multisort">array_multisort()</h4>
+<p>The array_multisort() function sorts an array of values using multiple keys. When you want to sort multiple arrays or an array with multiple dimensions.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$colors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">);</span>
+<span class="nv">$cities</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Boston&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">);</span>
+<span class="nb">array_multisort</span><span class="p">(</span><span class="nv">$colors</span><span class="p">,</span> <span class="nv">$cities</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$colors</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$cities</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Blue</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Red</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">White</span>
+<span class="p">)</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Chicago</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Boston</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">New</span> <span class="nx">York</span>
+<span class="p">)</span>
+<span class="c1">//To sort multiple dimensions within a single array, pass the specific array elements:</span>
+<span class="nv">$stuff</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">),</span>
+ <span class="s1">&#39;cities&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Boston&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">));</span>
+<span class="nb">array_multisort</span><span class="p">(</span><span class="nv">$stuff</span><span class="p">[</span><span class="s1">&#39;colors&#39;</span><span class="p">],</span> <span class="nv">$stuff</span><span class="p">[</span><span class="s1">&#39;cities&#39;</span><span class="p">]);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$stuff</span><span class="p">);</span>
+<span class="k">Array</span>
+<span class="p">(</span>
+ <span class="p">[</span><span class="nx">colors</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">Array</span>
+ <span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Blue</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Red</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">White</span>
+ <span class="p">)</span>
+ <span class="p">[</span><span class="nx">cities</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">Array</span>
+ <span class="p">(</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Chicago</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="nx">Boston</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="k">New</span> <span class="nx">York</span>
+ <span class="p">)</span>
+<span class="p">)</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>To modify the sort type, as in sort(), pass in SORT_REGULAR, SORT_NUMERIC, or SORT_STRING after the array. To modify the sort order, unlike in sort(), pass in SORT_ASC or SORT_DESC after the array. You can also pass in both a sort type and a sort order after the array.</p>
+<p>The array_multisort() function can sort several arrays at once or a multidimensional array by one or more dimensions. The arrays are treated as columns of a table to be sorted by rows. The first array is the main one to sort by; all the items in the other arrays are reordered based on the sorted order of the first array. If items in the first array compare as equal, the sort order is determined by the second array, and so on.</p>
+<p>The default sorting values are SORT_REGULAR and SORT_ASC, and they’re reset after each array, so there’s no reason to pass either of these two values, except for clarity:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$numbers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nv">$letters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">);</span>
+<span class="nb">array_multisort</span><span class="p">(</span><span class="nv">$numbers</span><span class="p">,</span> <span class="nx">SORT_NUMERIC</span><span class="p">,</span> <span class="nx">SORT_DESC</span><span class="p">,</span>
+ <span class="nv">$letters</span><span class="p">,</span> <span class="nx">SORT_STRING</span> <span class="p">,</span> <span class="nx">SORT_DESC</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<p>This example reverses the arrays.</p>
+<h4 id="shuffle">shuffle()</h4>
+<p>When you want to scramble the elements of an array in a random order.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$colors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;White&#39;</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">);</span>
+<span class="nb">shuffle</span><span class="p">(</span><span class="nv">$colors</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$colors</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Func/phpGenerators/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Generators" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Generators
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../phpIterables/" class="md-footer__link md-footer__link--next" aria-label="Next: Iterables" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Iterables
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ArceLopera" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
