@@ -1,5 +1,7 @@
 Modal dialogues are a useful UI component in Moodle for displaying content and interacting with users without navigating away from the current page. They are typically used for forms, confirmations, alerts, and other content that needs user interaction.
 
+The use of modal modules provides a simplified developer experience for creating modal dialogues within Moodle.
+
 1. **User Experience**: Enhance the user experience by providing information or requesting input without leaving the current page.
 2. **Focus**: Keep the user's focus on a specific task or piece of information.
 3. **Efficiency**: Reduce page loads and provide a smoother, more interactive experience.
