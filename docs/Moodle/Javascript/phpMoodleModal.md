@@ -1,6 +1,11 @@
 Modal dialogues are a useful UI component in Moodle for displaying content and interacting with users without navigating away from the current page. They are typically used for forms, confirmations, alerts, and other content that needs user interaction.
 
 The use of modal modules provides a simplified developer experience for creating modal dialogues within Moodle.
+The module attempts to ensure that all accessibility requirements are met, including applying the correct aria roles, focus control, aria hiding background elements, and locking keyboard navigation.
+
+Modals will fire events for common actions that occur within the modal for other code to listen to and react accordingly.
+
+Moodle ships with several standard modal types for you to re-use including a simple cancel modal, and a save/cancel modal.
 
 1. **User Experience**: Enhance the user experience by providing information or requesting input without leaving the current page.
 2. **Focus**: Keep the user's focus on a specific task or piece of information.
@@ -86,7 +91,8 @@ export const init = async () => {
 };
 ```
 
-Using the 'trigger'
+**Using the 'trigger'**
+
 Moodle Modals created using the Modal Factory support an optional trigger element. Whilst this is available, it is no longer recommended and support for it will likely be removed in Moodle 4.3.
 
 ```javascript
@@ -109,13 +115,13 @@ export const init = async () => {
 ### Instantiating modal types
 A number of commonly used modals are available as standard, these include:
 
-a Delete / Cancel modal
-a Save / Cancel modal
-a Cancel modal
-Moodle 4.3
-Moodle 4.2 and earlier
-NOTE
-If you are developing code for use in Moodle 4.2, or earlier, then you must continue to follow the 4.2 guidelines.
++ a Delete / Cancel modal
++ a Save / Cancel modal
++ a Cancel modal
+
+#### For Moodle 4.3
+
+**NOTE:** If you are developing code for use in Moodle 4.2, or earlier, then you must continue to follow the 4.2 guidelines.
 
 To use these modals you can call the create method on the relevant Modal Class.
 ```javascript
@@ -155,27 +161,75 @@ export const init = async () => {
 };
 ```
 
-### Creating a custom modal type
+#### For Moodle 4.2 and earlier
+
+To use these modals you can provide the type argument to the ModalFactory.create method. This argument takes a string value and values can be found for these modals in ModalFactory.TYPES.
+
+```javascript
+// Creating a save/cancel modal
+import ModalFactory from 'core/modal_factory';
+import {get_string as getString} from 'core/str';
+
+export const init = async () => {
+    const modal = await ModalFactory.create({
+        type: ModalFactory.types.SAVE_CANCEL,
+        title: 'test title',
+        body: getString('confirmchange', 'mod_example'),
+    });
+
+    // ...
+};
+```
+Each type of modal may fire additional events to allow your code to handle the new functionality being offered -- for example, if you wanted to have a save/cancel modal that you did some form validation on before saving you could do something like the example below.
+
+```javascript
+// Listening to a Save event
+import ModalFactory from 'core/modal_factory';
+import ModalEvents from 'core/modal_events';
+import {get_string as getString} from 'core/str';
+
+export const init = async () => {
+    const modal = await ModalFactory.create({
+        type: ModalFactory.types.SAVE_CANCEL,
+        title: 'test title',
+        body: getString('confirmchange', 'mod_example'),
+    });
+
+    modal.getRoot().on(ModalEvents.save, (e) => {
+        // ...
+    })
+
+    // ...
+};
+```
+
+### Creating a custom modal 
+
 In some situations it is desirable to write a brand new modal.
 
 There are two parts to this:
 
-a new Modal class which extends the core/modal class; and
-a template
-CUSTOM MODALS IN MOODLE 4.2 AND EARLIER
-Since Moodle 4.3, creating the Modal class is as simple as extending the core/modal class, and providing a TYPE property, and TEMPLATE property.
++ a new Modal class which extends the core/modal class; and
++ a template
 
-For older versions of Moodle, refer to the Moodle 4.2 documentation.
+**CUSTOM MODALS IN MOODLE 4.2 AND EARLIER**
+    
+Since Moodle 4.3, creating the Modal class is as simple as extending the `core/modal` class, and providing a `TYPE` property, and `TEMPLATE` property.
 
-mod/example/amd/src/my_modal.js
+For older versions of Moodle, refer to the [Moodle 4.2 documentation](https://moodledev.io/docs/4.2/guides/javascript/modal#creating-a-custom-modal-type).
+
+```javascript
+// mod/example/amd/src/my_modal.js
 import Modal from 'core/modal';
 
 export default class MyModal extends Modal {
     static TYPE = "mod_example/my_modal";
     static TEMPLATE = "mod_example/my_modal";
 }
+```
 
-The template should extend the core/modal core template and can override any of the title, body, or footer regions, for example:
+The template should extend the `core/modal` core template and can override any of the title, body, or footer regions, for example:
+
 ``` javascript
 // mod/example/templates/my_modal.mustache
 {{< core/modal }}
@@ -206,6 +260,7 @@ The template should extend the core/modal core template and can override any of 
 ```
 
 Once defined, the new modal can be instantiated using the standard create method, for example:
+
 ```javascript
 // Instantiating a custom modal
 import MyModal from 'mod_example/my_modal';
