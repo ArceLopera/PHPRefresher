@@ -170,6 +170,7 @@ nav:
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
      - XMLDB tool: Moodle/phpMoodleXMLDB.md
+     - Templates: Moodle/phpMoodleTemplate.md
      - Javascript:
             - General: Moodle/Javascript/phpMoodleJS.md
             - Tools: Moodle/Javascript/phpMoodleJSTools.md

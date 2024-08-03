@@ -1,0 +1,3 @@
+Moodle makes use of the Mustache template system to render most of its HTML output, and in some other cases too.
+
+Templates are defined as plain text, which typically includes HTML, and a range of Mustache tags and placeholders. The Mustache placeholders are replaced with actual values during the render of the page. Mustache templates can be rendered both server-side in PHP, and client-side using JavaScript. Themes can overrides the templates defined in other components if required.
