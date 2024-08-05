@@ -2019,6 +2019,24 @@
 
 <p>Moodle makes use of the Mustache template system to render most of its HTML output, and in some other cases too.</p>
 <p>Templates are defined as plain text, which typically includes HTML, and a range of Mustache tags and placeholders. The Mustache placeholders are replaced with actual values during the render of the page. Mustache templates can be rendered both server-side in PHP, and client-side using JavaScript. Themes can overrides the templates defined in other components if required.</p>
+<p>A simple example of a template:</p>
+<p>Given the template is defined as:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Hello {{name}}!<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Your grade is: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{grade}}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>And the values for the placeholder tags name and grade are provided as a JSON object, referred to as rendering context (note the context here has nothing to do with Moodle permission contexts. In Mustache, the term basically represents the data passed to the template).</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bobby&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Then the rendered result will look like:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Hello Bobby!<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Your grade is: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>The following page provides information about the Mustache templates syntax and how to use them in Moodle.</p>
 
               
             </article>
