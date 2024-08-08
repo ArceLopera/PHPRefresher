@@ -1902,6 +1902,74 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#helpers" class="md-nav__link">
+    Helpers
+  </a>
+  
+    <nav class="md-nav" aria-label="Helpers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#str" class="md-nav__link">
+    str
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quote" class="md-nav__link">
+    quote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pix" class="md-nav__link">
+    pix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdate" class="md-nav__link">
+    userdate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shortentext" class="md-nav__link">
+    shortentext
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-files" class="md-nav__link">
+    Template files
+  </a>
+  
+    <nav class="md-nav" aria-label="Template files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mustache-file-boilerplate" class="md-nav__link">
+    Mustache file boilerplate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2146,6 +2214,74 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#helpers" class="md-nav__link">
+    Helpers
+  </a>
+  
+    <nav class="md-nav" aria-label="Helpers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#str" class="md-nav__link">
+    str
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quote" class="md-nav__link">
+    quote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pix" class="md-nav__link">
+    pix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdate" class="md-nav__link">
+    userdate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shortentext" class="md-nav__link">
+    shortentext
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-files" class="md-nav__link">
+    Template files
+  </a>
+  
+    <nav class="md-nav" aria-label="Template files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mustache-file-boilerplate" class="md-nav__link">
+    Mustache file boilerplate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2296,6 +2432,100 @@
 <span class="err">{{/</span> <span class="na">tool_demo</span><span class="err">/</span><span class="na">section</span><span class="err">}}</span>
 </code></pre></div>
 <p>Blocks are particularly useful for building a library of re-usable components.</p>
+<h3 id="helpers">Helpers</h3>
+<p>Moodle providers several Mustache helpers. Helpers tags look like sections eventually containing zero or more parameters.</p>
+<h4 id="str">str</h4>
+<p>The {{#str}} is a string helper for loading text strings from language packs. It effectively represents Mustache variant of get_string() calls.</p>
+<div class="highlight"><pre><span></span><code>{{#str}} helloworld, mod_greeting {{/str}}
+</code></pre></div>
+<p>The first two parameters are the string identifier and the component name. The optional third parameter defines the value for the string's $a placeholder. Literals as well as variable tags are allowed to define the value.</p>
+<div class="highlight"><pre><span></span><code>{{#str}} backto, core, Moodle.org {{/str}}
+
+{{#str}} backto, core, {{name}} {{/str}}
+</code></pre></div>
+<p>For strings that accept non-scalar placeholders, see the following section.</p>
+<p><strong>note</strong>
+If you want to create a help icon, and wondering "where is the helper for that?" then actually, it is not a helper. You need to use <code>{{&gt;core/help_icon}}</code> as a partial.</p>
+<h4 id="quote">quote</h4>
+<p>The <code>{{#quote}}</code> is intended to quote non-scalar <code>{{#str}}</code> arguments.</p>
+<p>Some strings accept complex non-scalar data structures passed as the value of the $a placeholder. You can use a JSON object syntax in that case:</p>
+<div class="highlight"><pre><span></span><code>{{#str}} counteditems, core, { &quot;count&quot;: &quot;42&quot;, &quot;items&quot;: &quot;courses&quot; } {{/str}}
+</code></pre></div>
+<p>If you wanted to use the context values instead of literal values, you might intuitively use something like this:</p>
+<div class="highlight"><pre><span></span><code>{{! DO NOT DO THIS !}}
+{{#str}} counteditems, core, { &quot;count&quot;: {{count}}, &quot;items&quot;: {{itemname}} } {{/str}}
+</code></pre></div>
+<p>There is a potential problem though. If the variable tag <code>itemname</code> evaluates to a string containing double quotes, it will break the JSON syntax. We need to escape certain characters potentially appearing in the variable tags. For this, we use the <code>{{#quote}}</code> helper.</p>
+<div class="highlight"><pre><span></span><code>{{#str}} counteditems, core, { &quot;count&quot;: {{count}}, &quot;items&quot;: {{#quote}} {{itemname}} {{/quote}} } {{/str}}
+</code></pre></div>
+<h4 id="pix">pix</h4>
+<p>The <code>{{#pix}}</code> is a icon picture helper for generating pix icon tags.</p>
+<div class="highlight"><pre><span></span><code>{{#pix}} t/edit, core, Edit this section {{/pix}}
+</code></pre></div>
+<p>The first two parameters are the icon identifier and the component name. The rest is the alt text for the icon.</p>
+<p>See <a href="https://docs.moodle.org/dev/Using_images_in_a_theme">Using images in a theme</a> and <a href="https://docs.moodle.org/dev/Moodle_icons">Moodle icons</a> for some background information about pix icons in Moodle.</p>
+<h4 id="userdate">userdate</h4>
+<p>The <code>{{#userdate}}</code> helper will format UNIX timestamps into a given human readable date format while using the user's timezone settings configured (if any) in Moodle. The helper will accept hardcoded values, context variables, or other helpers.</p>
+<p>It is recommended to use the string helper to get one of the core Moodle formats.
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1628871929</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{{#userdate}} {{time}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}
+</code></pre></div></p>
+<p>This will ask the Moodle server for the string "strftimedate" and will use the value (which in this case is "%d %B %Y" in case of English) to format the user date. So the resulting formatted timestamp from the userdate helper would be like "13 August 2021".</p>
+<h4 id="shortentext">shortentext</h4>
+<p>The <code>{{#shortentext}}</code> helper can be used to shorten a large amount of text to a specified length and will append a trailing ellipsis to signify that the text has been shortened.</p>
+<p>The algorithm will attempt to preserve words while shortening to text. Words, for the purposes of the helper, are considered to be groups of consecutive characters broken by a space or, in the case of a multi-byte character, after the completion of the multi-byte character (rather than in the middle of the character).</p>
+<p>It will also attempt to preserve HTML in the text by keeping the opening and closing tags. Only text within the tags will be considered when calculating how much should be truncated to reach the desired length.</p>
+<p>The helper takes two comma separated arguments. The first is the desired length and the second is the text to be shortened. Both can be provided as context variables.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;&lt;em&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia pretium nulla gravida interdum.&lt;/em&gt;&lt;/p&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{{#shortentext}} 15, {{{description}}} {{/shortentext}}
+</code></pre></div>
+<h3 id="template-files">Template files</h3>
+<p>Templates are saved in <code>templates/*.mustache</code> files within core components and plugins folders. When loading them, templates are identified by their full <a href="https://moodledev.io/general/development/policies/codingstyle/frankenstyle">component name</a> followed by slash and the filename without the file extension.</p>
+<p><strong>Example</strong></p>
+<p>A <code>timer</code> template provided by the <code>mod_lesson</code> module would be referred to as <code>mod_lesson/timer</code> and it would be located in <code>mod/lesson/templates/timer.mustache</code> file.</p>
+<p>Since Moodle 3.8 it is possible to use sub-directories under the <code>templates</code> directory. The first sub-directory name must meet <a href="https://moodledev.io/general/development/policies/codingstyle#rules-for-level2">certain naming rules</a> (same as for class namespaces).</p>
+<h4 id="mustache-file-boilerplate">Mustache file boilerplate</h4>
+<div class="highlight"><pre><span></span><code>{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+}}
+{{!
+    @template plugintype_pluginname/template_name
+
+    Template purpose and description.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * none
+
+    Example context (json):
+    {
+    }
+}}
+</code></pre></div>
 
               
             </article>

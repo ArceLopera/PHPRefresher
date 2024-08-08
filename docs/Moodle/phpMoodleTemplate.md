@@ -195,3 +195,142 @@ Particular child templates can now extend / inherit from this parent template an
 ```
 
 Blocks are particularly useful for building a library of re-usable components.
+
+### Helpers
+Moodle providers several Mustache helpers. Helpers tags look like sections eventually containing zero or more parameters.
+
+#### str
+The {{#str}} is a string helper for loading text strings from language packs. It effectively represents Mustache variant of get_string() calls.
+
+```html
+{{#str}} helloworld, mod_greeting {{/str}}
+```
+
+The first two parameters are the string identifier and the component name. The optional third parameter defines the value for the string's $a placeholder. Literals as well as variable tags are allowed to define the value.
+
+```html
+{{#str}} backto, core, Moodle.org {{/str}}
+
+{{#str}} backto, core, {{name}} {{/str}}
+```
+
+For strings that accept non-scalar placeholders, see the following section.
+
+**note**
+If you want to create a help icon, and wondering "where is the helper for that?" then actually, it is not a helper. You need to use `{{>core/help_icon}}` as a partial.
+
+#### quote
+The `{{#quote}}` is intended to quote non-scalar `{{#str}}` arguments.
+
+Some strings accept complex non-scalar data structures passed as the value of the $a placeholder. You can use a JSON object syntax in that case:
+
+```html
+{{#str}} counteditems, core, { "count": "42", "items": "courses" } {{/str}}
+```
+
+If you wanted to use the context values instead of literal values, you might intuitively use something like this:
+
+```html
+{{! DO NOT DO THIS !}}
+{{#str}} counteditems, core, { "count": {{count}}, "items": {{itemname}} } {{/str}}
+```
+
+There is a potential problem though. If the variable tag `itemname` evaluates to a string containing double quotes, it will break the JSON syntax. We need to escape certain characters potentially appearing in the variable tags. For this, we use the `{{#quote}}` helper.
+
+```html
+{{#str}} counteditems, core, { "count": {{count}}, "items": {{#quote}} {{itemname}} {{/quote}} } {{/str}}
+```
+
+#### pix
+
+The `{{#pix}}` is a icon picture helper for generating pix icon tags.
+
+```html
+{{#pix}} t/edit, core, Edit this section {{/pix}}
+```
+
+The first two parameters are the icon identifier and the component name. The rest is the alt text for the icon.
+
+See [Using images in a theme](https://docs.moodle.org/dev/Using_images_in_a_theme) and [Moodle icons](https://docs.moodle.org/dev/Moodle_icons) for some background information about pix icons in Moodle.
+
+#### userdate
+The `{{#userdate}}` helper will format UNIX timestamps into a given human readable date format while using the user's timezone settings configured (if any) in Moodle. The helper will accept hardcoded values, context variables, or other helpers.
+
+It is recommended to use the string helper to get one of the core Moodle formats.
+```json
+{
+    "time": 1628871929
+}
+```
+```html
+{{#userdate}} {{time}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}
+```
+
+This will ask the Moodle server for the string "strftimedate" and will use the value (which in this case is "%d %B %Y" in case of English) to format the user date. So the resulting formatted timestamp from the userdate helper would be like "13 August 2021".
+
+#### shortentext
+The `{{#shortentext}}` helper can be used to shorten a large amount of text to a specified length and will append a trailing ellipsis to signify that the text has been shortened.
+
+The algorithm will attempt to preserve words while shortening to text. Words, for the purposes of the helper, are considered to be groups of consecutive characters broken by a space or, in the case of a multi-byte character, after the completion of the multi-byte character (rather than in the middle of the character).
+
+It will also attempt to preserve HTML in the text by keeping the opening and closing tags. Only text within the tags will be considered when calculating how much should be truncated to reach the desired length.
+
+The helper takes two comma separated arguments. The first is the desired length and the second is the text to be shortened. Both can be provided as context variables.
+
+```json
+{
+    "description": "<p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia pretium nulla gravida interdum.</em></p>"
+}
+```
+
+```html
+{{#shortentext}} 15, {{{description}}} {{/shortentext}}
+```
+
+### Template files
+Templates are saved in `templates/*.mustache` files within core components and plugins folders. When loading them, templates are identified by their full [component name](https://moodledev.io/general/development/policies/codingstyle/frankenstyle) followed by slash and the filename without the file extension.
+
+**Example**
+
+A `timer` template provided by the `mod_lesson` module would be referred to as `mod_lesson/timer` and it would be located in `mod/lesson/templates/timer.mustache` file.
+
+Since Moodle 3.8 it is possible to use sub-directories under the `templates` directory. The first sub-directory name must meet [certain naming rules](https://moodledev.io/general/development/policies/codingstyle#rules-for-level2) (same as for class namespaces).
+
+####  Mustache file boilerplate
+```
+
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template plugintype_pluginname/template_name
+
+    Template purpose and description.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * none
+
+    Example context (json):
+    {
+    }
+}}
+```
