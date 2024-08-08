@@ -334,3 +334,78 @@ Since Moodle 3.8 it is possible to use sub-directories under the `templates` dir
     }
 }}
 ```
+
+### Rendering in PHP
+Use the render_from_template() method to render the given context data with the template.
+
+```php
+$data = [
+    'name' => 'Lorem ipsum',
+    'description' => format_text($description, FORMAT_HTML),
+];
+
+
+echo $OUTPUT->render_from_template($templatename, $data);
+```
+
+#### Renderers
+
+Templates can be effectively used in renderers to generate the HTML representing the given renderable object. Make your [renderable](https://docs.moodle.org/dev/Renderer) class also implement templatable interface. It will have to implement a new method export_for_template(renderer_base $output). The method should return a JSON-serialisable object (containing only objects, arrays and scalars) that will be passed as the rendering context data to a template.
+
+In the simplest case where you have a renderable, templatable object with a class name matching the name of the template that will render it, you do not need to add any renderer code explicity. Passing your widget directly to $OUTPUT->render() will infer the name of your template, call export_for_template() and render_from_template(), then return the result.
+
+Example of the method added to the renderable mywidget:
+
+```php
+/**
+ * Describe the renderable widget so it can be renderer by a mustache template.
+ *
+ * @param renderer_base $output
+ * @return stdClass
+ */
+public function export_for_template(renderer_base $output) {
+    $data = new stdClass();
+    $data->canmanage = $this->canmanage;
+    $data->things = [];
+    foreach ($this->things as $thing) {
+        $data->things[] = $thing->to_record();
+    }
+    $data->navigation = [];
+    foreach ($this->navigation as $button) {
+        $data->navigation[] = $output->render($button);
+    }
+
+    return $data;
+}
+```
+
+
+**tip**
+
+When naming variables in your export data, be careful not to reuse names of helpers such as str or js - these will silently fail. Try to keep your variable names short but descriptive.
+
+The rendering method can now use templates to render the object:
+
+
+```php	
+/**
+ * Render mywidget via a template.
+ *
+ * @param mywidget $widget
+ *
+ * @return string HTML
+ */
+protected function render_mywidget(mywidget $widget) {
+    $data = $widget->export_for_template($this);
+    return $this->render_from_template('tool_myplugin/mywidget', $data);
+}
+```
+
+
+In your page:
+
+```php
+$output = $PAGE->get_renderer('tool_myplugin');
+echo $output->render($widget);
+```
+
