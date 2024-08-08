@@ -1970,6 +1970,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rendering-in-php" class="md-nav__link">
+    Rendering in PHP
+  </a>
+  
+    <nav class="md-nav" aria-label="Rendering in PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renderers" class="md-nav__link">
+    Renderers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2282,6 +2302,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rendering-in-php" class="md-nav__link">
+    Rendering in PHP
+  </a>
+  
+    <nav class="md-nav" aria-label="Rendering in PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renderers" class="md-nav__link">
+    Renderers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2525,6 +2565,60 @@ If you want to create a help icon, and wondering "where is the helper for that?"
     {
     }
 }}
+</code></pre></div>
+<h3 id="rendering-in-php">Rendering in PHP</h3>
+<p>Use the render_from_template() method to render the given context data with the template.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$data = [</span>
+<span class="x">    &#39;name&#39; =&gt; &#39;Lorem ipsum&#39;,</span>
+<span class="x">    &#39;description&#39; =&gt; format_text($description, FORMAT_HTML),</span>
+<span class="x">];</span>
+
+
+<span class="x">echo $OUTPUT-&gt;render_from_template($templatename, $data);</span>
+</code></pre></div>
+<h4 id="renderers">Renderers</h4>
+<p>Templates can be effectively used in renderers to generate the HTML representing the given renderable object. Make your <a href="https://docs.moodle.org/dev/Renderer">renderable</a> class also implement templatable interface. It will have to implement a new method export_for_template(renderer_base $output). The method should return a JSON-serialisable object (containing only objects, arrays and scalars) that will be passed as the rendering context data to a template.</p>
+<p>In the simplest case where you have a renderable, templatable object with a class name matching the name of the template that will render it, you do not need to add any renderer code explicity. Passing your widget directly to $OUTPUT-&gt;render() will infer the name of your template, call export_for_template() and render_from_template(), then return the result.</p>
+<p>Example of the method added to the renderable mywidget:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Describe the renderable widget so it can be renderer by a mustache template.</span>
+<span class="x"> *</span>
+<span class="x"> * @param renderer_base $output</span>
+<span class="x"> * @return stdClass</span>
+<span class="x"> */</span>
+<span class="x">public function export_for_template(renderer_base $output) {</span>
+<span class="x">    $data = new stdClass();</span>
+<span class="x">    $data-&gt;canmanage = $this-&gt;canmanage;</span>
+<span class="x">    $data-&gt;things = [];</span>
+<span class="x">    foreach ($this-&gt;things as $thing) {</span>
+<span class="x">        $data-&gt;things[] = $thing-&gt;to_record();</span>
+<span class="x">    }</span>
+<span class="x">    $data-&gt;navigation = [];</span>
+<span class="x">    foreach ($this-&gt;navigation as $button) {</span>
+<span class="x">        $data-&gt;navigation[] = $output-&gt;render($button);</span>
+<span class="x">    }</span>
+
+<span class="x">    return $data;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p><strong>tip</strong></p>
+<p>When naming variables in your export data, be careful not to reuse names of helpers such as str or js - these will silently fail. Try to keep your variable names short but descriptive.</p>
+<p>The rendering method can now use templates to render the object:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Render mywidget via a template.</span>
+<span class="x"> *</span>
+<span class="x"> * @param mywidget $widget</span>
+<span class="x"> *</span>
+<span class="x"> * @return string HTML</span>
+<span class="x"> */</span>
+<span class="x">protected function render_mywidget(mywidget $widget) {</span>
+<span class="x">    $data = $widget-&gt;export_for_template($this);</span>
+<span class="x">    return $this-&gt;render_from_template(&#39;tool_myplugin/mywidget&#39;, $data);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>In your page:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$output = $PAGE-&gt;get_renderer(&#39;tool_myplugin&#39;);</span>
+<span class="x">echo $output-&gt;render($widget);</span>
 </code></pre></div>
 
               
