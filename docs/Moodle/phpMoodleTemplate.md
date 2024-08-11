@@ -404,3 +404,137 @@ $output = $PAGE->get_renderer('tool_myplugin');
 echo $output->render($widget);
 ```
 
+### Rendering in JavaScript
+
+Rendering a template from JavaScript is fairly easy. There is a JavaScript module that can load (and cache) a template and then use it for rendering the given data.
+
+```js
+import {exception as displayException} from 'core/notification';
+import Templates from 'core/templates';
+
+// This will be the context for our template. So {{name}} in the template will resolve to "Tweety bird".
+const context = {
+    name: 'Tweety bird',
+    intelligence: 2,
+};
+
+// This will call the function to load and render our template.
+Templates.renderForPromise('block_looneytunes/profile', context)
+
+// It returns a promise that needs to be resoved.
+.then(({html, js}) => {
+    // Here eventually I have my compiled template, and any javascript that it generated.
+    // The templates object has append, prepend and replace functions.
+    Templates.appendNodeContents('.block_looneytunes .content', html, js);
+})
+
+// Deal with this exception (Using core/notify exception function is recommended).
+.catch((error) => displayException(error));
+```
+
+Under the hood, this does a few clever things for us. It loads the template via an AJAX call if it was not cached. It finds any missing lang strings in the template and loads them in a single AJAX request. It splits the JS from the HTML and returns both in an easy to use way. Read on for how to nicely deal with that js parameter.
+
+### Templates requiring JavaScript
+Sometimes a template requires that some JavaScript runs when it is added to the page in order to give it more features. In the template we can include blocks of JavaScript, but we should use a special section tag that has a "helper" method registered to handle JavaScript carefully.
+
+Example
+
+```php
+<!-- HTML here -->>
+{{^element.frozen}}
+{{#js}}
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance({{#quote}}{{element.id}}{{/quote}});
+});
+{{/js}}
+{{/element.frozen}}
+```
+
+**TIP**
+We strongly advise placing all meaningful JavaScript into an AMD module and simply loading the JavaScript from the template. This allows the JavaScript to be linted, and minified.
+
+If this template is rendered by PHP, the JavaScript is separated from the HTML, and is appended to a special section in the footer of the page after requirejs has loaded. This provides the optimal page loading speed. If the template is rendered by JavaScript, the JavaScript source will be passed to the "done" handler from the promise. Then, when the `then` handler has added the template to the DOM, it can call
+
+```js
+templates.runTemplateJS(javascript);
+```
+
+which will run the JavaScript (by creating a new script tag and appending it to the page head).
+
+### Overriding templates in a theme
+
+Templates can be overridden by a theme.
+
+1. Find the template that you want to change - e.g. `mod/wiki/templates/ratingui.mustache`
+2. Create a sub-folder under your themes "templates" directory with the component name of the plugin you are overriding - e.g `theme/timtam/templates/mod_wiki`
+3. Copy the `ratingui.mustache` file into the newly created `theme/timtam/templates/mod_wiki` and edit it. You should see your changes immediately if theme designer mode is on. Templates are cached just like CSS, so if you are not using theme designer mode you will need to purge all caches to see the latest version of an edited template. If the template you are overriding contains a documentation comment it is recommended to remove it. It will still show the documentation in the template library.
+
+### Documenting the templates
+
+Theme designers need to know the limits of what they can expect to change without breaking anything. Also, correctly documented templates can be previewed in the "Template library" tool shipped with Moodle.
+
++ **Classes required for JS** - This is a list of classes that are used by the JavaScript for this template. If removing a class from an element in the template will break the JavaScript, list it here.
++ **Data attributes required for JS** - This is a list of data attributes (e.g. data-enhance="true") that are used by the JavaScript for this template. If removing a data attribute from an element in the template will break the JavaScript, list it here.
++ **Context variables required for this template** - This is a description of the data that may be contained in the context that is passed to the template. Be explicit and document every attribute.
++ **Example context (JSON)** - The Template library will look for this data in your documentation comment as it allows it to render a "preview" of the template right in the Template library. This is useful for theme designers to test all the available templates in their new theme to make sure they look nice in a new theme. It is also useful to make sure the template responds to different screen sizes, languages and devices. The format is a JSON-encoded object that is passed directly into the render method for this template.
+
+### Coding style
+
+This section documents some coding style guidelines to follow when writing templates. The reason for these guidelines is to promote consistency, and interoperability of the templates.
+
+##### Include GPL at the top of each template
+
+Templates are a form of code and it is appropriate to license them like any other code.
+
+##### Include a documentation comment for each template
+
+The exception is when you are overriding a template, if the documentation from the parent still applies, you do not need to copy it to the overridden template.
+
+##### Use data-attributes for JS hooks
+
+Data attributes are ideal for adding JavaScript hooks to templates because:
+
++ Classes are meant for styling - theme designers should be able to change the classes at will without breaking any functionality.
++ IDs must be unique in the page, but it is not possible to control how many times the same template might be included in the page.
++ Data attributes can have meaningful names and can be efficiently queried with a selector.
+
+##### Avoid custom CSS for templates
+
+This is not a hard rule, but a preference. We already have too much CSS in Moodle - where ever possible we should try and re-use the existing CSS instead of adding new CSS to support every new template.
+
+##### Re-use core templates as much as possible
+
+First we need to build the core set of reusable templates - but once that is in place we should always try to re-use those core templates to build interfaces. This will make Moodle more consistent, attractive and customisable.
+
+##### Do use the CSS framework classes directly in the templates
+
+We have bootstrap in core - so lets make the most of it. There is no problem using bootstrap classes in core templates, as long as the "base" theme is also tested, and an overridden template is added there if required.
+
+##### Avoid IDs for styling or JavaScript
+
+IDs should not be used for styling as they have a high CSS specificity, and so are hard to override. In addition, IDs should be unique in the page, which implies that a template could only be used once in a page. IDs are also not ideal for JavaScript, for the same reason (must be unique in a page).
+
+The only acceptable case to use an ID is you need to create a one to one connection between the JS and template. In this case use the uniqid helper to generate an ID that will not conflict with any other template on the page, and use it as part of the ID.
+
+```php
+<div id="{{uniqid}}-somethingspecific">
+</div>
+{{#js}}
+    callFunction('{{uniqid}}-somethingspecific');
+{{/js}}
+```
+
+##### Follow CSS coding style
+
+See [CSS coding style](https://docs.moodle.org/dev/CSS_Coding_Style). Use hyphens as word-separators for class names. Use lower case class names.
+
+##### Wrap each template in one node with a classname that matches the template name
+
+Generate a class name by combining the component and template names and separating words with underscore.
+
+e.g.
+```php
+<div class="core_user_header">
+...
+</div>
+```
