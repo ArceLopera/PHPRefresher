@@ -1,8 +1,8 @@
-Creating an activity module plugin in Moodle is a comprehensive process that involves several steps to ensure the plugin is well-integrated, functional, and follows Moodle's coding standards. 
+Creating an activity module plugin in Moodle is a comprehensive process that involves several steps to ensure the plugin is well-integrated, functional, and follows Moodle's coding standards. Activity modules are a fundamental course feature and are usually the primary delivery method for learning content in Moodle.
 
-### Overview of an Activity Module Plugin
+The plugintype of an Activity module is mod, and the frankenstyle name of a plugin is therefore mod_[modname].
 
-Activity modules in Moodle allow you to add new types of activities to a course, such as assignments, quizzes, forums, and more. Each activity module has its own directory and a set of required files and directories.
+All activity module plugins are located in the /mod/ folder of Moodle. Activity modules in Moodle allow you to add new types of activities to a course, such as assignments, quizzes, forums, and more. Each activity module has its own directory and a set of required files and directories.
 
 ### Setting Up the Plugin Directory Structure
 
