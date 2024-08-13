@@ -538,3 +538,366 @@ e.g.
 ...
 </div>
 ```
+
+### Notes
+
+#### Iterating over PHP arrays in Mustache templates
+
+In PHP, both lists and hashes are implemented as arrays. But Mustache must treat them as different structures because of cross language compatibility. If the PHP array does not have the [0] key, or there are gaps in the keys sequence, Mustache will interpret that array as a hash and will not iterate over it.
+
+So you need to make sure the elements in the list are properly indexed:
+
+```php
+$datafortemplate->mylist = array_values($myarraywithnonnumerickeys)
+```
+
+#### Test for non-empty array in Mustache templates
+
+Short answer: you can't.
+
+```php
+{{! This will work in PHP but not in JavaScript. }}
+{{#users.0}} ... {{/users.0}}
+
+{{! This will work in JavaScript but not in PHP. }}
+{{#users.length}} ... {{/users.length}}
+```
+
+As a workaround, include a specific property in the context like hasusers.
+
+```php
+{
+    "hasusers": false,
+    "users": []
+}
+
+{{#hasusers}}
+    {{#users}}
+    ....
+    {{/users}}
+{{#hasusers}}
+
+```
+
+
+
+#### Squash whitespace in a template
+
+Sometimes whitespace is significant, for example inside a link it will show with an underline. If you need two Mustache tags from separate lines to be rendered with no whitespace between them you can use Mustache comments to squash the whitespace.
+
+```html
+<a href="blah">{{!
+}}{{icon}}{{!
+}}{{name}}</a>
+```
+
+
+#### Access to globals
+
+In PHP you have access to the $CFG object to allow access to properties. Mustache rendering also exposes a globals object automatically during rendering. For example:
+
+```php
+<a href="{{globals.config.wwwroot}}/login/logout.php?sesskey={{globals.config.sesskey}}">{{#str}} logout, core {{/str}}</a>
+```
+
+The properties available on the globals.config object are the same as normally exposed for JavaScript; these are gathered from get_config_for_javascript() function in lib/outputrequirementslib.php. This object is only available when using client-side Mustache rendering in JavaScript; it is not added to templates rendered with the PHP Mustache engine.
+
+### Core templates
+
+Core templates should ideally be simple generic components that can be used within other templates to create more complex page layouts. They should be flexible enough for developers and themers to easily use without having to replace the template. The templates should attempt to encapsulate some core structure for the element as well as key classes while allowing the content to be easily overridden. Ultimately we want to avoid having duplicate HTML copied from template to template where possible, particularly if the HTML element has some classes associated with it.
+
+Mustache relies on variables to substitute context data into the template but unfortunately it's very unlikely that the the names of the context data will match what the template is expecting for all the places that the template might be used. So in order to allow easy extensibility and avoid having to duplicate templates just to rename the variables we can wrap them in block variables which would allow the template that is including our template to replace that variable with one from it's own context inline.
+
+There are a few key points to keep in mind when writing a core template:
+
++ Consider how your template will actually be used. Try writing a test page that uses your template to help discover some of the assumptions you might have in the template.
++ The example context you provide in the template is mostly just for showing the template in the template library and is likely not how your template will actually be used. Most uses of the template will have a different context all together.
++ Try to enforce a core structure but avoid enforcing a specific context. Content should be overridable.
++ Use block variables to indicate sections of your template that people are likely to want to change. Typically where they will be wanting to substitute in their own content.
++ Try to keep any JavaScript that accompanies the template as decoupled from the HTML / CSS structure of the template as possible. Instead of relying on the existence of certain HTML elements or CSS classes it is generally better to leverage data-attributes which can be added to any element. Let's go through an example to illustrate how you might build a core template. For the example we'll be building a tabs template, since it's a fairly complex component that requires the use of block variables and JavaScript.
+
+First we can create a basic template to get the general structure down, let's call it tabs. Here's what it might look like:
+
+```php
+<div id="{{ uniqid }}-tab-container">
+    <ul role="tablist" class="nav nav-tabs">
+  {{# tabs }}
+   <li role="tab"
+     data-target="{{ uniqid }}-{{ id }}"
+     data-selected-class="active"
+     aria-controls="{{ uniqid }}-{{ id }}"
+     aria-selected="false" tabindex="-1">
+
+    <a href="#">{{{ name }}}</a>
+   </li>
+  {{/ tabs }}
+ </ul>
+    <div class="tab-content">
+  {{# tabs }}
+   <div role="tabpanel"
+    class="tab-pane"
+    id="{{ uniqid }}-{{ id }}">
+
+    {{{ content }}}
+   </div>
+  {{/ tabs }}
+ </div>
+</div>
+{{#js}}
+    require(['jquery','core/tabs'], function($, tabs) {
+
+        var container = $("#{{ uniqid }}-tab-container");
+        tabs.create(container);
+    });
+{{/js}}
+```
+
+The template requires a context that looks something like:
+
+```
+{
+    "tabs": [
+        {"id":"tab1","name":"Tab 1","content":"This is tab 1 content <a href=\"#\">test</a>"},
+        {"id":"tab2","name":"Tab 2","content":"This is tab 2 content <a href=\"#\">test</a>"},
+        {"id":"tab3","name":"Tab 3","content":"This is tab 3 content <a href=\"#\">test</a>"}
+    ]
+}
+```
+
+
+The JavaScript required to power the tabs element (keyboard navigation, show / hide panels etc) is written as an AMD module and is included by the template. The JavaScript is a little too large to go through here, but some key points to consider when writing it are: It should ideally be independent of the HTML structure, so if someone wants to completely rewrite the tabs to be different elements (for example, a set of button or div elements) then the same JavaScript can be used without needing to change it. In order to achieve this it is important to identify the key components of the template.
+
+In this case it is a tab list, a tab and it's content. One way to identify these components would be to inspect the structure of the DOM, for example you might say "find me the ul element" when looking for the tab list and then "find my the child li elements" to find the tabs. While this would work, it couples your JavaScript to the HTML structure and makes it difficult to change later. A different approach would be to use the element attributes, for example you might say "find my the element with the role 'tablist'" to get the tab list and then "find me the elements with the role 'tab'" to get the tabs. This allows the HTML structure to change without breaking the JavaScript (as long as the correct attributes are set, of course).
+
+Another point of consideration for this example is what class to apply to a tab when it is selected. It makes sense to just apply something like "active" in the JavaScript, but that once again couples it to a particular CSS framework which makes it more difficult to change without modifying the JavaScript. In this case I chose to add a data attribute to the element to indicate which class will be set when the tab is selected. This means the JavaScript doesn't have to guess what the appropriate class is, it can just get it from the template.
+
+Ok, so we've got our basic template. It's time to use it! Let's say we want to create a simple user profile page that might show 2 tabs, the first tab will be the user's name and the second tab will be the user's email address (please excuse the contrived example).
+
+Here's what the page might look like:
+
+```php
+<html>
+    <header><title>User Profile</title></header>
+    <body>
+        {{< core/tabs }}
+    </body>
+</html>
+```
+
+That looks pretty simple! The only problem is, how do I get my content there? I would have to supply a context like this in order to display the tabs I want:
+
+```php
+{
+    "tabs": [
+        {
+            "id": "tab1",
+            "name": "Name",
+            "content": "Your name is Mr. Test User."
+        }, {
+            "id": "tab2",
+            "name": "Email",
+            "content": "Your email is testuser@example.com"
+        }
+    ]
+}
+```
+
+Let's assume that the context for this page doesn't match what the tabs template is expecting though. Let's assume the tabs template is being rendered with this context:
+
+```php
+{
+    "name": "Mr. Test User",
+    "email": "testuser@example.com"
+}
+```
+
+Unfortunately, we'll almost certainly never have complete control over all of the contexts that our template will be rendered in which means we'll be expecting people to write new webservices to supply the same data in different formats every time they want to use a template. It becomes an unmanageable problem.
+
+Enter blocks! We can make the template more flexible by defining sections of the template that can be overridden when they are included. Pretty neat! This will allow us to enforce a certain core structure but not enforce a context on the template that is including the tabs.
+
+Let's have another go at that template, this time leveraging blocks:
+
+```php
+<div id="{{ uniqid }}-tab-container">
+ {{$ tabheader }}
+  <ul role="tablist" class="nav nav-tabs">
+   {{$ tablist }}
+    {{# tabs }}
+     <li role="tab"
+       data-target="{{ uniqid }}-{{ id }}"
+       data-selected-class="active"
+       aria-controls="{{ uniqid }}-{{ id }}"
+       aria-selected="false" tabindex="-1">
+
+      <a href="#">{{{ name }}}</a>
+     </li>
+    {{/ tabs }}
+   {{/ tablist }}
+  </ul>
+ {{/ tabheader }}
+ {{$ tabbody }}
+  <div class="tab-content">
+   {{$ tabcontent }}
+    {{# tabs }}
+     <div role="tabpanel"
+      class="tab-pane"
+      id="{{ uniqid }}-{{ id }}">
+
+      {{{ content }}}
+     </div>
+    {{/ tabs }}
+   {{/ tabcontent }}
+  </div>
+ {{/ tabbody }}
+</div>
+{{#js}}
+    require(['jquery','core/tabs'], function($, tabs) {
+
+        var container = $("#{{ uniqid }}-tab-container");
+        tabs.create(container);
+    });
+{{/js}}
+```
+
+A summary of what we've changed:
+
++ Added a $tabheader block around the tab list, in case someone wants to change the ul element to something else.
++ Added a $tablist block around the group of tabs to allow them to be overridden on include.
++ Added a $tabbody block around the content, in case someone wants to change the content elements from div elements.
++ Added a $tabcontent block around the tab variable for the content to allow the content to be overridden on include. Now let's see what using this template looks like for your User Profile page:
+
+```php
+<html>
+    <header><title>User Profile</title></header>
+    <body>
+        {{> core/tabs }}
+   {{$ tablist }}
+    <li role="tab"
+      data-target="{{ uniqid }}-tab1"
+      data-selected-class="active"
+      aria-controls="{{ uniqid }}-tab1"
+      aria-selected="false" tabindex="-1">
+
+     <a href="#">Name</a>
+    </li>
+    <li role="tab"
+      data-target="{{ uniqid }}-tab2"
+      data-selected-class="active"
+      aria-controls="{{ uniqid }}-tab2"
+      aria-selected="false" tabindex="-1">
+
+     <a href="#">Email</a>
+    </li>
+   {{/ tablist }}
+   {{$ tabcontent }}
+    <div role="tabpanel"
+     class="tab-pane"
+     id="{{ uniqid }}-tab1">
+
+     Your name is {{ name }}.
+    </div>
+    <div role="tabpanel"
+     class="tab-pane"
+     id="{{ uniqid }}-tab2">
+
+     Your email address is {{ email }}.
+    </div>
+   {{/ tabcontent }}
+  {{/ core/tabs }}
+    </body>
+</html>
+```
+
+That looks a bit better! Now we've been able to use the blocks to successfully change the template to use the context available to this page, we no longer need a "tabs" array with "name" and "content". Even the JavaScript will continue to work because we've kept the correct element attributes.
+
+We've still got a slight problem though... In order to change the data for the template we've had to copy & paste the HTML from the original template into our blocks as we do the override. While this works fine in this example, it means we don't quite get the encapsulation we want within the templates since we're leaking internal implementation details. If we ever wanted to change the CSS framework we use for Moodle (say from bootstrap 2 to bootstrap 3 or 4) we'd have to find all the places in the code where this tabs template is used and make sure that the HTML is correct in their block overrides.
+
+With that in mind, let's take one more pass at this template and see if we can improve it slightly again. This time we're doing to split the template out into 3 templates.
+
+```php
+#tabs.mustache
+<div id="{{ uniqid }}-tab-container">
+ {{$ tabheader }}
+  <ul role="tablist" class="nav nav-tabs">
+   {{$ tablist }}
+    {{# tabs }}
+     {{> core/tab_header_item }}
+    {{/ tabs }}
+   {{/ tablist }}
+  </ul>
+ {{/ tabheader }}
+ {{$ tabbody }}
+  <div class="tab-content">
+   {{$ tabcontent }}
+    {{# tabs }}
+     {{> core/tab_content_item }}
+    {{/ tabs }}
+   {{/ tabcontent }}
+  </div>
+ {{/ tabbody }}
+</div>
+{{#js}}
+    require(['jquery','core/tabs'], function($, tabs) {
+
+        var container = $("#{{ uniqid }}-tab-container");
+        tabs.create(container);
+    });
+{{/js}}
+```
+
+```php
+#tab_header_item.mustache
+<li role="tab"
+  data-selected-class="active"
+  aria-selected="false" tabindex="-1">
+
+ <a href="#">{{$ tabname }}{{{ name }}}{{/ tabname }}</a>
+</li>
+```
+
+```php
+#tab_content_item.mustache
+<div role="tabpanel"
+ class="tab-pane"
+
+ {{$ tabpanelcontent }}{{{ content }}}{{/ tabpanelcontent }}
+</div>
+```
+
+A summary of the changes:
+
++ Split the template into 3, moving the tab into it's own template and the content into it's own and then including them in the tabs template.
++ Removed the ids from the tabs and content. The JavaScript would be updating to assign these ids at runtime so that they don't need to be provided as part of the template context.
++ Added a $tabname block for in the tab_header_item template to make the name flexible on import.
++ Added a $tabpanelcontant block in the tab_content_item template to make the content flexible on import. Cool, so let's see what that looks like in our example now:
+
+```html
+<html>
+    <header><title>User Profile</title></header>
+    <body>
+        {{> core/tabs }}
+   {{$ tablist }}
+    {{< core/tab_header_item }}
+     {{$ tabname }}Name{{/ tabname }}
+    {{/ core/tab_header_item }}
+    {{< core/tab_header_item }}
+     {{$ tabname }}Email{{/ tabname }}
+    {{/ core/tab_header_item }}
+   {{/ tablist }}
+   {{$ tabcontent }}
+    {{< core/tab_content_item }}
+     {{$ tabpanelcontent }}Your name is {{ name }}.{{/ tabpanelcontent }}
+    {{/ core/tab_content_item }}
+    {{< core/tab_content_item }}
+     {{$ tabpanelcontent }}Your email address is {{ email }}.{{/ tabpanelcontent }}
+    {{/ core/tab_content_item }}
+   {{/ tabcontent }}
+  {{/ core/tabs }}
+    </body>
+</html>
+```
+
+
+And we're done! After making the changes above we've been able to keep the benefits of the previous change to allow the context changes but we've also removed the need to copy & paste the HTML everywhere. Instead we're able to use the child templates with a few additional blocks defined to get the content in there.
+
+Now if we want to change tabs HTML or CSS frameworks we can just change the core tabs templates and this page will receive the updates for free.
