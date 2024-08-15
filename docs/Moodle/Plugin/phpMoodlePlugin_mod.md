@@ -6,7 +6,7 @@ All activity module plugins are located in the /mod/ folder of Moodle. Activity 
 
 ### Setting Up the Plugin Directory Structure
 
-First, create a directory for your plugin inside the `mod` directory of your Moodle installation. For example, if your plugin is called "survey":
+Activity modules reside in the `/mod` directory. First, create a directory for your plugin inside the `mod` directory of your Moodle installation. For example, if your plugin is called "survey":
 
 ```
 moodle/
