@@ -2178,7 +2178,7 @@
 <p><strong>Select or Create a New XML File</strong>:</p>
 <ul>
 <li>If you already have an <code>install.xml</code> file, you can load it into the editor.</li>
-<li>Otherwise, you can create a new XML file by selecting the appropriate option.</li>
+<li>The XMLDB tool will generate the <code>install.xml</code> file based on your definitions. Otherwise, you can create a new XML file by selecting the appropriate option. To first create a <code>install.xml</code> go to your project an add a db folder. After doing that the [Create] option will be accessible.  Then, press [Load] so you can then [Edit]. Remember always to save to reflect all the changes made. Also [add mandatory persistent fields].</li>
 </ul>
 </li>
 </ol>
@@ -2225,7 +2225,7 @@
 <p><strong>Add Foreign Keys</strong>:</p>
 <ul>
 <li>To create relationships between tables, you can add foreign keys.</li>
-<li>Click on the "Create new foreign key" button and define the referenced table and fields.</li>
+<li>To add a new foreign key, simply click on [new key] in the table edit mode, then name the key change type to foreign an complete the reftable and reffields as appropriate. The name of the foreign key and the fields can be the same.</li>
 </ul>
 </li>
 </ol>
@@ -2235,7 +2235,7 @@
 <p><strong>Save the XML</strong>:</p>
 <ul>
 <li>After defining all tables and their fields, keys, and indexes, save your work.</li>
-<li>The XMLDB tool will generate the <code>install.xml</code> file based on your definitions.</li>
+<li>The XMLDB tool will generate the <code>install.xml</code> file based on your definitions. </li>
 </ul>
 </li>
 <li>
@@ -2259,7 +2259,7 @@
 <p><strong>Handling Database Upgrades</strong>:</p>
 <ul>
 <li>If you need to modify your database schema after the initial installation, you will use the <code>upgrade.php</code> script in the <code>db</code> directory.</li>
-<li>Use the XMLDB editor to generate the necessary XML snippets and translate them into PHP code for <code>upgrade.php</code>.</li>
+<li>Use the XMLDB editor to generate the necessary XML snippets and translate them into PHP code for <code>upgrade.php</code>. Simply copy and paste the code into your <code>upgrade.php</code> file. Clicking in the [View PHP code] will show you the generated code.</li>
 </ul>
 </li>
 </ol>
