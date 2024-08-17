@@ -13,7 +13,7 @@ Here's a step-by-step guide on how to use the XMLDB tool in Moodle, based on the
 2. **Select or Create a New XML File**:
 
     - If you already have an `install.xml` file, you can load it into the editor.
-    - Otherwise, you can create a new XML file by selecting the appropriate option.
+    - The XMLDB tool will generate the `install.xml` file based on your definitions. Otherwise, you can create a new XML file by selecting the appropriate option. To first create a `install.xml` go to your project an add a db folder. After doing that the [Create] option will be accessible.  Then, press [Load] so you can then [Edit]. Remember always to save to reflect all the changes made. Also [add mandatory persistent fields].
 
 #### Step 2: Creating a New Table
 
@@ -42,13 +42,14 @@ Here's a step-by-step guide on how to use the XMLDB tool in Moodle, based on the
 
 5. **Add Foreign Keys**:
     - To create relationships between tables, you can add foreign keys.
-    - Click on the "Create new foreign key" button and define the referenced table and fields.
+    - To add a new foreign key, simply click on [new key] in the table edit mode, then name the key change type to foreign an complete the reftable and reffields as appropriate. The name of the foreign key and the fields can be the same.
+
 
 #### Step 3: Generating the `install.xml` File
 
 1. **Save the XML**:
     - After defining all tables and their fields, keys, and indexes, save your work.
-    - The XMLDB tool will generate the `install.xml` file based on your definitions.
+    - The XMLDB tool will generate the `install.xml` file based on your definitions. 
 
 2. **Verify the XML**:
     - Review the generated `install.xml` file to ensure it matches your expectations.
@@ -62,7 +63,7 @@ Here's a step-by-step guide on how to use the XMLDB tool in Moodle, based on the
 
 2. **Handling Database Upgrades**:
     - If you need to modify your database schema after the initial installation, you will use the `upgrade.php` script in the `db` directory.
-    - Use the XMLDB editor to generate the necessary XML snippets and translate them into PHP code for `upgrade.php`.
+    - Use the XMLDB editor to generate the necessary XML snippets and translate them into PHP code for `upgrade.php`. Simply copy and paste the code into your `upgrade.php` file. Clicking in the [View PHP code] will show you the generated code.
 
 #### Best Practices
 
