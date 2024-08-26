@@ -177,6 +177,7 @@ nav:
             - Promises: Moodle/Javascript/phpMoodlePromises.md
             - Modal Dialogues: Moodle/Javascript/phpMoodleModal.md
             - AJAX : Moodle/Javascript/phpMoodleAJAX.md
-     - Subsystems:
+     - APIs:
             - External Services: Moodle/phpMoodleServices.md
+            - Persistent API: Moodle/API/phpMoodlePersistent.md
 
