@@ -2356,16 +2356,16 @@
 <h3 id="key-components">Key Components</h3>
 <ol>
 <li>
-<p><strong>Table Definition</strong>: </p>
-<ul>
-<li>The <code>const TABLE</code> constant defines the name of the database table that this persistent class represents.</li>
-</ul>
+<p><strong>Table Definition</strong>: 
+    The <code>const TABLE</code> constant defines the name of the database table that this persistent class represents. While the persistent class is helpful for database interactions, it does not automatically fetch the properties from the database, nor does it create the tables. You will need to create the table yourself, as well as pointing the persistent to it. This can be done by defining the class constant TABLE.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/** Table name for the persistent. */</span>
+<span class="x">const TABLE = &#39;status&#39;;</span>
+</code></pre></div>
+The table name must not contain the Moodle prefix. Also it is common practice to always refer to your table name using the constant.</p>
 </li>
 <li>
-<p><strong>Property Definitions</strong>: </p>
-<ul>
-<li>The <code>define_properties()</code> method returns an array of fields that map to the columns in the database table. Each field is described by its type (e.g., <code>PARAM_TEXT</code>, <code>PARAM_INT</code>), default value, and other properties attributes.</li>
-</ul>
+<p><strong>Property Definitions</strong>: 
+    The <code>define_properties()</code> method returns an array of fields that map to the columns in the database table. Each field is described by its type (e.g., <code>PARAM_TEXT</code>, <code>PARAM_INT</code>), default value, and other properties attributes.</p>
 </li>
 <li>
 <p><strong>Properties attributes</strong>:</p>
@@ -2381,8 +2381,6 @@
 <li><strong>choices</strong>
     An array of values which the property must fall in.</li>
 </ul>
-</li>
-</ol>
 <div class="highlight"><pre><span></span><code><span class="x">&#39;messageformat&#39; =&gt; [</span>
 <span class="x">    &#39;type&#39; =&gt; PARAM_INT,</span>
 <span class="x">    &#39;default&#39; =&gt; FORMAT_PLAIN,</span>
@@ -2398,19 +2396,23 @@
 <span class="x">]</span>
 </code></pre></div>
 <p>Note that you should always use a Closure for the default value when you cannot guarantee that it will not change since the start of the request. The list of properties and their attributes is cached, and so failure to use a Closure can result in using an outdated default value.</p>
-<ol>
-<li><strong>Mandatory properties</strong>:</li>
-</ol>
-<p>Four fields are always added to your persistent and should be reflected in your database table. You must not define those properties in define_properties():
-    - <strong>id (non-null integer)</strong>:
-        The primary key of the record.
-    - <strong>usermodified (non-null integer)</strong>:
-        The user who created/modified the object. It is automatically set.
-    - <strong>timecreated (non-null integer)</strong>:
-        The timestamp at which the record was modified. It is automatically set.
-    - <strong>timemodified (non-null integer)</strong>:
-        The timestamp at which the record was modified. It is automatically set, and defaults to 0.</p>
+</li>
+<li>
+<p><strong>Mandatory properties</strong>:</p>
+<p>Four fields are always added to your persistent and should be reflected in your database table. You must not define those properties in define_properties():</p>
+<ul>
+<li><strong>id (non-null integer)</strong>:
+    The primary key of the record.</li>
+<li><strong>usermodified (non-null integer)</strong>:
+    The user who created/modified the object. It is automatically set.</li>
+<li><strong>timecreated (non-null integer)</strong>:
+    The timestamp at which the record was modified. It is automatically set.</li>
+<li><strong>timemodified (non-null integer)</strong>:
+    The timestamp at which the record was modified. It is automatically set, and defaults to 0.</li>
+</ul>
 <p>From Moodle 3.7 onwards, the XMLDB tool has an option to add these fields to your table.</p>
+</li>
+</ol>
 <h3 id="basic-operations-with-persistent-api">Basic Operations with Persistent API</h3>
 <p>Once your persistent class is defined, you can easily perform CRUD (Create, Read, Update, Delete) operations.</p>
 <h4 id="creating-a-record">Creating a Record</h4>
