@@ -53,10 +53,16 @@ class example extends persistent {
 ### Key Components
 
 1. **Table Definition**: 
-    - The `const TABLE` constant defines the name of the database table that this persistent class represents.
+    The `const TABLE` constant defines the name of the database table that this persistent class represents. While the persistent class is helpful for database interactions, it does not automatically fetch the properties from the database, nor does it create the tables. You will need to create the table yourself, as well as pointing the persistent to it. This can be done by defining the class constant TABLE.
+
+    ```php
+    /** Table name for the persistent. */
+    const TABLE = 'status';
+    ```
+    The table name must not contain the Moodle prefix. Also it is common practice to always refer to your table name using the constant.
 
 2. **Property Definitions**: 
-    - The `define_properties()` method returns an array of fields that map to the columns in the database table. Each field is described by its type (e.g., `PARAM_TEXT`, `PARAM_INT`), default value, and other properties attributes.
+    The `define_properties()` method returns an array of fields that map to the columns in the database table. Each field is described by its type (e.g., `PARAM_TEXT`, `PARAM_INT`), default value, and other properties attributes.
     
 3. **Properties attributes**:
     - **type**
@@ -71,28 +77,29 @@ class example extends persistent {
         An array of values which the property must fall in.
 
 
-```php
+    ```php
 
-'messageformat' => [
-    'type' => PARAM_INT,
-    'default' => FORMAT_PLAIN,
-    'choices' => [FORMAT_PLAIN, FORMAT_HTML, FORMAT_MOODLE, FORMAT_MARKDOWN]
-],
-'location' => [
-    'type' => PARAM_ALPHANUMEXT,
-    'null' => NULL_ALLOWED,
-    'message' => new lang_string('invaliddata', 'error'),
-    'default' => function() {
-        return get_config('core', 'default_location');
-    },
-]
-```
+    'messageformat' => [
+        'type' => PARAM_INT,
+        'default' => FORMAT_PLAIN,
+        'choices' => [FORMAT_PLAIN, FORMAT_HTML, FORMAT_MOODLE, FORMAT_MARKDOWN]
+    ],
+    'location' => [
+        'type' => PARAM_ALPHANUMEXT,
+        'null' => NULL_ALLOWED,
+        'message' => new lang_string('invaliddata', 'error'),
+        'default' => function() {
+            return get_config('core', 'default_location');
+        },
+    ]
+    ```
 
-Note that you should always use a Closure for the default value when you cannot guarantee that it will not change since the start of the request. The list of properties and their attributes is cached, and so failure to use a Closure can result in using an outdated default value.
+    Note that you should always use a Closure for the default value when you cannot guarantee that it will not change since the start of the request. The list of properties and their attributes is cached, and so failure to use a Closure can result in using an outdated default value.
 
 4. **Mandatory properties**:
 
-Four fields are always added to your persistent and should be reflected in your database table. You must not define those properties in define_properties():
+    Four fields are always added to your persistent and should be reflected in your database table. You must not define those properties in define_properties():
+
     - **id (non-null integer)**:
         The primary key of the record.
     - **usermodified (non-null integer)**:
@@ -103,7 +110,7 @@ Four fields are always added to your persistent and should be reflected in your 
         The timestamp at which the record was modified. It is automatically set, and defaults to 0.
 
 
-From Moodle 3.7 onwards, the XMLDB tool has an option to add these fields to your table.
+    From Moodle 3.7 onwards, the XMLDB tool has an option to add these fields to your table.
 
 
 
