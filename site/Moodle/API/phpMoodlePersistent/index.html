@@ -2425,20 +2425,86 @@ The table name must not contain the Moodle prefix. Also it is common practice to
 <span class="x">$record-&gt;create();</span>
 </code></pre></div>
 <h4 id="retrieving-a-record">Retrieving a Record</h4>
-<p>To retrieve a record by its ID:</p>
+<p>This can be done using the method get(). Alternatively you can also use to_record() which exports the whole object.
+To retrieve a record by its ID:</p>
 <div class="highlight"><pre><span></span><code><span class="x">$record = new example($id);</span>
 <span class="x">echo $record-&gt;get(&#39;name&#39;);</span>
+
+<span class="x">// or</span>
+<span class="x">$record = $record-&gt;to_record();</span>
+</code></pre></div>
+<p>You may add a new custom getter to implement your own custom logic. To do this just add a new method get_propertyname() and it will be called from the generic get() method. For instance you could convert the data in another format automatically as a convenience for developers. However, use this sparingly as it may lead to confusion: what you get is not what is stored in the database. Also - to get the actual value from a custom getter - call raw_get(). Calling get() from a custom getter will generate a segfault due to infinite recursion.</p>
+<p>It is, however, encouraged to add convenience methods such as the following:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Returns the user object of the author.</span>
+<span class="x"> *</span>
+<span class="x"> * @return stdClass</span>
+<span class="x"> */</span>
+<span class="x">public function get_author() {</span>
+<span class="x">    return core_user::get_user($this-&gt;get(&#39;userid&#39;));</span>
+<span class="x">}</span>
 </code></pre></div>
 <h4 id="updating-a-record">Updating a Record</h4>
-<p>To update an existing record:</p>
+<p>There are two ways to do so.</p>
+<p>You use an object (stdClass) to assign a bunch of properties at once. Use it with the constructor, or the method from_record(). Or, you can use the magic setters set_ followed by the property name.
+To update an existing record:</p>
 <div class="highlight"><pre><span></span><code><span class="x">$record = new example($id);</span>
 <span class="x">$record-&gt;set(&#39;name&#39;, &#39;Updated Name&#39;);</span>
 <span class="x">$record-&gt;update();</span>
+
+<span class="x">// or</span>
+<span class="x">$record-&gt;from_record($record-&gt;get_record());</span>
 </code></pre></div>
+<p>Though you don't have to for the code to work, you can define your own setter methods which will be called from the generic setter. This is useful if you want to extract the data out of a more complex object prior to assigning it. Though note that those setters will then have to use the raw_set() method to assign the values (if you do not you will see a segfault because of infinite recursion).</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Convenience method to set the user ID.</span>
+<span class="x"> *</span>
+<span class="x"> * @param object|int $idorobject The user ID, or a user object.</span>
+<span class="x"> */</span>
+<span class="x">public function set_userid($idorobject) {</span>
+<span class="x">    $userid = $idorobject;</span>
+<span class="x">    if (is_object($idorobject)) {</span>
+<span class="x">        $userid = $idorobject-&gt;id;</span>
+<span class="x">    }</span>
+<span class="x">    $this-&gt;raw_set(&#39;userid&#39;, $userid);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>In the above example we will accept an object or an ID, as a convenience for developers we will extract the ID value out of the object passed if any.</p>
+<p>Just like custom getters, must be careful so that the following code should not result in a change in the DB.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$value = $persistent-&gt;get(&#39;property&#39;);</span>
+<span class="x">$persistent-&gt;set(&#39;property&#39;, $value);</span>
+<span class="x">$persistent-&gt;update();</span>
+</code></pre></div>
+<p>You can obviously create your own setters which aren't based on any properties just as a convenience. For instance we could have created set_userid_from_user(object $user) which is more verbose and more predictable</p>
 <h4 id="deleting-a-record">Deleting a Record</h4>
 <p>To delete a record:</p>
-<div class="highlight"><pre><span></span><code><span class="x">$record = new example($id);</span>
+<p><div class="highlight"><pre><span></span><code><span class="x">$record = new example($id);</span>
 <span class="x">$record-&gt;delete();</span>
+</code></pre></div>
+The methods to create, read, update and delete are eponymous. Your object will be validated before you create or update it. The update, delete and read methods require your object to contain its ID. And you also won't be allowed to create an entry which already had an ID defined.</p>
+<p>Here are some code examples:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Fetches an object from database based on its ID.</span>
+<span class="x">$id = 123;</span>
+<span class="x">$persistent = new status($id);</span>
+
+<span class="x">// Create object in the database.</span>
+<span class="x">$data = new stdClass();</span>
+<span class="x">$data-&gt;message = &#39;Hello new world&#39;;</span>
+<span class="x">$persistent = new persistent(0, $data);</span>
+<span class="x">$persistent-&gt;create();</span>
+<span class="x">// $persistent-&gt;get(&#39;id&#39;) will now return an id.</span>
+
+<span class="x">// Load an object from the database, and update it.</span>
+<span class="x">$id = 123;</span>
+<span class="x">$persistent = new status($id);</span>
+<span class="x">$persistent-&gt;set(&#39;message&#39;, &#39;Hello new world!&#39;);</span>
+<span class="x">$persistent-&gt;update();</span>
+
+<span class="x">// Reset the instance to the values in the database.</span>
+<span class="x">$persistent-&gt;read();</span>
+
+<span class="x">// Permanently delete the object from the database.</span>
+<span class="x">$persistent-&gt;delete();</span>
 </code></pre></div>
 <h3 id="advanced-features">Advanced Features</h3>
 <h4 id="transactions">Transactions</h4>

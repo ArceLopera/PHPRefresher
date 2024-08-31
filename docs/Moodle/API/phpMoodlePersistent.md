@@ -133,22 +133,77 @@ $record->create();
 
 #### Retrieving a Record
 
+This can be done using the method get(). Alternatively you can also use to_record() which exports the whole object.
 To retrieve a record by its ID:
 
 ```php
 $record = new example($id);
 echo $record->get('name');
+
+// or
+$record = $record->to_record();
+```
+
+You may add a new custom getter to implement your own custom logic. To do this just add a new method get_propertyname() and it will be called from the generic get() method. For instance you could convert the data in another format automatically as a convenience for developers. However, use this sparingly as it may lead to confusion: what you get is not what is stored in the database. Also - to get the actual value from a custom getter - call raw_get(). Calling get() from a custom getter will generate a segfault due to infinite recursion.
+
+It is, however, encouraged to add convenience methods such as the following:
+
+```php
+/**
+ * Returns the user object of the author.
+ *
+ * @return stdClass
+ */
+public function get_author() {
+    return core_user::get_user($this->get('userid'));
+}
 ```
 
 #### Updating a Record
 
+There are two ways to do so.
+
+You use an object (stdClass) to assign a bunch of properties at once. Use it with the constructor, or the method from_record(). Or, you can use the magic setters set_ followed by the property name.
 To update an existing record:
 
 ```php
 $record = new example($id);
 $record->set('name', 'Updated Name');
 $record->update();
+
+// or
+$record->from_record($record->get_record());
 ```
+
+Though you don't have to for the code to work, you can define your own setter methods which will be called from the generic setter. This is useful if you want to extract the data out of a more complex object prior to assigning it. Though note that those setters will then have to use the raw_set() method to assign the values (if you do not you will see a segfault because of infinite recursion).
+
+```php
+/**
+ * Convenience method to set the user ID.
+ *
+ * @param object|int $idorobject The user ID, or a user object.
+ */
+public function set_userid($idorobject) {
+    $userid = $idorobject;
+    if (is_object($idorobject)) {
+        $userid = $idorobject->id;
+    }
+    $this->raw_set('userid', $userid);
+}
+```
+
+In the above example we will accept an object or an ID, as a convenience for developers we will extract the ID value out of the object passed if any.
+
+Just like custom getters, must be careful so that the following code should not result in a change in the DB.
+
+```php
+$value = $persistent->get('property');
+$persistent->set('property', $value);
+$persistent->update();
+```
+
+You can obviously create your own setters which aren't based on any properties just as a convenience. For instance we could have created set_userid_from_user(object $user) which is more verbose and more predictable
+
 
 #### Deleting a Record
 
@@ -158,7 +213,34 @@ To delete a record:
 $record = new example($id);
 $record->delete();
 ```
+The methods to create, read, update and delete are eponymous. Your object will be validated before you create or update it. The update, delete and read methods require your object to contain its ID. And you also won't be allowed to create an entry which already had an ID defined.
 
+Here are some code examples:
+
+```php
+// Fetches an object from database based on its ID.
+$id = 123;
+$persistent = new status($id);
+
+// Create object in the database.
+$data = new stdClass();
+$data->message = 'Hello new world';
+$persistent = new persistent(0, $data);
+$persistent->create();
+// $persistent->get('id') will now return an id.
+
+// Load an object from the database, and update it.
+$id = 123;
+$persistent = new status($id);
+$persistent->set('message', 'Hello new world!');
+$persistent->update();
+
+// Reset the instance to the values in the database.
+$persistent->read();
+
+// Permanently delete the object from the database.
+$persistent->delete();
+```
 ### Advanced Features
 
 #### Transactions
