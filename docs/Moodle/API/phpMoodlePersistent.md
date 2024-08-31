@@ -241,7 +241,82 @@ $persistent->read();
 // Permanently delete the object from the database.
 $persistent->delete();
 ```
-### Advanced Features
+### Other Features
+
+#### Fetching Records
+
+Once you start using persistents you should never directly interact with the database outside of your class. The persistent class comes with a few handy methods allowing you to retrieve your objects.
+
+```php
+// Use the constructor to fetch one object from its ID.
+$persistent = new status($id);
+
+// Get one record from a set of conditions.
+$persistent = status::get_record(['userid' => $userid, 'message' => 'Hello world!']);
+
+// Get multiple records from a set of conditions.
+$persistents = status::get_records(['userid' => $userid]);
+
+// Count the records.
+$count = status::count_records(['userid' => $userid]);
+
+// Check whether a record exists.
+$exists = status::record_exists($id);
+```
+Make sure to also check their additional parameters and their variants `(record_exists_select(), count_records_select, get_records_select, ...)`.
+
+#### Custom fetching
+It's always a good idea to add more complex queries directly within your persistent. By convention you should always return an instance of your persistent and never an stdClass. Here we add a custom method which allows to directly fetch all records by username.
+
+```php
+/**
+ * Get all records from a user's username.
+ *
+ * @param string $username The username.
+ * @return status[]
+ */
+public static function get_records_by_username($username) {
+    global $DB;
+
+    $sql = 'SELECT s.*
+              FROM {' . static::TABLE . '} s
+              JOIN {user} u
+                ON u.id = s.userid
+             WHERE u.username = :username';
+
+    $persistents = [];
+
+    $recordset = $DB->get_recordset_sql($sql, ['username' => $username]);
+    foreach ($recordset as $record) {
+        $persistents[] = new static(0, $record);
+    }
+    $recordset->close();
+
+    return $persistents;
+}
+```
+If you need to join persistents together and be able to extract their respective properties in a single database query, you should have a look at the following methods:
+
++ **get_sql_fields(string $alias, string $prefix = null)**
+
+    Returns the SQL statement to include in the SELECT clause to prefix columns.
+
++ **extract_record(stdClass $row, string $prefix = null)**
+
+    Extracts all the properties from a row based on the given prefix.
+
+
+```php
+// Minimalist example.
+$sqlfields = status::get_sql_fields('s', 'statprops');
+$sql = "SELECT $sqlfields, u.username
+          FROM {" . status::TABLE . "} s
+          JOIN {user} ON s.userid = u.id
+         WHERE s.id = 1";
+$row = $DB->get_record($sql, []);
+$statusdata = status::extract_record($row, 'statprops');
+$persistent = new status(0, $statusdata);
+```
 
 #### Transactions
 
@@ -280,9 +355,56 @@ protected function validate() {
 }
 ```
 
+Basic validation of the properties values happens automatically based on their type (PARAM_* constant), however this is not always enough. In order to implement your own custom validation, simply define a protected method starting with validate_ followed with the property name. This method will be called whenever the model needs to be validated and will receive the data to validate.
+
+A validation method must always return either true or an instance of lang_string which contains the error message to send to the user.
+
+```php
+/**
+ * Validate the user ID.
+ *
+ * @param int $value The value.
+ * @return true|lang_string
+ */
+protected function validate_userid($value) {
+    if (!core_user::is_real_user($value, true)) {
+        return new lang_string('invaliduserid', 'error');
+    }
+
+    return true;
+}
+```
+
+The above example ensures that the userid property contains a valid user ID.
+
+Note that the basic validation is always performed first, and thus your custom validation method will not be called when the value did not pass the basic validation.
+
+##### Validation results
+The validation of the object automatically happens upon create and update. If the validation did not pass, an invalid_persistent_exception will be raised. You can validate the object prior to saving the object and get the validation results if you need to.
+
+```php	
+// We can catch the invalid_persistent_exception.
+try {
+    $persistent = new status();
+    $persistent->create();
+} catch (invalid_persistent_exception $e) {
+    // Whoops, something wrong happened.
+}
+
+// Check whether the object is valid.
+$persistent->is_valid();        // True or false.
+
+// Get the validation errors.
+$persistent->get_errors();      // Array where keys are properties and values are errors.
+
+// Validate the object.
+$persistent->validate();        // Returns true, or an array of errors.
+```
+
+
 #### Extending Persistent Classes
 
-You can extend the persistent classes to add more complex functionality specific to your plugin:
+You must never extend the persistent classes to add more complex functionality specific to your plugin. Do not do the following:
 
 ```php
 class advanced_example extends example {
@@ -292,7 +414,41 @@ class advanced_example extends example {
 }
 ```
 
-The Moodle Persistent API simplifies the process of interacting with the database by encapsulating data logic within structured classes. It supports automatic data validation, transactions, and CRUD operations, making it easier to maintain and extend your Moodle plugins. By using the Persistent API, you ensure that your code adheres to Moodle’s best practices for data management, resulting in more reliable and maintainable code.
+##### Common pitfalls
++ You must create the database table yourself, using the XMLDB editor and an upgrade script.
++ You must include the mandatory fields in your table schema.
++ **You must never extend another persistent as this leads to unpredictable errors whenever the parent changes (new properties missing in your table, changes in validation, custom getters and setters, etc...).**
+
+### Hooks
+You can define the following methods to be notified prior to, or after, something happened:
+
++ **protected before_validate()**
+
+    Do something before the object is validated.
+
++ **protected before_create()**
+    
+    Do something before the object is inserted in the database. Note that values assigned to properties are not longer validated at this point.
+
++ **protected after_create()**
+
+    Do something right after the object was added to the database.
+
++ **protected before_update()**
+
+    Do something before the object is updated in the database. Note that values assigned to properties are not longer validated at this point.
+
++ **protected after_update(bool $result)**
+    
+    Do something right after the object was updated in the database.
+
++ **protected before_delete()**
+    
+    Do something right before the object is deleted from the database.
+
++ **protected after_delete(bool $result)**
+
+    Do something right after the object was deleted from the database.
 
 ### Integrating Persistent API with Forms
 

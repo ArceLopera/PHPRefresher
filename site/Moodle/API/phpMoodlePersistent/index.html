@@ -2069,12 +2069,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#advanced-features" class="md-nav__link">
-    Advanced Features
+  <a href="#other-features" class="md-nav__link">
+    Other Features
   </a>
   
-    <nav class="md-nav" aria-label="Advanced Features">
+    <nav class="md-nav" aria-label="Other Features">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetching-records" class="md-nav__link">
+    Fetching Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-fetching" class="md-nav__link">
+    Custom fetching
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#transactions" class="md-nav__link">
@@ -2099,6 +2113,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hooks" class="md-nav__link">
+    Hooks
+  </a>
   
 </li>
       
@@ -2232,12 +2253,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#advanced-features" class="md-nav__link">
-    Advanced Features
+  <a href="#other-features" class="md-nav__link">
+    Other Features
   </a>
   
-    <nav class="md-nav" aria-label="Advanced Features">
+    <nav class="md-nav" aria-label="Other Features">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetching-records" class="md-nav__link">
+    Fetching Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-fetching" class="md-nav__link">
+    Custom fetching
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#transactions" class="md-nav__link">
@@ -2262,6 +2297,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hooks" class="md-nav__link">
+    Hooks
+  </a>
   
 </li>
       
@@ -2506,7 +2548,74 @@ The methods to create, read, update and delete are eponymous. Your object will b
 <span class="x">// Permanently delete the object from the database.</span>
 <span class="x">$persistent-&gt;delete();</span>
 </code></pre></div>
-<h3 id="advanced-features">Advanced Features</h3>
+<h3 id="other-features">Other Features</h3>
+<h4 id="fetching-records">Fetching Records</h4>
+<p>Once you start using persistents you should never directly interact with the database outside of your class. The persistent class comes with a few handy methods allowing you to retrieve your objects.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">// Use the constructor to fetch one object from its ID.</span>
+<span class="x">$persistent = new status($id);</span>
+
+<span class="x">// Get one record from a set of conditions.</span>
+<span class="x">$persistent = status::get_record([&#39;userid&#39; =&gt; $userid, &#39;message&#39; =&gt; &#39;Hello world!&#39;]);</span>
+
+<span class="x">// Get multiple records from a set of conditions.</span>
+<span class="x">$persistents = status::get_records([&#39;userid&#39; =&gt; $userid]);</span>
+
+<span class="x">// Count the records.</span>
+<span class="x">$count = status::count_records([&#39;userid&#39; =&gt; $userid]);</span>
+
+<span class="x">// Check whether a record exists.</span>
+<span class="x">$exists = status::record_exists($id);</span>
+</code></pre></div>
+Make sure to also check their additional parameters and their variants <code>(record_exists_select(), count_records_select, get_records_select, ...)</code>.</p>
+<h4 id="custom-fetching">Custom fetching</h4>
+<p>It's always a good idea to add more complex queries directly within your persistent. By convention you should always return an instance of your persistent and never an stdClass. Here we add a custom method which allows to directly fetch all records by username.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Get all records from a user&#39;s username.</span>
+<span class="x"> *</span>
+<span class="x"> * @param string $username The username.</span>
+<span class="x"> * @return status[]</span>
+<span class="x"> */</span>
+<span class="x">public static function get_records_by_username($username) {</span>
+<span class="x">    global $DB;</span>
+
+<span class="x">    $sql = &#39;SELECT s.*</span>
+<span class="x">              FROM {&#39; . static::TABLE . &#39;} s</span>
+<span class="x">              JOIN {user} u</span>
+<span class="x">                ON u.id = s.userid</span>
+<span class="x">             WHERE u.username = :username&#39;;</span>
+
+<span class="x">    $persistents = [];</span>
+
+<span class="x">    $recordset = $DB-&gt;get_recordset_sql($sql, [&#39;username&#39; =&gt; $username]);</span>
+<span class="x">    foreach ($recordset as $record) {</span>
+<span class="x">        $persistents[] = new static(0, $record);</span>
+<span class="x">    }</span>
+<span class="x">    $recordset-&gt;close();</span>
+
+<span class="x">    return $persistents;</span>
+<span class="x">}</span>
+</code></pre></div>
+If you need to join persistents together and be able to extract their respective properties in a single database query, you should have a look at the following methods:</p>
+<ul>
+<li>
+<p><strong>get_sql_fields(string $alias, string $prefix = null)</strong></p>
+<p>Returns the SQL statement to include in the SELECT clause to prefix columns.</p>
+</li>
+<li>
+<p><strong>extract_record(stdClass $row, string $prefix = null)</strong></p>
+<p>Extracts all the properties from a row based on the given prefix.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Minimalist example.</span>
+<span class="x">$sqlfields = status::get_sql_fields(&#39;s&#39;, &#39;statprops&#39;);</span>
+<span class="x">$sql = &quot;SELECT $sqlfields, u.username</span>
+<span class="x">          FROM {&quot; . status::TABLE . &quot;} s</span>
+<span class="x">          JOIN {user} ON s.userid = u.id</span>
+<span class="x">         WHERE s.id = 1&quot;;</span>
+<span class="x">$row = $DB-&gt;get_record($sql, []);</span>
+<span class="x">$statusdata = status::extract_record($row, &#39;statprops&#39;);</span>
+<span class="x">$persistent = new status(0, $statusdata);</span>
+</code></pre></div>
 <h4 id="transactions">Transactions</h4>
 <p>If you need to perform multiple database operations that should be treated as a single transaction:</p>
 <div class="highlight"><pre><span></span><code><span class="x">$transaction = $DB-&gt;start_delegated_transaction();</span>
@@ -2536,15 +2645,89 @@ The methods to create, read, update and delete are eponymous. Your object will b
 <span class="x">    return $errors;</span>
 <span class="x">}</span>
 </code></pre></div>
+<p>Basic validation of the properties values happens automatically based on their type (PARAM_* constant), however this is not always enough. In order to implement your own custom validation, simply define a protected method starting with validate_ followed with the property name. This method will be called whenever the model needs to be validated and will receive the data to validate.</p>
+<p>A validation method must always return either true or an instance of lang_string which contains the error message to send to the user.</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Validate the user ID.</span>
+<span class="x"> *</span>
+<span class="x"> * @param int $value The value.</span>
+<span class="x"> * @return true|lang_string</span>
+<span class="x"> */</span>
+<span class="x">protected function validate_userid($value) {</span>
+<span class="x">    if (!core_user::is_real_user($value, true)) {</span>
+<span class="x">        return new lang_string(&#39;invaliduserid&#39;, &#39;error&#39;);</span>
+<span class="x">    }</span>
+
+<span class="x">    return true;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The above example ensures that the userid property contains a valid user ID.</p>
+<p>Note that the basic validation is always performed first, and thus your custom validation method will not be called when the value did not pass the basic validation.</p>
+<h5 id="validation-results">Validation results</h5>
+<p>The validation of the object automatically happens upon create and update. If the validation did not pass, an invalid_persistent_exception will be raised. You can validate the object prior to saving the object and get the validation results if you need to.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// We can catch the invalid_persistent_exception.</span>
+<span class="x">try {</span>
+<span class="x">    $persistent = new status();</span>
+<span class="x">    $persistent-&gt;create();</span>
+<span class="x">} catch (invalid_persistent_exception $e) {</span>
+<span class="x">    // Whoops, something wrong happened.</span>
+<span class="x">}</span>
+
+<span class="x">// Check whether the object is valid.</span>
+<span class="x">$persistent-&gt;is_valid();        // True or false.</span>
+
+<span class="x">// Get the validation errors.</span>
+<span class="x">$persistent-&gt;get_errors();      // Array where keys are properties and values are errors.</span>
+
+<span class="x">// Validate the object.</span>
+<span class="x">$persistent-&gt;validate();        // Returns true, or an array of errors.</span>
+</code></pre></div>
 <h4 id="extending-persistent-classes">Extending Persistent Classes</h4>
-<p>You can extend the persistent classes to add more complex functionality specific to your plugin:</p>
+<p>You must never extend the persistent classes to add more complex functionality specific to your plugin. Do not do the following:</p>
 <div class="highlight"><pre><span></span><code><span class="x">class advanced_example extends example {</span>
 <span class="x">    public function custom_function() {</span>
 <span class="x">        // Custom logic here</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
-<p>The Moodle Persistent API simplifies the process of interacting with the database by encapsulating data logic within structured classes. It supports automatic data validation, transactions, and CRUD operations, making it easier to maintain and extend your Moodle plugins. By using the Persistent API, you ensure that your code adheres to Moodle’s best practices for data management, resulting in more reliable and maintainable code.</p>
+<h5 id="common-pitfalls">Common pitfalls</h5>
+<ul>
+<li>You must create the database table yourself, using the XMLDB editor and an upgrade script.</li>
+<li>You must include the mandatory fields in your table schema.</li>
+<li><strong>You must never extend another persistent as this leads to unpredictable errors whenever the parent changes (new properties missing in your table, changes in validation, custom getters and setters, etc...).</strong></li>
+</ul>
+<h3 id="hooks">Hooks</h3>
+<p>You can define the following methods to be notified prior to, or after, something happened:</p>
+<ul>
+<li>
+<p><strong>protected before_validate()</strong></p>
+<p>Do something before the object is validated.</p>
+</li>
+<li>
+<p><strong>protected before_create()</strong></p>
+<p>Do something before the object is inserted in the database. Note that values assigned to properties are not longer validated at this point.</p>
+</li>
+<li>
+<p><strong>protected after_create()</strong></p>
+<p>Do something right after the object was added to the database.</p>
+</li>
+<li>
+<p><strong>protected before_update()</strong></p>
+<p>Do something before the object is updated in the database. Note that values assigned to properties are not longer validated at this point.</p>
+</li>
+<li>
+<p><strong>protected after_update(bool $result)</strong></p>
+<p>Do something right after the object was updated in the database.</p>
+</li>
+<li>
+<p><strong>protected before_delete()</strong></p>
+<p>Do something right before the object is deleted from the database.</p>
+</li>
+<li>
+<p><strong>protected after_delete(bool $result)</strong></p>
+<p>Do something right after the object was deleted from the database.</p>
+</li>
+</ul>
 <h3 id="integrating-persistent-api-with-forms">Integrating Persistent API with Forms</h3>
 <p>The <code>core\form\persistent</code> class in Moodle provides a streamlined way to integrate Moodle forms with the Persistent API. It allows developers to create forms that directly interact with persistent classes, simplifying the process of handling form data, validation, and database operations.</p>
 <h3 id="key-features">Key Features</h3>
