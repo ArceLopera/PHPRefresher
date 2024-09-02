@@ -1,0 +1,3316 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodleTemplate/">
+      
+      <link rel="icon" href="../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Templates - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#syntax" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Templates
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DS/phpArray/" class="md-tabs__link">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpArray/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginFiles/" class="md-nav__link">
+        Common Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Templates
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Templates
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+    <nav class="md-nav" aria-label="Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-unescaped-variable" class="md-nav__link">
+    Raw unescaped variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    Sections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partials" class="md-nav__link">
+    Partials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocks" class="md-nav__link">
+    Blocks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helpers" class="md-nav__link">
+    Helpers
+  </a>
+  
+    <nav class="md-nav" aria-label="Helpers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#str" class="md-nav__link">
+    str
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quote" class="md-nav__link">
+    quote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pix" class="md-nav__link">
+    pix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdate" class="md-nav__link">
+    userdate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shortentext" class="md-nav__link">
+    shortentext
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-files" class="md-nav__link">
+    Template files
+  </a>
+  
+    <nav class="md-nav" aria-label="Template files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mustache-file-boilerplate" class="md-nav__link">
+    Mustache file boilerplate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendering-in-php" class="md-nav__link">
+    Rendering in PHP
+  </a>
+  
+    <nav class="md-nav" aria-label="Rendering in PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renderers" class="md-nav__link">
+    Renderers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendering-in-javascript" class="md-nav__link">
+    Rendering in JavaScript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates-requiring-javascript" class="md-nav__link">
+    Templates requiring JavaScript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-templates-in-a-theme" class="md-nav__link">
+    Overriding templates in a theme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documenting-the-templates" class="md-nav__link">
+    Documenting the templates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-style" class="md-nav__link">
+    Coding style
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterating-over-php-arrays-in-mustache-templates" class="md-nav__link">
+    Iterating over PHP arrays in Mustache templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-for-non-empty-array-in-mustache-templates" class="md-nav__link">
+    Test for non-empty array in Mustache templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#squash-whitespace-in-a-template" class="md-nav__link">
+    Squash whitespace in a template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-to-globals" class="md-nav__link">
+    Access to globals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-templates" class="md-nav__link">
+    Core templates
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleModal/" class="md-nav__link">
+        Modal Dialogues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_9">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleServices/" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodlePersistent/" class="md-nav__link">
+        Persistent API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+    <nav class="md-nav" aria-label="Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-unescaped-variable" class="md-nav__link">
+    Raw unescaped variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sections" class="md-nav__link">
+    Sections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partials" class="md-nav__link">
+    Partials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocks" class="md-nav__link">
+    Blocks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helpers" class="md-nav__link">
+    Helpers
+  </a>
+  
+    <nav class="md-nav" aria-label="Helpers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#str" class="md-nav__link">
+    str
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quote" class="md-nav__link">
+    quote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pix" class="md-nav__link">
+    pix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdate" class="md-nav__link">
+    userdate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shortentext" class="md-nav__link">
+    shortentext
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-files" class="md-nav__link">
+    Template files
+  </a>
+  
+    <nav class="md-nav" aria-label="Template files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mustache-file-boilerplate" class="md-nav__link">
+    Mustache file boilerplate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendering-in-php" class="md-nav__link">
+    Rendering in PHP
+  </a>
+  
+    <nav class="md-nav" aria-label="Rendering in PHP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renderers" class="md-nav__link">
+    Renderers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendering-in-javascript" class="md-nav__link">
+    Rendering in JavaScript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates-requiring-javascript" class="md-nav__link">
+    Templates requiring JavaScript
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-templates-in-a-theme" class="md-nav__link">
+    Overriding templates in a theme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documenting-the-templates" class="md-nav__link">
+    Documenting the templates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-style" class="md-nav__link">
+    Coding style
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterating-over-php-arrays-in-mustache-templates" class="md-nav__link">
+    Iterating over PHP arrays in Mustache templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-for-non-empty-array-in-mustache-templates" class="md-nav__link">
+    Test for non-empty array in Mustache templates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#squash-whitespace-in-a-template" class="md-nav__link">
+    Squash whitespace in a template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-to-globals" class="md-nav__link">
+    Access to globals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-templates" class="md-nav__link">
+    Core templates
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Templates</h1>
+
+<p>Moodle makes use of the Mustache template system to render most of its HTML output, and in some other cases too.</p>
+<p>Templates are defined as plain text, which typically includes HTML, and a range of Mustache tags and placeholders. The Mustache placeholders are replaced with actual values during the render of the page. Mustache templates can be rendered both server-side in PHP, and client-side using JavaScript. Themes can overrides the templates defined in other components if required.</p>
+<p>A simple example of a template:</p>
+<p>Given the template is defined as:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Hello {{name}}!<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Your grade is: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{grade}}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>And the values for the placeholder tags name and grade are provided as a JSON object, referred to as rendering context (note the context here has nothing to do with Moodle permission contexts. In Mustache, the term basically represents the data passed to the template).</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bobby&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Then the rendered result will look like:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-info&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Hello Bobby!<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> Your grade is: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>The following page provides information about the Mustache templates syntax and how to use them in Moodle.</p>
+<h3 id="syntax">Syntax</h3>
+<p>Mustache tags are made of two opening and closing curly braces. Their shape looks like a moustache, hence the name.</p>
+<h4 id="variables">Variables</h4>
+<p><div class="highlight"><pre><span></span><code>{{name}}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bobby&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>The value of the key name will be searched for in the current rendering context (and any parent contexts) and when a value is found, the entire tag will be replaced by the value (HTML escaped).</p>
+<h4 id="raw-unescaped-variable">Raw unescaped variable</h4>
+<p>All variables are HTML escaped by default. If you want to render raw unescaped HTML, use the triple mustache:</p>
+<p><div class="highlight"><pre><span></span><code>{{{description}}}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;h1&gt;Hello!&lt;/h1&gt;&lt;p&gt;In this course you will learn about ...&lt;/p&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Beware of the security implications of outputting raw HTML and make sure that the value of the variable has been processed by format_text() or another adequate way.</p>
+<h4 id="sections">Sections</h4>
+<p>Sections render blocks of text zero, one or more times, depending on the value of the key in the current context. The opening tag has a hash (pound) sign and the closing tag has a slash, followed by the key.</p>
+<h5 id="false-values-and-empty-lists">False values and empty lists</h5>
+<p>When the key is false or an empty list, the HTML between the opening and closing tag will not be displayed. This can be effectively used to conditionally control the rendering of a section.</p>
+<div class="highlight"><pre><span></span><code>{{#hasdata}}
+    This will not be shown if &#39;hasdata&#39; is empty.
+{{/hasdata}}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;hasdata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h5 id="non-empty-lists">Non-empty lists</h5>
+<p>When the value is a non-empty list, the text in the block will be displayed once for each item in the list. The context of the block will be set to the current item for each iteration. In this way we can loop over collections.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    {{#grades}}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>{{course}}<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> - {{grade}}
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    {{/grades}}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;grades&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arithmetic&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8/10&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;course&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Geometry&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10/10&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h5 id="lambdas">Lambdas</h5>
+<p>When the value is a callable, it will be invoked and returned value used as the section value. In Moodle plugins, this can be used to call the core_renderer methods via the output context variable:</p>
+<div class="highlight"><pre><span></span><code>{{#output.should_display_navbar_logo}}
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{output.get_compact_logo_url}}&quot;</span><span class="p">&gt;</span>
+{{/output.should_display_navbar_logo}}
+</code></pre></div>
+<h5 id="inverted-sections">Inverted sections</h5>
+<p>Inverted sections will be rendered if the key does not exist, is false, or is an empty list. An inverted section begins with a caret (hat) and ends with a slash.</p>
+<p><div class="highlight"><pre><span></span><code>{{#hasgrade}}
+    Your grade is: <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{grade}}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+{{/hasgrade}}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{{^hasgrade}}
+    Your work has not been graded yet.
+{{/hasgrade}}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;hasgrade&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;grade&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h4 id="comments">Comments</h4>
+<p>Comments begin with an exclamation mark. The whole section is ignored. Comments are used for boilerplate documentation. They can also be used to avoid having extra break-lines in the generated output.</p>
+<div class="highlight"><pre><span></span><code>{{!
+    This is a comment and will not be present in the rendered result.
+}}
+</code></pre></div>
+<h4 id="partials">Partials</h4>
+<p>Templates can include other templates using the partial tag. Partials begin with a greater than sign. Partials are rendered at runtime and allow to split complex templates into smaller, potentially re-usable units. Moodle core provides with many templates that can be included this way.</p>
+<div class="highlight"><pre><span></span><code>{{! Show the loading icon. }}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;p-5&quot;</span><span class="p">&gt;</span>
+    {{&gt; core/loading }}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>The included template uses the same rendering context as its parent template.</p>
+<h4 id="blocks">Blocks</h4>
+<p>Mustache template system can be extended via so called Mustache pragmas. Pragmas are non-standard extensions to the Mustache spec. Moodle 3.0 and higher has BLOCKS pragma installed and enabled.</p>
+<p>The extension allows you to define a parent template with replaceable blocks. Blocks look like sections that use dollar sign in the opening tag. The following parent template defines two blocks heading and content</p>
+<div class="highlight"><pre><span></span><code>{{!
+    @template tool_demo/section
+}}
+<span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>
+        {{$heading}} Default section heading {{/heading}}
+    <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        {{$content}} Default section content {{/content}}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Particular child templates can now extend / inherit from this parent template and override the default block values.</p>
+<div class="highlight"><pre><span></span><code>{{!
+    @template tool_demo/latestnews
+}}
+{{<span class="p">&lt;</span> <span class="nt">tool_demo</span><span class="err">/</span><span class="na">section</span> <span class="err">}}</span>
+    <span class="err">{{$</span><span class="na">heading</span><span class="err">}}</span> <span class="na">Latest</span> <span class="na">news</span> <span class="err">{{/</span><span class="na">heading</span><span class="err">}}</span>
+    <span class="err">{{$</span><span class="na">content</span><span class="err">}}</span> <span class="na">Today</span> <span class="na">I</span> <span class="na">learned</span> <span class="na">how</span> <span class="na">to</span> <span class="na">use</span> <span class="na">blocks</span> <span class="na">in</span> <span class="na">Mustache</span><span class="err">!</span> <span class="err">{{/</span><span class="na">content</span><span class="err">}}</span>
+<span class="err">{{/</span> <span class="na">tool_demo</span><span class="err">/</span><span class="na">section</span><span class="err">}}</span>
+</code></pre></div>
+<p>Blocks are particularly useful for building a library of re-usable components.</p>
+<h3 id="helpers">Helpers</h3>
+<p>Moodle providers several Mustache helpers. Helpers tags look like sections eventually containing zero or more parameters.</p>
+<h4 id="str">str</h4>
+<p>The {{#str}} is a string helper for loading text strings from language packs. It effectively represents Mustache variant of get_string() calls.</p>
+<div class="highlight"><pre><span></span><code>{{#str}} helloworld, mod_greeting {{/str}}
+</code></pre></div>
+<p>The first two parameters are the string identifier and the component name. The optional third parameter defines the value for the string's $a placeholder. Literals as well as variable tags are allowed to define the value.</p>
+<div class="highlight"><pre><span></span><code>{{#str}} backto, core, Moodle.org {{/str}}
+
+{{#str}} backto, core, {{name}} {{/str}}
+</code></pre></div>
+<p>For strings that accept non-scalar placeholders, see the following section.</p>
+<p><strong>note</strong>
+If you want to create a help icon, and wondering "where is the helper for that?" then actually, it is not a helper. You need to use <code>{{&gt;core/help_icon}}</code> as a partial.</p>
+<h4 id="quote">quote</h4>
+<p>The <code>{{#quote}}</code> is intended to quote non-scalar <code>{{#str}}</code> arguments.</p>
+<p>Some strings accept complex non-scalar data structures passed as the value of the $a placeholder. You can use a JSON object syntax in that case:</p>
+<div class="highlight"><pre><span></span><code>{{#str}} counteditems, core, { &quot;count&quot;: &quot;42&quot;, &quot;items&quot;: &quot;courses&quot; } {{/str}}
+</code></pre></div>
+<p>If you wanted to use the context values instead of literal values, you might intuitively use something like this:</p>
+<div class="highlight"><pre><span></span><code>{{! DO NOT DO THIS !}}
+{{#str}} counteditems, core, { &quot;count&quot;: {{count}}, &quot;items&quot;: {{itemname}} } {{/str}}
+</code></pre></div>
+<p>There is a potential problem though. If the variable tag <code>itemname</code> evaluates to a string containing double quotes, it will break the JSON syntax. We need to escape certain characters potentially appearing in the variable tags. For this, we use the <code>{{#quote}}</code> helper.</p>
+<div class="highlight"><pre><span></span><code>{{#str}} counteditems, core, { &quot;count&quot;: {{count}}, &quot;items&quot;: {{#quote}} {{itemname}} {{/quote}} } {{/str}}
+</code></pre></div>
+<h4 id="pix">pix</h4>
+<p>The <code>{{#pix}}</code> is a icon picture helper for generating pix icon tags.</p>
+<div class="highlight"><pre><span></span><code>{{#pix}} t/edit, core, Edit this section {{/pix}}
+</code></pre></div>
+<p>The first two parameters are the icon identifier and the component name. The rest is the alt text for the icon.</p>
+<p>See <a href="https://docs.moodle.org/dev/Using_images_in_a_theme">Using images in a theme</a> and <a href="https://docs.moodle.org/dev/Moodle_icons">Moodle icons</a> for some background information about pix icons in Moodle.</p>
+<h4 id="userdate">userdate</h4>
+<p>The <code>{{#userdate}}</code> helper will format UNIX timestamps into a given human readable date format while using the user's timezone settings configured (if any) in Moodle. The helper will accept hardcoded values, context variables, or other helpers.</p>
+<p>It is recommended to use the string helper to get one of the core Moodle formats.
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1628871929</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{{#userdate}} {{time}}, {{#str}} strftimedate, core_langconfig {{/str}} {{/userdate}}
+</code></pre></div></p>
+<p>This will ask the Moodle server for the string "strftimedate" and will use the value (which in this case is "%d %B %Y" in case of English) to format the user date. So the resulting formatted timestamp from the userdate helper would be like "13 August 2021".</p>
+<h4 id="shortentext">shortentext</h4>
+<p>The <code>{{#shortentext}}</code> helper can be used to shorten a large amount of text to a specified length and will append a trailing ellipsis to signify that the text has been shortened.</p>
+<p>The algorithm will attempt to preserve words while shortening to text. Words, for the purposes of the helper, are considered to be groups of consecutive characters broken by a space or, in the case of a multi-byte character, after the completion of the multi-byte character (rather than in the middle of the character).</p>
+<p>It will also attempt to preserve HTML in the text by keeping the opening and closing tags. Only text within the tags will be considered when calculating how much should be truncated to reach the desired length.</p>
+<p>The helper takes two comma separated arguments. The first is the desired length and the second is the text to be shortened. Both can be provided as context variables.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;p&gt;&lt;em&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia pretium nulla gravida interdum.&lt;/em&gt;&lt;/p&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{{#shortentext}} 15, {{{description}}} {{/shortentext}}
+</code></pre></div>
+<h3 id="template-files">Template files</h3>
+<p>Templates are saved in <code>templates/*.mustache</code> files within core components and plugins folders. When loading them, templates are identified by their full <a href="https://moodledev.io/general/development/policies/codingstyle/frankenstyle">component name</a> followed by slash and the filename without the file extension.</p>
+<p><strong>Example</strong></p>
+<p>A <code>timer</code> template provided by the <code>mod_lesson</code> module would be referred to as <code>mod_lesson/timer</code> and it would be located in <code>mod/lesson/templates/timer.mustache</code> file.</p>
+<p>Since Moodle 3.8 it is possible to use sub-directories under the <code>templates</code> directory. The first sub-directory name must meet <a href="https://moodledev.io/general/development/policies/codingstyle#rules-for-level2">certain naming rules</a> (same as for class namespaces).</p>
+<h4 id="mustache-file-boilerplate">Mustache file boilerplate</h4>
+<div class="highlight"><pre><span></span><code>{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+}}
+{{!
+    @template plugintype_pluginname/template_name
+
+    Template purpose and description.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * none
+
+    Example context (json):
+    {
+    }
+}}
+</code></pre></div>
+<h3 id="rendering-in-php">Rendering in PHP</h3>
+<p>Use the <code>render_from_template()</code> method to render the given context data with the template.
+<div class="highlight"><pre><span></span><code><span class="x">$data = [</span>
+<span class="x">    &#39;name&#39; =&gt; &#39;Lorem ipsum&#39;,</span>
+<span class="x">    &#39;description&#39; =&gt; format_text($description, FORMAT_HTML),</span>
+<span class="x">];</span>
+
+<span class="x">echo $OUTPUT-&gt;render_from_template($templatename, $data);</span>
+</code></pre></div></p>
+<h4 id="renderers">Renderers</h4>
+<p>Templates can be effectively used in renderers to generate the HTML representing the given <code>renderable</code> object. Make your <code>renderable</code> class also implement <code>templatable</code> interface. It will have to implement a new method <code>export_for_template(renderer_base $output)</code>. The method should return a JSON-serialisable object (containing only objects, arrays and scalars) that will be passed as the rendering context data to a template.</p>
+<p>In the simplest case where you have a renderable, templatable object with a class name matching the name of the template that will render it, you do not need to add any renderer code explicity. Passing your widget directly to <code>$OUTPUT-&gt;render()</code> will infer the name of your template, call <code>export_for_template()</code> and <code>render_from_template()</code>, then return the result.</p>
+<p>Example of the method added to the renderable <code>mywidget</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Describe the renderable widget so it can be renderer by a mustache template.</span>
+<span class="x"> *</span>
+<span class="x"> * @param renderer_base $output</span>
+<span class="x"> * @return stdClass</span>
+<span class="x"> */</span>
+<span class="x">public function export_for_template(renderer_base $output) {</span>
+<span class="x">    $data = new stdClass();</span>
+<span class="x">    $data-&gt;canmanage = $this-&gt;canmanage;</span>
+<span class="x">    $data-&gt;things = [];</span>
+<span class="x">    foreach ($this-&gt;things as $thing) {</span>
+<span class="x">        $data-&gt;things[] = $thing-&gt;to_record();</span>
+<span class="x">    }</span>
+<span class="x">    $data-&gt;navigation = [];</span>
+<span class="x">    foreach ($this-&gt;navigation as $button) {</span>
+<span class="x">        $data-&gt;navigation[] = $output-&gt;render($button);</span>
+<span class="x">    }</span>
+
+<span class="x">    return $data;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p><strong>TIP</strong></p>
+<p>When naming variables in your export data, be careful not to reuse names of helpers such as str or js - these will silently fail. Try to keep your variable names short but descriptive.</p>
+<p>The rendering method can now use templates to render the object:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Render mywidget via a template.</span>
+<span class="x"> *</span>
+<span class="x"> * @param mywidget $widget</span>
+<span class="x"> *</span>
+<span class="x"> * @return string HTML</span>
+<span class="x"> */</span>
+<span class="x">protected function render_mywidget(mywidget $widget) {</span>
+<span class="x">    $data = $widget-&gt;export_for_template($this);</span>
+<span class="x">    return $this-&gt;render_from_template(&#39;tool_myplugin/mywidget&#39;, $data);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>In your page:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$output = $PAGE-&gt;get_renderer(&#39;tool_myplugin&#39;);</span>
+<span class="x">echo $output-&gt;render($widget);</span>
+</code></pre></div>
+<h3 id="rendering-in-javascript">Rendering in JavaScript</h3>
+<p>Rendering a template from JavaScript is fairly easy. There is a JavaScript module that can load (and cache) a template and then use it for rendering the given data.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">exception</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">displayException</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/notification&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Templates</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// This will be the context for our template. So {{name}} in the template will resolve to &quot;Tweety bird&quot;.</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Tweety bird&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">intelligence</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="c1">// This will call the function to load and render our template.</span><span class="w"></span>
+<span class="nx">Templates</span><span class="p">.</span><span class="nx">renderForPromise</span><span class="p">(</span><span class="s1">&#39;block_looneytunes/profile&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">)</span><span class="w"></span>
+
+<span class="c1">// It returns a promise that needs to be resoved.</span><span class="w"></span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(({</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Here eventually I have my compiled template, and any javascript that it generated.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The templates object has append, prepend and replace functions.</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">appendNodeContents</span><span class="p">(</span><span class="s1">&#39;.block_looneytunes .content&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">);</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+
+<span class="c1">// Deal with this exception (Using core/notify exception function is recommended).</span><span class="w"></span>
+<span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">displayException</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span><span class="w"></span>
+</code></pre></div>
+<p>Under the hood, this does a few clever things for us. It loads the template via an AJAX call if it was not cached. It finds any missing lang strings in the template and loads them in a single AJAX request. It splits the JS from the HTML and returns both in an easy to use way. Read on for how to nicely deal with that js parameter.</p>
+<h3 id="templates-requiring-javascript">Templates requiring JavaScript</h3>
+<p>Sometimes a template requires that some JavaScript runs when it is added to the page in order to give it more features. In the template we can include blocks of JavaScript, but we should use a special section tag that has a "helper" method registered to handle JavaScript carefully.</p>
+<p>Example</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;!-- HTML here --&gt;&gt;</span>
+<span class="x">{{^element.frozen}}</span>
+<span class="x">{{#js}}</span>
+<span class="x">require([&#39;theme_boost/form-display-errors&#39;], function(module) {</span>
+<span class="x">    module.enhance({{#quote}}{{element.id}}{{/quote}});</span>
+<span class="x">});</span>
+<span class="x">{{/js}}</span>
+<span class="x">{{/element.frozen}}</span>
+</code></pre></div>
+<p><strong>TIP</strong>
+We strongly advise placing all meaningful JavaScript into an AMD module and simply loading the JavaScript from the template. This allows the JavaScript to be linted, and minified.</p>
+<p>If this template is rendered by PHP, the JavaScript is separated from the HTML, and is appended to a special section in the footer of the page after requirejs has loaded. This provides the optimal page loading speed. If the template is rendered by JavaScript, the JavaScript source will be passed to the "done" handler from the promise. Then, when the <code>then</code> handler has added the template to the DOM, it can call</p>
+<div class="highlight"><pre><span></span><code><span class="nx">templates</span><span class="p">.</span><span class="nx">runTemplateJS</span><span class="p">(</span><span class="nx">javascript</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>which will run the JavaScript (by creating a new script tag and appending it to the page head).</p>
+<h3 id="overriding-templates-in-a-theme">Overriding templates in a theme</h3>
+<p>Templates can be overridden by a theme.</p>
+<ol>
+<li>Find the template that you want to change - e.g. <code>mod/wiki/templates/ratingui.mustache</code></li>
+<li>Create a sub-folder under your themes "templates" directory with the component name of the plugin you are overriding - e.g <code>theme/timtam/templates/mod_wiki</code></li>
+<li>Copy the <code>ratingui.mustache</code> file into the newly created <code>theme/timtam/templates/mod_wiki</code> and edit it. You should see your changes immediately if theme designer mode is on. Templates are cached just like CSS, so if you are not using theme designer mode you will need to purge all caches to see the latest version of an edited template. If the template you are overriding contains a documentation comment it is recommended to remove it. It will still show the documentation in the template library.</li>
+</ol>
+<h3 id="documenting-the-templates">Documenting the templates</h3>
+<p>Theme designers need to know the limits of what they can expect to change without breaking anything. Also, correctly documented templates can be previewed in the "Template library" tool shipped with Moodle.</p>
+<ul>
+<li><strong>Classes required for JS</strong> - This is a list of classes that are used by the JavaScript for this template. If removing a class from an element in the template will break the JavaScript, list it here.</li>
+<li><strong>Data attributes required for JS</strong> - This is a list of data attributes (e.g. data-enhance="true") that are used by the JavaScript for this template. If removing a data attribute from an element in the template will break the JavaScript, list it here.</li>
+<li><strong>Context variables required for this template</strong> - This is a description of the data that may be contained in the context that is passed to the template. Be explicit and document every attribute.</li>
+<li><strong>Example context (JSON)</strong> - The Template library will look for this data in your documentation comment as it allows it to render a "preview" of the template right in the Template library. This is useful for theme designers to test all the available templates in their new theme to make sure they look nice in a new theme. It is also useful to make sure the template responds to different screen sizes, languages and devices. The format is a JSON-encoded object that is passed directly into the render method for this template.</li>
+</ul>
+<h3 id="coding-style">Coding style</h3>
+<p>This section documents some coding style guidelines to follow when writing templates. The reason for these guidelines is to promote consistency, and interoperability of the templates.</p>
+<h5 id="include-gpl-at-the-top-of-each-template">Include GPL at the top of each template</h5>
+<p>Templates are a form of code and it is appropriate to license them like any other code.</p>
+<h5 id="include-a-documentation-comment-for-each-template">Include a documentation comment for each template</h5>
+<p>The exception is when you are overriding a template, if the documentation from the parent still applies, you do not need to copy it to the overridden template.</p>
+<h5 id="use-data-attributes-for-js-hooks">Use data-attributes for JS hooks</h5>
+<p>Data attributes are ideal for adding JavaScript hooks to templates because:</p>
+<ul>
+<li>Classes are meant for styling - theme designers should be able to change the classes at will without breaking any functionality.</li>
+<li>IDs must be unique in the page, but it is not possible to control how many times the same template might be included in the page.</li>
+<li>Data attributes can have meaningful names and can be efficiently queried with a selector.</li>
+</ul>
+<h5 id="avoid-custom-css-for-templates">Avoid custom CSS for templates</h5>
+<p>This is not a hard rule, but a preference. We already have too much CSS in Moodle - where ever possible we should try and re-use the existing CSS instead of adding new CSS to support every new template.</p>
+<h5 id="re-use-core-templates-as-much-as-possible">Re-use core templates as much as possible</h5>
+<p>First we need to build the core set of reusable templates - but once that is in place we should always try to re-use those core templates to build interfaces. This will make Moodle more consistent, attractive and customisable.</p>
+<h5 id="do-use-the-css-framework-classes-directly-in-the-templates">Do use the CSS framework classes directly in the templates</h5>
+<p>We have bootstrap in core - so lets make the most of it. There is no problem using bootstrap classes in core templates, as long as the "base" theme is also tested, and an overridden template is added there if required.</p>
+<h5 id="avoid-ids-for-styling-or-javascript">Avoid IDs for styling or JavaScript</h5>
+<p>IDs should not be used for styling as they have a high CSS specificity, and so are hard to override. In addition, IDs should be unique in the page, which implies that a template could only be used once in a page. IDs are also not ideal for JavaScript, for the same reason (must be unique in a page).</p>
+<p>The only acceptable case to use an ID is you need to create a one to one connection between the JS and template. In this case use the uniqid helper to generate an ID that will not conflict with any other template on the page, and use it as part of the ID.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div id=&quot;{{uniqid}}-somethingspecific&quot;&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+<span class="x">{{#js}}</span>
+<span class="x">    callFunction(&#39;{{uniqid}}-somethingspecific&#39;);</span>
+<span class="x">{{/js}}</span>
+</code></pre></div>
+<h5 id="follow-css-coding-style">Follow CSS coding style</h5>
+<p>See <a href="https://docs.moodle.org/dev/CSS_Coding_Style">CSS coding style</a>. Use hyphens as word-separators for class names. Use lower case class names.</p>
+<h5 id="wrap-each-template-in-one-node-with-a-classname-that-matches-the-template-name">Wrap each template in one node with a classname that matches the template name</h5>
+<p>Generate a class name by combining the component and template names and separating words with underscore.</p>
+<p>e.g.
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div class=&quot;core_user_header&quot;&gt;</span>
+<span class="x">...</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div></p>
+<h3 id="notes">Notes</h3>
+<h4 id="iterating-over-php-arrays-in-mustache-templates">Iterating over PHP arrays in Mustache templates</h4>
+<p>In PHP, both lists and hashes are implemented as arrays. But Mustache must treat them as different structures because of cross language compatibility. If the PHP array does not have the [0] key, or there are gaps in the keys sequence, Mustache will interpret that array as a hash and will not iterate over it.</p>
+<p>So you need to make sure the elements in the list are properly indexed:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$datafortemplate-&gt;mylist = array_values($myarraywithnonnumerickeys)</span>
+</code></pre></div>
+<h4 id="test-for-non-empty-array-in-mustache-templates">Test for non-empty array in Mustache templates</h4>
+<p>Short answer: you can't.</p>
+<div class="highlight"><pre><span></span><code><span class="x">{{! This will work in PHP but not in JavaScript. }}</span>
+<span class="x">{{#users.0}} ... {{/users.0}}</span>
+
+<span class="x">{{! This will work in JavaScript but not in PHP. }}</span>
+<span class="x">{{#users.length}} ... {{/users.length}}</span>
+</code></pre></div>
+<p>As a workaround, include a specific property in the context like hasusers.</p>
+<div class="highlight"><pre><span></span><code><span class="x">{</span>
+<span class="x">    &quot;hasusers&quot;: false,</span>
+<span class="x">    &quot;users&quot;: []</span>
+<span class="x">}</span>
+
+<span class="x">{{#hasusers}}</span>
+<span class="x">    {{#users}}</span>
+<span class="x">    ....</span>
+<span class="x">    {{/users}}</span>
+<span class="x">{{#hasusers}}</span>
+</code></pre></div>
+<h4 id="squash-whitespace-in-a-template">Squash whitespace in a template</h4>
+<p>Sometimes whitespace is significant, for example inside a link it will show with an underline. If you need two Mustache tags from separate lines to be rendered with no whitespace between them you can use Mustache comments to squash the whitespace.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;blah&quot;</span><span class="p">&gt;</span>{{!
+}}{{icon}}{{!
+}}{{name}}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="access-to-globals">Access to globals</h4>
+<p>In PHP you have access to the $CFG object to allow access to properties. Mustache rendering also exposes a globals object automatically during rendering. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;a href=&quot;{{globals.config.wwwroot}}/login/logout.php?sesskey={{globals.config.sesskey}}&quot;&gt;{{#str}} logout, core {{/str}}&lt;/a&gt;</span>
+</code></pre></div>
+<p>The properties available on the globals.config object are the same as normally exposed for JavaScript; these are gathered from get_config_for_javascript() function in lib/outputrequirementslib.php. This object is only available when using client-side Mustache rendering in JavaScript; it is not added to templates rendered with the PHP Mustache engine.</p>
+<h3 id="core-templates">Core templates</h3>
+<p>Core templates should ideally be simple generic components that can be used within other templates to create more complex page layouts. They should be flexible enough for developers and themers to easily use without having to replace the template. The templates should attempt to encapsulate some core structure for the element as well as key classes while allowing the content to be easily overridden. Ultimately we want to avoid having duplicate HTML copied from template to template where possible, particularly if the HTML element has some classes associated with it.</p>
+<p>Mustache relies on variables to substitute context data into the template but unfortunately it's very unlikely that the the names of the context data will match what the template is expecting for all the places that the template might be used. So in order to allow easy extensibility and avoid having to duplicate templates just to rename the variables we can wrap them in block variables which would allow the template that is including our template to replace that variable with one from it's own context inline.</p>
+<p>There are a few key points to keep in mind when writing a core template:</p>
+<ul>
+<li>Consider how your template will actually be used. Try writing a test page that uses your template to help discover some of the assumptions you might have in the template.</li>
+<li>The example context you provide in the template is mostly just for showing the template in the template library and is likely not how your template will actually be used. Most uses of the template will have a different context all together.</li>
+<li>Try to enforce a core structure but avoid enforcing a specific context. Content should be overridable.</li>
+<li>Use block variables to indicate sections of your template that people are likely to want to change. Typically where they will be wanting to substitute in their own content.</li>
+<li>Try to keep any JavaScript that accompanies the template as decoupled from the HTML / CSS structure of the template as possible. Instead of relying on the existence of certain HTML elements or CSS classes it is generally better to leverage data-attributes which can be added to any element. Let's go through an example to illustrate how you might build a core template. For the example we'll be building a tabs template, since it's a fairly complex component that requires the use of block variables and JavaScript.</li>
+</ul>
+<p>First we can create a basic template to get the general structure down, let's call it tabs. Here's what it might look like:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div id=&quot;{{ uniqid }}-tab-container&quot;&gt;</span>
+<span class="x">    &lt;ul role=&quot;tablist&quot; class=&quot;nav nav-tabs&quot;&gt;</span>
+<span class="x">  {{# tabs }}</span>
+<span class="x">   &lt;li role=&quot;tab&quot;</span>
+<span class="x">     data-target=&quot;{{ uniqid }}-{{ id }}&quot;</span>
+<span class="x">     data-selected-class=&quot;active&quot;</span>
+<span class="x">     aria-controls=&quot;{{ uniqid }}-{{ id }}&quot;</span>
+<span class="x">     aria-selected=&quot;false&quot; tabindex=&quot;-1&quot;&gt;</span>
+
+<span class="x">    &lt;a href=&quot;#&quot;&gt;{{{ name }}}&lt;/a&gt;</span>
+<span class="x">   &lt;/li&gt;</span>
+<span class="x">  {{/ tabs }}</span>
+<span class="x"> &lt;/ul&gt;</span>
+<span class="x">    &lt;div class=&quot;tab-content&quot;&gt;</span>
+<span class="x">  {{# tabs }}</span>
+<span class="x">   &lt;div role=&quot;tabpanel&quot;</span>
+<span class="x">    class=&quot;tab-pane&quot;</span>
+<span class="x">    id=&quot;{{ uniqid }}-{{ id }}&quot;&gt;</span>
+
+<span class="x">    {{{ content }}}</span>
+<span class="x">   &lt;/div&gt;</span>
+<span class="x">  {{/ tabs }}</span>
+<span class="x"> &lt;/div&gt;</span>
+<span class="x">&lt;/div&gt;</span>
+<span class="x">{{#js}}</span>
+<span class="x">    require([&#39;jquery&#39;,&#39;core/tabs&#39;], function($, tabs) {</span>
+
+<span class="x">        var container = $(&quot;#{{ uniqid }}-tab-container&quot;);</span>
+<span class="x">        tabs.create(container);</span>
+<span class="x">    });</span>
+<span class="x">{{/js}}</span>
+</code></pre></div>
+<p>The template requires a context that looks something like:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;tabs&quot;: [
+        {&quot;id&quot;:&quot;tab1&quot;,&quot;name&quot;:&quot;Tab 1&quot;,&quot;content&quot;:&quot;This is tab 1 content &lt;a href=\&quot;#\&quot;&gt;test&lt;/a&gt;&quot;},
+        {&quot;id&quot;:&quot;tab2&quot;,&quot;name&quot;:&quot;Tab 2&quot;,&quot;content&quot;:&quot;This is tab 2 content &lt;a href=\&quot;#\&quot;&gt;test&lt;/a&gt;&quot;},
+        {&quot;id&quot;:&quot;tab3&quot;,&quot;name&quot;:&quot;Tab 3&quot;,&quot;content&quot;:&quot;This is tab 3 content &lt;a href=\&quot;#\&quot;&gt;test&lt;/a&gt;&quot;}
+    ]
+}
+</code></pre></div>
+<p>The JavaScript required to power the tabs element (keyboard navigation, show / hide panels etc) is written as an AMD module and is included by the template. The JavaScript is a little too large to go through here, but some key points to consider when writing it are: It should ideally be independent of the HTML structure, so if someone wants to completely rewrite the tabs to be different elements (for example, a set of button or div elements) then the same JavaScript can be used without needing to change it. In order to achieve this it is important to identify the key components of the template.</p>
+<p>In this case it is a tab list, a tab and it's content. One way to identify these components would be to inspect the structure of the DOM, for example you might say "find me the ul element" when looking for the tab list and then "find my the child li elements" to find the tabs. While this would work, it couples your JavaScript to the HTML structure and makes it difficult to change later. A different approach would be to use the element attributes, for example you might say "find my the element with the role 'tablist'" to get the tab list and then "find me the elements with the role 'tab'" to get the tabs. This allows the HTML structure to change without breaking the JavaScript (as long as the correct attributes are set, of course).</p>
+<p>Another point of consideration for this example is what class to apply to a tab when it is selected. It makes sense to just apply something like "active" in the JavaScript, but that once again couples it to a particular CSS framework which makes it more difficult to change without modifying the JavaScript. In this case I chose to add a data attribute to the element to indicate which class will be set when the tab is selected. This means the JavaScript doesn't have to guess what the appropriate class is, it can just get it from the template.</p>
+<p>Ok, so we've got our basic template. It's time to use it! Let's say we want to create a simple user profile page that might show 2 tabs, the first tab will be the user's name and the second tab will be the user's email address (please excuse the contrived example).</p>
+<p>Here's what the page might look like:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">    &lt;header&gt;&lt;title&gt;User Profile&lt;/title&gt;&lt;/header&gt;</span>
+<span class="x">    &lt;body&gt;</span>
+<span class="x">        {{&lt; core/tabs }}</span>
+<span class="x">    &lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<p>That looks pretty simple! The only problem is, how do I get my content there? I would have to supply a context like this in order to display the tabs I want:</p>
+<div class="highlight"><pre><span></span><code><span class="x">{</span>
+<span class="x">    &quot;tabs&quot;: [</span>
+<span class="x">        {</span>
+<span class="x">            &quot;id&quot;: &quot;tab1&quot;,</span>
+<span class="x">            &quot;name&quot;: &quot;Name&quot;,</span>
+<span class="x">            &quot;content&quot;: &quot;Your name is Mr. Test User.&quot;</span>
+<span class="x">        }, {</span>
+<span class="x">            &quot;id&quot;: &quot;tab2&quot;,</span>
+<span class="x">            &quot;name&quot;: &quot;Email&quot;,</span>
+<span class="x">            &quot;content&quot;: &quot;Your email is testuser@example.com&quot;</span>
+<span class="x">        }</span>
+<span class="x">    ]</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Let's assume that the context for this page doesn't match what the tabs template is expecting though. Let's assume the tabs template is being rendered with this context:</p>
+<div class="highlight"><pre><span></span><code><span class="x">{</span>
+<span class="x">    &quot;name&quot;: &quot;Mr. Test User&quot;,</span>
+<span class="x">    &quot;email&quot;: &quot;testuser@example.com&quot;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Unfortunately, we'll almost certainly never have complete control over all of the contexts that our template will be rendered in which means we'll be expecting people to write new webservices to supply the same data in different formats every time they want to use a template. It becomes an unmanageable problem.</p>
+<p>Enter blocks! We can make the template more flexible by defining sections of the template that can be overridden when they are included. Pretty neat! This will allow us to enforce a certain core structure but not enforce a context on the template that is including the tabs.</p>
+<p>Let's have another go at that template, this time leveraging blocks:</p>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;div id=&quot;{{ uniqid }}-tab-container&quot;&gt;</span>
+<span class="x"> {{$ tabheader }}</span>
+<span class="x">  &lt;ul role=&quot;tablist&quot; class=&quot;nav nav-tabs&quot;&gt;</span>
+<span class="x">   {{$ tablist }}</span>
+<span class="x">    {{# tabs }}</span>
+<span class="x">     &lt;li role=&quot;tab&quot;</span>
+<span class="x">       data-target=&quot;{{ uniqid }}-{{ id }}&quot;</span>
+<span class="x">       data-selected-class=&quot;active&quot;</span>
+<span class="x">       aria-controls=&quot;{{ uniqid }}-{{ id }}&quot;</span>
+<span class="x">       aria-selected=&quot;false&quot; tabindex=&quot;-1&quot;&gt;</span>
+
+<span class="x">      &lt;a href=&quot;#&quot;&gt;{{{ name }}}&lt;/a&gt;</span>
+<span class="x">     &lt;/li&gt;</span>
+<span class="x">    {{/ tabs }}</span>
+<span class="x">   {{/ tablist }}</span>
+<span class="x">  &lt;/ul&gt;</span>
+<span class="x"> {{/ tabheader }}</span>
+<span class="x"> {{$ tabbody }}</span>
+<span class="x">  &lt;div class=&quot;tab-content&quot;&gt;</span>
+<span class="x">   {{$ tabcontent }}</span>
+<span class="x">    {{# tabs }}</span>
+<span class="x">     &lt;div role=&quot;tabpanel&quot;</span>
+<span class="x">      class=&quot;tab-pane&quot;</span>
+<span class="x">      id=&quot;{{ uniqid }}-{{ id }}&quot;&gt;</span>
+
+<span class="x">      {{{ content }}}</span>
+<span class="x">     &lt;/div&gt;</span>
+<span class="x">    {{/ tabs }}</span>
+<span class="x">   {{/ tabcontent }}</span>
+<span class="x">  &lt;/div&gt;</span>
+<span class="x"> {{/ tabbody }}</span>
+<span class="x">&lt;/div&gt;</span>
+<span class="x">{{#js}}</span>
+<span class="x">    require([&#39;jquery&#39;,&#39;core/tabs&#39;], function($, tabs) {</span>
+
+<span class="x">        var container = $(&quot;#{{ uniqid }}-tab-container&quot;);</span>
+<span class="x">        tabs.create(container);</span>
+<span class="x">    });</span>
+<span class="x">{{/js}}</span>
+</code></pre></div>
+<p>A summary of what we've changed:</p>
+<ul>
+<li>Added a $tabheader block around the tab list, in case someone wants to change the ul element to something else.</li>
+<li>Added a $tablist block around the group of tabs to allow them to be overridden on include.</li>
+<li>Added a $tabbody block around the content, in case someone wants to change the content elements from div elements.</li>
+<li>Added a $tabcontent block around the tab variable for the content to allow the content to be overridden on include. Now let's see what using this template looks like for your User Profile page:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">&lt;html&gt;</span>
+<span class="x">    &lt;header&gt;&lt;title&gt;User Profile&lt;/title&gt;&lt;/header&gt;</span>
+<span class="x">    &lt;body&gt;</span>
+<span class="x">        {{&gt; core/tabs }}</span>
+<span class="x">   {{$ tablist }}</span>
+<span class="x">    &lt;li role=&quot;tab&quot;</span>
+<span class="x">      data-target=&quot;{{ uniqid }}-tab1&quot;</span>
+<span class="x">      data-selected-class=&quot;active&quot;</span>
+<span class="x">      aria-controls=&quot;{{ uniqid }}-tab1&quot;</span>
+<span class="x">      aria-selected=&quot;false&quot; tabindex=&quot;-1&quot;&gt;</span>
+
+<span class="x">     &lt;a href=&quot;#&quot;&gt;Name&lt;/a&gt;</span>
+<span class="x">    &lt;/li&gt;</span>
+<span class="x">    &lt;li role=&quot;tab&quot;</span>
+<span class="x">      data-target=&quot;{{ uniqid }}-tab2&quot;</span>
+<span class="x">      data-selected-class=&quot;active&quot;</span>
+<span class="x">      aria-controls=&quot;{{ uniqid }}-tab2&quot;</span>
+<span class="x">      aria-selected=&quot;false&quot; tabindex=&quot;-1&quot;&gt;</span>
+
+<span class="x">     &lt;a href=&quot;#&quot;&gt;Email&lt;/a&gt;</span>
+<span class="x">    &lt;/li&gt;</span>
+<span class="x">   {{/ tablist }}</span>
+<span class="x">   {{$ tabcontent }}</span>
+<span class="x">    &lt;div role=&quot;tabpanel&quot;</span>
+<span class="x">     class=&quot;tab-pane&quot;</span>
+<span class="x">     id=&quot;{{ uniqid }}-tab1&quot;&gt;</span>
+
+<span class="x">     Your name is {{ name }}.</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">    &lt;div role=&quot;tabpanel&quot;</span>
+<span class="x">     class=&quot;tab-pane&quot;</span>
+<span class="x">     id=&quot;{{ uniqid }}-tab2&quot;&gt;</span>
+
+<span class="x">     Your email address is {{ email }}.</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">   {{/ tabcontent }}</span>
+<span class="x">  {{/ core/tabs }}</span>
+<span class="x">    &lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</code></pre></div>
+<p>That looks a bit better! Now we've been able to use the blocks to successfully change the template to use the context available to this page, we no longer need a "tabs" array with "name" and "content". Even the JavaScript will continue to work because we've kept the correct element attributes.</p>
+<p>We've still got a slight problem though... In order to change the data for the template we've had to copy &amp; paste the HTML from the original template into our blocks as we do the override. While this works fine in this example, it means we don't quite get the encapsulation we want within the templates since we're leaking internal implementation details. If we ever wanted to change the CSS framework we use for Moodle (say from bootstrap 2 to bootstrap 3 or 4) we'd have to find all the places in the code where this tabs template is used and make sure that the HTML is correct in their block overrides.</p>
+<p>With that in mind, let's take one more pass at this template and see if we can improve it slightly again. This time we're doing to split the template out into 3 templates.</p>
+<div class="highlight"><pre><span></span><code><span class="x">#tabs.mustache</span>
+<span class="x">&lt;div id=&quot;{{ uniqid }}-tab-container&quot;&gt;</span>
+<span class="x"> {{$ tabheader }}</span>
+<span class="x">  &lt;ul role=&quot;tablist&quot; class=&quot;nav nav-tabs&quot;&gt;</span>
+<span class="x">   {{$ tablist }}</span>
+<span class="x">    {{# tabs }}</span>
+<span class="x">     {{&gt; core/tab_header_item }}</span>
+<span class="x">    {{/ tabs }}</span>
+<span class="x">   {{/ tablist }}</span>
+<span class="x">  &lt;/ul&gt;</span>
+<span class="x"> {{/ tabheader }}</span>
+<span class="x"> {{$ tabbody }}</span>
+<span class="x">  &lt;div class=&quot;tab-content&quot;&gt;</span>
+<span class="x">   {{$ tabcontent }}</span>
+<span class="x">    {{# tabs }}</span>
+<span class="x">     {{&gt; core/tab_content_item }}</span>
+<span class="x">    {{/ tabs }}</span>
+<span class="x">   {{/ tabcontent }}</span>
+<span class="x">  &lt;/div&gt;</span>
+<span class="x"> {{/ tabbody }}</span>
+<span class="x">&lt;/div&gt;</span>
+<span class="x">{{#js}}</span>
+<span class="x">    require([&#39;jquery&#39;,&#39;core/tabs&#39;], function($, tabs) {</span>
+
+<span class="x">        var container = $(&quot;#{{ uniqid }}-tab-container&quot;);</span>
+<span class="x">        tabs.create(container);</span>
+<span class="x">    });</span>
+<span class="x">{{/js}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">#tab_header_item.mustache</span>
+<span class="x">&lt;li role=&quot;tab&quot;</span>
+<span class="x">  data-selected-class=&quot;active&quot;</span>
+<span class="x">  aria-selected=&quot;false&quot; tabindex=&quot;-1&quot;&gt;</span>
+
+<span class="x"> &lt;a href=&quot;#&quot;&gt;{{$ tabname }}{{{ name }}}{{/ tabname }}&lt;/a&gt;</span>
+<span class="x">&lt;/li&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">#tab_content_item.mustache</span>
+<span class="x">&lt;div role=&quot;tabpanel&quot;</span>
+<span class="x"> class=&quot;tab-pane&quot;</span>
+
+<span class="x"> {{$ tabpanelcontent }}{{{ content }}}{{/ tabpanelcontent }}</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+<p>A summary of the changes:</p>
+<ul>
+<li>Split the template into 3, moving the tab into it's own template and the content into it's own and then including them in the tabs template.</li>
+<li>Removed the ids from the tabs and content. The JavaScript would be updating to assign these ids at runtime so that they don't need to be provided as part of the template context.</li>
+<li>Added a $tabname block for in the tab_header_item template to make the name flexible on import.</li>
+<li>Added a $tabpanelcontant block in the tab_content_item template to make the content flexible on import. Cool, so let's see what that looks like in our example now:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>User Profile<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        {{&gt; core/tabs }}
+   {{$ tablist }}
+    {{<span class="p">&lt;</span> <span class="nt">core</span><span class="err">/</span><span class="na">tab_header_item</span> <span class="err">}}</span>
+     <span class="err">{{$</span> <span class="na">tabname</span> <span class="err">}}</span><span class="na">Name</span><span class="err">{{/</span> <span class="na">tabname</span> <span class="err">}}</span>
+    <span class="err">{{/</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_header_item</span> <span class="err">}}</span>
+    <span class="err">{{&lt;</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_header_item</span> <span class="err">}}</span>
+     <span class="err">{{$</span> <span class="na">tabname</span> <span class="err">}}</span><span class="na">Email</span><span class="err">{{/</span> <span class="na">tabname</span> <span class="err">}}</span>
+    <span class="err">{{/</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_header_item</span> <span class="err">}}</span>
+   <span class="err">{{/</span> <span class="na">tablist</span> <span class="err">}}</span>
+   <span class="err">{{$</span> <span class="na">tabcontent</span> <span class="err">}}</span>
+    <span class="err">{{&lt;</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_content_item</span> <span class="err">}}</span>
+     <span class="err">{{$</span> <span class="na">tabpanelcontent</span> <span class="err">}}</span><span class="na">Your</span> <span class="na">name</span> <span class="na">is</span> <span class="err">{{</span> <span class="na">name</span> <span class="err">}}.{{/</span> <span class="na">tabpanelcontent</span> <span class="err">}}</span>
+    <span class="err">{{/</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_content_item</span> <span class="err">}}</span>
+    <span class="err">{{&lt;</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_content_item</span> <span class="err">}}</span>
+     <span class="err">{{$</span> <span class="na">tabpanelcontent</span> <span class="err">}}</span><span class="na">Your</span> <span class="na">email</span> <span class="na">address</span> <span class="na">is</span> <span class="err">{{</span> <span class="na">email</span> <span class="err">}}.{{/</span> <span class="na">tabpanelcontent</span> <span class="err">}}</span>
+    <span class="err">{{/</span> <span class="na">core</span><span class="err">/</span><span class="na">tab_content_item</span> <span class="err">}}</span>
+   <span class="err">{{/</span> <span class="na">tabcontent</span> <span class="err">}}</span>
+  <span class="err">{{/</span> <span class="na">core</span><span class="err">/</span><span class="na">tabs</span> <span class="err">}}</span>
+    <span class="err">&lt;/</span><span class="na">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>And we're done! After making the changes above we've been able to keep the benefits of the previous change to allow the context changes but we've also removed the need to copy &amp; paste the HTML everywhere. Instead we're able to use the child templates with a few additional blocks defined to get the content in there.</p>
+<p>Now if we want to change tabs HTML or CSS frameworks we can just change the core tabs templates and this page will receive the updates for free.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../phpMoodleXMLDB/" class="md-footer__link md-footer__link--prev" aria-label="Previous: XMLDB tool" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              XMLDB tool
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Javascript/phpMoodleJS/" class="md-footer__link md-footer__link--next" aria-label="Next: General" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              General
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ArceLopera" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

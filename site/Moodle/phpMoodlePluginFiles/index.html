@@ -1,0 +1,2961 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodlePluginFiles/">
+      
+      <link rel="icon" href="../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Common Files - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Common Files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DS/phpArray/" class="md-tabs__link">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpArray/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Common Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Common Files
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic" class="md-nav__link">
+    Basic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTemplate/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleModal/" class="md-nav__link">
+        Modal Dialogues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_9">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleServices/" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodlePersistent/" class="md-nav__link">
+        Persistent API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic" class="md-nav__link">
+    Basic
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Common Files</h1>
+
+<p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. </p>
+<table>
+<thead>
+<tr>
+<th>Basic Required</th>
+<th>Basic Optional</th>
+<th>Others</th>
+<th>Other Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#versionphp">version.php</a></td>
+<td><a href="#dbinstallxml">db/install.xml</a></td>
+<td><a href="#libphp">lib.php</a></td>
+<td><a href="#locallibphp">locallib.php</a></td>
+</tr>
+<tr>
+<td><a href="#langenyourpluginnamephp">lang/en/yourpluginname.php</a></td>
+<td><a href="#dbupgradephp">db/upgrade.php</a></td>
+<td><a href="#dbaccessphp-plugin-capabilities">db/access.php</a></td>
+<td><a href="#dbinstallphp-and-dbuninstallphp">db/install.php</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#dbservicesphp-web-service-function-declarations">db/services.php</a></td>
+<td><a href="#dbeventsphp-event-observers">db/events.php</a></td>
+<td><a href="#dbmessagesphp-message-provider-configuration">db/messages.php</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#settingsphp-plugin-settings">settings.php</a></td>
+<td><a href="#dbtasksphp-task-schedule-configuration">db/tasks.php</a></td>
+<td><a href="#dbrenamedclassesphp-renamed-classes">db/renamedclasses.php</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#classes-autoloaded-classes">Autoloaded classes</a></td>
+<td><a href="#cli-cli-scripts">CLI scripts</a></td>
+<td><a href="#backup-plugin-backup-configuration">backup</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#amd-amd-javascript-modules">AMD</a></td>
+<td><a href="#stylescss-css-style-sheet-for-your-plugin">styles.css</a></td>
+<td><a href="#yui-yui-javascript-modules">YUI</a></td>
+</tr>
+<tr>
+<td><a href="#readme">README</a></td>
+<td><a href="#pixiconsvg">pix/icon.svg</a></td>
+<td><a href="#upgradetxt">upgrade.txt</a></td>
+<td><a href="#thirdpartylibsxml">thirdpartylibs.xml</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#changes">CHANGES</a></td>
+<td><a href="#environmentxml">environment.xml</a></td>
+<td><a href="#readme_moodletxt">readme_moodle.txt</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="basic">Basic</h2>
+<h5 id="versionphp"><code>version.php</code></h5>
+<p>The <code>version.php</code> file is crucial for defining a Moodle plugin's metadata, including its version, dependencies, required Moodle version, and other important information. This file enables Moodle to recognize, manage, and update the plugin appropriately.</p>
+<p><strong>Structure of <code>version.php</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
+
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">version</span>   <span class="o">=</span> <span class="mi">2024053001</span><span class="p">;</span>  <span class="c1">// Updated version for new release.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">requires</span>  <span class="o">=</span> <span class="mi">2021051700</span><span class="p">;</span>  <span class="c1">// Minimum Moodle version required.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">component</span> <span class="o">=</span> <span class="s1">&#39;mod_yourpluginname&#39;</span><span class="p">;</span> <span class="c1">// Unique name of the plugin.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">maturity</span>  <span class="o">=</span> <span class="nx">MATURITY_STABLE</span><span class="p">;</span>  <span class="c1">// Indicates stability of the plugin.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">release</span>   <span class="o">=</span> <span class="s1">&#39;v1.1&#39;</span><span class="p">;</span>  <span class="c1">// Human-readable version number.</span>
+<span class="nv">$plugin</span><span class="o">-&gt;</span><span class="na">dependencies</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;mod_otherplugin&#39;</span> <span class="o">=&gt;</span> <span class="mi">2023031500</span><span class="p">,</span>  <span class="c1">// This plugin depends on another plugin.</span>
+    <span class="s1">&#39;mod_anotherplugin&#39;</span> <span class="o">=&gt;</span> <span class="mi">2022010100</span><span class="p">,</span>  <span class="c1">// Another dependency.</span>
+<span class="p">];</span>
+</code></pre></div>
+<ul>
+<li><strong>File Guard</strong> - Required</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
+</code></pre></div>
+   Ensures the file is accessed through the Moodle system and not directly via a URL, enhancing security.
+   Always include this line at the beginning of your <code>version.php</code> file.</p>
+<ul>
+<li><strong>Version</strong> - Required</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;version = 2024053000;</span>
+</code></pre></div>
+<p>Specifies the current version of your plugin. The format <code>YYYYMMDDXX</code> (Year, Month, Day, Incremental Sequence) is typically used.
+Update this value for every new release or update of your plugin. The format helps in sorting and identifying the latest version easily.</p>
+<ul>
+<li><strong>Requires</strong> - Recommended</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;requires = 2021051700;</span>
+</code></pre></div>
+Defines the minimum version of Moodle required for your plugin to work correctly.
+Set this to the earliest Moodle version that supports all the features and APIs used by your plugin. Always verify compatibility during testing.</p>
+<ul>
+<li><strong>Component</strong> - Required</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;component = &#39;mod_yourpluginname&#39;;</span>
+</code></pre></div>
+<p>Specifies the full name of the plugin, including its type and name. The format is usually <code>type_pluginname</code> (e.g., <code>mod_yourpluginname</code> for an activity plugin). The component value contains the name of the plugin in its full frankenstyle format.
+This name must be unique across all plugins in Moodle. It helps in identifying the plugin during installation, upgrade, and diagnostics.</p>
+<ul>
+<li><strong>Maturity</strong> - Recommended</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;maturity = MATURITY_STABLE;</span>
+</code></pre></div>
+<p>Indicates the stability and readiness level of the plugin. Common values are <code>MATURITY_ALPHA</code>, <code>MATURITY_BETA</code>, <code>MATURITY_RC</code> (Release Candidate), and <code>MATURITY_STABLE</code>.
+Set this appropriately based on the development stage of your plugin. Use <code>MATURITY_STABLE</code> for production-ready versions, and other values for pre-release stages.</p>
+<ul>
+<li><strong>Release</strong> - Recommended</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;release = &#39;v1.0&#39;;</span>
+</code></pre></div>
+<p>Provides a human-readable version number for your plugin. This is useful for administrators and users to understand the versioning scheme and changes at a glance.
+Follow semantic versioning principles (e.g., <code>v1.0</code>, <code>v1.1</code>, <code>v2.0</code>) to indicate major, minor, and patch updates clearly.</p>
+<ul>
+<li><strong>Peer Dependencies</strong> - Optional</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$plugin-&gt;dependencies = array(</span>
+<span class="x">    &#39;mod_otherplugin&#39; =&gt; 2023031500,</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Specifies other plugins that your plugin depends on, including their required versions. This ensures that the necessary plugins are present and meet the required versions for your plugin to function correctly.
+List all dependencies with their respective minimum required versions. This helps prevent conflicts and ensures a smooth installation process.</p>
+<ul>
+<li><strong>Supported versions</strong> - Optional</li>
+</ul>
+<p>A set of branch numbers to specify the lowest and highest branches of Moodle that the plugin supports. These value are inclusive.</p>
+<div class="highlight"><pre><span></span><code><span class="x"> $plugin-&gt;supported = [</span>
+
+<span class="x">     // Support from the Moodle 3.11 series.</span>
+<span class="x">     311,</span>
+
+<span class="x">     // To the Moodle 4.0 series.</span>
+<span class="x">     400,</span>
+<span class="x"> ];</span>
+</code></pre></div>
+<ul>
+<li><strong>Incompatible versions</strong> - Optional</li>
+</ul>
+<p>The earliest incompatible version of Moodle that the plugin cannot support the specified branch of Moodle.</p>
+<p>The plugin will not be installable on any versions of Moodle from this point on.</p>
+<div class="highlight"><pre><span></span><code><span class="x"> $plugin-&gt;incompatible = [401];</span>
+</code></pre></div>
+<h5 id="langenyourpluginnamephp"><code>lang/en/yourpluginname.php</code></h5>
+<p>The <code>lang/en/yourpluginname.php</code> file is crucial for handling the language strings used by your Moodle plugin. This file contains all the text that will be displayed to users, allowing for easy translation and localization. Properly managing this file ensures that your plugin can support multiple languages and provides a consistent user experience.</p>
+<p><div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulenameplural&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Names&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;pluginname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;modulename_help&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Use the Your Plugin Name module to do something useful.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:addinstance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Add a new Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:submit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Submit Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;yourpluginname:view&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;View Your Plugin Name&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;someadminsetting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Some admin setting&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;someadminsetting_desc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Description of some admin setting.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;field_required&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;This field is required.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;error_invalidinput&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Invalid input provided.&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;welcome_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Welcome to Your Plugin Name!&#39;</span><span class="p">;</span>
+<span class="nv">$string</span><span class="p">[</span><span class="s1">&#39;goodbye_message&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Thank you for using Your Plugin Name.&#39;</span><span class="p">;</span>
+</code></pre></div>
+The get_string API can be used to translate a string identifier back into a translated string.
+See the <a href="https://docs.moodle.org/dev/String_API#Adding_language_file_to_plugin">String API documentation</a> for more information on language files.</p>
+<ul>
+<li><strong>Module Name</strong></li>
+</ul>
+<p>Every plugin must define the name of the plugin, or its pluginname.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modulename&#39;] = &#39;Your Plugin Name&#39;;</span>
+<span class="x">$string[&#39;modulenameplural&#39;] = &#39;Your Plugin Names&#39;;</span>
+<span class="x">$string[&#39;pluginname&#39;] = &#39;Your Plugin Name&#39;;</span>
+</code></pre></div>
+<p>Defines the name of your plugin and its plural form, which Moodle uses in various parts of the interface, such as the activity chooser.
+Choose a clear and descriptive name that conveys the functionality of your plugin.</p>
+<p><strong>ACTIVITY MODULES ARE DIFFERENT</strong></p>
+<p>Activity modules do not use the frankenstyle name as a filename, they use the plugin name. For example the forum activity plugin:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Plugin type: `mod`</span>
+<span class="x">// Plugin name: `forum`</span>
+<span class="x">// Frankenstyle plugin name: `mod_forum`</span>
+<span class="x">// Plugin location: `mod/forum`</span>
+<span class="x">// Language string location: `mod/forum/lang/en/forum.php`</span>
+</code></pre></div>
+<ul>
+<li><strong>Help Strings</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modulename_help&#39;] = &#39;Use the Your Plugin Name module to do something useful.&#39;;</span>
+</code></pre></div>
+<p>Provides help text or tooltips that offer additional information about your plugin.
+ Write concise and informative help strings to assist users in understanding how to use the plugin.</p>
+<ul>
+<li><strong>Capability Strings</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;yourpluginname:addinstance&#39;] = &#39;Add a new Your Plugin Name&#39;;</span>
+<span class="x">$string[&#39;yourpluginname:submit&#39;] = &#39;Submit Your Plugin Name&#39;;</span>
+<span class="x">$string[&#39;yourpluginname:view&#39;] = &#39;View Your Plugin Name&#39;;</span>
+</code></pre></div>
+<p>Defines capability strings that are used for permissions and roles in Moodle. These strings describe the actions that users can perform with your plugin.
+ Clearly define the capabilities required for different user roles and ensure they are consistent with the plugin's functionality.</p>
+<ul>
+<li><strong>Admin Settings Strings</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;someadminsetting&#39;] = &#39;Some admin setting&#39;;</span>
+<span class="x">$string[&#39;someadminsetting_desc&#39;] = &#39;Description of some admin setting.&#39;;</span>
+</code></pre></div>
+<p>Defines language strings for admin settings, including descriptions that explain what each setting does.
+Provide clear and detailed descriptions to help administrators configure the plugin correctly.</p>
+<ul>
+<li><strong>Form Validation and Error Messages</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;field_required&#39;] = &#39;This field is required.&#39;;</span>
+<span class="x">$string[&#39;error_invalidinput&#39;] = &#39;Invalid input provided.&#39;;</span>
+</code></pre></div>
+<p>Provides language strings for form validation and error messages to inform users of required fields and input errors.
+ Use straightforward and unambiguous language to ensure users understand what is required or what went wrong.</p>
+<ul>
+<li><strong>Custom Messages</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;welcome_message&#39;] = &#39;Welcome to Your Plugin Name!&#39;;</span>
+<span class="x">$string[&#39;goodbye_message&#39;] = &#39;Thank you for using Your Plugin Name.&#39;;</span>
+</code></pre></div>
+<p>Defines custom messages that can be displayed to users at various points in your plugin.
+Tailor these messages to enhance the user experience and provide helpful information.</p>
+<p><strong>Best Practices for <code>lang/en/yourpluginname.php</code></strong></p>
+<ul>
+<li><strong>Consistency</strong>: Ensure that the language keys (<code>$string['key']</code>) are consistent and follow a clear naming convention, usually <code>pluginname:key</code>.</li>
+<li><strong>Localization</strong>: Include all user-facing text in this file to support easy localization and translation into other languages.</li>
+<li><strong>Clarity</strong>: Write clear and concise language strings that accurately describe the plugin's functionality and provide helpful information to users.</li>
+<li><strong>Documentation</strong>: Document each string with comments if necessary to explain its purpose and context, especially if the string's usage might not be immediately obvious.</li>
+<li><strong>Testing</strong>: Regularly test your plugin with different language packs to ensure that all strings are translated and displayed correctly.</li>
+</ul>
+<p>By following these guidelines, you can create a comprehensive and well-organized <code>lang/en/yourpluginname.php</code> file that supports effective localization and enhances the user experience of your Moodle plugin.</p>
+<h5 id="libphp"><code>lib.php</code></h5>
+<p>The <code>lib.php</code> file contains core functions used by your plugin, such as adding, updating, and deleting instances, and other helper functions. File path: /lib.php
+The lib.php file is a legacy file which acts as a bridge between Moodle core, and the plugin. In recent plugins it should only be used to define callbacks and related functionality which currently is not supported as an auto-loadable class. For example, the navigationlib loads lib.php files for all plugin types that are able to inject their own nodes into the navigation tree (the file must be loaded to see if the corresponding *_extend_navigation() function is provided).</p>
+<p><strong>PERFORMANCE IMPACT</strong>
+Moodle core often loads all the lib.php files of a given plugin types. For performance reasons, it is strongly recommended to keep this file as small as possible and have just required code implemented in it. All the plugin's internal logic should be implemented in the auto-loaded classes. The best advice is to put as much of your code as possible into classes, so you can use the <a href="https://docs.moodle.org/dev/Automatic_class_loading">automatic class loading</a></p>
+<h6 id="locallibphp">locallib.php</h6>
+<p>Global support functions used by all plugins. File path: /locallib.php
+The use of this file is no longer recommended, and new uses of it will not be permitted in core code. Rather than creating global functions in a global namespace in a locallib.php file, you should use autoloaded classes which are located in the classes/ directory.</p>
+<h2 id="db">DB</h2>
+<h5 id="dbinstallxml"><code>db/install.xml</code></h5>
+<p>The <code>install.xml</code> file defines the database schema for your plugin. This file is used by Moodle to create the necessary database tables when the plugin is installed.
+Always remember that when creating or updating the install.xml you must use the built-in <a href="https://docs.moodle.org/dev/XMLDB_Documentation">XMLDB editor</a> within Moodle.</p>
+<p><strong>Example Content</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;mod/yourpluginname/db&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;2024053000&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Your Plugin Name activity module&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TABLES&gt;</span>
+        <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;yourpluginname&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;FIELDS&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;course&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;name&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;char&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;255&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;intro&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;introformat&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;4&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;timecreated&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;timemodified&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/FIELDS&gt;</span>
+            <span class="nt">&lt;KEYS&gt;</span>
+                <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/KEYS&gt;</span>
+        <span class="nt">&lt;/TABLE&gt;</span>
+    <span class="nt">&lt;/TABLES&gt;</span>
+<span class="nt">&lt;/XMLDB&gt;</span>
+</code></pre></div>
+<h5 id="dbupgradephp"><code>db/upgrade.php</code></h5>
+<p>File path: /db/upgrade.php
+The db/upgrade.php file contains upgrade steps, including database schema changes, changes to settings, and other steps which must be performed during upgrade.</p>
+<p>See the <a href="https://moodledev.io/docs/4.1/guides/upgrade">Upgrade API documentation</a> for further information.</p>
+<p><strong>GENERATING DATABASE SCHEMA CHANGES</strong></p>
+<p>When making changes to the database schema you must use the build-in XMLDB editor within Moodle. This can be used to generate php upgrade steps.</p>
+<p>The install.xml schema must match the schema generated by the upgrade at all times.</p>
+<p>To create an upgrade step you must:</p>
+<ul>
+<li>Use the XMLDB editor to create the definition of the new fields</li>
+<li>Update the install.xml from the XMLDB editor</li>
+<li>Generate the PHP upgrade steps from within the XMLDB Editor</li>
+<li>Update the version number in your version.php</li>
+</ul>
+<p>In many cases you will be able to combine multiple upgrade steps into a single version change.</p>
+<p>When a version number increment is detected during an upgrade, the xmldb_[pluginname]_upgrade function is called with the old version number as the first argument.</p>
+<h5 id="dbaccessphp-plugin-capabilities"><code>db/access.php</code> - Plugin capabilities</h5>
+<p>File path: /db/access.php</p>
+<p>The db/access.php file contains the initial configuration for a plugin's access control rules.</p>
+<p>Access control is handled in Moodle by the use of Roles, and Capabilities. You can read more about these in the <a href="https://moodledev.io/docs/4.1/apis/subsystems/access">Access API documentation</a>.</p>
+<p><strong>CHANGING INITIAL CONFIGURATION</strong></p>
+<p>If you make changes to the initial configuration of existing access control rules, these will only take effect for new installations of your plugin. Any existing installation <strong>will not</strong> be updated with the latest configuration.</p>
+<p>Updating existing capability configuration for an installed site is not recommended as it may have already been modified by an administrator.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$capabilities = [</span>
+<span class="x">    // Ability to use the plugin.</span>
+<span class="x">    &#39;plugintype/pluginname:useplugininstance&#39; =&gt; [</span>
+<span class="x">        &#39;riskbitmask&#39; =&gt; RISK_XSS,</span>
+<span class="x">        &#39;captype&#39; =&gt; &#39;write&#39;,</span>
+<span class="x">        &#39;contextlevel&#39; =&gt; CONTEXT_COURSE,</span>
+<span class="x">        &#39;archetypes&#39; =&gt; [</span>
+<span class="x">            &#39;manager&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">            &#39;editingteacher&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<ul>
+<li><strong>Define Capabilities</strong>: Specifies the actions that users can perform within the plugin.</li>
+<li><strong>Assign Roles</strong>: Associates capabilities with different Moodle roles (e.g., student, teacher, admin).</li>
+<li><strong>Control Access</strong>: Manages who can access and execute specific functionalities within the plugin.</li>
+</ul>
+<h5 id="dbinstallphp-and-dbuninstallphp"><code>db/install.php</code> and <code>db/uninstall.php</code></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>db/install.php</th>
+<th>db/uninstall.php</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hook</td>
+<td>Post-installation hook</td>
+<td>pre-uninstallation hook</td>
+</tr>
+<tr>
+<td>File path</td>
+<td>/CHANGES</td>
+<td>/db/uninstall.php</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Allows you to define a post-installation hook, which is called immediately after the initial creation of your database schema.</td>
+<td>Allows you to define a pre-uninstallation hook, which is called immediately before all table and data from your plugin are removed.</td>
+</tr>
+<tr>
+<td>CAUTION</td>
+<td>This file is not used at all after the initial installation of your plugin. It is not called during any upgrade.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="dbeventsphp-event-observers"><code>db/events.php</code> - Event observers</h5>
+<p>File path: /db/events.php</p>
+<p>Events are atomic pieces of information describing something that happened in Moodle. Events are primarily the result of user actions, but could also be the result of the cron process or administration actions undertaken via the command line.</p>
+<p>When an action takes place, an event is created by a core API or plugin. The Events system then disseminates this event information to observers registered for this event. In this way, the events system acts as a communication backbone throughout the Moodle system. Event observers can not modify event data or interrupt the dispatching of events, it is a one way communication channel.</p>
+<p>Moodle supports a feature known as <a href="https://docs.moodle.org/dev/Events_API#Event_observers">Event observers</a> to allow components to make changes when certain events take place. The db/events.php file allows you define any event subscriptions that your plugin needs to listen for. Event subscriptions are a convenient way to observe events generated elsewhere in Moodle.</p>
+<p><strong>COMMUNICATION BETWEEN COMPONENTS</strong></p>
+<p>You should not use event subscriptions to subscribe to events belonging to other plugins, without defining a dependency upon that plugin. See the <a href="https://moodledev.io/general/development/policies/component-communication#event-observers">Component communication principles documentation</a> for a description of some of the risks of doing so. Any action in Moodle can trigger one or more events. In Moodle it is possible to register observers for events. An observer is notified when an event happens and receives the data related to that event. An observer can only act on the information in the event. It cannot modify the data for the event or prevent the action from occurring. The component containing the observer is communicating with the component that declared the event class. The normal rules for inter-component communication apply.</p>
+<p>In addition - event observers are a form of execution at a distance. It would be extremely difficult to read and maintain code heavily relying on event observers (especially if the observers perform actions that trigger more events).</p>
+<p>Additional rules for event observers:</p>
+<p>Events are not allowed to be observed by core or a core subsystem (there are some currently wrong observers in core that should be removed).</p>
+<p>Observers are described in db/events.php in the array $observers, the array is not indexed and contains a list of observers defined as an array with the following properties;</p>
+<ul>
+<li><strong>eventname</strong> – fully qualified event class name or "*" indicating all events, ex.: \plugintype_pluginname\event\something_happened.</li>
+<li><strong>callback</strong> - PHP callable type.</li>
+<li><strong>includefile</strong> - optional. File to be included before calling the observer. Path relative to dirroot.</li>
+<li><strong>priority</strong> - optional. Defaults to 0. Observers with higher priority are notified first.</li>
+<li><strong>internal</strong> - optional. Defaults to true. Non-internal observers are not called during database transactions, but instead after a successful commit of the transaction.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="x">$observers = [</span>
+<span class="x">    [</span>
+<span class="x">        &#39;eventname&#39; =&gt; &#39;\core\event\course_module_created&#39;,</span>
+<span class="x">        &#39;callback&#39;  =&gt; &#39;\plugintype_pluginname\event\observer\course_module_created::store&#39;,</span>
+<span class="x">        &#39;priority&#39;  =&gt; 1000,</span>
+<span class="x">    ],</span>
+<span class="x">    [</span>
+<span class="x">        &#39;eventname&#39;   =&gt; &#39;\core\event\sample_executed&#39;,</span>
+<span class="x">        &#39;callback&#39;    =&gt; &#39;core_event_sample_observer::observe_one&#39;,</span>
+<span class="x">    ],</span>
+
+<span class="x">    [</span>
+<span class="x">        &#39;eventname&#39;   =&gt; &#39;\core\event\sample_executed&#39;,</span>
+<span class="x">        &#39;callback&#39;    =&gt; &#39;core_event_sample_observer::external_observer&#39;,</span>
+<span class="x">        &#39;priority&#39;    =&gt; 200,</span>
+<span class="x">        &#39;internal&#39;    =&gt; false,</span>
+<span class="x">    ],</span>
+<span class="x">    [  </span>
+<span class="x">        &#39;eventname&#39;   =&gt; &#39;*&#39;,</span>
+<span class="x">        &#39;callback&#39;    =&gt; &#39;core_event_sample_observer::observe_all&#39;,</span>
+<span class="x">        &#39;includefile&#39; =&gt; null,</span>
+<span class="x">        &#39;internal&#39;    =&gt; true,</span>
+<span class="x">        &#39;priority&#39;    =&gt; 9999,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+NOTE: Event observers are cached. If you add or change observers you need to purge the caches or they will not be recognised. Plugin developers need to bump up the version number to guarantee that the list of observers is reloaded during upgrade.</p>
+<h5 id="dbmessagesphp-message-provider-configuration"><code>db/messages.php</code> - Message provider configuration</h5>
+<p>File path: /db/messages.php</p>
+<p>See the <a href="https://moodledev.io/docs/4.4/apis/core/message">Message API documentation</a> for further information. Moodle components have the ability to send messages to users via the Moodle messaging system. Any type of component, for example a plugin or block, can register as a message producer then send messages to users. The db/messages.php file allows you to declare the messages that your plugin sends. The Message API code is contained within lib/messagelib.php and is automatically included for you during page setup. message_send() is the primary point of contact for the message API. Call it to send a message to a user.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$messageproviders = [</span>
+<span class="x">    &#39;things&#39; =&gt; [</span>
+<span class="x">        &#39;defaults&#39; =&gt; [</span>
+<span class="x">            &#39;airnotifier&#39; =&gt; MESSAGE_PERMITTED + MESSAGE_DEFAULT_ENABLED,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+mod/quiz/db/messages.php</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
+<span class="x">$messageproviders = [</span>
+<span class="x">    // Notify teacher that a student has submitted a quiz attempt</span>
+<span class="x">    &#39;submission&#39; =&gt; [</span>
+<span class="x">        &#39;capability&#39; =&gt; &#39;mod/quiz:emailnotifysubmission&#39;</span>
+<span class="x">    ],</span>
+<span class="x">    // Confirm a student&#39;s quiz attempt</span>
+<span class="x">    &#39;confirmation&#39; =&gt; [</span>
+<span class="x">        &#39;capability&#39; =&gt; &#39;mod/quiz:emailconfirmsubmission&#39;</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+The quiz can send two kinds of messages, quiz "submission" and "confirmation" notifications. Each message type is only available to users with the appropriate capability. Please note that the capability is checked at the system level context. Users who have this capability will have this message listed in their messaging preferences. You can omit the capability section if your message should be visible for all users. For example forum post notifications are available to all users.</p>
+<h5 id="dbservicesphp-web-service-function-declarations"><code>db/services.php</code> - Web service function declarations</h5>
+<p>File path: /db/services.php</p>
+<p>The db/services.php file is used to describe the external functions available for use in web services. This includes web service functions defined for JavaScript, and for the Moodle Mobile App.</p>
+<p><strong>NOTE</strong>
+Web services should be named following the naming convention for web services. For further information on external functions and web services, see:</p>
+<ul>
+<li><a href="https://moodledev.io/docs/4.4/apis/subsystems/external/writing-a-service">Adding a web service to a plugin</a></li>
+<li><a href="https://moodledev.io/docs/4.4/apis/subsystems/external/functions">External functions API</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">    &#39;plugintype_pluginname_create_things&#39; =&gt; [</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;plugintype_pluginname\external\create_things&#39;,</span>
+<span class="x">        &#39;methodname&#39; =&gt; &#39;execute&#39;,</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Create a new thing&#39;,</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;write&#39;,</span>
+<span class="x">        &#39;capabilities&#39; =&gt; &#39;plugintype/pluginname:create_things&#39;,</span>
+<span class="x">        &#39;ajax&#39; =&gt; true,</span>
+<span class="x">        &#39;services&#39; =&gt; [</span>
+<span class="x">            MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<h5 id="dbtasksphp-task-schedule-configuration"><code>db/tasks.php</code> - Task schedule configuration</h5>
+<p>File path: /db/tasks.php</p>
+<p>The db/tasks.php file contains the initial schedule configuration for each of your plugins scheduled tasks. Adhoc tasks are not run on a regular schedule and therefore are not described in this file.</p>
+<p><strong>EDITING THE SCHEDULE FOR AN EXISTING TASK</strong></p>
+<p>If an existing task is edited, it will only be updated in the database if the administrator has not customised the schedule of that task in any way.</p>
+<p>If a plugin wants to configure scheduled task, two items are required:</p>
+<ul>
+<li>a class extending the <code>\core\task\scheduled_task</code> class; and</li>
+<li>the <code>db/tasks.php</code> file containing its initial configuration.</li>
+</ul>
+<h6 id="task-configuration-entries">Task configuration entries</h6>
+<table>
+<thead>
+<tr>
+<th>entry</th>
+<th>type</th>
+<th>option</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classname</td>
+<td>string</td>
+<td>Required</td>
+<td>The classname contains the fully-qualified class name where the scheduled task is located.</td>
+</tr>
+<tr>
+<td>Blocking</td>
+<td>integer</td>
+<td>Optional</td>
+<td>Tasks can be configured to block the execution of all other tasks by setting the blocking property to a truthy value.</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>integer</td>
+<td>Optional</td>
+<td>Tasks can be configured to be disabled by setting the disabled property to 1. Unless the administrator manually enables your task, it will not run.This is useful if a task is only required in certain situations and shouldn't run on every server that has your plugin installed.</td>
+</tr>
+<tr>
+<td>Date and time fields</td>
+<td>String</td>
+<td>Optional</td>
+<td>A fixed random value can be selected by using a value of R. By specifying this option, a random day or time is chosen when the task is installed or updated. The same value will be used each time the task is scheduled.</td>
+</tr>
+</tbody>
+</table>
+<p>The following date and time fields are available:</p>
+<ul>
+<li>month</li>
+<li>day</li>
+<li>dayofweek</li>
+<li>hour</li>
+<li>month</li>
+</ul>
+<p>Each of these fields accepts one, or more values, and the format for each field is described as:</p>
+<div class="highlight"><pre><span></span><code>&lt;fieldlist&gt; := &lt;range&gt;(/&lt;step&gt;)(,&lt;fieldlist&gt;)
+&lt;step&gt;      := int
+&lt;range&gt;     := &lt;any&gt;|&lt;int&gt;|&lt;min-max&gt;|&lt;random&gt;
+&lt;any&gt;       := *
+&lt;min-max&gt;   := int-int
+&lt;random&gt;    := R
+</code></pre></div>
+<p><strong>RANDOM VALUES</strong>
+A fixed random value can be selected by using a value of R. By specifying this option, a random day or time is chosen when the task is installed or updated. The same value will be used each time the task is scheduled.</p>
+<p>If no value is specified then the following defaults are used:</p>
+<ul>
+<li>Month: * (Every month)</li>
+<li>Day: * (Every day)</li>
+<li>Day of the week: * (Every day of the week)</li>
+<li>Hour: * (Every hour)</li>
+<li>Minute: * (Every minute)</li>
+</ul>
+<p><strong>DAY AND DAY OF THE WEEK</strong>
+If either field is set to * then use the other field, otherwise the soonest value is used.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//Run at a fixed time each day, randomised during installation of the task</span>
+<span class="x">$tasks = [</span>
+<span class="x">    [</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;mod_example\task\do_something&#39;,</span>
+
+<span class="x">        // Every month.</span>
+<span class="x">        &#39;month&#39; =&gt; &#39;*&#39;,</span>
+<span class="x">        // Every day.</span>
+<span class="x">        &#39;day&#39; =&gt; &#39;*&#39;,</span>
+
+<span class="x">        // A fixed random hour and minute.</span>
+<span class="x">        &#39;hour&#39; =&gt; &#39;R&#39;,</span>
+<span class="x">        &#39;month&#39; =&gt; &#39;R&#39;,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">Specifying multiple times in an hour</span>
+<span class="x">$tasks = [</span>
+<span class="x">    [</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;mod_example\task\do_something&#39;,</span>
+
+<span class="x">        // At two intervals in the hour.</span>
+<span class="x">        &#39;minute&#39; =&gt; &#39;5, 35&#39;,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<h5 id="dbrenamedclassesphp-renamed-classes"><code>db/renamedclasses.php</code> - Renamed classes</h5>
+<p>File path: /db/renamedclasses.php</p>
+<p>Details of classes that have been renamed to fit in with autoloading. Adding renamed or moved classes to renamedclasses.php is only necessary when the class is part of the component's API where it can be reused by other components, especially by third-party plugins. This is to maintain backwards-compatibility in addition to autoloading purposes. To move a class so that is it auto-loaded and no longer needs to be manually included you would:</p>
+<ul>
+<li>Create a new php within the classes directory named as auto-loading requires.</li>
+<li>Copy the class code from its current location to the new location.</li>
+<li>Delete the class from the old location (do not delete the file).</li>
+<li>Creator edit db/renamedclasses.php and add a line for your class mapping its old name to its new name.</li>
+</ul>
+<p>If the renamed or moved class is private/internal to the component and is not subject for external use, there is no need to add it to renamedclasses.php.</p>
+<div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die;</span>
+
+<span class="x">$renamedclasses = [</span>
+<span class="x">    &#39;old_class_name&#39; =&gt; &#39;fully_qualified\\new\\name&#39;,</span>
+
+<span class="x">    // Examples:</span>
+<span class="x">    &#39;assign_header&#39; =&gt; &#39;mod_assign\\output\\header&#39;,</span>
+<span class="x">    &#39;\assign_header&#39; =&gt; &#39;mod_assign\\output\\header&#39;,</span>
+<span class="x">    &#39;\assign&#39; =&gt; &#39;mod_assign\\assignment&#39;,</span>
+
+<span class="x">    // Incorrect:</span>
+<span class="x">    // The new class name should _not_ have a leading \.</span>
+<span class="x">    &#39;assign_header&#39; =&gt; &#39;\\mod_assign\\output\\header&#39;,</span>
+<span class="x">];</span>
+</code></pre></div>
+<h2 id="other">Other</h2>
+<h5 id="classes-autoloaded-classes"><code>classes/</code> - Autoloaded classes</h5>
+<p>File path: /classes/</p>
+<p>Moodle supports, and recommends, the use of autoloaded PHP classes.</p>
+<p>By placing files within the classes directory or appropriate sub-directories, and with the correct PHP Namespace, and class name, Moodle is able to autoload classes without the need to manually require, or include them. </p>
+<h6 id="namespaces">Namespaces</h6>
+<p>Formal namespaces are required for any new classes in Moodle. The following exceptions apply:</p>
+<ul>
+<li>There is no requirement to move existing non-namespaced classes to a namespace; and</li>
+<li>Where an existing mechanism exists for loading a class, and that mechanism does not support the use of a namespaced class, the existing Frankenstyle prefix on the class name will be allowed.</li>
+</ul>
+<p>The use of a Frankenstyle prefix on class names is deprecated and should only be used in the above exceptions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// A namespace for the `mod_forum` plugin.</span>
+
+<span class="x">namespace mod_forum;</span>
+<span class="x">class example {</span>
+<span class="x">// Incorrect: class mod_forum_example</span>
+<span class="x">}</span>
+
+<span class="x">// A namespace for the `external` subsystem usage in the `mod_forum` plugin.</span>
+<span class="x">namespace mod_forum\external;</span>
+<span class="x">class example {</span>
+<span class="x">    // Incorrect: class mod_forum_external_example</span>
+<span class="x">}</span>
+
+<span class="x">// A namespace for the `core_user` core subsystem.</span>
+<span class="x">namespace core_user;</span>
+<span class="x">class example {</span>
+<span class="x">    // Incorrect: class core_user_example</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The use of namespaces must conform to the following rules:</p>
+<ul>
+<li>Classes belonging to a namespace must be created in a classes directory, for example:<ul>
+<li>Classes in the mod_forum plugin classes should be placed in <code>mod/forum/classes</code>;</li>
+<li>for core code, classes should be placed in <code>lib/classes</code>; or</li>
+<li>for a core subsystem, classes should be placed in <code>subsystemdir/classes</code>.</li>
+</ul>
+</li>
+<li>The classname and filename for all namespaced classes must conform to the automatic class loading rules. The use of formal PHP namespaces is required in all new code.</li>
+<li>Use at most one namespace declaration per file.</li>
+</ul>
+<p>More info of namespace rules can be found in the <a href="https://moodledev.io/general/development/policies/codingstyle#namespaces">Documentation</a> and <a href="https://docs.moodle.org/dev/Automatic_class_loading">Class naming documentation</a>.</p>
+<h5 id="cli-cli-scripts"><code>Cli</code> - CLI scripts</h5>
+<p>File path: /cli/</p>
+<p>For plugins which make use of <a href="https://docs.moodle.org/dev/CLI_scripts">CLI scripts</a>, the convention is that these are placed into the cli folder to make their purpose clear, and easy to find.</p>
+<p><strong>All CLI scripts must declare themselves as being a CLI script by defining the CLI_SCRIPT constant to true before including config.php.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">define(&#39;CLI_SCRIPT&#39;, true);</span>
+
+<span class="x">require_once(__DIR__ . &#39;/../../config.php&#39;);</span>
+<span class="x">require_once(&quot;{$CFG-&gt;libdir}/clilib.php&quot;);</span>
+
+<span class="x">// Your CLI features go here.</span>
+</code></pre></div>
+<h5 id="settingsphp-plugin-settings"><code>settings.php</code> - Plugin settings</h5>
+<p>File path: /settings.php</p>
+<p>You can define settings for your plugin that the administrator can configure by creating a settings.php file in the root of your plugins' directory.</p>
+<p>Settings must named in the following format:</p>
+<div class="highlight"><pre><span></span><code>plugintype_pluginname/settingname
+</code></pre></div>
+<p>By following the correct naming, all settings will automatically be stored in the <code>config_plugins</code> database table.</p>
+<p>Full details on how to create settings are available in the <a href="https://moodledev.io/docs/4.1/apis/subsystems/admin">Admin settings documentation</a>.</p>
+<h5 id="amd-amd-javascript-modules"><code>amd/</code> - AMD JavaScript modules</h5>
+<p>File path: /amd/</p>
+<p>For plugins which make use of AMD JavaScript modules, the convention is that these are placed into the amd folder to make their purpose clear, and easy to find.</p>
+<p><a href="../Javascript/phpMoodleJS/">JavaScript in Moodle</a> is written in the ESM format, and transpiled into AMD modules for deployment.</p>
+<p>The <a href="https://moodledev.io/docs/4.5/guides/javascript">Moodle JavaScript Guide</a> has detailed information and examples on writing JavaScript in Moodle. Further information is also available in the <a href="https://moodledev.io/docs/4.5/guides/javascript/modules">JavaScript Modules documentation</a>.</p>
+<p><strong>Although the AMD module format is supported, all new JavaScript is written in the EcmaScript Module (ESM) format.</strong></p>
+<h5 id="yui-yui-javascript-modules"><code>yui/</code> - YUI JavaScript modules</h5>
+<p>File path: /yui/</p>
+<p>In older versions of Moodle, JavaScript was written in the YUI format. This is being phased out in favour of JavaScript Modules, although some older uses still remain in Moodle core.</p>
+<h5 id="backup-plugin-backup-configuration"><code>backup/</code> - Plugin Backup configuration</h5>
+<p>File path: /backup/</p>
+<p>If your plugin stores data then you may need to implement the Backup feature which allows the activity to backed up, restored, and duplicated.</p>
+<p>For more information on Backup and restore, see the following:</p>
+<ul>
+<li><a href="https://docs.moodle.org/dev/Backup_2.0_for_developers">Backup 2.0 for developers</a></li>
+<li><a href="https://docs.moodle.org/dev/Restore_2.0_for_developer">Restore 2.0 for developers</a></li>
+</ul>
+<h5 id="stylescss-css-style-sheet-for-your-plugin"><code>styles.css</code> - CSS style sheet for your plugin</h5>
+<p>File path: /styles.css</p>
+<p>Plugins may define a '/styles.css' to provide plugin-specific styling. See the following for further documentation:</p>
+<ul>
+<li><a href="https://moodledev.io/general/community/plugincontribution/checklist#css-styles">Plugin contribution checklist#CSS styles</a></li>
+<li><a href="https://docs.moodle.org/dev/CSS_Coding_Style">CSS Coding Style</a></li>
+</ul>
+<p><strong>AVOID CUSTOM STYLES WHERE POSSIBLE</strong>
+Rather than writing custom CSS for your plugin, where possible apply Bootstrap classes to the DOM elements in your output. These will be easier to maintain and will adopt most colour, branding, and other customisations applied to a theme.</p>
+<h5 id="pixiconsvg"><code>pix/icon.svg</code></h5>
+<p>File path: /pix/</p>
+<p>Plugins can provide icons in several formats, and most plugin types require that a default icon be provided.</p>
+<p>Where a browser supports it, the svg format is used, falling back to png formats when an SVG is unavailable.</p>
+<p>Full details of the correct naming, sizing, and design guidelines for icons in Moodle can be found in the <a href="https://docs.moodle.org/dev/Moodle_icons">Moodle icons documentation</a>.</p>
+<h5 id="thirdpartylibsxml"><code>thirdpartylibs.xml</code></h5>
+<p>File path: /thirdpartylibs.xml</p>
+<p>Details of all <a href="https://moodledev.io/general/community/plugincontribution/thirdpartylibraries">third-party libraries</a> should be declared in the thirdpartylibs.xml file.</p>
+<p>This information is used to generate ignore file configuration for linting tools. For Moodle core it is also used to generate library information as part of release notes and credits.</p>
+<p>Within the XML the location is a file, or directory, relative to your plugin's root.</p>
+<p><strong>The license of any third-party code included in your plugin, and within the thirdpartylibs.xml file must be compatible with the GNU GPLv3.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;libraries&gt;</span>
+    <span class="nt">&lt;library&gt;</span>
+        <span class="nt">&lt;location&gt;</span>javascript/html5shiv.js<span class="nt">&lt;/location&gt;</span>
+        <span class="nt">&lt;name&gt;</span>Html5Shiv<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.6.2<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;license&gt;</span>Apache<span class="nt">&lt;/license&gt;</span>
+        <span class="nt">&lt;licenseversion&gt;</span>2.0<span class="nt">&lt;/licenseversion&gt;</span>
+    <span class="nt">&lt;/library&gt;</span>
+    <span class="nt">&lt;library&gt;</span>
+        <span class="nt">&lt;location&gt;</span>vendor/guzzle/guzzle/<span class="nt">&lt;/location&gt;</span>
+        <span class="nt">&lt;name&gt;</span>guzzle<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;version&gt;</span>v3.9.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;license&gt;</span>MIT<span class="nt">&lt;/license&gt;</span>
+        <span class="nt">&lt;licenseversion&gt;&lt;/licenseversion&gt;</span>
+    <span class="nt">&lt;/library&gt;</span>
+<span class="nt">&lt;/libraries&gt;</span>
+</code></pre></div>
+<h5 id="readme_moodletxt"><code>readme_moodle.txt</code></h5>
+<p>Third-party library import instructions</p>
+<p>File path: /*/readme_moodle.txt</p>
+<p>When importing a third-party library into your plugin, it is advisable to create a readme_moodle.txt file detailing relevant information, including:</p>
+<ul>
+<li>Download URLs</li>
+<li>Build instructions</li>
+</ul>
+<h5 id="upgradetxt"><code>upgrade.txt</code></h5>
+<p>Significant changes for each version of your plugin</p>
+<p>File path: /*/upgrade.txt</p>
+<p>Each component and subsystem may make use of an upgrade.txt file in the top level folder. A section title is used to identify the Moodle version where the change was introduced, and significant changes for that version relating to that component or subsystem are noted.</p>
+<p>For example, given an API change is applied for the upcoming Moodle version 4.1 which is still in the main branch (4.1dev), the version number on the upgrade.txt's section title will be set to 4.1.</p>
+<div class="highlight"><pre><span></span><code>== 4.1 ==
+An API change to empower educators!
+</code></pre></div>
+<h5 id="environmentxml"><code>environment.xml</code></h5>
+<p>Plugin-specific environment requirements</p>
+<p>Upgradable</p>
+<p>File path: /environment.xml</p>
+<p>A plugin can declare its own environment requirements, in addition to those declared by Moodle core. These may includes features such as PHP extension requirements, version requirements, and similar items.</p>
+<p>Further information on this file and its format can be found in the <a href="https://docs.moodle.org/dev/Environment_checking">Environment checking documentation</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;COMPATIBILITY_MATRIX&gt;</span>
+  <span class="nt">&lt;PLUGIN</span> <span class="na">name=</span><span class="s">&quot;plugintype_pluginname&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PHP_EXTENSIONS&gt;</span>
+      <span class="nt">&lt;PHP_EXTENSION</span> <span class="na">name=</span><span class="s">&quot;soap&quot;</span> <span class="na">level=</span><span class="s">&quot;required&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;/PHP_EXTENSION&gt;</span>
+    <span class="nt">&lt;/PHP_EXTENSIONS&gt;</span>
+  <span class="nt">&lt;/PLUGIN&gt;</span>
+<span class="nt">&lt;/COMPATIBILITY_MATRIX&gt;</span>
+</code></pre></div>
+<h5 id="readme"><code>README</code></h5>
+<p>Plugin Information for Administrators</p>
+<p>File path: /README</p>
+<p>We recommend that you include any additional information for your plugin in a project readme file. Ideally this should act as an offline version of all information in your plugin's page in the Plugins directory.</p>
+<p>We recommend creating your readme file in either a README.md, or README.txt format.</p>
+<h5 id="changes"><code>CHANGES</code></h5>
+<p>Plugin changelog</p>
+<p>File path: /CHANGES</p>
+<p>If your plugin includes a changelog in its root directory, this will be used to automatically pre-fill the release notes field when uploading new versions of your plugin to the Plugins directory. This file can be in any of the following locations:</p>
+<ul>
+<li>CHANGES.md: as a markdown file; or</li>
+<li>CHANGES.txt: as a text file; or</li>
+<li>CHANGES.html: as an HTML file; or</li>
+<li>CHANGES: as a text file.</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../phpMoodlePluginSkeleton/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Skeleton" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Skeleton
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../phpMoodleXMLDB/" class="md-footer__link md-footer__link--next" aria-label="Next: XMLDB tool" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              XMLDB tool
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ArceLopera" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
