@@ -2128,19 +2128,25 @@
     Integrating Persistent API with Forms
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Integrating Persistent API with Forms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features" class="md-nav__link">
     Key Features
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#steps-to-use-coreformpersistent" class="md-nav__link">
     Steps to Use core\form\persistent
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2312,19 +2318,25 @@
     Integrating Persistent API with Forms
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Integrating Persistent API with Forms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features" class="md-nav__link">
     Key Features
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#steps-to-use-coreformpersistent" class="md-nav__link">
     Steps to Use core\form\persistent
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2730,33 +2742,29 @@ If you need to join persistents together and be able to extract their respective
 </ul>
 <h3 id="integrating-persistent-api-with-forms">Integrating Persistent API with Forms</h3>
 <p>The <code>core\form\persistent</code> class in Moodle provides a streamlined way to integrate Moodle forms with the Persistent API. It allows developers to create forms that directly interact with persistent classes, simplifying the process of handling form data, validation, and database operations.</p>
-<h3 id="key-features">Key Features</h3>
+<h4 id="key-features">Key Features</h4>
 <ol>
-<li><strong>Form Integration with Persistent Classes:</strong></li>
 <li>
-<p>The <code>core\form\persistent</code> class connects Moodle forms with persistent classes, ensuring that form submissions are directly mapped to the corresponding database records.</p>
+<p><strong>Form Integration with Persistent Classes:</strong>
+    The <code>core\form\persistent</code> class connects Moodle forms with persistent classes, ensuring that form submissions are directly mapped to the corresponding database records.</p>
 </li>
 <li>
-<p><strong>Automatic Data Handling:</strong></p>
+<p><strong>Automatic Data Handling:</strong>
+    Data entered in the form is automatically populated into the persistent class, reducing the need for manual data handling.</p>
 </li>
 <li>
-<p>Data entered in the form is automatically populated into the persistent class, reducing the need for manual data handling.</p>
+<p><strong>Validation Consistency:</strong>
+    Form validation is tightly coupled with the validation logic defined in the persistent class, ensuring consistency across your application.</p>
 </li>
 <li>
-<p><strong>Validation Consistency:</strong></p>
+<p><strong>Simplified CRUD Operations:</strong>
+    CRUD operations are simplified, as the form directly interacts with the persistent class, handling the creation, updating, or deletion of records.</p>
 </li>
-<li>
-<p>Form validation is tightly coupled with the validation logic defined in the persistent class, ensuring consistency across your application.</p>
-</li>
-<li>
-<p><strong>Simplified CRUD Operations:</strong></p>
-</li>
-<li>CRUD operations are simplified, as the form directly interacts with the persistent class, handling the creation, updating, or deletion of records.</li>
 </ol>
-<h3 id="steps-to-use-coreformpersistent">Steps to Use <code>core\form\persistent</code></h3>
+<h4 id="steps-to-use-coreformpersistent">Steps to Use <code>core\form\persistent</code></h4>
 <ol>
-<li><strong>Create a Persistent Class:</strong></li>
-</ol>
+<li>
+<p><strong>Create a Persistent Class:</strong></p>
 <p>First, define a persistent class representing the database table you want to interact with.</p>
 <div class="highlight"><pre><span></span><code><span class="x">namespace local_yourplugin;</span>
 
@@ -2781,9 +2789,9 @@ If you need to join persistents together and be able to extract their respective
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
-<ol>
-<li><strong>Create a Form Class Extending <code>core\form\persistent</code>:</strong></li>
-</ol>
+</li>
+<li>
+<p><strong>Create a Form Class Extending <code>core\form\persistent</code>:</strong></p>
 <p>Next, create a form class that extends <code>core\form\persistent</code>. This class will handle the form display, validation, and data processing.</p>
 <div class="highlight"><pre><span></span><code><span class="x">namespace local_yourplugin\form;</span>
 
@@ -2793,40 +2801,71 @@ If you need to join persistents together and be able to extract their respective
 
 <span class="x">class example_form extends persistent {</span>
 
+<span class="x">    /** @var string Persistent class name. */</span>
 <span class="x">    protected static $persistentclass = &#39;local_yourplugin\example&#39;;</span>
 
 <span class="x">    protected function definition() {</span>
 <span class="x">        $mform = $this-&gt;_form;</span>
 
 <span class="x">        $mform-&gt;addElement(&#39;text&#39;, &#39;name&#39;, get_string(&#39;name&#39;, &#39;local_yourplugin&#39;));</span>
-<span class="x">        $mform-&gt;setType(&#39;name&#39;, PARAM_TEXT);</span>
 <span class="x">        $mform-&gt;addRule(&#39;name&#39;, get_string(&#39;required&#39;), &#39;required&#39;, null, &#39;client&#39;);</span>
 
 <span class="x">        $mform-&gt;addElement(&#39;textarea&#39;, &#39;description&#39;, get_string(&#39;description&#39;, &#39;local_yourplugin&#39;));</span>
-<span class="x">        $mform-&gt;setType(&#39;description&#39;, PARAM_TEXT);</span>
+
+<span class="x">         // User ID.</span>
+<span class="x">        $mform-&gt;addElement(&#39;hidden&#39;, &#39;userid&#39;);</span>
+<span class="x">        $mform-&gt;setConstant(&#39;userid&#39;, $this-&gt;_customdata[&#39;userid&#39;]);</span>
+
+<span class="x">        // Message.</span>
+<span class="x">        $mform-&gt;addElement(&#39;editor&#39;, &#39;message&#39;, &#39;Message&#39;);</span>
+
+<span class="x">        // Location.</span>
+<span class="x">        $mform-&gt;addElement(&#39;text&#39;, &#39;location&#39;, &#39;Location&#39;);</span>
 
 <span class="x">        $this-&gt;add_action_buttons();</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
 <ul>
-<li><strong><code>$persistentclass</code>:</strong> This specifies the persistent class that the form is linked to.</li>
-<li>
-<p><strong><code>definition()</code>:</strong> This method defines the form fields, linking them directly to the properties of the persistent class.</p>
+<li><strong><code>$persistentclass</code>:</strong> This specifies the persistent class that the form is linked to. In order for the form class to know what persistent we'll be dealing with, we must declare the protected static $persistentclass variable. The latter contains the fully qualified name of the persistent class.</li>
+<li><strong><code>definition()</code>:</strong> This method defines the form fields, linking them directly to the properties of the persistent class. All of this is pretty standard, except for the userid. When creating a new 'status', we do not want our users to be in control of this value. Therefore we define it as a hidden value which we lock (using setConstant) to the value we created our form with. All the mandatory fields (without a default value) of the persistent need to be added to the form. If your users cannot change their values, then they must be hidden and locked with setConstant. Did you notice that there isn't any call to setType in the above example? That is because we automatically do it for you based on the field name and your persistent's properties.Also note that the id property is not included. It is not required, nor recommended, to add it to your fields as it will be handled automatically.</li>
+</ul>
 </li>
 <li>
 <p><strong>Using the Form in Your Plugin:</strong></p>
-</li>
-</ul>
-<p>To use the form in your plugin, create an instance of the form and process it like this:</p>
+<p>When instantiating the form, there are two little things that you need to pay attention to.</p>
+<p>Firstly you should always pass the URL of the current page, including its query parameters. We need this to be able to display the form with its validation errors without affecting anything else.</p>
+<p>Secondly, the persistent instance must be provided to the form through the custom data. That persistent instance will be used to populate the form with initial data, typically when you are editing an object. When you don't have a persistent instance yet, probably because your user will be creating a new one, then simply pass null.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$customdata = [</span>
+<span class="x">&#39;persistent&#39; =&gt; $persistent,  // An instance, or null.</span>
+<span class="x">&#39;userid&#39; =&gt; $USER-&gt;id         // For the hidden userid field.</span>
+<span class="x">];</span>
+<span class="x">$form = new status_form($PAGE-&gt;url-&gt;out(false), $customdata);</span>
+</code></pre></div>
+Just like any other form, we will be using get_data() to validate the form. The only difference is that to determine whether we are editing an object, or creating a new one, we will check if the id value was returned to us. The persistent form will return the ID value from the persistent we gave it. Then it's up to you to decide how to apply the data, most likely you will defer the logic to another part of your code, one that ensures that all capability checks are fulfilled. To use the form in your plugin, create an instance of the form and process it like this:</p>
 <div class="highlight"><pre><span></span><code><span class="x">$form = new \local_yourplugin\form\example_form();</span>
 
 <span class="x">if ($form-&gt;is_cancelled()) {</span>
 <span class="x">    // Handle form cancellation (e.g., redirect to another page).</span>
-<span class="x">} else if ($data = $form-&gt;get_data()) {</span>
-<span class="x">    // The data is automatically saved to the persistent class.</span>
-<span class="x">    $form-&gt;save_data();</span>
-<span class="x">    redirect(new moodle_url(&#39;/local/yourplugin/view.php&#39;));</span>
+<span class="x">} else  if (($data = $form-&gt;get_data())) { </span>
+<span class="x">    // Get the data. This ensures that the form was validated.</span>
+
+<span class="x">    if (empty($data-&gt;id)) {</span>
+<span class="x">        // If we don&#39;t have an ID, we know that we must create a new record.</span>
+<span class="x">        // Call your API to create a new persistent from this data.</span>
+<span class="x">        // Or, do the following if you don&#39;t want capability checks (discouraged).</span>
+<span class="x">        $persistent = new status(0, $data);</span>
+<span class="x">        $persistent-&gt;create();</span>
+<span class="x">    } else {</span>
+<span class="x">        // We had an ID, this means that we are going to update a record.</span>
+<span class="x">        // Call your API to update the persistent from the data.</span>
+<span class="x">        // Or, do the following if you don&#39;t want capability checks (discouraged).</span>
+<span class="x">        $persistent-&gt;from_record($data);</span>
+<span class="x">        $persistent-&gt;update();</span>
+<span class="x">    }</span>
+
+<span class="x">    // We are done, so let&#39;s redirect somewhere.</span>
+<span class="x">    redirect(new moodle_url(&#39;/&#39;));</span>
 <span class="x">}</span>
 
 <span class="x">echo $OUTPUT-&gt;header();</span>
@@ -2836,8 +2875,30 @@ If you need to join persistents together and be able to extract their respective
 <ul>
 <li><strong><code>is_cancelled()</code>:</strong> Checks if the form was canceled by the user.</li>
 <li><strong><code>get_data()</code>:</strong> Retrieves the form data.</li>
-<li><strong><code>save_data()</code>:</strong> Automatically saves the form data to the persistent class, creating or updating the record as necessary.</li>
 </ul>
+</li>
+</ol>
+<h5 id="additional-validation">Additional Validation</h5>
+<p>There are times when the built-in validation of the persistent is not enough. Usually you would use the method validation(), but as the form persistent class does some extra stuff to make it easier for you, you must use the extra_validation() method. The latter works almost just like the validation() one.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Extra validation.</span>
+<span class="x"> *</span>
+<span class="x"> * @param  stdClass $data Data to validate.</span>
+<span class="x"> * @param  array $files Array of files.</span>
+<span class="x"> * @param  array $errors Currently reported errors.</span>
+<span class="x"> * @return array of additional errors, or overridden errors.</span>
+<span class="x"> */</span>
+<span class="x">protected function extra_validation($data, $files, array &amp;$errors) {</span>
+<span class="x">    $newerrors = array();</span>
+
+<span class="x">    if ($data-&gt;location === &#39;SFO&#39;) {</span>
+<span class="x">        $newerrors[&#39;location&#39;] = &#39;San-Francisco Airport is not accepted from the form.&#39;;</span>
+<span class="x">    }</span>
+
+<span class="x">    return $newerrors;</span>
+<span class="x">}</span>
+</code></pre></div>
+The typical additional validation will return an array of errors, those will override any previously defined errors. Sometimes, though rarely, you will need to remove previously reported errors, hence the reference to $errors given, which you can modify directly. Do not abuse it though, this should only be used when you have no other choice.</p>
 <p>The <code>core\form\persistent</code> class in Moodle offers a powerful and efficient way to connect forms with the Persistent API. It automates the process of handling form data, ensuring that it is correctly validated and saved to the database. This approach reduces boilerplate code, improves consistency, and simplifies the development of complex forms that interact with Moodle’s database.</p>
 
               
