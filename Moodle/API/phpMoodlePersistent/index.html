@@ -2145,6 +2145,54 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#foreign-fields" class="md-nav__link">
+    Foreign fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-fields" class="md-nav__link">
+    Grouping fields
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimalist" class="md-nav__link">
+    Minimalist
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-advanced" class="md-nav__link">
+    More advanced
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-form" class="md-nav__link">
+    Using the form
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2331,6 +2379,54 @@
           <li class="md-nav__item">
   <a href="#steps-to-use-coreformpersistent" class="md-nav__link">
     Steps to Use core\form\persistent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-fields" class="md-nav__link">
+    Foreign fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-fields" class="md-nav__link">
+    Grouping fields
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimalist" class="md-nav__link">
+    Minimalist
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-advanced" class="md-nav__link">
+    More advanced
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-form" class="md-nav__link">
+    Using the form
   </a>
   
 </li>
@@ -2899,6 +2995,250 @@ Just like any other form, we will be using get_data() to validate the form. The 
 <span class="x">}</span>
 </code></pre></div>
 The typical additional validation will return an array of errors, those will override any previously defined errors. Sometimes, though rarely, you will need to remove previously reported errors, hence the reference to $errors given, which you can modify directly. Do not abuse it though, this should only be used when you have no other choice.</p>
+<h4 id="foreign-fields">Foreign fields</h4>
+<p>By default, the form class tries to be smart at detecting foreign fields such as the submit button. Failure to do so will cause troubles during validation, or when getting the data. So when your form becomes more complex, if it includes more submit buttons, or when it deals with other fields, for example file managers, we must indicate it.</p>
+<h5 id="fields-to-ignore-completely">Fields to ignore completely</h5>
+<p>The fields to remove are never validated and they are not returned when calling get_data(). By default the submit button is added to this list so that when we call get_data() we only get the persistent-related fields. To remove more fields, re-declare the protected static $fieldstoremove class variable.</p>
+<div class="highlight"><pre><span></span><code><span class="x">/** @var array Fields to remove when getting the final data. */</span>
+<span class="x">protected static $fieldstoremove = array(&#39;submitbutton&#39;, &#39;areyouhappy&#39;);</span>
+</code></pre></div>
+<p>Do not forget to add the submitbutton back in there.</p>
+<h5 id="fields-to-validate">Fields to validate</h5>
+<p>What about when we have a legit field but it does not belong to the persistent? We still want to validate it ourselves, but we don't want it to be validated by the persistent as it will cause an error. In that case we define it in the protected static $foreignfields class variable.</p>
+<div class="highlight"><pre><span></span><code><span class="x">/** @var array Fields to remove from the persistent validation. */</span>
+<span class="x">protected static $foreignfields = array(&#39;updatedelay&#39;);</span>
+</code></pre></div>
+<p>Now the persistent will not validate this field, and we will get the updatedelay value when we call get_data(). Just don't forget to remove it before you feed the data to your persistent.</p>
+<div class="highlight"><pre><span></span><code><span class="x">if (($data = $form-&gt;get_data())) {</span>
+<span class="x">    $updatedelay = $data-&gt;updatedelay;</span>
+<span class="x">    unset($data-&gt;updatedelay);</span>
+<span class="x">    $newpersistent = new status(0, $data);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>This method is particularily useful when dealing with file managers.</p>
+<h4 id="grouping-fields">Grouping fields</h4>
+<p>There is a little bit of work to do when you want to group some properties together. Let's imagine that we are asking our users to pick amongst a few verbs and food. They can only tell us if they like or dislike something and what it is. Our form should display both the verb and the food next to each other, and to do so we need to use a group.</p>
+<p>First, let's update our persistent with the new two values we will store:</p>
+<div class="highlight"><pre><span></span><code><span class="x">protected static function define_properties() {</span>
+<span class="x">    ...</span>
+
+<span class="x">        &#39;verb&#39; =&gt; array(</span>
+<span class="x">            &#39;type&#39; =&gt; PARAM_ALPHANUM,</span>
+<span class="x">            &#39;default&#39; =&gt; &#39;love&#39;</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;food&#39; =&gt; array(</span>
+<span class="x">            &#39;type&#39; =&gt; PARAM_ALPHANUM,</span>
+<span class="x">            &#39;default&#39; =&gt; &#39;pizza&#39;</span>
+<span class="x">        )</span>
+
+<span class="x">    ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Secondly, we must add the group to the form:</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function definition() {</span>
+<span class="x">    ...</span>
+
+<span class="x">    // Food I like.</span>
+<span class="x">    $elements = [];</span>
+<span class="x">    $elements[] = $mform-&gt;createElement(&#39;select&#39;, &#39;verb&#39;, &#39;verb&#39;, [</span>
+<span class="x">        &#39;hate&#39; =&gt; &#39;I hate&#39;,</span>
+<span class="x">        &#39;dislike&#39; =&gt; &#39;I dislike&#39;,</span>
+<span class="x">        &#39;like&#39; =&gt; &#39;I like&#39;,</span>
+<span class="x">        &#39;love&#39; =&gt; &#39;I love&#39;</span>
+<span class="x">    ]);</span>
+<span class="x">    $elements[] = $mform-&gt;createElement(&#39;select&#39;, &#39;food&#39;, &#39;Food&#39;, [</span>
+<span class="x">        &#39;egg&#39; =&gt; &#39;Egg&#39;,</span>
+<span class="x">        &#39;tofu&#39; =&gt; &#39;Tofu&#39;,</span>
+<span class="x">        &#39;chicken&#39; =&gt; &#39;Chicken&#39;,</span>
+<span class="x">        &#39;fish&#39; =&gt; &#39;Fish&#39;,</span>
+<span class="x">        &#39;pizza&#39; =&gt; &#39;Pizza&#39;</span>
+<span class="x">    ]);</span>
+<span class="x">    $mform-&gt;addElement(&#39;group&#39;, &#39;foodilike&#39;, &#39;Food I like&#39;, $elements);</span>
+
+<span class="x">    ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>If you were to try the code like this, you would get an error telling you that the persistent did not expect to receive the property foodilike. That's normal because the group is being set to the persistent which does not know what to do with it. In order to counter this we will need to convert the group to individual properties by extending the method convert_fields(stdClass $data).</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Convert fields.</span>
+<span class="x"> *</span>
+<span class="x"> * @param stdClass $data The data.</span>
+<span class="x"> * @return stdClass</span>
+<span class="x"> */</span>
+<span class="x">protected static function convert_fields(stdClass $data) {</span>
+<span class="x">    $data = parent::convert_fields($data);</span>
+
+<span class="x">    // Convert the group to single properties.</span>
+<span class="x">    $data-&gt;verb = $data-&gt;foodilike[&#39;verb&#39;];</span>
+<span class="x">    $data-&gt;food = $data-&gt;foodilike[&#39;food&#39;];</span>
+<span class="x">    unset($data-&gt;foodilike);</span>
+
+<span class="x">    return $data;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Now it works because we've converted our group to individual properties. Note that you must call the parent method because we're automatically doing the same thing for you when you're using a text editor field.</p>
+<p>While this works fine, this is not enough as when we load an existing object we must perform the same thing the other way around. We must convert the fields from our persistent to what the group field is expecting. To do so we override the method get_default_value(). We're also taking care of the text editor for you here so don't forget to call the parent.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Get the default data.</span>
+<span class="x"> *</span>
+<span class="x"> * @return stdClass</span>
+<span class="x"> */</span>
+<span class="x">protected function get_default_data() {</span>
+<span class="x">    $data = parent::get_default_data();</span>
+
+<span class="x">    // Convert the single properties into a group.</span>
+<span class="x">    $data-&gt;foodilike = [</span>
+<span class="x">        &#39;verb&#39; =&gt; $data-&gt;verb,</span>
+<span class="x">        &#39;food&#39; =&gt; $data-&gt;food,</span>
+<span class="x">    ];</span>
+<span class="x">    unset($data-&gt;verb);</span>
+<span class="x">    unset($data-&gt;food);</span>
+
+<span class="x">    return $data;</span>
+<span class="x">}</span>
+</code></pre></div>
+You should now notice that the default values are set to "I love" and "Pizza". And we're done!</p>
+<h3 id="examples">Examples</h3>
+<h4 id="minimalist">Minimalist</h4>
+<div class="highlight"><pre><span></span><code><span class="x">class status_form extends \core\form\persistent {</span>
+
+<span class="x">    /** @var string Persistent class name. */</span>
+<span class="x">    protected static $persistentclass = &#39;example\\status&#39;;</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Define the form.</span>
+<span class="x">     */</span>
+<span class="x">    public function definition() {</span>
+<span class="x">        $mform = $this-&gt;_form;</span>
+
+<span class="x">        // User ID.</span>
+<span class="x">        $mform-&gt;addElement(&#39;hidden&#39;, &#39;userid&#39;);</span>
+<span class="x">        $mform-&gt;setConstant(&#39;userid&#39;, $this-&gt;_customdata[&#39;userid&#39;]);</span>
+
+<span class="x">        // Message.</span>
+<span class="x">        $mform-&gt;addElement(&#39;editor&#39;, &#39;message&#39;, &#39;Message&#39;);</span>
+
+<span class="x">        // Location.</span>
+<span class="x">        $mform-&gt;addElement(&#39;text&#39;, &#39;location&#39;, &#39;Location&#39;);</span>
+
+<span class="x">        $this-&gt;add_action_buttons();</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="more-advanced">More advanced</h4>
+<div class="highlight"><pre><span></span><code><span class="x">class status_form extends \core\form\persistent {</span>
+
+<span class="x">    /** @var string Persistent class name. */</span>
+<span class="x">    protected static $persistentclass = &#39;example\\status&#39;;</span>
+
+<span class="x">    /** @var array Fields to remove when getting the final data. */</span>
+<span class="x">    protected static $fieldstoremove = array(&#39;submitbutton&#39;, &#39;areyouhappy&#39;);</span>
+
+<span class="x">    /** @var array Fields to remove from the persistent validation. */</span>
+<span class="x">    protected static $foreignfields = array(&#39;updatedelay&#39;);</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Define the form.</span>
+<span class="x">     */</span>
+<span class="x">    public function definition() {</span>
+<span class="x">        $mform = $this-&gt;_form;</span>
+
+<span class="x">        // User ID.</span>
+<span class="x">        $mform-&gt;addElement(&#39;hidden&#39;, &#39;userid&#39;);</span>
+<span class="x">        $mform-&gt;setConstant(&#39;userid&#39;, $this-&gt;_customdata[&#39;userid&#39;]);</span>
+
+<span class="x">        // Message.</span>
+<span class="x">        $mform-&gt;addElement(&#39;editor&#39;, &#39;message&#39;, &#39;Message&#39;);</span>
+
+<span class="x">        // Location.</span>
+<span class="x">        $mform-&gt;addElement(&#39;text&#39;, &#39;location&#39;, &#39;Location&#39;);</span>
+
+<span class="x">        // Status update delay.</span>
+<span class="x">        $mform-&gt;addElement(&#39;duration&#39;, &#39;updatedelay&#39;, &#39;Status update delay&#39;);</span>
+
+<span class="x">        // Are you happy?</span>
+<span class="x">        $mform-&gt;addElement(&#39;selectyesno&#39;, &#39;areyouhappy&#39;, &#39;Are you happy?&#39;);</span>
+
+<span class="x">        $this-&gt;add_action_buttons();</span>
+<span class="x">    }</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Extra validation.</span>
+<span class="x">     *</span>
+<span class="x">     * @param  stdClass $data Data to validate.</span>
+<span class="x">     * @param  array $files Array of files.</span>
+<span class="x">     * @param  array $errors Currently reported errors.</span>
+<span class="x">     * @return array of additional errors, or overridden errors.</span>
+<span class="x">     */</span>
+<span class="x">    protected function extra_validation($data, $files, array &amp;$errors) {</span>
+<span class="x">        $newerrors = array();</span>
+
+<span class="x">        if ($data-&gt;location === &#39;SFO&#39;) {</span>
+<span class="x">            $newerrors[&#39;location&#39;] = &#39;San-Francisco Airport is not accepted from the form.&#39;;</span>
+<span class="x">        }</span>
+
+<span class="x">        return $newerrors;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="using-the-form">Using the form</h4>
+<p>Consider the following code to be a page the users will access at '/example.php'.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require &#39;config.php&#39;;</span>
+
+<span class="x">// Check if we go an ID.</span>
+<span class="x">$id = optional_param(&#39;id&#39;, null, PARAM_INT);</span>
+
+<span class="x">// Set the PAGE URL (and mandatory context). Note the ID being recorded, this is important.</span>
+<span class="x">$PAGE-&gt;set_context(context_system::instance());</span>
+<span class="x">$PAGE-&gt;set_url(new moodle_url(&#39;/example.php&#39;, [&#39;id&#39; =&gt; $id]));</span>
+
+<span class="x">// Instantiate a persistent object if we received an ID. Typically receiving an ID</span>
+<span class="x">// means that we are going to be updating an object rather than creating a new one.</span>
+<span class="x">$persistent = null;</span>
+<span class="x">if (!e mpty($id)) {</span>
+<span class="x">    $persistent = new status($id);</span>
+<span class="x">}</span>
+
+<span class="x">// Create the form instance. We need to use the current URL and the custom data.</span>
+<span class="x">$customdata = [</span>
+<span class="x">    &#39;persistent&#39; =&gt; $persistent,</span>
+<span class="x">    &#39;userid&#39; =&gt; $USER-&gt;id         // For the hidden userid field.</span>
+<span class="x">];</span>
+<span class="x">$form = new status_form($PAGE-&gt;url-&gt;out(false), $customdata);</span>
+
+<span class="x">// Get the data. This ensures that the form was validated.</span>
+<span class="x">if (($data = $form-&gt;get_data())) {</span>
+
+<span class="x">    try {</span>
+<span class="x">        if (empty($data-&gt;id)) {</span>
+<span class="x">            // If we don&#39;t have an ID, we know that we must create a new record.</span>
+<span class="x">            // Call your API to create a new persistent from this data.</span>
+<span class="x">            // Or, do the following if you don&#39;t want capability checks (discouraged).</span>
+<span class="x">            $persistent = new status(0, $data);</span>
+<span class="x">            $persistent-&gt;create();</span>
+<span class="x">        } else {</span>
+<span class="x">            // We had an ID, this means that we are going to update a record.</span>
+<span class="x">            // Call your API to update the persistent from the data.</span>
+<span class="x">            // Or, do the following if you don&#39;t want capability checks (discouraged).</span>
+<span class="x">            $persistent-&gt;from_record($data);</span>
+<span class="x">            $persistent-&gt;update();</span>
+<span class="x">        }</span>
+<span class="x">        \core\notification::success(get_string(&#39;changessaved&#39;));</span>
+<span class="x">    } catch (Exception $e) {</span>
+<span class="x">        \core\notification::error($e-&gt;getMessage());</span>
+<span class="x">    }</span>
+
+<span class="x">    // We are done, so let&#39;s redirect somewhere.</span>
+<span class="x">    redirect(new moodle_url(&#39;/&#39;));</span>
+<span class="x">}</span>
+
+<span class="x">// Display the mandatory header and footer.</span>
+<span class="x">// And display the form, and its validation errors if there are any.</span>
+<span class="x">echo $OUTPUT-&gt;header();</span>
+<span class="x">$form-&gt;display();</span>
+<span class="x">echo $OUTPUT-&gt;footer();</span>
+</code></pre></div>
 <p>The <code>core\form\persistent</code> class in Moodle offers a powerful and efficient way to connect forms with the Persistent API. It automates the process of handling form data, ensuring that it is correctly validated and saved to the database. This approach reduces boilerplate code, improves consistency, and simplifies the development of complex forms that interact with Moodle’s database.</p>
 
               
