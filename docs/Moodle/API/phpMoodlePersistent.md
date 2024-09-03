@@ -617,5 +617,280 @@ protected function extra_validation($data, $files, array &$errors) {
 ```
 The typical additional validation will return an array of errors, those will override any previously defined errors. Sometimes, though rarely, you will need to remove previously reported errors, hence the reference to $errors given, which you can modify directly. Do not abuse it though, this should only be used when you have no other choice.
 
+#### Foreign fields
+By default, the form class tries to be smart at detecting foreign fields such as the submit button. Failure to do so will cause troubles during validation, or when getting the data. So when your form becomes more complex, if it includes more submit buttons, or when it deals with other fields, for example file managers, we must indicate it.
+
+##### Fields to ignore completely
+The fields to remove are never validated and they are not returned when calling get_data(). By default the submit button is added to this list so that when we call get_data() we only get the persistent-related fields. To remove more fields, re-declare the protected static $fieldstoremove class variable.
+
+```php
+/** @var array Fields to remove when getting the final data. */
+protected static $fieldstoremove = array('submitbutton', 'areyouhappy');
+```
+
+Do not forget to add the submitbutton back in there.
+
+##### Fields to validate
+What about when we have a legit field but it does not belong to the persistent? We still want to validate it ourselves, but we don't want it to be validated by the persistent as it will cause an error. In that case we define it in the protected static $foreignfields class variable.
+
+```php
+/** @var array Fields to remove from the persistent validation. */
+protected static $foreignfields = array('updatedelay');
+```
+
+Now the persistent will not validate this field, and we will get the updatedelay value when we call get_data(). Just don't forget to remove it before you feed the data to your persistent.
+
+```php
+if (($data = $form->get_data())) {
+    $updatedelay = $data->updatedelay;
+    unset($data->updatedelay);
+    $newpersistent = new status(0, $data);
+}
+```
+
+This method is particularily useful when dealing with file managers.
+
+#### Grouping fields
+There is a little bit of work to do when you want to group some properties together. Let's imagine that we are asking our users to pick amongst a few verbs and food. They can only tell us if they like or dislike something and what it is. Our form should display both the verb and the food next to each other, and to do so we need to use a group.
+
+First, let's update our persistent with the new two values we will store:
+
+```php
+protected static function define_properties() {
+    ...
+
+        'verb' => array(
+            'type' => PARAM_ALPHANUM,
+            'default' => 'love'
+        ),
+        'food' => array(
+            'type' => PARAM_ALPHANUM,
+            'default' => 'pizza'
+        )
+
+    ...
+}
+```
+
+Secondly, we must add the group to the form:
+
+```php
+public function definition() {
+    ...
+
+    // Food I like.
+    $elements = [];
+    $elements[] = $mform->createElement('select', 'verb', 'verb', [
+        'hate' => 'I hate',
+        'dislike' => 'I dislike',
+        'like' => 'I like',
+        'love' => 'I love'
+    ]);
+    $elements[] = $mform->createElement('select', 'food', 'Food', [
+        'egg' => 'Egg',
+        'tofu' => 'Tofu',
+        'chicken' => 'Chicken',
+        'fish' => 'Fish',
+        'pizza' => 'Pizza'
+    ]);
+    $mform->addElement('group', 'foodilike', 'Food I like', $elements);
+
+    ...
+}
+```
+
+If you were to try the code like this, you would get an error telling you that the persistent did not expect to receive the property foodilike. That's normal because the group is being set to the persistent which does not know what to do with it. In order to counter this we will need to convert the group to individual properties by extending the method convert_fields(stdClass $data).
+
+```php
+/**
+ * Convert fields.
+ *
+ * @param stdClass $data The data.
+ * @return stdClass
+ */
+protected static function convert_fields(stdClass $data) {
+    $data = parent::convert_fields($data);
+
+    // Convert the group to single properties.
+    $data->verb = $data->foodilike['verb'];
+    $data->food = $data->foodilike['food'];
+    unset($data->foodilike);
+
+    return $data;
+}
+```
+
+Now it works because we've converted our group to individual properties. Note that you must call the parent method because we're automatically doing the same thing for you when you're using a text editor field.
+
+While this works fine, this is not enough as when we load an existing object we must perform the same thing the other way around. We must convert the fields from our persistent to what the group field is expecting. To do so we override the method get_default_value(). We're also taking care of the text editor for you here so don't forget to call the parent.
+
+
+```php
+/**
+ * Get the default data.
+ *
+ * @return stdClass
+ */
+protected function get_default_data() {
+    $data = parent::get_default_data();
+
+    // Convert the single properties into a group.
+    $data->foodilike = [
+        'verb' => $data->verb,
+        'food' => $data->food,
+    ];
+    unset($data->verb);
+    unset($data->food);
+
+    return $data;
+}
+```
+You should now notice that the default values are set to "I love" and "Pizza". And we're done!
+
+### Examples
+#### Minimalist
+```php
+class status_form extends \core\form\persistent {
+    
+    /** @var string Persistent class name. */
+    protected static $persistentclass = 'example\\status';
+
+    /**
+     * Define the form.
+     */
+    public function definition() {
+        $mform = $this->_form;
+
+        // User ID.
+        $mform->addElement('hidden', 'userid');
+        $mform->setConstant('userid', $this->_customdata['userid']);
+
+        // Message.
+        $mform->addElement('editor', 'message', 'Message');
+
+        // Location.
+        $mform->addElement('text', 'location', 'Location');
+
+        $this->add_action_buttons();
+    }
+
+}
+```
+#### More advanced
+```php
+class status_form extends \core\form\persistent {
+
+    /** @var string Persistent class name. */
+    protected static $persistentclass = 'example\\status';
+
+    /** @var array Fields to remove when getting the final data. */
+    protected static $fieldstoremove = array('submitbutton', 'areyouhappy');
+
+    /** @var array Fields to remove from the persistent validation. */
+    protected static $foreignfields = array('updatedelay');
+
+    /**
+     * Define the form.
+     */
+    public function definition() {
+        $mform = $this->_form;
+
+        // User ID.
+        $mform->addElement('hidden', 'userid');
+        $mform->setConstant('userid', $this->_customdata['userid']);
+
+        // Message.
+        $mform->addElement('editor', 'message', 'Message');
+
+        // Location.
+        $mform->addElement('text', 'location', 'Location');
+
+        // Status update delay.
+        $mform->addElement('duration', 'updatedelay', 'Status update delay');
+
+        // Are you happy?
+        $mform->addElement('selectyesno', 'areyouhappy', 'Are you happy?');
+
+        $this->add_action_buttons();
+    }
+
+    /**
+     * Extra validation.
+     *
+     * @param  stdClass $data Data to validate.
+     * @param  array $files Array of files.
+     * @param  array $errors Currently reported errors.
+     * @return array of additional errors, or overridden errors.
+     */
+    protected function extra_validation($data, $files, array &$errors) {
+        $newerrors = array();
+
+        if ($data->location === 'SFO') {
+            $newerrors['location'] = 'San-Francisco Airport is not accepted from the form.';
+        }
+
+        return $newerrors;
+    }
+}
+```
+#### Using the form
+Consider the following code to be a page the users will access at '/example.php'.
+
+```php
+require 'config.php';
+
+// Check if we go an ID.
+$id = optional_param('id', null, PARAM_INT);
+
+// Set the PAGE URL (and mandatory context). Note the ID being recorded, this is important.
+$PAGE->set_context(context_system::instance());
+$PAGE->set_url(new moodle_url('/example.php', ['id' => $id]));
+
+// Instantiate a persistent object if we received an ID. Typically receiving an ID
+// means that we are going to be updating an object rather than creating a new one.
+$persistent = null;
+if (!e mpty($id)) {
+    $persistent = new status($id);
+}
+
+// Create the form instance. We need to use the current URL and the custom data.
+$customdata = [
+    'persistent' => $persistent,
+    'userid' => $USER->id         // For the hidden userid field.
+];
+$form = new status_form($PAGE->url->out(false), $customdata);
+
+// Get the data. This ensures that the form was validated.
+if (($data = $form->get_data())) {
+
+    try {
+        if (empty($data->id)) {
+            // If we don't have an ID, we know that we must create a new record.
+            // Call your API to create a new persistent from this data.
+            // Or, do the following if you don't want capability checks (discouraged).
+            $persistent = new status(0, $data);
+            $persistent->create();
+        } else {
+            // We had an ID, this means that we are going to update a record.
+            // Call your API to update the persistent from the data.
+            // Or, do the following if you don't want capability checks (discouraged).
+            $persistent->from_record($data);
+            $persistent->update();
+        }
+        \core\notification::success(get_string('changessaved'));
+    } catch (Exception $e) {
+        \core\notification::error($e->getMessage());
+    }
+
+    // We are done, so let's redirect somewhere.
+    redirect(new moodle_url('/'));
+}
+
+// Display the mandatory header and footer.
+// And display the form, and its validation errors if there are any.
+echo $OUTPUT->header();
+$form->display();
+echo $OUTPUT->footer();
+```
 
 The `core\form\persistent` class in Moodle offers a powerful and efficient way to connect forms with the Persistent API. It automates the process of handling form data, ensuring that it is correctly validated and saved to the database. This approach reduces boilerplate code, improves consistency, and simplifies the development of complex forms that interact with Moodle’s database.
