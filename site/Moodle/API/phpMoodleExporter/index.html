@@ -12,14 +12,14 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/Javascript/phpMoodleAJAX/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleExporter/">
       
       <link rel="icon" href="../../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>AJAX - PHP Refresher</title>
+        <title>Exporter - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#steps-to-create-an-ajax-interaction-in-moodle" class="md-skip">
+        <a href="#key-concepts" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AJAX
+              Exporter
             
           </span>
         </div>
@@ -1830,14 +1830,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
       
       
       
@@ -1860,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodleJS/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1874,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodleJSTools/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
         Tools
       </a>
     </li>
@@ -1888,7 +1886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePromises/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
         Promises
       </a>
     </li>
@@ -1902,7 +1900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodleModal/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
         Modal Dialogues
       </a>
     </li>
@@ -1914,83 +1912,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          AJAX
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
         AJAX
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#steps-to-create-an-ajax-interaction-in-moodle" class="md-nav__link">
-    Steps to Create an AJAX Interaction in Moodle
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-ajax-interaction-in-a-moodle-plugin" class="md-nav__link">
-    Example: AJAX Interaction in a Moodle Plugin
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-design-patterns" class="md-nav__link">
-    Common design patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chained-calls" class="md-nav__link">
-    Chained calls
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-considerations" class="md-nav__link">
-    Key considerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2007,12 +1933,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" type="checkbox" id="__nav_7_9" checked>
       
       
       
@@ -2049,7 +1977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodlePersistent/" class="md-nav__link">
+      <a href="../phpMoodlePersistent/" class="md-nav__link">
         Persistent API
       </a>
     </li>
@@ -2061,11 +1989,123 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../API/phpMoodleExporter/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exporter
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Exporter
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    Key Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-exporters-work-in-moodle" class="md-nav__link">
+    How Exporters Work in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-a-moodle-exporter" class="md-nav__link">
+    Example of a Moodle Exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="Example of a Moodle Exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-defining-the-exporter-class" class="md-nav__link">
+    Step 1: Defining the Exporter Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-key-components" class="md-nav__link">
+    Explanation of Key Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-using-the-exporter" class="md-nav__link">
+    Step 2: Using the Exporter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporters-for-web-services-and-ajax" class="md-nav__link">
+    Exporters for Web Services and AJAX
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporters for Web Services and AJAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-exporter-in-a-web-service" class="md-nav__link">
+    Example: Using Exporter in a Web Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-exporters-in-moodle" class="md-nav__link">
+    Benefits of Exporters in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2109,43 +2149,83 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#steps-to-create-an-ajax-interaction-in-moodle" class="md-nav__link">
-    Steps to Create an AJAX Interaction in Moodle
+  <a href="#key-concepts" class="md-nav__link">
+    Key Concepts
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-ajax-interaction-in-a-moodle-plugin" class="md-nav__link">
-    Example: AJAX Interaction in a Moodle Plugin
+  <a href="#how-exporters-work-in-moodle" class="md-nav__link">
+    How Exporters Work in Moodle
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-design-patterns" class="md-nav__link">
-    Common design patterns
+  <a href="#example-of-a-moodle-exporter" class="md-nav__link">
+    Example of a Moodle Exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="Example of a Moodle Exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-defining-the-exporter-class" class="md-nav__link">
+    Step 1: Defining the Exporter Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-key-components" class="md-nav__link">
+    Explanation of Key Components
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-using-the-exporter" class="md-nav__link">
+    Step 2: Using the Exporter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporters-for-web-services-and-ajax" class="md-nav__link">
+    Exporters for Web Services and AJAX
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporters for Web Services and AJAX">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-exporter-in-a-web-service" class="md-nav__link">
+    Example: Using Exporter in a Web Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-exporters-in-moodle" class="md-nav__link">
+    Benefits of Exporters in Moodle
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chained-calls" class="md-nav__link">
-    Chained calls
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-considerations" class="md-nav__link">
-    Key considerations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -2164,268 +2244,190 @@
                 
 
 
-  <h1>AJAX</h1>
+  <h1>Exporter</h1>
 
-<p>AJAX (Asynchronous JavaScript and XML) allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes. This means that parts of a web page can be updated without reloading the entire page. In Moodle, AJAX is commonly used to create more dynamic and responsive user interfaces.</p>
-<p>The preferred way to write new AJAX interactions in Moodle is to use the JavaScript module <code>core/ajax</code>, which directly calls web service functions built using the Moodle Web Service API.</p>
-<p><strong>Benefits of Using <code>core/ajax</code>:</strong></p>
+<p>Moodle exporters are powerful classes used to <strong>convert complex data structures</strong> into a <strong>simplified, standardized format</strong> for external output. They ensure that data exported from Moodle is <strong>consistent</strong>, <strong>uniform</strong>, and <strong>easy to maintain</strong>. Exporters are especially valuable when dealing with <strong>external functions</strong>, such as <strong>web services</strong> and <strong>AJAX calls</strong>, where the data needs to be serialized (transformed into a format that can be transferred over a network or saved for later use).</p>
+<h4 id="key-concepts">Key Concepts</h4>
 <ol>
-<li><strong>Security</strong>: No new AJAX scripts need auditing for security vulnerabilities.</li>
-<li><strong>Efficiency</strong>: Multiple requests can be chained in a single HTTP request.</li>
-<li><strong>Type Checking</strong>: Strict type checking for all parameters and return types.</li>
-<li><strong>Reusability</strong>: New web service functions benefit AJAX interfaces and web service clients.</li>
+<li>
+<p><strong>Serialization</strong>: 
+    Exporters take complex objects or data arrays from Moodle and convert them into a simple, predictable format (typically arrays or JSON). This ensures that external consumers (like web services, API clients, or front-end JavaScript) receive data in a usable, well-structured form.</p>
+</li>
+<li>
+<p><strong>Uniform Data Structure</strong>: 
+    Exporters help maintain <strong>uniformity</strong> in the structure of the exported data. This means that no matter what internal data format is being used, it will always be presented in the same way to external systems, making the integration and consumption of data easier and more reliable.</p>
+</li>
+<li>
+<p><strong>Maintainability</strong>: 
+    By using exporters, Moodle plugins can be more maintainable. Rather than embedding data transformation logic in multiple places, it's centralized in the exporter classes. This makes the system easier to modify and extend in the future, as changes only need to be made in the exporter class.</p>
+</li>
+<li>
+<p><strong>Generating Function Signatures</strong>: 
+    Exporters are also used to define the <strong>input and output signatures</strong> for external functions, such as web services. This means that exporters specify exactly what parameters the function will accept and what type of data it will return, ensuring that the communication between external systems and Moodle is well-defined and secure.</p>
+</li>
 </ol>
-<h3 id="steps-to-create-an-ajax-interaction-in-moodle">Steps to Create an AJAX Interaction in Moodle</h3>
+<hr />
+<h3 id="how-exporters-work-in-moodle">How Exporters Work in Moodle</h3>
+<p>At a high level, exporters in Moodle follow a specific workflow:</p>
 <ol>
-<li><strong>Write or Find an Existing Web Service Function:</strong></li>
+<li><strong>Receive Data</strong>: The exporter class receives raw data, which could be an object, an associative array, or another complex data structure.</li>
+<li><strong>Transform Data</strong>: The exporter processes the data, transforming it into a simple format that can be used for serialization. This typically involves defining which parts of the data should be included and how they should be presented.</li>
+<li><strong>Serialize Data</strong>: The exporter outputs the data in a format that can be consumed externally. This is often an array, JSON, or another structure that external services can easily work with.</li>
 </ol>
-<p>Web services in Moodle are functions that can be accessed via web protocols such as REST, SOAP, and XML-RPC. These functions are defined in the <code>db/services.php</code> file of your plugin or core Moodle. See <a href="https://moodledev.io/docs/4.5/apis/subsystems/external">WebServices</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
-<span class="x">    &#39;yourplugin_get_data&#39; =&gt; [</span>
-<span class="x">        &#39;classname&#39;   =&gt; &#39;yourplugin_external&#39;,</span>
-<span class="x">        &#39;methodname&#39;  =&gt; &#39;get_data&#39;,</span>
-<span class="x">        &#39;classpath&#39;   =&gt; &#39;yourplugin/externallib.php&#39;,</span>
-<span class="x">        &#39;description&#39; =&gt; &#39;Get data for your plugin&#39;,</span>
-<span class="x">        &#39;type&#39;        =&gt; &#39;read&#39;,</span>
-<span class="x">        &#39;ajax&#39;        =&gt; true, // Marking the service as available for AJAX</span>
-<span class="x">    ],</span>
-<span class="x">];</span>
-</code></pre></div>
-<ol>
-<li><strong>Mark the Service as Available for AJAX:</strong></li>
-</ol>
-<p>To make the web service function available for AJAX, define <code>'ajax' =&gt; true</code> in the function’s definition in <code>db/services.php</code>. Only functions that are marked for AJAX using this mechanism will be available to the AJAX script.</p>
-<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
-<span class="x">    &#39;yourplugin_get_data&#39; =&gt; [</span>
-<span class="x">        &#39;classname&#39;   =&gt; &#39;yourplugin_external&#39;,</span>
-<span class="x">        &#39;methodname&#39;  =&gt; &#39;get_data&#39;,</span>
-<span class="x">        &#39;classpath&#39;   =&gt; &#39;yourplugin/externallib.php&#39;,</span>
-<span class="x">        &#39;description&#39; =&gt; &#39;Get data for your plugin&#39;,</span>
-<span class="x">        &#39;type&#39;        =&gt; &#39;read&#39;,</span>
-<span class="x">        &#39;ajax&#39;        =&gt; true,</span>
-<span class="x">    ],</span>
-<span class="x">];</span>
-</code></pre></div>
-<ol>
-<li><strong>Call the Web Service from JavaScript:</strong></li>
-</ol>
-<p>Use the <code>core/ajax</code> module to call the web service function from JavaScript in response to a user action.</p>
-<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/ajax&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Ajax</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">getData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="c1">// Define the web service request</span><span class="w"></span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourplugin_get_data&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// Arguments to pass to the web service function</span><span class="w"></span>
-<span class="w">        </span><span class="p">}]);</span><span class="w"></span>
+<h3 id="example-of-a-moodle-exporter">Example of a Moodle Exporter</h3>
+<p>Let’s walk through an example of creating a Moodle exporter class that serializes course data for a web service or AJAX interaction.</p>
+<h4 id="step-1-defining-the-exporter-class">Step 1: Defining the Exporter Class</h4>
+<p>The exporter class extends <code>core\external\exporter</code> and implements the <code>get_other_values()</code> method to define how the data is serialized.</p>
+<div class="highlight"><pre><span></span><code><span class="x">namespace local_myplugin\external;</span>
 
-<span class="w">        </span><span class="c1">// Handle the response</span><span class="w"></span>
-<span class="w">        </span><span class="nx">requests</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Data received:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// Update the UI with the received data</span><span class="w"></span>
-<span class="w">        </span><span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ex</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="c1">// Handle the error</span><span class="w"></span>
-<span class="w">        </span><span class="p">});</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="x">use core\external\exporter;</span>
+<span class="x">use renderer_base;</span>
 
-<span class="w">    </span><span class="c1">// Call the function in response to a user action, e.g., button click</span><span class="w"></span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;your-button-id&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">getData</span><span class="p">);</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
-</code></pre></div>
-<h3 id="example-ajax-interaction-in-a-moodle-plugin">Example: AJAX Interaction in a Moodle Plugin</h3>
-<p>Here’s a more detailed example of implementing an AJAX interaction in a Moodle plugin:</p>
-<ol>
-<li><strong>Create the Web Service Function:</strong></li>
-</ol>
-<p>In <code>externallib.php</code> of your plugin:</p>
-<div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
+<span class="x">class course_exporter extends exporter {</span>
 
-<span class="x">require_once(&quot;$CFG-&gt;libdir/externallib.php&quot;);</span>
-
-<span class="x">class yourplugin_external extends external_api {</span>
-<span class="x">    public static function get_data() {</span>
+<span class="x">    // Define the fields to export</span>
+<span class="x">    protected static function define_related() {</span>
 <span class="x">        return [</span>
-<span class="x">            &#39;status&#39; =&gt; &#39;success&#39;,</span>
-<span class="x">            &#39;data&#39; =&gt; &#39;This is your data&#39;</span>
+<span class="x">            &#39;context&#39; =&gt; &#39;context&#39;,</span>
 <span class="x">        ];</span>
 <span class="x">    }</span>
 
-<span class="x">    public static function get_data_returns() {</span>
-<span class="x">        return new external_single_structure(</span>
-<span class="x">            [</span>
-<span class="x">                &#39;status&#39; =&gt; new external_value(PARAM_TEXT, &#39;Status&#39;),</span>
-<span class="x">                &#39;data&#39; =&gt; new external_value(PARAM_TEXT, &#39;Data&#39;)</span>
-<span class="x">            ]</span>
-<span class="x">        );</span>
+<span class="x">    // Define the structure of the data we want to export</span>
+<span class="x">    protected static function define_other_properties() {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;id&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_INT,</span>
+<span class="x">                &#39;description&#39; =&gt; &#39;The course ID&#39;,</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;fullname&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_TEXT,</span>
+<span class="x">                &#39;description&#39; =&gt; &#39;Full name of the course&#39;,</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;shortname&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_TEXT,</span>
+<span class="x">                &#39;description&#39; =&gt; &#39;Short name of the course&#39;,</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;summary&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_RAW,</span>
+<span class="x">                &#39;description&#39; =&gt; &#39;Summary of the course&#39;,</span>
+<span class="x">            ],</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+
+<span class="x">    // Prepare additional values to be exported</span>
+<span class="x">    protected function get_other_values(renderer_base $output) {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;id&#39; =&gt; $this-&gt;data-&gt;id,</span>
+<span class="x">            &#39;fullname&#39; =&gt; $this-&gt;data-&gt;fullname,</span>
+<span class="x">            &#39;shortname&#39; =&gt; $this-&gt;data-&gt;shortname,</span>
+<span class="x">            &#39;summary&#39; =&gt; $this-&gt;data-&gt;summary,</span>
+<span class="x">        ];</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
+<h4 id="explanation-of-key-components">Explanation of Key Components</h4>
 <ol>
-<li><strong>Define the Web Service Function in <code>db/services.php</code>:</strong></li>
+<li>
+<p><strong><code>define_related()</code></strong>:
+    Defines any related data required to complete the export, such as contexts (for capability checks) or course information. This helps manage related data and dependencies.</p>
+</li>
+<li>
+<p><strong><code>define_other_properties()</code></strong>:
+    Specifies the structure of the data that the exporter will serialize. Here, we define which fields (such as <code>id</code>, <code>fullname</code>, <code>shortname</code>, and <code>summary</code>) will be exported and their types.</p>
+</li>
+<li>
+<p><strong><code>get_other_values()</code></strong>:
+    This method fetches the values of the data to be serialized. In this case, we retrieve the course <code>id</code>, <code>fullname</code>, <code>shortname</code>, and <code>summary</code> and prepare them for export.</p>
+</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
-<span class="x">    &#39;yourplugin_get_data&#39; =&gt; [</span>
-<span class="x">        &#39;classname&#39;   =&gt; &#39;yourplugin_external&#39;,</span>
-<span class="x">        &#39;methodname&#39;  =&gt; &#39;get_data&#39;,</span>
-<span class="x">        &#39;classpath&#39;   =&gt; &#39;yourplugin/externallib.php&#39;,</span>
-<span class="x">        &#39;description&#39; =&gt; &#39;Get data for your plugin&#39;,</span>
-<span class="x">        &#39;type&#39;        =&gt; &#39;read&#39;,</span>
-<span class="x">        &#39;ajax&#39;        =&gt; true,</span>
-<span class="x">    ],</span>
-<span class="x">];</span>
+<h4 id="step-2-using-the-exporter">Step 2: Using the Exporter</h4>
+<p>Once the exporter class is defined, it can be used to export course data like this:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Get the course object</span>
+<span class="x">$course = get_course($courseid);</span>
 
-<span class="x">$services = [</span>
-<span class="x">    &#39;Your Plugin Service&#39; =&gt; [</span>
-<span class="x">        &#39;functions&#39; =&gt; [&#39;yourplugin_get_data&#39;],</span>
-<span class="x">        &#39;restrictedusers&#39; =&gt; 0,</span>
-<span class="x">        &#39;enabled&#39; =&gt; 1,</span>
-<span class="x">    ],</span>
-<span class="x">];</span>
+<span class="x">// Create an exporter object with the course data</span>
+<span class="x">$context = context_course::instance($course-&gt;id);</span>
+<span class="x">$exporter = new \local_myplugin\external\course_exporter($course, [&#39;context&#39; =&gt; $context]);</span>
+
+<span class="x">// Export the data as an array</span>
+<span class="x">$course_data = $exporter-&gt;export();</span>
+</code></pre></div>
+<p>This will generate an array that looks like:</p>
+<div class="highlight"><pre><span></span><code><span class="x">Array</span>
+<span class="x">(</span>
+<span class="x">    [id] =&gt; 1</span>
+<span class="x">    [fullname] =&gt; Introduction to Moodle</span>
+<span class="x">    [shortname] =&gt; moodle101</span>
+<span class="x">    [summary] =&gt; This is a sample course for learning Moodle.</span>
+<span class="x">)</span>
+</code></pre></div>
+<p>This array is now ready to be serialized into JSON or used in an external function (like a web service or AJAX call).</p>
+<hr />
+<h3 id="exporters-for-web-services-and-ajax">Exporters for Web Services and AJAX</h3>
+<p>Exporters are often used in conjunction with <strong>web services</strong> and <strong>AJAX requests</strong>. When writing external functions, exporters help to clearly define the structure of the data being returned, ensuring that the API response is well-formed and easy to consume.</p>
+<h4 id="example-using-exporter-in-a-web-service">Example: Using Exporter in a Web Service</h4>
+<p>Let’s say we want to write a web service function that retrieves course data using our exporter. Here’s an example:</p>
+<ol>
+<li><strong>Define the Web Service Function</strong> in <code>db/services.php</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = array(</span>
+<span class="x">    &#39;local_myplugin_get_course&#39; =&gt; array(</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;local_myplugin_external&#39;,</span>
+<span class="x">        &#39;methodname&#39; =&gt; &#39;get_course&#39;,</span>
+<span class="x">        &#39;classpath&#39; =&gt; &#39;local/myplugin/externallib.php&#39;,</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Retrieve course details using the exporter.&#39;,</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;read&#39;,</span>
+<span class="x">        &#39;ajax&#39; =&gt; true,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
 </code></pre></div>
 <ol>
-<li><strong>Call the Web Service from JavaScript:</strong></li>
+<li><strong>Create the Web Service Function</strong> in <code>externallib.php</code>:</li>
 </ol>
-<p>In <code>yourplugin.js</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/ajax&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Ajax</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">getData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourplugin_get_data&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}]);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="x">class local_myplugin_external extends external_api {</span>
 
-<span class="w">        </span><span class="nx">requests</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Data received:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;your-data-container&#39;</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">ex</span><span class="p">);</span><span class="w"></span>
-<span class="w">            </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourplugin&#39;</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">errorString</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;your-data-container&#39;</span><span class="p">).</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">errorString</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="p">});</span><span class="w"></span>
-<span class="w">        </span><span class="p">});</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="x">    public static function get_course_parameters() {</span>
+<span class="x">        return new external_function_parameters([</span>
+<span class="x">            &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;Course ID&#39;)</span>
+<span class="x">        ]);</span>
+<span class="x">    }</span>
 
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;your-button-id&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">getData</span><span class="p">);</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<span class="x">    public static function get_course($courseid) {</span>
+<span class="x">        global $DB;</span>
+
+<span class="x">        // Get course record</span>
+<span class="x">        $course = $DB-&gt;get_record(&#39;course&#39;, [&#39;id&#39; =&gt; $courseid], &#39;*&#39;, MUST_EXIST);</span>
+<span class="x">        $context = context_course::instance($course-&gt;id);</span>
+
+<span class="x">        // Use the exporter to serialize course data</span>
+<span class="x">        $exporter = new \local_myplugin\external\course_exporter($course, [&#39;context&#39; =&gt; $context]);</span>
+<span class="x">        return $exporter-&gt;export();</span>
+<span class="x">    }</span>
+
+<span class="x">    public static function get_course_returns() {</span>
+<span class="x">        return new external_single_structure([</span>
+<span class="x">            &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;The course ID&#39;),</span>
+<span class="x">            &#39;fullname&#39; =&gt; new external_value(PARAM_TEXT, &#39;Full name of the course&#39;),</span>
+<span class="x">            &#39;shortname&#39; =&gt; new external_value(PARAM_TEXT, &#39;Short name of the course&#39;),</span>
+<span class="x">            &#39;summary&#39; =&gt; new external_value(PARAM_RAW, &#39;Summary of the course&#39;),</span>
+<span class="x">        ]);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
 </code></pre></div>
+<p>In this example:
+- The <code>get_course</code> function retrieves the course record and uses the exporter to return the course data in a uniform format.
+- The function signature (<code>get_course_parameters</code> and <code>get_course_returns</code>) ensures that the parameters and return values are well-defined, providing type safety and clarity.</p>
+<hr />
+<h3 id="benefits-of-exporters-in-moodle">Benefits of Exporters in Moodle</h3>
 <ol>
-<li><strong>Include the JavaScript in Your Plugin’s Layout:</strong></li>
+<li><strong>Consistency</strong>: By centralizing the serialization logic, all external outputs from Moodle are consistent. This is crucial when integrating with multiple external systems.</li>
+<li><strong>Simplified Maintenance</strong>: When data structures change, only the exporter needs to be updated. This makes maintenance much simpler and prevents code duplication.</li>
+<li><strong>Security and Validation</strong>: Exporters enforce strict validation rules, ensuring that only valid and expected data is exported. This reduces the risk of security vulnerabilities.</li>
+<li><strong>Readability</strong>: Exporters make your code easier to read and understand. By encapsulating export logic in a single class, the responsibilities of the class are clear, and the code remains focused.</li>
 </ol>
-<p>In your plugin’s PHP file:</p>
-<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourplugin/yourplugin&#39;, &#39;init&#39;);</span>
-</code></pre></div>
-<h3 id="common-design-patterns">Common design patterns</h3>
-<p>In modern JavaScript in Moodle, it is common to place all code which uses the core/ajax module into a single repository.js file, for example the following fictitious example may be placed into a new repository module for the Assignment plugin:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// in mod/assign/amd/src/repository.js</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">call</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fetchMany</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">submitGradingForm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">assignmentid</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">userid</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">data</span><span class="p">,</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">fetchMany</span><span class="p">([{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mod_assign_submit_grading_form&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">assignmentid</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">userid</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">jsonformdata</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">}])[</span><span class="mf">0</span><span class="p">];</span><span class="w"></span>
-</code></pre></div>
-<p>It may then be called in code as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// mod/assign/amd/src/example.js</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">submitGradingForm</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./repository&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">doSomething</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">assignmentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getAssigmentId</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">getUserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getUserId</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getData</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">submitGradingForm</span><span class="p">(</span><span class="nx">assignmentId</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p>Placing all AJAX interactions into a single module has a number of benefits:</p>
-<ul>
-<li>it becomes easier to refactor code in the future</li>
-<li>it is easier to identify which calls may be chained</li>
-<li>it is easier to find places which call web services to aid in debugging and development</li>
-<li>each individual web service call can has a meaningful response</li>
-</ul>
-<h3 id="chained-calls">Chained calls</h3>
-<p>It is also possible to make multiple web service calls from a single transaction, for example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// mod/assign/amd/src/example.js</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">call</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">fetchMany</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">getGradingFormRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">assignmentid</span><span class="p">,</span><span class="w"> </span><span class="nx">userid</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mod_assign_submit_grading_form&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">assignmentid</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">userid</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">jsonformdata</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">getNextGraderRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">assignmentid</span><span class="p">,</span><span class="w"> </span><span class="nx">userid</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mod_assign_get_grading_form&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">assignmentid</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">userid</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">submitGradingFormAndFetchNext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="nx">assignmentId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">currentUserId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">currentUserData</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">nextUserId</span><span class="w"></span>
-<span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">responses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fetchMany</span><span class="p">([</span><span class="w"></span>
-<span class="w">        </span><span class="nx">getGradingFormRequest</span><span class="p">(</span><span class="nx">assignmentId</span><span class="p">,</span><span class="w"> </span><span class="nx">usecurrentUserIdrId</span><span class="p">,</span><span class="w"> </span><span class="nx">currentUserData</span><span class="p">),</span><span class="w"></span>
-<span class="w">        </span><span class="nx">getNextGraderRequest</span><span class="p">(</span><span class="nx">assignmentId</span><span class="p">,</span><span class="w"> </span><span class="nx">nextUserId</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="p">]);</span><span class="w"></span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">submittedGradingForm</span><span class="o">:</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nx">nextGradingForm</span><span class="o">:</span><span class="w"> </span><span class="nx">responses</span><span class="p">[</span><span class="mf">1</span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="p">};</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-</code></pre></div>
-<p>The above example may then be called more meaningfully as:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// mod/assign/example.js</span><span class="w"></span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">submitGradingFormAndFetchNext</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./repository&#39;</span><span class="p">;</span><span class="w"></span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">doSomething</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">assignmentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getAssigmentId</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">getUserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getUserId</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getData</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">submittedGradingForm</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">nextGradingForm</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">submitGradingFormAndFetchNext</span><span class="p">(</span><span class="nx">assignmentId</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">getNextuserId</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">submittedGradingForm</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">nextGradingForm</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<h3 id="key-considerations">Key considerations</h3>
-<p>To update parts of the UI in response to Ajax changes, consider using Templates</p>
-<p>Important considerations when using webservices with ajax calls:</p>
-<ul>
-<li>Any call to $PAGE-&gt;get_renderer() requires the correct theme be set. If this is done in a webservice - it is likely that the theme needs to be a parameter to the webservice.</li>
-<li>Text returned from a webservice must be properly filtered. This means it must go through external_format_text or external_format_string (since 3.0 - see MDL-51213) with the correct context.</li>
-<li>The correct context for 2 is the most specific context relating to the thing being output - for example, for a user's profile description the context is the user context.</li>
-<li>After adding any dynamic content to a page, Moodle's filters need to be notified via M.core.event.FILTER_CONTENT_UPDATED</li>
-<li>After adding or changing any webservice definition in db/services.php - you must bump the version number for either the plugin or Moodle and run the upgrade. This will install the webservice in the DB tables so it can be found by ajax.</li>
-</ul>
-<p>In some very rare cases - you can mark webservices as safe to call without a session. These should only be used for webservices that return 100% public information and do not consume many resources. A current example is core_get_string. To mark a webservice as safe to call without a session you need to do 2 things.</p>
-<ul>
-<li>Add 'loginrequired' =&gt; false to the service definition in db/services.php</li>
-<li>Pass false as the 3rd argument to the ajax "call" method when calling the webservice. The benefit to marking these safe webservice is that (a) they can be called from the login page before we have a session and (b) they will perform faster because they will bypass Moodle's session code when responding to the webservice call.</li>
-</ul>
-<h3 id="summary">Summary</h3>
-<p>Using AJAX in Moodle with the <code>core/ajax</code> module provides a secure, efficient, and maintainable way to handle asynchronous interactions. By leveraging Moodle's Web Service API, you can create robust AJAX interactions that enhance the user experience without compromising security or performance. The process involves defining web service functions, marking them for AJAX, and calling them from JavaScript in response to user actions.</p>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>Moodle exporters are a vital tool for handling the serialization of data, especially when working with external systems such as web services and AJAX. They ensure that data is exported in a consistent, maintainable, and secure manner, and they help to define clear function signatures for external functions. By using exporters, you can simplify data handling, reduce complexity, and improve the overall quality of your Moodle plugin's external interactions.</p>
 
               
             </article>
@@ -2439,7 +2441,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpMoodleModal/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Modal Dialogues" rel="prev">
+        <a href="../phpMoodlePersistent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Persistent API" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2448,26 +2450,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Modal Dialogues
+              Persistent API
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../../phpMoodleServices/" class="md-footer__link md-footer__link--next" aria-label="Next: External Services" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              External Services
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

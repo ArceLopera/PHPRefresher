@@ -180,4 +180,5 @@ nav:
      - APIs:
             - External Services: Moodle/phpMoodleServices.md
             - Persistent API: Moodle/API/phpMoodlePersistent.md
+            - Exporter: Moodle/API/phpMoodleExporter.md
 
