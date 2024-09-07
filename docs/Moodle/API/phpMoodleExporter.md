@@ -24,13 +24,9 @@ At a high level, exporters in Moodle follow a specific workflow:
 2. **Transform Data**: The exporter processes the data, transforming it into a simple format that can be used for serialization. This typically involves defining which parts of the data should be included and how they should be presented.
 3. **Serialize Data**: The exporter outputs the data in a format that can be consumed externally. This is often an array, JSON, or another structure that external services can easily work with.
 
-### Example of a Moodle Exporter
-
-Let’s walk through an example of creating a Moodle exporter class that serializes course data for a web service or AJAX interaction.
-
 #### Step 1: Defining the Exporter Class
 
-The exporter class extends `core\external\exporter` and implements the `get_other_values()` method to define how the data is serialized.
+The exporter class extends `core\external\exporter` and implements the ` define_properties()` method to define how the data is serialized. The method define_properties() returns a list of the properties expected when instantiating your exporter, and the ones it will export at the same time.
 
 ```php
 namespace local_myplugin\external;
@@ -40,162 +36,115 @@ use renderer_base;
 
 class course_exporter extends exporter {
 
-    // Define the fields to export
-    protected static function define_related() {
-        return [
-            'context' => 'context',
-        ];
-    }
-
-    // Define the structure of the data we want to export
-    protected static function define_other_properties() {
+    /**
+    * Return the list of properties.
+    *
+    * @return array
+    */
+    protected static function define_properties() {
         return [
             'id' => [
-                'type' => PARAM_INT,
-                'description' => 'The course ID',
+                'type' => PARAM_INT
             ],
-            'fullname' => [
-                'type' => PARAM_TEXT,
-                'description' => 'Full name of the course',
+            'username' => [
+                'type' => PARAM_ALPHANUMEXT
             ],
-            'shortname' => [
-                'type' => PARAM_TEXT,
-                'description' => 'Short name of the course',
-            ],
-            'summary' => [
-                'type' => PARAM_RAW,
-                'description' => 'Summary of the course',
-            ],
-        ];
-    }
-
-    // Prepare additional values to be exported
-    protected function get_other_values(renderer_base $output) {
-        return [
-            'id' => $this->data->id,
-            'fullname' => $this->data->fullname,
-            'shortname' => $this->data->shortname,
-            'summary' => $this->data->summary,
         ];
     }
 }
 ```
 
-#### Explanation of Key Components
+These properties will allow us to generate a create or update structure for external functions. Oh, and if you are using persistent you do not need to do this.
 
-1. **`define_related()`**:
-    Defines any related data required to complete the export, such as contexts (for capability checks) or course information. This helps manage related data and dependencies.
+#### Property attributes
 
-2. **`define_other_properties()`**:
-    Specifies the structure of the data that the exporter will serialize. Here, we define which fields (such as `id`, `fullname`, `shortname`, and `summary`) will be exported and their types.
+Each property is configured using the following attributes:
 
-3. **`get_other_values()`**:
-    This method fetches the values of the data to be serialized. In this case, we retrieve the course `id`, `fullname`, `shortname`, and `summary` and prepare them for export.
+##### type
+The only mandatory attribute. It must either be one of the many PARAM_* constants, or an array of properties.
+##### default
+The default value when the value was not provided. When not specified, a value is required.
+##### null
+Either of the constants NULL_ALLOWED or NULL_NOT_ALLOWED telling if the null value is accepted. This defaults to NULL_NOT_ALLOWED.
+##### optional
+Whether the property can be omitted completely. Defaults to false.
+##### multiple
+Whether there will be more one or more entries under this property. Defaults to false.
+Although this is not a rule, it is recommended that the standard properties (by opposition to additional properties) only use the type attribute, and only with PARAM_* constants.
 
 #### Step 2: Using the Exporter
 
 Once the exporter class is defined, it can be used to export course data like this:
 
 ```php
-// Get the course object
-$course = get_course($courseid);
+$data = (object) ['id' => 123, 'username' => 'batman'];
 
-// Create an exporter object with the course data
-$context = context_course::instance($course->id);
-$exporter = new \local_myplugin\external\course_exporter($course, ['context' => $context]);
+// The only time we can give data to our exporter is when instantiating it.
+$ue = new user_exporter($data);
 
-// Export the data as an array
-$course_data = $exporter->export();
+// To export, we must pass the reference to a renderer.
+$data = $ue->export($OUTPUT);
 ```
 
-This will generate an array that looks like:
+If we print the content of $data, we will obtain this:
 
 ```php
-Array
+stdClass Object
 (
-    [id] => 1
-    [fullname] => Introduction to Moodle
-    [shortname] => moodle101
-    [summary] => This is a sample course for learning Moodle.
+    [id] => 123
+    [username] => batman
 )
 ```
-
-This array is now ready to be serialized into JSON or used in an external function (like a web service or AJAX call).
-
----
 
 ### Exporters for Web Services and AJAX
 
 Exporters are often used in conjunction with **web services** and **AJAX requests**. When writing external functions, exporters help to clearly define the structure of the data being returned, ensuring that the API response is well-formed and easy to consume.
 
-#### Example: Using Exporter in a Web Service
+#### Using Exporter in a Web Service
 
-Let’s say we want to write a web service function that retrieves course data using our exporter. Here’s an example:
-
-1. **Define the Web Service Function** in `db/services.php`:
+Let's imagine that we have an external function get_users which returns a list of users. For now we only want to export the user ID and their user name, so we'll use our exporter. Let's ask our exporter to create the external structure for us:
 
 ```php
-$functions = array(
-    'local_myplugin_get_course' => array(
-        'classname' => 'local_myplugin_external',
-        'methodname' => 'get_course',
-        'classpath' => 'local/myplugin/externallib.php',
-        'description' => 'Retrieve course details using the exporter.',
-        'type' => 'read',
-        'ajax' => true,
-    ),
-);
-```
-
-2. **Create the Web Service Function** in `externallib.php`:
-
-```php
-class local_myplugin_external extends external_api {
-
-    public static function get_course_parameters() {
-        return new external_function_parameters([
-            'courseid' => new external_value(PARAM_INT, 'Course ID')
-        ]);
-    }
-
-    public static function get_course($courseid) {
-        global $DB;
-
-        // Get course record
-        $course = $DB->get_record('course', ['id' => $courseid], '*', MUST_EXIST);
-        $context = context_course::instance($course->id);
-
-        // Use the exporter to serialize course data
-        $exporter = new \local_myplugin\external\course_exporter($course, ['context' => $context]);
-        return $exporter->export();
-    }
-
-    public static function get_course_returns() {
-        return new external_single_structure([
-            'id' => new external_value(PARAM_INT, 'The course ID'),
-            'fullname' => new external_value(PARAM_TEXT, 'Full name of the course'),
-            'shortname' => new external_value(PARAM_TEXT, 'Short name of the course'),
-            'summary' => new external_value(PARAM_RAW, 'Summary of the course'),
-        ]);
-    }
+public static function get_users_returns() {
+    return external_multiple_structure(
+        user_exporter::get_read_structure()
+    );
 }
 ```
 
-In this example:
-- The `get_course` function retrieves the course record and uses the exporter to return the course data in a uniform format.
-- The function signature (`get_course_parameters` and `get_course_returns`) ensures that the parameters and return values are well-defined, providing type safety and clarity.
+Now that this is done, we must use our exporter to export our users' data.
 
----
+```php
+public static function get_users() {
+    global $DB, $PAGE;
+    $output = $PAGE->get_renderer('core');
+    $users = $DB->get_records('user', null, '', 'id, username', 0, 10); // Get 10 users.
+    $result = [];
+    foreach ($users as $userdata) {
+        $exporter = new user_exporter($userdata);
+        $result[] = $exporter->export($output);
+    }
+    return $result;
+}
+```
 
-### Benefits of Exporters in Moodle
+Lastly, if you had another external function to create users, you could use the exporter to get the structure of the incoming data. That helps if you want your external functions to require more information to create your users as your needs grow. The following indicates that the external function requires the field 'username' to be passed in the key 'user'. The create and update structures include all of the standard properties, none of the other ones. Note that the create structure does not include the id property. Use user_exporter::get_update_structure() if to update a user and thus receive the ID.
 
-1. **Consistency**: By centralizing the serialization logic, all external outputs from Moodle are consistent. This is crucial when integrating with multiple external systems.
-2. **Simplified Maintenance**: When data structures change, only the exporter needs to be updated. This makes maintenance much simpler and prevents code duplication.
-3. **Security and Validation**: Exporters enforce strict validation rules, ensuring that only valid and expected data is exported. This reduces the risk of security vulnerabilities.
-4. **Readability**: Exporters make your code easier to read and understand. By encapsulating export logic in a single class, the responsibilities of the class are clear, and the code remains focused.
+```php
+public static function create_user_parameters() {
+    return new external_function_parameters([
+        'user' => user_exporter::get_create_structure()
+    ]);
+}
 
----
+public static function create_user($user) {
+    // Mandatory parameters validation.
+    $params = self::validate_parameters(self::create_user_parameters(), ['user' => $user]);
+    $user = $params['user'];
+    ...
+}
+```
 
-### Conclusion
+Important note: when used in the parameters, the exporter's structure must always be included under another key, above we used user. Else this would not be flexible, and may not generate a valid structure for some webservice protocols.
 
-Moodle exporters are a vital tool for handling the serialization of data, especially when working with external systems such as web services and AJAX. They ensure that data is exported in a consistent, maintainable, and secure manner, and they help to define clear function signatures for external functions. By using exporters, you can simplify data handling, reduce complexity, and improve the overall quality of your Moodle plugin's external interactions.
+#### Abiding to text formatting rules

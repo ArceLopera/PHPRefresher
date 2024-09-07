@@ -2032,14 +2032,7 @@
     How Exporters Work in Moodle
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-of-a-moodle-exporter" class="md-nav__link">
-    Example of a Moodle Exporter
-  </a>
-  
-    <nav class="md-nav" aria-label="Example of a Moodle Exporter">
+    <nav class="md-nav" aria-label="How Exporters Work in Moodle">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2050,8 +2043,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#explanation-of-key-components" class="md-nav__link">
-    Explanation of Key Components
+  <a href="#property-attributes" class="md-nav__link">
+    Property attributes
   </a>
   
 </li>
@@ -2077,28 +2070,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-using-exporter-in-a-web-service" class="md-nav__link">
-    Example: Using Exporter in a Web Service
+  <a href="#using-exporter-in-a-web-service" class="md-nav__link">
+    Using Exporter in a Web Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abiding-to-text-formatting-rules" class="md-nav__link">
+    Abiding to text formatting rules
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benefits-of-exporters-in-moodle" class="md-nav__link">
-    Benefits of Exporters in Moodle
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
   
 </li>
       
@@ -2160,14 +2146,7 @@
     How Exporters Work in Moodle
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-of-a-moodle-exporter" class="md-nav__link">
-    Example of a Moodle Exporter
-  </a>
-  
-    <nav class="md-nav" aria-label="Example of a Moodle Exporter">
+    <nav class="md-nav" aria-label="How Exporters Work in Moodle">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2178,8 +2157,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#explanation-of-key-components" class="md-nav__link">
-    Explanation of Key Components
+  <a href="#property-attributes" class="md-nav__link">
+    Property attributes
   </a>
   
 </li>
@@ -2205,28 +2184,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-using-exporter-in-a-web-service" class="md-nav__link">
-    Example: Using Exporter in a Web Service
+  <a href="#using-exporter-in-a-web-service" class="md-nav__link">
+    Using Exporter in a Web Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abiding-to-text-formatting-rules" class="md-nav__link">
+    Abiding to text formatting rules
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#benefits-of-exporters-in-moodle" class="md-nav__link">
-    Benefits of Exporters in Moodle
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
   
 </li>
       
@@ -2274,10 +2246,8 @@
 <li><strong>Transform Data</strong>: The exporter processes the data, transforming it into a simple format that can be used for serialization. This typically involves defining which parts of the data should be included and how they should be presented.</li>
 <li><strong>Serialize Data</strong>: The exporter outputs the data in a format that can be consumed externally. This is often an array, JSON, or another structure that external services can easily work with.</li>
 </ol>
-<h3 id="example-of-a-moodle-exporter">Example of a Moodle Exporter</h3>
-<p>Let’s walk through an example of creating a Moodle exporter class that serializes course data for a web service or AJAX interaction.</p>
 <h4 id="step-1-defining-the-exporter-class">Step 1: Defining the Exporter Class</h4>
-<p>The exporter class extends <code>core\external\exporter</code> and implements the <code>get_other_values()</code> method to define how the data is serialized.</p>
+<p>The exporter class extends <code>core\external\exporter</code> and implements the <code>define_properties()</code> method to define how the data is serialized. The method define_properties() returns a list of the properties expected when instantiating your exporter, and the ones it will export at the same time.</p>
 <div class="highlight"><pre><span></span><code><span class="x">namespace local_myplugin\external;</span>
 
 <span class="x">use core\external\exporter;</span>
@@ -2285,149 +2255,93 @@
 
 <span class="x">class course_exporter extends exporter {</span>
 
-<span class="x">    // Define the fields to export</span>
-<span class="x">    protected static function define_related() {</span>
-<span class="x">        return [</span>
-<span class="x">            &#39;context&#39; =&gt; &#39;context&#39;,</span>
-<span class="x">        ];</span>
-<span class="x">    }</span>
-
-<span class="x">    // Define the structure of the data we want to export</span>
-<span class="x">    protected static function define_other_properties() {</span>
+<span class="x">    /**</span>
+<span class="x">    * Return the list of properties.</span>
+<span class="x">    *</span>
+<span class="x">    * @return array</span>
+<span class="x">    */</span>
+<span class="x">    protected static function define_properties() {</span>
 <span class="x">        return [</span>
 <span class="x">            &#39;id&#39; =&gt; [</span>
-<span class="x">                &#39;type&#39; =&gt; PARAM_INT,</span>
-<span class="x">                &#39;description&#39; =&gt; &#39;The course ID&#39;,</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_INT</span>
 <span class="x">            ],</span>
-<span class="x">            &#39;fullname&#39; =&gt; [</span>
-<span class="x">                &#39;type&#39; =&gt; PARAM_TEXT,</span>
-<span class="x">                &#39;description&#39; =&gt; &#39;Full name of the course&#39;,</span>
+<span class="x">            &#39;username&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_ALPHANUMEXT</span>
 <span class="x">            ],</span>
-<span class="x">            &#39;shortname&#39; =&gt; [</span>
-<span class="x">                &#39;type&#39; =&gt; PARAM_TEXT,</span>
-<span class="x">                &#39;description&#39; =&gt; &#39;Short name of the course&#39;,</span>
-<span class="x">            ],</span>
-<span class="x">            &#39;summary&#39; =&gt; [</span>
-<span class="x">                &#39;type&#39; =&gt; PARAM_RAW,</span>
-<span class="x">                &#39;description&#39; =&gt; &#39;Summary of the course&#39;,</span>
-<span class="x">            ],</span>
-<span class="x">        ];</span>
-<span class="x">    }</span>
-
-<span class="x">    // Prepare additional values to be exported</span>
-<span class="x">    protected function get_other_values(renderer_base $output) {</span>
-<span class="x">        return [</span>
-<span class="x">            &#39;id&#39; =&gt; $this-&gt;data-&gt;id,</span>
-<span class="x">            &#39;fullname&#39; =&gt; $this-&gt;data-&gt;fullname,</span>
-<span class="x">            &#39;shortname&#39; =&gt; $this-&gt;data-&gt;shortname,</span>
-<span class="x">            &#39;summary&#39; =&gt; $this-&gt;data-&gt;summary,</span>
 <span class="x">        ];</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
-<h4 id="explanation-of-key-components">Explanation of Key Components</h4>
-<ol>
-<li>
-<p><strong><code>define_related()</code></strong>:
-    Defines any related data required to complete the export, such as contexts (for capability checks) or course information. This helps manage related data and dependencies.</p>
-</li>
-<li>
-<p><strong><code>define_other_properties()</code></strong>:
-    Specifies the structure of the data that the exporter will serialize. Here, we define which fields (such as <code>id</code>, <code>fullname</code>, <code>shortname</code>, and <code>summary</code>) will be exported and their types.</p>
-</li>
-<li>
-<p><strong><code>get_other_values()</code></strong>:
-    This method fetches the values of the data to be serialized. In this case, we retrieve the course <code>id</code>, <code>fullname</code>, <code>shortname</code>, and <code>summary</code> and prepare them for export.</p>
-</li>
-</ol>
+<p>These properties will allow us to generate a create or update structure for external functions. Oh, and if you are using persistent you do not need to do this.</p>
+<h4 id="property-attributes">Property attributes</h4>
+<p>Each property is configured using the following attributes:</p>
+<h5 id="type">type</h5>
+<p>The only mandatory attribute. It must either be one of the many PARAM_* constants, or an array of properties.</p>
+<h5 id="default">default</h5>
+<p>The default value when the value was not provided. When not specified, a value is required.</p>
+<h5 id="null">null</h5>
+<p>Either of the constants NULL_ALLOWED or NULL_NOT_ALLOWED telling if the null value is accepted. This defaults to NULL_NOT_ALLOWED.</p>
+<h5 id="optional">optional</h5>
+<p>Whether the property can be omitted completely. Defaults to false.</p>
+<h5 id="multiple">multiple</h5>
+<p>Whether there will be more one or more entries under this property. Defaults to false.
+Although this is not a rule, it is recommended that the standard properties (by opposition to additional properties) only use the type attribute, and only with PARAM_* constants.</p>
 <h4 id="step-2-using-the-exporter">Step 2: Using the Exporter</h4>
 <p>Once the exporter class is defined, it can be used to export course data like this:</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Get the course object</span>
-<span class="x">$course = get_course($courseid);</span>
+<div class="highlight"><pre><span></span><code><span class="x">$data = (object) [&#39;id&#39; =&gt; 123, &#39;username&#39; =&gt; &#39;batman&#39;];</span>
 
-<span class="x">// Create an exporter object with the course data</span>
-<span class="x">$context = context_course::instance($course-&gt;id);</span>
-<span class="x">$exporter = new \local_myplugin\external\course_exporter($course, [&#39;context&#39; =&gt; $context]);</span>
+<span class="x">// The only time we can give data to our exporter is when instantiating it.</span>
+<span class="x">$ue = new user_exporter($data);</span>
 
-<span class="x">// Export the data as an array</span>
-<span class="x">$course_data = $exporter-&gt;export();</span>
+<span class="x">// To export, we must pass the reference to a renderer.</span>
+<span class="x">$data = $ue-&gt;export($OUTPUT);</span>
 </code></pre></div>
-<p>This will generate an array that looks like:</p>
-<div class="highlight"><pre><span></span><code><span class="x">Array</span>
+<p>If we print the content of $data, we will obtain this:</p>
+<div class="highlight"><pre><span></span><code><span class="x">stdClass Object</span>
 <span class="x">(</span>
-<span class="x">    [id] =&gt; 1</span>
-<span class="x">    [fullname] =&gt; Introduction to Moodle</span>
-<span class="x">    [shortname] =&gt; moodle101</span>
-<span class="x">    [summary] =&gt; This is a sample course for learning Moodle.</span>
+<span class="x">    [id] =&gt; 123</span>
+<span class="x">    [username] =&gt; batman</span>
 <span class="x">)</span>
 </code></pre></div>
-<p>This array is now ready to be serialized into JSON or used in an external function (like a web service or AJAX call).</p>
-<hr />
 <h3 id="exporters-for-web-services-and-ajax">Exporters for Web Services and AJAX</h3>
 <p>Exporters are often used in conjunction with <strong>web services</strong> and <strong>AJAX requests</strong>. When writing external functions, exporters help to clearly define the structure of the data being returned, ensuring that the API response is well-formed and easy to consume.</p>
-<h4 id="example-using-exporter-in-a-web-service">Example: Using Exporter in a Web Service</h4>
-<p>Let’s say we want to write a web service function that retrieves course data using our exporter. Here’s an example:</p>
-<ol>
-<li><strong>Define the Web Service Function</strong> in <code>db/services.php</code>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="x">$functions = array(</span>
-<span class="x">    &#39;local_myplugin_get_course&#39; =&gt; array(</span>
-<span class="x">        &#39;classname&#39; =&gt; &#39;local_myplugin_external&#39;,</span>
-<span class="x">        &#39;methodname&#39; =&gt; &#39;get_course&#39;,</span>
-<span class="x">        &#39;classpath&#39; =&gt; &#39;local/myplugin/externallib.php&#39;,</span>
-<span class="x">        &#39;description&#39; =&gt; &#39;Retrieve course details using the exporter.&#39;,</span>
-<span class="x">        &#39;type&#39; =&gt; &#39;read&#39;,</span>
-<span class="x">        &#39;ajax&#39; =&gt; true,</span>
-<span class="x">    ),</span>
-<span class="x">);</span>
-</code></pre></div>
-<ol>
-<li><strong>Create the Web Service Function</strong> in <code>externallib.php</code>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="x">class local_myplugin_external extends external_api {</span>
-
-<span class="x">    public static function get_course_parameters() {</span>
-<span class="x">        return new external_function_parameters([</span>
-<span class="x">            &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;Course ID&#39;)</span>
-<span class="x">        ]);</span>
-<span class="x">    }</span>
-
-<span class="x">    public static function get_course($courseid) {</span>
-<span class="x">        global $DB;</span>
-
-<span class="x">        // Get course record</span>
-<span class="x">        $course = $DB-&gt;get_record(&#39;course&#39;, [&#39;id&#39; =&gt; $courseid], &#39;*&#39;, MUST_EXIST);</span>
-<span class="x">        $context = context_course::instance($course-&gt;id);</span>
-
-<span class="x">        // Use the exporter to serialize course data</span>
-<span class="x">        $exporter = new \local_myplugin\external\course_exporter($course, [&#39;context&#39; =&gt; $context]);</span>
-<span class="x">        return $exporter-&gt;export();</span>
-<span class="x">    }</span>
-
-<span class="x">    public static function get_course_returns() {</span>
-<span class="x">        return new external_single_structure([</span>
-<span class="x">            &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;The course ID&#39;),</span>
-<span class="x">            &#39;fullname&#39; =&gt; new external_value(PARAM_TEXT, &#39;Full name of the course&#39;),</span>
-<span class="x">            &#39;shortname&#39; =&gt; new external_value(PARAM_TEXT, &#39;Short name of the course&#39;),</span>
-<span class="x">            &#39;summary&#39; =&gt; new external_value(PARAM_RAW, &#39;Summary of the course&#39;),</span>
-<span class="x">        ]);</span>
-<span class="x">    }</span>
+<h4 id="using-exporter-in-a-web-service">Using Exporter in a Web Service</h4>
+<p>Let's imagine that we have an external function get_users which returns a list of users. For now we only want to export the user ID and their user name, so we'll use our exporter. Let's ask our exporter to create the external structure for us:</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function get_users_returns() {</span>
+<span class="x">    return external_multiple_structure(</span>
+<span class="x">        user_exporter::get_read_structure()</span>
+<span class="x">    );</span>
 <span class="x">}</span>
 </code></pre></div>
-<p>In this example:
-- The <code>get_course</code> function retrieves the course record and uses the exporter to return the course data in a uniform format.
-- The function signature (<code>get_course_parameters</code> and <code>get_course_returns</code>) ensures that the parameters and return values are well-defined, providing type safety and clarity.</p>
-<hr />
-<h3 id="benefits-of-exporters-in-moodle">Benefits of Exporters in Moodle</h3>
-<ol>
-<li><strong>Consistency</strong>: By centralizing the serialization logic, all external outputs from Moodle are consistent. This is crucial when integrating with multiple external systems.</li>
-<li><strong>Simplified Maintenance</strong>: When data structures change, only the exporter needs to be updated. This makes maintenance much simpler and prevents code duplication.</li>
-<li><strong>Security and Validation</strong>: Exporters enforce strict validation rules, ensuring that only valid and expected data is exported. This reduces the risk of security vulnerabilities.</li>
-<li><strong>Readability</strong>: Exporters make your code easier to read and understand. By encapsulating export logic in a single class, the responsibilities of the class are clear, and the code remains focused.</li>
-</ol>
-<hr />
-<h3 id="conclusion">Conclusion</h3>
-<p>Moodle exporters are a vital tool for handling the serialization of data, especially when working with external systems such as web services and AJAX. They ensure that data is exported in a consistent, maintainable, and secure manner, and they help to define clear function signatures for external functions. By using exporters, you can simplify data handling, reduce complexity, and improve the overall quality of your Moodle plugin's external interactions.</p>
+<p>Now that this is done, we must use our exporter to export our users' data.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function get_users() {</span>
+<span class="x">    global $DB, $PAGE;</span>
+<span class="x">    $output = $PAGE-&gt;get_renderer(&#39;core&#39;);</span>
+<span class="x">    $users = $DB-&gt;get_records(&#39;user&#39;, null, &#39;&#39;, &#39;id, username&#39;, 0, 10); // Get 10 users.</span>
+<span class="x">    $result = [];</span>
+<span class="x">    foreach ($users as $userdata) {</span>
+<span class="x">        $exporter = new user_exporter($userdata);</span>
+<span class="x">        $result[] = $exporter-&gt;export($output);</span>
+<span class="x">    }</span>
+<span class="x">    return $result;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Lastly, if you had another external function to create users, you could use the exporter to get the structure of the incoming data. That helps if you want your external functions to require more information to create your users as your needs grow. The following indicates that the external function requires the field 'username' to be passed in the key 'user'. The create and update structures include all of the standard properties, none of the other ones. Note that the create structure does not include the id property. Use user_exporter::get_update_structure() if to update a user and thus receive the ID.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function create_user_parameters() {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;user&#39; =&gt; user_exporter::get_create_structure()</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+
+<span class="x">public static function create_user($user) {</span>
+<span class="x">    // Mandatory parameters validation.</span>
+<span class="x">    $params = self::validate_parameters(self::create_user_parameters(), [&#39;user&#39; =&gt; $user]);</span>
+<span class="x">    $user = $params[&#39;user&#39;];</span>
+<span class="x">    ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Important note: when used in the parameters, the exporter's structure must always be included under another key, above we used user. Else this would not be flexible, and may not generate a valid structure for some webservice protocols.</p>
+<h4 id="abiding-to-text-formatting-rules">Abiding to text formatting rules</h4>
 
               
             </article>
