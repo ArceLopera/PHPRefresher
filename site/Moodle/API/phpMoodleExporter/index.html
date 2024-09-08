@@ -2088,6 +2088,68 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#formatting-parameters" class="md-nav__link">
+    Formatting parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-properties" class="md-nav__link">
+    Additional properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-objects" class="md-nav__link">
+    Related objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporters-and-persistent" class="md-nav__link">
+    Exporters and persistent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    Common pitfalls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimalist" class="md-nav__link">
+    Minimalist
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-advanced" class="md-nav__link">
+    More advanced
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2193,6 +2255,68 @@
           <li class="md-nav__item">
   <a href="#abiding-to-text-formatting-rules" class="md-nav__link">
     Abiding to text formatting rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#formatting-parameters" class="md-nav__link">
+    Formatting parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-properties" class="md-nav__link">
+    Additional properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-objects" class="md-nav__link">
+    Related objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporters-and-persistent" class="md-nav__link">
+    Exporters and persistent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    Common pitfalls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimalist" class="md-nav__link">
+    Minimalist
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-advanced" class="md-nav__link">
+    More advanced
   </a>
   
 </li>
@@ -2342,6 +2466,268 @@ Although this is not a rule, it is recommended that the standard properties (by 
 </code></pre></div>
 <p>Important note: when used in the parameters, the exporter's structure must always be included under another key, above we used user. Else this would not be flexible, and may not generate a valid structure for some webservice protocols.</p>
 <h4 id="abiding-to-text-formatting-rules">Abiding to text formatting rules</h4>
+<p>If we had to pass the $OUTPUT during export as seen previously, that is because we are handling the text formatting automatically for you. Remember the functions format_text() and format_string()? They are used to apply <a href="https://moodledev.io/docs/4.5/apis/plugintypes/filter">filters</a> on the content typically submitted by users, but also to convert it from a few given formats to HTML.</p>
+<p>Upon export, the exporter looks at the type of all your properties. When it finds a property of type PARAM_TEXT, it will use format_string(). However, if it finds a property using PARAM_RAW and there is another property of the same name but ending with format it will use format_text(). If you are not familiar with the rules for outputting text in Moodle see <a href="https://moodledev.io/docs/4.5/apis/subsystems/output#output-functions">Output functions</a> and <a href="https://docs.moodle.org/dev/lib/formslib.php_Form_Definition#Most_Commonly_Used_PARAM_.2A_Types">Most Commonly Used PARAM_* Types</a>.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">&#39;description&#39; =&gt; [</span>
+<span class="x">    &#39;type&#39; =&gt; PARAM_RAW,</span>
+<span class="x">],</span>
+<span class="x">&#39;descriptionformat&#39; =&gt; [</span>
+<span class="x">    &#39;type&#39; =&gt; PARAM_INT,</span>
+<span class="x">],</span>
+</code></pre></div>
+With the two above properties added, let's see what happens when the user's description is in the Markdown format and we export it.
+<div class="highlight"><pre><span></span><code><span class="x">$data = (object) [</span>
+<span class="x">    &#39;id&#39; =&gt; 123,</span>
+<span class="x">    &#39;username&#39; =&gt; &#39;batman&#39;,</span>
+<span class="x">    &#39;description&#39; =&gt; &#39;Hello __world__!&#39;,</span>
+<span class="x">    &#39;descriptionformat&#39; =&gt; FORMAT_MARKDOWN</span>
+<span class="x">];</span>
+<span class="x">$ue = new user_exporter($data, [&#39;context&#39; =&gt; context_user::instance(123)]);</span>
+<span class="x">$data = $ue-&gt;export($OUTPUT);</span>
+</code></pre></div>
+Unsurprisingly, this is what comes out of it:
+<div class="highlight"><pre><span></span><code><span class="x">stdClass Object</span>
+<span class="x">(</span>
+<span class="x">    [id] =&gt; 123</span>
+<span class="x">    [username] =&gt; batman</span>
+<span class="x">    [description] =&gt; &lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;!&lt;/p&gt;</span>
+<span class="x">    [descriptionformat] =&gt; 1   // Corresponds to FORMAT_HTML.</span>
+<span class="x">)</span>
+</code></pre></div>
+Psst... we've cheating a bit above. Did you notice that we've passed a context to the exporter? We passed a related object, more on them later.</p>
+<h3 id="formatting-parameters">Formatting parameters</h3>
+<p>Formatting requires a context. If you've defined a related object with the name context we will automatically use this one. But there are cases where you need multiple contexts, or you need to rewrite the pluginfile URLs. When that is the case, you will define a method called 'get_format_parameters_for_' followed with the name of the property. The latter also accepts the various options which both format_text and format_string support.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Get the formatting parameters for the description.</span>
+<span class="x"> *</span>
+<span class="x"> * @return array</span>
+<span class="x"> */</span>
+<span class="x">protected function get_format_parameters_for_description() {</span>
+<span class="x">    return [</span>
+<span class="x">        &#39;component&#39; =&gt; &#39;core_user&#39;,</span>
+<span class="x">        &#39;filearea&#39; =&gt; &#39;description&#39;,</span>
+<span class="x">        &#39;itemid&#39; =&gt; $this-&gt;data-&gt;id</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</code></pre></div>
+For a complete list of options, refer to the PHP documentation of the method core\external\exporter::get_format_parameters().</p>
+<p>Note that when you return a context from the above method, it is advised that you get it from the related objects. Doing so will prevent contexts from being loaded from the database from within the exporter and cause unwanted performance issues. The system context is an exception is this.</p>
+<h3 id="additional-properties">Additional properties</h3>
+<p>The list of other properties are to be seen as additional properties which do not need to be given to the exporter for it to export them. They are dynamically generated from the data provided (and the related objects, more on that later). For example, if we wanted our exporter to provide the URL to a user's profile, we wouldn't need the developer to pass it beforehand, we could generate it based on the ID which was already provided.</p>
+<p>Other properties are only included in the read structure of an object (get_read_structure and read_properties_definition) as they are dynamically generated. They are not required, nor needed, to create or update an object.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Return the list of additional properties.</span>
+
+<span class="x"> * @return array</span>
+<span class="x"> */</span>
+<span class="x">protected static function define_other_properties() {</span>
+<span class="x">    return [</span>
+<span class="x">        &#39;profileurl&#39; =&gt; [</span>
+<span class="x">            &#39;type&#39; =&gt; PARAM_URL</span>
+<span class="x">        ],</span>
+<span class="x">        &#39;statuses&#39; =&gt; [</span>
+<span class="x">            &#39;type&#39; =&gt; status_exporter::read_properties_definition(),</span>
+<span class="x">            &#39;multiple&#39; =&gt; true,</span>
+<span class="x">            &#39;optional&#39; =&gt; true</span>
+<span class="x">        ],</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</code></pre></div>
+The snippet above defines that we will always export a URL under the property profileurl, and that we will either export a list of status_exporters, or not. As you can see, the type can use the read properties of another exporter which allows exporters to be nested.</p>
+<p>If you have defined other properties, then you must also add the logic to export them. This is done by adding the method get_other_values(renderer_base $output) to your exporter. Here is an example in which we ignored the statuses as they are optional.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Get the additional values to inject while exporting.</span>
+<span class="x"> *</span>
+<span class="x"> * @param renderer_base $output The renderer.</span>
+<span class="x"> * @return array Keys are the property names, values are their values.</span>
+<span class="x"> */</span>
+<span class="x">protected function get_other_values(renderer_base $output) {</span>
+<span class="x">    $profileurl = new moodle_url(&#39;/user/profile.php&#39;, [&#39;id&#39; =&gt; $this-&gt;data-&gt;id]);</span>
+<span class="x">    return [</span>
+<span class="x">        &#39;profileurl&#39; =&gt; $profileurl-&gt;out(false)</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</code></pre></div>
+Important note: additional properties cannot override standard properties, so make sure the names do not conflict.</p>
+<h3 id="related-objects">Related objects</h3>
+<p>There are times we need more information inside the exporter in order to export it. That may be as simple as the context, but it can also be other objects to be used when exporting other properties. As much as possible you will want to avoid calling APIs, or querying the database upon export. Exporters can be used in loops and thus subsequent queries could dramatically affect performance, hence the need for related objects.</p>
+<p>Related objects need to be defined within the exporter, that is to ensure that they are always provided and are of the right type. In some occasions they can be marked as optional, generally when the related object does not exist. For instance, if we had an issue exporter, an optional related object could be the peer reviewer, as we don't always have a peer reviewer.</p>
+<p>Use the method protected static define_related() as follows. The keys are an arbitrary name for the related object, and the values are the fully qualified name of the class. The name of the class can be followed by [] and/or ? to respectively indicate a list of these objects, and an optional related.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Returns a list of objects that are related.</span>
+<span class="x"> *</span>
+<span class="x"> * @return array</span>
+<span class="x"> */</span>
+<span class="x">protected static function define_related() {</span>
+<span class="x">    return [</span>
+<span class="x">        &#39;context&#39; =&gt; &#39;context&#39;,                     // Must be an instance of context.</span>
+<span class="x">        &#39;statuses&#39; =&gt; &#39;some\\namespace\\status[]&#39;,  // Must be an array of status instances.</span>
+<span class="x">        &#39;mother&#39; =&gt; &#39;family\\mother?&#39;,              // Can be a mother instance, or null.</span>
+<span class="x">        &#39;brothers&#39; =&gt; &#39;family\\brother[]?&#39;,         // Can be null, or an array of brother instances.</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</code></pre></div>
+We give the related objects to the exporter when we instantiate it, like this:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$data = (object) [&#39;id&#39; =&gt; 123, &#39;username&#39; =&gt; &#39;batman&#39;];</span>
+<span class="x">$relateds = [</span>
+<span class="x">    &#39;context&#39; =&gt; context_system::instance(),</span>
+<span class="x">    &#39;statuses&#39; =&gt; [</span>
+<span class="x">        new some\namespace\status(&#39;Hello&#39;),</span>
+<span class="x">        new some\namespace\status(&#39;World!&#39;),</span>
+<span class="x">    ],</span>
+<span class="x">    &#39;mother&#39; =&gt; null,</span>
+<span class="x">    &#39;brothers&#39; =&gt; null</span>
+<span class="x">];</span>
+<span class="x">$ue = new user_exporter($data, $relateds);</span>
+</code></pre></div>
+<p>Note that optional relateds must still be provided but as null. Related objects are accessible from within the exporter using $this-&gt;related['nameOfRelated'].</p>
+<h3 id="exporters-and-persistent">Exporters and persistent</h3>
+<p>Great news, if you have a persistent and you want to export them, all the work is pretty much done for you. All of the persistent's properties will automatically be added to your exporter if you extend the class core\external\persistent_exporter, and add the method define_class().</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">class status_exporter extends \core\external\persistent_exporter {</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Returns the specific class the persistent should be an instance of.</span>
+<span class="x">     *</span>
+<span class="x">     * @return string</span>
+<span class="x">     */</span>
+<span class="x">    protected static function define_class() {</span>
+<span class="x">        return \some\namespace\status::class; // PHP 5.5+ only</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</code></pre></div>
+And if you wanted to add more to it, there is always the other properties.</p>
+<h3 id="common-pitfalls">Common pitfalls</h3>
+<ul>
+<li>Exporters must not extend other exporters. They would become too unpredictable.</li>
+<li>Exporters do not validate your data. They use the properties' attributes to generate the structure required by the External functions API, the latter is responsible for using the structure to validate the data.</li>
+<li>When exporters are nested, the type to use should be  <code>other_exporter::read_properties_definition()</code> and not <code>other_exporter::get_read_structure()</code>.</li>
+<li>Adding required relateds to an exporter once it has been released can cause coding_exceptions. Each instance will require the new related, which it will not have in 3rd party code/plugins. Preferably an exporter's relateds should never change, but if they must, consider this:<ul>
+<li>Creating a brand new exporter class, and leaving the other one unchanged.</li>
+<li>Adding the new related, and assigning it a default value in your constructor if undefined. Also print a debugging message for developers to fix their code.
+    Note: Adding the related as optional does not work. Optional relateds still need to be passed to the constructor, but as null.</li>
+<li>Adding the new related, and advertising that all of its usage must be updated.</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="minimalist">Minimalist</h4>
+<div class="highlight"><pre><span></span><code><span class="x">class user_exporter extends core\external\exporter {</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Return the list of properties.</span>
+<span class="x">     *</span>
+<span class="x">     * @return array</span>
+<span class="x">     */</span>
+<span class="x">    protected static function define_properties() {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;id&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_INT</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;username&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_ALPHANUMEXT</span>
+<span class="x">            ],</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="more-advanced">More advanced</h4>
+<div class="highlight"><pre><span></span><code><span class="x">namespace example\external;</span>
+
+<span class="x">use core\external\exporter;</span>
+<span class="x">use renderer_base;</span>
+<span class="x">use moodle_url;</span>
+
+<span class="x">class user_exporter extends exporter {</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Return the list of properties.</span>
+<span class="x">     *</span>
+<span class="x">     * @return array</span>
+<span class="x">     */</span>
+<span class="x">    protected static function define_properties() {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;id&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_INT</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;username&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_ALPHANUMEXT</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;description&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_RAW,</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;descriptionformat&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_INT,</span>
+<span class="x">            ],</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Return the list of additional properties.</span>
+
+<span class="x">     * @return array</span>
+<span class="x">     */</span>
+<span class="x">    protected static function define_other_properties() {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;profileurl&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; PARAM_URL</span>
+<span class="x">            ],</span>
+<span class="x">            &#39;statuses&#39; =&gt; [</span>
+<span class="x">                &#39;type&#39; =&gt; status_exporter::read_properties_definition(),</span>
+<span class="x">                &#39;multiple&#39; =&gt; true,</span>
+<span class="x">                &#39;optional&#39; =&gt; true</span>
+<span class="x">            ],</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Returns a list of objects that are related.</span>
+<span class="x">     *</span>
+<span class="x">     * @return array</span>
+<span class="x">     */</span>
+<span class="x">    protected static function define_related() {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;context&#39; =&gt; &#39;context&#39;,</span>
+<span class="x">            &#39;statuses&#39; =&gt; &#39;some\\namespace\\status[]&#39;,</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Get the formatting parameters for the description.</span>
+<span class="x">     *</span>
+<span class="x">     * @return array</span>
+<span class="x">     */</span>
+<span class="x">    protected function get_format_parameters_for_description() {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;component&#39; =&gt; &#39;core_user&#39;,</span>
+<span class="x">            &#39;filearea&#39; =&gt; &#39;description&#39;,</span>
+<span class="x">            &#39;itemid&#39; =&gt; $this-&gt;data-&gt;id</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Get the additional values to inject while exporting.</span>
+<span class="x">     *</span>
+<span class="x">     * @param renderer_base $output The renderer.</span>
+<span class="x">     * @return array Keys are the property names, values are their values.</span>
+<span class="x">     */</span>
+<span class="x">    protected function get_other_values(renderer_base $output) {</span>
+<span class="x">        $statuses = [];</span>
+<span class="x">        foreach ($this-&gt;related[&#39;statuses&#39;] as $status) {</span>
+<span class="x">            $exporter = new status_exporter($status);</span>
+<span class="x">            $statuses[] = $exporter-&gt;export($output);</span>
+<span class="x">        }</span>
+
+<span class="x">        $profileurl = new moodle_url(&#39;/user/profile.php&#39;, [&#39;id&#39; =&gt; $this-&gt;data-&gt;id]);</span>
+
+<span class="x">        return [</span>
+<span class="x">            &#39;profileurl&#39; =&gt; $profileurl-&gt;out(false),</span>
+<span class="x">            &#39;statuses&#39; =&gt; $statuses</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
 
               
             </article>
