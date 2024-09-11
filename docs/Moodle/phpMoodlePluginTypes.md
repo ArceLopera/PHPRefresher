@@ -34,7 +34,7 @@ The plugin name must meet the following rules:
 |Workshop allocation methods	|workshopallocation	|/mod/workshop/allocation	|Define ways how submissions are assigned for assessment in the Workshop module|
 |Workshop evaluation methods	|workshopeval	|/mod/workshop/eval	|Implement the calculation of the grade for assessment (grading grade) in the Workshop module|
 |[Blocks](#2-blocks)	|block	|/blocks	|Small information-displays or tools that can be moved around pages|
-|[Question types](#10-question-types)	|qtype	|/question/type	|Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities|
+|[Question types](./Plugin/phpMoodlePlugin_qtypes.md)	|qtype	|/question/type	|Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities|
 |Question behaviours	|qbehaviour	|/question/behaviour	|Control how student interact with questions during an attempt|
 |Question import/export formats|qformat	|/question/format	|Import and export question definitions to/from the question bank|
 |Text filters	|filter	|/filter	|Automatically convert, highlight, and transmogrify text posted into Moodle.|
@@ -180,16 +180,6 @@ The plugin name must meet the following rules:
 - **Grid Format (`format_grid`)**: Displays course sections as a grid of icons, enhancing the visual appeal.
 - **Collapsed Topics (`format_collapsedtopics`)**: Allows course sections to be collapsed and expanded for better navigation.
 
-### 10. Question Types
-
-**Purpose**: Add new types of questions for quizzes and other activities.
-
-**Examples**:
-
-- **Multiple Choice (`qtype_multichoice`)**: Standard multiple-choice question type.
-- **True/False (`qtype_truefalse`)**: Simple true/false question type.
-- **Drag and Drop onto Image (`qtype_ddimageortext`)**: Allows users to drag and drop text or images onto predefined areas of an image.
-- **Gapfill (`qtype_gapfill`)**: Provides a fill-in-the-gap question type for cloze tests.
 
 ### Summary
 
