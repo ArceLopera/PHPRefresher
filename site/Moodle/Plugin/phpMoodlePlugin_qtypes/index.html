@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#10-question-types" class="md-skip">
+        <a href="#edit__formphp" class="md-skip">
           Skip to content
         </a>
       
@@ -1801,8 +1801,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#10-question-types" class="md-nav__link">
-    10. Question Types
+  <a href="#edit__formphp" class="md-nav__link">
+    edit_..._form.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questiontypesphp" class="md-nav__link">
+    questiontypes.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questionphp" class="md-nav__link">
+    question.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendererphp" class="md-nav__link">
+    renderer.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-restore" class="md-nav__link">
+    Backup and restore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-data" class="md-nav__link">
+    Meta data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-for-new-question-types" class="md-nav__link">
+    Default for new question types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -2050,6 +2099,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/phpMoodleQuestion/" class="md-nav__link">
+        Question API
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2088,8 +2151,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#10-question-types" class="md-nav__link">
-    10. Question Types
+  <a href="#edit__formphp" class="md-nav__link">
+    edit_..._form.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questiontypesphp" class="md-nav__link">
+    questiontypes.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questionphp" class="md-nav__link">
+    question.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rendererphp" class="md-nav__link">
+    renderer.php
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-restore" class="md-nav__link">
+    Backup and restore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-data" class="md-nav__link">
+    Meta data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-for-new-question-types" class="md-nav__link">
+    Default for new question types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -2110,9 +2222,74 @@
 
   <h1>Question Types</h1>
 
-<h3 id="10-question-types">10. Question Types</h3>
-<p><strong>Purpose</strong>: Add new types of questions for quizzes and other activities.</p>
-<p><strong>Examples</strong>:</p>
+<p>Question types are one of the plugins used by the question subsystem. They are used to create and edit questions.</p>
+<p>Question types have to do many things:</p>
+<h4 id="edit__formphp">edit_..._form.php</h4>
+<p>Provide an editing form so that teachers can create and edit questions of this type.</p>
+<h4 id="questiontypesphp">questiontypes.php</h4>
+<p>Define a class to handle loading and saving data from this form.
+and related methods providing metadata about this question types.
+and import and export in any Question formats that the type wants to support.</p>
+<h4 id="questionphp">question.php</h4>
+<p>This class represents one instance of this question type, while it is being attempted by a user. It must do many things</p>
+<p>Start a new attempt (e.g. in a multiple choice question, this is where we randomly shuffle the choices).</p>
+<p>or if we are continuing an existing attempt, re-initialise the question to the same state, using the data from the DB.</p>
+<p>Tell the question engine what data this question type is expecting to be submitted.</p>
+<p>Analyse those submitted responses: e.g. has it changed? is it complete.</p>
+<p>Automatically grade the response to give a 'fraction' (mark between 0 and 1) and a state (correct / partially correct / incorrect).</p>
+<p>check access to files for the file API.</p>
+<h4 id="rendererphp">renderer.php</h4>
+<p>To display the key bits of this question types for the core_question_renderer to combine into the overall question display.</p>
+<h4 id="backup-and-restore">Backup and restore</h4>
+<p>Implements Backup and restore, and all the other standard parts of a Moodle plugin like DB tables.</p>
+<h4 id="meta-data">Meta data</h4>
+<p>Track users preferences for the settings used for newly created questions.</p>
+<h4 id="default-for-new-question-types">Default for new question types</h4>
+<p>Many question types are quite flexible, and so have a lot of options on their editing form. Quite often, when a teacher is creating a number of questions, it is likely they will want to keep using the same values for some options. Therefore, the question system has a way for question types to save some settings as user-preferences, and then use them as the default when creating a new question.</p>
+<p>Note, this is only done when a teacher creates and saves a new question. We don't save the preferences when a teacher edits an existing question (which might have been created by someone else with different preferences).</p>
+<h5 id="how-to-implement-this-feature">How to implement this feature</h5>
+<ol>
+<li>
+<p>Decide which settings should be saved</p>
+<p>It is not appropriate to save all the settings. For example, name and question text are what uniquely define a particular question. It would be unhelpful to remember and re-use these since they need to be different each time.</p>
+<p>The kind of settings we want to save are the ones like do you want the choices in your multiple-choice question numbered 'a, b, c, ...' or '1, 2, 3, ...' or not numbered at all? As you think about this, looking through what other question types do is probably a good way to get a feel for what sorts of things it makes sense to remember. That will also promote consistency. Search for implementations of <code>save_defaults_for_new_questions</code>.</p>
+</li>
+<li>
+<p>In the form class - use any previously saved defaults
+    Before implementing this feature, your form class is likely to have code like
+    <div class="highlight"><pre><span></span><code><span class="x">$mform-&gt;setDefault(&#39;shuffleanswers&#39;, 1);</span>
+</code></pre></div></p>
+<p>For all the settings where you want to implement this feature, need to change the hard-coded default (1 here) to instead fetch the default from the user's preferences using the <code>get_default_value</code> method:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$mform-&gt;setDefault(&#39;shuffleanswers&#39;, $this-&gt;get_default_value(&#39;shuffleanswers&#39;, 1));</span>
+</code></pre></div>
+</li>
+<li>
+<p>In the question-type class
+    Here we need to override the method save_defaults_for_new_questions to save the values these settings. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function save_defaults_for_new_questions(stdClass $fromform): void {</span>
+<span class="x">    parent::save_defaults_for_new_questions($fromform);</span>
+<span class="x">    $this-&gt;set_default_value(&#39;shuffleanswers&#39;, $fromform-&gt;shuffleanswers);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>All the settings save here should match the ones fetched by get_default_value in the form. You need to call parent because Moodle core saves some settings that apply to all question types.</p>
+</li>
+<li>
+<p>Privacy provider
+    Because this feature works using user preferences, you need to declare that in your privacy provider.</p>
+<p>This is boring but necessary. Easiest way to see what to do is to copy another question type.</p>
+<p>Note, it is necessary for your provider to declare the ones saved by core. (I suppose, ideally, someone would make a helpful base class, or trait, to make it easier to implement this.)</p>
+</li>
+<li>
+<p>Automated tests
+    Always a good idea. You are likely to need:</p>
+<ul>
+<li><a href="https://github.com/moodle/moodle/blob/main/question/type/match/tests/privacy/provider_test.php">Unit tests for the privacy provider</a>.</li>
+<li>Behat test to show that the saved settings are re-used. Many question types have <a href="https://github.com/moodle/moodle/blob/main/question/type/match/tests/behat/add.feature">a behat/add.feature file where it is easy to add coverage for this</a>.</li>
+</ul>
+<p>The links in that list go to examples of how these are implemented in qtype_match.</p>
+</li>
+</ol>
+<h4 id="examples">Examples</h4>
 <ul>
 <li><strong>Multiple Choice (<code>qtype_multichoice</code>)</strong>: Standard multiple-choice question type.</li>
 <li><strong>True/False (<code>qtype_truefalse</code>)</strong>: Simple true/false question type.</li>
