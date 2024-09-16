@@ -1,0 +1,2975 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/Javascript/phpMoodleModal/">
+      
+      <link rel="icon" href="../../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Modal Dialogues - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-a-basic-modal-since-43" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Modal Dialogues
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DS/phpArray/" class="md-tabs__link">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DS/phpArray/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DS/phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+        Question Types
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
+        Common Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleTemplate/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Modal Dialogues
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Modal Dialogues
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-basic-modal-since-43" class="md-nav__link">
+    Creating a basic modal - Since 4.3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modal-factory" class="md-nav__link">
+    Modal Factory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instantiating-modal-types" class="md-nav__link">
+    Instantiating modal types
+  </a>
+  
+    <nav class="md-nav" aria-label="Instantiating modal types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-moodle-43" class="md-nav__link">
+    For Moodle 4.3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-moodle-42-and-earlier" class="md-nav__link">
+    For Moodle 4.2 and earlier
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-modal" class="md-nav__link">
+    Creating a custom modal
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom modal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-default-configuration" class="md-nav__link">
+    Overriding default configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
+    Creating Modal Dialogues in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-form-in-a-modal" class="md-nav__link">
+    1. Form in a Modal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-modal-types" class="md-nav__link">
+    2. Custom Modal Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-modal-with-templates" class="md-nav__link">
+    3. Modal with Templates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_9">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleServices/" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/phpMoodlePersistent/" class="md-nav__link">
+        Persistent API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/phpMoodleExporter/" class="md-nav__link">
+        Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API/phpMoodleQuestion/" class="md-nav__link">
+        Question API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-basic-modal-since-43" class="md-nav__link">
+    Creating a basic modal - Since 4.3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modal-factory" class="md-nav__link">
+    Modal Factory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instantiating-modal-types" class="md-nav__link">
+    Instantiating modal types
+  </a>
+  
+    <nav class="md-nav" aria-label="Instantiating modal types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-moodle-43" class="md-nav__link">
+    For Moodle 4.3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-moodle-42-and-earlier" class="md-nav__link">
+    For Moodle 4.2 and earlier
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-custom-modal" class="md-nav__link">
+    Creating a custom modal
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a custom modal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overriding-default-configuration" class="md-nav__link">
+    Overriding default configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-modal-dialogues-in-moodle" class="md-nav__link">
+    Creating Modal Dialogues in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-form-in-a-modal" class="md-nav__link">
+    1. Form in a Modal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-custom-modal-types" class="md-nav__link">
+    2. Custom Modal Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-modal-with-templates" class="md-nav__link">
+    3. Modal with Templates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Modal Dialogues</h1>
+
+<p>Modal dialogues are a useful UI component in Moodle for displaying content and interacting with users without navigating away from the current page. They are typically used for forms, confirmations, alerts, and other content that needs user interaction.</p>
+<p>The use of modal modules provides a simplified developer experience for creating modal dialogues within Moodle.
+The module attempts to ensure that all accessibility requirements are met, including applying the correct aria roles, focus control, aria hiding background elements, and locking keyboard navigation.</p>
+<p>Modals will fire events for common actions that occur within the modal for other code to listen to and react accordingly.</p>
+<p>Moodle ships with several standard modal types for you to re-use including a simple cancel modal, and a save/cancel modal.</p>
+<ol>
+<li><strong>User Experience</strong>: Enhance the user experience by providing information or requesting input without leaving the current page.</li>
+<li><strong>Focus</strong>: Keep the user's focus on a specific task or piece of information.</li>
+<li><strong>Efficiency</strong>: Reduce page loads and provide a smoother, more interactive experience.</li>
+</ol>
+<p>The use of modal modules provides a simplified developer experience for creating modal dialogues within Moodle.</p>
+<p>The module attempts to ensure that all accessibility requirements are met, including applying the correct aria roles, focus control, aria hiding background elements, and locking keyboard navigation.</p>
+<p>Modals will fire events for common actions that occur within the modal for other code to listen to and react accordingly.</p>
+<p>Moodle ships with several standard modal types for you to re-use including a simple cancel modal, and a save/cancel modal.</p>
+<h3 id="creating-a-basic-modal-since-43">Creating a basic modal - Since 4.3</h3>
+<p>Modals can be created by calling the static create method on the modal type you wish to create, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Creating a standard modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Modal</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;Example body content&lt;/p&gt;&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">show</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">removeOnClose</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Other standard options are described in the JS Documentation for the MoodleConfig type.</p>
+<p><strong>SUPPORT FOR EARLIER VERSIONS</strong>
+If you are supporting an earlier version of Moodle, then you must use the Modal Factory and register your modal.</p>
+<h3 id="modal-factory">Modal Factory</h3>
+<p>The Modal Factory can be used to instantiate a new Modal. The factory provides a create function, accepting some configuration which is used to create the modal instance, and an optional trigger element. The create function returns a Promise that is resolved with the created modal.</p>
+<p>The configuration is provided as an object with key/value pairs. The options are:</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>the title to display in the modal header - note: this will render HTML</td>
+</tr>
+<tr>
+<td>body</td>
+<td>the main content to be rendered in the modal body</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>the content to be rendered in the modal footer</td>
+</tr>
+<tr>
+<td>type</td>
+<td>one of the modal types registered with the factory</td>
+</tr>
+<tr>
+<td>large</td>
+<td>a boolean to indicate if the modal should be wider than the default size</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// Basic instantiation of a modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;Example body content&lt;/p&gt;&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<p>Where text, language strings, or HTML is accepted, a Promise can also be provided.
+<div class="highlight"><pre><span></span><code><span class="c1">// Using a template to render the body</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Templates</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;mod_example/example_modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">}),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></p>
+<p><strong>Using the 'trigger'</strong></p>
+<p>Moodle Modals created using the Modal Factory support an optional trigger element. Whilst this is available, it is no longer recommended and support for it will likely be removed in Moodle 4.3.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Providing a trigger</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Templates</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">$</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jquery&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;mod_example/example_modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">}),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">footer</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;An example footer content&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;a.item-delete&#39;</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="instantiating-modal-types">Instantiating modal types</h3>
+<p>A number of commonly used modals are available as standard, these include:</p>
+<ul>
+<li>a Delete / Cancel modal</li>
+<li>a Save / Cancel modal</li>
+<li>a Cancel modal</li>
+</ul>
+<h4 id="for-moodle-43">For Moodle 4.3</h4>
+<p><strong>NOTE:</strong> If you are developing code for use in Moodle 4.2, or earlier, then you must continue to follow the 4.2 guidelines.</p>
+<p>To use these modals you can call the create method on the relevant Modal Class.
+<div class="highlight"><pre><span></span><code><span class="c1">// Creating a save/cancel modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_save_cancel&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">get_string</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;confirmchange&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mod_example&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div></p>
+<p>Each type of modal may fire additional events to allow your code to handle the new functionality being offered -- for example, if you wanted to have a save/cancel modal that you did some form validation on before saving you could do something like the example below.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Listening to a Save event</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_save_cancel&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">get_string</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalSaveCancel</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;confirmchange&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mod_example&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// ...</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h4 id="for-moodle-42-and-earlier">For Moodle 4.2 and earlier</h4>
+<p>To use these modals you can provide the type argument to the ModalFactory.create method. This argument takes a string value and values can be found for these modals in ModalFactory.TYPES.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// Creating a save/cancel modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">get_string</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">SAVE_CANCEL</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;confirmchange&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mod_example&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+Each type of modal may fire additional events to allow your code to handle the new functionality being offered -- for example, if you wanted to have a save/cancel modal that you did some form validation on before saving you could do something like the example below.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Listening to a Save event</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">get_string</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">getString</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">SAVE_CANCEL</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;test title&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">getString</span><span class="p">(</span><span class="s1">&#39;confirmchange&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mod_example&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// ...</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<h3 id="creating-a-custom-modal">Creating a custom modal</h3>
+<p>In some situations it is desirable to write a brand new modal.</p>
+<p>There are two parts to this:</p>
+<ul>
+<li>a new Modal class which extends the core/modal class; and</li>
+<li>a template</li>
+</ul>
+<p><strong>CUSTOM MODALS IN MOODLE 4.2 AND EARLIER</strong></p>
+<p>Since Moodle 4.3, creating the Modal class is as simple as extending the <code>core/modal</code> class, and providing a <code>TYPE</code> property, and <code>TEMPLATE</code> property.</p>
+<p>For older versions of Moodle, refer to the <a href="https://moodledev.io/docs/4.2/guides/javascript/modal#creating-a-custom-modal-type">Moodle 4.2 documentation</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mod/example/amd/src/my_modal.js</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MyModal</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mod_example/my_modal&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">TEMPLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mod_example/my_modal&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The template should extend the <code>core/modal</code> core template and can override any of the title, body, or footer regions, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// mod/example/templates/my_modal.mustache</span><span class="w"></span>
+<span class="p">{{</span><span class="o">&lt;</span><span class="w"> </span><span class="nx">core</span><span class="o">/</span><span class="nx">modal</span><span class="w"> </span><span class="p">}}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="nx">$title</span><span class="p">}}{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}{{/title}}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="nx">$body</span><span class="p">}}</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">form</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-group row&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;inputEmail&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-2 col-form-label&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/label&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-10&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-control&quot;</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;inputEmail&quot;</span><span class="w"> </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;{{#str}} email {{/str}}&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-group row&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">label</span><span class="w"> </span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;inputPassword&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-2 col-form-label&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">password</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/label&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;col-sm-10&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;form-control&quot;</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;inputPassword&quot;</span><span class="w"> </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;{{#str}} password {{/str}}&quot;</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                    </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">/form&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="err">/body}}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="nx">$footer</span><span class="p">}}</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;btn btn-primary&quot;</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">action</span><span class="o">=</span><span class="s2">&quot;login&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">login</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/button&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;button&quot;</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;btn btn-secondary&quot;</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">action</span><span class="o">=</span><span class="s2">&quot;cancel&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="err">#</span><span class="nx">str</span><span class="p">}}</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="p">{{</span><span class="err">/str}}&lt;/button&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="p">{{</span><span class="err">/footer}}</span><span class="w"></span>
+<span class="p">{{</span><span class="err">/ core/modal }}</span><span class="w"></span>
+</code></pre></div>
+<p>Once defined, the new modal can be instantiated using the standard create method, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Instantiating a custom modal</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">MyModal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;mod_example/my_modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">MyModal</span><span class="p">.</span><span class="nx">create</span><span class="p">({});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="overriding-default-configuration">Overriding default configuration</h4>
+<p>When creating your own modal type, you may wish to override the standard configuration. This can be achieved by overriding the configure class and providing your own options, for example:
+<div class="highlight"><pre><span></span><code><span class="c1">//Overriding standard options</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;core/modal&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MyModal</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Modal</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mod_example/my_modal&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">TEMPLATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mod_example/my_modal&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">configure</span><span class="p">(</span><span class="nx">modalConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Show this modal on instantiation.</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalConfig</span><span class="p">.</span><span class="nx">show</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Remove from the DOM on close.</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalConfig</span><span class="p">.</span><span class="nx">removeOnClose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">super</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="nx">modalConfig</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Accept our own custom arguments too.</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">modalConfig</span><span class="p">.</span><span class="nx">someValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">setSomeValue</span><span class="p">(</span><span class="nx">someValue</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">setSomeValue</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">someValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="creating-modal-dialogues-in-moodle">Creating Modal Dialogues in Moodle</h3>
+<p>Moodle provides a built-in way to create modal dialogues using JavaScript, specifically through the <code>core/modal_factory</code> and <code>core/modal</code> AMD modules.</p>
+<ol>
+<li>
+<p><strong>Load Required JavaScript Modules</strong></p>
+<p>Load the necessary JavaScript modules using Moodle's AMD loader.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourpluginname/modal_handler&#39;, &#39;init&#39;);</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Create the Modal Handler</strong></p>
+<p>Create a JavaScript file in your plugin's <code>amd/src</code> directory, for example, <code>amd/src/modal_handler.js</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Define the content for the modal</span><span class="w"></span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;p&gt;This is the content of the modal.&lt;/p&gt;&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1">// Create the modal</span><span class="w"></span>
+<span class="w">            </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="w"></span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="c1">// Add event listeners</span><span class="w"></span>
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="c1">// Actions to perform when the modal is hidden</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                </span><span class="c1">// Show the modal</span><span class="w"></span>
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Add Strings for Internationalization</strong></p>
+<p>Define the strings used in your modal in the <code>lang/en/yourpluginname.php</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modaltitle&#39;] = &#39;Modal Title&#39;;</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Trigger the Modal</strong></p>
+</li>
+</ol>
+<p>Add the necessary HTML and JavaScript to trigger the modal when needed. For example, you can trigger the modal when a button is clicked.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;showModal&quot;</span><span class="p">&gt;</span>Show Modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;showModal&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;yourpluginname/modal_handler&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">modalHandler</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalHandler</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h3 id="advanced-usage">Advanced Usage</h3>
+<h4 id="1-form-in-a-modal">1. <strong>Form in a Modal</strong></h4>
+<p>You can also embed forms within a modal. Create a form as usual and place it in the modal content.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">,</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;form id=&quot;modalForm&quot;&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;label for=&quot;inputField&quot;&gt;Input:&lt;/label&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;input type=&quot;text&quot; id=&quot;inputField&quot; name=&quot;inputField&quot;&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">                            </span><span class="s1">&#39;&lt;/form&gt;&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="w"></span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#modalForm&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
+<span class="w">                    </span><span class="kd">var</span><span class="w"> </span><span class="nx">inputValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;inputField&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted with value:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                    </span><span class="c1">// Example AJAX request</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname_submit_form&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">},</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted successfully:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">                        </span><span class="p">},</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">fail</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Form submission failed:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}]);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h4 id="2-custom-modal-types">2. <strong>Custom Modal Types</strong></h4>
+<p>Moodle provides different types of modals: <code>DEFAULT</code>, <code>SAVE_CANCEL</code>, and <code>ALERT</code>. You can use these to create different styles of modals.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">SAVE_CANCEL</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">content</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">save</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Save button clicked&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<h4 id="3-modal-with-templates">3. <strong>Modal with Templates</strong></h4>
+<p>Moodle's template system allows for more dynamic and maintainable code by separating HTML structure from JavaScript logic. This is particularly useful for creating complex modal dialogues. For example, you can dynamically choose which template to render based on the context or user interaction.</p>
+<ul>
+<li><strong>Separation of Concerns</strong>: Keep HTML and JavaScript separate for better readability and maintainability.</li>
+<li><strong>Reusability</strong>: Easily reuse templates across different parts of your plugin or even different plugins.</li>
+<li><strong>Flexibility</strong>: Dynamically render content based on context or user interaction.</li>
+</ul>
+<p><strong>Step 1: Create a Template</strong></p>
+<ol>
+<li>
+<p><strong>Create the Template File</strong>: Create a Mustache template file in your plugin’s <code>templates</code> directory. For example, <code>templates/modal_content.mustache</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-body&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{message}}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;modalForm&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;inputField&quot;</span><span class="p">&gt;</span>Input:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;inputField&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;inputField&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Step 2: Load and Render the Template in JavaScript</strong></p>
+<ol>
+<li>
+<p><strong>Load Required JavaScript Modules</strong></p>
+<p>Load the necessary JavaScript modules using Moodle's AMD loader. Create a JavaScript file in your plugin's <code>amd/src</code> directory, for example, <code>amd/src/modal_handler.js</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nx">define</span><span class="p">([</span><span class="s1">&#39;core/modal_factory&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/modal_events&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/str&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/templates&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;core/ajax&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">ModalFactory</span><span class="p">,</span><span class="w"> </span><span class="nx">ModalEvents</span><span class="p">,</span><span class="w"> </span><span class="nx">Str</span><span class="p">,</span><span class="w"> </span><span class="nx">Templates</span><span class="p">,</span><span class="w"> </span><span class="nx">Ajax</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">init</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Load the template and render it</span><span class="w"></span>
+<span class="w">            </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;yourpluginname/modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;This is a message&#39;</span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nx">ModalFactory</span><span class="p">.</span><span class="nx">types</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">Str</span><span class="p">.</span><span class="nx">get_string</span><span class="p">(</span><span class="s1">&#39;modaltitle&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;yourpluginname&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">html</span><span class="w"></span>
+<span class="w">                </span><span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">modal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="nx">ModalEvents</span><span class="p">.</span><span class="nx">hidden</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Modal closed&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">getRoot</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;#modalForm&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="w"></span>
+<span class="w">                        </span><span class="kd">var</span><span class="w"> </span><span class="nx">inputValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;inputField&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted with value:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                        </span><span class="c1">// Example AJAX request</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">call</span><span class="p">([{</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">methodname</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname_submit_form&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">args</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="nx">inputValue</span><span class="p">},</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Form submitted successfully:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span><span class="w"></span>
+<span class="w">                                </span><span class="nx">modal</span><span class="p">.</span><span class="nx">hide</span><span class="p">();</span><span class="w"></span>
+<span class="w">                            </span><span class="p">},</span><span class="w"></span>
+<span class="w">                            </span><span class="nx">fail</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Form submission failed:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="w">                            </span><span class="p">}</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}]);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">                    </span><span class="nx">modal</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span><span class="w"></span>
+<span class="w">                    </span><span class="nx">Templates</span><span class="p">.</span><span class="nx">runTemplateJS</span><span class="p">(</span><span class="nx">js</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Failed to load template&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Include JavaScript in Your Plugin</strong></p>
+<p>Add the following line to your <code>view.php</code> or another relevant PHP file to load the JavaScript module.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$PAGE-&gt;requires-&gt;js_call_amd(&#39;yourpluginname/modal_handler&#39;, &#39;init&#39;);</span>
+</code></pre></div>
+</li>
+</ol>
+<p><strong>Step 3: Define Strings for Internationalization</strong></p>
+<p>Define the strings used in your modal in the <code>lang/en/yourpluginname.php</code> file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;modaltitle&#39;] = &#39;Modal Title&#39;;</span>
+</code></pre></div>
+<p><strong>Step 4: Trigger the Modal</strong></p>
+<p>Add the necessary HTML and JavaScript to trigger the modal when needed. For example, you can trigger the modal when a button is clicked.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;showModal&quot;</span><span class="p">&gt;</span>Show Modal<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;showModal&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s1">&#39;yourpluginname/modal_handler&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">modalHandler</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">modalHandler</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Advanced Usage</strong></p>
+<ol>
+<li>
+<p><strong>Dynamic Content</strong>: You can pass dynamic data to the template by modifying the context object passed to the <code>Templates.render</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Dynamic message&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">anotherfield</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Another value&#39;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+<span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">&#39;yourpluginname/modal_content&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Proceed as before</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Handling Multiple Templates</strong>: If your modal needs to load different templates based on the context, you can dynamically choose which template to render.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">templateName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">condition</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;yourpluginname/first_template&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;yourpluginname/second_template&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="nx">Templates</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">templateName</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Proceed as before</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Complex Interactions</strong>: For complex interactions, you can define additional JavaScript logic within the template and execute it using <code>Templates.runTemplateJS(js)</code> after the modal is shown.</p>
+</li>
+</ol>
+<h3 id="summary">Summary</h3>
+<p>Modal dialogues in Moodle provide a powerful way to interact with users without navigating away from the current page. By using Moodle's <code>core/modal_factory</code> and <code>core/modal</code> modules, you can create dynamic and interactive modals for displaying information, capturing user input, and more. Always follow best practices for user experience, accessibility, and performance to ensure a high-quality implementation. For more detailed information and examples, refer to the <a href="https://moodledev.io/docs/4.5/guides/javascript/modal">official Moodle documentation</a>. It is possible to display moodleform in a popup or use AJAX form submission.</p>
+<p>Refer to the <a href="https://docs.moodle.org/dev/Modal_and_AJAX_forms">Modal and AJAX forms</a> developer docs for details on their use case and how to use them in your code.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../phpMoodlePromises/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Promises" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Promises
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../phpMoodleAJAX/" class="md-footer__link md-footer__link--next" aria-label="Next: AJAX" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              AJAX
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ArceLopera" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
