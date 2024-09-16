@@ -5,6 +5,29 @@ Question types have to do many things:
 #### edit_..._form.php 
 Provide an editing form so that teachers can create and edit questions of this type.
 
+This file contains the form displayed in the quiz administration interface, allowing teachers to create and edit this specific question type. It extends question_edit_form.
+
+```php
+class qtype_example_edit_form extends question_edit_form {
+    protected function definition_inner($mform) {
+        // Add form elements specific to your question type.
+        $mform->addElement('text', 'examplefield', get_string('examplefield', 'qtype_example'));
+        $mform->setType('examplefield', PARAM_TEXT);
+    }
+
+    // Define how to save the form data to the database.
+    public function set_data($question) {
+        // Load any previously saved question data.
+    }
+
+    public function validation($data, $files) {
+        // Add validation for custom fields.
+        return array(); // Return any errors as an associative array.
+    }
+}
+```
+
+
 #### questiontypes.php 
 Define a class to handle loading and saving data from this form.
 and related methods providing metadata about this question types.
@@ -26,12 +49,108 @@ Automatically grade the response to give a 'fraction' (mark between 0 and 1) and
 
 check access to files for the file API.
 
+
+```php
+class qtype_example extends question_type {
+    // Define how to save and load question data.
+    public function save_question_options($question) {
+        global $DB;
+        // Save the question-specific data to your custom table.
+    }
+
+    // Define how to get the question data when loading the question.
+    public function get_question_options($question) {
+        global $DB;
+        // Load the question-specific data from your custom table.
+    }
+
+    // Define grading behavior.
+    public function grade_response($question, $response) {
+        // Implement your custom grading logic here.
+    }
+
+    // Any other necessary methods related to this question type.
+}
+```
+
+
 #### renderer.php 
 
 To display the key bits of this question types for the core_question_renderer to combine into the overall question display.
 
+This file defines how the question is displayed when users take a quiz. The renderer contains functions for rendering the question form and the question preview.
+
+```php
+
+class qtype_example_renderer extends qtype_renderer {
+    public function formulation_and_controls(question_attempt $qa, question_display_options $options) {
+        // Display the question to the student.
+    }
+
+    public function specific_feedback(question_attempt $qa) {
+        // Show feedback after the student submits the answer.
+    }
+
+    public function correct_response(question_attempt $qa) {
+        // Show the correct response.
+    }
+}
+```
+
+
 #### Backup and restore
 Implements Backup and restore, and all the other standard parts of a Moodle plugin like DB tables.
+
+This XML file defines the database schema for your question type plugin. Typically, you’ll need to create custom tables to store additional data specific to your question type.
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="yourplugin/db" VERSION="2024031600" COMMENT="Question type example tables">
+    <TABLES>
+        <TABLE NAME="qtype_example_options" COMMENT="Stores example-specific question options">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+                <FIELD NAME="questionid" TYPE="int" LENGTH="10" NOTNULL="true"/>
+                <FIELD NAME="examplefield" TYPE="text" NOTNULL="false"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="questionid_fk" TYPE="foreign" FIELDS="questionid" REFERENCES="question"/>
+            </KEYS>
+        </TABLE>
+    </TABLES>
+</XMLDB>
+```
+
+backup/moodle2/backup_qtype_example_plugin.class.php & restore_qtype_example_plugin.class.php
+These files handle backup and restore functionality for your question type. They ensure that your question data is properly saved when a quiz is backed up and correctly restored when imported.
+
+```php
+
+// backup_qtype_example_plugin.class.php
+class backup_qtype_example_plugin extends backup_qtype_plugin {
+    protected function define_question_plugin_structure() {
+        $plugin = $this->get_plugin_element(null, $this->plugin_name, array());
+        $pluginwrapper = new backup_nested_element($this->plugin_name);
+        $plugin->add_child($pluginwrapper);
+
+        $example = new backup_nested_element('example', array('id'), array('examplefield'));
+        $pluginwrapper->add_child($example);
+
+        return $plugin;
+    }
+}
+
+// restore_qtype_example_plugin.class.php
+class restore_qtype_example_plugin extends restore_qtype_plugin {
+    protected function define_question_plugin_structure() {
+        return $this->prepare_question_structure(
+            new restore_nested_element('example', array('id'), array('examplefield'))
+        );
+    }
+}
+```
 
 #### Meta data
 Track users preferences for the settings used for newly created questions.
