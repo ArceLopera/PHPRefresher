@@ -1,4 +1,4 @@
-Question types are one of the plugins used by the question subsystem. They are used to create and edit questions.
+Question types are one of the plugins used by the [question subsystem](../API/phpMoodleQuestion.md). They are used to create and edit questions.
 
 Question types have to do many things:
 
