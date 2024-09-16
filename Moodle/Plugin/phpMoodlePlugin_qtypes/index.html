@@ -2226,6 +2226,25 @@
 <p>Question types have to do many things:</p>
 <h4 id="edit__formphp">edit_..._form.php</h4>
 <p>Provide an editing form so that teachers can create and edit questions of this type.</p>
+<p>This file contains the form displayed in the quiz administration interface, allowing teachers to create and edit this specific question type. It extends question_edit_form.</p>
+<div class="highlight"><pre><span></span><code><span class="x">class qtype_example_edit_form extends question_edit_form {</span>
+<span class="x">    protected function definition_inner($mform) {</span>
+<span class="x">        // Add form elements specific to your question type.</span>
+<span class="x">        $mform-&gt;addElement(&#39;text&#39;, &#39;examplefield&#39;, get_string(&#39;examplefield&#39;, &#39;qtype_example&#39;));</span>
+<span class="x">        $mform-&gt;setType(&#39;examplefield&#39;, PARAM_TEXT);</span>
+<span class="x">    }</span>
+
+<span class="x">    // Define how to save the form data to the database.</span>
+<span class="x">    public function set_data($question) {</span>
+<span class="x">        // Load any previously saved question data.</span>
+<span class="x">    }</span>
+
+<span class="x">    public function validation($data, $files) {</span>
+<span class="x">        // Add validation for custom fields.</span>
+<span class="x">        return array(); // Return any errors as an associative array.</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
 <h4 id="questiontypesphp">questiontypes.php</h4>
 <p>Define a class to handle loading and saving data from this form.
 and related methods providing metadata about this question types.
@@ -2238,10 +2257,89 @@ and import and export in any Question formats that the type wants to support.</p
 <p>Analyse those submitted responses: e.g. has it changed? is it complete.</p>
 <p>Automatically grade the response to give a 'fraction' (mark between 0 and 1) and a state (correct / partially correct / incorrect).</p>
 <p>check access to files for the file API.</p>
+<div class="highlight"><pre><span></span><code><span class="x">class qtype_example extends question_type {</span>
+<span class="x">    // Define how to save and load question data.</span>
+<span class="x">    public function save_question_options($question) {</span>
+<span class="x">        global $DB;</span>
+<span class="x">        // Save the question-specific data to your custom table.</span>
+<span class="x">    }</span>
+
+<span class="x">    // Define how to get the question data when loading the question.</span>
+<span class="x">    public function get_question_options($question) {</span>
+<span class="x">        global $DB;</span>
+<span class="x">        // Load the question-specific data from your custom table.</span>
+<span class="x">    }</span>
+
+<span class="x">    // Define grading behavior.</span>
+<span class="x">    public function grade_response($question, $response) {</span>
+<span class="x">        // Implement your custom grading logic here.</span>
+<span class="x">    }</span>
+
+<span class="x">    // Any other necessary methods related to this question type.</span>
+<span class="x">}</span>
+</code></pre></div>
 <h4 id="rendererphp">renderer.php</h4>
 <p>To display the key bits of this question types for the core_question_renderer to combine into the overall question display.</p>
+<p>This file defines how the question is displayed when users take a quiz. The renderer contains functions for rendering the question form and the question preview.</p>
+<div class="highlight"><pre><span></span><code><span class="x">class qtype_example_renderer extends qtype_renderer {</span>
+<span class="x">    public function formulation_and_controls(question_attempt $qa, question_display_options $options) {</span>
+<span class="x">        // Display the question to the student.</span>
+<span class="x">    }</span>
+
+<span class="x">    public function specific_feedback(question_attempt $qa) {</span>
+<span class="x">        // Show feedback after the student submits the answer.</span>
+<span class="x">    }</span>
+
+<span class="x">    public function correct_response(question_attempt $qa) {</span>
+<span class="x">        // Show the correct response.</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
 <h4 id="backup-and-restore">Backup and restore</h4>
 <p>Implements Backup and restore, and all the other standard parts of a Moodle plugin like DB tables.</p>
+<p>This XML file defines the database schema for your question type plugin. Typically, you’ll need to create custom tables to store additional data specific to your question type.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;yourplugin/db&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;2024031600&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Question type example tables&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TABLES&gt;</span>
+        <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;qtype_example_options&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Stores example-specific question options&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;FIELDS&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;questionid&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;examplefield&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/FIELDS&gt;</span>
+            <span class="nt">&lt;KEYS&gt;</span>
+                <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;questionid_fk&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;foreign&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;questionid&quot;</span> <span class="na">REFERENCES=</span><span class="s">&quot;question&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/KEYS&gt;</span>
+        <span class="nt">&lt;/TABLE&gt;</span>
+    <span class="nt">&lt;/TABLES&gt;</span>
+<span class="nt">&lt;/XMLDB&gt;</span>
+</code></pre></div>
+<p>backup/moodle2/backup_qtype_example_plugin.class.php &amp; restore_qtype_example_plugin.class.php
+These files handle backup and restore functionality for your question type. They ensure that your question data is properly saved when a quiz is backed up and correctly restored when imported.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// backup_qtype_example_plugin.class.php</span>
+<span class="x">class backup_qtype_example_plugin extends backup_qtype_plugin {</span>
+<span class="x">    protected function define_question_plugin_structure() {</span>
+<span class="x">        $plugin = $this-&gt;get_plugin_element(null, $this-&gt;plugin_name, array());</span>
+<span class="x">        $pluginwrapper = new backup_nested_element($this-&gt;plugin_name);</span>
+<span class="x">        $plugin-&gt;add_child($pluginwrapper);</span>
+
+<span class="x">        $example = new backup_nested_element(&#39;example&#39;, array(&#39;id&#39;), array(&#39;examplefield&#39;));</span>
+<span class="x">        $pluginwrapper-&gt;add_child($example);</span>
+
+<span class="x">        return $plugin;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">// restore_qtype_example_plugin.class.php</span>
+<span class="x">class restore_qtype_example_plugin extends restore_qtype_plugin {</span>
+<span class="x">    protected function define_question_plugin_structure() {</span>
+<span class="x">        return $this-&gt;prepare_question_structure(</span>
+<span class="x">            new restore_nested_element(&#39;example&#39;, array(&#39;id&#39;), array(&#39;examplefield&#39;))</span>
+<span class="x">        );</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
 <h4 id="meta-data">Meta data</h4>
 <p>Track users preferences for the settings used for newly created questions.</p>
 <h4 id="default-for-new-question-types">Default for new question types</h4>
