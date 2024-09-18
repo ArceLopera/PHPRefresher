@@ -12,21 +12,21 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpSuperGlobals/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/Plugin/phpMoodlePlugin_qbank/">
       
-      <link rel="icon" href="../../Images/elephant.ico">
+      <link rel="icon" href="../../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Globals - PHP Refresher</title>
+        <title>Question Bank - PHP Refresher</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -41,7 +41,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#globals" class="md-skip">
+        <a href="#key-aspects-of-developing-a-qbank-plugin" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../Images/Elephpant.svg" alt="logo">
+  <img src="../../../Images/Elephpant.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Globals
+              Question Bank
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -207,15 +207,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../phpRefresh/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../phpRefresh/" class="md-tabs__link">
         Basics
       </a>
     </li>
@@ -236,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Func/phpAll/" class="md-tabs__link">
+      <a href="../../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -254,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../DS/phpArray/" class="md-tabs__link">
+      <a href="../../../DS/phpArray/" class="md-tabs__link">
         Data Structures
       </a>
     </li>
@@ -270,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Classes/phpCls/" class="md-tabs__link">
+      <a href="../../../Classes/phpCls/" class="md-tabs__link">
         Classes
       </a>
     </li>
@@ -286,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
         Advanced
       </a>
     </li>
@@ -296,13 +294,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
         Moodle
       </a>
     </li>
@@ -330,9 +330,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../Images/Elephpant.svg" alt="logo">
+  <img src="../../../Images/Elephpant.svg" alt="logo">
 
     </a>
     PHP Refresher
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -373,14 +373,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -403,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpRefresh/" class="md-nav__link">
+      <a href="../../../phpRefresh/" class="md-nav__link">
         General
       </a>
     </li>
@@ -443,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar1/" class="md-nav__link">
+      <a href="../../../PR/phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -457,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar2/" class="md-nav__link">
+      <a href="../../../PR/phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -471,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar3/" class="md-nav__link">
+      <a href="../../../PR/phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
     </li>
@@ -485,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar4/" class="md-nav__link">
+      <a href="../../../PR/phpVar4/" class="md-nav__link">
         Variable Handling
       </a>
     </li>
@@ -506,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpConst/" class="md-nav__link">
+      <a href="../../../PR/phpConst/" class="md-nav__link">
         Constant
       </a>
     </li>
@@ -518,76 +516,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Globals
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
         Globals
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#globals" class="md-nav__link">
-    $GLOBALS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_server" class="md-nav__link">
-    $_SERVER
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_request" class="md-nav__link">
-    $_REQUEST
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_post" class="md-nav__link">
-    $_POST
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_get" class="md-nav__link">
-    $_GET
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -599,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpForms/" class="md-nav__link">
+      <a href="../../../PR/phpForms/" class="md-nav__link">
         Forms
       </a>
     </li>
@@ -639,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpStr/" class="md-nav__link">
+      <a href="../../../PR/phpStr/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -653,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpStr1/" class="md-nav__link">
+      <a href="../../../PR/phpStr1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -700,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpNum1/" class="md-nav__link">
+      <a href="../../../PR/phpNum1/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -714,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMath1/" class="md-nav__link">
+      <a href="../../../PR/phpMath1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -735,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpOperators1/" class="md-nav__link">
+      <a href="../../../PR/phpOperators1/" class="md-nav__link">
         Operators
       </a>
     </li>
@@ -775,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpIF/" class="md-nav__link">
+      <a href="../../../PR/phpIF/" class="md-nav__link">
         Conditionals
       </a>
     </li>
@@ -789,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpLoops/" class="md-nav__link">
+      <a href="../../../PR/phpLoops/" class="md-nav__link">
         Loops
       </a>
     </li>
@@ -810,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpKeywords/" class="md-nav__link">
+      <a href="../../../PR/phpKeywords/" class="md-nav__link">
         Keywords
       </a>
     </li>
@@ -884,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpAll/" class="md-nav__link">
+      <a href="../../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -924,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpDate/" class="md-nav__link">
+      <a href="../../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -938,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpCalendar/" class="md-nav__link">
+      <a href="../../../Func/phpCalendar/" class="md-nav__link">
         Calendar
       </a>
     </li>
@@ -959,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpRegex/" class="md-nav__link">
+      <a href="../../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
     </li>
@@ -999,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpCookie/" class="md-nav__link">
+      <a href="../../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -1013,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpSessions/" class="md-nav__link">
+      <a href="../../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -1027,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpFTP/" class="md-nav__link">
+      <a href="../../../Func/phpFTP/" class="md-nav__link">
         FTP
       </a>
     </li>
@@ -1041,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpMail/" class="md-nav__link">
+      <a href="../../../Func/phpMail/" class="md-nav__link">
         Mail
       </a>
     </li>
@@ -1062,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpFilters/" class="md-nav__link">
+      <a href="../../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -1076,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpCallback/" class="md-nav__link">
+      <a href="../../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -1090,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpJSON/" class="md-nav__link">
+      <a href="../../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1130,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpError/" class="md-nav__link">
+      <a href="../../../Func/phpError/" class="md-nav__link">
         Errors
       </a>
     </li>
@@ -1144,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpExceptions/" class="md-nav__link">
+      <a href="../../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -1165,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpConfVar/" class="md-nav__link">
+      <a href="../../../Func/phpConfVar/" class="md-nav__link">
         Config Variables
       </a>
     </li>
@@ -1179,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpDeclare/" class="md-nav__link">
+      <a href="../../../Func/phpDeclare/" class="md-nav__link">
         Declare
       </a>
     </li>
@@ -1193,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpEmpty/" class="md-nav__link">
+      <a href="../../../Func/phpEmpty/" class="md-nav__link">
         Empty
       </a>
     </li>
@@ -1207,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpMisc/" class="md-nav__link">
+      <a href="../../../Func/phpMisc/" class="md-nav__link">
         Misc
       </a>
     </li>
@@ -1221,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpOutput/" class="md-nav__link">
+      <a href="../../../Func/phpOutput/" class="md-nav__link">
         Output Control
       </a>
     </li>
@@ -1268,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1282,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
         Arrow Function
       </a>
     </li>
@@ -1296,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpGenerators/" class="md-nav__link">
+      <a href="../../../Func/phpGenerators/" class="md-nav__link">
         Generators
       </a>
     </li>
@@ -1351,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DS/phpArray/" class="md-nav__link">
+      <a href="../../../DS/phpArray/" class="md-nav__link">
         Array
       </a>
     </li>
@@ -1365,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DS/phpIterables/" class="md-nav__link">
+      <a href="../../../DS/phpIterables/" class="md-nav__link">
         Iterables
       </a>
     </li>
@@ -1413,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpCls/" class="md-nav__link">
+      <a href="../../../Classes/phpCls/" class="md-nav__link">
         OOP
       </a>
     </li>
@@ -1427,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
         Constructor
       </a>
     </li>
@@ -1441,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
         Access Modifiers
       </a>
     </li>
@@ -1455,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
         Inheritance
       </a>
     </li>
@@ -1469,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpConstants/" class="md-nav__link">
+      <a href="../../../Classes/phpConstants/" class="md-nav__link">
         Constants
       </a>
     </li>
@@ -1483,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
         Abstract Classes
       </a>
     </li>
@@ -1497,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
         Interfaces
       </a>
     </li>
@@ -1511,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpTraits/" class="md-nav__link">
+      <a href="../../../Classes/phpTraits/" class="md-nav__link">
         Traits
       </a>
     </li>
@@ -1525,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpStatic/" class="md-nav__link">
+      <a href="../../../Classes/phpStatic/" class="md-nav__link">
         Static
       </a>
     </li>
@@ -1539,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
         Namespaces
       </a>
     </li>
@@ -1587,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpInclude/" class="md-nav__link">
+      <a href="../../../Adv/phpInclude/" class="md-nav__link">
         Include
       </a>
     </li>
@@ -1601,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpGoto/" class="md-nav__link">
+      <a href="../../../Adv/phpGoto/" class="md-nav__link">
         Goto
       </a>
     </li>
@@ -1641,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpFile/" class="md-nav__link">
+      <a href="../../../Adv/phpFile/" class="md-nav__link">
         Filesystem
       </a>
     </li>
@@ -1655,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpZip/" class="md-nav__link">
+      <a href="../../../Adv/phpZip/" class="md-nav__link">
         Zip
       </a>
     </li>
@@ -1676,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpMySql/" class="md-nav__link">
+      <a href="../../../Adv/phpMySql/" class="md-nav__link">
         MySQL
       </a>
     </li>
@@ -1690,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpXML/" class="md-nav__link">
+      <a href="../../../Adv/phpXML/" class="md-nav__link">
         XML
       </a>
     </li>
@@ -1704,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpAjax/" class="md-nav__link">
+      <a href="../../../Adv/phpAjax/" class="md-nav__link">
         Ajax
       </a>
     </li>
@@ -1724,12 +1657,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1752,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+      <a href="../../phpMoodle/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -1766,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+      <a href="../../phpMoodleInstall/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -1778,12 +1713,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" checked>
       
       
       
@@ -1806,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginTypes/" class="md-nav__link">
+      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1820,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_mod/" class="md-nav__link">
         Activity
       </a>
     </li>
@@ -1832,12 +1769,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" type="checkbox" id="__nav_7_3_3" checked>
       
       
       
@@ -1860,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_qtypes/" class="md-nav__link">
         Question Types
       </a>
     </li>
@@ -1874,7 +1813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_qformat/" class="md-nav__link">
         Question Format
       </a>
     </li>
@@ -1886,11 +1825,55 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Question Bank
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Question Bank
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-aspects-of-developing-a-qbank-plugin" class="md-nav__link">
+    Key Aspects of Developing a Qbank Plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1916,7 +1899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginSkeleton/" class="md-nav__link">
+      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
         Skeleton
       </a>
     </li>
@@ -1930,7 +1913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginFiles/" class="md-nav__link">
+      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
         Common Files
       </a>
     </li>
@@ -1944,7 +1927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleXMLDB/" class="md-nav__link">
+      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
         XMLDB tool
       </a>
     </li>
@@ -1958,7 +1941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleTemplate/" class="md-nav__link">
+      <a href="../../phpMoodleTemplate/" class="md-nav__link">
         Templates
       </a>
     </li>
@@ -1998,7 +1981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleJS/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
         General
       </a>
     </li>
@@ -2012,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleJSTools/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
         Tools
       </a>
     </li>
@@ -2026,7 +2009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodlePromises/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
         Promises
       </a>
     </li>
@@ -2040,7 +2023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleModal/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
         Modal Dialogues
       </a>
     </li>
@@ -2054,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleAJAX/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
         AJAX
       </a>
     </li>
@@ -2101,7 +2084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleServices/" class="md-nav__link">
+      <a href="../../phpMoodleServices/" class="md-nav__link">
         External Services
       </a>
     </li>
@@ -2115,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodlePersistent/" class="md-nav__link">
+      <a href="../../API/phpMoodlePersistent/" class="md-nav__link">
         Persistent API
       </a>
     </li>
@@ -2129,7 +2112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleExporter/" class="md-nav__link">
+      <a href="../../API/phpMoodleExporter/" class="md-nav__link">
         Exporter
       </a>
     </li>
@@ -2143,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleQuestion/" class="md-nav__link">
+      <a href="../../API/phpMoodleQuestion/" class="md-nav__link">
         Question API
       </a>
     </li>
@@ -2189,36 +2172,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#globals" class="md-nav__link">
-    $GLOBALS
+  <a href="#key-aspects-of-developing-a-qbank-plugin" class="md-nav__link">
+    Key Aspects of Developing a Qbank Plugin
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_server" class="md-nav__link">
-    $_SERVER
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_request" class="md-nav__link">
-    $_REQUEST
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_post" class="md-nav__link">
-    $_POST
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_get" class="md-nav__link">
-    $_GET
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -2237,221 +2199,117 @@
                 
 
 
-  <h1>Globals</h1>
+  <h1>Question Bank</h1>
 
-<p>Superglobals were introduced in PHP 4.1.0, and are built-in variables that are always available in all scopes.</p>
-<p>The PHP superglobal variables are:</p>
+<p>When developing a <strong>Qbank plugin</strong> in Moodle, the most important aspect is managing how the <strong>question bank</strong> (the repository of quiz questions) is enhanced or extended. This type of plugin allows developers to customize how questions are created, viewed, stored, searched, categorized, or manipulated within Moodle's question bank system.</p>
+<hr />
+<h3 id="key-aspects-of-developing-a-qbank-plugin">Key Aspects of Developing a Qbank Plugin</h3>
+<ol>
+<li>
+<p><strong>Plugin Structure and Location</strong>
+    A Qbank plugin extends or modifies the behavior of the question bank. The plugin is located in the <code>/question/bank/</code> directory. When you create a new Qbank plugin, you place it under the following structure:</p>
+<div class="highlight"><pre><span></span><code>/question/bank/yourpluginname/
+</code></pre></div>
+<p>The plugin structure typically includes the following essential files:
+- <strong>classes/local/yourpluginname.php</strong>: Core functionality, often defining classes or extending base classes.
+- <strong>lang/en/qbank_yourpluginname.php</strong>: Language strings.
+- <strong>db/services.php</strong>: Defining any services or APIs.
+- <strong>version.php</strong>: Plugin version and metadata.</p>
+</li>
+<li>
+<p><strong>Modifying Question Bank Functionality</strong>
+    Qbank plugins are used to extend or customize how users interact with the question bank. You might add new tabs, filtering options, sorting functionality, bulk actions, or even custom question types.</p>
 <ul>
-<li><a href="#globals">$GLOBALS</a></li>
-<li><a href="#_server">$_SERVER</a></li>
-<li><a href="#_request">$_REQUEST</a></li>
-<li><a href="#_post">$_POST</a></li>
-<li><a href="#_get">$_GET</a></li>
-<li>$_FILES</li>
-<li>$_ENV</li>
-<li>$_COOKIE</li>
-<li>$_SESSION</li>
+<li><strong>Core classes</strong>: Extend the base question bank classes, such as <code>question_bank_view</code> or <code>question_bank_search</code> to customize how questions are viewed, searched, or categorized.</li>
 </ul>
-<h2 id="globals">$GLOBALS</h2>
-<p>$GLOBALS is a PHP super global variable which is used to access global variables from anywhere in the PHP script (also from within functions or methods).</p>
-<p>PHP stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">75</span><span class="p">;</span>
-<span class="nv">$y</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
-
-<span class="k">function</span> <span class="nf">addition</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">];</span>
-<span class="p">}</span>
-
-<span class="nx">addition</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nv">$z</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<p>For example, if you want to add a new feature to filter questions by difficulty level:
+- You would extend <code>question_bank_search_condition</code> to create a custom filtering mechanism.</p>
+</li>
+<li>
+<p><strong>Modifying the User Interface (UI)</strong>
+    The <strong>user interface</strong> is a critical element of Qbank plugins, as the plugin should provide an intuitive way for users to interact with the question bank. This involves:</p>
+<ul>
+<li><strong>Custom tabs</strong>: You may want to add additional tabs or menus in the question bank interface to allow access to new features.</li>
+<li><strong>Custom forms</strong>: Adding or modifying forms (e.g., adding new fields for question metadata).</li>
+<li><strong>JavaScript enhancements</strong>: Use JavaScript to add dynamic behavior to the UI, like loading search results without refreshing the page.</li>
+</ul>
+<p>Example of adding a new tab:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class myplugin_question_bank_view extends question_bank_view {</span>
+<span class="x">    public function get_tabs() {</span>
+<span class="x">        $tabs = parent::get_tabs();</span>
+<span class="x">        // Add your new tab here.</span>
+<span class="x">        $tabs[] = new my_custom_tab();</span>
+<span class="x">        return $tabs;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
 </code></pre></div>
-<h2 id="_server">$_SERVER</h2>
-<p>$_SERVER is a PHP super global variable which holds information about headers, paths, and script locations.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;PHP_SELF&#39;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;SERVER_NAME&#39;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_HOST&#39;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_REFERER&#39;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_USER_AGENT&#39;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;SCRIPT_NAME&#39;</span><span class="p">];</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+</li>
+<li>
+<p><strong>Handling Question Metadata</strong>
+    Depending on your plugin's purpose, you might need to handle additional <strong>question metadata</strong>. For instance, if you are adding features like question tagging, categorization by difficulty, or custom fields, you'll need to manage this additional metadata in a way that integrates smoothly with Moodle's core data structures.</p>
+<p>This involves:
+- Modifying the question creation/editing forms.
+- Ensuring that this metadata is stored in Moodle’s database.
+- Making sure your metadata is displayed and used correctly in question searches and sorting.</p>
+</li>
+<li>
+<p><strong>Database Integration</strong>
+    Qbank plugins often require modifications to Moodle’s database to store custom data related to questions. You’ll need to carefully define the necessary database tables in <code>db/install.xml</code> to handle any new data fields, such as tags, difficulty levels, or question statistics.</p>
+<p>Example for adding a new database table:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table</span> <span class="na">name=</span><span class="s">&quot;qbank_difficulty&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;id&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">length=</span><span class="s">&quot;10&quot;</span> <span class="na">unsigned=</span><span class="s">&quot;true&quot;</span> <span class="na">notnull=</span><span class="s">&quot;true&quot;</span> <span class="na">sequence=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;questionid&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">length=</span><span class="s">&quot;10&quot;</span> <span class="na">unsigned=</span><span class="s">&quot;true&quot;</span> <span class="na">notnull=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;difficulty&quot;</span> <span class="na">type=</span><span class="s">&quot;int&quot;</span> <span class="na">length=</span><span class="s">&quot;10&quot;</span> <span class="na">unsigned=</span><span class="s">&quot;true&quot;</span> <span class="na">notnull=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;key</span> <span class="na">name=</span><span class="s">&quot;primary&quot;</span> <span class="na">primary=</span><span class="s">&quot;true&quot;</span> <span class="na">fields=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
 </code></pre></div>
-<p>The following table lists the most important elements that can go inside $_SERVER.</p>
-<table>
-<thead>
-<tr>
-<th>Element</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$_SERVER['PHP_SELF']</td>
-<td>Returns the filename of the currently executing script</td>
-</tr>
-<tr>
-<td>$_SERVER['GATEWAY_INTERFACE']</td>
-<td>Returns the version of the Common Gateway Interface (CGI) the server is using</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_ADDR']</td>
-<td>Returns the IP address of the host server</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_NAME']</td>
-<td>Returns the name of the host server (such as www.w3schools.com)</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_SOFTWARE']</td>
-<td>Returns the server identification string (such as Apache/2.2.24)</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_PROTOCOL']</td>
-<td>Returns the name and revision of the information protocol (such as HTTP/1.1)</td>
-</tr>
-<tr>
-<td>$_SERVER['REQUEST_METHOD']</td>
-<td>Returns the request method used to access the page (such as POST)</td>
-</tr>
-<tr>
-<td>$_SERVER['REQUEST_TIME']</td>
-<td>Returns the timestamp of the start of the request (such as 1377687496)</td>
-</tr>
-<tr>
-<td>$_SERVER['QUERY_STRING']</td>
-<td>Returns the query string if the page is accessed via a query string</td>
-</tr>
-<tr>
-<td>$_SERVER['HTTP_ACCEPT']</td>
-<td>Returns the Accept header from the current request</td>
-</tr>
-<tr>
-<td>$_SERVER['HTTP_ACCEPT_CHARSET']</td>
-<td>Returns the Accept_Charset header from the current request (such as utf-8,ISO-8859-1)</td>
-</tr>
-<tr>
-<td>$_SERVER['HTTP_HOST']</td>
-<td>Returns the Host header from the current request</td>
-</tr>
-<tr>
-<td>$_SERVER['HTTP_REFERER']</td>
-<td>Returns the complete URL of the current page (not reliable because not all user-agents support it)</td>
-</tr>
-<tr>
-<td>$_SERVER['HTTPS']</td>
-<td>Is the script queried through a secure HTTP protocol</td>
-</tr>
-<tr>
-<td>$_SERVER['REMOTE_ADDR']</td>
-<td>Returns the IP address from where the user is viewing the current page</td>
-</tr>
-<tr>
-<td>$_SERVER['REMOTE_HOST']</td>
-<td>Returns the Host name from where the user is viewing the current page</td>
-</tr>
-<tr>
-<td>$_SERVER['REMOTE_PORT']</td>
-<td>Returns the port being used on the user's machine to communicate with the web server</td>
-</tr>
-<tr>
-<td>$_SERVER['SCRIPT_FILENAME']</td>
-<td>Returns the absolute pathname of the currently executing script</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_ADMIN']</td>
-<td>Returns the value given to the SERVER_ADMIN directive in the web server</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_PORT']</td>
-<td>Returns the port on the server machine being used by the web server for communication (such as 80)</td>
-</tr>
-<tr>
-<td>$_SERVER['SERVER_SIGNATURE']</td>
-<td>Returns the server version and virtual host name which are added to server-generated pages</td>
-</tr>
-<tr>
-<td>$_SERVER['PATH_TRANSLATED']</td>
-<td>Returns the file system based path to the current script</td>
-</tr>
-<tr>
-<td>$_SERVER['SCRIPT_NAME']</td>
-<td>Returns the path of the current script</td>
-</tr>
-<tr>
-<td>$_SERVER['SCRIPT_URI']</td>
-<td>Returns the URI of the current page</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_request">$_REQUEST</h2>
-<p>PHP $_REQUEST is a PHP super global variable which is used to collect data after submitting an HTML form.</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&lt;?php echo $_SERVER[&#39;PHP_SELF&#39;];?&gt;&quot;</span><span class="p">&gt;</span>
-  Name: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fname&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="cp">&lt;?php</span>
-<span class="cp">if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;) {</span>
-<span class="cp">  // collect value of input field</span>
-<span class="cp">  $name = $_REQUEST[&#39;fname&#39;];</span>
-<span class="cp">  if (empty($name)) {</span>
-<span class="cp">    echo &quot;Name is empty&quot;;</span>
-<span class="cp">  } else {</span>
-<span class="cp">    echo $name;</span>
-<span class="cp">  }</span>
-<span class="cp">}</span>
-<span class="cp">?&gt;</span>
-
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</li>
+<li>
+<p><strong>Permission and Capability Handling</strong>
+    One of the key aspects when extending the question bank is managing permissions and capabilities. You might want certain actions to be limited to specific roles or users.</p>
+<p>You’ll need to define these capabilities in <code>db/access.php</code>, ensuring that only authorized users can perform certain actions (e.g., viewing certain questions, performing bulk actions).</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$capabilities = array(</span>
+<span class="x">    &#39;qbank/myplugin:view&#39; =&gt; array(</span>
+<span class="x">        &#39;captype&#39; =&gt; &#39;read&#39;,</span>
+<span class="x">        &#39;contextlevel&#39; =&gt; CONTEXT_COURSE,</span>
+<span class="x">        &#39;archetypes&#39; =&gt; array(</span>
+<span class="x">            &#39;teacher&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">            &#39;editingteacher&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">        ),</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
 </code></pre></div>
-<h2 id="_post">$_POST</h2>
-<p>PHP $_POST is a PHP super global variable which is used to collect form data after submitting an HTML form with method="post". $_POST is also widely used to pass variables.</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&lt;?php echo $_SERVER[&#39;PHP_SELF&#39;];?&gt;&quot;</span><span class="p">&gt;</span>
-  Name: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fname&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
-
-<span class="cp">&lt;?php</span>
-<span class="cp">if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;) {</span>
-<span class="cp">  // collect value of input field</span>
-<span class="cp">  $name = $_POST[&#39;fname&#39;];</span>
-<span class="cp">  if (empty($name)) {</span>
-<span class="cp">    echo &quot;Name is empty&quot;;</span>
-<span class="cp">  } else {</span>
-<span class="cp">    echo $name;</span>
-<span class="cp">  }</span>
-<span class="cp">}</span>
-<span class="cp">?&gt;</span>
-
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-<h2 id="_get">$_GET</h2>
-<p>PHP $_GET is a PHP super global variable which is used to collect form data after submitting an HTML form with method="get".</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-
-<span class="cp">&lt;?php</span>
-<span class="cp">echo &quot;Study &quot; . $_GET[&#39;subject&#39;] . &quot; at &quot; . $_GET[&#39;web&#39;];</span>
-<span class="cp">?&gt;</span>
-
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
+</li>
+<li>
+<p><strong>Custom Bulk Actions</strong>
+    One of the strengths of the Qbank plugin system is the ability to introduce new <strong>bulk actions</strong>. You can allow users to perform actions on multiple questions at once, such as bulk moving questions, tagging, or even exporting.</p>
+<ul>
+<li>Extend the <code>question_bank_bulk_action</code> class to define custom bulk actions.</li>
+<li>Ensure that the bulk action integrates with the existing question bank interface and respects the permissions of users.</li>
+</ul>
+</li>
+<li>
+<p><strong>Performance Considerations</strong>
+    The question bank can contain thousands of questions, so performance is a key concern. When developing a Qbank plugin, ensure that your code efficiently handles large datasets and doesn’t degrade Moodle's performance.</p>
+<ul>
+<li>Implement <strong>efficient database queries</strong>.</li>
+<li>Avoid unnecessary page loads by utilizing AJAX for actions like search or filtering.</li>
+<li>Cache common queries or data when possible to minimize database load.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing</strong>
+    Testing your plugin is crucial to ensure that it works across different question types, courses, and contexts. Consider writing <strong>unit tests</strong> and <strong>Behat tests</strong> to verify that the plugin behaves as expected.</p>
+<ul>
+<li>Ensure that the plugin handles edge cases, such as missing data or incorrect user input.</li>
+<li>Test that your plugin integrates smoothly with Moodle’s backup/restore system and handles questions correctly when restored.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>The most important aspect of developing a Qbank plugin in Moodle is customizing how questions are displayed, searched, or managed within the question bank, while maintaining performance and ensuring seamless user interaction. By extending core classes, handling custom metadata, ensuring proper permissions, and optimizing for large datasets, you can create a powerful plugin that enhances Moodle’s question management system.</p>
 
               
             </article>
@@ -2465,7 +2323,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpConst/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Constant" rel="prev">
+        <a href="../phpMoodlePlugin_qformat/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Question Format" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2474,20 +2332,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Constant
+              Question Format
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpForms/" class="md-footer__link md-footer__link--next" aria-label="Next: Forms" rel="next">
+        <a href="../../phpMoodlePluginSkeleton/" class="md-footer__link md-footer__link--next" aria-label="Next: Skeleton" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Forms
+              Skeleton
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -2567,10 +2425,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

@@ -296,6 +296,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/Moodle/Plugin/phpMoodlePlugin_qbank/</loc>
+         <lastmod>2024-09-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Moodle/Plugin/phpMoodlePlugin_qformat/</loc>
          <lastmod>2024-09-18</lastmod>
          <changefreq>daily</changefreq>

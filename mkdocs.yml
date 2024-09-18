@@ -167,8 +167,10 @@ nav:
      - Plugin Types: 
             - General: Moodle/phpMoodlePluginTypes.md
             - Activity: Moodle/Plugin/phpMoodlePlugin_mod.md
-            - Question Types: Moodle/Plugin/phpMoodlePlugin_qtypes.md
-            - Question Format: Moodle/Plugin/phpMoodlePlugin_qformat.md
+            - Question:
+              - Question Types: Moodle/Plugin/phpMoodlePlugin_qtypes.md
+              - Question Format: Moodle/Plugin/phpMoodlePlugin_qformat.md
+              - Question Bank: Moodle/Plugin/phpMoodlePlugin_qbank.md
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
      - XMLDB tool: Moodle/phpMoodleXMLDB.md
