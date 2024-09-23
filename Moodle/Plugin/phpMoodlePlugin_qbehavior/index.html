@@ -12,21 +12,21 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/PR/phpLoops/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/Plugin/phpMoodlePlugin_qbehavior/">
       
-      <link rel="icon" href="../../Images/elephant.ico">
+      <link rel="icon" href="../../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Loops - PHP Refresher</title>
+        <title>Question Behavior - PHP Refresher</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -41,7 +41,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#while" class="md-skip">
+        <a href="#key-aspects-of-developing-a-qbehavior-plugin" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../Images/Elephpant.svg" alt="logo">
+  <img src="../../../Images/Elephpant.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Loops
+              Question Behavior
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -207,15 +207,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../phpRefresh/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../phpRefresh/" class="md-tabs__link">
         Basics
       </a>
     </li>
@@ -236,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Func/phpAll/" class="md-tabs__link">
+      <a href="../../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -254,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../DS/phpArray/" class="md-tabs__link">
+      <a href="../../../DS/phpArray/" class="md-tabs__link">
         Data Structures
       </a>
     </li>
@@ -270,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Classes/phpCls/" class="md-tabs__link">
+      <a href="../../../Classes/phpCls/" class="md-tabs__link">
         Classes
       </a>
     </li>
@@ -286,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
         Advanced
       </a>
     </li>
@@ -296,13 +294,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
         Moodle
       </a>
     </li>
@@ -330,9 +330,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../Images/Elephpant.svg" alt="logo">
+  <img src="../../../Images/Elephpant.svg" alt="logo">
 
     </a>
     PHP Refresher
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -373,14 +373,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -403,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpRefresh/" class="md-nav__link">
+      <a href="../../../phpRefresh/" class="md-nav__link">
         General
       </a>
     </li>
@@ -443,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar1/" class="md-nav__link">
+      <a href="../../../PR/phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -457,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar2/" class="md-nav__link">
+      <a href="../../../PR/phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -471,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar3/" class="md-nav__link">
+      <a href="../../../PR/phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
     </li>
@@ -485,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpVar4/" class="md-nav__link">
+      <a href="../../../PR/phpVar4/" class="md-nav__link">
         Variable Handling
       </a>
     </li>
@@ -506,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpConst/" class="md-nav__link">
+      <a href="../../../PR/phpConst/" class="md-nav__link">
         Constant
       </a>
     </li>
@@ -520,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpSuperGlobals/" class="md-nav__link">
+      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
         Globals
       </a>
     </li>
@@ -534,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpForms/" class="md-nav__link">
+      <a href="../../../PR/phpForms/" class="md-nav__link">
         Forms
       </a>
     </li>
@@ -574,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpStr/" class="md-nav__link">
+      <a href="../../../PR/phpStr/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -588,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpStr1/" class="md-nav__link">
+      <a href="../../../PR/phpStr1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -635,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpNum1/" class="md-nav__link">
+      <a href="../../../PR/phpNum1/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -649,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMath1/" class="md-nav__link">
+      <a href="../../../PR/phpMath1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -670,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpOperators1/" class="md-nav__link">
+      <a href="../../../PR/phpOperators1/" class="md-nav__link">
         Operators
       </a>
     </li>
@@ -682,14 +680,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
       
       
       
@@ -712,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpIF/" class="md-nav__link">
+      <a href="../../../PR/phpIF/" class="md-nav__link">
         Conditionals
       </a>
     </li>
@@ -724,135 +720,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Loops
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../PR/phpLoops/" class="md-nav__link">
         Loops
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#while" class="md-nav__link">
-    while
-  </a>
-  
-    <nav class="md-nav" aria-label="while">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endwhile" class="md-nav__link">
-    endwhile
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dowhile" class="md-nav__link">
-    do...while
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#for" class="md-nav__link">
-    for
-  </a>
-  
-    <nav class="md-nav" aria-label="for">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endfor" class="md-nav__link">
-    endfor
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#foreach" class="md-nav__link">
-    foreach
-  </a>
-  
-    <nav class="md-nav" aria-label="foreach">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endforeach" class="md-nav__link">
-    endforeach
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#break-and-continue" class="md-nav__link">
-    Break and Continue
-  </a>
-  
-    <nav class="md-nav" aria-label="Break and Continue">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-break" class="md-nav__link">
-    PHP Break
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#php-continue" class="md-nav__link">
-    PHP Continue
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -871,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpKeywords/" class="md-nav__link">
+      <a href="../../../PR/phpKeywords/" class="md-nav__link">
         Keywords
       </a>
     </li>
@@ -945,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpAll/" class="md-nav__link">
+      <a href="../../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -985,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpDate/" class="md-nav__link">
+      <a href="../../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -999,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpCalendar/" class="md-nav__link">
+      <a href="../../../Func/phpCalendar/" class="md-nav__link">
         Calendar
       </a>
     </li>
@@ -1020,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpRegex/" class="md-nav__link">
+      <a href="../../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
     </li>
@@ -1060,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpCookie/" class="md-nav__link">
+      <a href="../../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -1074,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpSessions/" class="md-nav__link">
+      <a href="../../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -1088,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpFTP/" class="md-nav__link">
+      <a href="../../../Func/phpFTP/" class="md-nav__link">
         FTP
       </a>
     </li>
@@ -1102,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpMail/" class="md-nav__link">
+      <a href="../../../Func/phpMail/" class="md-nav__link">
         Mail
       </a>
     </li>
@@ -1123,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpFilters/" class="md-nav__link">
+      <a href="../../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -1137,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpCallback/" class="md-nav__link">
+      <a href="../../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -1151,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpJSON/" class="md-nav__link">
+      <a href="../../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1191,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpError/" class="md-nav__link">
+      <a href="../../../Func/phpError/" class="md-nav__link">
         Errors
       </a>
     </li>
@@ -1205,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpExceptions/" class="md-nav__link">
+      <a href="../../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -1226,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpConfVar/" class="md-nav__link">
+      <a href="../../../Func/phpConfVar/" class="md-nav__link">
         Config Variables
       </a>
     </li>
@@ -1240,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpDeclare/" class="md-nav__link">
+      <a href="../../../Func/phpDeclare/" class="md-nav__link">
         Declare
       </a>
     </li>
@@ -1254,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpEmpty/" class="md-nav__link">
+      <a href="../../../Func/phpEmpty/" class="md-nav__link">
         Empty
       </a>
     </li>
@@ -1268,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpMisc/" class="md-nav__link">
+      <a href="../../../Func/phpMisc/" class="md-nav__link">
         Misc
       </a>
     </li>
@@ -1282,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpOutput/" class="md-nav__link">
+      <a href="../../../Func/phpOutput/" class="md-nav__link">
         Output Control
       </a>
     </li>
@@ -1329,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1343,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
         Arrow Function
       </a>
     </li>
@@ -1357,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Func/phpGenerators/" class="md-nav__link">
+      <a href="../../../Func/phpGenerators/" class="md-nav__link">
         Generators
       </a>
     </li>
@@ -1412,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DS/phpArray/" class="md-nav__link">
+      <a href="../../../DS/phpArray/" class="md-nav__link">
         Array
       </a>
     </li>
@@ -1426,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DS/phpIterables/" class="md-nav__link">
+      <a href="../../../DS/phpIterables/" class="md-nav__link">
         Iterables
       </a>
     </li>
@@ -1474,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpCls/" class="md-nav__link">
+      <a href="../../../Classes/phpCls/" class="md-nav__link">
         OOP
       </a>
     </li>
@@ -1488,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
         Constructor
       </a>
     </li>
@@ -1502,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
         Access Modifiers
       </a>
     </li>
@@ -1516,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
         Inheritance
       </a>
     </li>
@@ -1530,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpConstants/" class="md-nav__link">
+      <a href="../../../Classes/phpConstants/" class="md-nav__link">
         Constants
       </a>
     </li>
@@ -1544,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
         Abstract Classes
       </a>
     </li>
@@ -1558,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
         Interfaces
       </a>
     </li>
@@ -1572,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpTraits/" class="md-nav__link">
+      <a href="../../../Classes/phpTraits/" class="md-nav__link">
         Traits
       </a>
     </li>
@@ -1586,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpStatic/" class="md-nav__link">
+      <a href="../../../Classes/phpStatic/" class="md-nav__link">
         Static
       </a>
     </li>
@@ -1600,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
         Namespaces
       </a>
     </li>
@@ -1648,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpInclude/" class="md-nav__link">
+      <a href="../../../Adv/phpInclude/" class="md-nav__link">
         Include
       </a>
     </li>
@@ -1662,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpGoto/" class="md-nav__link">
+      <a href="../../../Adv/phpGoto/" class="md-nav__link">
         Goto
       </a>
     </li>
@@ -1702,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpFile/" class="md-nav__link">
+      <a href="../../../Adv/phpFile/" class="md-nav__link">
         Filesystem
       </a>
     </li>
@@ -1716,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpZip/" class="md-nav__link">
+      <a href="../../../Adv/phpZip/" class="md-nav__link">
         Zip
       </a>
     </li>
@@ -1737,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpMySql/" class="md-nav__link">
+      <a href="../../../Adv/phpMySql/" class="md-nav__link">
         MySQL
       </a>
     </li>
@@ -1751,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpXML/" class="md-nav__link">
+      <a href="../../../Adv/phpXML/" class="md-nav__link">
         XML
       </a>
     </li>
@@ -1765,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpAjax/" class="md-nav__link">
+      <a href="../../../Adv/phpAjax/" class="md-nav__link">
         Ajax
       </a>
     </li>
@@ -1785,12 +1657,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1813,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+      <a href="../../phpMoodle/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -1827,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+      <a href="../../phpMoodleInstall/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -1839,12 +1713,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" checked>
       
       
       
@@ -1867,7 +1743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginTypes/" class="md-nav__link">
+      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1881,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_mod/" class="md-nav__link">
         Activity
       </a>
     </li>
@@ -1893,12 +1769,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" type="checkbox" id="__nav_7_3_3" checked>
       
       
       
@@ -1921,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_qtypes/" class="md-nav__link">
         Question Types
       </a>
     </li>
@@ -1935,7 +1813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_qformat/" class="md-nav__link">
         Question Format
       </a>
     </li>
@@ -1949,7 +1827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+      <a href="../phpMoodlePlugin_qbank/" class="md-nav__link">
         Question Bank
       </a>
     </li>
@@ -1961,11 +1839,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Question Behavior
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Question Behavior
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-aspects-of-developing-a-qbehavior-plugin" class="md-nav__link">
+    Key Aspects of Developing a Qbehavior Plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-developing-a-qbehavior-plugin-adaptive-mode" class="md-nav__link">
+    Example of Developing a Qbehavior Plugin: Adaptive Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1991,7 +1920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginSkeleton/" class="md-nav__link">
+      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
         Skeleton
       </a>
     </li>
@@ -2005,7 +1934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginFiles/" class="md-nav__link">
+      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
         Common Files
       </a>
     </li>
@@ -2019,7 +1948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleXMLDB/" class="md-nav__link">
+      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
         XMLDB tool
       </a>
     </li>
@@ -2033,7 +1962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleTemplate/" class="md-nav__link">
+      <a href="../../phpMoodleTemplate/" class="md-nav__link">
         Templates
       </a>
     </li>
@@ -2073,7 +2002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleJS/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
         General
       </a>
     </li>
@@ -2087,7 +2016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleJSTools/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
         Tools
       </a>
     </li>
@@ -2101,7 +2030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodlePromises/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
         Promises
       </a>
     </li>
@@ -2115,7 +2044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleModal/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
         Modal Dialogues
       </a>
     </li>
@@ -2129,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleAJAX/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
         AJAX
       </a>
     </li>
@@ -2176,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleServices/" class="md-nav__link">
+      <a href="../../phpMoodleServices/" class="md-nav__link">
         External Services
       </a>
     </li>
@@ -2190,7 +2119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodlePersistent/" class="md-nav__link">
+      <a href="../../API/phpMoodlePersistent/" class="md-nav__link">
         Persistent API
       </a>
     </li>
@@ -2204,7 +2133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleExporter/" class="md-nav__link">
+      <a href="../../API/phpMoodleExporter/" class="md-nav__link">
         Exporter
       </a>
     </li>
@@ -2218,7 +2147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleQuestion/" class="md-nav__link">
+      <a href="../../API/phpMoodleQuestion/" class="md-nav__link">
         Question API
       </a>
     </li>
@@ -2264,96 +2193,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#while" class="md-nav__link">
-    while
-  </a>
-  
-    <nav class="md-nav" aria-label="while">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endwhile" class="md-nav__link">
-    endwhile
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dowhile" class="md-nav__link">
-    do...while
+  <a href="#key-aspects-of-developing-a-qbehavior-plugin" class="md-nav__link">
+    Key Aspects of Developing a Qbehavior Plugin
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#for" class="md-nav__link">
-    for
+  <a href="#example-of-developing-a-qbehavior-plugin-adaptive-mode" class="md-nav__link">
+    Example of Developing a Qbehavior Plugin: Adaptive Mode
   </a>
-  
-    <nav class="md-nav" aria-label="for">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endfor" class="md-nav__link">
-    endfor
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#foreach" class="md-nav__link">
-    foreach
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
-  
-    <nav class="md-nav" aria-label="foreach">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#endforeach" class="md-nav__link">
-    endforeach
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#break-and-continue" class="md-nav__link">
-    Break and Continue
-  </a>
-  
-    <nav class="md-nav" aria-label="Break and Continue">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#php-break" class="md-nav__link">
-    PHP Break
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#php-continue" class="md-nav__link">
-    PHP Continue
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2371,121 +2227,186 @@
                 
 
 
-  <h1>Loops</h1>
+  <h1>Question Behavior</h1>
 
-<p>In PHP, we have the following loop types:</p>
+<p>When developing a <strong>Qbehavior plugin</strong> in Moodle, the most important aspect is managing how questions behave during <strong>attempts in a quiz</strong>. A <strong>question behavior plugin</strong> controls how a user interacts with a question, how responses are processed, and how feedback is provided. It determines the user experience during quizzes, such as whether users can retry incorrect answers, how immediate feedback is shown, and how marks are adjusted based on responses.</p>
+<hr />
+<h3 id="key-aspects-of-developing-a-qbehavior-plugin">Key Aspects of Developing a Qbehavior Plugin</h3>
+<ol>
+<li>
+<p><strong>Plugin Structure and Location</strong>
+    A Qbehavior plugin is located in the <code>/question/behaviour/</code> directory. When you create a new plugin (e.g., <code>mybehavior</code>), it will be structured like this:</p>
+<div class="highlight"><pre><span></span><code>/question/behaviour/mybehavior/
+</code></pre></div>
+<p>Essential files include:</p>
 <ul>
-<li><a href="#while">while</a> - loops through a block of code as long as the specified condition is true</li>
-<li><a href="#dowhile">do...while</a> - loops through a block of code once, and then repeats the loop as long as the specified condition is true</li>
-<li><a href="#for">for</a> - loops through a block of code a specified number of times</li>
-<li><a href="#foreach">foreach</a> - loops through a block of code for each element in an array</li>
+<li><strong>behaviour.php</strong>: This is the core file that defines how the question behaves.</li>
+<li><strong>lang/en/qbehaviour_mybehavior.php</strong>: This file contains language strings for the plugin.</li>
+<li><strong>version.php</strong>: Metadata about the plugin's version and Moodle compatibility.</li>
 </ul>
-<p>To control further the flow of a loop, you can use the <a href="#php-break">break</a> and <a href="#php-continue">continue</a> statements.</p>
-<h2 id="while">while</h2>
-<p>The while loop - Loops through a block of code as long as the specified condition is true.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</li>
+<li>
+<p><strong><code>behaviour.php</code>: Core Logic of the Plugin</strong></p>
+<p>The heart of a Qbehavior plugin is the <code>behaviour.php</code> file. This file extends the base class <code>question_behaviour</code> and implements specific methods that define the behavior of the question during a quiz attempt.</p>
+<ul>
+<li><strong>Response processing</strong>: Determines how student responses are handled (e.g., whether multiple attempts are allowed, how answers are graded).</li>
+<li><strong>Feedback</strong>: Manages how feedback is provided to the user (immediate, deferred, or based on multiple tries).</li>
+<li><strong>Question state transitions</strong>: Controls how a question moves between states (e.g., unanswered, partially answered, correct, incorrect).</li>
+</ul>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="x">class qbehaviour_mybehavior extends question_behaviour {</span>
+<span class="x">    public function process_action($submitteddata, $response) {</span>
+<span class="x">        // Logic for handling the user&#39;s submission and moving to the next state.</span>
+<span class="x">    }</span>
 
-<span class="k">while</span><span class="p">(</span><span class="nv">$x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="endwhile">endwhile</h3>
-<p>The endwhile keyword is used to close the code block of a while loop which was started using the while(...): syntax.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="x">    public function adjust_fraction($fraction) {</span>
+<span class="x">        // Logic for adjusting the score based on the user&#39;s attempts or responses.</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Key Methods to Implement</strong>
+    When developing a Qbehavior plugin, there are several critical methods you need to implement to define how the behavior works. The most important ones include:</p>
+<ul>
+<li><strong><code>process_action($submitteddata, $response)</code></strong>: Defines how the system processes the student's answer submission and evaluates the state.</li>
+<li><strong><code>is_complete_response($response)</code></strong>: Determines whether the user's response is considered complete, which is important for handling submissions.</li>
+<li><strong><code>adjust_fraction($fraction)</code></strong>: Adjusts the score or grade based on the number of attempts or quality of the response.</li>
+<li><strong><code>is_graded()</code></strong>: Specifies whether the question is graded immediately or deferred until the end of the quiz.</li>
+</ul>
+<p>These methods collectively control how the question transitions between states (e.g., whether the user can try again after an incorrect answer or receive partial marks).</p>
+</li>
+<li>
+<p><strong>States and Transitions</strong>
+    A critical part of developing a Qbehavior plugin is managing the <strong>question states</strong> and <strong>state transitions</strong>. Each question can go through various states, such as <strong>todo</strong>, <strong>complete</strong>, <strong>graded</strong>, and <strong>invalid</strong>. The behavior plugin is responsible for handling these transitions based on user interaction.</p>
+<ul>
+<li>States like <code>question_state_todo</code>, <code>question_state_complete</code>, <code>question_state_graded</code>, etc., are important for controlling what happens at each stage of the quiz attempt.</li>
+<li>For example, in adaptive behavior, a student may be allowed to submit multiple attempts at the same question, while in deferred feedback, they submit answers only once.</li>
+</ul>
+<p>Example of handling state transition:
+<div class="highlight"><pre><span></span><code><span class="x">public function process_action($submitteddata, $response) {</span>
+<span class="x">    if ($this-&gt;is_correct_response($response)) {</span>
+<span class="x">        return question_state::graded_state_for_fraction(1);</span>
+<span class="x">    } else {</span>
+<span class="x">        return question_state::todo();</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>User Interaction and Feedback</strong>
+    A significant focus of a Qbehavior plugin is how feedback is provided to users during the quiz.</p>
+<ul>
+<li><strong>Immediate Feedback</strong>: Some behaviors provide feedback right after the user submits their answer, showing whether they were correct or incorrect (e.g., immediate feedback behavior).</li>
+<li><strong>Deferred Feedback</strong>: Feedback is provided only after the quiz is completed (e.g., deferred feedback behavior).</li>
+<li><strong>Partially Correct</strong>: Some behaviors allow partial marks and provide feedback after multiple attempts (e.g., interactive behavior).</li>
+</ul>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="x">public function get_feedback($response) {</span>
+<span class="x">    if ($this-&gt;is_correct_response($response)) {</span>
+<span class="x">        return new question_feedback(&#39;Correct!&#39;, 1);</span>
+<span class="x">    } else {</span>
+<span class="x">        return new question_feedback(&#39;Try again!&#39;, 0);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Grading and Fraction Adjustment</strong>
+    Another important part of developing a Qbehavior plugin is how marks (fractions) are assigned based on user responses. You might want to <strong>adjust the score</strong> depending on how many attempts a student made or how close their response is to being correct.</p>
+<ul>
+<li>In some behaviors, full marks are awarded for the correct answer on the first try, and partial marks for subsequent attempts (adaptive behavior).</li>
+<li>In others, the score may remain the same regardless of the number of attempts (deferred feedback).</li>
+</ul>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="x">public function adjust_fraction($fraction) {</span>
+<span class="x">    // Decrease the fraction for each additional attempt.</span>
+<span class="x">    $attempts = $this-&gt;get_num_attempts();</span>
+<span class="x">    return max(0, $fraction - ($attempts * 0.1));</span>
+<span class="x">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Handling User Actions and Validation</strong>
+    The Qbehavior plugin defines how <strong>user actions</strong> like submitting an answer or trying again are processed.</p>
+<ul>
+<li><strong>Validation of responses</strong>: Your plugin must validate the user's submission to ensure it's a valid response for the question type.</li>
+<li><strong>Partial or multiple attempts</strong>: Depending on the behavior, the user may be allowed to attempt the question multiple times.</li>
+</ul>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="x">public function process_action($submitteddata, $response) {</span>
+<span class="x">    if ($this-&gt;is_valid_response($submitteddata)) {</span>
+<span class="x">        // Save the user&#39;s response and transition to the appropriate state.</span>
+<span class="x">    } else {</span>
+<span class="x">        return question_state::invalid();</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Performance Considerations</strong>
+    Performance is important, especially when many students are taking a quiz simultaneously. Qbehavior plugins should be optimized for efficiency:</p>
+<ul>
+<li>Minimize database queries during state transitions.</li>
+<li>Use caching where necessary.</li>
+<li>Avoid unnecessarily loading large amounts of data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing and Compatibility</strong>
+    Testing is critical to ensure that the Qbehavior plugin works correctly across different question types and quiz scenarios.</p>
+<ul>
+<li><strong>Unit tests</strong>: Write unit tests to cover the various question behaviors, especially for edge cases like invalid submissions, retries, and multiple attempts.</li>
+<li><strong>Compatibility</strong>: Ensure that your plugin is compatible with various question types (e.g., multiple choice, short answer) and integrates smoothly with Moodle’s grading and feedback systems.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="example-of-developing-a-qbehavior-plugin-adaptive-mode">Example of Developing a Qbehavior Plugin: Adaptive Mode</h3>
+<p>Suppose you are developing a <strong>custom adaptive behavior</strong> that allows students to submit multiple attempts for a question, but with <strong>diminishing marks</strong> for each incorrect attempt.</p>
+<ol>
+<li>
+<p><strong>Core Logic (<code>behaviour.php</code>)</strong></p>
+<ul>
+<li>The <code>process_action()</code> method checks if the student's response is correct or incorrect.</li>
+<li>If correct, the question is marked as complete and fully graded.</li>
+<li>If incorrect, the user can retry, but with a reduced mark (e.g., 10% less for each wrong attempt).</li>
+</ul>
+<p>Example:
+<div class="highlight"><pre><span></span><code><span class="x">class qbehaviour_adaptive_custom extends question_behaviour {</span>
+<span class="x">    public function process_action($submitteddata, $response) {</span>
+<span class="x">        if ($this-&gt;is_correct_response($response)) {</span>
+<span class="x">            return question_state::graded_state_for_fraction(1);</span>
+<span class="x">        } else {</span>
+<span class="x">            return question_state::todo();</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
 
-<span class="k">while</span><span class="p">(</span><span class="nv">$x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span><span class="o">:</span>
-  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
-<span class="k">endwhile</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    public function adjust_fraction($fraction) {</span>
+<span class="x">        $attempts = $this-&gt;get_num_attempts();</span>
+<span class="x">        return max(0, $fraction - ($attempts * 0.1));</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>User Feedback</strong></p>
+<ul>
+<li>The user receives feedback after each attempt, with immediate feedback on whether the response was correct or incorrect.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_feedback($response) {</span>
+<span class="x">    if ($this-&gt;is_correct_response($response)) {</span>
+<span class="x">        return new question_feedback(&#39;Correct! Full marks.&#39;, 1);</span>
+<span class="x">    } else {</span>
+<span class="x">        return new question_feedback(&#39;Incorrect! Try again.&#39;, 0);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
 </code></pre></div>
-<h2 id="dowhile">do...while</h2>
-<p>The do...while loop - Loops through a block of code once, and then repeats the loop as long as the specified condition is true.</p>
-<p>In a do...while loop the condition is tested AFTER executing the statements within the loop. This means that the do...while loop will execute its statements at least once, even if the condition is false. See example below.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-<span class="k">do</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="for">for</h2>
-<p>The for loop - Loops through a block of code a specified number of times. </p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">for</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="endfor">endfor</h3>
-<p>The endfor keyword is used to close the code block of a for loop which was started using the for(...): syntax.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span><span class="o">:</span>
-  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">endfor</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="foreach">foreach</h2>
-<p>The foreach loop - Loops through a block of code for each element in an array.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$colors</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">);</span>
-
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$colors</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$value</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;35&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;37&quot;</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;43&quot;</span><span class="p">);</span>
-
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$age</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$val</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$x</span><span class="s2"> = </span><span class="si">$val</span><span class="s2">&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="endforeach">endforeach</h3>
-<p>The endforeach keyword is used to close the code block of a foreach loop which was started using the foreach(...): syntax.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$cars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">];</span>
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$cars</span> <span class="k">as</span> <span class="nv">$car</span><span class="p">)</span><span class="o">:</span>
-  <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$car</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="k">endforeach</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h2 id="break-and-continue">Break and Continue</h2>
-<h3 id="php-break">PHP Break</h3>
-<p>You have already seen the break statement used to "jump out" of a switch statement.</p>
-<p>The break statement can also be used to jump out of a loop.</p>
-<p>This example jumps out of the loop when x is equal to 4.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-  <span class="nv">$x</span><span class="o">++</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">break</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
-<h3 id="php-continue">PHP Continue</h3>
-<p>The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.</p>
-<p>This example skips the value of 4.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">for</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nv">$x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">continue</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">echo</span> <span class="s2">&quot;The number is: </span><span class="si">$x</span><span class="s2"> &lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
-</code></pre></div>
+</li>
+</ol>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>The most important aspect of developing a <strong>Qbehavior plugin</strong> in Moodle is defining how questions behave during quiz attempts. This involves managing question state transitions, processing user responses, providing appropriate feedback, and handling grading or score adjustments. By extending the core behavior classes, customizing the user interaction flow, and ensuring optimal performance, you can create a Qbehavior plugin that enhances the quiz-taking experience in Moodle.</p>
 
               
             </article>
@@ -2499,7 +2420,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpIF/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Conditionals" rel="prev">
+        <a href="../phpMoodlePlugin_qbank/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Question Bank" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2508,20 +2429,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Conditionals
+              Question Bank
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpKeywords/" class="md-footer__link md-footer__link--next" aria-label="Next: Keywords" rel="next">
+        <a href="../../phpMoodlePluginSkeleton/" class="md-footer__link md-footer__link--next" aria-label="Next: Skeleton" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Keywords
+              Skeleton
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -2601,10 +2522,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
