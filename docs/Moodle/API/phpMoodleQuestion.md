@@ -10,7 +10,7 @@ The goal of this part of the system is to allow the widest ranges of interactive
 #### [Question types (qtype_)](../Plugin/phpMoodlePlugin_qtypes.md)
 Question types define what the question is. For example a multiple choice or drag-drop question question, or a text input question graded as with a string (e.g. shortanswer or pattern-match) or as a number. It might be something much more complex, like a crossword, or a coding exercise.
 
-#### Question behaviours (qbehaviour_)
+#### [Question behaviours (qbehaviour_)](../Plugin/phpMoodlePlugin_qbehavior.md)
 Question behaviours let Moodle support different ways for a student to interact with questions. For example it might be like a classic exams, where initially the student just inputs their answers to all the questions, which are only graded, and feedback given later (qbehaviour_deferredfeedback). Or if the student might have a 'Check' button in each question so their work can be graded immediately (qbehaviour_immediatefeedback). It might even be that after their first try, if that is not right, the students can immediately Try again, to see if they can correct their mistake based on the initial feedback (qbehaviour_interactive).
 
 #### Core question engine
@@ -25,11 +25,11 @@ So, when a particular question is attempted with a particular behaviour, the cor
 ### Question bank
 The question bank provides the UI where teachers create, edit and manage questions. It also works with several plugin types:
 
-#### Question bank plugins (qbank_)
+#### [Question bank plugins (qbank_)](../Plugin/phpMoodlePlugin_qbank.md)
 Question bank plugins (qbank_) add features to the question bank. The core question bank code mainly just ties all these features together.
 
-#### Question import/export plugins (qformat_)
+#### [Question import/export plugins (qformat_)](../Plugin/phpMoodlePlugin_qformat.md)
 Question import/export plugins allow questions to be exported and imported in a variety of formats. Use by plugins like qbank_exportquestions, qbank_importquestions and qbank_exporttoxml.
 
-#### Question types (qtype_)
+#### [Question types (qtype_)](../Plugin/phpMoodlePlugin_qtypes.md)
 Question types were already considered above, when thinking about the the question engine. They also need to work with the question bank, so that teachers can create and edit questions of that type.

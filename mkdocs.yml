@@ -171,6 +171,7 @@ nav:
               - Question Types: Moodle/Plugin/phpMoodlePlugin_qtypes.md
               - Question Format: Moodle/Plugin/phpMoodlePlugin_qformat.md
               - Question Bank: Moodle/Plugin/phpMoodlePlugin_qbank.md
+              - Question Behavior: Moodle/Plugin/phpMoodlePlugin_qbehavior.md
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
      - XMLDB tool: Moodle/phpMoodleXMLDB.md

@@ -1831,6 +1831,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+        Question Behavior
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2314,7 +2328,7 @@
 <p>The goal of this part of the system is to allow the widest ranges of interactive learning experiences to be created, therefore the question engine supports two types of plugin:</p>
 <h4 id="question-types-qtype_"><a href="../../Plugin/phpMoodlePlugin_qtypes/">Question types (qtype_)</a></h4>
 <p>Question types define what the question is. For example a multiple choice or drag-drop question question, or a text input question graded as with a string (e.g. shortanswer or pattern-match) or as a number. It might be something much more complex, like a crossword, or a coding exercise.</p>
-<h4 id="question-behaviours-qbehaviour_">Question behaviours (qbehaviour_)</h4>
+<h4 id="question-behaviours-qbehaviour_"><a href="../../Plugin/phpMoodlePlugin_qbehavior/">Question behaviours (qbehaviour_)</a></h4>
 <p>Question behaviours let Moodle support different ways for a student to interact with questions. For example it might be like a classic exams, where initially the student just inputs their answers to all the questions, which are only graded, and feedback given later (qbehaviour_deferredfeedback). Or if the student might have a 'Check' button in each question so their work can be graded immediately (qbehaviour_immediatefeedback). It might even be that after their first try, if that is not right, the students can immediately Try again, to see if they can correct their mistake based on the initial feedback (qbehaviour_interactive).</p>
 <h4 id="core-question-engine">Core question engine</h4>
 <p>So, when a particular question is attempted with a particular behaviour, the core question engine needs to orchestrate the behaviour and the question type so that the behaviour and plugin to work together to present the experience to the user. The question engine also handles the storing progress in the database (so that can be done efficiently, and in bulk) and it presents a uniform API for this to whatever is using the questions (e.g. a quiz attempt). Some key classes here are:</p>
@@ -2327,11 +2341,11 @@
 </ol>
 <h3 id="question-bank">Question bank</h3>
 <p>The question bank provides the UI where teachers create, edit and manage questions. It also works with several plugin types:</p>
-<h4 id="question-bank-plugins-qbank_">Question bank plugins (qbank_)</h4>
+<h4 id="question-bank-plugins-qbank_"><a href="../../Plugin/phpMoodlePlugin_qbank/">Question bank plugins (qbank_)</a></h4>
 <p>Question bank plugins (qbank_) add features to the question bank. The core question bank code mainly just ties all these features together.</p>
-<h4 id="question-importexport-plugins-qformat_">Question import/export plugins (qformat_)</h4>
+<h4 id="question-importexport-plugins-qformat_"><a href="../../Plugin/phpMoodlePlugin_qformat/">Question import/export plugins (qformat_)</a></h4>
 <p>Question import/export plugins allow questions to be exported and imported in a variety of formats. Use by plugins like qbank_exportquestions, qbank_importquestions and qbank_exporttoxml.</p>
-<h4 id="question-types-qtype__1">Question types (qtype_)</h4>
+<h4 id="question-types-qtype__1"><a href="../../Plugin/phpMoodlePlugin_qtypes/">Question types (qtype_)</a></h4>
 <p>Question types were already considered above, when thinking about the the question engine. They also need to work with the question bank, so that teachers can create and edit questions of that type.</p>
 
               
