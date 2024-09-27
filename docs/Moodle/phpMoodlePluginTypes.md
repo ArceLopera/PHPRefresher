@@ -35,8 +35,8 @@ The plugin name must meet the following rules:
 |Workshop evaluation methods	|workshopeval	|/mod/workshop/eval	|Implement the calculation of the grade for assessment (grading grade) in the Workshop module|
 |[Blocks](#2-blocks)	|block	|/blocks	|Small information-displays or tools that can be moved around pages|
 |[Question types](./Plugin/phpMoodlePlugin_qtypes.md)	|qtype	|/question/type	|Different types of question (for example multiple-choice, drag-and-drop) that can be used in quizzes and other activities|
-|Question behaviours	|qbehaviour	|/question/behaviour	|Control how student interact with questions during an attempt|
-|Question import/export formats|qformat	|/question/format	|Import and export question definitions to/from the question bank|
+|[Question behaviours](./Plugin/phpMoodlePlugin_qbehavior.md)	|qbehaviour	|/question/behaviour	|Control how student interact with questions during an attempt|
+|[Question import/export formats](./Plugin/phpMoodlePlugin_qformat.md)|qformat	|/question/format	|Import and export question definitions to/from the question bank|
 |Text filters	|filter	|/filter	|Automatically convert, highlight, and transmogrify text posted into Moodle.|
 |Editors	|editor	|/lib/editor	|Alternative text editors for editing content|
 |Atto editor plugins	|atto	|/lib/editor/atto/plugins	|Extra functionality for the Atto text editor|
@@ -69,7 +69,7 @@ The plugin name must meet the following rules:
 |[Local plugins](#7-local-plugins)	|local	|/local	|Generic plugins for local customisations|
 |Content bank content types	|contenttype	|/contentbank/contenttype	|Content types to upload, create or edit in the content bank and use all over the Moodle site|
 |H5P libraries	|h5plib	|/h5p/h5plib	|Plugin type for the particular versions of the H5P integration library.|
-|Question bank plugins	|qbank	|/question/bank	|Plugin type for extending question bank functionality.|
+|[Question bank plugins](./Plugin/phpMoodlePlugin_qbank.md)	|qbank	|/question/bank	|Plugin type for extending question bank functionality.|
 
 
 
