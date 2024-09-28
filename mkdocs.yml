@@ -172,6 +172,7 @@ nav:
               - Question Format: Moodle/Plugin/phpMoodlePlugin_qformat.md
               - Question Bank: Moodle/Plugin/phpMoodlePlugin_qbank.md
               - Question Behavior: Moodle/Plugin/phpMoodlePlugin_qbehavior.md
+            - Book Tool: Moodle/Plugin/phpMoodlePlugin_booktool.md
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
      - XMLDB tool: Moodle/phpMoodleXMLDB.md
@@ -187,4 +188,5 @@ nav:
             - Persistent API: Moodle/API/phpMoodlePersistent.md
             - Exporter: Moodle/API/phpMoodleExporter.md
             - Question API: Moodle/API/phpMoodleQuestion.md
+            - Data Manipulation API: Moodle/API/phpMoodleDM.md
 
