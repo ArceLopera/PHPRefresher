@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#key-components-of-moodles-dml" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2124,9 +2129,155 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Data Manipulation API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Data Manipulation API
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-components-of-moodles-dml" class="md-nav__link">
+    Key Components of Moodle's DML:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-database-access-object-db-api" class="md-nav__link">
+    1. Database Access Object (DB API)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-crud-operations" class="md-nav__link">
+    2. CRUD Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="2. CRUD Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-create-inserting-records" class="md-nav__link">
+    a. Create: Inserting Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-read-fetching-data" class="md-nav__link">
+    b. Read: Fetching Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-update-modifying-existing-records" class="md-nav__link">
+    c. Update: Modifying Existing Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-delete-removing-records" class="md-nav__link">
+    d. Delete: Removing Records
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sql-queries" class="md-nav__link">
+    3. SQL Queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-transactions" class="md-nav__link">
+    4. Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-transaction" class="md-nav__link">
+    Starting a Transaction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#committing-a-transaction" class="md-nav__link">
+    Committing a Transaction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rolling-back-a-transaction" class="md-nav__link">
+    Rolling Back a Transaction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-database-caching" class="md-nav__link">
+    5. Database Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-db-schema-abstraction" class="md-nav__link">
+    6. DB Schema Abstraction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2164,6 +2315,138 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-components-of-moodles-dml" class="md-nav__link">
+    Key Components of Moodle's DML:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-database-access-object-db-api" class="md-nav__link">
+    1. Database Access Object (DB API)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-crud-operations" class="md-nav__link">
+    2. CRUD Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="2. CRUD Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-create-inserting-records" class="md-nav__link">
+    a. Create: Inserting Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-read-fetching-data" class="md-nav__link">
+    b. Read: Fetching Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-update-modifying-existing-records" class="md-nav__link">
+    c. Update: Modifying Existing Records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-delete-removing-records" class="md-nav__link">
+    d. Delete: Removing Records
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sql-queries" class="md-nav__link">
+    3. SQL Queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-transactions" class="md-nav__link">
+    4. Transactions
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Transactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-transaction" class="md-nav__link">
+    Starting a Transaction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#committing-a-transaction" class="md-nav__link">
+    Committing a Transaction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rolling-back-a-transaction" class="md-nav__link">
+    Rolling Back a Transaction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-database-caching" class="md-nav__link">
+    5. Database Caching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-db-schema-abstraction" class="md-nav__link">
+    6. DB Schema Abstraction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2178,7 +2461,170 @@
 
   <h1>Data Manipulation API</h1>
 
+<p>The <strong>Data Manipulation API (DML)</strong> in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.</p>
+<h3 id="key-components-of-moodles-dml">Key Components of Moodle's DML:</h3>
+<ol>
+<li><strong>Database Access Object (DB API)</strong></li>
+<li><strong>CRUD Operations (Create, Read, Update, Delete)</strong></li>
+<li><strong>SQL Queries</strong></li>
+<li><strong>Transactions</strong></li>
+<li><strong>Database Caching</strong></li>
+<li><strong>DB Schema Abstraction</strong></li>
+</ol>
+<p>Let’s break these down in detail.</p>
+<hr />
+<h3 id="1-database-access-object-db-api">1. <strong>Database Access Object (DB API)</strong></h3>
+<p>The <code>$DB</code> global object in Moodle is the central component of the DML API. It provides a collection of functions to interact with the database. Instead of writing raw SQL directly, developers use these functions, which are compatible with all supported database systems.</p>
+<p>The <code>$DB</code> object is initialized as part of the Moodle environment (<code>config.php</code>), and it abstracts the interaction with the underlying DB engine.</p>
+<p>Common <code>$DB</code> functions include:
+- <code>insert_record()</code>
+- <code>update_record()</code>
+- <code>delete_records()</code>
+- <code>get_record()</code>
+- <code>get_records()</code></p>
+<h3 id="2-crud-operations">2. <strong>CRUD Operations</strong></h3>
+<h4 id="a-create-inserting-records"><strong>a. Create: Inserting Records</strong></h4>
+<p>To insert a new record into the database, you can use the <code>insert_record()</code> function. This function takes two parameters:
+- <strong>Table name</strong>: The name of the database table where you want to insert the record.
+- <strong>Data object</strong>: An object where each property represents a field in the table.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$record = new stdClass();</span>
+<span class="x">$record-&gt;name = &#39;John Doe&#39;;</span>
+<span class="x">$record-&gt;email = &#39;john@example.com&#39;;</span>
+<span class="x">$record-&gt;timecreated = time();</span>
 
+<span class="x">// Insert the record into the &#39;user&#39; table.</span>
+<span class="x">$DB-&gt;insert_record(&#39;user&#39;, $record);</span>
+</code></pre></div>
+<p>If the table has an auto-incrementing ID field, <code>insert_record()</code> will return the ID of the inserted record.</p>
+<h4 id="b-read-fetching-data"><strong>b. Read: Fetching Data</strong></h4>
+<p>To retrieve data from the database, several functions are available:
+- <code>get_record()</code>: Retrieves a single record matching a specific condition.
+- <code>get_records()</code>: Retrieves multiple records matching a specific condition.</p>
+<p>Example of fetching a single record:
+<div class="highlight"><pre><span></span><code><span class="x">$userid = 5;</span>
+<span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid), &#39;*&#39;, MUST_EXIST);</span>
+<span class="x">echo $user-&gt;name;</span>
+</code></pre></div></p>
+<p>In the example above, <code>MUST_EXIST</code> ensures that if no record is found, an exception is thrown.</p>
+<p>Example of fetching multiple records:
+<div class="highlight"><pre><span></span><code><span class="x">$users = $DB-&gt;get_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 1));</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<h4 id="c-update-modifying-existing-records"><strong>c. Update: Modifying Existing Records</strong></h4>
+<p>To update a record, you use the <code>update_record()</code> function. You must pass an object that contains the primary key field along with the fields to be updated.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = new stdClass();</span>
+<span class="x">$user-&gt;id = 5;  // ID of the record to be updated.</span>
+<span class="x">$user-&gt;email = &#39;newemail@example.com&#39;;</span>
+<span class="x">$DB-&gt;update_record(&#39;user&#39;, $user);</span>
+</code></pre></div>
+<p>Here, the record with <code>id = 5</code> is updated, and its <code>email</code> field is changed.</p>
+<h4 id="d-delete-removing-records"><strong>d. Delete: Removing Records</strong></h4>
+<p>To delete records, the <code>delete_records()</code> function is used. You can delete a record or a set of records based on a condition.</p>
+<p>Example of deleting a single record:
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;id&#39; =&gt; 5));</span>
+</code></pre></div></p>
+<p>Example of deleting multiple records:
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 0));  // Deletes all unconfirmed users.</span>
+</code></pre></div></p>
+<hr />
+<h3 id="3-sql-queries">3. <strong>SQL Queries</strong></h3>
+<p>While Moodle’s DML API provides functions to handle common CRUD operations, you may need to write custom SQL queries for more complex operations. Moodle provides <code>get_records_sql()</code>, <code>get_record_sql()</code>, and other SQL-based functions that allow you to execute raw SQL.</p>
+<ul>
+<li><strong>get_records_sql()</strong>: Retrieves multiple records based on an SQL query.</li>
+<li><strong>get_record_sql()</strong>: Retrieves a single record based on an SQL query.</li>
+<li><strong>execute()</strong>: Executes an SQL query without returning any data (useful for <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
+</ul>
+<p>Example of retrieving records with a custom SQL query:
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT id, name FROM {user} WHERE confirmed = :confirmed&quot;;</span>
+<span class="x">$params = array(&#39;confirmed&#39; =&gt; 1);</span>
+<span class="x">$users = $DB-&gt;get_records_sql($sql, $params);</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convention that allows for database table prefixing. If your Moodle site uses a table prefix like <code>mdl_</code>, this will be automatically converted to <code>mdl_user</code>.</p>
+<hr />
+<h3 id="4-transactions">4. <strong>Transactions</strong></h3>
+<p>Moodle supports database transactions, which ensure that multiple operations are treated as a single unit of work. If any operation in the transaction fails, all changes are rolled back, ensuring data consistency.</p>
+<h4 id="starting-a-transaction">Starting a Transaction</h4>
+<div class="highlight"><pre><span></span><code><span class="x">$transaction = $DB-&gt;start_delegated_transaction();</span>
+</code></pre></div>
+<h4 id="committing-a-transaction">Committing a Transaction</h4>
+<div class="highlight"><pre><span></span><code><span class="x">$transaction-&gt;allow_commit();</span>
+</code></pre></div>
+<h4 id="rolling-back-a-transaction">Rolling Back a Transaction</h4>
+<p>If an exception occurs during the transaction, the rollback is automatic.</p>
+<p>Example of using a transaction:
+<div class="highlight"><pre><span></span><code><span class="x">try {</span>
+<span class="x">    $transaction = $DB-&gt;start_delegated_transaction();</span>
+
+<span class="x">    // Insert a new user.</span>
+<span class="x">    $user = new stdClass();</span>
+<span class="x">    $user-&gt;name = &#39;Jane Doe&#39;;</span>
+<span class="x">    $user-&gt;email = &#39;jane@example.com&#39;;</span>
+<span class="x">    $DB-&gt;insert_record(&#39;user&#39;, $user);</span>
+
+<span class="x">    // Insert a profile field for the new user.</span>
+<span class="x">    $profile = new stdClass();</span>
+<span class="x">    $profile-&gt;userid = $user-&gt;id;</span>
+<span class="x">    $profile-&gt;fieldname = &#39;bio&#39;;</span>
+<span class="x">    $profile-&gt;fieldvalue = &#39;This is Jane\&#39;s bio.&#39;;</span>
+<span class="x">    $DB-&gt;insert_record(&#39;user_profile&#39;, $profile);</span>
+
+<span class="x">    // If all went well, commit the transaction.</span>
+<span class="x">    $transaction-&gt;allow_commit();</span>
+<span class="x">} catch (Exception $e) {</span>
+<span class="x">    // Rollback is automatic on exception.</span>
+<span class="x">    $transaction-&gt;rollback($e);</span>
+<span class="x">    echo &#39;Transaction failed: &#39; . $e-&gt;getMessage();</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="5-database-caching">5. <strong>Database Caching</strong></h3>
+<p>Moodle provides caching mechanisms that improve the performance of database queries. The <code>get_record_cacheable()</code> function allows you to cache the result of a query, which can be useful if the same query is run frequently.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;core&#39;, &#39;user&#39;);</span>
+<span class="x">$userid = 5;</span>
+
+<span class="x">if ($user = $cache-&gt;get($userid)) {</span>
+<span class="x">    // User data is cached.</span>
+<span class="x">} else {</span>
+<span class="x">    $user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid));</span>
+<span class="x">    $cache-&gt;set($userid, $user);</span>
+<span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="6-db-schema-abstraction">6. <strong>DB Schema Abstraction</strong></h3>
+<p>Moodle uses an abstracted schema definition in the form of XML (<code>install.xml</code> and <code>upgrade.php</code>) to create and update database tables across different databases.</p>
+<ul>
+<li><strong>install.xml</strong>: Defines the structure of tables, fields, indexes, and keys.</li>
+<li><strong>upgrade.php</strong>: Handles table upgrades when new fields or tables need to be added.</li>
+</ul>
+<p>Example of a table definition in <code>install.xml</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;yourplugin/db/install.xml&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;2013053100&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;yourplugin_data&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Stores custom plugin data&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Primary key&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;userid&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;User ID&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;data&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Custom data&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;KEYS&gt;</span>
+            <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/KEYS&gt;</span>
+    <span class="nt">&lt;/TABLE&gt;</span>
+<span class="nt">&lt;/XMLDB&gt;</span>
+</code></pre></div></p>
+<hr />
+<h3 id="best-practices">Best Practices</h3>
+<ol>
+<li><strong>Use Prepared Statements</strong>: Moodle DML functions automatically handle prepared statements to prevent SQL injection attacks. Always use parameterized queries.</li>
+<li><strong>Test with Multiple Databases</strong>: Ensure your plugin works across all supported databases (MySQL, PostgreSQL, MS SQL, Oracle).</li>
+<li><strong>Use Transactions</strong>: For critical operations involving multiple queries, use transactions to maintain data integrity.</li>
+<li><strong>Caching</strong>: Where possible, use caching to improve the performance of frequent queries.</li>
+<li><strong>Follow Database Conventions</strong>: Use Moodle’s naming conventions for tables and fields (e.g., lowercase names, singular table names).</li>
+</ol>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a secure and efficient way. By using the DML functions, you ensure compatibility with different database systems, safeguard against SQL injection, and maintain the overall integrity of the system. Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is the recommended way to manipulate data in Moodle.</p>
 
               
             </article>
