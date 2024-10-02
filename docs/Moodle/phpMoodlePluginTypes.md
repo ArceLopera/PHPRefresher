@@ -17,8 +17,8 @@ The plugin name must meet the following rules:
 |[Activity modules](./Plugin/phpMoodlePlugin_mod.md)	|mod	|/mod	|Activity modules are essential types of plugins in Moodle as they provide activities in courses. For example: Forum, Quiz and Assignment.|
 |Antivirus plugins|	antivirus|	/lib/antivirus|	Antivirus scanner plugins provide functionality for virus scanning user uploaded files using third-party virus scanning tools in Moodle. For example: ClamAV.|
 |Assignment submission plugins	|assignsubmission	|/mod/assign/submission	|Different forms of assignment submissions|
-|Assignment |feedback plugins	|assignfeedback	|/mod/assign/feedback	|Different forms of assignment feedbacks|
-|Book tools	|booktool	|/mod/book/tool	|Small information-displays or tools that can be moved around pages|
+|Assignment feedback plugins	|assignfeedback	|/mod/assign/feedback	|Different forms of assignment feedbacks|
+|[Book tools](./Plugin/phpMoodlePlugin_booktool.md)	|booktool	|/mod/book/tool	|Small information-displays or tools that can be moved around pages|
 |Custom fields	|customfield	|/customfield/field	|Custom field types, used in Custom course fields|
 |Database fields	|datafield	|/mod/data/field	|Different types of data that may be added to the Database activity module|
 |Database presets	|datapreset	|/mod/data/preset	|Pre-defined templates for the Database activity module|
