@@ -35,19 +35,19 @@ and import and export in any Question formats that the type wants to support.
 
 #### question.php 
 
-This class represents one instance of this question type, while it is being attempted by a user. It must do many things
+This class represents one instance of this question type, while it is being attempted by a user. It must do many things:
 
-Start a new attempt (e.g. in a multiple choice question, this is where we randomly shuffle the choices).
++ Start a new attempt (e.g. in a multiple choice question, this is where we randomly shuffle the choices).
 
-or if we are continuing an existing attempt, re-initialise the question to the same state, using the data from the DB.
++ or if we are continuing an existing attempt, re-initialise the question to the same state, using the data from the DB.
 
-Tell the question engine what data this question type is expecting to be submitted.
++ Tell the question engine what data this question type is expecting to be submitted.
 
-Analyse those submitted responses: e.g. has it changed? is it complete.
++ Analyse those submitted responses: e.g. has it changed? is it complete.
 
-Automatically grade the response to give a 'fraction' (mark between 0 and 1) and a state (correct / partially correct / incorrect).
++ Automatically grade the response to give a 'fraction' (mark between 0 and 1) and a state (correct / partially correct / incorrect).
 
-check access to files for the file API.
++ Check access to files for the file API.
 
 
 ```php
