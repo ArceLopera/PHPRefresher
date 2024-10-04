@@ -2355,13 +2355,27 @@
 and related methods providing metadata about this question types.
 and import and export in any Question formats that the type wants to support.</p>
 <h4 id="questionphp">question.php</h4>
-<p>This class represents one instance of this question type, while it is being attempted by a user. It must do many things</p>
+<p>This class represents one instance of this question type, while it is being attempted by a user. It must do many things:</p>
+<ul>
+<li>
 <p>Start a new attempt (e.g. in a multiple choice question, this is where we randomly shuffle the choices).</p>
+</li>
+<li>
 <p>or if we are continuing an existing attempt, re-initialise the question to the same state, using the data from the DB.</p>
+</li>
+<li>
 <p>Tell the question engine what data this question type is expecting to be submitted.</p>
+</li>
+<li>
 <p>Analyse those submitted responses: e.g. has it changed? is it complete.</p>
+</li>
+<li>
 <p>Automatically grade the response to give a 'fraction' (mark between 0 and 1) and a state (correct / partially correct / incorrect).</p>
-<p>check access to files for the file API.</p>
+</li>
+<li>
+<p>Check access to files for the file API.</p>
+</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="x">class qtype_example extends question_type {</span>
 <span class="x">    // Define how to save and load question data.</span>
 <span class="x">    public function save_question_options($question) {</span>
