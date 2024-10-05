@@ -189,4 +189,5 @@ nav:
             - Exporter: Moodle/API/phpMoodleExporter.md
             - Question API: Moodle/API/phpMoodleQuestion.md
             - Data Manipulation API: Moodle/API/phpMoodleDM.md
+            - Tag API: Moodle/API/phpMoodleTag.md
 
