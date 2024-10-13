@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#key-concepts-of-moodle-external-web-services" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2068,9 +2073,127 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          External Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         External Services
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-of-moodle-external-web-services" class="md-nav__link">
+    Key Concepts of Moodle External Web Services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-web-service-protocols" class="md-nav__link">
+    1. Web Service Protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-defining-web-service-functions" class="md-nav__link">
+    2. Defining Web Service Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Defining Web Service Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-define-a-web-service-function" class="md-nav__link">
+    Steps to Define a Web Service Function:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-security-considerations" class="md-nav__link">
+    3. Security Considerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-managing-access-control" class="md-nav__link">
+    4. Managing Access Control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-authentication-and-tokens" class="md-nav__link">
+    5. Authentication and Tokens
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Authentication and Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-creating-a-token-manually" class="md-nav__link">
+    Example: Creating a Token Manually
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
+    6. Service Configuration in the Moodle Admin Interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-example-developing-a-custom-web-service" class="md-nav__link">
+    7. Example: Developing a Custom Web Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-debugging-and-testing" class="md-nav__link">
+    8. Debugging and Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2178,6 +2301,110 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-of-moodle-external-web-services" class="md-nav__link">
+    Key Concepts of Moodle External Web Services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-web-service-protocols" class="md-nav__link">
+    1. Web Service Protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-defining-web-service-functions" class="md-nav__link">
+    2. Defining Web Service Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Defining Web Service Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-define-a-web-service-function" class="md-nav__link">
+    Steps to Define a Web Service Function:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-security-considerations" class="md-nav__link">
+    3. Security Considerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-managing-access-control" class="md-nav__link">
+    4. Managing Access Control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-authentication-and-tokens" class="md-nav__link">
+    5. Authentication and Tokens
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Authentication and Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-creating-a-token-manually" class="md-nav__link">
+    Example: Creating a Token Manually
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
+    6. Service Configuration in the Moodle Admin Interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-example-developing-a-custom-web-service" class="md-nav__link">
+    7. Example: Developing a Custom Web Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-debugging-and-testing" class="md-nav__link">
+    8. Debugging and Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2192,7 +2419,179 @@
 
   <h1>External Services</h1>
 
+<p>External web services in Moodle allow the platform to interact with external systems, providing a bridge for integrating Moodle with third-party applications such as mobile apps, external platforms, or custom systems. Moodle uses a standardized way to define, expose, and secure web services to ensure safe communication between systems.</p>
+<p>Developing an external web service in Moodle involves several steps, including defining the functions to be exposed, creating the necessary security mechanisms, and managing user permissions. Let’s dive into the details of how to develop external web services in Moodle.</p>
+<hr />
+<h3 id="key-concepts-of-moodle-external-web-services">Key Concepts of Moodle External Web Services</h3>
+<ol>
+<li><strong>Web Service Protocols</strong></li>
+<li><strong>Defining Web Service Functions</strong></li>
+<li><strong>Security Considerations</strong></li>
+<li><strong>Managing Access Control</strong></li>
+<li><strong>Authentication and Tokens</strong></li>
+<li><strong>Service Configuration in the Moodle Admin Interface</strong></li>
+<li><strong>Example: Developing a Custom Web Service</strong></li>
+<li><strong>Debugging and Testing</strong></li>
+</ol>
+<hr />
+<h3 id="1-web-service-protocols">1. <strong>Web Service Protocols</strong></h3>
+<p>Moodle supports multiple web service protocols, which determine how external systems can communicate with Moodle. Common protocols include:</p>
+<ul>
+<li><strong>REST (Representational State Transfer)</strong>: A simple, lightweight protocol that uses HTTP requests (GET, POST, etc.).</li>
+<li><strong>SOAP (Simple Object Access Protocol)</strong>: A more complex, XML-based protocol.</li>
+<li><strong>XML-RPC (Remote Procedure Call)</strong>: Uses XML to encode calls and HTTP as the transport mechanism.</li>
+<li><strong>AMF (Action Message Format)</strong>: A binary protocol primarily used for communication with Flash applications.</li>
+</ul>
+<p>Moodle comes with built-in support for these protocols, and developers can configure which ones to use.</p>
+<hr />
+<h3 id="2-defining-web-service-functions">2. <strong>Defining Web Service Functions</strong></h3>
+<p>A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle as a web service function, but it must be carefully structured to ensure security and proper behavior.</p>
+<h4 id="steps-to-define-a-web-service-function">Steps to Define a Web Service Function:</h4>
+<ol>
+<li><strong>Create a Function in a Plugin or Core</strong>:
+   The function should be written in a plugin or within Moodle core. For example, let’s assume you are building a custom plugin to expose course-related data.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="x">function local_customplugin_get_course_details($courseid) {</span>
+<span class="x">    global $DB;</span>
 
+<span class="x">    // Check if the course exists.</span>
+<span class="x">    $course = $DB-&gt;get_record(&#39;course&#39;, [&#39;id&#39; =&gt; $courseid]);</span>
+<span class="x">    if (!$course) {</span>
+<span class="x">        throw new moodle_exception(&#39;invalidcourse&#39;, &#39;local_customplugin&#39;);</span>
+<span class="x">    }</span>
+
+<span class="x">    // Return the course details.</span>
+<span class="x">    return array(</span>
+<span class="x">        &#39;id&#39; =&gt; $course-&gt;id,</span>
+<span class="x">        &#39;fullname&#39; =&gt; $course-&gt;fullname,</span>
+<span class="x">        &#39;shortname&#39; =&gt; $course-&gt;shortname,</span>
+<span class="x">        &#39;summary&#39; =&gt; $course-&gt;summary</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Register the Function in <code>db/services.php</code></strong>:
+   Each function you wish to expose via web services needs to be declared in the <code>db/services.php</code> file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = array(</span>
+<span class="x">    &#39;local_customplugin_get_course_details&#39; =&gt; array(</span>
+<span class="x">        &#39;classname&#39; =&gt; &#39;local_customplugin_external&#39;,  // The external class that contains the function.</span>
+<span class="x">        &#39;methodname&#39; =&gt; &#39;get_course_details&#39;,  // The method name inside the class.</span>
+<span class="x">        &#39;classpath&#39; =&gt; &#39;local/customplugin/externallib.php&#39;,  // The file path to the external class.</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Returns details of a course.&#39;,</span>
+<span class="x">        &#39;type&#39; =&gt; &#39;read&#39;,  // The type of action (read, write, etc.).</span>
+<span class="x">        &#39;ajax&#39; =&gt; true,  // Enable it for AJAX use.</span>
+<span class="x">        &#39;capabilities&#39; =&gt; &#39;moodle/course:view&#39;,  // Specify required capabilities.</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</code></pre></div>
+<ol>
+<li><strong>Create an External Class in <code>externallib.php</code></strong>:
+   Web service functions should reside inside an external class that extends <code>external_api</code>, which handles permission checks and data validation.</li>
+</ol>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class local_customplugin_external extends external_api {</span>
+<span class="x">    // Define the parameters the function expects.</span>
+<span class="x">    public static function get_course_details_parameters() {</span>
+<span class="x">        return new external_function_parameters(</span>
+<span class="x">            array(</span>
+<span class="x">                &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;Course ID&#39;)</span>
+<span class="x">            )</span>
+<span class="x">        );</span>
+<span class="x">    }</span>
+
+<span class="x">    // Implement the function logic.</span>
+<span class="x">    public static function get_course_details($courseid) {</span>
+<span class="x">        global $DB;</span>
+
+<span class="x">        // Validate parameters.</span>
+<span class="x">        $params = self::validate_parameters(self::get_course_details_parameters(), array(&#39;courseid&#39; =&gt; $courseid));</span>
+
+<span class="x">        // Get course data.</span>
+<span class="x">        $course = $DB-&gt;get_record(&#39;course&#39;, array(&#39;id&#39; =&gt; $params[&#39;courseid&#39;]));</span>
+<span class="x">        if (!$course) {</span>
+<span class="x">            throw new moodle_exception(&#39;invalidcourse&#39;, &#39;local_customplugin&#39;);</span>
+<span class="x">        }</span>
+
+<span class="x">        // Return the result.</span>
+<span class="x">        return array(</span>
+<span class="x">            &#39;id&#39; =&gt; $course-&gt;id,</span>
+<span class="x">            &#39;fullname&#39; =&gt; $course-&gt;fullname,</span>
+<span class="x">            &#39;shortname&#39; =&gt; $course-&gt;shortname,</span>
+<span class="x">            &#39;summary&#39; =&gt; $course-&gt;summary</span>
+<span class="x">        );</span>
+<span class="x">    }</span>
+
+<span class="x">    // Define the return values.</span>
+<span class="x">    public static function get_course_details_returns() {</span>
+<span class="x">        return new external_single_structure(</span>
+<span class="x">            array(</span>
+<span class="x">                &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;Course ID&#39;),</span>
+<span class="x">                &#39;fullname&#39; =&gt; new external_value(PARAM_TEXT, &#39;Full course name&#39;),</span>
+<span class="x">                &#39;shortname&#39; =&gt; new external_value(PARAM_TEXT, &#39;Course short name&#39;),</span>
+<span class="x">                &#39;summary&#39; =&gt; new external_value(PARAM_RAW, &#39;Course summary&#39;),</span>
+<span class="x">            )</span>
+<span class="x">        );</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="3-security-considerations">3. <strong>Security Considerations</strong></h3>
+<p>Web services often expose sensitive data, so it’s critical to enforce strict security measures.</p>
+<ul>
+<li><strong>User Authentication</strong>: Ensure that only authorized users can access your web services.</li>
+<li><strong>Capability Checks</strong>: Use Moodle’s capabilities system to control access. For example, only users with the capability <code>moodle/course:view</code> can retrieve course details.</li>
+<li><strong>Parameter Validation</strong>: Always validate and sanitize the input parameters using the <code>external_function_parameters</code> class.</li>
+<li><strong>Return Value Sanitization</strong>: Ensure that the data returned is safe and free from XSS vulnerabilities.</li>
+</ul>
+<hr />
+<h3 id="4-managing-access-control">4. <strong>Managing Access Control</strong></h3>
+<p>Each web service function can have specific access controls that determine who can call it. Access is controlled via <strong>tokens</strong> and <strong>capabilities</strong>.</p>
+<ul>
+<li><strong>Tokens</strong>: Users or systems must have a valid token to call a web service. Admins can issue these tokens through <strong>Site administration &gt; Server &gt; Web services &gt; Manage tokens</strong>.</li>
+<li><strong>Capabilities</strong>: Each function can define required capabilities in <code>db/services.php</code>, ensuring that users have the correct roles to access the web service.</li>
+</ul>
+<hr />
+<h3 id="5-authentication-and-tokens">5. <strong>Authentication and Tokens</strong></h3>
+<p>Moodle uses tokens for authenticating users when they access web services. Tokens are generated for individual users or system accounts and can be issued in two ways:
+- <strong>Manually</strong> by administrators: Through the admin interface.
+- <strong>Automatically</strong>: Using Moodle’s authentication mechanisms (e.g., OAuth2).</p>
+<h4 id="example-creating-a-token-manually">Example: Creating a Token Manually</h4>
+<ol>
+<li>Go to <strong>Site administration &gt; Server &gt; Web services &gt; Manage tokens</strong>.</li>
+<li>Choose the user for whom the token will be created.</li>
+<li>Assign the web service functions that this token allows access to.</li>
+</ol>
+<hr />
+<h3 id="6-service-configuration-in-the-moodle-admin-interface">6. <strong>Service Configuration in the Moodle Admin Interface</strong></h3>
+<p>After defining your web service functions, you can configure them via the Moodle admin interface:</p>
+<ul>
+<li><strong>Enable Web Services</strong>: Ensure web services are enabled in <strong>Site administration &gt; Advanced features</strong>.</li>
+<li><strong>Configure Protocols</strong>: Enable the desired web service protocols under <strong>Site administration &gt; Plugins &gt; Web services &gt; Manage protocols</strong>.</li>
+<li><strong>Create a Service</strong>: In <strong>Site administration &gt; Server &gt; Web services &gt; External services</strong>, you can create and manage services, which are groups of related web service functions.</li>
+<li><strong>Assign Functions to the Service</strong>: Add the functions defined in <code>db/services.php</code> to the service, so they are accessible externally.</li>
+</ul>
+<hr />
+<h3 id="7-example-developing-a-custom-web-service">7. <strong>Example: Developing a Custom Web Service</strong></h3>
+<p>Let’s summarize the steps to develop a custom web service that exposes course details:</p>
+<ol>
+<li>Write the web service function in an external class (<code>externallib.php</code>).</li>
+<li>Define the function in <code>db/services.php</code>.</li>
+<li>Create the required service, protocol, and token via the Moodle admin interface.</li>
+<li>Use REST or another protocol to call the service from an external system, passing the token for authentication.</li>
+</ol>
+<hr />
+<h3 id="8-debugging-and-testing">8. <strong>Debugging and Testing</strong></h3>
+<p>To test web services:
+- Use <strong>Postman</strong> or similar tools to make HTTP requests to the Moodle web services endpoint.
+- Verify token validity and function calls.
+- Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to manually test the functions.</p>
+<p>For debugging:
+- Enable debugging in <strong>Site administration &gt; Development &gt; Debugging</strong> to log errors.
+- Use breakpoints in your IDE to inspect function behavior.</p>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>Developing external web services in Moodle is a powerful way to extend the platform’s functionality and integrate it with third-party systems. It involves defining and registering functions, managing access control, and ensuring security through tokens and capability checks. By following the steps outlined above, you can create custom web services that allow Moodle to interact with external applications in a secure and maintainable manner.</p>
 
               
             </article>
