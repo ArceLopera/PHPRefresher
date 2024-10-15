@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-concepts-of-moodle-external-web-services" class="md-skip">
+        <a href="#1-web-service-protocols" class="md-skip">
           Skip to content
         </a>
       
@@ -2096,13 +2096,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-concepts-of-moodle-external-web-services" class="md-nav__link">
-    Key Concepts of Moodle External Web Services
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#1-web-service-protocols" class="md-nav__link">
     1. Web Service Protocols
   </a>
@@ -2308,13 +2301,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-concepts-of-moodle-external-web-services" class="md-nav__link">
-    Key Concepts of Moodle External Web Services
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#1-web-service-protocols" class="md-nav__link">
     1. Web Service Protocols
   </a>
@@ -2419,25 +2405,20 @@
 
   <h1>External Services</h1>
 
-<p>External web services in Moodle allow the platform to interact with external systems, providing a bridge for integrating Moodle with third-party applications such as mobile apps, external platforms, or custom systems. Moodle uses a standardized way to define, expose, and secure web services to ensure safe communication between systems.</p>
-<p>Developing an external web service in Moodle involves several steps, including defining the functions to be exposed, creating the necessary security mechanisms, and managing user permissions. Let’s dive into the details of how to develop external web services in Moodle.</p>
-<hr />
-<h3 id="key-concepts-of-moodle-external-web-services">Key Concepts of Moodle External Web Services</h3>
-<ol>
-<li><strong>Web Service Protocols</strong></li>
-<li><strong>Defining Web Service Functions</strong></li>
-<li><strong>Security Considerations</strong></li>
-<li><strong>Managing Access Control</strong></li>
-<li><strong>Authentication and Tokens</strong></li>
-<li><strong>Service Configuration in the Moodle Admin Interface</strong></li>
-<li><strong>Example: Developing a Custom Web Service</strong></li>
-<li><strong>Debugging and Testing</strong></li>
-</ol>
+<p>External web services in Moodle allow the platform to interact with external systems, 
+providing a bridge for integrating Moodle with third-party applications such as mobile apps, 
+external platforms, or custom systems. Moodle uses a standardized way to define, expose, 
+and secure web services to ensure safe communication between systems.</p>
+<p>Developing an external web service in Moodle involves several steps, including defining 
+the functions to be exposed, creating the necessary security mechanisms, and managing 
+user permissions. </p>
 <hr />
 <h3 id="1-web-service-protocols">1. <strong>Web Service Protocols</strong></h3>
-<p>Moodle supports multiple web service protocols, which determine how external systems can communicate with Moodle. Common protocols include:</p>
+<p>Moodle supports multiple web service protocols, which determine how external systems 
+can communicate with Moodle. Common protocols include:</p>
 <ul>
-<li><strong>REST (Representational State Transfer)</strong>: A simple, lightweight protocol that uses HTTP requests (GET, POST, etc.).</li>
+<li><strong>REST (Representational State Transfer)</strong>: A simple, lightweight protocol that uses HTTP 
+requests (GET, POST, etc.).</li>
 <li><strong>SOAP (Simple Object Access Protocol)</strong>: A more complex, XML-based protocol.</li>
 <li><strong>XML-RPC (Remote Procedure Call)</strong>: Uses XML to encode calls and HTTP as the transport mechanism.</li>
 <li><strong>AMF (Action Message Format)</strong>: A binary protocol primarily used for communication with Flash applications.</li>
@@ -2448,9 +2429,9 @@
 <p>A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle as a web service function, but it must be carefully structured to ensure security and proper behavior.</p>
 <h4 id="steps-to-define-a-web-service-function">Steps to Define a Web Service Function:</h4>
 <ol>
-<li><strong>Create a Function in a Plugin or Core</strong>:
-   The function should be written in a plugin or within Moodle core. For example, let’s assume you are building a custom plugin to expose course-related data.</li>
-</ol>
+<li>
+<p><strong>Create a Function in a Plugin or Core</strong>:
+    The function should be written in a plugin or within Moodle core. For example, let’s assume you are building a custom plugin to expose course-related data.</p>
 <div class="highlight"><pre><span></span><code><span class="x">function local_customplugin_get_course_details($courseid) {</span>
 <span class="x">    global $DB;</span>
 
@@ -2469,10 +2450,10 @@
 <span class="x">    );</span>
 <span class="x">}</span>
 </code></pre></div>
-<ol>
-<li><strong>Register the Function in <code>db/services.php</code></strong>:
-   Each function you wish to expose via web services needs to be declared in the <code>db/services.php</code> file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.</li>
-</ol>
+</li>
+<li>
+<p><strong>Register the Function in <code>db/services.php</code></strong>:
+    Each function you wish to expose via web services needs to be declared in the <code>db/services.php</code> file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$functions = array(</span>
 <span class="x">    &#39;local_customplugin_get_course_details&#39; =&gt; array(</span>
 <span class="x">        &#39;classname&#39; =&gt; &#39;local_customplugin_external&#39;,  // The external class that contains the function.</span>
@@ -2485,10 +2466,10 @@
 <span class="x">    ),</span>
 <span class="x">);</span>
 </code></pre></div>
-<ol>
-<li><strong>Create an External Class in <code>externallib.php</code></strong>:
-   Web service functions should reside inside an external class that extends <code>external_api</code>, which handles permission checks and data validation.</li>
-</ol>
+</li>
+<li>
+<p><strong>Create an External Class in <code>externallib.php</code></strong>:
+    Web service functions should reside inside an external class that extends <code>external_api</code>, which handles permission checks and data validation.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="x">class local_customplugin_external extends external_api {</span>
 <span class="x">    // Define the parameters the function expects.</span>
@@ -2535,6 +2516,8 @@
 <span class="x">    }</span>
 <span class="x">}</span>
 </code></pre></div>
+</li>
+</ol>
 <hr />
 <h3 id="3-security-considerations">3. <strong>Security Considerations</strong></h3>
 <p>Web services often expose sensitive data, so it’s critical to enforce strict security measures.</p>

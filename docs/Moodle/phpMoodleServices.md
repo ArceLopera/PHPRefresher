@@ -1,27 +1,21 @@
-External web services in Moodle allow the platform to interact with external systems, providing a bridge for integrating Moodle with third-party applications such as mobile apps, external platforms, or custom systems. Moodle uses a standardized way to define, expose, and secure web services to ensure safe communication between systems.
+External web services in Moodle allow the platform to interact with external systems, 
+providing a bridge for integrating Moodle with third-party applications such as mobile apps, 
+external platforms, or custom systems. Moodle uses a standardized way to define, expose, 
+and secure web services to ensure safe communication between systems.
 
-Developing an external web service in Moodle involves several steps, including defining the functions to be exposed, creating the necessary security mechanisms, and managing user permissions. Let’s dive into the details of how to develop external web services in Moodle.
-
----
-
-### Key Concepts of Moodle External Web Services
-
-1. **Web Service Protocols**
-2. **Defining Web Service Functions**
-3. **Security Considerations**
-4. **Managing Access Control**
-5. **Authentication and Tokens**
-6. **Service Configuration in the Moodle Admin Interface**
-7. **Example: Developing a Custom Web Service**
-8. **Debugging and Testing**
+Developing an external web service in Moodle involves several steps, including defining 
+the functions to be exposed, creating the necessary security mechanisms, and managing 
+user permissions. 
 
 ---
 
 ### 1. **Web Service Protocols**
 
-Moodle supports multiple web service protocols, which determine how external systems can communicate with Moodle. Common protocols include:
+Moodle supports multiple web service protocols, which determine how external systems 
+can communicate with Moodle. Common protocols include:
 
-- **REST (Representational State Transfer)**: A simple, lightweight protocol that uses HTTP requests (GET, POST, etc.).
+- **REST (Representational State Transfer)**: A simple, lightweight protocol that uses HTTP 
+requests (GET, POST, etc.).
 - **SOAP (Simple Object Access Protocol)**: A more complex, XML-based protocol.
 - **XML-RPC (Remote Procedure Call)**: Uses XML to encode calls and HTTP as the transport mechanism.
 - **AMF (Action Message Format)**: A binary protocol primarily used for communication with Flash applications.
@@ -37,96 +31,96 @@ A web service function is a PHP function that handles the logic of your web serv
 #### Steps to Define a Web Service Function:
 
 1. **Create a Function in a Plugin or Core**:
-   The function should be written in a plugin or within Moodle core. For example, let’s assume you are building a custom plugin to expose course-related data.
+    The function should be written in a plugin or within Moodle core. For example, let’s assume you are building a custom plugin to expose course-related data.
 
-   ```php
-   function local_customplugin_get_course_details($courseid) {
-       global $DB;
+    ```php
+    function local_customplugin_get_course_details($courseid) {
+        global $DB;
 
-       // Check if the course exists.
-       $course = $DB->get_record('course', ['id' => $courseid]);
-       if (!$course) {
-           throw new moodle_exception('invalidcourse', 'local_customplugin');
-       }
+        // Check if the course exists.
+        $course = $DB->get_record('course', ['id' => $courseid]);
+        if (!$course) {
+            throw new moodle_exception('invalidcourse', 'local_customplugin');
+        }
 
-       // Return the course details.
-       return array(
-           'id' => $course->id,
-           'fullname' => $course->fullname,
-           'shortname' => $course->shortname,
-           'summary' => $course->summary
-       );
-   }
-   ```
+        // Return the course details.
+        return array(
+            'id' => $course->id,
+            'fullname' => $course->fullname,
+            'shortname' => $course->shortname,
+            'summary' => $course->summary
+        );
+    }
+    ```
 
 2. **Register the Function in `db/services.php`**:
-   Each function you wish to expose via web services needs to be declared in the `db/services.php` file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.
+    Each function you wish to expose via web services needs to be declared in the `db/services.php` file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.
 
-   ```php
-   $functions = array(
-       'local_customplugin_get_course_details' => array(
-           'classname' => 'local_customplugin_external',  // The external class that contains the function.
-           'methodname' => 'get_course_details',  // The method name inside the class.
-           'classpath' => 'local/customplugin/externallib.php',  // The file path to the external class.
-           'description' => 'Returns details of a course.',
-           'type' => 'read',  // The type of action (read, write, etc.).
-           'ajax' => true,  // Enable it for AJAX use.
-           'capabilities' => 'moodle/course:view',  // Specify required capabilities.
-       ),
-   );
-   ```
+    ```php
+    $functions = array(
+        'local_customplugin_get_course_details' => array(
+            'classname' => 'local_customplugin_external',  // The external class that contains the function.
+            'methodname' => 'get_course_details',  // The method name inside the class.
+            'classpath' => 'local/customplugin/externallib.php',  // The file path to the external class.
+            'description' => 'Returns details of a course.',
+            'type' => 'read',  // The type of action (read, write, etc.).
+            'ajax' => true,  // Enable it for AJAX use.
+            'capabilities' => 'moodle/course:view',  // Specify required capabilities.
+        ),
+    );
+    ```
 
 3. **Create an External Class in `externallib.php`**:
-   Web service functions should reside inside an external class that extends `external_api`, which handles permission checks and data validation.
+    Web service functions should reside inside an external class that extends `external_api`, which handles permission checks and data validation.
 
-   Example:
+    Example:
 
-   ```php
-   class local_customplugin_external extends external_api {
-       // Define the parameters the function expects.
-       public static function get_course_details_parameters() {
-           return new external_function_parameters(
-               array(
-                   'courseid' => new external_value(PARAM_INT, 'Course ID')
-               )
-           );
-       }
+    ```php
+    class local_customplugin_external extends external_api {
+        // Define the parameters the function expects.
+        public static function get_course_details_parameters() {
+            return new external_function_parameters(
+                array(
+                    'courseid' => new external_value(PARAM_INT, 'Course ID')
+                )
+            );
+        }
 
-       // Implement the function logic.
-       public static function get_course_details($courseid) {
-           global $DB;
+        // Implement the function logic.
+        public static function get_course_details($courseid) {
+            global $DB;
 
-           // Validate parameters.
-           $params = self::validate_parameters(self::get_course_details_parameters(), array('courseid' => $courseid));
+            // Validate parameters.
+            $params = self::validate_parameters(self::get_course_details_parameters(), array('courseid' => $courseid));
 
-           // Get course data.
-           $course = $DB->get_record('course', array('id' => $params['courseid']));
-           if (!$course) {
-               throw new moodle_exception('invalidcourse', 'local_customplugin');
-           }
+            // Get course data.
+            $course = $DB->get_record('course', array('id' => $params['courseid']));
+            if (!$course) {
+                throw new moodle_exception('invalidcourse', 'local_customplugin');
+            }
 
-           // Return the result.
-           return array(
-               'id' => $course->id,
-               'fullname' => $course->fullname,
-               'shortname' => $course->shortname,
-               'summary' => $course->summary
-           );
-       }
+            // Return the result.
+            return array(
+                'id' => $course->id,
+                'fullname' => $course->fullname,
+                'shortname' => $course->shortname,
+                'summary' => $course->summary
+            );
+        }
 
-       // Define the return values.
-       public static function get_course_details_returns() {
-           return new external_single_structure(
-               array(
-                   'id' => new external_value(PARAM_INT, 'Course ID'),
-                   'fullname' => new external_value(PARAM_TEXT, 'Full course name'),
-                   'shortname' => new external_value(PARAM_TEXT, 'Course short name'),
-                   'summary' => new external_value(PARAM_RAW, 'Course summary'),
-               )
-           );
-       }
-   }
-   ```
+        // Define the return values.
+        public static function get_course_details_returns() {
+            return new external_single_structure(
+                array(
+                    'id' => new external_value(PARAM_INT, 'Course ID'),
+                    'fullname' => new external_value(PARAM_TEXT, 'Full course name'),
+                    'shortname' => new external_value(PARAM_TEXT, 'Course short name'),
+                    'summary' => new external_value(PARAM_RAW, 'Course summary'),
+                )
+            );
+        }
+    }
+    ```
 
 ---
 
