@@ -2411,7 +2411,20 @@ external platforms, or custom systems. Moodle uses a standardized way to define,
 and secure web services to ensure safe communication between systems.</p>
 <p>Developing an external web service in Moodle involves several steps, including defining 
 the functions to be exposed, creating the necessary security mechanisms, and managing 
-user permissions. </p>
+user permissions. The Web Service framework and the External API work closely together providing a number of Endpoints, 
+and self-describing classes to support a wide range of uses.</p>
+<p>Moodle uses these web services internally for:</p>
+<ul>
+<li>AJAX interactions in the Moodle Web Interface; and</li>
+<li>The official Moodle Mobile App.</li>
+</ul>
+<p>The following example shows a typical authentication and protocol workflow.</p>
+<p><img alt="auth-protocol" src="../../Images/protocolworkflow.bmp" /></p>
+<p>The External Service API has two categories of documentation:</p>
+<ul>
+<li>this documentation details how to write a web service and use the External API; and</li>
+<li>API documentation for a live Moodle site, which can be found under <strong> Site administration &gt; Server &gt; Web services &gt; API Documentation </strong>.</li>
+</ul>
 <hr />
 <h3 id="1-web-service-protocols">1. <strong>Web Service Protocols</strong></h3>
 <p>Moodle supports multiple web service protocols, which determine how external systems 
@@ -2568,13 +2581,17 @@ requests (GET, POST, etc.).</li>
 <p>To test web services:
 - Use <strong>Postman</strong> or similar tools to make HTTP requests to the Moodle web services endpoint.
 - Verify token validity and function calls.
-- Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to manually test the functions.</p>
+- Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to 
+manually test the functions.</p>
 <p>For debugging:
 - Enable debugging in <strong>Site administration &gt; Development &gt; Debugging</strong> to log errors.
 - Use breakpoints in your IDE to inspect function behavior.</p>
 <hr />
 <h3 id="conclusion">Conclusion</h3>
-<p>Developing external web services in Moodle is a powerful way to extend the platform’s functionality and integrate it with third-party systems. It involves defining and registering functions, managing access control, and ensuring security through tokens and capability checks. By following the steps outlined above, you can create custom web services that allow Moodle to interact with external applications in a secure and maintainable manner.</p>
+<p>Developing external web services in Moodle is a powerful way to extend the platform’s functionality and integrate it with 
+third-party systems. It involves defining and registering functions, managing access control, and ensuring security through 
+tokens and capability checks. By following the steps outlined above, you can create custom web services that allow Moodle to 
+interact with external applications in a secure and maintainable manner.</p>
 
               
             </article>

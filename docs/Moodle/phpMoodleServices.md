@@ -5,7 +5,22 @@ and secure web services to ensure safe communication between systems.
 
 Developing an external web service in Moodle involves several steps, including defining 
 the functions to be exposed, creating the necessary security mechanisms, and managing 
-user permissions. 
+user permissions. The Web Service framework and the External API work closely together providing a number of Endpoints, 
+and self-describing classes to support a wide range of uses.
+
+Moodle uses these web services internally for:
+
++ AJAX interactions in the Moodle Web Interface; and
++ The official Moodle Mobile App.
+
+The following example shows a typical authentication and protocol workflow.
+
+![auth-protocol](../Images/protocolworkflow.bmp)
+
+The External Service API has two categories of documentation:
+
++ this documentation details how to write a web service and use the External API; and
++ API documentation for a live Moodle site, which can be found under ** Site administration > Server > Web services > API Documentation **.
 
 ---
 
@@ -185,7 +200,8 @@ Let’s summarize the steps to develop a custom web service that exposes course 
 To test web services:
 - Use **Postman** or similar tools to make HTTP requests to the Moodle web services endpoint.
 - Verify token validity and function calls.
-- Use **Moodle’s web service test client** (available in **Site administration > Server > Web services > Manage services**) to manually test the functions.
+- Use **Moodle’s web service test client** (available in **Site administration > Server > Web services > Manage services**) to 
+manually test the functions.
 
 For debugging:
 - Enable debugging in **Site administration > Development > Debugging** to log errors.
@@ -195,4 +211,7 @@ For debugging:
 
 ### Conclusion
 
-Developing external web services in Moodle is a powerful way to extend the platform’s functionality and integrate it with third-party systems. It involves defining and registering functions, managing access control, and ensuring security through tokens and capability checks. By following the steps outlined above, you can create custom web services that allow Moodle to interact with external applications in a secure and maintainable manner.
+Developing external web services in Moodle is a powerful way to extend the platform’s functionality and integrate it with 
+third-party systems. It involves defining and registering functions, managing access control, and ensuring security through 
+tokens and capability checks. By following the steps outlined above, you can create custom web services that allow Moodle to 
+interact with external applications in a secure and maintainable manner.
