@@ -24,7 +24,7 @@ The External Service API has two categories of documentation:
 
 ---
 
-### 1. **Web Service Protocols**
+### **Web Service Protocols**
 
 Moodle supports multiple web service protocols, which determine how external systems 
 can communicate with Moodle. Common protocols include:
@@ -39,7 +39,7 @@ Moodle comes with built-in support for these protocols, and developers can confi
 
 ---
 
-### 2. **Defining Web Service Functions**
+### **Defining Web Service Functions**
 
 A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle as a web service function, but it must be carefully structured to ensure security and proper behavior.
 
@@ -139,7 +139,7 @@ A web service function is a PHP function that handles the logic of your web serv
 
 ---
 
-### 3. **Security Considerations**
+### **Security Considerations**
 
 Web services often expose sensitive data, so it’s critical to enforce strict security measures.
 
@@ -150,7 +150,7 @@ Web services often expose sensitive data, so it’s critical to enforce strict s
 
 ---
 
-### 4. **Managing Access Control**
+### **Managing Access Control**
 
 Each web service function can have specific access controls that determine who can call it. Access is controlled via **tokens** and **capabilities**.
 
@@ -159,7 +159,7 @@ Each web service function can have specific access controls that determine who c
 
 ---
 
-### 5. **Authentication and Tokens**
+### **Authentication and Tokens**
 
 Moodle uses tokens for authenticating users when they access web services. Tokens are generated for individual users or system accounts and can be issued in two ways:
 - **Manually** by administrators: Through the admin interface.
@@ -173,7 +173,7 @@ Moodle uses tokens for authenticating users when they access web services. Token
 
 ---
 
-### 6. **Service Configuration in the Moodle Admin Interface**
+### **Service Configuration in the Moodle Admin Interface**
 
 After defining your web service functions, you can configure them via the Moodle admin interface:
 
@@ -184,7 +184,7 @@ After defining your web service functions, you can configure them via the Moodle
 
 ---
 
-### 7. **Example: Developing a Custom Web Service**
+### **Example: Developing a Custom Web Service**
 
 Let’s summarize the steps to develop a custom web service that exposes course details:
 
@@ -195,7 +195,7 @@ Let’s summarize the steps to develop a custom web service that exposes course 
 
 ---
 
-### 8. **Debugging and Testing**
+### **Debugging and Testing**
 
 To test web services:
 - Use **Postman** or similar tools to make HTTP requests to the Moodle web services endpoint.
