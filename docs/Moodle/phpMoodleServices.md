@@ -184,18 +184,7 @@ After defining your web service functions, you can configure them via the Moodle
 
 ---
 
-### **Example: Developing a Custom Web Service**
-
-Let’s summarize the steps to develop a custom web service that exposes course details:
-
-1. Write the web service function in an external class (`externallib.php`).
-2. Define the function in `db/services.php`.
-3. Create the required service, protocol, and token via the Moodle admin interface.
-4. Use REST or another protocol to call the service from an external system, passing the token for authentication.
-
----
-
-### **Debugging and Testing**
+### **Testing**
 
 To test web services:
 - Use **Postman** or similar tools to make HTTP requests to the Moodle web services endpoint.
@@ -203,15 +192,3 @@ To test web services:
 - Use **Moodle’s web service test client** (available in **Site administration > Server > Web services > Manage services**) to 
 manually test the functions.
 
-For debugging:
-- Enable debugging in **Site administration > Development > Debugging** to log errors.
-- Use breakpoints in your IDE to inspect function behavior.
-
----
-
-### Conclusion
-
-Developing external web services in Moodle is a powerful way to extend the platform’s functionality and integrate it with 
-third-party systems. It involves defining and registering functions, managing access control, and ensuring security through 
-tokens and capability checks. By following the steps outlined above, you can create custom web services that allow Moodle to 
-interact with external applications in a secure and maintainable manner.
