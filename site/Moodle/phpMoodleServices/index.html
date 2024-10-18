@@ -2411,34 +2411,69 @@ requests (GET, POST, etc.).</li>
 <p>Moodle comes with built-in support for these protocols, and developers can configure which ones to use.</p>
 <hr />
 <h3 id="defining-web-service-functions"><strong>Defining Web Service Functions</strong></h3>
-<p>A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle as a web service function, but it must be carefully structured to ensure security and proper behavior.</p>
+<p>A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle 
+as a web service function, but it must be carefully structured to ensure security and proper behavior.</p>
 <h4 id="steps-to-define-a-web-service-function">Steps to Define a Web Service Function:</h4>
+<p>Before they can be used, all functions must be <em>declared</em> to Moodle, and their inputs and outputs must be <em>defined</em>.</p>
+<ul>
+<li>Functions are <em>declared</em> by noting them in the <code>db/services.php</code> file for a plugin.</li>
+<li>Functions are <em>defined</em> within their own class located within the <code>\component\external</code> namespace of a component.</li>
+</ul>
+<p>Note that there is a <a href="https://docs.moodle.org/dev/Web_service_API_functions#Naming_convention">strict naming convention for external service functions</a>.</p>
+<p>Function implementation classes consist of one class containing a number of functions, some of which are mandatory.</p>
+<p>During a Moodle installation or upgrade, the service and function declarations are parsed by a service discovery process 
+and stored within the database. An administrative UI may be used to change some configuration details of these declarations.</p>
 <ol>
 <li>
-<p><strong>Create a Function in a Plugin or Core</strong>:
-    The function should be written in a plugin or within Moodle core. For example, let’s assume you are building a custom plugin to expose course-related data.</p>
-<div class="highlight"><pre><span></span><code><span class="x">function local_customplugin_get_course_details($courseid) {</span>
-<span class="x">    global $DB;</span>
+<p><strong>Service declarations</strong>:</p>
+<p>Each component wishing to create an external service function must declare that the function exists by describing 
+it in the <code>db/services.php</code> file for that component.</p>
+<p>This information is stored internally within Moodle, and collected as part of the service discovery during installation 
+and upgrade. The function name is arbitrary, but must follow the naming convention. This helps ensure that it is globally unique.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">// The name of your web service function, as discussed above.</span>
+<span class="x">&#39;local_myplugin_create_groups&#39; =&gt; [</span>
+<span class="x">    // The name of the namespaced class that the function is located in.</span>
+<span class="x">    &#39;classname&#39;   =&gt; &#39;local_groupmanager\external\create_groups&#39;,</span>
 
-<span class="x">    // Check if the course exists.</span>
-<span class="x">    $course = $DB-&gt;get_record(&#39;course&#39;, [&#39;id&#39; =&gt; $courseid]);</span>
-<span class="x">    if (!$course) {</span>
-<span class="x">        throw new moodle_exception(&#39;invalidcourse&#39;, &#39;local_customplugin&#39;);</span>
-<span class="x">    }</span>
+<span class="x">    // A brief, human-readable, description of the web service function.</span>
+<span class="x">    &#39;description&#39; =&gt; &#39;Creates new groups.&#39;,</span>
 
-<span class="x">    // Return the course details.</span>
-<span class="x">    return array(</span>
-<span class="x">        &#39;id&#39; =&gt; $course-&gt;id,</span>
-<span class="x">        &#39;fullname&#39; =&gt; $course-&gt;fullname,</span>
-<span class="x">        &#39;shortname&#39; =&gt; $course-&gt;shortname,</span>
-<span class="x">        &#39;summary&#39; =&gt; $course-&gt;summary</span>
-<span class="x">    );</span>
-<span class="x">}</span>
+<span class="x">    // Options include read, and write.</span>
+<span class="x">    &#39;type&#39;        =&gt; &#39;write&#39;,</span>
+
+<span class="x">    // Whether the service is available for use in AJAX calls from the web.</span>
+<span class="x">    &#39;ajax&#39;        =&gt; true,</span>
+
+<span class="x">    // An optional list of services where the function will be included.</span>
+<span class="x">    &#39;services&#39;    =&gt; [</span>
+<span class="x">        // A standard Moodle install includes one default service:</span>
+<span class="x">        // - MOODLE_OFFICIAL_MOBILE_SERVICE.</span>
+<span class="x">        // Specifying this service means that your function will be available for</span>
+<span class="x">        // use in the Moodle Mobile App.</span>
+<span class="x">        MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ],</span>
+<span class="x">    // A comma-separated list of capabilities used by the function.</span>
+<span class="x">    // This is advisory only and used to indicate to the administrator</span>
+<span class="x">    // configuring a custom service definition.</span>
+<span class="x">    &#39;capabilities&#39; =&gt; &#39;moodle/course:creategroups,moodle/course:managegroups&#39;,</span>
+
+<span class="x">    // The following parameters are also available, but are no longer recommended.</span>
+
+<span class="x">    // The name of the external function name.</span>
+<span class="x">    // If not specified, this will default to &#39;execute&#39;.</span>
+<span class="x">    &#39;methodname&#39;  =&gt; &#39;execute&#39;,</span>
+
+<span class="x">    // The file containing the class/external function.</span>
+<span class="x">    // Do not use if using namespaced auto-loading classes.</span>
+<span class="x">    &#39;classpath&#39;   =&gt; &#39;local/groupmanager/externallib.php&#39;,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
 </code></pre></div>
 </li>
 <li>
-<p><strong>Register the Function in <code>db/services.php</code></strong>:
-    Each function you wish to expose via web services needs to be declared in the <code>db/services.php</code> file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.</p>
+<p><strong>Function Definitions</strong>:</p>
+<p>Each function you wish to expose via web services needs to be declared in the <code>db/services.php</code> file of your plugin or core component. This file defines the web service function’s details, including its parameters, return values, and security restrictions.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$functions = array(</span>
 <span class="x">    &#39;local_customplugin_get_course_details&#39; =&gt; array(</span>
 <span class="x">        &#39;classname&#39; =&gt; &#39;local_customplugin_external&#39;,  // The external class that contains the function.</span>
