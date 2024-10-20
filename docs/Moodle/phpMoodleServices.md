@@ -44,8 +44,6 @@ Moodle comes with built-in support for these protocols, and developers can confi
 A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle 
 as a web service function, but it must be carefully structured to ensure security and proper behavior.
 
-#### Steps to Define a Web Service Function:
-
 Before they can be used, all functions must be *declared* to Moodle, and their inputs and outputs must be *defined*.
 
 + Functions are *declared* by noting them in the `db/services.php` file for a plugin.
@@ -58,7 +56,7 @@ Function implementation classes consist of one class containing a number of func
 During a Moodle installation or upgrade, the service and function declarations are parsed by a service discovery process 
 and stored within the database. An administrative UI may be used to change some configuration details of these declarations.
 
-1. **Service declarations**:
+### **Service declarations**
 
     Each component wishing to create an external service function must declare that the function exists by describing 
     it in the `db/services.php` file for that component.
@@ -108,7 +106,7 @@ and stored within the database. An administrative UI may be used to change some 
     );
     ```
 
-2. **Function Definitions**:
+### **Function Definitions**
 
     An External function definition is the class, and collection of functions, used to define:
 
@@ -215,61 +213,10 @@ and stored within the database. An administrative UI may be used to change some 
         }
     }
     ```
-    Available parameter types are defined in lib/moodlelib.php and are used by the validate_parameters() function and during return value checking to ensure that the service is called and working as defined.
+    Available parameter types are defined in lib/moodlelib.php and are used by the 
+    validate_parameters() function and during return value checking to ensure that the 
+    service is called and working as defined.
 
-3. **Create an External Class in `externallib.php`**:
-    Web service functions should reside inside an external class that extends `external_api`, which handles permission checks and data validation.
-
-    Example:
-
-    ```php
-    class local_customplugin_external extends external_api {
-        // Define the parameters the function expects.
-        public static function get_course_details_parameters() {
-            return new external_function_parameters(
-                array(
-                    'courseid' => new external_value(PARAM_INT, 'Course ID')
-                )
-            );
-        }
-
-        // Implement the function logic.
-        public static function get_course_details($courseid) {
-            global $DB;
-
-            // Validate parameters.
-            $params = self::validate_parameters(self::get_course_details_parameters(), array('courseid' => $courseid));
-
-            // Get course data.
-            $course = $DB->get_record('course', array('id' => $params['courseid']));
-            if (!$course) {
-                throw new moodle_exception('invalidcourse', 'local_customplugin');
-            }
-
-            // Return the result.
-            return array(
-                'id' => $course->id,
-                'fullname' => $course->fullname,
-                'shortname' => $course->shortname,
-                'summary' => $course->summary
-            );
-        }
-
-        // Define the return values.
-        public static function get_course_details_returns() {
-            return new external_single_structure(
-                array(
-                    'id' => new external_value(PARAM_INT, 'Course ID'),
-                    'fullname' => new external_value(PARAM_TEXT, 'Full course name'),
-                    'shortname' => new external_value(PARAM_TEXT, 'Course short name'),
-                    'summary' => new external_value(PARAM_RAW, 'Course summary'),
-                )
-            );
-        }
-    }
-    ```
-
----
 
 ### **Security Considerations**
 
@@ -279,6 +226,88 @@ Web services often expose sensitive data, so it’s critical to enforce strict s
 - **Capability Checks**: Use Moodle’s capabilities system to control access. For example, only users with the capability `moodle/course:view` can retrieve course details.
 - **Parameter Validation**: Always validate and sanitize the input parameters using the `external_function_parameters` class.
 - **Return Value Sanitization**: Ensure that the data returned is safe and free from XSS vulnerabilities.
+
+
+Before operating on any data in an external function, you must ensure that the user:
+
+- has access to context that the data is located in
+- has permission to perform the relevant action
+
+#### Validating function parameters
+Before working with any data provided by a user you must validate the parameters against the 
+definitions you have defined.
+
+To do so you should call the `validate_parameters()` function, passing in the reference to 
+your `execute_parameters()` function, and the complete list of parameters for the function. 
+The function will return the validated and cleaned parameters.
+
+The validate_parameters() function is defined on the `\core_external\external_api` class, 
+and can be called as follows:
+
+```php
+// local/groupmanager/classes/external/create_groups.php
+public static function execute(array $groups): array {
+    [
+        'groups' => $groups,
+    ] = self::validate_parameters(self::execute_parameters(), [
+        'groups' => $groups,
+    ]);
+    // ...
+}
+
+```
+
+#### Validating access to the Moodle context
+
+Whenever fetching or updating any data within Moodle using an External function definition, 
+you must validate the context that the data exists within.
+
+To do so you should call the validate_context() function, passing the most specific context 
+for the data.
+
+For example, if you are working with data belonging to a specific activity, you should use 
+the activity context. If you are working with data belonging to a course, you should use 
+the course context.
+
+If your function operates on multiple contexts (like a list of courses), you must validate 
+each context right before generating any response data related to that context.
+
+The `validate_context()` function is defined on the `\core_external\external_api` class, 
+and can be called as follows:
+
+```php
+// local/groupmanager/classes/external/create_groups.php
+public static function execute(array $groups): array {
+    // ...
+    foreach ($groups as $group) {
+        $coursecontext = \context_course::instance($group['courseid']);
+        self::validate_context($coursecontext);
+        // ...
+    }
+}
+```
+
+The validate_context() function will also configure 
+the correct theme, language, and filters required to render content for the current user.
+
+You should not:
+
+- use the require_login function from an external function - this function is reserved for php scripts returning a web page.
+- call $PAGE->set_context() manually - this will generate warning notices.
+
+The `validate_context()` function is the only correct way to write external functions.
+
+#### Ensuring that a user has the appropriate rights
+
+Once you have confirmed that the provided data is of the correct type, and configured Moodle for the specific context, you should also ensure that all capabilities are checked correctly.
+
+You can use the standard capability functions, including:
+
+- has_capability() - to check that a user has a single capability
+- has_any_capability() - to check that a user has any capability in a set
+- has_all_capability() - to check that a user has all capabilities in a set
+- require_capability() - to require a single capability
+- require_all_capabilities() - to require that a user has all capabilities in a set
 
 ---
 
