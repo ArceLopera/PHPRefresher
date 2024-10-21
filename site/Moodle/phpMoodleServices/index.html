@@ -2162,19 +2162,19 @@
     Managing Access Control
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Managing Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#authentication-and-tokens" class="md-nav__link">
     Authentication and Tokens
   </a>
   
-    <nav class="md-nav" aria-label="Authentication and Tokens">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#example-creating-a-token-manually" class="md-nav__link">
-    Example: Creating a Token Manually
+  <a href="#service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
+    Service Configuration in the Moodle Admin Interface
   </a>
   
 </li>
@@ -2185,9 +2185,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
-    Service Configuration in the Moodle Admin Interface
+  <a href="#file-handling" class="md-nav__link">
+    File handling
   </a>
+  
+    <nav class="md-nav" aria-label="File handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-service-functions" class="md-nav__link">
+    Web service functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-endpoints" class="md-nav__link">
+    Dedicated endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2381,19 +2401,19 @@
     Managing Access Control
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Managing Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#authentication-and-tokens" class="md-nav__link">
     Authentication and Tokens
   </a>
   
-    <nav class="md-nav" aria-label="Authentication and Tokens">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#example-creating-a-token-manually" class="md-nav__link">
-    Example: Creating a Token Manually
+  <a href="#service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
+    Service Configuration in the Moodle Admin Interface
   </a>
   
 </li>
@@ -2404,9 +2424,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
-    Service Configuration in the Moodle Admin Interface
+  <a href="#file-handling" class="md-nav__link">
+    File handling
   </a>
+  
+    <nav class="md-nav" aria-label="File handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-service-functions" class="md-nav__link">
+    Web service functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-endpoints" class="md-nav__link">
+    Dedicated endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2479,164 +2519,154 @@ as a web service function, but it must be carefully structured to ensure securit
 <p>During a Moodle installation or upgrade, the service and function declarations are parsed by a service discovery process 
 and stored within the database. An administrative UI may be used to change some configuration details of these declarations.</p>
 <h3 id="service-declarations"><strong>Service declarations</strong></h3>
-<div class="highlight"><pre><span></span><code>Each component wishing to create an external service function must declare that the function exists by describing 
-it in the `db/services.php` file for that component.
+<p>Each component wishing to create an external service function must declare that the function exists by describing 
+it in the <code>db/services.php</code> file for that component.</p>
+<p>This information is stored internally within Moodle, and collected as part of the service discovery during installation 
+and upgrade. The function name is arbitrary, but must follow the naming convention. This helps ensure that it is globally unique.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">// The name of your web service function, as discussed above.</span>
+<span class="x">&#39;local_myplugin_create_groups&#39; =&gt; [</span>
+<span class="x">    // The name of the namespaced class that the function is located in.</span>
+<span class="x">    &#39;classname&#39;   =&gt; &#39;local_groupmanager\external\create_groups&#39;,</span>
 
-This information is stored internally within Moodle, and collected as part of the service discovery during installation 
-and upgrade. The function name is arbitrary, but must follow the naming convention. This helps ensure that it is globally unique.
+<span class="x">    // A brief, human-readable, description of the web service function.</span>
+<span class="x">    &#39;description&#39; =&gt; &#39;Creates new groups.&#39;,</span>
 
-```php
-$functions = [
-// The name of your web service function, as discussed above.
-&#39;local_myplugin_create_groups&#39; =&gt; [
-    // The name of the namespaced class that the function is located in.
-    &#39;classname&#39;   =&gt; &#39;local_groupmanager\external\create_groups&#39;,
+<span class="x">    // Options include read, and write.</span>
+<span class="x">    &#39;type&#39;        =&gt; &#39;write&#39;,</span>
 
-    // A brief, human-readable, description of the web service function.
-    &#39;description&#39; =&gt; &#39;Creates new groups.&#39;,
+<span class="x">    // Whether the service is available for use in AJAX calls from the web.</span>
+<span class="x">    &#39;ajax&#39;        =&gt; true,</span>
 
-    // Options include read, and write.
-    &#39;type&#39;        =&gt; &#39;write&#39;,
+<span class="x">    // An optional list of services where the function will be included.</span>
+<span class="x">    &#39;services&#39;    =&gt; [</span>
+<span class="x">        // A standard Moodle install includes one default service:</span>
+<span class="x">        // - MOODLE_OFFICIAL_MOBILE_SERVICE.</span>
+<span class="x">        // Specifying this service means that your function will be available for</span>
+<span class="x">        // use in the Moodle Mobile App.</span>
+<span class="x">        MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ],</span>
+<span class="x">    // A comma-separated list of capabilities used by the function.</span>
+<span class="x">    // This is advisory only and used to indicate to the administrator</span>
+<span class="x">    // configuring a custom service definition.</span>
+<span class="x">    &#39;capabilities&#39; =&gt; &#39;moodle/course:creategroups,moodle/course:managegroups&#39;,</span>
 
-    // Whether the service is available for use in AJAX calls from the web.
-    &#39;ajax&#39;        =&gt; true,
+<span class="x">    // The following parameters are also available, but are no longer recommended.</span>
 
-    // An optional list of services where the function will be included.
-    &#39;services&#39;    =&gt; [
-        // A standard Moodle install includes one default service:
-        // - MOODLE_OFFICIAL_MOBILE_SERVICE.
-        // Specifying this service means that your function will be available for
-        // use in the Moodle Mobile App.
-        MOODLE_OFFICIAL_MOBILE_SERVICE,
-        ],
-    // A comma-separated list of capabilities used by the function.
-    // This is advisory only and used to indicate to the administrator
-    // configuring a custom service definition.
-    &#39;capabilities&#39; =&gt; &#39;moodle/course:creategroups,moodle/course:managegroups&#39;,
+<span class="x">    // The name of the external function name.</span>
+<span class="x">    // If not specified, this will default to &#39;execute&#39;.</span>
+<span class="x">    &#39;methodname&#39;  =&gt; &#39;execute&#39;,</span>
 
-    // The following parameters are also available, but are no longer recommended.
-
-    // The name of the external function name.
-    // If not specified, this will default to &#39;execute&#39;.
-    &#39;methodname&#39;  =&gt; &#39;execute&#39;,
-
-    // The file containing the class/external function.
-    // Do not use if using namespaced auto-loading classes.
-    &#39;classpath&#39;   =&gt; &#39;local/groupmanager/externallib.php&#39;,
-    ),
-);
-```
+<span class="x">    // The file containing the class/external function.</span>
+<span class="x">    // Do not use if using namespaced auto-loading classes.</span>
+<span class="x">    &#39;classpath&#39;   =&gt; &#39;local/groupmanager/externallib.php&#39;,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
 </code></pre></div>
 <h3 id="function-definitions"><strong>Function Definitions</strong></h3>
-<div class="highlight"><pre><span></span><code>An External function definition is the class, and collection of functions, used to define:
+<p>An External function definition is the class, and collection of functions, used to define:</p>
+<ul>
+<li>any parameters that the function expects to take, including any types</li>
+<li>what the function will return, including any types</li>
+<li>whether the function has been deprecated, or not</li>
+</ul>
+<p>It also includes the code that will actually be executed by the function.</p>
+<p>The function definition should be located within the external namespace of a component.
+For a component named local_groupmanager located in local/groupmanager which is responsible for creating groups on request, you may have:</p>
+<ul>
+<li>a Web service function named: local_groupmanager_create_groups</li>
+<li>defined in a class named local_groupmanager\external\create_groups</li>
+<li>which is located local/groupmanager/classes/external/create_groups.php</li>
+</ul>
+<p>A service definition:</p>
+<ul>
+<li>must extend the \core_external\external_api class</li>
+<li>must declare an execute_parameters function to describe the expected parameters of the function</li>
+<li>must declare an execute function which is called with the functions and performs the expected actions</li>
+<li>must declare an execute_returns function to describe the values returned by the function</li>
+<li>may declare an execute_is_deprecated function to declare a function as deprecated</li>
+</ul>
+<p>Writing plugins supporting Multiple Moodle versions
+The External API subsystem was restructured in Moodle 4.2 and moved from classes within a manually-required file, to autoloaded and namespaced classes.</p>
+<p>If you are developing a plugin whose codebase is used or tested in multiple Moodle versions, including older versions of Moodle, then you:</p>
+<ul>
+<li>must require_once the lib/externallib.php file</li>
+<li>must extend the external_api class instead of \core_external\external_api</li>
+</ul>
+<p>This will allow your plugin to continue working without deprecation notices or failures.</p>
+<p>Please note that deprecation notices will be added to this pathway from Moodle 4.6 onwards.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">// local/groupmanager/classes/external/create_groups.php</span>
+<span class="cp">&lt;?php</span>
 
-+ any parameters that the function expects to take, including any types
-+ what the function will return, including any types
-+ whether the function has been deprecated, or not
+<span class="k">namespace</span> <span class="nx">local_groupmanager\external</span><span class="p">;</span>
 
-It also includes the code that will actually be executed by the function.
+<span class="k">use</span> <span class="nx">external_function_parameters</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_multiple_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_single_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_value</span><span class="p">;</span>
 
-The function definition should be located within the external namespace of a component.
-For a component named local_groupmanager located in local/groupmanager which is responsible for creating groups on request, you may have:
+<span class="k">class</span> <span class="nc">create_groups</span> <span class="k">extends</span> <span class="nx">\core_external\external_api</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute_parameters</span><span class="p">()</span><span class="o">:</span> <span class="nx">external_function_parameters</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">external_function_parameters</span><span class="p">([</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_multiple_structure</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">external_single_structure</span><span class="p">([</span>
+                    <span class="s1">&#39;courseid&#39;</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_INT</span><span class="p">,</span> <span class="s1">&#39;The course to create the group for&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;idnumber&#39;</span>    <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;An arbitrary ID code number perhaps from the institution&#39;</span><span class="p">,</span>
+                        <span class="nx">VALUE_DEFAULT</span><span class="p">,</span>
+                        <span class="k">null</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;The name of the group&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_TEXT</span><span class="p">,</span>
+                        <span class="s1">&#39;A description&#39;</span><span class="p">,</span>
+                        <span class="nx">VALUE_OPTIONAL</span>
+                    <span class="p">),</span>
+                <span class="p">]),</span>
+                <span class="s1">&#39;A list of groups to create&#39;</span>
+            <span class="p">),</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
 
-- a Web service function named: local_groupmanager_create_groups
-- defined in a class named local_groupmanager\external\create_groups
-- which is located local/groupmanager/classes/external/create_groups.php
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="k">array</span> <span class="nv">$groups</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// Validate all of the parameters.</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="nv">$groups</span><span class="p">,</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">validate_parameters</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">execute_parameters</span><span class="p">(),</span> <span class="p">[</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="nv">$groups</span><span class="p">,</span>
+        <span class="p">]);</span>
 
-A service definition:
+        <span class="c1">// Perform security checks, for example:</span>
+        <span class="nv">$coursecontext</span> <span class="o">=</span> <span class="nx">\context_course</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$courseid</span><span class="p">);</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">validate_context</span><span class="p">(</span><span class="nv">$coursecontext</span><span class="p">);</span>
+        <span class="nx">require_capability</span><span class="p">(</span><span class="s1">&#39;moodle/course:creategroups&#39;</span><span class="p">,</span> <span class="nv">$coursecontext</span><span class="p">);</span>
 
-+ must extend the \core_external\external_api class
-+ must declare an execute_parameters function to describe the expected parameters of the function
-+ must declare an execute function which is called with the functions and performs the expected actions
-+ must declare an execute_returns function to describe the values returned by the function
-+ may declare an execute_is_deprecated function to declare a function as deprecated
+        <span class="c1">// Create the group using existing Moodle APIs.</span>
+        <span class="nv">$createdgroups</span> <span class="o">=</span> <span class="nx">\local_groupmanager\util</span><span class="o">::</span><span class="na">create_groups</span><span class="p">(</span><span class="nv">$groups</span><span class="p">);</span>
 
-Writing plugins supporting Multiple Moodle versions
-The External API subsystem was restructured in Moodle 4.2 and moved from classes within a manually-required file, to autoloaded and namespaced classes.
+        <span class="c1">// Return a value as described in the returns function.</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="nv">$createdgroups</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
 
-If you are developing a plugin whose codebase is used or tested in multiple Moodle versions, including older versions of Moodle, then you:
-
-+ must require_once the lib/externallib.php file
-+ must extend the external_api class instead of \core_external\external_api
-
-This will allow your plugin to continue working without deprecation notices or failures.
-
-Please note that deprecation notices will be added to this pathway from Moodle 4.6 onwards.
-
-```php
-// local/groupmanager/classes/external/create_groups.php
-&lt;?php
-
-namespace local_groupmanager\external;
-
-use external_function_parameters;
-use external_multiple_structure;
-use external_single_structure;
-use external_value;
-
-class create_groups extends \core_external\external_api {
-    public static function execute_parameters(): external_function_parameters {
-        return new external_function_parameters([
-            &#39;groups&#39; =&gt; new external_multiple_structure(
-                new external_single_structure([
-                    &#39;courseid&#39;  =&gt; new external_value(PARAM_INT, &#39;The course to create the group for&#39;),
-                    &#39;idnumber&#39;    =&gt; new external_value(
-                        PARAM_RAW,
-                        &#39;An arbitrary ID code number perhaps from the institution&#39;,
-                        VALUE_DEFAULT,
-                        null
-                    ),
-                    &#39;name&#39; =&gt; new external_value(
-                        PARAM_RAW,
-                        &#39;The name of the group&#39;
-                    ),
-                    &#39;description&#39; =&gt; new external_value(
-                        PARAM_TEXT,
-                        &#39;A description&#39;,
-                        VALUE_OPTIONAL
-                    ),
-                ]),
-                &#39;A list of groups to create&#39;
-            ),
-        ]);
-    }
-
-    public static function execute(array $groups): array {
-        // Validate all of the parameters.
-        [
-            &#39;groups&#39; =&gt; $groups,
-        ] = self::validate_parameters(self::execute_parameters(), [
-            &#39;groups&#39; =&gt; $groups,
-        ]);
-
-        // Perform security checks, for example:
-        $coursecontext = \context_course::instance($courseid);
-        self::validate_context($coursecontext);
-        require_capability(&#39;moodle/course:creategroups&#39;, $coursecontext);
-
-        // Create the group using existing Moodle APIs.
-        $createdgroups = \local_groupmanager\util::create_groups($groups);
-
-        // Return a value as described in the returns function.
-        return [
-            &#39;groups&#39; =&gt; $createdgroups,
-        ];
-    }
-
-    public static function execute_returns(): external_single_structure {
-        return new external_single_structure([
-            &#39;groups&#39; =&gt; new external_multiple_structure([
-                &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;Id of the created user&#39;),
-                &#39;name&#39; =&gt; new external_value(PARAM_RAW, &#39;The name of the group&#39;),
-            ])
-        ]);
-    }
-}
-```
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute_returns</span><span class="p">()</span><span class="o">:</span> <span class="nx">external_single_structure</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">external_single_structure</span><span class="p">([</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_multiple_structure</span><span class="p">([</span>
+                <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_INT</span><span class="p">,</span> <span class="s1">&#39;Id of the created user&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_RAW</span><span class="p">,</span> <span class="s1">&#39;The name of the group&#39;</span><span class="p">),</span>
+            <span class="p">])</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 Available parameter types are defined in lib/moodlelib.php and are used by the 
 validate_parameters() function and during return value checking to ensure that the 
-service is called and working as defined.
-</code></pre></div>
+service is called and working as defined.</p>
 <h3 id="security-considerations"><strong>Security Considerations</strong></h3>
 <p>Web services often expose sensitive data, so it’s critical to enforce strict security measures.</p>
 <ul>
@@ -2715,19 +2745,20 @@ the correct theme, language, and filters required to render content for the curr
 <li><strong>Tokens</strong>: Users or systems must have a valid token to call a web service. Admins can issue these tokens through <strong>Site administration &gt; Server &gt; Web services &gt; Manage tokens</strong>.</li>
 <li><strong>Capabilities</strong>: Each function can define required capabilities in <code>db/services.php</code>, ensuring that users have the correct roles to access the web service.</li>
 </ul>
-<hr />
-<h3 id="authentication-and-tokens"><strong>Authentication and Tokens</strong></h3>
-<p>Moodle uses tokens for authenticating users when they access web services. Tokens are generated for individual users or system accounts and can be issued in two ways:
-- <strong>Manually</strong> by administrators: Through the admin interface.
-- <strong>Automatically</strong>: Using Moodle’s authentication mechanisms (e.g., OAuth2).</p>
-<h4 id="example-creating-a-token-manually">Example: Creating a Token Manually</h4>
+<h4 id="authentication-and-tokens"><strong>Authentication and Tokens</strong></h4>
+<p>Moodle uses tokens for authenticating users when they access web services. Tokens are generated for individual users or system accounts 
+and can be issued in two ways:</p>
+<ul>
+<li><strong>Manually</strong> by administrators: Through the admin interface.</li>
+<li><strong>Automatically</strong>: Using Moodle’s authentication mechanisms (e.g., OAuth2).</li>
+</ul>
+<p><strong>Example: Creating a Token Manually</strong></p>
 <ol>
 <li>Go to <strong>Site administration &gt; Server &gt; Web services &gt; Manage tokens</strong>.</li>
 <li>Choose the user for whom the token will be created.</li>
 <li>Assign the web service functions that this token allows access to.</li>
 </ol>
-<hr />
-<h3 id="service-configuration-in-the-moodle-admin-interface"><strong>Service Configuration in the Moodle Admin Interface</strong></h3>
+<h4 id="service-configuration-in-the-moodle-admin-interface"><strong>Service Configuration in the Moodle Admin Interface</strong></h4>
 <p>After defining your web service functions, you can configure them via the Moodle admin interface:</p>
 <ul>
 <li><strong>Enable Web Services</strong>: Ensure web services are enabled in <strong>Site administration &gt; Advanced features</strong>.</li>
@@ -2735,6 +2766,95 @@ the correct theme, language, and filters required to render content for the curr
 <li><strong>Create a Service</strong>: In <strong>Site administration &gt; Server &gt; Web services &gt; External services</strong>, you can create and manage services, which are groups of related web service functions.</li>
 <li><strong>Assign Functions to the Service</strong>: Add the functions defined in <code>db/services.php</code> to the service, so they are accessible externally.</li>
 </ul>
+<hr />
+<h3 id="file-handling"><strong>File handling</strong></h3>
+<p>Moodle provides two ways to fetch and upload files:</p>
+<ol>
+<li>A set of web service functions; and</li>
+<li>A pair of dedicated endpoints.</li>
+</ol>
+<h4 id="web-service-functions">Web service functions</h4>
+<p>You can use the following functions to upload, and fetch, file content:</p>
+<ul>
+<li><code>core_files_get_files()</code>; and</li>
+<li><code>core_files_upload()</code>.</li>
+</ul>
+<p>When using these functions, the file content is base64-encoded.</p>
+<p><strong>Note: </strong>
+Many devices do not have enough memory to encode and decode requests containing large files. 
+As such we recommend using the dedicated endpoints instead.</p>
+<h4 id="dedicated-endpoints">Dedicated endpoints</h4>
+<p>Moodle provides two dedicated endpoints which can be used, alongside the authentication token, to upload and fetch content. These are:</p>
+<ul>
+<li>to upload a file: <code>/webservice/upload.php</code>; and</li>
+<li>to fetch a file: <code>/webservice/pluginfile.php</code>.</li>
+</ul>
+<h5 id="file-upload">File upload</h5>
+<p>The recommended way to upload file content from an external service is by issue a <code>POST</code> request to the <code>/webservice/upload.php</code> endpoint, 
+passing in a valid web service token for authentication.</p>
+<p>Upon successful upload, any files passed will be saved in the user's draft file area.</p>
+<p>The endpoint takes two optional arguments:</p>
+<ul>
+<li>An <code>itemid</code> to upload the files to, defaulting to <code>0</code>. If none is specified then a new id is generated for the current user's draft file area</li>
+<li>A <code>filepath</code> to store the file in, defaulting to /.</li>
+</ul>
+<p>The endpoint will return a JSON-encoded summary of the uploaded file, including the <code>itemid</code> that it was stored in.</p>
+<p>It is typical that the <code>itemid</code> parameter will be used when the files are uploaded singularly in separate HTTP calls 
+and the files are required to be in the same draft file area.</p>
+<p>The client retrieves the <code>itemid</code> from the first uploaded file and uses it in subsequent uploads.</p>
+<p>This allows multiple files to be uploaded to the same draft file area.</p>
+<p>On every successful upload, the file/s information are returned in JSON format. 
+If an error occurs, an error message will be sent back in JSON format too.</p>
+<h5 id="example">Example</h5>
+<p>To upload a file, <code>users.csv</code>, you could use curl as follows:</p>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -F <span class="s2">&quot;file_1=@users.csv&quot;</span> https://SITENAME/webservice/upload.php?token<span class="o">=</span>TOKEN <span class="se">\</span>
+<span class="p">|</span> jq
+
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">&quot;component&quot;</span>: <span class="s2">&quot;user&quot;</span>,
+    <span class="s2">&quot;contextid&quot;</span>: <span class="m">567</span>,
+    <span class="s2">&quot;userid&quot;</span>: <span class="s2">&quot;123&quot;</span>,
+    <span class="s2">&quot;filearea&quot;</span>: <span class="s2">&quot;draft&quot;</span>,
+    <span class="s2">&quot;filename&quot;</span>: <span class="s2">&quot;users.csv&quot;</span>,
+    <span class="s2">&quot;filepath&quot;</span>: <span class="s2">&quot;/&quot;</span>,
+    <span class="s2">&quot;itemid&quot;</span>: <span class="m">880413555</span>,
+    <span class="s2">&quot;license&quot;</span>: <span class="s2">&quot;allrightsreserved&quot;</span>,
+    <span class="s2">&quot;author&quot;</span>: <span class="s2">&quot;User User&quot;</span>,
+    <span class="s2">&quot;source&quot;</span>: <span class="s2">&quot;O:8:\&quot;stdClass\&quot;:1:{s:6:\&quot;source\&quot;;s:13:\&quot;users.csv\&quot;;}&quot;</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<p>The returned JSON response includes the key parts of the file record, including the <code>itemid</code>.</p>
+<p>Once all the files are uploaded, you can call a webserivce function to process the files from the user drafts area, 
+passing in the <code>itemid</code> of the draft area containing the list of files for the request. 
+The service can identify the uploads and manipulate them as necessary.</p>
+<p>An example of a webservice that accepts files is: <code>mod_assign_save_submission</code>.</p>
+<p>To accept file uploads, the service must allow "files download" 
+(Administration &gt; Plugins &gt; Web services &gt; Manage services &gt; Edit service &gt; Advanced button)</p>
+<h5 id="file-download">File download</h5>
+<p>We serve the files through <code>/webservice/pluginfile.php</code>. This script requires a web service token for authentication.</p>
+<p>To support file downloads, the service must allow "files download".</p>
+<p>The <code>/webservice/pluginfile.php</code> endpoint has the exact same structure as <code>/pluginfile.php</code> and <code>/tokenpluginfile.php</code>.</p>
+<p>We don't serve the files through <code>/pluginfile.php</code> for web service clients because it requires the user's login session to work, 
+however it is possible to use the <code>/tokenpluginfile.php</code> endpoint with an appropriate token.</p>
+<h5 id="returning-files-in-web-services">Returning files in Web Services</h5>
+<p>Since Moodle 3.2, you can return a complete file area list via Web Services using the static <code>get_area_files</code> method, defined in <code>external_util</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$forum-&gt;introfiles = external_util::get_area_files($context-&gt;id, &#39;mod_forum&#39;, &#39;intro&#39;, false, false);</span>
+</code></pre></div>
+<p>You can also use the <code>external_files</code> structure definition in combination with the method to return the most common file fields 
+required by WS clients.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function execute_returns(): external_multiple_structure {</span>
+<span class="x">    return new external_multiple_structure(</span>
+<span class="x">        new external_single_structure([</span>
+<span class="x">            &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;Forum id&#39;),</span>
+<span class="x">            // ...</span>
+<span class="x">            &#39;introfiles&#39; =&gt; new external_files(&#39;Files in the introduction text&#39;, VALUE_OPTIONAL),</span>
+<span class="x">            // ...</span>
+<span class="x">        ])</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</code></pre></div>
 <hr />
 <h3 id="testing"><strong>Testing</strong></h3>
 <p>To test web services:
