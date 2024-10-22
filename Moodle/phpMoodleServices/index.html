@@ -2212,6 +2212,61 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#writing-a-new-service" class="md-nav__link">
+    Writing a new service
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a new service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-specification" class="md-nav__link">
+    Functional specification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare-the-web-service-function" class="md-nav__link">
+    Declare the web service function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-the-external-function-descriptions" class="md-nav__link">
+    Write the external function descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-external-function" class="md-nav__link">
+    Implement the external function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bump-the-plugin-version" class="md-nav__link">
+    Bump the plugin version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecation" class="md-nav__link">
+    Deprecation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testing" class="md-nav__link">
     Testing
   </a>
@@ -2441,6 +2496,61 @@
           <li class="md-nav__item">
   <a href="#dedicated-endpoints" class="md-nav__link">
     Dedicated endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-new-service" class="md-nav__link">
+    Writing a new service
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a new service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-specification" class="md-nav__link">
+    Functional specification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare-the-web-service-function" class="md-nav__link">
+    Declare the web service function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-the-external-function-descriptions" class="md-nav__link">
+    Write the external function descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-external-function" class="md-nav__link">
+    Implement the external function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bump-the-plugin-version" class="md-nav__link">
+    Bump the plugin version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecation" class="md-nav__link">
+    Deprecation
   </a>
   
 </li>
@@ -2854,6 +2964,387 @@ required by WS clients.</p>
 <span class="x">        ])</span>
 <span class="x">    );</span>
 <span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="writing-a-new-service"><strong>Writing a new service</strong></h3>
+<p>This documentation covers the creation of a new external service for use in a web service of a fictional local plugin, local_groupmanager.</p>
+<h4 id="functional-specification">Functional specification</h4>
+<p>The local_groupmanager plugin has a need to create groups within a course and would like to do so using its own web service.</p>
+<p>When defining a new service definition, Moodle requires that the name of the definition be in the form:
+<code>[frankenstyle_component]_[methodname]</code></p>
+<p>The naming convention further dictates that the methodname component be in the form:</p>
+<div class="highlight"><pre><span></span><code>[methodname]  - The name of the method in the form of [verb]_[noun]
+
+[verb]        - Usually one of get, create, delete, update
+                A similar verb that well describes the action may also be used
+
+[noun]        - The object being modified
+                Usually in Plural form
+</code></pre></div>
+<p>Per the Moodle naming convention for web services the name of the function should be:
+local_groupmanager_create_groups</p>
+<p><strong>Inputs</strong></p>
+<p>The local_groupmanager_create_groups external service definition will take a list of groups as its only parameters.</p>
+<p><strong>Outputs</strong></p>
+<p>The service will return a list of the created groups, including the id element of those groups.</p>
+<p><strong>Exceptions and failures</strong></p>
+<p>If any group creation fails, the function will throw an exception, and no groups will be created.</p>
+<p><strong>Technical specification</strong></p>
+<ul>
+<li>the core function the external function will call: <code>groups_create_group()</code> from /group/lib.php.</li>
+<li>the parameter types: a list of object. This object are groups, with <code>id/name/courseid</code>.</li>
+<li>the returned value types: a list of objects (groups) with their id.</li>
+<li>the user capabilities to check: <code>moodle/course:managegroups</code></li>
+</ul>
+<h4 id="declare-the-web-service-function">Declare the web service function</h4>
+<p>An external function must be declared before it can be used in your plugin. Function declarations 
+should be placed in the db/services.php file of your plugin. 
+For example in our fictitious plugin this would be located in <code>local/groupmanager/db/services.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">    // The name of your web service function, as discussed above.</span>
+<span class="x">    &#39;local_groupmanager_create_groups&#39; =&gt; [</span>
+<span class="x">        // The name of the namespaced class that the function is located in.</span>
+<span class="x">        &#39;classname&#39;   =&gt; &#39;local_groupmanager\external\create_groups&#39;,</span>
+
+<span class="x">        // A brief, human-readable, description of the web service function.</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Creates new groups.&#39;,</span>
+
+<span class="x">        // Options include read, and write.</span>
+<span class="x">        &#39;type&#39;        =&gt; &#39;write&#39;,</span>
+
+<span class="x">        // Whether the service is available for use in AJAX calls from the web.</span>
+<span class="x">        &#39;ajax&#39;        =&gt; true,</span>
+
+<span class="x">        // An optional list of services where the function will be included.</span>
+<span class="x">        &#39;services&#39; =&gt; [</span>
+<span class="x">            // A standard Moodle install includes one default service:</span>
+<span class="x">            // - MOODLE_OFFICIAL_MOBILE_SERVICE.</span>
+<span class="x">            // Specifying this service means that your function will be available for</span>
+<span class="x">            // use in the Moodle Mobile App.</span>
+<span class="x">            MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ]</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>A number of advanced options are also available, as described below:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">    // The name of your web service function, as discussed above.</span>
+<span class="x">    &#39;local_groupmanager_create_groups&#39; =&gt; [</span>
+<span class="x">        // A comma-separated list of capabilities used by the function.</span>
+<span class="x">        // This is advisory only and used to indicate to the administrator configuring a custom service definition.</span>
+<span class="x">        &#39;capabilities&#39; =&gt; &#39;moodle/course:creategroups,moodle/course:managegroups&#39;,</span>
+
+<span class="x">        // The following parameters are also available, but are no longer recommended.</span>
+
+<span class="x">        // The name of the external function name.</span>
+<span class="x">        // If not specified, this will default to &#39;execute&#39;.</span>
+<span class="x">        // &#39;methodname&#39;  =&gt; &#39;execute&#39;,</span>
+
+<span class="x">        // The file containing the class/external function.</span>
+<span class="x">        // Do not use if using namespaced auto-loading classes.</span>
+<span class="x">        // &#39;classpath&#39;   =&gt; &#39;local/groupmanager/externallib.php&#39;,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</code></pre></div>
+<h4 id="write-the-external-function-descriptions">Write the external function descriptions</h4>
+<p>Every web service function is mapped to an external function. 
+External function are described in the External functions API. 
+Each external function is written with two other functions describing the parameters and the return values. 
+These description functions are used by web service servers to:</p>
+<ul>
+<li>validate the web service function parameters</li>
+<li>validate the web service function returned values</li>
+<li>build WSDL files or other protocol documents</li>
+</ul>
+<p>These two description functions are located in the class declared in <code>local/groupmanager/db/services.php</code>.</p>
+<p>Thus for the web service function <code>local_groupmanager_create_groups()</code>, we should write a class named <code>create_group</code>s in the 
+<code>local_groupmanager\external</code> namespace.</p>
+<p>This will be located in the file <code>local/groupmanager/classes/external/create_groups.php</code>. The class will contain:</p>
+<ul>
+<li>execute(...)</li>
+<li>execute_parameters()</li>
+<li>execute_return()</li>
+</ul>
+<h5 id="defining-parameters">Defining parameters</h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">local_groupmanager\external</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">external_function_parameters</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_multiple_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_single_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_value</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">create_groups</span> <span class="k">extends</span> <span class="nx">\core_external\external_api</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Returns description of method parameters</span>
+<span class="sd">     * @return external_function_parameters</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute_parameters</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">external_function_parameters</span><span class="p">([</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_multiple_structure</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">external_single_structure</span><span class="p">([</span>
+                    <span class="s1">&#39;courseid&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_INT</span><span class="p">,</span> <span class="s1">&#39;id of course&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_TEXT</span><span class="p">,</span>
+                        <span class="s1">&#39;multilang compatible name, course unique&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;group description text&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;enrolmentkey&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;group enrol secret phrase&#39;</span>
+                    <span class="p">),</span>
+                <span class="p">])</span>
+            <span class="p">)</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A web service function without parameters will have a parameter description function like that:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Returns description of method parameters</span>
+<span class="x"> * @return external_function_parameters</span>
+<span class="x"> */</span>
+<span class="x">public static function execute_parameters(): external_function_parameters {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        // If this function had any parameters, they would be described here.</span>
+<span class="x">        // This example has no parameters, so the array is empty.</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>A parameter can be described as:</p>
+<ul>
+<li>a list =&gt; external_multiple_structure</li>
+<li>an object =&gt; external_single_structure</li>
+<li>a primary type =&gt; external_value</li>
+</ul>
+<p>Our create_groups() function expects one parameter named groups, so we will first write:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Returns description of method parameters</span>
+<span class="x"> * @return external_function_parameters</span>
+<span class="x"> */</span>
+<span class="x">public static function execute_parameters(): external_function_parameters {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;groups&#39; =&gt; ...</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>This groups parameter is a list of group. So we will write :</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;groups&#39; =&gt; new external_multiple_structure(</span>
+<span class="x">    ...</span>
+<span class="x">)</span>
+</code></pre></div>
+<p>An external_multiple_structure object (list) can be constructed with:</p>
+<ul>
+<li>external_multiple_structure (list)</li>
+<li>external_single_structure (object)</li>
+<li>external_value (primary type).</li>
+</ul>
+<p>For our function it will be a external_single_structure:</p>
+<div class="highlight"><pre><span></span><code><span class="x">new external_single_structure([</span>
+<span class="x">    &#39;courseid&#39; =&gt; ...,</span>
+<span class="x">    &#39;name&#39; =&gt; ...,</span>
+<span class="x">    &#39;description&#39; =&gt; ...,</span>
+<span class="x">    &#39;enrolmentkey&#39; =&gt; ...,</span>
+<span class="x">])</span>
+</code></pre></div>
+<p>Thus we obtain :</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">&#39;groups&#39; =&gt; new external_multiple_structure(</span>
+<span class="x">    new external_single_structure([</span>
+<span class="x">        &#39;courseid&#39; =&gt; ...,</span>
+<span class="x">        &#39;name&#39; =&gt; ...,</span>
+<span class="x">        &#39;description&#39; =&gt; ...,</span>
+<span class="x">        &#39;enrolmentkey&#39; =&gt; ...,</span>
+<span class="x">    ])</span>
+<span class="x">)</span>
+</code></pre></div>
+Each group values is a external_value (primary type):</p>
+<ul>
+<li>courseid is an integer</li>
+<li>name is a string (text only, not tag)</li>
+<li>description is a string (can be anything)</li>
+<li>enrolmentkey is also a string (can be anything)</li>
+</ul>
+<p>We add them to the description :</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;groups&#39; =&gt; new external_multiple_structure(</span>
+<span class="x">    new external_single_structure([</span>
+<span class="x">        // The second argument is a human readable description text.</span>
+<span class="x">        // This text is displayed in the automatically generated documentation.</span>
+<span class="x">        &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;id of course&#39;),</span>
+<span class="x">        &#39;name&#39; =&gt; new external_value(PARAM_TEXT, &#39;multilang compatible name, course unique&#39;),</span>
+<span class="x">        &#39;description&#39; =&gt; new external_value(PARAM_RAW, &#39;group description text&#39;),</span>
+<span class="x">        &#39;enrolmentkey&#39; =&gt; new external_value(PARAM_RAW, &#39;group enrol secret phrase&#39;),</span>
+<span class="x">    ])</span>
+<span class="x">)</span>
+</code></pre></div>
+<h5 id="execute_returns">execute_returns()</h5>
+<p>It's similar to execute_parameters(), but instead of describing the parameters, it describes the return values.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function execute_returns() {</span>
+<span class="x">    return new external_multiple_structure(</span>
+<span class="x">        new external_single_structure([</span>
+<span class="x">            &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;group record id&#39;),</span>
+<span class="x">            &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;id of course&#39;),</span>
+<span class="x">            &#39;name&#39; =&gt; new external_value(PARAM_TEXT, &#39;multilang compatible name, course unique&#39;),</span>
+<span class="x">            &#39;description&#39; =&gt; new external_value(PARAM_RAW, &#39;group description text&#39;),</span>
+<span class="x">            &#39;enrolmentkey&#39; =&gt; new external_value(PARAM_RAW, &#39;group enrol secret phrase&#39;),</span>
+<span class="x">        ])</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</code></pre></div>
+<h5 id="required-optional-or-default-value">Required, Optional or Default value</h5>
+<p>A value can be VALUE_REQUIRED, VALUE_OPTIONAL, or VALUE_DEFAULT. If not mentioned, a value is VALUE_REQUIRED by default.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;yearofstudy&#39; =&gt; new external_value(PARAM_INT, &#39;year of study&#39;, VALUE_DEFAULT, 1979),</span>
+</code></pre></div>
+<ul>
+<li>VALUE_REQUIRED - if the value is not supplied =&gt; the server throws an error message</li>
+<li>VALUE_OPTIONAL - if the value is not supplied =&gt; the value is ignored. Note that VALUE_OPTIONAL can't be used in top level parameters, it must be used only within array/objects key definition. If you need top level Optional parameters you should use VALUE_DEFAULT instead.</li>
+<li>VALUE_DEFAULT - if the value is not supplied =&gt; the default value is used</li>
+</ul>
+<p>Because some web service protocols are strict about the number and types of arguments - it is not possible to specify an optional parameter as one of the top-most parameters for a function.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// An example of incorrect behaviour</span>
+<span class="x">public static function get_biscuit_parameters() {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;chocolatechips&#39; =&gt; new external_value(</span>
+<span class="x">            PARAM_BOOL,</span>
+<span class="x">            &#39;if biscuit contains chocolate chips&#39;,</span>
+<span class="x">            VALUE_REQUIRED</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;glutenfree&#39; =&gt; new external_value(</span>
+<span class="x">            type: PARAM_BOOL,</span>
+<span class="x">            required: VALUE_DEFAULT,</span>
+<span class="x">            default: false,</span>
+<span class="x">            allownull: false</span>
+<span class="x">        ),</span>
+<span class="x">        // ERROR! top level optional parameter!!!</span>
+<span class="x">        &#39;icingsugar&#39; =&gt; new external_value(</span>
+<span class="x">            PARAM_BOOL,</span>
+<span class="x">            &#39;if biscuit has icing sugar on top&#39;,</span>
+<span class="x">            VALUE_OPTIONAL</span>
+<span class="x">        ),</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">// An example of correct behaviour</span>
+<span class="x">public static function get_biscuit_parameters() {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;ifeellike&#39; =&gt; new external_single_structure([</span>
+<span class="x">                &#39;chocolatechips&#39; =&gt; new external_value(</span>
+<span class="x">                    PARAM_BOOL,</span>
+<span class="x">                    &#39;if biscuit contains chocolate chips&#39;,</span>
+<span class="x">                    VALUE_REQUIRED</span>
+<span class="x">                ),</span>
+<span class="x">                &#39;glutenfree&#39; =&gt; new external_value(</span>
+<span class="x">                    type: PARAM_BOOL,</span>
+<span class="x">                    required: VALUE_DEFAULT,</span>
+<span class="x">                    default: false,</span>
+<span class="x">                    allownull: false</span>
+<span class="x">                ),</span>
+<span class="x">                // ALL GOOD!! We have nested the params in an external_single_structure.</span>
+<span class="x">                &#39;icingsugar&#39; =&gt; new external_value(</span>
+<span class="x">                    PARAM_BOOL,</span>
+<span class="x">                    &#39;if biscuit has icing sugar on top&#39;,</span>
+<span class="x">                    VALUE_OPTIONAL</span>
+<span class="x">                ),</span>
+<span class="x">        ]),</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="implement-the-external-function">Implement the external function</h4>
+<p>We declared our web service function and we defined the external function parameters and return values. We will now implement the external function:</p>
+<div class="highlight"><pre><span></span><code><span class="x">    /**</span>
+<span class="x">     * Create groups</span>
+<span class="x">     * @param array $groups array of group description arrays (with keys groupname and courseid)</span>
+<span class="x">     * @return array of newly created groups</span>
+<span class="x">     */</span>
+<span class="x">    public static function execute($groups) {</span>
+<span class="x">        global $CFG, $DB;</span>
+<span class="x">        require_once(&quot;$CFG-&gt;dirroot/group/lib.php&quot;);</span>
+
+<span class="x">        $params = self::validate_parameters(self::execute_parameters(), [&#39;groups&#39; =&gt; $groups]);</span>
+
+<span class="x">        $transaction = $DB-&gt;start_delegated_transaction(); //If an exception is thrown in the below code, all DB queries in this code will be rollback.</span>
+
+<span class="x">        $groups = array();</span>
+
+<span class="x">        foreach ($params[&#39;groups&#39;] as $group) {</span>
+<span class="x">            $group = (object)$group;</span>
+
+<span class="x">            if (trim($group-&gt;name) == &#39;&#39;) {</span>
+<span class="x">                throw new invalid_parameter_exception(&#39;Invalid group name&#39;);</span>
+<span class="x">            }</span>
+<span class="x">            if ($DB-&gt;get_record(&#39;groups&#39;, [&#39;courseid&#39; =&gt; $group-&gt;courseid, &#39;name&#39; =&gt; $group-&gt;name])) {</span>
+<span class="x">                throw new invalid_parameter_exception(&#39;Group with the same name already exists in the course&#39;);</span>
+<span class="x">            }</span>
+
+<span class="x">            // now security checks</span>
+<span class="x">            $context = get_context_instance(CONTEXT_COURSE, $group-&gt;courseid);</span>
+<span class="x">            self::validate_context($context);</span>
+<span class="x">            require_capability(&#39;moodle/course:managegroups&#39;, $context);</span>
+
+<span class="x">            // finally create the group</span>
+<span class="x">            $group-&gt;id = groups_create_group($group, false);</span>
+<span class="x">            $groups[] = (array) $group;</span>
+<span class="x">        }</span>
+
+<span class="x">        $transaction-&gt;allow_commit();</span>
+
+<span class="x">        return $groups;</span>
+<span class="x">    }</span>
+</code></pre></div>
+<h5 id="parameter-validation">Parameter validation</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$params = self::validate_parameters(self::execute_parameters(), [</span>
+<span class="x">    &#39;groups&#39; =&gt; $groups,</span>
+<span class="x">]);</span>
+</code></pre></div>
+<p>This <em>validate_parameters</em> function validates the external function parameters against the description. 
+It will return an exception if some required parameters are missing, if parameters are not well-formed, 
+and check the parameters validity. It is essential that you do this call to avoid potential hack.</p>
+<p><strong>Important:</strong> the parameters of the external function and their declaration in the description <strong>must be the same order</strong>. 
+In this example we have only one parameter named $groups, so we don't need to worry about the order.</p>
+<h5 id="context-and-capability-checks">Context and Capability checks</h5>
+<div class="highlight"><pre><span></span><code><span class="x">// Perform security checks.</span>
+<span class="x">$context = context_course::instance($group-&gt;courseid);</span>
+<span class="x">self::validate_context($context);</span>
+<span class="x">require_capability(&#39;moodle/course:managegroups&#39;, $context);</span>
+</code></pre></div>
+<p><strong>Note:</strong> <code>validate_context()</code> is required in all external functions before operating on any data belonging to a context. 
+This function does sanity and security checks on the context that was passed to the external function - 
+and sets up the global $PAGE and $OUTPUT for rendering return values. Do NOT use require_login(), 
+or $PAGE-&gt;set_context() in an external function.</p>
+<h5 id="exceptions">Exceptions</h5>
+<p>You can throw exceptions. These are automatically handled by Moodle web service servers.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Note: It is good practice to add detailled information in $debuginfo,</span>
+<span class="x">//       and only send back a generic exception message when Moodle DEBUG mode &lt; NORMAL.</span>
+<span class="x">//       It&#39;s what we do here throwing the invalid_parameter_exception($debug) exception</span>
+<span class="x">throw new invalid_parameter_exception(&#39;Group with the same name already exists in the course&#39;);</span>
+</code></pre></div>
+<h5 id="correct-return-values">Correct return values</h5>
+<p>The return values will be validated by the Moodle web service servers:</p>
+<ul>
+<li>return values contain some values not described =&gt; these values will be skipped.</li>
+<li>return values miss some required values (VALUE_REQUIRED) =&gt; the server will return an error.</li>
+<li>return values types don't match the description (int != PARAM_ALPHA) =&gt; the server will return an error 
+<strong>Note:</strong> cast all your returned objects into arrays.</li>
+</ul>
+<h4 id="bump-the-plugin-version">Bump the plugin version</h4>
+<p>Edit your <code>local/groupmanager/version.php</code> and increase the plugin version. 
+This should trigger a Moodle upgrade and the new web service should be available in the administration 
+(Administration &gt; Plugins &gt; Web Services &gt; Manage services)</p>
+<h4 id="deprecation">Deprecation</h4>
+<p>External functions deprecation process is slightly different from the standard deprecation. 
+If you are interested in deprecating any of your external functions you should also (apart from the applicable points detailed 
+in the <a href="https://moodledev.io/general/development/policies/deprecation">standard deprecation docs</a>) create a <code>FUNCTIONNAME_is_deprecated()</code> method in your external function class. 
+Return true if the external function is deprecated. This is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">    /**</span>
+<span class="x">     * Mark the function as deprecated.</span>
+<span class="x">     * @return bool</span>
+<span class="x">     */</span>
+<span class="x">    public static function execute_is_deprecated() {</span>
+<span class="x">        return true;</span>
+<span class="x">    }</span>
 </code></pre></div>
 <hr />
 <h3 id="testing"><strong>Testing</strong></h3>
