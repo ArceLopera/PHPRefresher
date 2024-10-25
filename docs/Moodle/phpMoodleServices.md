@@ -903,21 +903,77 @@ This should trigger a Moodle upgrade and the new web service should be available
 (Administration > Plugins > Web Services > Manage services)
 
 #### Deprecation
+
 External functions deprecation process is slightly different from the standard deprecation. 
 If you are interested in deprecating any of your external functions you should also (apart from the applicable points detailed 
 in the [standard deprecation docs](https://moodledev.io/general/development/policies/deprecation)) create a `FUNCTIONNAME_is_deprecated()` method in your external function class. 
 Return true if the external function is deprecated. This is an example:
 
 ```php
-
-    /**
-     * Mark the function as deprecated.
-     * @return bool
-     */
-    public static function execute_is_deprecated() {
-        return true;
-    }
+/**
+ * Mark the function as deprecated.
+ * @return bool
+ */
+public static function execute_is_deprecated() {
+    return true;
+}
 ```
+
+---
+
+
+### **Service creation**
+
+Moodle comes with two built-in services that your functions can be attached to. In rare situations, you may need to create a create a custom service declaration.
+The recommended way of creating a new service declaration is by placing it into the db/services.php file as a new service declaration.
+Moodle Administrators can also manually create a service declaration using the web interface.
+This is an advanced feature and, in most cases, you will not need to use this feature.
+Whilst writing a service declaration is optional, if you do not create a service declaration, 
+then the Moodle administrator will have to create one manually through the Web UI.
+If you define a web service here, then the administrator cannot add or remove any function from it.
+
+#### Declaring a custom service declaration
+
+Service declarations should be placed in the `db/services.php` file of your plugin (after function declaration), 
+for example `local/groupmanager/db/services.php`.
+
+```php
+$services = [
+    // The name of the service.
+    // This does not need to include the component name.
+    'myintegration' => [
+
+        // A list of external functions available in this service.
+        'functions' => [
+            'local_groupmanager_create_groups',
+        ],
+
+        // If set, the external service user will need this capability to access
+        // any function of this service.
+        // For example: 'local_groupmanager/integration:access'
+        'requiredcapability' => 'local_groupmanager/integration:access',
+
+        // If enabled, the Moodle administrator must link a user to this service from the Web UI.
+        'restrictedusers' => 0,
+
+        // Whether the service is enabled by default or not.
+        'enabled' => 1,
+
+        // This field os optional, but requried if the `restrictedusers` value is
+        // set, so as to allow configuration via the Web UI.
+        'shortname' =>  '',
+
+        // Whether to allow file downloads.
+        'downloadfiles' => 0,
+
+        // Whether to allow file uploads.
+        'uploadfiles'  => 0,
+    ]
+];
+
+```
+
+It is not possible for an administrator to add/remove any function from a pre-built service.
 
 ---
 
