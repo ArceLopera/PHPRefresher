@@ -2267,6 +2267,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#service-creation" class="md-nav__link">
+    Service creation
+  </a>
+  
+    <nav class="md-nav" aria-label="Service creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaring-a-custom-service-declaration" class="md-nav__link">
+    Declaring a custom service declaration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testing" class="md-nav__link">
     Testing
   </a>
@@ -2551,6 +2571,26 @@
           <li class="md-nav__item">
   <a href="#deprecation" class="md-nav__link">
     Deprecation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-creation" class="md-nav__link">
+    Service creation
+  </a>
+  
+    <nav class="md-nav" aria-label="Service creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaring-a-custom-service-declaration" class="md-nav__link">
+    Declaring a custom service declaration
   </a>
   
 </li>
@@ -3338,14 +3378,60 @@ This should trigger a Moodle upgrade and the new web service should be available
 If you are interested in deprecating any of your external functions you should also (apart from the applicable points detailed 
 in the <a href="https://moodledev.io/general/development/policies/deprecation">standard deprecation docs</a>) create a <code>FUNCTIONNAME_is_deprecated()</code> method in your external function class. 
 Return true if the external function is deprecated. This is an example:</p>
-<div class="highlight"><pre><span></span><code><span class="x">    /**</span>
-<span class="x">     * Mark the function as deprecated.</span>
-<span class="x">     * @return bool</span>
-<span class="x">     */</span>
-<span class="x">    public static function execute_is_deprecated() {</span>
-<span class="x">        return true;</span>
-<span class="x">    }</span>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Mark the function as deprecated.</span>
+<span class="x"> * @return bool</span>
+<span class="x"> */</span>
+<span class="x">public static function execute_is_deprecated() {</span>
+<span class="x">    return true;</span>
+<span class="x">}</span>
 </code></pre></div>
+<hr />
+<h3 id="service-creation"><strong>Service creation</strong></h3>
+<p>Moodle comes with two built-in services that your functions can be attached to. In rare situations, you may need to create a create a custom service declaration.
+The recommended way of creating a new service declaration is by placing it into the db/services.php file as a new service declaration.
+Moodle Administrators can also manually create a service declaration using the web interface.
+This is an advanced feature and, in most cases, you will not need to use this feature.
+Whilst writing a service declaration is optional, if you do not create a service declaration, 
+then the Moodle administrator will have to create one manually through the Web UI.
+If you define a web service here, then the administrator cannot add or remove any function from it.</p>
+<h4 id="declaring-a-custom-service-declaration">Declaring a custom service declaration</h4>
+<p>Service declarations should be placed in the <code>db/services.php</code> file of your plugin (after function declaration), 
+for example <code>local/groupmanager/db/services.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$services = [</span>
+<span class="x">    // The name of the service.</span>
+<span class="x">    // This does not need to include the component name.</span>
+<span class="x">    &#39;myintegration&#39; =&gt; [</span>
+
+<span class="x">        // A list of external functions available in this service.</span>
+<span class="x">        &#39;functions&#39; =&gt; [</span>
+<span class="x">            &#39;local_groupmanager_create_groups&#39;,</span>
+<span class="x">        ],</span>
+
+<span class="x">        // If set, the external service user will need this capability to access</span>
+<span class="x">        // any function of this service.</span>
+<span class="x">        // For example: &#39;local_groupmanager/integration:access&#39;</span>
+<span class="x">        &#39;requiredcapability&#39; =&gt; &#39;local_groupmanager/integration:access&#39;,</span>
+
+<span class="x">        // If enabled, the Moodle administrator must link a user to this service from the Web UI.</span>
+<span class="x">        &#39;restrictedusers&#39; =&gt; 0,</span>
+
+<span class="x">        // Whether the service is enabled by default or not.</span>
+<span class="x">        &#39;enabled&#39; =&gt; 1,</span>
+
+<span class="x">        // This field os optional, but requried if the `restrictedusers` value is</span>
+<span class="x">        // set, so as to allow configuration via the Web UI.</span>
+<span class="x">        &#39;shortname&#39; =&gt;  &#39;&#39;,</span>
+
+<span class="x">        // Whether to allow file downloads.</span>
+<span class="x">        &#39;downloadfiles&#39; =&gt; 0,</span>
+
+<span class="x">        // Whether to allow file uploads.</span>
+<span class="x">        &#39;uploadfiles&#39;  =&gt; 0,</span>
+<span class="x">    ]</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>It is not possible for an administrator to add/remove any function from a pre-built service.</p>
 <hr />
 <h3 id="testing"><strong>Testing</strong></h3>
 <p>To test web services:
