@@ -302,7 +302,7 @@ File path: /db/access.php
 
 The db/access.php file contains the initial configuration for a plugin's access control rules.
 
-Access control is handled in Moodle by the use of Roles, and Capabilities. You can read more about these in the [Access API documentation](https://moodledev.io/docs/4.1/apis/subsystems/access).
+Access control is handled in Moodle by the use of Roles, and Capabilities. You can read more about these in the [Access API documentation](./API/phpMoodleAccess.md).
 
 **CHANGING INITIAL CONFIGURATION**
 
