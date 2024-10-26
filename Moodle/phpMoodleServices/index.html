@@ -2287,6 +2287,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-write-an-external-function-phpunit-test" class="md-nav__link">
+    How to write an external function PHPUnit test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testing" class="md-nav__link">
     Testing
   </a>
@@ -2605,6 +2625,26 @@
           <li class="md-nav__item">
   <a href="#declaring-a-custom-service-declaration" class="md-nav__link">
     Declaring a custom service declaration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-write-an-external-function-phpunit-test" class="md-nav__link">
+    How to write an external function PHPUnit test
   </a>
   
 </li>
@@ -3446,6 +3486,121 @@ for example <code>local/groupmanager/db/services.php</code>.</p>
 <span class="x">];</span>
 </code></pre></div>
 <p>It is not possible for an administrator to add/remove any function from a pre-built service.</p>
+<hr />
+<h3 id="unit-testing"><strong>Unit Testing</strong></h3>
+<p>Unit tests are the best way of checking the behaviour of your external services and can help you to:</p>
+<ul>
+<li>discover use cases you didn't think about</li>
+<li>understand the feelings and the needs of the web service client developer</li>
+<li>end up with a function usable by everybody, not only by your own client</li>
+<li>reach integration way faster as you joined a proof of validity</li>
+<li>make the QA process a breeze</li>
+</ul>
+<p>Writing unit tests for an external service function is no different to writing unit tests for any other part of Moodle, which is documented in under PHPUnit.</p>
+<h4 id="how-to-write-an-external-function-phpunit-test">How to write an external function PHPUnit test</h4>
+<p>You should create one unit test testcase for each external service file, and it should be named after the file that it tests.</p>
+<p>For example, if you have written a service function in <code>[componentfolder]/classes/external/get_fruit.php</code>, you should write a unit test in <code>[componentfolder]/tests/external/get_fruit_test.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//mod/kitchen/tests/external/get_fruit_test.php</span>
+
+<span class="cp">&lt;?php</span>
+<span class="c1">// This file is part of Moodle - http://moodle.org/</span>
+<span class="c1">//</span>
+<span class="c1">// Moodle is free software: you can redistribute it and/or modify</span>
+<span class="c1">// it under the terms of the GNU General Public License as published by</span>
+<span class="c1">// the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">// (at your option) any later version.</span>
+<span class="c1">//</span>
+<span class="c1">// Moodle is distributed in the hope that it will be useful,</span>
+<span class="c1">// but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">// GNU General Public License for more details.</span>
+<span class="c1">//</span>
+<span class="c1">// You should have received a copy of the GNU General Public License</span>
+<span class="c1">// along with Moodle.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Unit tests for the get_fruit function of the kitchen.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @package    mod_kitchen</span>
+<span class="sd"> * @category   external</span>
+<span class="sd"> * @copyright  20XX Your Name</span>
+<span class="sd"> * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later</span>
+<span class="sd"> */</span>
+
+<span class="k">namespace</span> <span class="nx">mod_kitchen\external</span><span class="p">;</span>
+
+<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
+
+<span class="k">global</span> <span class="nv">$CFG</span><span class="p">;</span>
+<span class="k">require_once</span><span class="p">(</span><span class="nv">$CFG</span><span class="o">-&gt;</span><span class="na">dirroot</span> <span class="o">.</span> <span class="s1">&#39;/webservice/tests/helpers.php&#39;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">get_fruit_test</span> <span class="k">extends</span> <span class="nx">externallib_advanced_testcase</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Test the execute function when capabilities are present.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @covers \mod_fruit\external\get_fruit::execute</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test_capabilities</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resetAfterTest</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+        <span class="nv">$course</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_course</span><span class="p">();</span>
+        <span class="nv">$cm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_module</span><span class="p">(</span><span class="s1">&#39;mod_kitchen&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// Set the required capabilities by the external function</span>
+        <span class="nv">$contextid</span> <span class="o">=</span> <span class="nx">context_module</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">cmid</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$roleid</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assignUserCapability</span><span class="p">(</span><span class="s1">&#39;moodle/CAPABILITYNAME&#39;</span><span class="p">,</span> <span class="nv">$contextid</span><span class="p">);</span>
+
+        <span class="c1">// Call the external service function.</span>
+        <span class="nv">$returnvalue</span> <span class="o">=</span> <span class="nx">get_fruit</span><span class="o">::</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;cmid&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// We need to execute the return values cleaning process to simulate</span>
+        <span class="c1">// the web service server.</span>
+        <span class="nv">$returnvalue</span> <span class="o">=</span> <span class="nx">\core_external\external_api</span><span class="o">::</span><span class="na">clean_returnvalue</span><span class="p">(</span>
+            <span class="nx">get_fruit</span><span class="o">::</span><span class="na">execute_returns</span><span class="p">(),</span>
+            <span class="nv">$returnvalue</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Assert that there was a response.</span>
+        <span class="c1">// The actual response is tested in other tests.</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertNotNull</span><span class="p">(</span><span class="nv">$returnvalue</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Test the execute function when capabilities are missing.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @covers \mod_fruit\external\get_fruit::execute</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test_capabilities_missing</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">global</span> <span class="nv">$USER</span><span class="p">;</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resetAfterTest</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+        <span class="nv">$course</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_course</span><span class="p">();</span>
+        <span class="nv">$cm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_module</span><span class="p">(</span><span class="s1">&#39;mod_kitchen&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// Set the required capabilities by the external function</span>
+        <span class="nv">$contextid</span> <span class="o">=</span> <span class="nx">context_module</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">cmid</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">unassignUserCapability</span><span class="p">(</span><span class="s1">&#39;moodle/CAPABILITYNAME&#39;</span><span class="p">,</span> <span class="nv">$contextid</span><span class="p">,</span> <span class="nv">$roleid</span><span class="p">);</span>
+
+        <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span><span class="nx">PARAM1</span><span class="p">,</span> <span class="nx">PARAM2</span><span class="p">,</span> <span class="o">...</span><span class="p">];</span>
+
+        <span class="c1">// Call without required capability</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectException</span><span class="p">(</span><span class="nx">required_capability_exception</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">get_fruit</span><span class="o">::</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;cmid&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="testing"><strong>Testing</strong></h3>
 <p>To test web services:
