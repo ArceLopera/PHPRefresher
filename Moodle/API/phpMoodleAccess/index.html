@@ -2195,6 +2195,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#risk-bitmask" class="md-nav__link">
+    Risk bitmask
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deprecating-a-capability" class="md-nav__link">
     Deprecating a capability
   </a>
@@ -2236,8 +2243,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#other-related-functions" class="md-nav__link">
-    Other related functions
+  <a href="#authentication" class="md-nav__link">
+    Authentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-overview-tool" class="md-nav__link">
+    Capability overview tool
   </a>
   
 </li>
@@ -2309,6 +2323,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#risk-bitmask" class="md-nav__link">
+    Risk bitmask
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#deprecating-a-capability" class="md-nav__link">
     Deprecating a capability
   </a>
@@ -2350,8 +2371,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#other-related-functions" class="md-nav__link">
-    Other related functions
+  <a href="#authentication" class="md-nav__link">
+    Authentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capability-overview-tool" class="md-nav__link">
+    Capability overview tool
   </a>
   
 </li>
@@ -2459,7 +2487,7 @@
 <tbody>
 <tr>
 <td align="left"><code>riskbitmask</code></td>
-<td align="left">associated risks. These are explained on Hardening new Roles system.</td>
+<td align="left">associated risks. These are explained on <a href="https://moodledev.io/docs/5.0/apis/subsystems/roles#hardening-roles-system">Hardening new Roles system</a>.</td>
 </tr>
 <tr>
 <td align="left"><code>captype</code></td>
@@ -2484,6 +2512,46 @@
 <div class="highlight"><pre><span></span><code><span class="x">// mod/folder/lang/en/folder.php</span>
 <span class="x">$string[&#39;folder:managefiles&#39;] = &#39;Manage files in folder module&#39;;</span>
 </code></pre></div>
+<h4 id="risk-bitmask">Risk bitmask</h4>
+<p>Capabilities can have a riskbitmask.
+Each bit indicates the presence of different risk associated with given capability. </p>
+<p>Basic risks include:</p>
+<ul>
+<li>RISK_SPAM - user can add a visible content to a site, send messages to other users.</li>
+<li>RISK_PERSONAL - access to private personal information, for example backups with user details, non-public information in profile (hidden email).</li>
+<li>RISK_XSS - user can submit content that is not cleaned (both HTML with JavaScript content and unprotected files).</li>
+<li>RISK_CONFIG - user can change global configuration, actions are missing sanity checks.</li>
+<li>RISK_MANAGETRUST - manage trust bitmasks of other users.</li>
+<li>RISK_DATALOSS - can destroy large amounts of information that cannot easily be recovered. </li>
+</ul>
+<p><strong>Note:</strong>
+In default configuration, Guest role should have only capabilities without risks. Admin users have all capabilities by default.</p>
+<p>Consider the snippet from a capability definition file for a grade export plugin.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// grade/export/ods/db/access.php</span>
+
+<span class="x">$capabilities = [</span>
+<span class="x">    &#39;gradeexport/ods:view&#39; =&gt; [</span>
+<span class="x">        &#39;riskbitmask&#39; =&gt; RISK_PERSONAL,</span>
+<span class="x">        &#39;captype&#39; =&gt; &#39;read&#39;,</span>
+<span class="x">        &#39;contextlevel&#39; =&gt; CONTEXT_COURSE,</span>
+<span class="x">        &#39;archetypes&#39; =&gt; [</span>
+<span class="x">            &#39;teacher&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">            &#39;editingteacher&#39; =&gt; CAP_ALLOW,</span>
+<span class="x">            &#39;manager&#39; =&gt; CAP_ALLOW</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>The gradeexport/ods:view capability:
++ Applies at the course context level.
++ Allows read access.
++ Has a risk of providing access to personal user information.
++ Is allowed for teacher, editingteacher and manager roles by default.</p>
+<h5 id="multiple-risks-in-a-capability">Multiple risks in a capability</h5>
+<p>Some capabilities can have multiple risks associated with them.
+These can be defined using the pipe (|) character, for example:
+<div class="highlight"><pre><span></span><code><span class="x">&#39;riskbitmask&#39; =&gt; RISK_PERSONAL | RISK_XSS,</span>
+</code></pre></div></p>
 <h4 id="deprecating-a-capability">Deprecating a capability</h4>
 <p>When a capability is no longer needed or is replaced by another, it should be deprecated. The timeline for deprecation should follow the normal Deprecation process.</p>
 <p>To mark a capability as deprecated, edit the access.php containing the capability, remove it from the <code>$capabilities</code> array, and add it to the <code>$deprecatedcapabilities</code> array in this file.</p>
@@ -2545,41 +2613,79 @@
 <span class="x">    // Do or display something.</span>
 <span class="x">}</span>
 </code></pre></div>
-<p>By default checks the capabilities of the current user, but you can pass a different user id. By default will return true for admin users, it is not recommended to use false here.</p>
+<p>By default checks the capabilities of the current user, but you can pass a different user id. By default will return true for admin users, it is not recommended to use false here. Use <code>has_capability()</code> to wrap access to certain features based on a user's permissions.</p>
+<p>Do not provide access to functionality by checking what a user's role is. Roles can be configured differently on different sites/contexts.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$userrole = get_user_role($contextid);</span>
+
+<span class="x">if ($userrole == &#39;editingteacher&#39;) {</span>
+<span class="x">    // Do something specific for teacher role.</span>
+<span class="x">}</span>
+
+<span class="x">if ($userrole == &#39;student&#39;) {</span>
+<span class="x">    // Do something specific for student role.</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Instead, use <code>require_capability()</code> to block access to a page if the user does not have the required permissions or <code>has_capability()</code> to wrap access to certain features based on a user's permissions.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">// Check if the user has a given capability in a particular context.</span>
+
+<span class="x">$context = context_module::instance($cm-&gt;id);</span>
+
+<span class="x">if (has_capability(&#39;mod/mymodule:edit&#39;, $context)) {</span>
+<span class="x">    // Something for users with editing access.</span>
+<span class="x">}</span>
+
+<span class="x">if (has_capability(&#39;mod/mymodule:view&#39;, $context)) {</span>
+<span class="x">    // Do something for users with viewing access.</span>
+<span class="x">}</span>
+</code></pre></div>
+It is also important to use the correct context when doing capability checks. Each role and its permissions are checked against a given context.</p>
 <h5 id="require_capability">require_capability()</h5>
 <p>Function require_capability() is very similar, it is throwing access control exception if user does not have the capability.</p>
-<div class="highlight"><pre><span></span><code><span class="x">function require_capability($capability, context $context, $userid = null, $doanything = true, $errormessage = &#39;nopermissions&#39;, $stringfile = _) {</span>
+<p><div class="highlight"><pre><span></span><code><span class="x">function require_capability($capability, context $context, $userid = null, $doanything = true, $errormessage = &#39;nopermissions&#39;, $stringfile = _) {</span>
 </code></pre></div>
+Use <code>require_capability()</code> to block access to a page if the user does not have the required permissions.</p>
 <h4 id="enrolment-functions">Enrolment functions</h4>
 <p>See Enrolment API.</p>
-<h4 id="other-related-functions">Other related functions</h4>
+<h4 id="authentication">Authentication</h4>
+<p>Authentication is used to determine the identify of the user accessing the system.
+It is important to verify that the user is exactly who they are claiming to be.
+Proper authentication of the user helps avoid unauthenticated access.
+Moodle can have different authentication plugins that authenticate the user in different ways.
+Most authentication issues are taken care of by the Moodle system and the authentication plugins.</p>
+<p>In almost every Moodle script you create, add a call to <code>require_login()</code> or <code>require_course_login()</code> as near the start as possible, usually after setting up $PAGE-&gt;url.
+The only exception to this is a few pages like the front page, which should be available to everyone.</p>
 <div class="highlight"><pre><span></span><code><span class="x">function require_login($courseorid = null, $autologinguest = true, $cm = null, $setwantsurltome = true, $preventredirect = false)</span>
 <span class="x">function require_course_login($courseorid, $autologinguest = true, $cm = null, $setwantsurltome = true, $preventredirect = false)</span>
-<span class="x">function get_users_by_capability(context $context, $capability, $fields = _, $sort = _, $limitfrom = _, $limitnum = _,</span>
-<span class="x">                                $groups = _, $exceptions = _, $doanything_ignored = null, $view_ignored = null, $useviewallgroups = false)</span>
-<span class="x">function isguestuser($user = null)</span>
-<span class="x">function isloggedin()</span>
-<span class="x">function is_siteadmin($user_or_id = null)</span>
-<span class="x">function is_guest(context $context, $user = null)</span>
-<span class="x">function is_viewing(context $context, $user = null, $withcapability = _)</span>
 </code></pre></div>
 <h5 id="require_login">require_login()</h5>
 <p>Each plugin script should include require_login() or require_course_login() after setting up PAGE-&gt;url.</p>
 <p>This function does following:</p>
 <ul>
 <li>it verifies that user is logged in before accessing any course or activities (not-logged-in users can not enter any courses).</li>
-<li>user is logged in as gu</li>
+<li>If a user is not logged in, then it redirects them to the site login.</li>
 <li>verify access to hidden courses and activities</li>
 <li>if an activity is specified, verify any availability restrictions for the activity</li>
-<li>verify that user is either enrolled or has capability 'moodle/course:view' or some enrol plugin gives them temporary guest access</li>
+<li>verify that user is either enrolled or has capability <code>moodle/course:view</code> or some enrol plugin gives them temporary guest access</li>
 <li>logs access to courses</li>
+<li>If $autologinguest is set and <code>$CFG-&gt;autologinguests</code> is set to 1, then user is automatically logged in as guest.</li>
+<li>If $courseorid is set then it checks if user can view the course.</li>
+<li>If $cm is set then it also checks that the user has permissions to view the particular module.</li>
 </ul>
 <h5 id="require_course_login">require_course_login()</h5>
 <p>This function is supposed to be used only in activities that want to allow read access to content on the frontpage without logging-in. For example view resource files, reading of glossary entries, etc.</p>
 <h5 id="isguestuser-isloggedin-and-is_siteadmin">isguestuser(), isloggedin() and is_siteadmin()</h5>
-<p>These function were previously needed for limiting of access of special accounts. It is usually not necessary any more, because any write or risky capabilities are now automatically prevented in has_capability().</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">function isguestuser($user = null)</span>
+<span class="x">function isloggedin()</span>
+<span class="x">function is_siteadmin($user_or_id = null)</span>
+</code></pre></div>
+These function were previously needed for limiting of access of special accounts. It is usually not necessary any more, because any write or risky capabilities are now automatically prevented in has_capability().</p>
 <p>It is strongly discouraged to use is_siteadmin() in activity modules, please use standard capabilities and enrolment status instead.</p>
 <h5 id="is_guest-is_viewing-and-is_enrolled">is_guest(), is_viewing() and is_enrolled()</h5>
+<div class="highlight"><pre><span></span><code><span class="x">function is_enrolled(context $context, $user = null, $withcapability = &#39;&#39;, bool $onlyactive</span>
+<span class="x">)</span>
+<span class="x">function is_guest(context $context, $user = null)</span>
+<span class="x">function is_viewing(context $context, $user = null, $withcapability = _)</span>
+</code></pre></div>
 <p>In order to access course data one of these functions must return true for user:</p>
 <ul>
 <li>is_enrolled() - user has active record in user_enrolments table</li>
@@ -2587,7 +2693,13 @@
 <li>is_guest() - user was given temporary guest access by some enrolment plugin</li>
 </ul>
 <h5 id="get_users_by_capability">get_users_by_capability()</h5>
-<p>This method returns list of users with given capability, it ignores enrolment status and should be used only above the course context.</p>
+<p>This method returns list of users with given capability, it ignores enrolment status and should be used only above the course context.
+<div class="highlight"><pre><span></span><code><span class="x">function get_users_by_capability(context $context, $capability, $fields = _, $sort = _, $limitfrom = _, $limitnum = _,</span>
+<span class="x">                                $groups = _, $exceptions = _, $doanything_ignored = null, $view_ignored = null, $useviewallgroups = false)</span>
+</code></pre></div></p>
+<h4 id="capability-overview-tool">Capability overview tool</h4>
+<p>Moodle provides a tool to check and compare the capabilities, their associated risks, and which roles have access to them by default.</p>
+<p>This can be accessed from <code>Site administration &gt; Users &gt; Permissions &gt; Capability overview</code>.</p>
 
               
             </article>
