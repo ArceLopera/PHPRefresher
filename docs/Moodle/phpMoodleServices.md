@@ -1103,8 +1103,14 @@ class get_fruit_test extends externallib_advanced_testcase {
 ### **Testing**
 
 To test web services:
-- Use **Postman** or similar tools to make HTTP requests to the Moodle web services endpoint.
+
+- Use [**Postman**](https://www.postman.com/) or similar tools to make HTTP requests to the Moodle web services endpoint.
+```bash
+// Example: of a webservice call with parameters userid and message
+curl --location 'https://mysite.localhost/webservice/rest/server.php?wstoken=XXXXXXXXXXX&moodlewsrestformat=json&wsfunction=myplugin_service_name' \
+--form 'userid="10"' \
+--form 'message="test message"'
+```
 - Verify token validity and function calls.
-- Use **Moodle’s web service test client** (available in **Site administration > Server > Web services > Manage services**) to 
-manually test the functions.
+- Use **Moodle’s web service test client** (available in **Site administration > Server > Web services > Manage services**) to manually test the functions.
 
