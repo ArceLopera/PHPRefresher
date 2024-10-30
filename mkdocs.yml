@@ -191,5 +191,6 @@ nav:
             - Data Manipulation API: Moodle/API/phpMoodleDM.md
             - Tag API: Moodle/API/phpMoodleTag.md
             - Access API: Moodle/API/phpMoodleAccess.md
+            - Groups API: Moodle/API/phpMoodleGroups.md
             - Messaging API: Moodle/API/phpMoodleMessage.md
 
