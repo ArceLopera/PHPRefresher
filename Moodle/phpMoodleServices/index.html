@@ -3617,11 +3617,17 @@ for example <code>local/groupmanager/db/services.php</code>.</p>
 </code></pre></div>
 <hr />
 <h3 id="testing"><strong>Testing</strong></h3>
-<p>To test web services:
-- Use <strong>Postman</strong> or similar tools to make HTTP requests to the Moodle web services endpoint.
-- Verify token validity and function calls.
-- Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to 
-manually test the functions.</p>
+<p>To test web services:</p>
+<ul>
+<li>Use <a href="https://www.postman.com/"><strong>Postman</strong></a> or similar tools to make HTTP requests to the Moodle web services endpoint.
+<div class="highlight"><pre><span></span><code>// Example: of a webservice call with parameters userid and message
+curl --location <span class="s1">&#39;https://mysite.localhost/webservice/rest/server.php?wstoken=XXXXXXXXXXX&amp;moodlewsrestformat=json&amp;wsfunction=myplugin_service_name&#39;</span> <span class="se">\</span>
+--form <span class="s1">&#39;userid=&quot;10&quot;&#39;</span> <span class="se">\</span>
+--form <span class="s1">&#39;message=&quot;test message&quot;&#39;</span>
+</code></pre></div></li>
+<li>Verify token validity and function calls.</li>
+<li>Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to manually test the functions.</li>
+</ul>
 
               
             </article>
