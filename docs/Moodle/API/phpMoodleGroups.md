@@ -1,6 +1,12 @@
-Moodle Groups are a way of expressing collections of users within a course.
+Moodle Groups are a way of expressing collections of users within a course. They may be defined 
+by the teacher in the course participants page, or created automatically during a bulk user 
+upload (for example, from a text file).
 
-A teacher can choose whether to use, or even to force, the use of groups for an entire course (from within the Course settings page), or for an individual activity (from within the Activity settings).
+A teacher can choose whether to use, or even to force, the use of groups for an entire course 
+(from within the Course settings page), or for an individual activity (from within the Activity
+ settings).
+
+### Group modes
 
 There are three different group modes, these modes allow for restrictions to be put in place for access and visibility.
 
@@ -8,9 +14,41 @@ There are three different group modes, these modes allow for restrictions to be 
 + Separate groups (SEPARATEGROUPS constant) - Teachers and students can normally only see information relevant to that group.
 + Visible groups (VISIBLEGROUPS constant) - Teachers and students are separated into groups but can still see all information.
 
+This is explained in more detail on the [Groups access](https://docs.moodle.org/dev/Groups_access_control) control page. 
+
+Only groups with participation enabled are available for use in Separate and Visible groups mode. This is enabled by default for groups with Visible to all or Visible to members visibility (See below) but is always disabled for groups with See own membership or Membership is hidden.
+
+Calling groups_get_all_groups() with the $participationonly argument set to true will only return groups with participation enabled. If you are calling this function within an activity plugin, you will usually want to do this unless you have a good reason not to.
+
 Groups may be grouped together into named Groupings.
 
-The Groups API is currently defined in lib/grouplib.php. This contains global functions which have the groups_ prefix, for example: groups_get_group().
+The Groups API is currently defined in lib/grouplib.php. This contains global functions which 
+have the groups_ prefix, for example: groups_get_group().
+
+If enabled at the course level, the group mode will affect how course-wide reporting functions 
+- for example, if a course-wide group mode of "Separate groups" is enabled, this is applied 
+within the gradebook.
+
+Groups may be grouped together into named [Groupings](https://docs.moodle.org/405/en/Groupings). The course, and individual activities, 
+can be configured to filter the groups shown to those in a specific Grouping. If a user is a 
+member of multiple groups, then only those groups which belong to the selected grouping are shown.
+
+When a course or activity is in the 'Separate' groups mode, only users within that group can interact 
+with, unless they hold the moodle/site:accessallgroups capability. By default, this capability is 
+given to users who hold a role with the editingteacher, and manager archetypes.
+
+Most of these settings are handled by the core groups code and core groups API. If the activity 
+module wants to implement group support, it need only use the Groups API to:
+
++ Find out the current settings for this instance of the activity
++ Show group controls (for example group selection menus) when appropriate
++ Explore memberships and structures of groups
++ Modify it's own interface to hide/show data accordingly
+
+Groups are typically only relevant to course features such as Activity modules, 
+some blocks and reports.
+
+Some other core subsystems also need to be group-aware.
 
 ### Group visibility
 To help protect user privacy, each group has a visibility setting, which controls who can see the group and its members. The possible values are defined as GROUPS_VISIBILITY_* constants in grouplib.
@@ -26,6 +64,10 @@ Users with the moodle/course:viewhiddengroups capability can always see all grou
 The core API functions in groupslib such as groups_get_all_groups() and groups_get_members() will respect the group visibility and the current user's permissions, so use these as far as possible when fetching data about groups and their members. The \core_group\visibility class also has helper functions to determine whether a user is allowed to see a group, or its members.
 
 Respecting group visibility is important so that members of "separate groups" do not see members or data relating to members of different groups.
+
+### Examples
+
+#### How to make sure that the current user can see a given item in your activity
 
 ```php
 // Get the course module and discussion id from a post or get request.
@@ -58,6 +100,7 @@ The code snippet above:
 + fetches the list of possible groups for that activity;
 + checks whether the forum discussion is in a valid group.
 
+#### How to find and use the "current" group and How to display a group menu
 The following example will display the group selection dropdown using the groups_print_activity_menu() function.
 
 This function will show all groups that the user has access to for the current course module.
@@ -80,4 +123,60 @@ $url = new moodle_url('/mod/forum/view.php', ['id' => $cm->id]);
 // A drop down box will be displayed if the user
 // is a member of more than one group, or has access to all groups.
 groups_print_activity_menu($cm, $url);
+
+// Get the current group id.
+$currentgroupid = groups_get_activity_group($cm);
+// Get the current group name from the group id.
+$currentgroupname = groups_get_group_name($currentgroupid);
+
+// Do as you please with your newly obtained group information.
 ```	
+
+#### How to get just the groups that the current user can see
+
+The following example will check whether the current user has permission to see hidden groups on a course, and if they do not, will apply additional conditions to a query to restrict the results to just those groups they should see.
+
+```php
+$courseid = required_param('courseid', PARAM_INT);
+$sql = "SELECT g.idnumber, gm.*
+          FROM {groups} g
+          JOIN {groups_members} gm ON gm.groupid = g.id
+         WHERE courseid = ?";
+
+$params = [$courseid];
+
+$context = context_course::instance($courseid);
+if (!has_capability('moodle/course:viewhiddengroups', $context)) {
+    // Apply visibility restrictions.
+    [
+        $visibilitywhere,
+        $visibilityparams
+    ] = \core_group\visibility::sql_group_visibility_where($userid);
+    $sql .= " AND " . $visibilitywhere;
+    $params = array_merge($params, $visibilityparams);
+}
+
+$rs = $DB->get_recordset_sql($sql, $params);
+
+```
+A query like this must join on group_members as group visibility is dependant on the user's own memberships.
+
+#### Group GeoPattern images
+
+Moodle now allows groups to generate GeoPattern images. This is intended to improve the overall user experience by allowing users to differentiate groups easier in their Moodle activities and resources.
+
+Generate the SVG image for the group and use it in your Moodle activities and resources:
+
+```php
+$group_svg_image = moodle_url::make_pluginfile_url(
+    $context->id,
+    'group',
+    'generated',
+    $group->id,
+    '/',
+    'group.svg'
+);
+
+```
+
+This will create an SVG image for the specified group, which can then be used in Moodle activities and resources. Make sure to customize the code to fit your specific use case.
