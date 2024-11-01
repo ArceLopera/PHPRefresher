@@ -12,21 +12,21 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleDM/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodleSecurity/">
       
-      <link rel="icon" href="../../../Images/elephant.ico">
+      <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Data Manipulation API - PHP Refresher</title>
+        <title>Security - PHP Refresher</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -41,7 +41,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-components-of-moodles-dml" class="md-skip">
+        <a href="#key-security-vulnerabilities" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../../Images/Elephpant.svg" alt="logo">
+  <img src="../../Images/Elephpant.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Manipulation API
+              Security
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -213,7 +213,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../phpRefresh/" class="md-tabs__link">
+      <a href="../../phpRefresh/" class="md-tabs__link">
         Basics
       </a>
     </li>
@@ -234,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Func/phpAll/" class="md-tabs__link">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -252,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../DS/phpArray/" class="md-tabs__link">
+      <a href="../../DS/phpArray/" class="md-tabs__link">
         Data Structures
       </a>
     </li>
@@ -268,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Classes/phpCls/" class="md-tabs__link">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
         Classes
       </a>
     </li>
@@ -284,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
         Advanced
       </a>
     </li>
@@ -302,7 +302,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
         Moodle
       </a>
     </li>
@@ -330,9 +330,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../../Images/Elephpant.svg" alt="logo">
+  <img src="../../Images/Elephpant.svg" alt="logo">
 
     </a>
     PHP Refresher
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phpRefresh/" class="md-nav__link">
+      <a href="../../phpRefresh/" class="md-nav__link">
         General
       </a>
     </li>
@@ -441,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar1/" class="md-nav__link">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -455,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar2/" class="md-nav__link">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -469,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar3/" class="md-nav__link">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
     </li>
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar4/" class="md-nav__link">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
         Variable Handling
       </a>
     </li>
@@ -504,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpConst/" class="md-nav__link">
+      <a href="../../PR/phpConst/" class="md-nav__link">
         Constant
       </a>
     </li>
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
         Globals
       </a>
     </li>
@@ -532,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpForms/" class="md-nav__link">
+      <a href="../../PR/phpForms/" class="md-nav__link">
         Forms
       </a>
     </li>
@@ -572,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpStr/" class="md-nav__link">
+      <a href="../../PR/phpStr/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpStr1/" class="md-nav__link">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -633,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpNum1/" class="md-nav__link">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -647,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpMath1/" class="md-nav__link">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -668,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpOperators1/" class="md-nav__link">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
         Operators
       </a>
     </li>
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpIF/" class="md-nav__link">
+      <a href="../../PR/phpIF/" class="md-nav__link">
         Conditionals
       </a>
     </li>
@@ -722,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpLoops/" class="md-nav__link">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
         Loops
       </a>
     </li>
@@ -743,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpKeywords/" class="md-nav__link">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
         Keywords
       </a>
     </li>
@@ -817,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpAll/" class="md-nav__link">
+      <a href="../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -857,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpDate/" class="md-nav__link">
+      <a href="../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpCalendar/" class="md-nav__link">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
         Calendar
       </a>
     </li>
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpRegex/" class="md-nav__link">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
     </li>
@@ -932,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpCookie/" class="md-nav__link">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -946,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpSessions/" class="md-nav__link">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -960,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpFTP/" class="md-nav__link">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
         FTP
       </a>
     </li>
@@ -974,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpMail/" class="md-nav__link">
+      <a href="../../Func/phpMail/" class="md-nav__link">
         Mail
       </a>
     </li>
@@ -995,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpFilters/" class="md-nav__link">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -1009,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpCallback/" class="md-nav__link">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -1023,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpJSON/" class="md-nav__link">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1063,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpError/" class="md-nav__link">
+      <a href="../../Func/phpError/" class="md-nav__link">
         Errors
       </a>
     </li>
@@ -1077,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpExceptions/" class="md-nav__link">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -1098,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpConfVar/" class="md-nav__link">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
         Config Variables
       </a>
     </li>
@@ -1112,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpDeclare/" class="md-nav__link">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
         Declare
       </a>
     </li>
@@ -1126,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpEmpty/" class="md-nav__link">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
         Empty
       </a>
     </li>
@@ -1140,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpMisc/" class="md-nav__link">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
         Misc
       </a>
     </li>
@@ -1154,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpOutput/" class="md-nav__link">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
         Output Control
       </a>
     </li>
@@ -1201,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1215,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
         Arrow Function
       </a>
     </li>
@@ -1229,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpGenerators/" class="md-nav__link">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
         Generators
       </a>
     </li>
@@ -1284,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../DS/phpArray/" class="md-nav__link">
+      <a href="../../DS/phpArray/" class="md-nav__link">
         Array
       </a>
     </li>
@@ -1298,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../DS/phpIterables/" class="md-nav__link">
+      <a href="../../DS/phpIterables/" class="md-nav__link">
         Iterables
       </a>
     </li>
@@ -1346,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpCls/" class="md-nav__link">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
         OOP
       </a>
     </li>
@@ -1360,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
         Constructor
       </a>
     </li>
@@ -1374,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
         Access Modifiers
       </a>
     </li>
@@ -1388,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
         Inheritance
       </a>
     </li>
@@ -1402,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpConstants/" class="md-nav__link">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
         Constants
       </a>
     </li>
@@ -1416,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
         Abstract Classes
       </a>
     </li>
@@ -1430,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
         Interfaces
       </a>
     </li>
@@ -1444,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpTraits/" class="md-nav__link">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
         Traits
       </a>
     </li>
@@ -1458,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpStatic/" class="md-nav__link">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
         Static
       </a>
     </li>
@@ -1472,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
         Namespaces
       </a>
     </li>
@@ -1520,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpInclude/" class="md-nav__link">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
         Include
       </a>
     </li>
@@ -1534,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpGoto/" class="md-nav__link">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
         Goto
       </a>
     </li>
@@ -1574,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpFile/" class="md-nav__link">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
         Filesystem
       </a>
     </li>
@@ -1588,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpZip/" class="md-nav__link">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
         Zip
       </a>
     </li>
@@ -1609,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpMySql/" class="md-nav__link">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
         MySQL
       </a>
     </li>
@@ -1623,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpXML/" class="md-nav__link">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
         XML
       </a>
     </li>
@@ -1637,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpAjax/" class="md-nav__link">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
         Ajax
       </a>
     </li>
@@ -1687,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodle/" class="md-nav__link">
+      <a href="../phpMoodle/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -1701,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleInstall/" class="md-nav__link">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -1741,7 +1741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
+      <a href="../phpMoodlePluginTypes/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1755,7 +1755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
         Activity
       </a>
     </li>
@@ -1795,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
         Question Types
       </a>
     </li>
@@ -1809,7 +1809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
         Question Format
       </a>
     </li>
@@ -1823,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
         Question Bank
       </a>
     </li>
@@ -1837,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
         Question Behavior
       </a>
     </li>
@@ -1858,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
         Book Tool
       </a>
     </li>
@@ -1879,7 +1879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
         Skeleton
       </a>
     </li>
@@ -1893,7 +1893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
+      <a href="../phpMoodlePluginFiles/" class="md-nav__link">
         Common Files
       </a>
     </li>
@@ -1907,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
         XMLDB tool
       </a>
     </li>
@@ -1921,7 +1921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleTemplate/" class="md-nav__link">
+      <a href="../phpMoodleTemplate/" class="md-nav__link">
         Templates
       </a>
     </li>
@@ -1961,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleJS/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1975,7 +1975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleJSTools/" class="md-nav__link">
         Tools
       </a>
     </li>
@@ -1989,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
+      <a href="../Javascript/phpMoodlePromises/" class="md-nav__link">
         Promises
       </a>
     </li>
@@ -2003,7 +2003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleModal/" class="md-nav__link">
         Modal Dialogues
       </a>
     </li>
@@ -2017,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleAJAX/" class="md-nav__link">
         AJAX
       </a>
     </li>
@@ -2036,14 +2036,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" type="checkbox" id="__nav_7_9" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
       
       
       
@@ -2066,7 +2064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleServices/" class="md-nav__link">
+      <a href="../phpMoodleServices/" class="md-nav__link">
         External Services
       </a>
     </li>
@@ -2080,7 +2078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePersistent/" class="md-nav__link">
+      <a href="../API/phpMoodlePersistent/" class="md-nav__link">
         Persistent API
       </a>
     </li>
@@ -2094,7 +2092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodleExporter/" class="md-nav__link">
+      <a href="../API/phpMoodleExporter/" class="md-nav__link">
         Exporter
       </a>
     </li>
@@ -2108,9 +2106,86 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodleQuestion/" class="md-nav__link">
+      <a href="../API/phpMoodleQuestion/" class="md-nav__link">
         Question API
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleDM/" class="md-nav__link">
+        Data Manipulation API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleTag/" class="md-nav__link">
+        Tag API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleAccess/" class="md-nav__link">
+        Access API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleGroups/" class="md-nav__link">
+        Groups API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleMessage/" class="md-nav__link">
+        Messaging API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2130,12 +2205,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Data Manipulation API
+          Security
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Data Manipulation API
+        Security
       </a>
       
         
@@ -2152,125 +2227,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-components-of-moodles-dml" class="md-nav__link">
-    Key Components of Moodle's DML:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-database-access-object-db-api" class="md-nav__link">
-    1. Database Access Object (DB API)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-crud-operations" class="md-nav__link">
-    2. CRUD Operations
-  </a>
-  
-    <nav class="md-nav" aria-label="2. CRUD Operations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-create-inserting-records" class="md-nav__link">
-    a. Create: Inserting Records
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-read-fetching-data" class="md-nav__link">
-    b. Read: Fetching Data
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-update-modifying-existing-records" class="md-nav__link">
-    c. Update: Modifying Existing Records
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-delete-removing-records" class="md-nav__link">
-    d. Delete: Removing Records
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-sql-queries" class="md-nav__link">
-    3. SQL Queries
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-transactions" class="md-nav__link">
-    4. Transactions
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Transactions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#starting-a-transaction" class="md-nav__link">
-    Starting a Transaction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#committing-a-transaction" class="md-nav__link">
-    Committing a Transaction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rolling-back-a-transaction" class="md-nav__link">
-    Rolling Back a Transaction
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-database-caching" class="md-nav__link">
-    5. Database Caching
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-db-schema-abstraction" class="md-nav__link">
-    6. DB Schema Abstraction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    Best Practices
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
+  <a href="#key-security-vulnerabilities" class="md-nav__link">
+    Key security vulnerabilities
   </a>
   
 </li>
@@ -2279,83 +2237,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../phpMoodleTag/" class="md-nav__link">
-        Tag API
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../phpMoodleAccess/" class="md-nav__link">
-        Access API
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../phpMoodleGroups/" class="md-nav__link">
-        Groups API
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../phpMoodleMessage/" class="md-nav__link">
-        Messaging API
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../phpMoodleSecurity/" class="md-nav__link">
-        Security
-      </a>
     </li>
   
 
@@ -2392,125 +2273,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-components-of-moodles-dml" class="md-nav__link">
-    Key Components of Moodle's DML:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-database-access-object-db-api" class="md-nav__link">
-    1. Database Access Object (DB API)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-crud-operations" class="md-nav__link">
-    2. CRUD Operations
-  </a>
-  
-    <nav class="md-nav" aria-label="2. CRUD Operations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-create-inserting-records" class="md-nav__link">
-    a. Create: Inserting Records
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-read-fetching-data" class="md-nav__link">
-    b. Read: Fetching Data
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-update-modifying-existing-records" class="md-nav__link">
-    c. Update: Modifying Existing Records
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-delete-removing-records" class="md-nav__link">
-    d. Delete: Removing Records
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-sql-queries" class="md-nav__link">
-    3. SQL Queries
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-transactions" class="md-nav__link">
-    4. Transactions
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Transactions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#starting-a-transaction" class="md-nav__link">
-    Starting a Transaction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#committing-a-transaction" class="md-nav__link">
-    Committing a Transaction
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rolling-back-a-transaction" class="md-nav__link">
-    Rolling Back a Transaction
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-database-caching" class="md-nav__link">
-    5. Database Caching
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-db-schema-abstraction" class="md-nav__link">
-    6. DB Schema Abstraction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    Best Practices
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
+  <a href="#key-security-vulnerabilities" class="md-nav__link">
+    Key security vulnerabilities
   </a>
   
 </li>
@@ -2529,172 +2293,30 @@
                 
 
 
-  <h1>Data Manipulation API</h1>
+  <h1>Security</h1>
 
-<p>The <strong>Data Manipulation API (DML)</strong> in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.</p>
-<h3 id="key-components-of-moodles-dml">Key Components of Moodle's DML:</h3>
-<ol>
-<li><strong>Database Access Object (DB API)</strong></li>
-<li><strong>CRUD Operations (Create, Read, Update, Delete)</strong></li>
-<li><strong>SQL Queries</strong></li>
-<li><strong>Transactions</strong></li>
-<li><strong>Database Caching</strong></li>
-<li><strong>DB Schema Abstraction</strong></li>
-</ol>
-<p>Let’s break these down in detail.</p>
-<hr />
-<h3 id="1-database-access-object-db-api">1. <strong>Database Access Object (DB API)</strong></h3>
-<p>The <code>$DB</code> global object in Moodle is the central component of the DML API. It provides a collection of functions to interact with the database. Instead of writing raw SQL directly, developers use these functions, which are compatible with all supported database systems.</p>
-<p>The <code>$DB</code> object is initialized as part of the Moodle environment (<code>config.php</code>), and it abstracts the interaction with the underlying DB engine.</p>
-<p>Common <code>$DB</code> functions include:
-- <code>insert_record()</code>
-- <code>update_record()</code>
-- <code>delete_records()</code>
-- <code>get_record()</code>
-- <code>get_records()</code></p>
-<h3 id="2-crud-operations">2. <strong>CRUD Operations</strong></h3>
-<h4 id="a-create-inserting-records"><strong>a. Create: Inserting Records</strong></h4>
-<p>To insert a new record into the database, you can use the <code>insert_record()</code> function. This function takes two parameters:
-- <strong>Table name</strong>: The name of the database table where you want to insert the record.
-- <strong>Data object</strong>: An object where each property represents a field in the table.</p>
-<div class="highlight"><pre><span></span><code><span class="x">$record = new stdClass();</span>
-<span class="x">$record-&gt;name = &#39;John Doe&#39;;</span>
-<span class="x">$record-&gt;email = &#39;john@example.com&#39;;</span>
-<span class="x">$record-&gt;timecreated = time();</span>
-
-<span class="x">// Insert the record into the &#39;user&#39; table.</span>
-<span class="x">$DB-&gt;insert_record(&#39;user&#39;, $record);</span>
-</code></pre></div>
-<p>If the table has an auto-incrementing ID field, <code>insert_record()</code> will return the ID of the inserted record.</p>
-<h4 id="b-read-fetching-data"><strong>b. Read: Fetching Data</strong></h4>
-<p>To retrieve data from the database, several functions are available:
-- <code>get_record()</code>: Retrieves a single record matching a specific condition.
-- <code>get_records()</code>: Retrieves multiple records matching a specific condition.</p>
-<p>Example of fetching a single record:
-<div class="highlight"><pre><span></span><code><span class="x">$userid = 5;</span>
-<span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid), &#39;*&#39;, MUST_EXIST);</span>
-<span class="x">echo $user-&gt;name;</span>
-</code></pre></div></p>
-<p>In the example above, <code>MUST_EXIST</code> ensures that if no record is found, an exception is thrown.</p>
-<p>Example of fetching multiple records:
-<div class="highlight"><pre><span></span><code><span class="x">$users = $DB-&gt;get_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 1));</span>
-<span class="x">foreach ($users as $user) {</span>
-<span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
-<span class="x">}</span>
-</code></pre></div></p>
-<h4 id="c-update-modifying-existing-records"><strong>c. Update: Modifying Existing Records</strong></h4>
-<p>To update a record, you use the <code>update_record()</code> function. You must pass an object that contains the primary key field along with the fields to be updated.</p>
-<div class="highlight"><pre><span></span><code><span class="x">$user = new stdClass();</span>
-<span class="x">$user-&gt;id = 5;  // ID of the record to be updated.</span>
-<span class="x">$user-&gt;email = &#39;newemail@example.com&#39;;</span>
-<span class="x">$DB-&gt;update_record(&#39;user&#39;, $user);</span>
-</code></pre></div>
-<p>Here, the record with <code>id = 5</code> is updated, and its <code>email</code> field is changed.</p>
-<h4 id="d-delete-removing-records"><strong>d. Delete: Removing Records</strong></h4>
-<p>To delete records, the <code>delete_records()</code> function is used. You can delete a record or a set of records based on a condition.</p>
-<p>Example of deleting a single record:
-<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;id&#39; =&gt; 5));</span>
-</code></pre></div></p>
-<p>Example of deleting multiple records:
-<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 0));  // Deletes all unconfirmed users.</span>
-</code></pre></div></p>
-<hr />
-<h3 id="3-sql-queries">3. <strong>SQL Queries</strong></h3>
-<p>While Moodle’s DML API provides functions to handle common CRUD operations, you may need to write custom SQL queries for more complex operations. Moodle provides <code>get_records_sql()</code>, <code>get_record_sql()</code>, and other SQL-based functions that allow you to execute raw SQL.</p>
+<h4 id="key-security-vulnerabilities">Key security vulnerabilities</h4>
+<p>Given below are some of the typical vulnerability types developers need to be aware of when developing web applications, including Moodle.</p>
 <ul>
-<li><strong>get_records_sql()</strong>: Retrieves multiple records based on an SQL query.</li>
-<li><strong>get_record_sql()</strong>: Retrieves a single record based on an SQL query.</li>
-<li><strong>execute()</strong>: Executes an SQL query without returning any data (useful for <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
+<li>Unauthenticated access</li>
+<li>Unauthorised access</li>
+<li>Cross-site request forgery (CSRF)</li>
+<li>Cross-site scripting (XSS)</li>
+<li>SQL injection</li>
+<li>Command-line injection</li>
+<li>Data-loss</li>
+<li>Confidential information leakage</li>
+<li>Configuration information leakage</li>
+<li>Session fixation</li>
+<li>Denial of service (DOS)</li>
+<li>Brute-forcing login</li>
+<li>Insecure configuration management</li>
+<li>Buffer overruns and other platform weaknesses</li>
+<li>Social engineering</li>
 </ul>
-<p>Example of retrieving records with a custom SQL query:
-<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT id, name FROM {user} WHERE confirmed = :confirmed&quot;;</span>
-<span class="x">$params = array(&#39;confirmed&#39; =&gt; 1);</span>
-<span class="x">$users = $DB-&gt;get_records_sql($sql, $params);</span>
-<span class="x">foreach ($users as $user) {</span>
-<span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
-<span class="x">}</span>
-</code></pre></div>
-Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convention that allows for database table prefixing. If your Moodle site uses a table prefix like <code>mdl_</code>, this will be automatically converted to <code>mdl_user</code>.</p>
-<hr />
-<h3 id="4-transactions">4. <strong>Transactions</strong></h3>
-<p>Moodle supports database transactions, which ensure that multiple operations are treated as a single unit of work. If any operation in the transaction fails, all changes are rolled back, ensuring data consistency.</p>
-<h4 id="starting-a-transaction">Starting a Transaction</h4>
-<div class="highlight"><pre><span></span><code><span class="x">$transaction = $DB-&gt;start_delegated_transaction();</span>
-</code></pre></div>
-<h4 id="committing-a-transaction">Committing a Transaction</h4>
-<div class="highlight"><pre><span></span><code><span class="x">$transaction-&gt;allow_commit();</span>
-</code></pre></div>
-<h4 id="rolling-back-a-transaction">Rolling Back a Transaction</h4>
-<p>If an exception occurs during the transaction, the rollback is automatic.</p>
-<p>Example of using a transaction:
-<div class="highlight"><pre><span></span><code><span class="x">try {</span>
-<span class="x">    $transaction = $DB-&gt;start_delegated_transaction();</span>
-
-<span class="x">    // Insert a new user.</span>
-<span class="x">    $user = new stdClass();</span>
-<span class="x">    $user-&gt;name = &#39;Jane Doe&#39;;</span>
-<span class="x">    $user-&gt;email = &#39;jane@example.com&#39;;</span>
-<span class="x">    $DB-&gt;insert_record(&#39;user&#39;, $user);</span>
-
-<span class="x">    // Insert a profile field for the new user.</span>
-<span class="x">    $profile = new stdClass();</span>
-<span class="x">    $profile-&gt;userid = $user-&gt;id;</span>
-<span class="x">    $profile-&gt;fieldname = &#39;bio&#39;;</span>
-<span class="x">    $profile-&gt;fieldvalue = &#39;This is Jane\&#39;s bio.&#39;;</span>
-<span class="x">    $DB-&gt;insert_record(&#39;user_profile&#39;, $profile);</span>
-
-<span class="x">    // If all went well, commit the transaction.</span>
-<span class="x">    $transaction-&gt;allow_commit();</span>
-<span class="x">} catch (Exception $e) {</span>
-<span class="x">    // Rollback is automatic on exception.</span>
-<span class="x">    $transaction-&gt;rollback($e);</span>
-<span class="x">    echo &#39;Transaction failed: &#39; . $e-&gt;getMessage();</span>
-<span class="x">}</span>
-</code></pre></div></p>
-<hr />
-<h3 id="5-database-caching">5. <strong>Database Caching</strong></h3>
-<p>Moodle provides caching mechanisms that improve the performance of database queries. The <code>get_record_cacheable()</code> function allows you to cache the result of a query, which can be useful if the same query is run frequently.</p>
-<div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;core&#39;, &#39;user&#39;);</span>
-<span class="x">$userid = 5;</span>
-
-<span class="x">if ($user = $cache-&gt;get($userid)) {</span>
-<span class="x">    // User data is cached.</span>
-<span class="x">} else {</span>
-<span class="x">    $user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid));</span>
-<span class="x">    $cache-&gt;set($userid, $user);</span>
-<span class="x">}</span>
-</code></pre></div>
-<hr />
-<h3 id="6-db-schema-abstraction">6. <strong>DB Schema Abstraction</strong></h3>
-<p>Moodle uses an abstracted schema definition in the form of XML (<code>install.xml</code> and <code>upgrade.php</code>) to create and update database tables across different databases.</p>
-<ul>
-<li><strong>install.xml</strong>: Defines the structure of tables, fields, indexes, and keys.</li>
-<li><strong>upgrade.php</strong>: Handles table upgrades when new fields or tables need to be added.</li>
-</ul>
-<p>Example of a table definition in <code>install.xml</code>:
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;yourplugin/db/install.xml&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;2013053100&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;yourplugin_data&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Stores custom plugin data&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Primary key&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;userid&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;User ID&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;data&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Custom data&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;KEYS&gt;</span>
-            <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/KEYS&gt;</span>
-    <span class="nt">&lt;/TABLE&gt;</span>
-<span class="nt">&lt;/XMLDB&gt;</span>
-</code></pre></div></p>
-<hr />
-<h3 id="best-practices">Best Practices</h3>
-<ol>
-<li><strong>Use Prepared Statements</strong>: Moodle DML functions automatically handle prepared statements to prevent SQL injection attacks. Always use parameterized queries.</li>
-<li><strong>Test with Multiple Databases</strong>: Ensure your plugin works across all supported databases (MySQL, PostgreSQL, MS SQL, Oracle).</li>
-<li><strong>Use Transactions</strong>: For critical operations involving multiple queries, use transactions to maintain data integrity.</li>
-<li><strong>Caching</strong>: Where possible, use caching to improve the performance of frequent queries.</li>
-<li><strong>Follow Database Conventions</strong>: Use Moodle’s naming conventions for tables and fields (e.g., lowercase names, singular table names).</li>
-</ol>
-<hr />
-<h3 id="conclusion">Conclusion</h3>
-<p>Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a secure and efficient way. By using the DML functions, you ensure compatibility with different database systems, safeguard against SQL injection, and maintain the overall integrity of the system. Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is the recommended way to manipulate data in Moodle.</p>
+<p>Data-loss and Confidential information leakage are symptoms of other vulnerabilities.
+Some vulnerabilities, such as Configuration information leakage, Command-line injection and Denial of service (DOS) would generally only concern developers of certain types of plugins.</p>
+<p>Be sure to read the <a href="https://moodledev.io/general/development/policies/security">Security page</a> in the Moodle Developer Resources for more details on each of these and other vulnerabilities.</p>
 
               
             </article>
@@ -2708,7 +2330,7 @@ Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convent
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpMoodleQuestion/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Question API" rel="prev">
+        <a href="../API/phpMoodleMessage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Messaging API" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2717,26 +2339,11 @@ Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convent
               <span class="md-footer__direction">
                 Previous
               </span>
-              Question API
+              Messaging API
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../phpMoodleTag/" class="md-footer__link md-footer__link--next" aria-label="Next: Tag API" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Tag API
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
@@ -2810,10 +2417,10 @@ Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convent
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
