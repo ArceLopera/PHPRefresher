@@ -2233,6 +2233,82 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#summary-of-the-guidelines" class="md-nav__link">
+    Summary of the guidelines
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary of the guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authenticate-the-user" class="md-nav__link">
+    Authenticate the user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-course-and-module-access" class="md-nav__link">
+    Verify course and module access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-permissions" class="md-nav__link">
+    Check permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-trust-any-input-from-users" class="md-nav__link">
+    Don't trust any input from users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clean-and-escape-data-before-output" class="md-nav__link">
+    Clean and escape data before output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escape-data-before-storing-it-in-the-database" class="md-nav__link">
+    Escape data before storing it in the database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escape-data-before-using-it-in-shell-commands" class="md-nav__link">
+    Escape data before using it in shell commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-every-request" class="md-nav__link">
+    Log every request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-good-practice" class="md-nav__link">
+    Other good practice
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2279,6 +2355,82 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#summary-of-the-guidelines" class="md-nav__link">
+    Summary of the guidelines
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary of the guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authenticate-the-user" class="md-nav__link">
+    Authenticate the user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-course-and-module-access" class="md-nav__link">
+    Verify course and module access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-permissions" class="md-nav__link">
+    Check permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-trust-any-input-from-users" class="md-nav__link">
+    Don't trust any input from users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clean-and-escape-data-before-output" class="md-nav__link">
+    Clean and escape data before output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escape-data-before-storing-it-in-the-database" class="md-nav__link">
+    Escape data before storing it in the database
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escape-data-before-using-it-in-shell-commands" class="md-nav__link">
+    Escape data before using it in shell commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-every-request" class="md-nav__link">
+    Log every request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-good-practice" class="md-nav__link">
+    Other good practice
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2295,7 +2447,7 @@
 
   <h1>Security</h1>
 
-<h4 id="key-security-vulnerabilities">Key security vulnerabilities</h4>
+<h3 id="key-security-vulnerabilities">Key security vulnerabilities</h3>
 <p>Given below are some of the typical vulnerability types developers need to be aware of when developing web applications, including Moodle.</p>
 <ul>
 <li>Unauthenticated access</li>
@@ -2317,6 +2469,70 @@
 <p>Data-loss and Confidential information leakage are symptoms of other vulnerabilities.
 Some vulnerabilities, such as Configuration information leakage, Command-line injection and Denial of service (DOS) would generally only concern developers of certain types of plugins.</p>
 <p>Be sure to read the <a href="https://moodledev.io/general/development/policies/security">Security page</a> in the Moodle Developer Resources for more details on each of these and other vulnerabilities.</p>
+<h3 id="summary-of-the-guidelines">Summary of the guidelines</h3>
+<h4 id="authenticate-the-user">Authenticate the user</h4>
+<p>With very few exceptions, every script should call require_login or require_course_login as near the start as possible.</p>
+<h4 id="verify-course-and-module-access">Verify course and module access</h4>
+<ul>
+<li>All course areas have to be protected by require_login or require_course_login with correct $course parameter.</li>
+<li>All module areas have to be protected by require_login or require_course_login with correct $course and $cm parameter</li>
+</ul>
+<h4 id="check-permissions">Check permissions</h4>
+<ul>
+<li>Before allowing the user to see anything or do anything, call to has_capability or require_capability.</li>
+<li>Capabilities should be annotated with the appropriate risks.</li>
+<li>If appropriate, restrict what people can see according to groups.</li>
+</ul>
+<h4 id="dont-trust-any-input-from-users">Don't trust any input from users</h4>
+<ul>
+<li>Use moodleforms whenever possible, with an appropriate setType method call for each field.</li>
+<li>Before performing actions, use data_submitted() &amp;&amp; confirm_sesskey() to check sesskey and that you are handling a POST request.</li>
+<li>Before destroying large amounts of data, add a confirmation step.</li>
+<li>If not using a moodleform, clean input using optional_param or required_param with an appropriate PARAM_... type. 
+<strong>Do not access $_GET, $_POST or $_REQUEST directly.</strong> Group optional_param and required_param calls together at the top of the script, to make them easy to find.</li>
+</ul>
+<p>Similarly, clean data from other external resources like RSS feeds before use.</p>
+<h4 id="clean-and-escape-data-before-output">Clean and escape data before output</h4>
+<ul>
+<li>Use s or p to output plain text content.</li>
+<li>Use format_string to output content with minimal HTML like multi-lang spans (for example, course and activity names).</li>
+<li>Use format_text to output all other content.<ul>
+<li>Only use $options-&gt;noclean if it requires a capability with RISK_XSS to input that content (for example web page resources).</li>
+</ul>
+</li>
+<li>Data destined for JavaScript should be escaped using $PAGE-&gt;requires-&gt;data_for_js (Moodle 2.0 onwards) or addslashes_js (Moodle 1.9).</li>
+</ul>
+<p>Follow the Output functions to get a better understanding of how dynamic data should be sent from Moodle to the browser.</p>
+<h4 id="escape-data-before-storing-it-in-the-database">Escape data before storing it in the database</h4>
+<ul>
+<li>Use the XMLDB library. This takes care of most escaping issues for you.</li>
+<li>When you must use custom SQL code, use place-holders to insert values into the queries.<ul>
+<li>Before Moodle 2.0, you had to build SQL by concatenating strings. Take particular care, especially with quoting values, 
+to avoid SQL injection vulnerabilities.</li>
+</ul>
+</li>
+<li>The addslashes method should no longer be use anywhere in Moodle 2.0 onwards.</li>
+<li>Variables must be passed to database queries through bound parameters.</li>
+</ul>
+<h4 id="escape-data-before-using-it-in-shell-commands">Escape data before using it in shell commands</h4>
+<ul>
+<li>Avoid shell commands if at all possible.<ul>
+<li>Look to see if there is a PHP library instead.</li>
+</ul>
+</li>
+<li>If you can't avoid shell commands, use escapeshellcmd and escapeshellarg.</li>
+</ul>
+<h4 id="log-every-request">Log every request</h4>
+<p>Every script should log an event</p>
+<h4 id="other-good-practice">Other good practice</h4>
+<p>... that helps with security:</p>
+<ul>
+<li>Structure your code nicely, minimising the use of global variables. This makes the flow of data, and hence security, easier to verify.</li>
+<li>Initialise objects (for instance, <span class="arithmatex">\(x = new stdClass;) and arrays (\)</span>x = array()) before you first use them.</li>
+<li>Test every input field with tricky input to ensure that it is escaped and un-escaped the right number of times everywhere, and that Unicode characters are not corrupted. One standard test you can use is:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">&lt; &gt; &amp; &amp;lt; &amp;gt; &amp;amp; &#39; \&#39; 碁 \ \\</span>
+</code></pre></div>
 
               
             </article>
