@@ -2471,11 +2471,52 @@ Some vulnerabilities, such as Configuration information leakage, Command-line in
 <p>Be sure to read the <a href="https://moodledev.io/general/development/policies/security">Security page</a> in the Moodle Developer Resources for more details on each of these and other vulnerabilities.</p>
 <h3 id="summary-of-the-guidelines">Summary of the guidelines</h3>
 <h4 id="authenticate-the-user">Authenticate the user</h4>
-<p>With very few exceptions, every script should call require_login or require_course_login as near the start as possible.</p>
+<p>With very few exceptions, every script should call require_login or require_course_login as near 
+the start as possible.</p>
 <h4 id="verify-course-and-module-access">Verify course and module access</h4>
 <ul>
-<li>All course areas have to be protected by require_login or require_course_login with correct $course parameter.</li>
-<li>All module areas have to be protected by require_login or require_course_login with correct $course and $cm parameter</li>
+<li>All course areas have to be protected by require_login or require_course_login with correct 
+$course parameter.</li>
+<li>All module areas have to be protected by require_login or require_course_login with correct 
+$course and $cm parameter</li>
+</ul>
+<p>Example: Consider the index.php file of the Book module.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require(__DIR__.&#39;/../../config.php&#39;);</span>
+<span class="x">require_once(__DIR__.&#39;/locallib.php&#39;);</span>
+
+<span class="x">$id = required_param(&#39;id&#39;, PARAM_INT); // Course ID.</span>
+
+<span class="x">$course = $DB-&gt;get_record(&#39;course&#39;, [&#39;id&#39; =&gt; $id], &#39;*&#39;, MUST_EXIST);</span>
+
+<span class="x">unset($id);</span>
+
+<span class="x">require_course_login($course, true);</span>
+</code></pre></div>
+<ul>
+<li>require_course_login() is called as soon as $course is found.</li>
+<li>require_course_login() checks if user can view the course.</li>
+<li>This page is listing all book modules in a course, so checking for a specific $cm value is not needed here.</li>
+</ul>
+<p>Example: Consider the edit.php file of the Book module.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require(__DIR__.&#39;/../../config.php&#39;);</span>
+<span class="x">require_once(__DIR__.&#39;/locallib.php&#39;);</span>
+<span class="x">require_once(__DIR__.&#39;/edit_form.php&#39;);</span>
+
+<span class="x">$cmid       = required_param(&#39;cmid&#39;, PARAM_INT);  // Book Course Module ID.</span>
+<span class="x">$chapterid  = optional_param(&#39;id&#39;, 0, PARAM_INT); // Chapter ID.</span>
+<span class="x">$pagenum    = optional_param(&#39;pagenum&#39;, 0, PARAM_INT);</span>
+<span class="x">$subchapter = optional_param(&#39;subchapter&#39;, 0, PARAM_BOOL);</span>
+
+<span class="x">$cm = get_coursemodule_from_id(&#39;book&#39;, $cmid, 0, false, MUST_EXIST);</span>
+<span class="x">$course = $DB-&gt;get_record(&#39;course&#39;, [&#39;id&#39; =&gt; $cm-&gt;course], &#39;*&#39;, MUST_EXIST);</span>
+<span class="x">$book = $DB-&gt;get_record(&#39;book&#39;, [&#39;id&#39; =&gt; $cm-&gt;instance], &#39;*&#39;, MUST_EXIST);</span>
+
+<span class="x">require_login($course, false, $cm);</span>
+</code></pre></div>
+<ul>
+<li>require_login() is called as soon as the $course and $cm values are found.</li>
+<li>This page is editing a book so both $course and $cm parameters should be passed to require_login() to check proper access.</li>
+<li>$autologinguest parameter is false because guest users should not be making changes on the site.</li>
 </ul>
 <h4 id="check-permissions">Check permissions</h4>
 <ul>
@@ -2506,14 +2547,88 @@ Some vulnerabilities, such as Configuration information leakage, Command-line in
 <h4 id="escape-data-before-storing-it-in-the-database">Escape data before storing it in the database</h4>
 <ul>
 <li>Use the XMLDB library. This takes care of most escaping issues for you.</li>
-<li>When you must use custom SQL code, use place-holders to insert values into the queries.<ul>
+<li>The addslashes method should no longer be use anywhere in Moodle 2.0 onwards.</li>
+<li>Variables must be passed to database queries through bound parameters.</li>
+</ul>
+<h5 id="handling-database-queries">Handling database queries</h5>
+<ul>
+<li>Do not attempt to write your own code to directly access the database.<ul>
+<li>It can be prone to SQL injection.</li>
+</ul>
+</li>
+<li>Use higher level methods from the <a href="../API/phpMoodleDM/">data manipulation API</a>, like get_record(), whenever possible.</li>
+<li>Clean all user input by passing appropriate PARAM_XXX to required_param() or optional_param().</li>
+<li>Escape all input parameters.</li>
+<li>When you have to insert values into SQL statements, use place-holders to insert the values safely.<ul>
 <li>Before Moodle 2.0, you had to build SQL by concatenating strings. Take particular care, especially with quoting values, 
 to avoid SQL injection vulnerabilities.</li>
 </ul>
 </li>
-<li>The addslashes method should no longer be use anywhere in Moodle 2.0 onwards.</li>
-<li>Variables must be passed to database queries through bound parameters.</li>
+<li>Although many DML methods have parameters passed in which are bound/sanitised automatically, some parts will not be:<ul>
+<li>Eg: passed in WHERE or sorting parameters;</li>
+<li>Raw SQL such as the execute() method.</li>
 </ul>
+</li>
+<li>Any code that uses user input to determine the ORDER BY statement should use one of the "safe order by" helper methods:<ul>
+<li>get_safe_orderby() or; </li>
+<li>get_safe_orderby_multiple().</li>
+</ul>
+</li>
+</ul>
+<h5 id="database-query-examples">Database query examples</h5>
+<h5 id="example-1-string-concatenation">Example 1: String concatenation</h5>
+<h6 id="do-not-do-this">DO NOT do this</h6>
+<p>Avoid using string concatenation to build SQL queries, where possible.
+When you have to insert values into SQL statements, use place-holders to insert the values safely.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} &quot;</span>
+<span class="x">  . &quot;WHERE firstname = &#39;&quot; . $fname . &quot;&#39; &quot;</span>
+<span class="x">  . &quot;AND lastname = &#39;&quot; . $lname .&quot;&#39;&quot;;</span>
+
+<span class="x">$result = $DB-&gt;get_record_sql($sql);</span>
+</code></pre></div>
+<h6 id="do-this">DO this</h6>
+<p>Use bound parameters to insert values into SQL statements.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} &quot;</span>
+<span class="x">  . &quot;WHERE firstname = ? &quot;</span>
+<span class="x">  . &quot;AND lastname = ?&quot;;</span>
+
+<span class="x">$result = $DB-&gt;get_record_sql($sql, [$fname, $lname]);</span>
+</code></pre></div>
+<h5 id="example-2-where-conditions">Example 2: WHERE conditions</h5>
+<h6 id="do-not-do-this_1">DO NOT do this</h6>
+<p>Do not use variables directly in the WHERE clause.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records_select(&#39;message&#39;, &quot;id = $id&quot;);</span>
+</code></pre></div>
+<h6 id="do-this_1">DO this</h6>
+<ul>
+<li>Use placeholders (named or question mark) to insert values into WHERE conditions.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records_select(&#39;message&#39;, &quot;id = :id&quot;, [&#39;id&#39; =&gt; $id]);</span>
+</code></pre></div>
+<h5 id="example-3-order-by-statement">Example 3: ORDER BY statement</h5>
+<h6 id="do-not-do-this_2">DO NOT do this</h6>
+<p>Avoid using user supplied values directly to build the ORDER BY statement.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sort = optional_param(&#39;sort&#39;, &#39;username&#39;, PARAM_ALPHAEXT);</span>
+<span class="x">$dir = optional_param(&#39;dir&#39;, &#39;ASC&#39;, PARAM_ALPHA);</span>
+
+<span class="x">$result = $DB-&gt;get_records(&#39;user&#39;, null, &quot;$sort $dir&quot;);</span>
+</code></pre></div>
+<h6 id="do-this_2">DO this</h6>
+<ul>
+<li>Use get_safe_orderby() or get_safe_orderby_multiple() helper functions to construct the ORDER BY statement.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$sort = optional_param(&#39;sort&#39;, &#39;username&#39;, PARAM_ALPHAEXT);</span>
+<span class="x">$dir = optional_param(&#39;dir&#39;, &#39;ASC&#39;, PARAM_ALPHA);</span>
+
+<span class="x">$sortorder = get_safe_orderby([</span>
+<span class="x">        &#39;username&#39; =&gt; &#39;username&#39;,</span>
+<span class="x">        &#39;firstname&#39; =&gt; &#39;firstname&#39;,</span>
+<span class="x">        &#39;lastname&#39; =&gt; &#39;lastname&#39;,</span>
+<span class="x">        &#39;default&#39; =&gt; &#39;username&#39;,</span>
+<span class="x">    ], $sort, $dir);</span>
+
+<span class="x">$result = $DB-&gt;get_records(&#39;user&#39;, null, $sortorder);</span>
+</code></pre></div>
 <h4 id="escape-data-before-using-it-in-shell-commands">Escape data before using it in shell commands</h4>
 <ul>
 <li>Avoid shell commands if at all possible.<ul>
@@ -2523,13 +2638,13 @@ to avoid SQL injection vulnerabilities.</li>
 <li>If you can't avoid shell commands, use escapeshellcmd and escapeshellarg.</li>
 </ul>
 <h4 id="log-every-request">Log every request</h4>
-<p>Every script should log an event</p>
+<p>Every script should log an event. In case of an issue, logs help to trace the sequence of events that happened.</p>
 <h4 id="other-good-practice">Other good practice</h4>
 <p>... that helps with security:</p>
 <ul>
 <li>Structure your code nicely, minimising the use of global variables. This makes the flow of data, and hence security, easier to verify.</li>
 <li>Initialise objects (for instance, <span class="arithmatex">\(x = new stdClass;) and arrays (\)</span>x = array()) before you first use them.</li>
-<li>Test every input field with tricky input to ensure that it is escaped and un-escaped the right number of times everywhere, and that Unicode characters are not corrupted. One standard test you can use is:</li>
+<li>Test every input field with tricky input and exception cases to ensure that it is escaped and un-escaped the right number of times everywhere, and that Unicode characters are not corrupted. One standard test you can use is:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="x">&lt; &gt; &amp; &amp;lt; &amp;gt; &amp;amp; &#39; \&#39; 碁 \ \\</span>
 </code></pre></div>
