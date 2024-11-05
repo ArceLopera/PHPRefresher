@@ -5,9 +5,9 @@ Given below are some of the typical vulnerability types developers need to be aw
 + [Unauthenticated access](https://moodledev.io/general/development/policies/security/unauthenticated-access)
 + [Unauthorised access](https://moodledev.io/general/development/policies/security/unauthorised-access)
 + [Cross-site request forgery (CSRF)](https://moodledev.io/general/development/policies/security/crosssite-request-forgery)
-+ Cross-site scripting (XSS)
-+ SQL injection
-+ Command-line injection
++ [Cross-site scripting (XSS)](https://moodledev.io/general/development/policies/security/crosssite-scripting)
++ [SQL injection](https://moodledev.io/general/development/policies/security/sql-injection)
++ [Command-line injection](https://moodledev.io/general/development/policies/security/commandline-injection)
 + Data-loss
 + Confidential information leakage
 + Configuration information leakage
