@@ -8,15 +8,15 @@ Given below are some of the typical vulnerability types developers need to be aw
 + [Cross-site scripting (XSS)](https://moodledev.io/general/development/policies/security/crosssite-scripting)
 + [SQL injection](https://moodledev.io/general/development/policies/security/sql-injection)
 + [Command-line injection](https://moodledev.io/general/development/policies/security/commandline-injection)
-+ Data-loss
-+ Confidential information leakage
-+ Configuration information leakage
-+ Session fixation
-+ Denial of service (DOS)
-+ Brute-forcing login
-+ Insecure configuration management
-+ Buffer overruns and other platform weaknesses
-+ Social engineering
++ [Data-loss](https://moodledev.io/general/development/policies/security/dataloss)
++ [Confidential information leakage](https://moodledev.io/general/development/policies/security/info-leakage)
++ [Configuration information leakage](https://moodledev.io/general/development/policies/security/configinfo-leakage)
++ [Session fixation](https://moodledev.io/general/development/policies/security/session-fixation)
++ [Denial of service (DOS)](https://moodledev.io/general/development/policies/security/dos)
++ [Brute-forcing login](https://moodledev.io/general/development/policies/security/bruteforcing-login)
++ [Insecure configuration management](https://moodledev.io/general/development/policies/security/insecure-config)
++ [Buffer overruns and other platform weaknesses](https://moodledev.io/general/development/policies/security/bufferoverruns)
++ [Social engineering](https://moodledev.io/general/development/policies/security/socialengineering)
 
 
 Data-loss and Confidential information leakage are symptoms of other vulnerabilities.
