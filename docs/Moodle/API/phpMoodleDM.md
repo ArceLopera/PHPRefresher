@@ -1,3 +1,12 @@
+### Database abstraction in Moodle
+Moodle provides two main APIs for database abstraction:
+
+#### Data Definition API (DDL)
+This API allows you to handle database structures such as tables, fields, and indexes. It provides a set of functions to create, modify, and delete these structures. These functions are used exclusively by the installation and upgrade processes and allow for the execution of correct SQL statements for each RDBMS.
+
+#### Data Manipulation API (DML)
+This API is used to access and manipulate data in the Moodle database. It provides functions for inserting, updating, deleting, and retrieving data from the database.
+
 The **Data Manipulation API (DML)** in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.
 
 ### Key Components of Moodle's DML:

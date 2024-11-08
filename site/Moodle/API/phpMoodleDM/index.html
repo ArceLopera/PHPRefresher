@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-components-of-moodles-dml" class="md-skip">
+        <a href="#database-abstraction-in-moodle" class="md-skip">
           Skip to content
         </a>
       
@@ -2152,6 +2152,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#database-abstraction-in-moodle" class="md-nav__link">
+    Database abstraction in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="Database abstraction in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-definition-api-ddl" class="md-nav__link">
+    Data Definition API (DDL)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-manipulation-api-dml" class="md-nav__link">
+    Data Manipulation API (DML)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-components-of-moodles-dml" class="md-nav__link">
     Key Components of Moodle's DML:
   </a>
@@ -2392,6 +2419,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#database-abstraction-in-moodle" class="md-nav__link">
+    Database abstraction in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="Database abstraction in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-definition-api-ddl" class="md-nav__link">
+    Data Definition API (DDL)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-manipulation-api-dml" class="md-nav__link">
+    Data Manipulation API (DML)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-components-of-moodles-dml" class="md-nav__link">
     Key Components of Moodle's DML:
   </a>
@@ -2531,6 +2585,12 @@
 
   <h1>Data Manipulation API</h1>
 
+<h3 id="database-abstraction-in-moodle">Database abstraction in Moodle</h3>
+<p>Moodle provides two main APIs for database abstraction:</p>
+<h4 id="data-definition-api-ddl">Data Definition API (DDL)</h4>
+<p>This API allows you to handle database structures such as tables, fields, and indexes. It provides a set of functions to create, modify, and delete these structures. These functions are used exclusively by the installation and upgrade processes and allow for the execution of correct SQL statements for each RDBMS.</p>
+<h4 id="data-manipulation-api-dml">Data Manipulation API (DML)</h4>
+<p>This API is used to access and manipulate data in the Moodle database. It provides functions for inserting, updating, deleting, and retrieving data from the database.</p>
 <p>The <strong>Data Manipulation API (DML)</strong> in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.</p>
 <h3 id="key-components-of-moodles-dml">Key Components of Moodle's DML:</h3>
 <ol>
