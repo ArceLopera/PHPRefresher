@@ -2502,7 +2502,7 @@
 <p>A Role is a set of capability definitions, where each capability represents something that the user is able to do. Roles are defined at the top most context in the context tree, the System context.</p>
 <p>Roles can be overridden by contexts further down the tree.</p>
 <p>User access is calculated from the combination of roles which are assigned to each user.</p>
-<p>All users that did not log-in yet automatically get the default role defined in <code>$CFG-&gt;notloggedinroleid</code>, it is not possible to assign any other role to this non-existent user id. There is one special guest user account that is used when user logs in using the guest login button or when guest auto-login is enabled. Again you can not assign any roles to the guest account directly, this account gets the <code>$CFG-&gt;guestroleid</code> automatically. All other authenticated users get the default user role specified in $CFG-&gt;defaultuserroleid and in the frontpage context the role specified in<code>$CFG-&gt;defaultfrontpageroleid</code>.</p>
+<p>All users that did not log-in yet automatically get the default role defined in <code>$CFG-&gt;notloggedinroleid</code>, it is not possible to assign any other role to this non-existent user id. There is one special guest user account that is used when user logs in using the guest login button or when guest auto-login is enabled. Again you can not assign any roles to the guest account directly, this account gets the <code>$CFG-&gt;guestroleid</code> automatically. All other authenticated users get the default user role specified in <code>$CFG-&gt;defaultuserroleid</code> and in the frontpage context the role specified in<code>$CFG-&gt;defaultfrontpageroleid</code>.</p>
 <h3 id="how-to-define-new-capabilities-in-plugins">How to define new capabilities in plugins</h3>
 <p>Capabilities are defined by <code>$capabilities</code> array defined in <code>db/access.php</code> files. The name of the capability consists of <code>plugintype/pluginname:capabilityname</code>.</p>
 <p>For example:</p>
@@ -2549,7 +2549,7 @@
 </tr>
 </tbody>
 </table>
-<p>It is necessary to bump up plugin version number after any change in db/access.php, so that the upgrade scripts can make the necessary changes to the database. To run the upgrade scripts, log in to Moodle as administrator, navigate to the site home page, and follow the instructions. (If you need to test the upgrade script without changing the plugin version, it is also possible to set back the version number in the mdl_block or mdl_modules table in the database.)</p>
+<p>It is necessary to bump up plugin version number after any change in db/access.php, so that the upgrade scripts can make the necessary changes to the database. To run the upgrade scripts, log in to Moodle as administrator, navigate to the site home page, and follow the instructions.</p>
 <p>The capability names are defined in plugin language files, the name of the string consists of "pluginname:capabilityname", in the example above it would be:</p>
 <div class="highlight"><pre><span></span><code><span class="x">// mod/folder/lang/en/folder.php</span>
 <span class="x">$string[&#39;folder:managefiles&#39;] = &#39;Manage files in folder module&#39;;</span>
@@ -2584,11 +2584,13 @@ In default configuration, Guest role should have only capabilities without risks
 <span class="x">    ],</span>
 <span class="x">];</span>
 </code></pre></div>
-<p>The gradeexport/ods:view capability:
-+ Applies at the course context level.
-+ Allows read access.
-+ Has a risk of providing access to personal user information.
-+ Is allowed for teacher, editingteacher and manager roles by default.</p>
+<p>The gradeexport/ods:view capability:</p>
+<ul>
+<li>Applies at the course context level.</li>
+<li>Allows read access.</li>
+<li>Has a risk of providing access to personal user information.</li>
+<li>Is allowed for teacher, editingteacher and manager roles by default.</li>
+</ul>
 <h5 id="multiple-risks-in-a-capability">Multiple risks in a capability</h5>
 <p>Some capabilities can have multiple risks associated with them.
 These can be defined using the pipe (|) character, for example:
