@@ -20,7 +20,7 @@ Roles can be overridden by contexts further down the tree.
 
 User access is calculated from the combination of roles which are assigned to each user.
 
-All users that did not log-in yet automatically get the default role defined in `$CFG->notloggedinroleid`, it is not possible to assign any other role to this non-existent user id. There is one special guest user account that is used when user logs in using the guest login button or when guest auto-login is enabled. Again you can not assign any roles to the guest account directly, this account gets the `$CFG->guestroleid` automatically. All other authenticated users get the default user role specified in $CFG->defaultuserroleid and in the frontpage context the role specified in` $CFG->defaultfrontpageroleid`.
+All users that did not log-in yet automatically get the default role defined in `$CFG->notloggedinroleid`, it is not possible to assign any other role to this non-existent user id. There is one special guest user account that is used when user logs in using the guest login button or when guest auto-login is enabled. Again you can not assign any roles to the guest account directly, this account gets the `$CFG->guestroleid` automatically. All other authenticated users get the default user role specified in `$CFG->defaultuserroleid` and in the frontpage context the role specified in` $CFG->defaultfrontpageroleid`.
 
 ### How to define new capabilities in plugins
 Capabilities are defined by `$capabilities` array defined in `db/access.php` files. The name of the capability consists of `plugintype/pluginname:capabilityname`.
@@ -52,7 +52,7 @@ Where the meaning of array keys is:
 |`clonepermissionsfrom`|	when you are adding a new capability, you can tell Moodle to copy the permissions for each role from the current settings for another capability. This may give better defaults than just using archetypes for administrators who have heavily customised their roles configuration. The full syntax is: clonepermissionsfrom => moodle/quiz:attempt|
 
 
-It is necessary to bump up plugin version number after any change in db/access.php, so that the upgrade scripts can make the necessary changes to the database. To run the upgrade scripts, log in to Moodle as administrator, navigate to the site home page, and follow the instructions. (If you need to test the upgrade script without changing the plugin version, it is also possible to set back the version number in the mdl_block or mdl_modules table in the database.)
+It is necessary to bump up plugin version number after any change in db/access.php, so that the upgrade scripts can make the necessary changes to the database. To run the upgrade scripts, log in to Moodle as administrator, navigate to the site home page, and follow the instructions.
 
 The capability names are defined in plugin language files, the name of the string consists of "pluginname:capabilityname", in the example above it would be:
 
@@ -99,6 +99,7 @@ $capabilities = [
 ```
 
 The gradeexport/ods:view capability:
+
 + Applies at the course context level.
 + Allows read access.
 + Has a risk of providing access to personal user information.
