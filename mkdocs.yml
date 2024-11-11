@@ -175,7 +175,7 @@ nav:
             - Book Tool: Moodle/Plugin/phpMoodlePlugin_booktool.md
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
-     - XMLDB tool: Moodle/phpMoodleXMLDB.md
+     - XMLDB Editor: Moodle/phpMoodleXMLDB.md
      - Templates: Moodle/phpMoodleTemplate.md
      - Javascript:
             - General: Moodle/Javascript/phpMoodleJS.md

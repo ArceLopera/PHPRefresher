@@ -19,7 +19,7 @@
     
     
       
-        <title>XMLDB tool - PHP Refresher</title>
+        <title>XMLDB Editor - PHP Refresher</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-use-the-xmldb-tool-in-moodle" class="md-skip">
+        <a href="#accessing-the-xmldb-editor" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              XMLDB tool
+              XMLDB Editor
             
           </span>
         </div>
@@ -1915,12 +1915,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          XMLDB tool
+          XMLDB Editor
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        XMLDB tool
+        XMLDB Editor
       </a>
       
         
@@ -1937,50 +1937,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-the-xmldb-tool-in-moodle" class="md-nav__link">
-    How to Use the XMLDB Tool in Moodle
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Use the XMLDB Tool in Moodle">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-accessing-the-xmldb-editor" class="md-nav__link">
-    Step 1: Accessing the XMLDB Editor
+  <a href="#accessing-the-xmldb-editor" class="md-nav__link">
+    Accessing the XMLDB Editor
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-creating-a-new-table" class="md-nav__link">
-    Step 2: Creating a New Table
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-table" class="md-nav__link">
+    Creating a New Table
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-generating-the-installxml-file" class="md-nav__link">
-    Step 3: Generating the install.xml File
+      
+        <li class="md-nav__item">
+  <a href="#generating-the-installxml-file" class="md-nav__link">
+    Generating the install.xml File
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-using-the-installxml-in-your-plugin" class="md-nav__link">
-    Step 4: Using the install.xml in Your Plugin
+      
+        <li class="md-nav__item">
+  <a href="#using-the-installxml-in-your-plugin" class="md-nav__link">
+    Using the install.xml in Your Plugin
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    Best Practices
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-and-desing-guidelines" class="md-nav__link">
+    Best Practices and Desing Guidelines
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2355,50 +2342,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-the-xmldb-tool-in-moodle" class="md-nav__link">
-    How to Use the XMLDB Tool in Moodle
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Use the XMLDB Tool in Moodle">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-accessing-the-xmldb-editor" class="md-nav__link">
-    Step 1: Accessing the XMLDB Editor
+  <a href="#accessing-the-xmldb-editor" class="md-nav__link">
+    Accessing the XMLDB Editor
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-creating-a-new-table" class="md-nav__link">
-    Step 2: Creating a New Table
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-new-table" class="md-nav__link">
+    Creating a New Table
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-generating-the-installxml-file" class="md-nav__link">
-    Step 3: Generating the install.xml File
+      
+        <li class="md-nav__item">
+  <a href="#generating-the-installxml-file" class="md-nav__link">
+    Generating the install.xml File
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-using-the-installxml-in-your-plugin" class="md-nav__link">
-    Step 4: Using the install.xml in Your Plugin
+      
+        <li class="md-nav__item">
+  <a href="#using-the-installxml-in-your-plugin" class="md-nav__link">
+    Using the install.xml in Your Plugin
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practices" class="md-nav__link">
-    Best Practices
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-and-desing-guidelines" class="md-nav__link">
+    Best Practices and Desing Guidelines
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2457,12 +2431,26 @@
                 
 
 
-  <h1>XMLDB tool</h1>
+  <h1>XMLDB Editor</h1>
 
-<h3 id="how-to-use-the-xmldb-tool-in-moodle">How to Use the XMLDB Tool in Moodle</h3>
-<p>The XMLDB tool is a powerful feature within Moodle that assists developers in creating and managing database schemas for Moodle plugins. It provides a graphical interface to define database tables, fields, keys, indexes, and other database elements, which are then used to generate the <code>install.xml</code> file. This file is crucial for defining the structure of the database tables your plugin will use. The XMLDB editor is a tool for making the .xml files that specify how moodle should set up its database tables. Previously, developers had to make separate .sql install files for mysql and postgres, but now only database-neutral file is needed, which supports many more databases.</p>
-<p>Here's a step-by-step guide on how to use the XMLDB tool in Moodle, based on the <a href="https://moodledev.io/general/development/tools/xmldb">XMLDB Documentation</a>.</p>
-<h4 id="step-1-accessing-the-xmldb-editor">Step 1: Accessing the XMLDB Editor</h4>
+<p>The XMLDB editor is a powerful feature within Moodle that assists developers in creating and managing 
+database schemas for Moodle plugins. It provides a graphical interface to define database tables, 
+fields, keys, indexes, and other database elements, which are then used to generate the <code>install.xml</code> 
+file. This file is crucial for defining the structure of the database tables your plugin will use. 
+Previously, developers had to make separate .sql install files for mysql and 
+postgres, but now only database-neutral file is needed, which supports many more databases.</p>
+<p>Moodle's XMLDB editor is a tool that allows developers to create and edit XML files that define 
+the structure of Moodle's database. These XML files are used by Moodle during the installation 
+process to create the database tables.</p>
+<ul>
+<li>XMLDB is Moodle’s database abstraction layer.</li>
+<li>The XMLDB editor is a tool for generating XML files that specify the structure of database tables.</li>
+<li>In every module (or other plugin) folder, there is a db/ folder where the database structure is stored.</li>
+<li>The web server needs write access to all db/ directories.</li>
+<li>The XMLDB database definition is stored in the file db/install.xml.</li>
+</ul>
+<p>For more details, refer to <a href="https://moodledev.io/general/development/tools/xmldb">XMLDB Documentation</a>.</p>
+<h3 id="accessing-the-xmldb-editor">Accessing the XMLDB Editor</h3>
 <ol>
 <li>
 <p><strong>Navigate to the Development Tools</strong>:</p>
@@ -2470,6 +2458,7 @@
 <li>In your Moodle site, go to the site administration block.</li>
 <li>Navigate to <code>Site administration &gt; Development &gt; XMLDB editor</code>.</li>
 </ul>
+<p>Note: You should create a folder named db in the plugin directory where you wish to create the XMLDB files. The db folder should be writeable by your web server. Otherwise, you will not be able to save your changes from the XMLDB editor. Locate the plugin whose database tables you wish to create/edit.</p>
 </li>
 <li>
 <p><strong>Select or Create a New XML File</strong>:</p>
@@ -2480,7 +2469,7 @@
 </li>
 </ol>
 <p><strong>Note</strong> : To be able to handle files properly, the web server needs write access to all db directories where the install.xml files reside (and to the files themselves, of course). If you cannot click either the load or create link, that means that you either have not created the /db directory, or that it is not writeable by the webserver.</p>
-<h4 id="step-2-creating-a-new-table">Step 2: Creating a New Table</h4>
+<h3 id="creating-a-new-table">Creating a New Table</h3>
 <ol>
 <li>
 <p><strong>Add a Table</strong>:</p>
@@ -2529,7 +2518,7 @@
 </ol>
 <p>Whilst editing tables you will see their fields, keys and indexes and you'll be able to handle all them easily. Note that some fields can be non-editable. This is because they are being used in some way (part of one key or index) and the idea is to warn you about that.</p>
 <p>If you define a field as an enum, you should provide the enum options as a comma-separated list, with each option surrounded by single quotes. Example: 'option1','option2','option3'. However, enum has been deprecated in Moodle 2.0, so it is probably better just to avoid enum types altogether.</p>
-<h4 id="step-3-generating-the-installxml-file">Step 3: Generating the <code>install.xml</code> File</h4>
+<h3 id="generating-the-installxml-file">Generating the <code>install.xml</code> File</h3>
 <ol>
 <li>
 <p><strong>Save the XML</strong>:</p>
@@ -2547,7 +2536,7 @@
 </ul>
 </li>
 </ol>
-<h4 id="step-4-using-the-installxml-in-your-plugin">Step 4: Using the <code>install.xml</code> in Your Plugin</h4>
+<h3 id="using-the-installxml-in-your-plugin">Using the <code>install.xml</code> in Your Plugin</h3>
 <ol>
 <li>
 <p><strong>Database Installation</strong>:</p>
@@ -2576,14 +2565,52 @@
 </code></pre></div>
 To get the code for the '// Insert PHP code here' bit, open the XMLDB Editor and load the relevant install.xml file.</p>
 <p>Choose the 'View PHP Code' option and then copy and paste the generated code. Use the XMLDB editor to generate the necessary XML snippets and translate them into PHP code for <code>upgrade.php</code>. Simply copy and paste the code into your <code>upgrade.php</code> file. Clicking in the [View PHP code] will show you the generated code in the editor.</p>
+<p>The install.xml for a plugin is only used during plugin install. After that it is never used. Therefore, if you need to make database schema changes to a plugin that is already installed, you will need to do it from the upgrade.php script. </p>
+<p>The Upgrade API is a core API which allows your plugin to manage features of its own installation, and upgrade. Every plugin includes a version which allows the Upgrade API to apply only the required changes.</p>
+<ul>
+<li>The upgrade.php script for a plugin is located in it's db/ folder.</li>
+<li>The upgrade.php file describes the steps used to upgrade the plugin from one version to a newer version. Plugins cannot be downgraded.</li>
+<li>The version.php file records the version of the plugin code. You must increase version in version.php after any change in the db/ folder, because a new version triggers the upgrade procedure and resets all caches.</li>
+<li>The XMLDB editor can help generate the PHP code to use in the upgrade process.</li>
+<li>The XMLDB editor provides an option to View PHP code for the loaded DB schema.</li>
+</ul>
 </li>
 </ol>
-<h4 id="best-practices">Best Practices</h4>
+<h3 id="best-practices-and-desing-guidelines">Best Practices and Desing Guidelines</h3>
 <ul>
 <li><strong>Consistent Naming</strong>: Use consistent and descriptive names for tables and fields. Prefix them with your plugin name to avoid conflicts.</li>
 <li><strong>Documentation</strong>: Comment and document each field, key, and index to clarify their purpose and constraints.</li>
 <li><strong>Validation</strong>: Regularly validate your <code>install.xml</code> against the Moodle coding guidelines to ensure compliance. Also, ensure your <code>version.php</code> and <code>db/install.xml</code> files are correctly set up to trigger the installation process. The upgrade.php file uses the version number from the <code>version.php</code> file.</li>
 <li><strong>Testing</strong>: Thoroughly test the installation and upgrade processes on a development environment before deploying to production.</li>
+<li><strong>Database design guidelines</strong>:<ul>
+<li>Table names:<ul>
+<li>All tables owned by a plugin should start with the full component name of the plugin, potentially followed by the plural name of the entity stored in the table.</li>
+<li>Activity modules are an exception to this rule. They do not have the mod_ plugin type in their name. Their main table containing instances of the module must contain fields id, course, and name.</li>
+</ul>
+</li>
+<li>Primary keys:
+    Every table must have an auto-incrementing id field of the type int(10) set as its primary key, even if the table has other candidate keys.</li>
+<li>Table and column name lengths:<ul>
+<li>The maximum length of a table name is 28 characters.</li>
+<li>The maximum length of a column name is 30 characters.</li>
+</ul>
+</li>
+<li>Column names:
+    Column names should always be lower-case, simple, and short, following the same rules as for variable names.</li>
+<li>Reserved words:
+    Table and column names should avoid using reserved words.</li>
+<li>Foreign keys:
+    Columns that act as foreign keys and contain a reference to the id field in another table should be named {table_name}id.</li>
+<li>Boolean fields:
+    Boolean fields should be defined as integer fields int(2) and contain values 0 or 1 for false and true respectively.</li>
+<li>Dates and times:
+    Dates and times should be stored as UNIX timestamps in int(10) fields.</li>
+<li>Default values:
+    A sensible default value should be defined where appropriate.</li>
+<li>Database structure:
+    Database structure should not change on stable maintenance branches.</li>
+</ul>
+</li>
 </ul>
 <h3 id="conventions">Conventions</h3>
 <p>Apart from the <a href="https://docs.moodle.org/dev/Database">Database Structures guidelines</a>, some more conventions should be followed:</p>
