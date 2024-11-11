@@ -1,43 +1,267 @@
-### Database abstraction in Moodle
 Moodle provides two main APIs for database abstraction:
 
-#### [Data Definition API (DDL)](https://moodledev.io/docs/5.0/apis/core/dml/ddl)
+### [Data Definition API (DDL)](https://moodledev.io/docs/5.0/apis/core/dml/ddl)
 This API allows you to handle database structures such as tables, fields, and indexes. It provides a set of functions to create, modify, and delete these structures. These functions are used exclusively by the installation and upgrade processes and allow for the execution of correct SQL statements for each RDBMS.
 
-#### [Data Manipulation API (DML)](https://moodledev.io/docs/5.0/apis/core/dml)
+It encapsulates database-specific logic, so developers do not need to worry about the correct SQL syntax for each database type.
+The Data Definition Library should only be used in the installation and upgrade processes. You should NOT use it in other parts of Moodle.
+
+#### Database manager
+The database manager is an object that provides access to various functions for handling database structures such as tables, fields, and indexes. 
+
++ It is responsible for executing the correct SQL statements required by each RDBMS using a neutral description.
++ The database manager is accessible from the `$DB` global object in Moodle. 
++ To use the database manager within your upgrade function of your `upgrade.php` main function, you need to "import" it using the `global` keyword, like this:
+
+```php
+function xmldb_xxxx_upgrade {
+    global $DB; // Load the DDL manager and XMLDB API.
+    $dbman = $DB->get_manager();
+    // Your upgrade code goes here
+}
+```
+
++ The use of these functions is restricted to the upgrade processes and it should not be used in any other parts of Moodle.
++ The database manager class can be found at [lib/ddl/database_manager.php](https://github.com/moodle/moodle/blob/main/lib/ddl/database_manager.php).
+
+#### Handling tables
+These are functions from the DDL that allow you to perform table-related operations:
+
+##### Detect if a table exists:
+
+```php
+$dbman->table_exists($table);
+```
+
+##### Create a table
+
+```php
+$dbman->create_table($table, $continue = true, $feedback = true);
+```
+
+##### Drop a table
+
+```php
+$dbman->drop_table($table, $continue = true, $feedback = true);
+```
+
+##### Rename a table
+
+```php
+$dbman->rename_table($table, $newname, $continue = true, $feedback = true);
+```
+
+##### Example
+
+Here is a code snippet from mod/h5pactivity/db/upgrade.php:
+
+```php
+// Define table h5pactivity_attempts to be created.
+$table = new xmldb_table('h5pactivity_attempts');
+
+// Adding fields to table h5pactivity_attempts.
+$table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+$table->add_field('h5pactivityid', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+$table->add_field('userid', XMLDB_TYPE_INTEGER, '20', null, XMLDB_NOTNULL, null, null);
+$table->add_field('timecreated', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+$table->add_field('timemodified', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
+$table->add_field('attempt', XMLDB_TYPE_INTEGER, '6', null, XMLDB_NOTNULL, null, '1');
+$table->add_field('rawscore', XMLDB_TYPE_INTEGER, '10', null, null, null, '0');
+$table->add_field('maxscore', XMLDB_TYPE_INTEGER, '10', null, null, null, '0');
+   ...
+   ... 
+
+// Conditionally launch create table for h5pactivity_attempts.
+if (!$dbman->table_exists($table)) {
+    $dbman->create_table($table);
+}
+```
+
+The code snippet shown above:
+
+Defines the structure for a new table.
+Creates the table, if it does not exist.
+Note: You should only use these functions in the upgrade script of your plugin. And always use the [XMLDB editor](../phpMoodleXMLDB.md) to create the upgrade script for your plugin.
+
+#### Handling fields
+DDL also provides functions to alter the fields of tables. These functions allow to:
+
++ Detect if a field exists.
++ Create a field in a given table.
++ Drop a field from a table.
++ Rename a field.
++ Change the type of a field.
++ Change the precision of a field.
++ Change the signed/unsigned status of a field.
++ Make a field nullable or not.
++ Change the default value of a field.
+
+Example: 
+
+Here is a code snippet from mod/h5pactivity/db/upgrade.php which shows how to add a new field to an existing table.
+
+```php
+// Define field duration to be added to h5pactivity_attempts.
+$table = new xmldb_table('h5pactivity_attempts');
+$field = new xmldb_field('duration', XMLDB_TYPE_INTEGER, '10', null, null, null, '0', 'maxscore');
+
+// Conditionally launch add field duration.
+if (!$dbman->field_exists($table, $field)) {
+    $dbman->add_field($table, $field);
+}
+```
+
+For more information, have a look at the Handling fields section of the Moodle dev docs.}
+
+#### Handling keys and indexes
+The functions for handling keys and indexes include:
+
+##### Add a key.
+
+```php
+$dbman->add_key($table, $key);
+```
+
+
+##### Drop a key.
+
+```php
+$dbman->drop_key($table, $key);
+```
+
+
+##### Add an index.
+
+```php
+$dbman->add_index($table, $index, $continue = true, $feedback = true);
+```
+
+
+##### Drop an index.
+
+```php
+$dbman->drop_index($table, $index, $continue = true, $feedback = true);
+```
+
+##### Detect if an index exists.
+
+```php
+$dbman->index_exists($table, $index);
+```
+
+
+##### Return the name of an index in DB.
+
+```php
+$dbman->find_index_name($table, $index);
+```
+
+
+Example
+
+Here is a code snippet from mod/h5pactivity/db/upgrade.php which shows how to add a primary key, foreign key and index.
+
+
+```php
+// Adding keys to table h5pactivity_attempts_results.
+$table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+$table->add_key('fk_attemptid', XMLDB_KEY_FOREIGN, ['attemptid'], 'h5pactivity_attempts', ['id']);
+       
+// Adding indexes to table h5pactivity_attempts_results.
+$table->add_index('attemptid-timecreated', XMLDB_INDEX_NOTUNIQUE, ['attemptid', 'timecreated']);
+```
+
+---
+
+#### **XMLDB - DB Schema Abstraction**
+
+Moodle uses an abstracted schema definition in the form of XML (`install.xml` and `upgrade.php`) to create and update database tables across different databases.
+
+- **install.xml**: Defines the structure of tables, fields, indexes, and keys.
+- **upgrade.php**: Handles table upgrades when new fields or tables need to be added.
+
+Example of a table definition in `install.xml`:
+```xml
+<XMLDB PATH="yourplugin/db/install.xml" VERSION="2013053100">
+    <TABLE NAME="yourplugin_data" COMMENT="Stores custom plugin data">
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="User ID"/>
+        <FIELD NAME="data" TYPE="text" NOTNULL="true" COMMENT="Custom data"/>
+        <KEYS>
+            <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        </KEYS>
+    </TABLE>
+</XMLDB>
+```
+
+XMLDB is a custom database abstraction layer that allows developers to define and manage database schemas using XML files. XMLDB introduces a uniform XML-based format to describe the Moodle database tables, with no dependency on actual syntax used by the database system.
+
++ Database schema in Moodle is defined using XMLDB.
++ This allows to define database schemas in a simple and standardised way using XML files.
++ The XML files are then used to generate compatible SQL for each of the database types supported by Moodle.
+
+
+Example
+
+Here is a XMLDB file from mod/label/db/install.xml.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/label/db" VERSION="20120122" COMMENT="XMLDB file for Moodle mod/label"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="label" COMMENT="Defines labels">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="intro" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="false" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
+```
+
+This XML file is used to create the database table(s) for mod_label, when Moodle is installed.
+Each Moodle plugin that stores its own data in the database will have it's own install.xml file located in it's db/ subdirectory.
+The install.xml file is only used during the installation process.
+
+
+
+### [Data Manipulation API (DML)](https://moodledev.io/docs/5.0/apis/core/dml)
 This API is used to access and manipulate data in the Moodle database. It provides functions for inserting, updating, deleting, and retrieving data from the database.
 
 The **Data Manipulation API (DML)** in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.
 
-### Key Components of Moodle's DML:
-
-1. **Database Access Object (DB API)**
-2. **CRUD Operations (Create, Read, Update, Delete)**
-3. **SQL Queries**
-4. **Transactions**
-5. **Database Caching**
-6. **DB Schema Abstraction**
-
-Let’s break these down in detail.
-
 ---
 
-### 1. **Database Access Object (DB API)**
+#### **Database Access Object (DB API)**
 
 The `$DB` global object in Moodle is the central component of the DML API. It provides a collection of functions to interact with the database. Instead of writing raw SQL directly, developers use these functions, which are compatible with all supported database systems.
 
 The `$DB` object is initialized as part of the Moodle environment (`config.php`), and it abstracts the interaction with the underlying DB engine.
 
 Common `$DB` functions include:
+
 - `insert_record()`
 - `update_record()`
 - `delete_records()`
 - `get_record()`
 - `get_records()`
 
-### 2. **CRUD Operations**
+#### **CRUD Operations**
 
-#### **a. Create: Inserting Records**
+##### **a. Create: Inserting Records**
 To insert a new record into the database, you can use the `insert_record()` function. This function takes two parameters:
 - **Table name**: The name of the database table where you want to insert the record.
 - **Data object**: An object where each property represents a field in the table.
@@ -54,7 +278,7 @@ $DB->insert_record('user', $record);
 
 If the table has an auto-incrementing ID field, `insert_record()` will return the ID of the inserted record.
 
-#### **b. Read: Fetching Data**
+##### **b. Read: Fetching Data**
 
 To retrieve data from the database, several functions are available:
 - `get_record()`: Retrieves a single record matching a specific condition.
@@ -77,7 +301,7 @@ foreach ($users as $user) {
 }
 ```
 
-#### **c. Update: Modifying Existing Records**
+##### **c. Update: Modifying Existing Records**
 
 To update a record, you use the `update_record()` function. You must pass an object that contains the primary key field along with the fields to be updated.
 
@@ -90,7 +314,7 @@ $DB->update_record('user', $user);
 
 Here, the record with `id = 5` is updated, and its `email` field is changed.
 
-#### **d. Delete: Removing Records**
+##### **d. Delete: Removing Records**
 
 To delete records, the `delete_records()` function is used. You can delete a record or a set of records based on a condition.
 
@@ -106,7 +330,7 @@ $DB->delete_records('user', array('confirmed' => 0));  // Deletes all unconfirme
 
 ---
 
-### 3. **SQL Queries**
+#### **SQL Queries**
 
 While Moodle’s DML API provides functions to handle common CRUD operations, you may need to write custom SQL queries for more complex operations. Moodle provides `get_records_sql()`, `get_record_sql()`, and other SQL-based functions that allow you to execute raw SQL.
 
@@ -127,21 +351,21 @@ Notice the use of `{user}` in the SQL query. This is a Moodle convention that al
 
 ---
 
-### 4. **Transactions**
+#### **Transactions**
 
 Moodle supports database transactions, which ensure that multiple operations are treated as a single unit of work. If any operation in the transaction fails, all changes are rolled back, ensuring data consistency.
 
-#### Starting a Transaction
+##### Starting a Transaction
 ```php
 $transaction = $DB->start_delegated_transaction();
 ```
 
-#### Committing a Transaction
+##### Committing a Transaction
 ```php
 $transaction->allow_commit();
 ```
 
-#### Rolling Back a Transaction
+##### Rolling Back a Transaction
 If an exception occurs during the transaction, the rollback is automatic.
 
 Example of using a transaction:
@@ -173,7 +397,7 @@ try {
 
 ---
 
-### 5. **Database Caching**
+#### **Database Caching**
 
 Moodle provides caching mechanisms that improve the performance of database queries. The `get_record_cacheable()` function allows you to cache the result of a query, which can be useful if the same query is run frequently.
 
@@ -191,28 +415,6 @@ if ($user = $cache->get($userid)) {
 
 ---
 
-### 6. **DB Schema Abstraction**
-
-Moodle uses an abstracted schema definition in the form of XML (`install.xml` and `upgrade.php`) to create and update database tables across different databases.
-
-- **install.xml**: Defines the structure of tables, fields, indexes, and keys.
-- **upgrade.php**: Handles table upgrades when new fields or tables need to be added.
-
-Example of a table definition in `install.xml`:
-```xml
-<XMLDB PATH="yourplugin/db/install.xml" VERSION="2013053100">
-    <TABLE NAME="yourplugin_data" COMMENT="Stores custom plugin data">
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
-        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="User ID"/>
-        <FIELD NAME="data" TYPE="text" NOTNULL="true" COMMENT="Custom data"/>
-        <KEYS>
-            <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        </KEYS>
-    </TABLE>
-</XMLDB>
-```
-
----
 
 ### Best Practices
 
