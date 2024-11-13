@@ -2208,6 +2208,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#dml-drivers" class="md-nav__link">
+    DML drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#database-access-object-db-api" class="md-nav__link">
     Database Access Object (DB API)
   </a>
@@ -2432,6 +2439,13 @@
   
     <nav class="md-nav" aria-label="Data Manipulation API (DML)">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dml-drivers" class="md-nav__link">
+    DML drivers
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#database-access-object-db-api" class="md-nav__link">
@@ -2678,9 +2692,53 @@ The install.xml file is only used during the installation process.</p>
 <p>This API is used to access and manipulate data in the Moodle database. It provides functions for inserting, updating, deleting, and retrieving data from the database.</p>
 <p>The <strong>Data Manipulation API (DML)</strong> in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.</p>
 <hr />
+<h4 id="dml-drivers">DML drivers</h4>
+<p>DML drivers are native drivers included with Moodle that provide support for various database management systems. These drivers enable Moodle to interact with different databases using a consistent and optimized interface. </p>
+<p>The DML drivers supported by Moodle include:</p>
+<ul>
+<li>MySQLi</li>
+<li>MariaDB</li>
+<li>PostgreSQL</li>
+<li>Oracle</li>
+<li>Microsoft SQL Server</li>
+</ul>
+<p>These drivers are supported using the DML Database Driver layer, which offers several benefits such as:</p>
+<ul>
+<li>More optimized and faster performance.</li>
+<li>Lower memory consumption.</li>
+<li>Better possibilities for logging, debugging, and profiling.</li>
+<li>Less code, making it easier to fix and maintain.</li>
+</ul>
+<p>For more information you can visit the Moodle Developer Resources page: <a href="https://moodledev.io/docs/5.0/apis/core/dml/drivers">DML drivers in Moodle</a>.</p>
+<hr />
 <h4 id="database-access-object-db-api"><strong>Database Access Object (DB API)</strong></h4>
 <p>The <code>$DB</code> global object in Moodle is the central component of the DML API. It provides a collection of functions to interact with the database. Instead of writing raw SQL directly, developers use these functions, which are compatible with all supported database systems.</p>
 <p>The <code>$DB</code> object is initialized as part of the Moodle environment (<code>config.php</code>), and it abstracts the interaction with the underlying DB engine.</p>
+<ul>
+<li>The data manipulation API is exposed via public methods of the $DB object.</li>
+<li>Moodle core takes care of setting up the connection to the database according to values specified in the main config.php file.</li>
+<li>The $DB global object is an instance of the moodle_database class. </li>
+<li>The $DB global object is instantiated automatically during the bootstrap setup, i.e. as a part of including the main config.php file in your script.</li>
+</ul>
+<p>Here is a snippet showing database-related config values from the main config.php file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;dbtype    = &#39;pgsql&#39;;      // &#39;pgsql&#39;, &#39;mariadb&#39;, &#39;mysqli&#39;, &#39;auroramysql&#39;, &#39;sqlsrv&#39; or &#39;oci&#39;.</span>
+<span class="x">$CFG-&gt;dblibrary = &#39;native&#39;;     // &#39;native&#39; only at the moment</span>
+<span class="x">$CFG-&gt;dbhost    = &#39;localhost&#39;;  // eg &#39;localhost&#39; or IP</span>
+<span class="x">$CFG-&gt;dbname    = &#39;moodle&#39;;     // database name, eg moodle</span>
+<span class="x">$CFG-&gt;dbuser    = &#39;username&#39;;   // your database username</span>
+<span class="x">$CFG-&gt;dbpass    = &#39;password&#39;;   // your database password</span>
+<span class="x">$CFG-&gt;prefix    = &#39;mdl_&#39;;       // prefix to use for all table names</span>
+<span class="x">$CFG-&gt;dboptions = array (</span>
+<span class="x">  &#39;dbpersist&#39; =&gt; 0,</span>
+<span class="x">  &#39;dbport&#39; =&gt; &#39;&#39;,</span>
+<span class="x">  &#39;dbsocket&#39; =&gt; &#39;&#39;,</span>
+<span class="x">  &#39;dbcollation&#39; =&gt; &#39;utf8mb4_unicode_ci&#39;,</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>The <a href="https://github.com/moodle/moodle/blob/main/config-dist.php#L34-L138">config-dist.php</a> file provides more explanation on each of the settings defined.</p>
+<p>The DB object is available in the global scope right after including the config.php file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require(__DIR__ . &#39;/config.php&#39;);</span>
+</code></pre></div>
 <p>Common <code>$DB</code> functions include:</p>
 <ul>
 <li><code>insert_record()</code></li>
