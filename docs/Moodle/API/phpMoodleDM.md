@@ -313,11 +313,93 @@ Common `$DB` functions include:
 - `get_record()`
 - `get_records()`
 
+---
+
+#### Table prefix
+Most Moodle installations use a prefix for all the database tables, such as mdl_.
+
+This table prefix is defined in the main config.php file:
+
+```php
+$CFG->prefix = 'mdl_';
+```
+
+Note: It is not necessary to have a table prefix. Using different table prefixes allows you to install 
+multiple Moodle instances within the same database.
+
+This prefix is NOT to be used in the code itself. Moodle's database APIs will automatically add the 
+table prefix when constructing the SQL statements.
+
+All the $table parameters in the DML functions are meant to be the table name without prefixes:
+
+```php	
+$user = $DB->get_record('user', ['id' => '2']);
+```
+
+In custom SQL queries, table names must be enclosed between curly braces.
+
+```php
+$user = $DB->get_record_sql('SELECT COUNT(*) FROM {user} WHERE suspended = 1;');
+```
+
+#### Conditions and Placeholders
+##### Conditions
+
+All the $conditions parameters in the DML functions are arrays of fieldname => fieldvalue elements.
+When multiple field/value elements are used, the logical AND is used to populate the WHERE statement. This means all the field/value pairs MUST be fulfilled.
+
+```php
+$user = $DB->get_record('user', ['firstname'  => 'Martin', 'lastname'  => 'Dougiamas']);
+```
+
+This function call will generate the following SQL statement if the database type is MySQL and the table prefix is "mdl_":
+
+``` sql
+SELECT * 
+FROM mdl_user
+WHERE firstname = 'Martin' AND lastname = 'Dougiamas';
+```
+
+##### Placeholders
++ All the $params parameters in the DML functions are arrays of values used to fill placeholders in SQL statements.
++ Placeholders help to avoid problems with SQL-injection and/or invalid quotes in SQL queries. 
++ Placeholders facilitate secure and cross-db compatible code.
++ Two types of placeholders are supported - question marks (SQL_PARAMS_QM) and named placeholders (SQL_PARAMS_NAMED).
++ Named params must be unique even if the value passed is the same. 
+
+
+Example of using question-mark placeholders
+
+```php
+$DB->get_record_sql(
+    'SELECT * FROM {user} WHERE firstname = ? AND lastname = ?',
+    [
+        'Martin',
+        'Dougiamas',
+    ]
+);
+```
+
+
+Example of using named placeholders
+
+```php
+$DB->get_record_sql(
+    'SELECT * FROM {user} WHERE firstname = :firstname AND lastname = :lastname',
+    [
+        'firstname'  => 'Martin',
+        'lastname'  => 'Dougiamas',
+    ]
+);
+```
+
+---
 
 #### **CRUD Operations**
 
 ##### **a. Create: Inserting Records**
 To insert a new record into the database, you can use the `insert_record()` function. This function takes two parameters:
+
 - **Table name**: The name of the database table where you want to insert the record.
 - **Data object**: An object where each property represents a field in the table.
 
@@ -335,11 +417,51 @@ If the table has an auto-incrementing ID field, `insert_record()` will return th
 
 ##### **b. Read: Fetching Data**
 
+DML provides functions to help developers read data from the database.
+There are functions to:
+
++ Get a single record from a table matching given conditions.
++ Get multiple records from a table matching given conditions.
++ Get a particular field value from a record in a table.
++ Check if a record exists.
++ Count the number of records.
++ Get data from multiple tables using custom SQL.
+
 To retrieve data from the database, several functions are available:
+
 - `get_record()`: Retrieves a single record matching a specific condition.
 - `get_records()`: Retrieves multiple records matching a specific condition.
 
-Example of fetching a single record:
+###### get_record
+Return a single database record as an object where all the given conditions are met.
+
+```php
+public function get_record(
+    $table,
+    array $conditions,
+    $fields = '*',
+    $strictness = IGNORE_MISSING
+);
+```
+
+Returns an object of the first matching record if found, false if nothing is found or 
+an exception on error.
+
+Uses the logical AND to populate the WHERE clause.
+Uses = (equals) for matching the field values.
+
+###### Usage
+
+Getting all the fields from the user table matching the given conditions.
+
+```php	
+$result = $DB->get_record('user', ['firstname' => 'Martin', 'lastname' => 'Dougiamas']);
+
+if ($result) {
+    echo $result->username;
+}
+```
+
 ```php
 $userid = 5;
 $user = $DB->get_record('user', array('id' => $userid), '*', MUST_EXIST);
@@ -348,11 +470,143 @@ echo $user->name;
 
 In the example above, `MUST_EXIST` ensures that if no record is found, an exception is thrown.
 
+
+Getting only selected fields from the user table matching the given conditions.
+
+```php
+$result = $DB->get_record('user', ['firstname' => 'Martin', 'lastname' => 'Dougiamas'], 'id,username,email');
+
+if ($result) {
+    echo $result->username;
+}
+```
+
+###### get_record_select
+Return a single database record as an object where the given conditions are used in the WHERE clause.
+
+```php
+public function get_record_select(
+    $table,
+    $select,
+    array $params = null,
+    $fields = '*',
+    $strictness = IGNORE_MISSING
+);
+```
+
+Returns an object of the first matching record if found, false if nothing is found or an exception 
+on error.
+Condition ($select) is a SQL snippet, giving you more flexibility.
+
+###### Usage
+
+```php
+$result = $DB->get_record_select(
+    'user', 
+    "firstname LIKE '?%' AND deleted = ?", 
+    ['Martin', 0]
+);
+
+if ($result) {
+    echo $result->username;
+}
+```
+
+###### get_record_sql
+Return a single database record as an object using a custom SELECT query.
+
+```php
+public function get_record_sql(
+    $sql,
+    array $params = null,
+    $strictness = IGNORE_MISSING
+);
+```
+
+Returns an object of the first matching record if found, false if nothing is found or 
+an exception on error.
+The SELECT SQL should normally return one record only.
+
+
+###### Usage
+
+```php
+$sql = "SELECT * FROM {user} WHERE firstname LIKE '?%' AND deleted = ?";
+
+$result = $DB->get_record_sql(
+    $sql, 
+    ['Martin', 0]
+);
+
+if ($result) {
+    echo $result->username;
+}
+```
+
+###### Get multiple records
+To get multiple records, you could use `get_records()`, `get_records_select()` or `get_records_sql()`.
+These functions return a list of records as an array of objects.
+
+Example usage of get_records()
+
+```php
+// Retrieve all users with a specific role from the 'user' table.
+$users = $DB->get_records('user', ['roleid' => 5]);
+// Loop through the retrieved records.
+foreach ($users as $user) {
+    // Access user data.
+    echo $user->id . '<br>';
+    echo $user->username . '<br>';
+    echo $user->email . '<br>';
+    echo $user->firstname . '<br>';
+    echo $user->lastname . '<br>';
+}
+```
+
 Example of fetching multiple records:
 ```php
 $users = $DB->get_records('user', array('confirmed' => 1));
 foreach ($users as $user) {
     echo $user->name . '<br>';
+}
+```
+
+Example usage of get_records_select()
+
+```php
+// Retrieve all users with a specific role and a certain city from the 'user' table.
+$users = $DB->get_records_select(
+    'user',
+    'roleid = :roleid AND city = :city',
+    ['roleid' => 5, 'city' => 'Barcelona']);
+
+// Loop through the retrieved records.
+foreach ($users as $user) {
+    // Access user data.
+    echo $user->id . '<br>';
+    echo $user->username . '<br>';
+    echo $user->email . '<br>';
+    echo $user->firstname . '<br>';
+    echo $user->lastname . '<br>';
+}
+```
+
+
+Example usage of get_records_sql()
+
+```php
+// Retrieve all users with a specific role and a certain city from the 'user' table.
+$sql = "SELECT * FROM {user} WHERE roleid = :roleid AND city = :city";
+$params = ['roleid' => 5, 'city' => 'Barcelona'];
+$users = $DB->get_records_sql($sql, $params);
+// Loop through the retrieved records.
+foreach ($users as $user) {
+    // Access user data.
+    echo $user->id . '<br>';
+    echo $user->username . '<br>';
+    echo $user->email . '<br>';
+    echo $user->firstname . '<br>';
+    echo $user->lastname . '<br>';
 }
 ```
 

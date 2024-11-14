@@ -2222,6 +2222,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#table-prefix" class="md-nav__link">
+    Table prefix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-and-placeholders" class="md-nav__link">
+    Conditions and Placeholders
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#crud-operations" class="md-nav__link">
     CRUD Operations
   </a>
@@ -2450,6 +2464,20 @@
           <li class="md-nav__item">
   <a href="#database-access-object-db-api" class="md-nav__link">
     Database Access Object (DB API)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-prefix" class="md-nav__link">
+    Table prefix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-and-placeholders" class="md-nav__link">
+    Conditions and Placeholders
   </a>
   
 </li>
@@ -2747,11 +2775,67 @@ The install.xml file is only used during the installation process.</p>
 <li><code>get_record()</code></li>
 <li><code>get_records()</code></li>
 </ul>
+<hr />
+<h4 id="table-prefix">Table prefix</h4>
+<p>Most Moodle installations use a prefix for all the database tables, such as mdl_.</p>
+<p>This table prefix is defined in the main config.php file:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;prefix = &#39;mdl_&#39;;</span>
+</code></pre></div>
+<p>Note: It is not necessary to have a table prefix. Using different table prefixes allows you to install 
+multiple Moodle instances within the same database.</p>
+<p>This prefix is NOT to be used in the code itself. Moodle's database APIs will automatically add the 
+table prefix when constructing the SQL statements.</p>
+<p>All the $table parameters in the DML functions are meant to be the table name without prefixes:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, [&#39;id&#39; =&gt; &#39;2&#39;]);</span>
+</code></pre></div>
+<p>In custom SQL queries, table names must be enclosed between curly braces.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $DB-&gt;get_record_sql(&#39;SELECT COUNT(*) FROM {user} WHERE suspended = 1;&#39;);</span>
+</code></pre></div>
+<h4 id="conditions-and-placeholders">Conditions and Placeholders</h4>
+<h5 id="conditions">Conditions</h5>
+<p>All the $conditions parameters in the DML functions are arrays of fieldname =&gt; fieldvalue elements.
+When multiple field/value elements are used, the logical AND is used to populate the WHERE statement. This means all the field/value pairs MUST be fulfilled.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, [&#39;firstname&#39;  =&gt; &#39;Martin&#39;, &#39;lastname&#39;  =&gt; &#39;Dougiamas&#39;]);</span>
+</code></pre></div>
+<p>This function call will generate the following SQL statement if the database type is MySQL and the table prefix is "mdl_":</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">mdl_user</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">firstname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Martin&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">lastname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Dougiamas&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h5 id="placeholders">Placeholders</h5>
+<ul>
+<li>All the $params parameters in the DML functions are arrays of values used to fill placeholders in SQL statements.</li>
+<li>Placeholders help to avoid problems with SQL-injection and/or invalid quotes in SQL queries. </li>
+<li>Placeholders facilitate secure and cross-db compatible code.</li>
+<li>Two types of placeholders are supported - question marks (SQL_PARAMS_QM) and named placeholders (SQL_PARAMS_NAMED).</li>
+<li>Named params must be unique even if the value passed is the same. </li>
+</ul>
+<p>Example of using question-mark placeholders</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;get_record_sql(</span>
+<span class="x">    &#39;SELECT * FROM {user} WHERE firstname = ? AND lastname = ?&#39;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;Martin&#39;,</span>
+<span class="x">        &#39;Dougiamas&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example of using named placeholders</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;get_record_sql(</span>
+<span class="x">    &#39;SELECT * FROM {user} WHERE firstname = :firstname AND lastname = :lastname&#39;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;firstname&#39;  =&gt; &#39;Martin&#39;,</span>
+<span class="x">        &#39;lastname&#39;  =&gt; &#39;Dougiamas&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<hr />
 <h4 id="crud-operations"><strong>CRUD Operations</strong></h4>
 <h5 id="a-create-inserting-records"><strong>a. Create: Inserting Records</strong></h5>
-<p>To insert a new record into the database, you can use the <code>insert_record()</code> function. This function takes two parameters:
-- <strong>Table name</strong>: The name of the database table where you want to insert the record.
-- <strong>Data object</strong>: An object where each property represents a field in the table.</p>
+<p>To insert a new record into the database, you can use the <code>insert_record()</code> function. This function takes two parameters:</p>
+<ul>
+<li><strong>Table name</strong>: The name of the database table where you want to insert the record.</li>
+<li><strong>Data object</strong>: An object where each property represents a field in the table.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="x">$record = new stdClass();</span>
 <span class="x">$record-&gt;name = &#39;John Doe&#39;;</span>
 <span class="x">$record-&gt;email = &#39;john@example.com&#39;;</span>
@@ -2762,21 +2846,155 @@ The install.xml file is only used during the installation process.</p>
 </code></pre></div>
 <p>If the table has an auto-incrementing ID field, <code>insert_record()</code> will return the ID of the inserted record.</p>
 <h5 id="b-read-fetching-data"><strong>b. Read: Fetching Data</strong></h5>
-<p>To retrieve data from the database, several functions are available:
-- <code>get_record()</code>: Retrieves a single record matching a specific condition.
-- <code>get_records()</code>: Retrieves multiple records matching a specific condition.</p>
-<p>Example of fetching a single record:
+<p>DML provides functions to help developers read data from the database.
+There are functions to:</p>
+<ul>
+<li>Get a single record from a table matching given conditions.</li>
+<li>Get multiple records from a table matching given conditions.</li>
+<li>Get a particular field value from a record in a table.</li>
+<li>Check if a record exists.</li>
+<li>Count the number of records.</li>
+<li>Get data from multiple tables using custom SQL.</li>
+</ul>
+<p>To retrieve data from the database, several functions are available:</p>
+<ul>
+<li><code>get_record()</code>: Retrieves a single record matching a specific condition.</li>
+<li><code>get_records()</code>: Retrieves multiple records matching a specific condition.</li>
+</ul>
+<h6 id="get_record">get_record</h6>
+<p>Return a single database record as an object where all the given conditions are met.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_record(</span>
+<span class="x">    $table,</span>
+<span class="x">    array $conditions,</span>
+<span class="x">    $fields = &#39;*&#39;,</span>
+<span class="x">    $strictness = IGNORE_MISSING</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Returns an object of the first matching record if found, false if nothing is found or 
+an exception on error.</p>
+<p>Uses the logical AND to populate the WHERE clause.
+Uses = (equals) for matching the field values.</p>
+<h6 id="usage">Usage</h6>
+<p>Getting all the fields from the user table matching the given conditions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $DB-&gt;get_record(&#39;user&#39;, [&#39;firstname&#39; =&gt; &#39;Martin&#39;, &#39;lastname&#39; =&gt; &#39;Dougiamas&#39;]);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="x">$userid = 5;</span>
 <span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid), &#39;*&#39;, MUST_EXIST);</span>
 <span class="x">echo $user-&gt;name;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>In the example above, <code>MUST_EXIST</code> ensures that if no record is found, an exception is thrown.</p>
+<p>Getting only selected fields from the user table matching the given conditions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $DB-&gt;get_record(&#39;user&#39;, [&#39;firstname&#39; =&gt; &#39;Martin&#39;, &#39;lastname&#39; =&gt; &#39;Dougiamas&#39;], &#39;id,username,email&#39;);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h6 id="get_record_select">get_record_select</h6>
+<p>Return a single database record as an object where the given conditions are used in the WHERE clause.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_record_select(</span>
+<span class="x">    $table,</span>
+<span class="x">    $select,</span>
+<span class="x">    array $params = null,</span>
+<span class="x">    $fields = &#39;*&#39;,</span>
+<span class="x">    $strictness = IGNORE_MISSING</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Returns an object of the first matching record if found, false if nothing is found or an exception 
+on error.
+Condition ($select) is a SQL snippet, giving you more flexibility.</p>
+<h6 id="usage_1">Usage</h6>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $DB-&gt;get_record_select(</span>
+<span class="x">    &#39;user&#39;, </span>
+<span class="x">    &quot;firstname LIKE &#39;?%&#39; AND deleted = ?&quot;, </span>
+<span class="x">    [&#39;Martin&#39;, 0]</span>
+<span class="x">);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h6 id="get_record_sql">get_record_sql</h6>
+<p>Return a single database record as an object using a custom SELECT query.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_record_sql(</span>
+<span class="x">    $sql,</span>
+<span class="x">    array $params = null,</span>
+<span class="x">    $strictness = IGNORE_MISSING</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Returns an object of the first matching record if found, false if nothing is found or 
+an exception on error.
+The SELECT SQL should normally return one record only.</p>
+<h6 id="usage_2">Usage</h6>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname LIKE &#39;?%&#39; AND deleted = ?&quot;;</span>
+
+<span class="x">$result = $DB-&gt;get_record_sql(</span>
+<span class="x">    $sql, </span>
+<span class="x">    [&#39;Martin&#39;, 0]</span>
+<span class="x">);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h6 id="get-multiple-records">Get multiple records</h6>
+<p>To get multiple records, you could use <code>get_records()</code>, <code>get_records_select()</code> or <code>get_records_sql()</code>.
+These functions return a list of records as an array of objects.</p>
+<p>Example usage of get_records()</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Retrieve all users with a specific role from the &#39;user&#39; table.</span>
+<span class="x">$users = $DB-&gt;get_records(&#39;user&#39;, [&#39;roleid&#39; =&gt; 5]);</span>
+<span class="x">// Loop through the retrieved records.</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    // Access user data.</span>
+<span class="x">    echo $user-&gt;id . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;email . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;firstname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;lastname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
 <p>Example of fetching multiple records:
 <div class="highlight"><pre><span></span><code><span class="x">$users = $DB-&gt;get_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 1));</span>
 <span class="x">foreach ($users as $user) {</span>
 <span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
 <span class="x">}</span>
 </code></pre></div></p>
+<p>Example usage of get_records_select()</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Retrieve all users with a specific role and a certain city from the &#39;user&#39; table.</span>
+<span class="x">$users = $DB-&gt;get_records_select(</span>
+<span class="x">    &#39;user&#39;,</span>
+<span class="x">    &#39;roleid = :roleid AND city = :city&#39;,</span>
+<span class="x">    [&#39;roleid&#39; =&gt; 5, &#39;city&#39; =&gt; &#39;Barcelona&#39;]);</span>
+
+<span class="x">// Loop through the retrieved records.</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    // Access user data.</span>
+<span class="x">    echo $user-&gt;id . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;email . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;firstname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;lastname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Example usage of get_records_sql()</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Retrieve all users with a specific role and a certain city from the &#39;user&#39; table.</span>
+<span class="x">$sql = &quot;SELECT * FROM {user} WHERE roleid = :roleid AND city = :city&quot;;</span>
+<span class="x">$params = [&#39;roleid&#39; =&gt; 5, &#39;city&#39; =&gt; &#39;Barcelona&#39;];</span>
+<span class="x">$users = $DB-&gt;get_records_sql($sql, $params);</span>
+<span class="x">// Loop through the retrieved records.</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    // Access user data.</span>
+<span class="x">    echo $user-&gt;id . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;email . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;firstname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;lastname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
 <h5 id="c-update-modifying-existing-records"><strong>c. Update: Modifying Existing Records</strong></h5>
 <p>To update a record, you use the <code>update_record()</code> function. You must pass an object that contains the primary key field along with the fields to be updated.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$user = new stdClass();</span>
