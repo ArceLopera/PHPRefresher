@@ -413,7 +413,51 @@ $record->timecreated = time();
 $DB->insert_record('user', $record);
 ```
 
-If the table has an auto-incrementing ID field, `insert_record()` will return the ID of the inserted record.
+If the table has an auto-incrementing ID field, `insert_record()` will return the ID of the inserted 
+record.
+
++ The first parameter is the table name (without the prefix).
++ The second parameter is a data object.
++ The data object typically will not have the "id" field set.
++ It returns the "id" of the newly created record.
+
+```php
+// Example use of insert_record()
+// Create a new stdClass object to hold the data.
+$data = new stdClass();
+$data->username = 'johndoe';
+$data->password = 'mypassword';
+$data->firstname = 'John';
+$data->lastname = 'Doe';
+$data->email = 'johndoe@example.com';
+
+// Insert the record into the 'user' table.
+$userid = $DB->insert_record('user', $data);
+
+if ($userid) {
+    // Record added successfully.
+} else {
+    // Failed to add record.
+}
+```
+
+
+To insert multiple records into a table, you can use the `insert_records()` function.
+
++ First parameter is the table name.
++ Second parameter is an array of data objects.
+
+```php
+// Example use of insert_records()
+$records = [
+    (object)['name' => 'John Doe', 'email' => 'johndoe@example.com'],
+    (object)['name' => 'Jane Smith', 'email' => 'janesmith@example.com'],
+    // Add more records as needed.
+];
+
+$DB->insert_records('mycustomtable', $records);
+```
+
 
 ##### **b. Read: Fetching Data**
 
@@ -623,6 +667,26 @@ $DB->update_record('user', $user);
 
 Here, the record with `id = 5` is updated, and its `email` field is changed.
 
+
++ The first parameter is the table name (without the prefix).
++ The second parameter is the updated data object.
++ The data object should have the "id" field set. This field is used to identify the record to be updated.
+
+```php
+// Example usage of update_record()
+// Get an existing user record.
+$record = $DB->get_record('user', ['id' => '123']);
+if ($record) {
+    // Update the data object.
+    $record->firstname = 'Updated Firstname';
+    $record->lastname = 'Updated Lastname';
+
+    // Update the record.
+    $DB->update_record('user', $record);
+}
+
+```
+
 ##### **d. Delete: Removing Records**
 
 To delete records, the `delete_records()` function is used. You can delete a record or a set of records based on a condition.
@@ -635,6 +699,17 @@ $DB->delete_records('user', array('id' => 5));
 Example of deleting multiple records:
 ```php
 $DB->delete_records('user', array('confirmed' => 0));  // Deletes all unconfirmed users.
+```
+
+The DML provides `delete_records_select()` for deleting one or more records.
+
+Example usage of delete_records_select()
+
+```php
+$where = 'firstname LIKE :fname OR lastname LIKE :lname';
+$params = ['fname' => 'Fake Name', 'lname' => 'Fake Name'];
+
+$DB->delete_records_select('user', $where, $params);
 ```
 
 ---
@@ -724,6 +799,131 @@ if ($user = $cache->get($userid)) {
 
 ---
 
+### Using recordsets
+The get_recordset_xxx() functions should be used when the number of records to be retrieved from the database is high. 
+This is because they return an iterator to iterate over the records and save memory.
+After using a recordset iterator, it is important to close it using the close() method to free up resources in the RDBMS.
+The get_records_xxx() functions are far from optimal, because they load all the records into the memory via the returned array.
+
+
+Example usage of get_recordset()
+
+```php
+$rs = $DB->get_recordset('user');
+foreach ($rs as $record) {
+    // Do whatever you want with this record.
+    echo $record->username . '<br>';
+}
+$rs->close();
+```
+
+---
+
+### Cross database compatibility
+Moodle supports several SQL servers, including MySQL, MariaDB, PostgreSQL, MS-SQL and Oracle. 
+These may have specific syntax in certain cases. In order to achieve cross-db compatibility of 
+the code, you should use functions from the DML API to generate the fragments of the query valid 
+for the actual SQL server.
+
+Here are some functions that you may need to use often:
+
+
+
+#### sql_like
+Return the query fragment to perform the LIKE comparison.
+
+```php
+$DB->sql_like(
+    $fieldname,
+    $param,
+    $casesensitive = true,
+    $accentsensitive = true,
+    $notlike = false,
+    $escapechar = ' \\ '
+);
+```
+
+
+Example: Searching for records partially matching the given hard-coded literal.
+
+```php
+$likeidnumber = $DB->sql_like('idnumber', ':idnum');
+
+$DB->get_records_sql(
+    "SELECT id, fullname FROM {course} WHERE {$likeidnumber}",
+    [
+        'idnum' => 'DEMO-%',
+    ]
+);
+```
+
+Note:
+
++ Use `sql_like()` if the value being compared is trusted and properly formatted/escaped.
++ Use `sql_like_escape()` if you need to compare with a value submitted by the user.
+
+
+#### sql_like_escape
+
+Escape the value submitted by the user so that it can be used for partial comparison and the 
+special characters like '_' or '%' behave as literal characters, not wildcards.
+
+```php
+$DB->sql_like_escape(
+    $text,
+    $escapechar = '\\'
+);
+```
+
+
+Example: If you need to perform a partial comparison with a value that has been submitted by the user.
+
+```php
+$search = required_param('search', PARAM_RAW);
+
+$likefullname = $DB->sql_like('fullname', ':fullname');
+
+$DB->get_records_sql(
+    "SELECT id, fullname FROM {course} WHERE {$likefullname}",
+    [
+        'fullname'  => '%' . $DB->sql_like_escape($search) . '%',
+    ]
+);
+```
+
+
+#### get_in_or_equal
+Return the query fragment to check if a value is IN the given list of items (with a fallback to 
+plain equal comparison if there is just one item).
+
+```php
+public function get_in_or_equal(
+    $items,
+    $type = SQL_PARAMS_QM,
+    $prefix = 'param',
+    $equal = true,
+    $onemptyitems = false
+);
+```
+
+Example:
+
+```php
+$statuses = ['todo', 'open', 'inprogress', 'intesting'];
+[$insql, $inparams] = $DB->get_in_or_equal($statuses);
+$sql = "SELECT * FROM {bugtracker_issues} WHERE status $insql";
+$bugs = $DB->get_records_sql($sql, $inparams);
+```
+
+
+
+
+Additional reading
+Please see the [Cross-DB compatibility section](https://moodledev.io/docs/4.4/apis/core/dml#cross-db-compatibility) of the DML dev docs for a list of useful functions 
+you can use to generate cross-db compatible SQL.
+
+---
+
 
 ### Best Practices
 
@@ -737,4 +937,8 @@ if ($user = $cache->get($userid)) {
 
 ### Conclusion
 
-Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a secure and efficient way. By using the DML functions, you ensure compatibility with different database systems, safeguard against SQL injection, and maintain the overall integrity of the system. Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is the recommended way to manipulate data in Moodle.
+Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a 
+secure and efficient way. By using the DML functions, you ensure compatibility with different database 
+systems, safeguard against SQL injection, and maintain the overall integrity of the system. 
+Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is 
+the recommended way to manipulate data in Moodle.
