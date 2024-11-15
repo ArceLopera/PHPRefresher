@@ -2269,6 +2269,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-recordsets" class="md-nav__link">
+    Using recordsets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-database-compatibility" class="md-nav__link">
+    Cross database compatibility
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross database compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_like" class="md-nav__link">
+    sql_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_like_escape" class="md-nav__link">
+    sql_like_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_in_or_equal" class="md-nav__link">
+    get_in_or_equal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#best-practices" class="md-nav__link">
     Best Practices
   </a>
@@ -2506,6 +2547,47 @@
           <li class="md-nav__item">
   <a href="#database-caching" class="md-nav__link">
     Database Caching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-recordsets" class="md-nav__link">
+    Using recordsets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-database-compatibility" class="md-nav__link">
+    Cross database compatibility
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross database compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_like" class="md-nav__link">
+    sql_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_like_escape" class="md-nav__link">
+    sql_like_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_in_or_equal" class="md-nav__link">
+    get_in_or_equal
   </a>
   
 </li>
@@ -2844,7 +2926,46 @@ When multiple field/value elements are used, the logical AND is used to populate
 <span class="x">// Insert the record into the &#39;user&#39; table.</span>
 <span class="x">$DB-&gt;insert_record(&#39;user&#39;, $record);</span>
 </code></pre></div>
-<p>If the table has an auto-incrementing ID field, <code>insert_record()</code> will return the ID of the inserted record.</p>
+<p>If the table has an auto-incrementing ID field, <code>insert_record()</code> will return the ID of the inserted 
+record.</p>
+<ul>
+<li>The first parameter is the table name (without the prefix).</li>
+<li>The second parameter is a data object.</li>
+<li>The data object typically will not have the "id" field set.</li>
+<li>It returns the "id" of the newly created record.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Example use of insert_record()</span>
+<span class="x">// Create a new stdClass object to hold the data.</span>
+<span class="x">$data = new stdClass();</span>
+<span class="x">$data-&gt;username = &#39;johndoe&#39;;</span>
+<span class="x">$data-&gt;password = &#39;mypassword&#39;;</span>
+<span class="x">$data-&gt;firstname = &#39;John&#39;;</span>
+<span class="x">$data-&gt;lastname = &#39;Doe&#39;;</span>
+<span class="x">$data-&gt;email = &#39;johndoe@example.com&#39;;</span>
+
+<span class="x">// Insert the record into the &#39;user&#39; table.</span>
+<span class="x">$userid = $DB-&gt;insert_record(&#39;user&#39;, $data);</span>
+
+<span class="x">if ($userid) {</span>
+<span class="x">    // Record added successfully.</span>
+<span class="x">} else {</span>
+<span class="x">    // Failed to add record.</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>To insert multiple records into a table, you can use the <code>insert_records()</code> function.</p>
+<ul>
+<li>First parameter is the table name.</li>
+<li>Second parameter is an array of data objects.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Example use of insert_records()</span>
+<span class="x">$records = [</span>
+<span class="x">    (object)[&#39;name&#39; =&gt; &#39;John Doe&#39;, &#39;email&#39; =&gt; &#39;johndoe@example.com&#39;],</span>
+<span class="x">    (object)[&#39;name&#39; =&gt; &#39;Jane Smith&#39;, &#39;email&#39; =&gt; &#39;janesmith@example.com&#39;],</span>
+<span class="x">    // Add more records as needed.</span>
+<span class="x">];</span>
+
+<span class="x">$DB-&gt;insert_records(&#39;mycustomtable&#39;, $records);</span>
+</code></pre></div>
 <h5 id="b-read-fetching-data"><strong>b. Read: Fetching Data</strong></h5>
 <p>DML provides functions to help developers read data from the database.
 There are functions to:</p>
@@ -3003,6 +3124,23 @@ These functions return a list of records as an array of objects.</p>
 <span class="x">$DB-&gt;update_record(&#39;user&#39;, $user);</span>
 </code></pre></div>
 <p>Here, the record with <code>id = 5</code> is updated, and its <code>email</code> field is changed.</p>
+<ul>
+<li>The first parameter is the table name (without the prefix).</li>
+<li>The second parameter is the updated data object.</li>
+<li>The data object should have the "id" field set. This field is used to identify the record to be updated.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Example usage of update_record()</span>
+<span class="x">// Get an existing user record.</span>
+<span class="x">$record = $DB-&gt;get_record(&#39;user&#39;, [&#39;id&#39; =&gt; &#39;123&#39;]);</span>
+<span class="x">if ($record) {</span>
+<span class="x">    // Update the data object.</span>
+<span class="x">    $record-&gt;firstname = &#39;Updated Firstname&#39;;</span>
+<span class="x">    $record-&gt;lastname = &#39;Updated Lastname&#39;;</span>
+
+<span class="x">    // Update the record.</span>
+<span class="x">    $DB-&gt;update_record(&#39;user&#39;, $record);</span>
+<span class="x">}</span>
+</code></pre></div>
 <h5 id="d-delete-removing-records"><strong>d. Delete: Removing Records</strong></h5>
 <p>To delete records, the <code>delete_records()</code> function is used. You can delete a record or a set of records based on a condition.</p>
 <p>Example of deleting a single record:
@@ -3011,6 +3149,13 @@ These functions return a list of records as an array of objects.</p>
 <p>Example of deleting multiple records:
 <div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 0));  // Deletes all unconfirmed users.</span>
 </code></pre></div></p>
+<p>The DML provides <code>delete_records_select()</code> for deleting one or more records.</p>
+<p>Example usage of delete_records_select()</p>
+<div class="highlight"><pre><span></span><code><span class="x">$where = &#39;firstname LIKE :fname OR lastname LIKE :lname&#39;;</span>
+<span class="x">$params = [&#39;fname&#39; =&gt; &#39;Fake Name&#39;, &#39;lname&#39; =&gt; &#39;Fake Name&#39;];</span>
+
+<span class="x">$DB-&gt;delete_records_select(&#39;user&#39;, $where, $params);</span>
+</code></pre></div>
 <hr />
 <h4 id="sql-queries"><strong>SQL Queries</strong></h4>
 <p>While Moodle’s DML API provides functions to handle common CRUD operations, you may need to write custom SQL queries for more complex operations. Moodle provides <code>get_records_sql()</code>, <code>get_record_sql()</code>, and other SQL-based functions that allow you to execute raw SQL.</p>
@@ -3078,6 +3223,93 @@ Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convent
 <span class="x">}</span>
 </code></pre></div>
 <hr />
+<h3 id="using-recordsets">Using recordsets</h3>
+<p>The get_recordset_xxx() functions should be used when the number of records to be retrieved from the database is high. 
+This is because they return an iterator to iterate over the records and save memory.
+After using a recordset iterator, it is important to close it using the close() method to free up resources in the RDBMS.
+The get_records_xxx() functions are far from optimal, because they load all the records into the memory via the returned array.</p>
+<p>Example usage of get_recordset()</p>
+<div class="highlight"><pre><span></span><code><span class="x">$rs = $DB-&gt;get_recordset(&#39;user&#39;);</span>
+<span class="x">foreach ($rs as $record) {</span>
+<span class="x">    // Do whatever you want with this record.</span>
+<span class="x">    echo $record-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+<span class="x">$rs-&gt;close();</span>
+</code></pre></div>
+<hr />
+<h3 id="cross-database-compatibility">Cross database compatibility</h3>
+<p>Moodle supports several SQL servers, including MySQL, MariaDB, PostgreSQL, MS-SQL and Oracle. 
+These may have specific syntax in certain cases. In order to achieve cross-db compatibility of 
+the code, you should use functions from the DML API to generate the fragments of the query valid 
+for the actual SQL server.</p>
+<p>Here are some functions that you may need to use often:</p>
+<h4 id="sql_like">sql_like</h4>
+<p>Return the query fragment to perform the LIKE comparison.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;sql_like(</span>
+<span class="x">    $fieldname,</span>
+<span class="x">    $param,</span>
+<span class="x">    $casesensitive = true,</span>
+<span class="x">    $accentsensitive = true,</span>
+<span class="x">    $notlike = false,</span>
+<span class="x">    $escapechar = &#39; \\ &#39;</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example: Searching for records partially matching the given hard-coded literal.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$likeidnumber = $DB-&gt;sql_like(&#39;idnumber&#39;, &#39;:idnum&#39;);</span>
+
+<span class="x">$DB-&gt;get_records_sql(</span>
+<span class="x">    &quot;SELECT id, fullname FROM {course} WHERE {$likeidnumber}&quot;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;idnum&#39; =&gt; &#39;DEMO-%&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Note:</p>
+<ul>
+<li>Use <code>sql_like()</code> if the value being compared is trusted and properly formatted/escaped.</li>
+<li>Use <code>sql_like_escape()</code> if you need to compare with a value submitted by the user.</li>
+</ul>
+<h4 id="sql_like_escape">sql_like_escape</h4>
+<p>Escape the value submitted by the user so that it can be used for partial comparison and the 
+special characters like '_' or '%' behave as literal characters, not wildcards.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;sql_like_escape(</span>
+<span class="x">    $text,</span>
+<span class="x">    $escapechar = &#39;\\&#39;</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example: If you need to perform a partial comparison with a value that has been submitted by the user.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$search = required_param(&#39;search&#39;, PARAM_RAW);</span>
+
+<span class="x">$likefullname = $DB-&gt;sql_like(&#39;fullname&#39;, &#39;:fullname&#39;);</span>
+
+<span class="x">$DB-&gt;get_records_sql(</span>
+<span class="x">    &quot;SELECT id, fullname FROM {course} WHERE {$likefullname}&quot;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;fullname&#39;  =&gt; &#39;%&#39; . $DB-&gt;sql_like_escape($search) . &#39;%&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<h4 id="get_in_or_equal">get_in_or_equal</h4>
+<p>Return the query fragment to check if a value is IN the given list of items (with a fallback to 
+plain equal comparison if there is just one item).</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_in_or_equal(</span>
+<span class="x">    $items,</span>
+<span class="x">    $type = SQL_PARAMS_QM,</span>
+<span class="x">    $prefix = &#39;param&#39;,</span>
+<span class="x">    $equal = true,</span>
+<span class="x">    $onemptyitems = false</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$statuses = [&#39;todo&#39;, &#39;open&#39;, &#39;inprogress&#39;, &#39;intesting&#39;];</span>
+<span class="x">[$insql, $inparams] = $DB-&gt;get_in_or_equal($statuses);</span>
+<span class="x">$sql = &quot;SELECT * FROM {bugtracker_issues} WHERE status $insql&quot;;</span>
+<span class="x">$bugs = $DB-&gt;get_records_sql($sql, $inparams);</span>
+</code></pre></div>
+<p>Additional reading
+Please see the <a href="https://moodledev.io/docs/4.4/apis/core/dml#cross-db-compatibility">Cross-DB compatibility section</a> of the DML dev docs for a list of useful functions 
+you can use to generate cross-db compatible SQL.</p>
+<hr />
 <h3 id="best-practices">Best Practices</h3>
 <ol>
 <li><strong>Use Prepared Statements</strong>: Moodle DML functions automatically handle prepared statements to prevent SQL injection attacks. Always use parameterized queries.</li>
@@ -3088,7 +3320,11 @@ Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convent
 </ol>
 <hr />
 <h3 id="conclusion">Conclusion</h3>
-<p>Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a secure and efficient way. By using the DML functions, you ensure compatibility with different database systems, safeguard against SQL injection, and maintain the overall integrity of the system. Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is the recommended way to manipulate data in Moodle.</p>
+<p>Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a 
+secure and efficient way. By using the DML functions, you ensure compatibility with different database 
+systems, safeguard against SQL injection, and maintain the overall integrity of the system. 
+Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is 
+the recommended way to manipulate data in Moodle.</p>
 
               
             </article>
