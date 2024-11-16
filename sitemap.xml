@@ -261,6 +261,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleCache/</loc>
+         <lastmod>2024-11-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleDM/</loc>
          <lastmod>2024-11-16</lastmod>
          <changefreq>daily</changefreq>
