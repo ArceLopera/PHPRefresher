@@ -193,5 +193,6 @@ nav:
             - Access API: Moodle/API/phpMoodleAccess.md
             - Groups API: Moodle/API/phpMoodleGroups.md
             - Messaging API: Moodle/API/phpMoodleMessage.md
+            - Cache API : Moodle/API/phpMoodleCache.md
      - Security: Moodle/phpMoodleSecurity.md
 

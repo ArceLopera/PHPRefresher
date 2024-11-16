@@ -12,21 +12,21 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Func/phpJSON/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleCache/">
       
-      <link rel="icon" href="../../Images/elephant.ico">
+      <link rel="icon" href="../../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>JSON - PHP Refresher</title>
+        <title>Cache API - PHP Refresher</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -41,7 +41,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#json_encode" class="md-skip">
+        <a href="#moodle-cache-api-overview-and-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../Images/Elephpant.svg" alt="logo">
+  <img src="../../../Images/Elephpant.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JSON
+              Cache API
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -213,7 +213,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../phpRefresh/" class="md-tabs__link">
+      <a href="../../../phpRefresh/" class="md-tabs__link">
         Basics
       </a>
     </li>
@@ -222,8 +222,6 @@
       
         
   
-  
-    
   
 
 
@@ -236,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../phpAll/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -254,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../DS/phpArray/" class="md-tabs__link">
+      <a href="../../../DS/phpArray/" class="md-tabs__link">
         Data Structures
       </a>
     </li>
@@ -270,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Classes/phpCls/" class="md-tabs__link">
+      <a href="../../../Classes/phpCls/" class="md-tabs__link">
         Classes
       </a>
     </li>
@@ -286,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
         Advanced
       </a>
     </li>
@@ -296,13 +294,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Moodle/phpMoodle/" class="md-tabs__link">
+      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
         Moodle
       </a>
     </li>
@@ -330,9 +330,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../Images/Elephpant.svg" alt="logo">
+  <img src="../../../Images/Elephpant.svg" alt="logo">
 
     </a>
     PHP Refresher
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpRefresh/" class="md-nav__link">
+      <a href="../../../phpRefresh/" class="md-nav__link">
         General
       </a>
     </li>
@@ -441,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpVar1/" class="md-nav__link">
+      <a href="../../../PR/phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -455,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpVar2/" class="md-nav__link">
+      <a href="../../../PR/phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -469,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpVar3/" class="md-nav__link">
+      <a href="../../../PR/phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
     </li>
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpVar4/" class="md-nav__link">
+      <a href="../../../PR/phpVar4/" class="md-nav__link">
         Variable Handling
       </a>
     </li>
@@ -504,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpConst/" class="md-nav__link">
+      <a href="../../../PR/phpConst/" class="md-nav__link">
         Constant
       </a>
     </li>
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
+      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
         Globals
       </a>
     </li>
@@ -532,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpForms/" class="md-nav__link">
+      <a href="../../../PR/phpForms/" class="md-nav__link">
         Forms
       </a>
     </li>
@@ -572,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpStr/" class="md-nav__link">
+      <a href="../../../PR/phpStr/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpStr1/" class="md-nav__link">
+      <a href="../../../PR/phpStr1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -633,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpNum1/" class="md-nav__link">
+      <a href="../../../PR/phpNum1/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -647,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpMath1/" class="md-nav__link">
+      <a href="../../../PR/phpMath1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -668,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpOperators1/" class="md-nav__link">
+      <a href="../../../PR/phpOperators1/" class="md-nav__link">
         Operators
       </a>
     </li>
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpIF/" class="md-nav__link">
+      <a href="../../../PR/phpIF/" class="md-nav__link">
         Conditionals
       </a>
     </li>
@@ -722,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpLoops/" class="md-nav__link">
+      <a href="../../../PR/phpLoops/" class="md-nav__link">
         Loops
       </a>
     </li>
@@ -743,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PR/phpKeywords/" class="md-nav__link">
+      <a href="../../../PR/phpKeywords/" class="md-nav__link">
         Keywords
       </a>
     </li>
@@ -763,14 +763,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -791,14 +789,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
       
       
       
@@ -821,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpAll/" class="md-nav__link">
+      <a href="../../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -861,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpDate/" class="md-nav__link">
+      <a href="../../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -875,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCalendar/" class="md-nav__link">
+      <a href="../../../Func/phpCalendar/" class="md-nav__link">
         Calendar
       </a>
     </li>
@@ -896,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpRegex/" class="md-nav__link">
+      <a href="../../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
     </li>
@@ -936,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCookie/" class="md-nav__link">
+      <a href="../../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -950,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpSessions/" class="md-nav__link">
+      <a href="../../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -964,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpFTP/" class="md-nav__link">
+      <a href="../../../Func/phpFTP/" class="md-nav__link">
         FTP
       </a>
     </li>
@@ -978,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMail/" class="md-nav__link">
+      <a href="../../../Func/phpMail/" class="md-nav__link">
         Mail
       </a>
     </li>
@@ -999,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpFilters/" class="md-nav__link">
+      <a href="../../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -1013,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpCallback/" class="md-nav__link">
+      <a href="../../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -1025,69 +1021,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          JSON
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#json_encode" class="md-nav__link">
-    json_encode()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#json_decode" class="md-nav__link">
-    json_decode()
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-the-decoded-values" class="md-nav__link">
-    Accessing the Decoded Values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#looping-through-the-values" class="md-nav__link">
-    Looping Through the Values
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1125,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpError/" class="md-nav__link">
+      <a href="../../../Func/phpError/" class="md-nav__link">
         Errors
       </a>
     </li>
@@ -1139,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpExceptions/" class="md-nav__link">
+      <a href="../../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -1160,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpConfVar/" class="md-nav__link">
+      <a href="../../../Func/phpConfVar/" class="md-nav__link">
         Config Variables
       </a>
     </li>
@@ -1174,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpDeclare/" class="md-nav__link">
+      <a href="../../../Func/phpDeclare/" class="md-nav__link">
         Declare
       </a>
     </li>
@@ -1188,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpEmpty/" class="md-nav__link">
+      <a href="../../../Func/phpEmpty/" class="md-nav__link">
         Empty
       </a>
     </li>
@@ -1202,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMisc/" class="md-nav__link">
+      <a href="../../../Func/phpMisc/" class="md-nav__link">
         Misc
       </a>
     </li>
@@ -1216,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpOutput/" class="md-nav__link">
+      <a href="../../../Func/phpOutput/" class="md-nav__link">
         Output Control
       </a>
     </li>
@@ -1263,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpUserFunc/" class="md-nav__link">
+      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1277,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpArrowFunc/" class="md-nav__link">
+      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
         Arrow Function
       </a>
     </li>
@@ -1291,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpGenerators/" class="md-nav__link">
+      <a href="../../../Func/phpGenerators/" class="md-nav__link">
         Generators
       </a>
     </li>
@@ -1346,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DS/phpArray/" class="md-nav__link">
+      <a href="../../../DS/phpArray/" class="md-nav__link">
         Array
       </a>
     </li>
@@ -1360,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DS/phpIterables/" class="md-nav__link">
+      <a href="../../../DS/phpIterables/" class="md-nav__link">
         Iterables
       </a>
     </li>
@@ -1408,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpCls/" class="md-nav__link">
+      <a href="../../../Classes/phpCls/" class="md-nav__link">
         OOP
       </a>
     </li>
@@ -1422,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
         Constructor
       </a>
     </li>
@@ -1436,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
         Access Modifiers
       </a>
     </li>
@@ -1450,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
         Inheritance
       </a>
     </li>
@@ -1464,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpConstants/" class="md-nav__link">
+      <a href="../../../Classes/phpConstants/" class="md-nav__link">
         Constants
       </a>
     </li>
@@ -1478,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
         Abstract Classes
       </a>
     </li>
@@ -1492,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
         Interfaces
       </a>
     </li>
@@ -1506,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpTraits/" class="md-nav__link">
+      <a href="../../../Classes/phpTraits/" class="md-nav__link">
         Traits
       </a>
     </li>
@@ -1520,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpStatic/" class="md-nav__link">
+      <a href="../../../Classes/phpStatic/" class="md-nav__link">
         Static
       </a>
     </li>
@@ -1534,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
         Namespaces
       </a>
     </li>
@@ -1582,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpInclude/" class="md-nav__link">
+      <a href="../../../Adv/phpInclude/" class="md-nav__link">
         Include
       </a>
     </li>
@@ -1596,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpGoto/" class="md-nav__link">
+      <a href="../../../Adv/phpGoto/" class="md-nav__link">
         Goto
       </a>
     </li>
@@ -1636,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpFile/" class="md-nav__link">
+      <a href="../../../Adv/phpFile/" class="md-nav__link">
         Filesystem
       </a>
     </li>
@@ -1650,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpZip/" class="md-nav__link">
+      <a href="../../../Adv/phpZip/" class="md-nav__link">
         Zip
       </a>
     </li>
@@ -1671,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpMySql/" class="md-nav__link">
+      <a href="../../../Adv/phpMySql/" class="md-nav__link">
         MySQL
       </a>
     </li>
@@ -1685,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpXML/" class="md-nav__link">
+      <a href="../../../Adv/phpXML/" class="md-nav__link">
         XML
       </a>
     </li>
@@ -1699,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Adv/phpAjax/" class="md-nav__link">
+      <a href="../../../Adv/phpAjax/" class="md-nav__link">
         Ajax
       </a>
     </li>
@@ -1719,12 +1657,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1747,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodle/" class="md-nav__link">
+      <a href="../../phpMoodle/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -1761,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleInstall/" class="md-nav__link">
+      <a href="../../phpMoodleInstall/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -1801,7 +1741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginTypes/" class="md-nav__link">
+      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1815,7 +1755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+      <a href="../../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
         Activity
       </a>
     </li>
@@ -1855,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+      <a href="../../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
         Question Types
       </a>
     </li>
@@ -1869,7 +1809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+      <a href="../../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
         Question Format
       </a>
     </li>
@@ -1883,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+      <a href="../../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
         Question Bank
       </a>
     </li>
@@ -1897,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+      <a href="../../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
         Question Behavior
       </a>
     </li>
@@ -1918,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
+      <a href="../../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
         Book Tool
       </a>
     </li>
@@ -1939,7 +1879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginSkeleton/" class="md-nav__link">
+      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
         Skeleton
       </a>
     </li>
@@ -1953,7 +1893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodlePluginFiles/" class="md-nav__link">
+      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
         Common Files
       </a>
     </li>
@@ -1967,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleXMLDB/" class="md-nav__link">
+      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
         XMLDB Editor
       </a>
     </li>
@@ -1981,7 +1921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleTemplate/" class="md-nav__link">
+      <a href="../../phpMoodleTemplate/" class="md-nav__link">
         Templates
       </a>
     </li>
@@ -2021,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleJS/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
         General
       </a>
     </li>
@@ -2035,7 +1975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleJSTools/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
         Tools
       </a>
     </li>
@@ -2049,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodlePromises/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
         Promises
       </a>
     </li>
@@ -2063,7 +2003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleModal/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
         Modal Dialogues
       </a>
     </li>
@@ -2077,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/Javascript/phpMoodleAJAX/" class="md-nav__link">
+      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
         AJAX
       </a>
     </li>
@@ -2096,12 +2036,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" type="checkbox" id="__nav_7_9" checked>
       
       
       
@@ -2124,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleServices/" class="md-nav__link">
+      <a href="../../phpMoodleServices/" class="md-nav__link">
         External Services
       </a>
     </li>
@@ -2138,7 +2080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodlePersistent/" class="md-nav__link">
+      <a href="../phpMoodlePersistent/" class="md-nav__link">
         Persistent API
       </a>
     </li>
@@ -2152,7 +2094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleExporter/" class="md-nav__link">
+      <a href="../phpMoodleExporter/" class="md-nav__link">
         Exporter
       </a>
     </li>
@@ -2166,7 +2108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleQuestion/" class="md-nav__link">
+      <a href="../phpMoodleQuestion/" class="md-nav__link">
         Question API
       </a>
     </li>
@@ -2180,7 +2122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleDM/" class="md-nav__link">
+      <a href="../phpMoodleDM/" class="md-nav__link">
         Data Manipulation API
       </a>
     </li>
@@ -2194,7 +2136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleTag/" class="md-nav__link">
+      <a href="../phpMoodleTag/" class="md-nav__link">
         Tag API
       </a>
     </li>
@@ -2208,7 +2150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleAccess/" class="md-nav__link">
+      <a href="../phpMoodleAccess/" class="md-nav__link">
         Access API
       </a>
     </li>
@@ -2222,7 +2164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleGroups/" class="md-nav__link">
+      <a href="../phpMoodleGroups/" class="md-nav__link">
         Groups API
       </a>
     </li>
@@ -2236,7 +2178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleMessage/" class="md-nav__link">
+      <a href="../phpMoodleMessage/" class="md-nav__link">
         Messaging API
       </a>
     </li>
@@ -2248,11 +2190,231 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Moodle/API/phpMoodleCache/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cache API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Cache API
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#moodle-cache-api-overview-and-usage" class="md-nav__link">
+    Moodle Cache API: Overview and Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-of-the-cache-api" class="md-nav__link">
+    Key Concepts of the Cache API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-api-workflow" class="md-nav__link">
+    Cache API Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-defining-a-cache" class="md-nav__link">
+    1. Defining a Cache
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Defining a Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-dbcachesphp" class="md-nav__link">
+    Example: db/caches.php
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-accessing-a-cache" class="md-nav__link">
+    2. Accessing a Cache
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Accessing a Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-creating-a-cache-object" class="md-nav__link">
+    Example: Creating a Cache Object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-storing-and-retrieving-data" class="md-nav__link">
+    3. Storing and Retrieving Data
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Storing and Retrieving Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-storing-and-retrieving-data" class="md-nav__link">
+    Example: Storing and Retrieving Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-bulk-operations" class="md-nav__link">
+    Example: Bulk Operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-purge-cache" class="md-nav__link">
+    4. Purge Cache
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Purge Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-purging" class="md-nav__link">
+    Manual Purging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programmatic-purging" class="md-nav__link">
+    Programmatic Purging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-debugging-and-testing" class="md-nav__link">
+    5. Debugging and Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-example-implementing-cache-in-a-plugin" class="md-nav__link">
+    Practical Example: Implementing Cache in a Plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Example: Implementing Cache in a Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbcachesphp" class="md-nav__link">
+    db/caches.php
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-cache-in-a-plugin" class="md-nav__link">
+    Using the Cache in a Plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-advanced-features" class="md-nav__link">
+    6. Advanced Features
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-locking" class="md-nav__link">
+    Cache Locking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-events" class="md-nav__link">
+    Cache Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-using-the-cache-api" class="md-nav__link">
+    Benefits of Using the Cache API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2271,7 +2433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Moodle/phpMoodleSecurity/" class="md-nav__link">
+      <a href="../../phpMoodleSecurity/" class="md-nav__link">
         Security
       </a>
     </li>
@@ -2310,29 +2472,191 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#json_encode" class="md-nav__link">
-    json_encode()
+  <a href="#moodle-cache-api-overview-and-usage" class="md-nav__link">
+    Moodle Cache API: Overview and Usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#json_decode" class="md-nav__link">
-    json_decode()
+  <a href="#key-concepts-of-the-cache-api" class="md-nav__link">
+    Key Concepts of the Cache API
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-the-decoded-values" class="md-nav__link">
-    Accessing the Decoded Values
+  <a href="#cache-api-workflow" class="md-nav__link">
+    Cache API Workflow
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#looping-through-the-values" class="md-nav__link">
-    Looping Through the Values
+  <a href="#1-defining-a-cache" class="md-nav__link">
+    1. Defining a Cache
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Defining a Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-dbcachesphp" class="md-nav__link">
+    Example: db/caches.php
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-accessing-a-cache" class="md-nav__link">
+    2. Accessing a Cache
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Accessing a Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-creating-a-cache-object" class="md-nav__link">
+    Example: Creating a Cache Object
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-storing-and-retrieving-data" class="md-nav__link">
+    3. Storing and Retrieving Data
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Storing and Retrieving Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-storing-and-retrieving-data" class="md-nav__link">
+    Example: Storing and Retrieving Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-bulk-operations" class="md-nav__link">
+    Example: Bulk Operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-purge-cache" class="md-nav__link">
+    4. Purge Cache
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Purge Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-purging" class="md-nav__link">
+    Manual Purging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programmatic-purging" class="md-nav__link">
+    Programmatic Purging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-debugging-and-testing" class="md-nav__link">
+    5. Debugging and Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-example-implementing-cache-in-a-plugin" class="md-nav__link">
+    Practical Example: Implementing Cache in a Plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Example: Implementing Cache in a Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbcachesphp" class="md-nav__link">
+    db/caches.php
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-cache-in-a-plugin" class="md-nav__link">
+    Using the Cache in a Plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-advanced-features" class="md-nav__link">
+    6. Advanced Features
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-locking" class="md-nav__link">
+    Cache Locking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-events" class="md-nav__link">
+    Cache Events
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-using-the-cache-api" class="md-nav__link">
+    Benefits of Using the Cache API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -2351,82 +2675,163 @@
                 
 
 
-  <h1>JSON</h1>
+  <h1>Cache API</h1>
 
-<p>JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data.</p>
-<p>Since the JSON format is a text-based format, it can easily be sent to and from a server, and used as a data format by any programming language.</p>
-<h2 id="json_encode">json_encode()</h2>
-<p>The json_encode() function is used to encode a value to JSON format.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$age</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Peter&quot;</span><span class="o">=&gt;</span><span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="o">=&gt;</span><span class="mi">37</span><span class="p">,</span> <span class="s2">&quot;Joe&quot;</span><span class="o">=&gt;</span><span class="mi">43</span><span class="p">);</span>
+<h3 id="moodle-cache-api-overview-and-usage">Moodle Cache API: Overview and Usage</h3>
+<p>The Cache API in Moodle is a powerful system designed to improve performance and efficiency by storing and retrieving frequently used data. It provides developers with a flexible and easy-to-use mechanism for implementing caching in their plugins or core functionalities.</p>
+<hr />
+<h3 id="key-concepts-of-the-cache-api">Key Concepts of the Cache API</h3>
+<ol>
+<li><strong>Purpose</strong>: Reduce database queries and expensive computations by caching data.</li>
+<li><strong>Architecture</strong>:</li>
+<li><strong>Stores</strong>: Physical storage for cache data (e.g., file system, memory, Redis, Memcached).</li>
+<li><strong>Definitions</strong>: Configuration settings for how data is cached.</li>
+<li><strong>Keys</strong>: Identifiers used to store and retrieve data.</li>
+<li><strong>Persistence Levels</strong>:</li>
+<li><strong>Session Cache</strong>: Data persists for the duration of the user's session.</li>
+<li><strong>Request Cache</strong>: Data persists for the duration of the current request.</li>
+<li><strong>Application Cache</strong>: Data persists across multiple requests and sessions.</li>
+</ol>
+<hr />
+<h3 id="cache-api-workflow">Cache API Workflow</h3>
+<ol>
+<li><strong>Define Cache</strong>: Configure caching options in <code>db/caches.php</code>.</li>
+<li><strong>Retrieve Cache</strong>: Use the Cache API to access the configured cache.</li>
+<li><strong>Store and Retrieve Data</strong>: Interact with the cache using API methods like <code>set</code>, <code>get</code>, and <code>delete</code>.</li>
+<li><strong>Purge Cache</strong>: Clear cache data when necessary, such as during debugging or when changes are made to cached items.</li>
+</ol>
+<hr />
+<h3 id="1-defining-a-cache">1. <strong>Defining a Cache</strong></h3>
+<p>Caches are defined in the <code>db/caches.php</code> file of your plugin. This file registers the cache and specifies its behavior.</p>
+<h4 id="example-dbcachesphp">Example: <code>db/caches.php</code></h4>
+<div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
 
-<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$age</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">$definitions = [</span>
+<span class="x">    &#39;example_cache&#39; =&gt; [</span>
+<span class="x">        &#39;mode&#39; =&gt; cache_store::MODE_APPLICATION,</span>
+<span class="x">        &#39;simplekeys&#39; =&gt; true,       // If true, keys must be simple strings.</span>
+<span class="x">        &#39;simpledata&#39; =&gt; true,       // If true, data must be simple (e.g., arrays, strings).</span>
+<span class="x">        &#39;ttl&#39; =&gt; 3600,              // Time to live in seconds (optional).</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$cars</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span> <span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota&quot;</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$cars</span><span class="p">);</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<p><strong>Key Fields</strong>:
+- <strong><code>mode</code></strong>: Defines the cache scope (<code>MODE_SESSION</code>, <code>MODE_REQUEST</code>, <code>MODE_APPLICATION</code>).
+- <strong><code>simplekeys</code></strong>: If true, keys must be simple strings; otherwise, complex keys are allowed.
+- <strong><code>simpledata</code></strong>: If true, only simple data types (e.g., strings, arrays) can be cached.
+- <strong><code>ttl</code></strong>: Time to live, in seconds. The cache expires after this duration.</p>
+<hr />
+<h3 id="2-accessing-a-cache">2. <strong>Accessing a Cache</strong></h3>
+<p>To use the defined cache, instantiate a cache object using the <code>cache::make()</code> function. </p>
+<h4 id="example-creating-a-cache-object">Example: Creating a Cache Object</h4>
+<div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;local_myplugin&#39;, &#39;example_cache&#39;);</span>
 </code></pre></div>
-<h2 id="json_decode">json_decode()</h2>
-<p>The json_decode() function is used to decode a JSON object into a PHP object or an associative array.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$jsonobj</span> <span class="o">=</span> <span class="s1">&#39;{&quot;Peter&quot;:35,&quot;Ben&quot;:37,&quot;Joe&quot;:43}&#39;</span><span class="p">;</span>
+<p><strong>Parameters</strong>:
+- <strong>Component</strong>: The name of your plugin or module (e.g., <code>local_myplugin</code>).
+- <strong>Area</strong>: The name of the cache area defined in <code>db/caches.php</code> (e.g., <code>example_cache</code>).</p>
+<hr />
+<h3 id="3-storing-and-retrieving-data">3. <strong>Storing and Retrieving Data</strong></h3>
+<p>Once the cache object is instantiated, you can store, retrieve, and manage data using the Cache API methods.</p>
+<h4 id="example-storing-and-retrieving-data">Example: Storing and Retrieving Data</h4>
+<div class="highlight"><pre><span></span><code><span class="x">// Storing data in the cache.</span>
+<span class="x">$cache-&gt;set(&#39;unique_key&#39;, &#39;cached_value&#39;);</span>
 
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$jsonobj</span><span class="p">));</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">// Retrieving data from the cache.</span>
+<span class="x">$cachedValue = $cache-&gt;get(&#39;unique_key&#39;);</span>
+
+<span class="x">if ($cachedValue === false) {</span>
+<span class="x">    // Cache miss - fetch data and store it.</span>
+<span class="x">    $data = expensive_function_call();</span>
+<span class="x">    $cache-&gt;set(&#39;unique_key&#39;, $data);</span>
+<span class="x">} else {</span>
+<span class="x">    // Cache hit - use the cached data.</span>
+<span class="x">    echo $cachedValue;</span>
+<span class="x">}</span>
+
+<span class="x">// Deleting a specific key.</span>
+<span class="x">$cache-&gt;delete(&#39;unique_key&#39;);</span>
 </code></pre></div>
-<p>The json_decode() function returns an object by default. The json_decode() function has a second parameter, and when set to true, JSON objects are decoded into associative arrays.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$jsonobj</span> <span class="o">=</span> <span class="s1">&#39;{&quot;Peter&quot;:35,&quot;Ben&quot;:37,&quot;Joe&quot;:43}&#39;</span><span class="p">;</span>
+<h4 id="example-bulk-operations">Example: Bulk Operations</h4>
+<div class="highlight"><pre><span></span><code><span class="x">// Storing multiple values at once.</span>
+<span class="x">$cache-&gt;set_many([</span>
+<span class="x">    &#39;key1&#39; =&gt; &#39;value1&#39;,</span>
+<span class="x">    &#39;key2&#39; =&gt; &#39;value2&#39;,</span>
+<span class="x">]);</span>
 
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$jsonobj</span><span class="p">,</span> <span class="k">true</span><span class="p">));</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">// Retrieving multiple values at once.</span>
+<span class="x">$values = $cache-&gt;get_many([&#39;key1&#39;, &#39;key2&#39;]);</span>
+
+<span class="x">// Deleting multiple keys.</span>
+<span class="x">$cache-&gt;delete_many([&#39;key1&#39;, &#39;key2&#39;]);</span>
 </code></pre></div>
-<h2 id="accessing-the-decoded-values">Accessing the Decoded Values</h2>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$jsonobj</span> <span class="o">=</span> <span class="s1">&#39;{&quot;Peter&quot;:35,&quot;Ben&quot;:37,&quot;Joe&quot;:43}&#39;</span><span class="p">;</span>
-
-<span class="nv">$obj</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$jsonobj</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">Peter</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">Ben</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nv">$obj</span><span class="o">-&gt;</span><span class="na">Joe</span><span class="p">;</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<hr />
+<h3 id="4-purge-cache">4. <strong>Purge Cache</strong></h3>
+<p>Caches can be purged manually or programmatically to ensure that stale data does not remain in the system.</p>
+<h4 id="manual-purging">Manual Purging</h4>
+<p>Administrators can purge caches via <strong>Site administration &gt; Development &gt; Purge caches</strong>.</p>
+<h4 id="programmatic-purging">Programmatic Purging</h4>
+<div class="highlight"><pre><span></span><code><span class="x">$cache-&gt;purge(); // Clears all data in the cache.</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$jsonobj</span> <span class="o">=</span> <span class="s1">&#39;{&quot;Peter&quot;:35,&quot;Ben&quot;:37,&quot;Joe&quot;:43}&#39;</span><span class="p">;</span>
-
-<span class="nv">$arr</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$jsonobj</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$arr</span><span class="p">[</span><span class="s2">&quot;Peter&quot;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="nv">$arr</span><span class="p">[</span><span class="s2">&quot;Ben&quot;</span><span class="p">];</span>
-<span class="k">echo</span> <span class="nv">$arr</span><span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">];</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<hr />
+<h3 id="5-debugging-and-testing">5. <strong>Debugging and Testing</strong></h3>
+<p>Use debugging tools to inspect the behavior of the cache:
+- Enable Moodle debugging: <strong>Site administration &gt; Development &gt; Debugging</strong>.
+- Log cache hits and misses: Use custom logging for cache operations.</p>
+<hr />
+<h3 id="practical-example-implementing-cache-in-a-plugin">Practical Example: Implementing Cache in a Plugin</h3>
+<p>Let’s create a cache to store user preferences for a plugin:</p>
+<h4 id="dbcachesphp"><code>db/caches.php</code></h4>
+<div class="highlight"><pre><span></span><code><span class="x">$definitions = [</span>
+<span class="x">    &#39;user_preferences&#39; =&gt; [</span>
+<span class="x">        &#39;mode&#39; =&gt; cache_store::MODE_APPLICATION,</span>
+<span class="x">        &#39;simplekeys&#39; =&gt; true,</span>
+<span class="x">        &#39;simpledata&#39; =&gt; true,</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
 </code></pre></div>
-<h2 id="looping-through-the-values">Looping Through the Values</h2>
-<p>You can also loop through the values with a foreach() loop:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$jsonobj</span> <span class="o">=</span> <span class="s1">&#39;{&quot;Peter&quot;:35,&quot;Ben&quot;:37,&quot;Joe&quot;:43}&#39;</span><span class="p">;</span>
+<h4 id="using-the-cache-in-a-plugin">Using the Cache in a Plugin</h4>
+<div class="highlight"><pre><span></span><code><span class="x">function local_myplugin_get_user_preference($userid) {</span>
+<span class="x">    $cache = cache::make(&#39;local_myplugin&#39;, &#39;user_preferences&#39;);</span>
 
-<span class="nv">$obj</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$jsonobj</span><span class="p">);</span>
+<span class="x">    // Check if preference exists in the cache.</span>
+<span class="x">    $preference = $cache-&gt;get($userid);</span>
 
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$obj</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s2">&quot; =&gt; &quot;</span> <span class="o">.</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    if ($preference === false) {</span>
+<span class="x">        // Fetch from database if cache miss.</span>
+<span class="x">        global $DB;</span>
+<span class="x">        $preference = $DB-&gt;get_field(&#39;user_preferences&#39;, &#39;preference&#39;, [&#39;userid&#39; =&gt; $userid]);</span>
+
+<span class="x">        // Store in cache for future requests.</span>
+<span class="x">        $cache-&gt;set($userid, $preference);</span>
+<span class="x">    }</span>
+
+<span class="x">    return $preference;</span>
+<span class="x">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$jsonobj</span> <span class="o">=</span> <span class="s1">&#39;{&quot;Peter&quot;:35,&quot;Ben&quot;:37,&quot;Joe&quot;:43}&#39;</span><span class="p">;</span>
+<hr />
+<h3 id="6-advanced-features">6. <strong>Advanced Features</strong></h3>
+<h4 id="cache-locking">Cache Locking</h4>
+<p>When multiple processes access the same cache key, locking prevents race conditions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$lock = cache::lock(&#39;unique_key&#39;);</span>
 
-<span class="nv">$arr</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$jsonobj</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
-
-<span class="k">foreach</span><span class="p">(</span><span class="nv">$arr</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="nv">$key</span> <span class="o">.</span> <span class="s2">&quot; =&gt; &quot;</span> <span class="o">.</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">if ($lock-&gt;acquire()) {</span>
+<span class="x">    // Perform the operation.</span>
+<span class="x">    $lock-&gt;release();</span>
+<span class="x">}</span>
 </code></pre></div>
+<h4 id="cache-events">Cache Events</h4>
+<p>Listen to cache-related events, such as purging or clearing, for custom behavior.</p>
+<hr />
+<h3 id="benefits-of-using-the-cache-api">Benefits of Using the Cache API</h3>
+<ul>
+<li><strong>Improved Performance</strong>: Reduces the load on the database and increases speed.</li>
+<li><strong>Flexible Configuration</strong>: Supports multiple storage backends.</li>
+<li><strong>Ease of Use</strong>: Simple API for common operations.</li>
+<li><strong>Scalability</strong>: Suitable for large-scale applications with heavy traffic.</li>
+</ul>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>The Cache API in Moodle is a robust tool for enhancing performance by reducing redundant computations and database queries. By carefully defining cache settings, using appropriate scopes, and handling cache misses effectively, developers can ensure smooth and efficient plugin functionality.</p>
 
               
             </article>
@@ -2440,7 +2845,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpCallback/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Callback" rel="prev">
+        <a href="../phpMoodleMessage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Messaging API" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2449,20 +2854,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Callback
+              Messaging API
             </div>
           </div>
         </a>
       
       
         
-        <a href="../phpError/" class="md-footer__link md-footer__link--next" aria-label="Next: Errors" rel="next">
+        <a href="../../phpMoodleSecurity/" class="md-footer__link md-footer__link--next" aria-label="Next: Security" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Errors
+              Security
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -2542,10 +2947,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
