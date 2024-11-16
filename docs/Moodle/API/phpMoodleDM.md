@@ -924,6 +924,226 @@ you can use to generate cross-db compatible SQL.
 
 ---
 
+### Factors affecting database performance
+#### Reduce database queries
+
++ Minimize number of database queries.
++ Each query has overhead in terms of network latency and database server processing.
++ Retrieve or update multiple records in a single query whenever possible.
++ Avoid unnecessary loops, nested queries, or redundant operations. 
+
+
+Example
+
+In the code snippet below, 3 database queries are executed.
+
+```php
+$userids = [123, 345, 456];
+
+foreach($userids as $id) {
+    $result = $DB->get_record('user', ['id' => $id]);
+
+    echo $result->username . '<br>';
+}
+```	
+
+
+Instead of getting the record of each user in each query, you can get the records for all users 
+in a single database query.
+
+```php
+$userids = [123, 345, 456];
+[$insql, $inparams] = $DB->get_in_or_equal($userids);
+
+$sql = "SELECT * FROM {user} WHERE id $insql";
+
+$users = $DB->get_records_sql($sql, $inparams);
+foreach($users as $user) {
+    echo $user->username . '<br>';
+}
+```
+
+#### Create appropriate indexes
+
++ Properly index database tables to improve query performance.
++ Indexes help a database server locate and retrieve data more efficiently.
++ Analyze query patterns and identify frequently queried columns or columns used in WHERE clauses.
++ Create indexes on those columns.
++ Be cautious not to over-index as too many indexes can negatively impact write performance.
+
+
+Example
+
+Adding an index named bookid to the book_chapters table, in mod/book/db/upgrade.php.
+
+```php
+    if ($oldversion < 2021052501) {
+        $table = new xmldb_table('book_chapters');
+        $index = new xmldb_index('bookid', XMLDB_INDEX_NOTUNIQUE, ['bookid']);
+        if (!$dbman->index_exists($table, $index)) {
+            $dbman->add_index($table, $index);
+        }
+        upgrade_mod_savepoint(true, 2021052501, 'book');
+    }
+```
+
+The index defined in the mod/book/db/install.xml file, which is used when the book module is installed.
+
+```xml
+<INDEXES>
+    <INDEX NAME="bookid" UNIQUE="false" FIELDS="bookid"/>
+</INDEXES>
+```
+
+#### Avoid SELECT * queries
+
+Instead of selecting all columns (SELECT *), explicitly specify only the columns you need in your 
+query. 
+
+
++ Reduces the amount of data transferred between the database server and your application, improving performance. 
++ Helps avoid unnecessary data processing in your code.
++ Will use less memory than selecting all the columns.
+
+
+Example
+
+Consider the following code snippet.
+
+```php
+$results = $DB->get_records('user');
+```
+
+This will produce the following query, with all the fields selected from the user table.
+
+``` sql
+SELECT * FROM {user};
+```
+
+Now, consider the following code snippet
+
+```php
+$results = $DB->get_records('user',
+    null,
+    'id,firstname,lastname,email');
+```
+
+This will produce the following query, with only 4 fields selected:
+
+``` sql
+SELECT id, firstname, lastname, email FROM {user};
+```
+
+#### Cache database results
+
++ Utilize caching mechanisms to store frequently accessed data in memory.
++ Moodle Universal Cache (MUC) is the main cache used in Moodle. 
++ MUC includes request cache, session cache, and application cache.
++ Caching can significantly reduce the load on your database server and improve response times.
+
+
+Example
+
+Here is an example of caching a database query result using Moodle's Cache API:
+
+```php
+$cache = cache::make('mod_myplugin', 'somedata');
+// Define the cache key.
+$cachekey = 'myplugin_my_query_result';
+
+// Check if the result is already cached.
+if ($result = $cache->get($cachekey)) {
+  // Use the cached result.
+} else {
+  // Query the database.
+  $result = $DB->get_records('my_table');
+  // Cache the result for future use.
+  $cache->set($cachekey, $result);
+}
+```
+
+#### Optimize data retrieval
+
++ Use appropriate filtering and sorting techniques to limit the amount of data processed and transferred. 
++ Use conditions in your queries (WHERE clauses) to filter data at the database level rather than retrieving all data and filtering it in your code.
++ Use proper sorting techniques (ORDER BY clauses) to ensure efficient data retrieval.
+
+#### Use recordsets when retrieving large dataset
+
+By using the get_recordset_xxx() functions and properly closing the recordset iterator, you can optimize memory usage when dealing with a large number of records retrieved from the database in Moodle code. This helps improve performance and resource management.
+
++ get_records_xxx() functions are not optimal when retrieving a high number of records.
++ Use get_recordset_xxx() functions instead.
++ get_recordset_xxx() functions return an iterator to save memory.
++ Close the returned recordset iterator after using it to free up resources in the RDBMS.
+
+
+Example
+
+```php
+$rs = $DB->get_recordset('user');
+foreach ($rs as $record) {
+    // Do whatever you want with this record.
+    echo $record->username . '<br>';
+}
+$rs->close();
+```
+
+### Factors affecting database security
+#### Using DML and DDL APIs
+
++ Moodle's core libraries takes care of setting up the connection to the database based on the 
+configuration specified in the config.php file. 
++ This helps ensure that the database connection is established securely and follows best practices.
++ Always use Moodle's higher-level database methods from DML, such as get_record(), get_records_sql(), 
+etc, instead of writing your own SQL statements.
+
+#### Sanitize user input
+
++ User input should always be properly validated and sanitized to prevent SQL injection and cross-site scripting (XSS) attacks.
++ Use functions like optional_param() or required_param() to clean the input and ensure it is of the expected type before using it in database queries.
+
+Example
+
+```php
+$name = optional_param('name', '', PARAM_TEXT);
+$sql = "SELECT * FROM {user} WHERE firstname = :firstname OR lastname = :lastname"; 
+$records = $DB->get_records_sql($sql, ['firstname' => $name, 'lastname' => $name]);
+```
+
+In the code snippet above:
+
++ The value of $name is sanitized to ensure that it only contains text characters before it is used in the database query. 
++ Any invalid characters will be stripped out by the optional_param() function. 
++ PARAM_TEXT defines which characters are allowed and what should be stripped out.
+
+#### Use bound parameters
+
++ Moodle's database API encourages the use of bound parameters when constructing database queries.
++ Bound parameters automatically handle proper escaping and sanitization of data.
++ When using custom SQL code, it is important to use placeholders to insert values into queries instead of concatenating strings. 
++ This helps prevent SQL injection attacks.
+
+Example: Using named parameters
+
+```php
+$sql = "SELECT * FROM {user} WHERE firstname = :firstname AND lastname = :lastname";
+$records = $DB->get_records_sql($sql, ['firstname' => $firstname, 'lastname' => $lastname]);
+```
+
+Example: Using question mark parameters
+
+```php
+$sql = "SELECT * FROM {user} WHERE firstname = ? AND lastname = ?";
+$records = $DB->get_records_sql($sql, [$firstname, $lastname]);
+```
+
+#### Check proper access
+
++ Before reading or writing data, ensure that user has the required permissions.
++ Check that the user is properly logged in using require_login().
++ Use has_capability() or require_capability() to check that the user has the required permissions.
+
 
 ### Best Practices
 

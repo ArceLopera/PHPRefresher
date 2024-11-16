@@ -2310,6 +2310,102 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#factors-affecting-database-performance" class="md-nav__link">
+    Factors affecting database performance
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-database-queries" class="md-nav__link">
+    Reduce database queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-appropriate-indexes" class="md-nav__link">
+    Create appropriate indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-select-queries" class="md-nav__link">
+    Avoid SELECT * queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-database-results" class="md-nav__link">
+    Cache database results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-data-retrieval" class="md-nav__link">
+    Optimize data retrieval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-recordsets-when-retrieving-large-dataset" class="md-nav__link">
+    Use recordsets when retrieving large dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-security" class="md-nav__link">
+    Factors affecting database security
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-dml-and-ddl-apis" class="md-nav__link">
+    Using DML and DDL APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-user-input" class="md-nav__link">
+    Sanitize user input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-bound-parameters" class="md-nav__link">
+    Use bound parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-proper-access" class="md-nav__link">
+    Check proper access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#best-practices" class="md-nav__link">
     Best Practices
   </a>
@@ -2588,6 +2684,102 @@
           <li class="md-nav__item">
   <a href="#get_in_or_equal" class="md-nav__link">
     get_in_or_equal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-performance" class="md-nav__link">
+    Factors affecting database performance
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-database-queries" class="md-nav__link">
+    Reduce database queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-appropriate-indexes" class="md-nav__link">
+    Create appropriate indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-select-queries" class="md-nav__link">
+    Avoid SELECT * queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-database-results" class="md-nav__link">
+    Cache database results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-data-retrieval" class="md-nav__link">
+    Optimize data retrieval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-recordsets-when-retrieving-large-dataset" class="md-nav__link">
+    Use recordsets when retrieving large dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-security" class="md-nav__link">
+    Factors affecting database security
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-dml-and-ddl-apis" class="md-nav__link">
+    Using DML and DDL APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-user-input" class="md-nav__link">
+    Sanitize user input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-bound-parameters" class="md-nav__link">
+    Use bound parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-proper-access" class="md-nav__link">
+    Check proper access
   </a>
   
 </li>
@@ -3310,6 +3502,174 @@ plain equal comparison if there is just one item).</p>
 Please see the <a href="https://moodledev.io/docs/4.4/apis/core/dml#cross-db-compatibility">Cross-DB compatibility section</a> of the DML dev docs for a list of useful functions 
 you can use to generate cross-db compatible SQL.</p>
 <hr />
+<h3 id="factors-affecting-database-performance">Factors affecting database performance</h3>
+<h4 id="reduce-database-queries">Reduce database queries</h4>
+<ul>
+<li>Minimize number of database queries.</li>
+<li>Each query has overhead in terms of network latency and database server processing.</li>
+<li>Retrieve or update multiple records in a single query whenever possible.</li>
+<li>Avoid unnecessary loops, nested queries, or redundant operations. </li>
+</ul>
+<p>Example</p>
+<p>In the code snippet below, 3 database queries are executed.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$userids = [123, 345, 456];</span>
+
+<span class="x">foreach($userids as $id) {</span>
+<span class="x">    $result = $DB-&gt;get_record(&#39;user&#39;, [&#39;id&#39; =&gt; $id]);</span>
+
+<span class="x">    echo $result-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Instead of getting the record of each user in each query, you can get the records for all users 
+in a single database query.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$userids = [123, 345, 456];</span>
+<span class="x">[$insql, $inparams] = $DB-&gt;get_in_or_equal($userids);</span>
+
+<span class="x">$sql = &quot;SELECT * FROM {user} WHERE id $insql&quot;;</span>
+
+<span class="x">$users = $DB-&gt;get_records_sql($sql, $inparams);</span>
+<span class="x">foreach($users as $user) {</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="create-appropriate-indexes">Create appropriate indexes</h4>
+<ul>
+<li>Properly index database tables to improve query performance.</li>
+<li>Indexes help a database server locate and retrieve data more efficiently.</li>
+<li>Analyze query patterns and identify frequently queried columns or columns used in WHERE clauses.</li>
+<li>Create indexes on those columns.</li>
+<li>Be cautious not to over-index as too many indexes can negatively impact write performance.</li>
+</ul>
+<p>Example</p>
+<p>Adding an index named bookid to the book_chapters table, in mod/book/db/upgrade.php.</p>
+<div class="highlight"><pre><span></span><code><span class="x">    if ($oldversion &lt; 2021052501) {</span>
+<span class="x">        $table = new xmldb_table(&#39;book_chapters&#39;);</span>
+<span class="x">        $index = new xmldb_index(&#39;bookid&#39;, XMLDB_INDEX_NOTUNIQUE, [&#39;bookid&#39;]);</span>
+<span class="x">        if (!$dbman-&gt;index_exists($table, $index)) {</span>
+<span class="x">            $dbman-&gt;add_index($table, $index);</span>
+<span class="x">        }</span>
+<span class="x">        upgrade_mod_savepoint(true, 2021052501, &#39;book&#39;);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<p>The index defined in the mod/book/db/install.xml file, which is used when the book module is installed.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;INDEXES&gt;</span>
+    <span class="nt">&lt;INDEX</span> <span class="na">NAME=</span><span class="s">&quot;bookid&quot;</span> <span class="na">UNIQUE=</span><span class="s">&quot;false&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;bookid&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/INDEXES&gt;</span>
+</code></pre></div>
+<h4 id="avoid-select-queries">Avoid SELECT * queries</h4>
+<p>Instead of selecting all columns (SELECT *), explicitly specify only the columns you need in your 
+query. </p>
+<ul>
+<li>Reduces the amount of data transferred between the database server and your application, improving performance. </li>
+<li>Helps avoid unnecessary data processing in your code.</li>
+<li>Will use less memory than selecting all the columns.</li>
+</ul>
+<p>Example</p>
+<p>Consider the following code snippet.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$results = $DB-&gt;get_records(&#39;user&#39;);</span>
+</code></pre></div>
+<p>This will produce the following query, with all the fields selected from the user table.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{</span><span class="k">user</span><span class="err">}</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>Now, consider the following code snippet</p>
+<div class="highlight"><pre><span></span><code><span class="x">$results = $DB-&gt;get_records(&#39;user&#39;,</span>
+<span class="x">    null,</span>
+<span class="x">    &#39;id,firstname,lastname,email&#39;);</span>
+</code></pre></div>
+<p>This will produce the following query, with only 4 fields selected:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">lastname</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{</span><span class="k">user</span><span class="err">}</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h4 id="cache-database-results">Cache database results</h4>
+<ul>
+<li>Utilize caching mechanisms to store frequently accessed data in memory.</li>
+<li>Moodle Universal Cache (MUC) is the main cache used in Moodle. </li>
+<li>MUC includes request cache, session cache, and application cache.</li>
+<li>Caching can significantly reduce the load on your database server and improve response times.</li>
+</ul>
+<p>Example</p>
+<p>Here is an example of caching a database query result using Moodle's Cache API:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;mod_myplugin&#39;, &#39;somedata&#39;);</span>
+<span class="x">// Define the cache key.</span>
+<span class="x">$cachekey = &#39;myplugin_my_query_result&#39;;</span>
+
+<span class="x">// Check if the result is already cached.</span>
+<span class="x">if ($result = $cache-&gt;get($cachekey)) {</span>
+<span class="x">  // Use the cached result.</span>
+<span class="x">} else {</span>
+<span class="x">  // Query the database.</span>
+<span class="x">  $result = $DB-&gt;get_records(&#39;my_table&#39;);</span>
+<span class="x">  // Cache the result for future use.</span>
+<span class="x">  $cache-&gt;set($cachekey, $result);</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="optimize-data-retrieval">Optimize data retrieval</h4>
+<ul>
+<li>Use appropriate filtering and sorting techniques to limit the amount of data processed and transferred. </li>
+<li>Use conditions in your queries (WHERE clauses) to filter data at the database level rather than retrieving all data and filtering it in your code.</li>
+<li>Use proper sorting techniques (ORDER BY clauses) to ensure efficient data retrieval.</li>
+</ul>
+<h4 id="use-recordsets-when-retrieving-large-dataset">Use recordsets when retrieving large dataset</h4>
+<p>By using the get_recordset_xxx() functions and properly closing the recordset iterator, you can optimize memory usage when dealing with a large number of records retrieved from the database in Moodle code. This helps improve performance and resource management.</p>
+<ul>
+<li>get_records_xxx() functions are not optimal when retrieving a high number of records.</li>
+<li>Use get_recordset_xxx() functions instead.</li>
+<li>get_recordset_xxx() functions return an iterator to save memory.</li>
+<li>Close the returned recordset iterator after using it to free up resources in the RDBMS.</li>
+</ul>
+<p>Example</p>
+<div class="highlight"><pre><span></span><code><span class="x">$rs = $DB-&gt;get_recordset(&#39;user&#39;);</span>
+<span class="x">foreach ($rs as $record) {</span>
+<span class="x">    // Do whatever you want with this record.</span>
+<span class="x">    echo $record-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+<span class="x">$rs-&gt;close();</span>
+</code></pre></div>
+<h3 id="factors-affecting-database-security">Factors affecting database security</h3>
+<h4 id="using-dml-and-ddl-apis">Using DML and DDL APIs</h4>
+<ul>
+<li>Moodle's core libraries takes care of setting up the connection to the database based on the 
+configuration specified in the config.php file. </li>
+<li>This helps ensure that the database connection is established securely and follows best practices.</li>
+<li>Always use Moodle's higher-level database methods from DML, such as get_record(), get_records_sql(), 
+etc, instead of writing your own SQL statements.</li>
+</ul>
+<h4 id="sanitize-user-input">Sanitize user input</h4>
+<ul>
+<li>User input should always be properly validated and sanitized to prevent SQL injection and cross-site scripting (XSS) attacks.</li>
+<li>Use functions like optional_param() or required_param() to clean the input and ensure it is of the expected type before using it in database queries.</li>
+</ul>
+<p>Example</p>
+<div class="highlight"><pre><span></span><code><span class="x">$name = optional_param(&#39;name&#39;, &#39;&#39;, PARAM_TEXT);</span>
+<span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname = :firstname OR lastname = :lastname&quot;; </span>
+<span class="x">$records = $DB-&gt;get_records_sql($sql, [&#39;firstname&#39; =&gt; $name, &#39;lastname&#39; =&gt; $name]);</span>
+</code></pre></div>
+<p>In the code snippet above:</p>
+<ul>
+<li>The value of $name is sanitized to ensure that it only contains text characters before it is used in the database query. </li>
+<li>Any invalid characters will be stripped out by the optional_param() function. </li>
+<li>PARAM_TEXT defines which characters are allowed and what should be stripped out.</li>
+</ul>
+<h4 id="use-bound-parameters">Use bound parameters</h4>
+<ul>
+<li>Moodle's database API encourages the use of bound parameters when constructing database queries.</li>
+<li>Bound parameters automatically handle proper escaping and sanitization of data.</li>
+<li>When using custom SQL code, it is important to use placeholders to insert values into queries instead of concatenating strings. </li>
+<li>This helps prevent SQL injection attacks.</li>
+</ul>
+<p>Example: Using named parameters</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname = :firstname AND lastname = :lastname&quot;;</span>
+<span class="x">$records = $DB-&gt;get_records_sql($sql, [&#39;firstname&#39; =&gt; $firstname, &#39;lastname&#39; =&gt; $lastname]);</span>
+</code></pre></div>
+<p>Example: Using question mark parameters</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname = ? AND lastname = ?&quot;;</span>
+<span class="x">$records = $DB-&gt;get_records_sql($sql, [$firstname, $lastname]);</span>
+</code></pre></div>
+<h4 id="check-proper-access">Check proper access</h4>
+<ul>
+<li>Before reading or writing data, ensure that user has the required permissions.</li>
+<li>Check that the user is properly logged in using require_login().</li>
+<li>Use has_capability() or require_capability() to check that the user has the required permissions.</li>
+</ul>
 <h3 id="best-practices">Best Practices</h3>
 <ol>
 <li><strong>Use Prepared Statements</strong>: Moodle DML functions automatically handle prepared statements to prevent SQL injection attacks. Always use parameterized queries.</li>
