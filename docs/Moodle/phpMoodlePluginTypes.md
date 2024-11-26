@@ -20,7 +20,7 @@ The plugin name must meet the following rules:
 |Assignment feedback plugins	|assignfeedback	|/mod/assign/feedback	|Different forms of assignment feedbacks|
 |[Book tools](./Plugin/phpMoodlePlugin_booktool.md)	|booktool	|/mod/book/tool	|Small information-displays or tools that can be moved around pages|
 |Custom fields	|customfield	|/customfield/field	|Custom field types, used in Custom course fields|
-|Database fields	|datafield	|/mod/data/field	|Different types of data that may be added to the Database activity module|
+|[Database fields](./Plugin/phpMoodlePlugin_datafield.md)	|datafield	|/mod/data/field	|Different types of data that may be added to the Database activity module|
 |Database presets	|datapreset	|/mod/data/preset	|Pre-defined templates for the Database activity module|
 |LTI sources	|ltisource	|/mod/lti/source	|LTI providers can be added to external tools easily through the external tools interface see Documentation on External Tools. This type of plugin is specific to LTI providers that need a plugin that can register custom handlers to process LTI messages|
 |File Converters	|fileconverter	|/files/converter	|Allow conversion between different types of user-submitted file. For example from .doc to PDF.|

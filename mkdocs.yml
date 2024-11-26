@@ -173,6 +173,7 @@ nav:
               - Question Bank: Moodle/Plugin/phpMoodlePlugin_qbank.md
               - Question Behavior: Moodle/Plugin/phpMoodlePlugin_qbehavior.md
             - Book Tool: Moodle/Plugin/phpMoodlePlugin_booktool.md
+            - Database Fields: Moodle/Plugin/phpMoodlePlugin_datafield.md
      - Skeleton: Moodle/phpMoodlePluginSkeleton.md
      - Common Files: Moodle/phpMoodlePluginFiles.md
      - XMLDB Editor: Moodle/phpMoodleXMLDB.md
