@@ -296,6 +296,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleTable/</loc>
+         <lastmod>2024-11-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleTag/</loc>
          <lastmod>2024-11-26</lastmod>
          <changefreq>daily</changefreq>
