@@ -30,7 +30,11 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 
 ### 1. **Defining a Cache**
 
+Getting started with the Cache API is exceptionally straightforward. It's designed for quick and easy usage, emphasizing self-containment. All you need to do is add a definition for your cache and you are ready to start working with the Cache API.
 Caches are defined in the `db/caches.php` file of your plugin. This file registers the cache and specifies its behavior.
+In the case of core that is the lib/db/caches.php file, in the case of a module that would be mod/myplugin/db/caches.php.
+
+The definition is used API in order to understand a little about the cache and what it is being used for, it also allows the administrator to set things up especially for the definition if they want. From a development point of view the definition allows you to tell the API about your cache, what it requires, and any (if any) advanced features you want it to have.
 
 ##### Example: `db/caches.php`
 
@@ -46,6 +50,8 @@ $definitions = [
     ],
 ];
 ```
+
+This informs the API that the myplugin module has a cache called `example_cache` and that it is an application (globally shared) cache.
 
 **Key Fields**:
 
@@ -66,6 +72,24 @@ $definitions = array(
 );
 
 ```
+
+When creating a definition that's the bare minimum, to provide an area (somedata) and 
+declare the type of the cache application, session, or request.
+
++ An application cache is a shared cache, all users can access it.
++ Session caches are scoped to a single users session, but may not actually be stored in the session.
++ Request caches you can think of as static caches, only available to the user owning the request, and only alive until the end of the request.
+
+There are of course many more options available that allow you to really take the cache by 
+the reigns, you can read about some of the important ones further on, or skip ahead to the 
+definition section which details the available options in full.
+
+For each definition, a language string with the name cachedef_ followed by the name of the definition is expected.
+
+```php
+$string['cachedef_example_cache'] = 'This is the description of the cache example_cache';
+```
+
 
 Advanced definition:
 
@@ -170,9 +194,14 @@ $definitions = array(
 
 To use the defined cache, instantiate a cache object using the `cache::make()` function. 
 
-##### Example: Using a Cache Object
+##### Example: Getting a Cache Object
 
 Getting a cache instance for a definition
+
+Once your definition has been created you should bump the version number so that Moodle 
+upgrades and processes the definitions file at which point your definition will be useable.
+
+Now within code you can get a cache object corresponding to the definition created earlier.
 
 ```php
 $cache = cache::make('local_myplugin', 'example_cache');
@@ -188,6 +217,12 @@ $cache = cache::make('component', 'area', ['dbfamily' => 'pgsql']);
 
 - **Component**: The name of your plugin or module (e.g., `local_myplugin`).
 - **Area**: The name of the cache area defined in `db/caches.php` (e.g., `example_cache`).
+
+The `cache::make()` method is a factory method, it will create a cache object to allow you 
+to work with your cache. The cache object will be one of several classes chosen by the API 
+based upon what your definition contains. All of these classes will extend the base cache 
+class, and in nearly all cases you will get one of `cache_application`, `cache_session`, or 
+`cache_request` depending upon the mode you selected.
 
 Getting an ad-hoc cache instance
 
@@ -220,7 +255,8 @@ $cache = cache::make_from_params(cache_store::MODE_REQUEST, 'component', 'area',
 
 ### 3. **Storing and Retrieving Data**
 
-Once the cache object is instantiated, you can store, retrieve, and manage data using the Cache API methods.
+Once the cache object is instantiated, you can store, retrieve, and manage data using 
+the Cache API methods.
 
 ##### Example: Storing and Retrieving Data
 
@@ -250,6 +286,58 @@ if ($cachedValue === false) {
 
 // Deleting a specific key.
 $cache->delete('unique_key');
+```
+
+Once you have a cache object (will extend the cache class and implements `cache_loader`) 
+you are ready to start interacting with the cache.
+
+There are three basic basic operations: get, set, and delete.
+
+The first is to send something to the cache.
+
+```php
+$result = $cache->set('key', 'value');
+```
+
+The key must be an int or a string. The value can be absolutely anything your want that 
+is serializable. The result is true if the operation was a success, false otherwise.
+
+The second is to retrieve something from the cache.
+
+```php
+$data = $cache->get('key');
+```
+
+`$data` will either be whatever was being stored in the cache, or false if the cache could not find the key.
+
+The third and final operation is delete.
+
+```php
+$result = $cache->delete('key');
+```
+
+Again just like set the result will either be true if the operation was a success, or false otherwise.
+
+You can also set, get, and delete multiple key => value pairs in a single transaction.
+
+```php
+$result = $cache->set_many([
+    'key1' => 'data1',
+    'key3' => 'data3'
+]);
+// $result will be the number of pairs sucessfully set.
+
+$result = $cache->get_many(['key1', 'key2', 'key3']);
+print_r($result);
+// Will print the following:
+// array(
+//     'key1' => 'data1',
+//     'key2' => false,
+//     'key3' => 'data3'
+// )
+
+$result = $cache->delete_many(['key1', 'key3']);
+// $result will be the number of records sucessfully deleted.
 ```
 
 ##### Example: Bulk Operations

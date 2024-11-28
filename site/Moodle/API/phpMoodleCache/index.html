@@ -2549,7 +2549,10 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 </ol>
 <hr />
 <h3 id="1-defining-a-cache">1. <strong>Defining a Cache</strong></h3>
-<p>Caches are defined in the <code>db/caches.php</code> file of your plugin. This file registers the cache and specifies its behavior.</p>
+<p>Getting started with the Cache API is exceptionally straightforward. It's designed for quick and easy usage, emphasizing self-containment. All you need to do is add a definition for your cache and you are ready to start working with the Cache API.
+Caches are defined in the <code>db/caches.php</code> file of your plugin. This file registers the cache and specifies its behavior.
+In the case of core that is the lib/db/caches.php file, in the case of a module that would be mod/myplugin/db/caches.php.</p>
+<p>The definition is used API in order to understand a little about the cache and what it is being used for, it also allows the administrator to set things up especially for the definition if they want. From a development point of view the definition allows you to tell the API about your cache, what it requires, and any (if any) advanced features you want it to have.</p>
 <h5 id="example-dbcachesphp">Example: <code>db/caches.php</code></h5>
 <div class="highlight"><pre><span></span><code><span class="x">defined(&#39;MOODLE_INTERNAL&#39;) || die();</span>
 
@@ -2562,6 +2565,7 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 <span class="x">    ],</span>
 <span class="x">];</span>
 </code></pre></div>
+<p>This informs the API that the myplugin module has a cache called <code>example_cache</code> and that it is an application (globally shared) cache.</p>
 <p><strong>Key Fields</strong>:</p>
 <ul>
 <li><strong><code>mode</code></strong>: Defines the cache scope (<code>MODE_SESSION</code>, <code>MODE_REQUEST</code>, <code>MODE_APPLICATION</code>).</li>
@@ -2577,6 +2581,19 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 <span class="x">        &#39;mode&#39; =&gt; cache_store::MODE_*,</span>
 <span class="x">    )</span>
 <span class="x">);</span>
+</code></pre></div>
+<p>When creating a definition that's the bare minimum, to provide an area (somedata) and 
+declare the type of the cache application, session, or request.</p>
+<ul>
+<li>An application cache is a shared cache, all users can access it.</li>
+<li>Session caches are scoped to a single users session, but may not actually be stored in the session.</li>
+<li>Request caches you can think of as static caches, only available to the user owning the request, and only alive until the end of the request.</li>
+</ul>
+<p>There are of course many more options available that allow you to really take the cache by 
+the reigns, you can read about some of the important ones further on, or skip ahead to the 
+definition section which details the available options in full.</p>
+<p>For each definition, a language string with the name cachedef_ followed by the name of the definition is expected.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$string[&#39;cachedef_example_cache&#39;] = &#39;This is the description of the cache example_cache&#39;;</span>
 </code></pre></div>
 <p>Advanced definition:</p>
 <div class="highlight"><pre><span></span><code><span class="x">$definitions = array(</span>
@@ -2674,8 +2691,11 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 <hr />
 <h3 id="2-accessing-a-cache">2. <strong>Accessing a Cache</strong></h3>
 <p>To use the defined cache, instantiate a cache object using the <code>cache::make()</code> function. </p>
-<h5 id="example-using-a-cache-object">Example: Using a Cache Object</h5>
+<h5 id="example-getting-a-cache-object">Example: Getting a Cache Object</h5>
 <p>Getting a cache instance for a definition</p>
+<p>Once your definition has been created you should bump the version number so that Moodle 
+upgrades and processes the definitions file at which point your definition will be useable.</p>
+<p>Now within code you can get a cache object corresponding to the definition created earlier.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;local_myplugin&#39;, &#39;example_cache&#39;);</span>
 
 <span class="x">// Most basic</span>
@@ -2689,6 +2709,11 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 <li><strong>Component</strong>: The name of your plugin or module (e.g., <code>local_myplugin</code>).</li>
 <li><strong>Area</strong>: The name of the cache area defined in <code>db/caches.php</code> (e.g., <code>example_cache</code>).</li>
 </ul>
+<p>The <code>cache::make()</code> method is a factory method, it will create a cache object to allow you 
+to work with your cache. The cache object will be one of several classes chosen by the API 
+based upon what your definition contains. All of these classes will extend the base cache 
+class, and in nearly all cases you will get one of <code>cache_application</code>, <code>cache_session</code>, or 
+<code>cache_request</code> depending upon the mode you selected.</p>
 <p>Getting an ad-hoc cache instance</p>
 <p>Using cache definitions is the recommended method. Ad-hoc caches should only be used where you have a rarely used cache, or insignificant cache. Typical use-case can be when you are refactoring some local static variables into MODE_REQUEST caches.</p>
 <div class="highlight"><pre><span></span><code><span class="x">// Application cache</span>
@@ -2714,7 +2739,8 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 </code></pre></div>
 <hr />
 <h3 id="3-storing-and-retrieving-data">3. <strong>Storing and Retrieving Data</strong></h3>
-<p>Once the cache object is instantiated, you can store, retrieve, and manage data using the Cache API methods.</p>
+<p>Once the cache object is instantiated, you can store, retrieve, and manage data using 
+the Cache API methods.</p>
 <h5 id="example-storing-and-retrieving-data">Example: Storing and Retrieving Data</h5>
 <div class="highlight"><pre><span></span><code><span class="x">// Get a cache instance</span>
 <span class="x">$cache = cache::make(cache_store::MODE_APPLICATION, &#39;component&#39;, &#39;area&#39;);</span>
@@ -2741,6 +2767,41 @@ The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental cach
 
 <span class="x">// Deleting a specific key.</span>
 <span class="x">$cache-&gt;delete(&#39;unique_key&#39;);</span>
+</code></pre></div>
+<p>Once you have a cache object (will extend the cache class and implements <code>cache_loader</code>) 
+you are ready to start interacting with the cache.</p>
+<p>There are three basic basic operations: get, set, and delete.</p>
+<p>The first is to send something to the cache.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $cache-&gt;set(&#39;key&#39;, &#39;value&#39;);</span>
+</code></pre></div>
+<p>The key must be an int or a string. The value can be absolutely anything your want that 
+is serializable. The result is true if the operation was a success, false otherwise.</p>
+<p>The second is to retrieve something from the cache.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$data = $cache-&gt;get(&#39;key&#39;);</span>
+</code></pre></div>
+<p><code>$data</code> will either be whatever was being stored in the cache, or false if the cache could not find the key.</p>
+<p>The third and final operation is delete.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $cache-&gt;delete(&#39;key&#39;);</span>
+</code></pre></div>
+<p>Again just like set the result will either be true if the operation was a success, or false otherwise.</p>
+<p>You can also set, get, and delete multiple key =&gt; value pairs in a single transaction.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $cache-&gt;set_many([</span>
+<span class="x">    &#39;key1&#39; =&gt; &#39;data1&#39;,</span>
+<span class="x">    &#39;key3&#39; =&gt; &#39;data3&#39;</span>
+<span class="x">]);</span>
+<span class="x">// $result will be the number of pairs sucessfully set.</span>
+
+<span class="x">$result = $cache-&gt;get_many([&#39;key1&#39;, &#39;key2&#39;, &#39;key3&#39;]);</span>
+<span class="x">print_r($result);</span>
+<span class="x">// Will print the following:</span>
+<span class="x">// array(</span>
+<span class="x">//     &#39;key1&#39; =&gt; &#39;data1&#39;,</span>
+<span class="x">//     &#39;key2&#39; =&gt; false,</span>
+<span class="x">//     &#39;key3&#39; =&gt; &#39;data3&#39;</span>
+<span class="x">// )</span>
+
+<span class="x">$result = $cache-&gt;delete_many([&#39;key1&#39;, &#39;key3&#39;]);</span>
+<span class="x">// $result will be the number of records sucessfully deleted.</span>
 </code></pre></div>
 <h5 id="example-bulk-operations">Example: Bulk Operations</h5>
 <p>Not all cache stores will support fetching many keys at once, some stores will take the array of keys and process them one by one. If you have many keys to fetch it is recommended to use this still as cache stores that do support this will likely perform better.</p>
