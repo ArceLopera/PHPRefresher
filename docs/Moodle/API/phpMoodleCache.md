@@ -224,9 +224,24 @@ based upon what your definition contains. All of these classes will extend the b
 class, and in nearly all cases you will get one of `cache_application`, `cache_session`, or 
 `cache_request` depending upon the mode you selected.
 
-Getting an ad-hoc cache instance
+#### Getting an ad-hoc cache instance
 
-Using cache definitions is the recommended method. Ad-hoc caches should only be used where you have a rarely used cache, or insignificant cache. Typical use-case can be when you are refactoring some local static variables into MODE_REQUEST caches.
+Using cache definitions is the recommended method. 
+Ad-hoc caches should only be used where you have a rarely used cache, or insignificant cache. 
+Typical use-case can be when you are refactoring some local static variables into 
+MODE_REQUEST caches.
+
+This is the alternative method of using the cache API.
+It involves creating a cache using just the required params at the time that it is required. 
+It doesn't require that a definition exists making it quicker and easier to use, 
+however it can only use the default settings and is only recommended for insignificant 
+caches (rarely used during operation, never to be mapped or customised, 
+only existing in a single place in code).
+
+Once a cache object has been retrieved it operates exactly as the same as a cache that 
+has been created for a definition.
+
+To create an ad-hoc cache you would use the following:
 
 ```php
 // Application cache
@@ -250,6 +265,8 @@ $cache = cache::make_from_params(cache_store::MODE_APPLICATION, 'component', 'ar
 $cache = cache::make_from_params(cache_store::MODE_REQUEST, 'component', 'area', array(),
     array('simplekeys' => true, 'simpledata' => true));
 ```
+Don't be lazy, if you don't have a good reason to use an ad-hoc cache you should be spending 
+an extra 5 minutes creating a definition.
 
 ---
 

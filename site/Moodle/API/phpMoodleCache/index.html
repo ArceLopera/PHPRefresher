@@ -2268,6 +2268,19 @@
     2. Accessing a Cache
   </a>
   
+    <nav class="md-nav" aria-label="2. Accessing a Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-an-ad-hoc-cache-instance" class="md-nav__link">
+    Getting an ad-hoc cache instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2438,6 +2451,19 @@
   <a href="#2-accessing-a-cache" class="md-nav__link">
     2. Accessing a Cache
   </a>
+  
+    <nav class="md-nav" aria-label="2. Accessing a Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-an-ad-hoc-cache-instance" class="md-nav__link">
+    Getting an ad-hoc cache instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2714,9 +2740,21 @@ to work with your cache. The cache object will be one of several classes chosen 
 based upon what your definition contains. All of these classes will extend the base cache 
 class, and in nearly all cases you will get one of <code>cache_application</code>, <code>cache_session</code>, or 
 <code>cache_request</code> depending upon the mode you selected.</p>
-<p>Getting an ad-hoc cache instance</p>
-<p>Using cache definitions is the recommended method. Ad-hoc caches should only be used where you have a rarely used cache, or insignificant cache. Typical use-case can be when you are refactoring some local static variables into MODE_REQUEST caches.</p>
-<div class="highlight"><pre><span></span><code><span class="x">// Application cache</span>
+<h4 id="getting-an-ad-hoc-cache-instance">Getting an ad-hoc cache instance</h4>
+<p>Using cache definitions is the recommended method. 
+Ad-hoc caches should only be used where you have a rarely used cache, or insignificant cache. 
+Typical use-case can be when you are refactoring some local static variables into 
+MODE_REQUEST caches.</p>
+<p>This is the alternative method of using the cache API.
+It involves creating a cache using just the required params at the time that it is required. 
+It doesn't require that a definition exists making it quicker and easier to use, 
+however it can only use the default settings and is only recommended for insignificant 
+caches (rarely used during operation, never to be mapped or customised, 
+only existing in a single place in code).</p>
+<p>Once a cache object has been retrieved it operates exactly as the same as a cache that 
+has been created for a definition.</p>
+<p>To create an ad-hoc cache you would use the following:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">// Application cache</span>
 <span class="x">$cache = cache::make_from_params(cache_store::MODE_APPLICATION, &#39;component&#39;, &#39;area&#39;);</span>
 
 <span class="x">// Session cache</span>
@@ -2737,6 +2775,8 @@ class, and in nearly all cases you will get one of <code>cache_application</code
 <span class="x">$cache = cache::make_from_params(cache_store::MODE_REQUEST, &#39;component&#39;, &#39;area&#39;, array(),</span>
 <span class="x">    array(&#39;simplekeys&#39; =&gt; true, &#39;simpledata&#39; =&gt; true));</span>
 </code></pre></div>
+Don't be lazy, if you don't have a good reason to use an ad-hoc cache you should be spending 
+an extra 5 minutes creating a definition.</p>
 <hr />
 <h3 id="3-storing-and-retrieving-data">3. <strong>Storing and Retrieving Data</strong></h3>
 <p>Once the cache object is instantiated, you can store, retrieve, and manage data using 
