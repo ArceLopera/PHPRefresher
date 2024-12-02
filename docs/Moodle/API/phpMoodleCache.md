@@ -109,10 +109,11 @@ $definitions = array(
         'simplekeys' => false,
 
         // [bool] If set to true we know that the data is scalar or array of scalar.
+        // If true, the data values will be stored as they are. Otherwise they will be serialised first.
         'simpledata' => false,
 
         // [array] An array of identifiers that must be provided to the cache when it is created.
-        'requireidentifiers' => array('ident1', 'ident2'),
+        'requireidentifiers' => ['ident1', 'ident2'],
 
         // [bool] If set to true then only stores that can guarantee data will remain available once set will be used.
         'requiredataguarantee' => false,
