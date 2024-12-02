@@ -2637,10 +2637,11 @@ definition section which details the available options in full.</p>
 <span class="x">        &#39;simplekeys&#39; =&gt; false,</span>
 
 <span class="x">        // [bool] If set to true we know that the data is scalar or array of scalar.</span>
+<span class="x">        // If true, the data values will be stored as they are. Otherwise they will be serialised first.</span>
 <span class="x">        &#39;simpledata&#39; =&gt; false,</span>
 
 <span class="x">        // [array] An array of identifiers that must be provided to the cache when it is created.</span>
-<span class="x">        &#39;requireidentifiers&#39; =&gt; array(&#39;ident1&#39;, &#39;ident2&#39;),</span>
+<span class="x">        &#39;requireidentifiers&#39; =&gt; [&#39;ident1&#39;, &#39;ident2&#39;],</span>
 
 <span class="x">        // [bool] If set to true then only stores that can guarantee data will remain available once set will be used.</span>
 <span class="x">        &#39;requiredataguarantee&#39; =&gt; false,</span>
