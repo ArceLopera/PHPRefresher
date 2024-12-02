@@ -1,0 +1,3856 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/API/phpMoodleDM/">
+      
+      <link rel="icon" href="../../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Data Manipulation API - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-definition-api-ddl" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Manipulation API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../DS/phpArray/" class="md-tabs__link">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DS/phpArray/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../DS/phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_3">
+          Question
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Question" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Question
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+        Question Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+        Question Format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+        Question Bank
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+        Question Behavior
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
+        Book Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plugin/phpMoodlePlugin_datafield/" class="md-nav__link">
+        Database Fields
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
+        Common Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB Editor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleTemplate/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
+        Modal Dialogues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" type="checkbox" id="__nav_7_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_9">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleServices/" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePersistent/" class="md-nav__link">
+        Persistent API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleExporter/" class="md-nav__link">
+        Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleQuestion/" class="md-nav__link">
+        Question API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Data Manipulation API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Data Manipulation API
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-definition-api-ddl" class="md-nav__link">
+    Data Definition API (DDL)
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Definition API (DDL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-manager" class="md-nav__link">
+    Database manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-tables" class="md-nav__link">
+    Handling tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-fields" class="md-nav__link">
+    Handling fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-keys-and-indexes" class="md-nav__link">
+    Handling keys and indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmldb-db-schema-abstraction" class="md-nav__link">
+    XMLDB - DB Schema Abstraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-manipulation-api-dml" class="md-nav__link">
+    Data Manipulation API (DML)
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Manipulation API (DML)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dml-drivers" class="md-nav__link">
+    DML drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-access-object-db-api" class="md-nav__link">
+    Database Access Object (DB API)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-prefix" class="md-nav__link">
+    Table prefix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-and-placeholders" class="md-nav__link">
+    Conditions and Placeholders
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud-operations" class="md-nav__link">
+    CRUD Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-queries" class="md-nav__link">
+    SQL Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    Transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-caching" class="md-nav__link">
+    Database Caching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-recordsets" class="md-nav__link">
+    Using recordsets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-database-compatibility" class="md-nav__link">
+    Cross database compatibility
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross database compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_like" class="md-nav__link">
+    sql_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_like_escape" class="md-nav__link">
+    sql_like_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_in_or_equal" class="md-nav__link">
+    get_in_or_equal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-performance" class="md-nav__link">
+    Factors affecting database performance
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-database-queries" class="md-nav__link">
+    Reduce database queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-appropriate-indexes" class="md-nav__link">
+    Create appropriate indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-select-queries" class="md-nav__link">
+    Avoid SELECT * queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-database-results" class="md-nav__link">
+    Cache database results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-data-retrieval" class="md-nav__link">
+    Optimize data retrieval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-recordsets-when-retrieving-large-dataset" class="md-nav__link">
+    Use recordsets when retrieving large dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-security" class="md-nav__link">
+    Factors affecting database security
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-dml-and-ddl-apis" class="md-nav__link">
+    Using DML and DDL APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-user-input" class="md-nav__link">
+    Sanitize user input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-bound-parameters" class="md-nav__link">
+    Use bound parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-proper-access" class="md-nav__link">
+    Check proper access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTag/" class="md-nav__link">
+        Tag API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleAccess/" class="md-nav__link">
+        Access API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleGroups/" class="md-nav__link">
+        Groups API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleMessage/" class="md-nav__link">
+        Messaging API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleCache/" class="md-nav__link">
+        Cache API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTable/" class="md-nav__link">
+        Table API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpMoodleSecurity/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-definition-api-ddl" class="md-nav__link">
+    Data Definition API (DDL)
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Definition API (DDL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-manager" class="md-nav__link">
+    Database manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-tables" class="md-nav__link">
+    Handling tables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-fields" class="md-nav__link">
+    Handling fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-keys-and-indexes" class="md-nav__link">
+    Handling keys and indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmldb-db-schema-abstraction" class="md-nav__link">
+    XMLDB - DB Schema Abstraction
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-manipulation-api-dml" class="md-nav__link">
+    Data Manipulation API (DML)
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Manipulation API (DML)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dml-drivers" class="md-nav__link">
+    DML drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-access-object-db-api" class="md-nav__link">
+    Database Access Object (DB API)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-prefix" class="md-nav__link">
+    Table prefix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-and-placeholders" class="md-nav__link">
+    Conditions and Placeholders
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crud-operations" class="md-nav__link">
+    CRUD Operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-queries" class="md-nav__link">
+    SQL Queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transactions" class="md-nav__link">
+    Transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-caching" class="md-nav__link">
+    Database Caching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-recordsets" class="md-nav__link">
+    Using recordsets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-database-compatibility" class="md-nav__link">
+    Cross database compatibility
+  </a>
+  
+    <nav class="md-nav" aria-label="Cross database compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_like" class="md-nav__link">
+    sql_like
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_like_escape" class="md-nav__link">
+    sql_like_escape
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_in_or_equal" class="md-nav__link">
+    get_in_or_equal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-performance" class="md-nav__link">
+    Factors affecting database performance
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-database-queries" class="md-nav__link">
+    Reduce database queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-appropriate-indexes" class="md-nav__link">
+    Create appropriate indexes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-select-queries" class="md-nav__link">
+    Avoid SELECT * queries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-database-results" class="md-nav__link">
+    Cache database results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-data-retrieval" class="md-nav__link">
+    Optimize data retrieval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-recordsets-when-retrieving-large-dataset" class="md-nav__link">
+    Use recordsets when retrieving large dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#factors-affecting-database-security" class="md-nav__link">
+    Factors affecting database security
+  </a>
+  
+    <nav class="md-nav" aria-label="Factors affecting database security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-dml-and-ddl-apis" class="md-nav__link">
+    Using DML and DDL APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanitize-user-input" class="md-nav__link">
+    Sanitize user input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-bound-parameters" class="md-nav__link">
+    Use bound parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-proper-access" class="md-nav__link">
+    Check proper access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    Best Practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Data Manipulation API</h1>
+
+<p>Moodle provides two main APIs for database abstraction:</p>
+<h3 id="data-definition-api-ddl"><a href="https://moodledev.io/docs/5.0/apis/core/dml/ddl">Data Definition API (DDL)</a></h3>
+<p>This API allows you to handle database structures such as tables, fields, and indexes. It provides a set of functions to create, modify, and delete these structures. These functions are used exclusively by the installation and upgrade processes and allow for the execution of correct SQL statements for each RDBMS.</p>
+<p>It encapsulates database-specific logic, so developers do not need to worry about the correct SQL syntax for each database type.
+The Data Definition Library should only be used in the installation and upgrade processes. You should NOT use it in other parts of Moodle.</p>
+<h4 id="database-manager">Database manager</h4>
+<p>The database manager is an object that provides access to various functions for handling database structures such as tables, fields, and indexes. </p>
+<ul>
+<li>It is responsible for executing the correct SQL statements required by each RDBMS using a neutral description.</li>
+<li>The database manager is accessible from the <code>$DB</code> global object in Moodle. </li>
+<li>To use the database manager within your upgrade function of your <code>upgrade.php</code> main function, you need to "import" it using the <code>global</code> keyword, like this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">function xmldb_xxxx_upgrade {</span>
+<span class="x">    global $DB; // Load the DDL manager and XMLDB API.</span>
+<span class="x">    $dbman = $DB-&gt;get_manager();</span>
+<span class="x">    // Your upgrade code goes here</span>
+<span class="x">}</span>
+</code></pre></div>
+<ul>
+<li>The use of these functions is restricted to the upgrade processes and it should not be used in any other parts of Moodle.</li>
+<li>The database manager class can be found at <a href="https://github.com/moodle/moodle/blob/main/lib/ddl/database_manager.php">lib/ddl/database_manager.php</a>.</li>
+</ul>
+<h4 id="handling-tables">Handling tables</h4>
+<p>These are functions from the DDL that allow you to perform table-related operations:</p>
+<h5 id="detect-if-a-table-exists">Detect if a table exists:</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;table_exists($table);</span>
+</code></pre></div>
+<h5 id="create-a-table">Create a table</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;create_table($table, $continue = true, $feedback = true);</span>
+</code></pre></div>
+<h5 id="drop-a-table">Drop a table</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;drop_table($table, $continue = true, $feedback = true);</span>
+</code></pre></div>
+<h5 id="rename-a-table">Rename a table</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;rename_table($table, $newname, $continue = true, $feedback = true);</span>
+</code></pre></div>
+<h5 id="example">Example</h5>
+<p>Here is a code snippet from mod/h5pactivity/db/upgrade.php:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Define table h5pactivity_attempts to be created.</span>
+<span class="x">$table = new xmldb_table(&#39;h5pactivity_attempts&#39;);</span>
+
+<span class="x">// Adding fields to table h5pactivity_attempts.</span>
+<span class="x">$table-&gt;add_field(&#39;id&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);</span>
+<span class="x">$table-&gt;add_field(&#39;h5pactivityid&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, XMLDB_NOTNULL, null, null);</span>
+<span class="x">$table-&gt;add_field(&#39;userid&#39;, XMLDB_TYPE_INTEGER, &#39;20&#39;, null, XMLDB_NOTNULL, null, null);</span>
+<span class="x">$table-&gt;add_field(&#39;timecreated&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, XMLDB_NOTNULL, null, null);</span>
+<span class="x">$table-&gt;add_field(&#39;timemodified&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, XMLDB_NOTNULL, null, null);</span>
+<span class="x">$table-&gt;add_field(&#39;attempt&#39;, XMLDB_TYPE_INTEGER, &#39;6&#39;, null, XMLDB_NOTNULL, null, &#39;1&#39;);</span>
+<span class="x">$table-&gt;add_field(&#39;rawscore&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, null, null, &#39;0&#39;);</span>
+<span class="x">$table-&gt;add_field(&#39;maxscore&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, null, null, &#39;0&#39;);</span>
+<span class="x">   ...</span>
+<span class="x">   ... </span>
+
+<span class="x">// Conditionally launch create table for h5pactivity_attempts.</span>
+<span class="x">if (!$dbman-&gt;table_exists($table)) {</span>
+<span class="x">    $dbman-&gt;create_table($table);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The code snippet shown above:</p>
+<p>Defines the structure for a new table.
+Creates the table, if it does not exist.
+Note: You should only use these functions in the upgrade script of your plugin. And always use the <a href="../../phpMoodleXMLDB/">XMLDB editor</a> to create the upgrade script for your plugin.</p>
+<h4 id="handling-fields">Handling fields</h4>
+<p>DDL also provides functions to alter the fields of tables. These functions allow to:</p>
+<ul>
+<li>Detect if a field exists.</li>
+<li>Create a field in a given table.</li>
+<li>Drop a field from a table.</li>
+<li>Rename a field.</li>
+<li>Change the type of a field.</li>
+<li>Change the precision of a field.</li>
+<li>Change the signed/unsigned status of a field.</li>
+<li>Make a field nullable or not.</li>
+<li>Change the default value of a field.</li>
+</ul>
+<p>Example: </p>
+<p>Here is a code snippet from mod/h5pactivity/db/upgrade.php which shows how to add a new field to an existing table.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Define field duration to be added to h5pactivity_attempts.</span>
+<span class="x">$table = new xmldb_table(&#39;h5pactivity_attempts&#39;);</span>
+<span class="x">$field = new xmldb_field(&#39;duration&#39;, XMLDB_TYPE_INTEGER, &#39;10&#39;, null, null, null, &#39;0&#39;, &#39;maxscore&#39;);</span>
+
+<span class="x">// Conditionally launch add field duration.</span>
+<span class="x">if (!$dbman-&gt;field_exists($table, $field)) {</span>
+<span class="x">    $dbman-&gt;add_field($table, $field);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>For more information, have a look at the Handling fields section of the Moodle dev docs.}</p>
+<h4 id="handling-keys-and-indexes">Handling keys and indexes</h4>
+<p>The functions for handling keys and indexes include:</p>
+<h5 id="add-a-key">Add a key.</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;add_key($table, $key);</span>
+</code></pre></div>
+<h5 id="drop-a-key">Drop a key.</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;drop_key($table, $key);</span>
+</code></pre></div>
+<h5 id="add-an-index">Add an index.</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;add_index($table, $index, $continue = true, $feedback = true);</span>
+</code></pre></div>
+<h5 id="drop-an-index">Drop an index.</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;drop_index($table, $index, $continue = true, $feedback = true);</span>
+</code></pre></div>
+<h5 id="detect-if-an-index-exists">Detect if an index exists.</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;index_exists($table, $index);</span>
+</code></pre></div>
+<h5 id="return-the-name-of-an-index-in-db">Return the name of an index in DB.</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$dbman-&gt;find_index_name($table, $index);</span>
+</code></pre></div>
+<p>Example</p>
+<p>Here is a code snippet from mod/h5pactivity/db/upgrade.php which shows how to add a primary key, foreign key and index.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Adding keys to table h5pactivity_attempts_results.</span>
+<span class="x">$table-&gt;add_key(&#39;primary&#39;, XMLDB_KEY_PRIMARY, [&#39;id&#39;]);</span>
+<span class="x">$table-&gt;add_key(&#39;fk_attemptid&#39;, XMLDB_KEY_FOREIGN, [&#39;attemptid&#39;], &#39;h5pactivity_attempts&#39;, [&#39;id&#39;]);</span>
+
+<span class="x">// Adding indexes to table h5pactivity_attempts_results.</span>
+<span class="x">$table-&gt;add_index(&#39;attemptid-timecreated&#39;, XMLDB_INDEX_NOTUNIQUE, [&#39;attemptid&#39;, &#39;timecreated&#39;]);</span>
+</code></pre></div>
+<hr />
+<h4 id="xmldb-db-schema-abstraction"><strong>XMLDB - DB Schema Abstraction</strong></h4>
+<p>Moodle uses an abstracted schema definition in the form of XML (<code>install.xml</code> and <code>upgrade.php</code>) to create and update database tables across different databases.</p>
+<ul>
+<li><strong>install.xml</strong>: Defines the structure of tables, fields, indexes, and keys.</li>
+<li><strong>upgrade.php</strong>: Handles table upgrades when new fields or tables need to be added.</li>
+</ul>
+<p>Example of a table definition in <code>install.xml</code>:
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;yourplugin/db/install.xml&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;2013053100&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;yourplugin_data&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Stores custom plugin data&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Primary key&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;userid&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;User ID&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;data&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Custom data&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;KEYS&gt;</span>
+            <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/KEYS&gt;</span>
+    <span class="nt">&lt;/TABLE&gt;</span>
+<span class="nt">&lt;/XMLDB&gt;</span>
+</code></pre></div></p>
+<p>XMLDB is a custom database abstraction layer that allows developers to define and manage database schemas using XML files. XMLDB introduces a uniform XML-based format to describe the Moodle database tables, with no dependency on actual syntax used by the database system.</p>
+<ul>
+<li>Database schema in Moodle is defined using XMLDB.</li>
+<li>This allows to define database schemas in a simple and standardised way using XML files.</li>
+<li>The XML files are then used to generate compatible SQL for each of the database types supported by Moodle.</li>
+</ul>
+<p>Example</p>
+<p>Here is a XMLDB file from mod/label/db/install.xml.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;XMLDB</span> <span class="na">PATH=</span><span class="s">&quot;mod/label/db&quot;</span> <span class="na">VERSION=</span><span class="s">&quot;20120122&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;XMLDB file for Moodle mod/label&quot;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;../../../lib/xmldb/xmldb.xsd&quot;</span>
+<span class="nt">&gt;</span>
+  <span class="nt">&lt;TABLES&gt;</span>
+    <span class="nt">&lt;TABLE</span> <span class="na">NAME=</span><span class="s">&quot;label&quot;</span> <span class="na">COMMENT=</span><span class="s">&quot;Defines labels&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FIELDS&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;id&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;course&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;name&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;char&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;255&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;intro&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;text&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;introformat&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;4&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;false&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;FIELD</span> <span class="na">NAME=</span><span class="s">&quot;timemodified&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;int&quot;</span> <span class="na">LENGTH=</span><span class="s">&quot;10&quot;</span> <span class="na">NOTNULL=</span><span class="s">&quot;true&quot;</span> <span class="na">DEFAULT=</span><span class="s">&quot;0&quot;</span> <span class="na">SEQUENCE=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/FIELDS&gt;</span>
+      <span class="nt">&lt;KEYS&gt;</span>
+        <span class="nt">&lt;KEY</span> <span class="na">NAME=</span><span class="s">&quot;primary&quot;</span> <span class="na">TYPE=</span><span class="s">&quot;primary&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;id&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/KEYS&gt;</span>
+      <span class="nt">&lt;INDEXES&gt;</span>
+        <span class="nt">&lt;INDEX</span> <span class="na">NAME=</span><span class="s">&quot;course&quot;</span> <span class="na">UNIQUE=</span><span class="s">&quot;false&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;course&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/INDEXES&gt;</span>
+    <span class="nt">&lt;/TABLE&gt;</span>
+  <span class="nt">&lt;/TABLES&gt;</span>
+<span class="nt">&lt;/XMLDB&gt;</span>
+</code></pre></div>
+<p>This XML file is used to create the database table(s) for mod_label, when Moodle is installed.
+Each Moodle plugin that stores its own data in the database will have it's own install.xml file located in it's db/ subdirectory.
+The install.xml file is only used during the installation process.</p>
+<h3 id="data-manipulation-api-dml"><a href="https://moodledev.io/docs/5.0/apis/core/dml">Data Manipulation API (DML)</a></h3>
+<p>This API is used to access and manipulate data in the Moodle database. It provides functions for inserting, updating, deleting, and retrieving data from the database.</p>
+<p>The <strong>Data Manipulation API (DML)</strong> in Moodle is a set of functions that facilitate interaction with the Moodle database. It abstracts away the complexities of directly working with SQL, ensuring that Moodle’s database queries remain compatible across different database systems (e.g., MySQL, PostgreSQL, MS SQL, Oracle). The DML functions help developers perform common operations such as inserting, updating, deleting, and fetching data, while also enforcing security, performance, and consistency best practices.</p>
+<hr />
+<h4 id="dml-drivers">DML drivers</h4>
+<p>DML drivers are native drivers included with Moodle that provide support for various database management systems. These drivers enable Moodle to interact with different databases using a consistent and optimized interface. </p>
+<p>The DML drivers supported by Moodle include:</p>
+<ul>
+<li>MySQLi</li>
+<li>MariaDB</li>
+<li>PostgreSQL</li>
+<li>Oracle</li>
+<li>Microsoft SQL Server</li>
+</ul>
+<p>These drivers are supported using the DML Database Driver layer, which offers several benefits such as:</p>
+<ul>
+<li>More optimized and faster performance.</li>
+<li>Lower memory consumption.</li>
+<li>Better possibilities for logging, debugging, and profiling.</li>
+<li>Less code, making it easier to fix and maintain.</li>
+</ul>
+<p>For more information you can visit the Moodle Developer Resources page: <a href="https://moodledev.io/docs/5.0/apis/core/dml/drivers">DML drivers in Moodle</a>.</p>
+<hr />
+<h4 id="database-access-object-db-api"><strong>Database Access Object (DB API)</strong></h4>
+<p>The <code>$DB</code> global object in Moodle is the central component of the DML API. It provides a collection of functions to interact with the database. Instead of writing raw SQL directly, developers use these functions, which are compatible with all supported database systems.</p>
+<p>The <code>$DB</code> object is initialized as part of the Moodle environment (<code>config.php</code>), and it abstracts the interaction with the underlying DB engine.</p>
+<ul>
+<li>The data manipulation API is exposed via public methods of the $DB object.</li>
+<li>Moodle core takes care of setting up the connection to the database according to values specified in the main config.php file.</li>
+<li>The $DB global object is an instance of the moodle_database class. </li>
+<li>The $DB global object is instantiated automatically during the bootstrap setup, i.e. as a part of including the main config.php file in your script.</li>
+</ul>
+<p>Here is a snippet showing database-related config values from the main config.php file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;dbtype    = &#39;pgsql&#39;;      // &#39;pgsql&#39;, &#39;mariadb&#39;, &#39;mysqli&#39;, &#39;auroramysql&#39;, &#39;sqlsrv&#39; or &#39;oci&#39;.</span>
+<span class="x">$CFG-&gt;dblibrary = &#39;native&#39;;     // &#39;native&#39; only at the moment</span>
+<span class="x">$CFG-&gt;dbhost    = &#39;localhost&#39;;  // eg &#39;localhost&#39; or IP</span>
+<span class="x">$CFG-&gt;dbname    = &#39;moodle&#39;;     // database name, eg moodle</span>
+<span class="x">$CFG-&gt;dbuser    = &#39;username&#39;;   // your database username</span>
+<span class="x">$CFG-&gt;dbpass    = &#39;password&#39;;   // your database password</span>
+<span class="x">$CFG-&gt;prefix    = &#39;mdl_&#39;;       // prefix to use for all table names</span>
+<span class="x">$CFG-&gt;dboptions = array (</span>
+<span class="x">  &#39;dbpersist&#39; =&gt; 0,</span>
+<span class="x">  &#39;dbport&#39; =&gt; &#39;&#39;,</span>
+<span class="x">  &#39;dbsocket&#39; =&gt; &#39;&#39;,</span>
+<span class="x">  &#39;dbcollation&#39; =&gt; &#39;utf8mb4_unicode_ci&#39;,</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>The <a href="https://github.com/moodle/moodle/blob/main/config-dist.php#L34-L138">config-dist.php</a> file provides more explanation on each of the settings defined.</p>
+<p>The DB object is available in the global scope right after including the config.php file.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require(__DIR__ . &#39;/config.php&#39;);</span>
+</code></pre></div>
+<p>Common <code>$DB</code> functions include:</p>
+<ul>
+<li><code>insert_record()</code></li>
+<li><code>update_record()</code></li>
+<li><code>delete_records()</code></li>
+<li><code>get_record()</code></li>
+<li><code>get_records()</code></li>
+</ul>
+<hr />
+<h4 id="table-prefix">Table prefix</h4>
+<p>Most Moodle installations use a prefix for all the database tables, such as mdl_.</p>
+<p>This table prefix is defined in the main config.php file:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;prefix = &#39;mdl_&#39;;</span>
+</code></pre></div>
+<p>Note: It is not necessary to have a table prefix. Using different table prefixes allows you to install 
+multiple Moodle instances within the same database.</p>
+<p>This prefix is NOT to be used in the code itself. Moodle's database APIs will automatically add the 
+table prefix when constructing the SQL statements.</p>
+<p>All the $table parameters in the DML functions are meant to be the table name without prefixes:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, [&#39;id&#39; =&gt; &#39;2&#39;]);</span>
+</code></pre></div>
+<p>In custom SQL queries, table names must be enclosed between curly braces.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $DB-&gt;get_record_sql(&#39;SELECT COUNT(*) FROM {user} WHERE suspended = 1;&#39;);</span>
+</code></pre></div>
+<h4 id="conditions-and-placeholders">Conditions and Placeholders</h4>
+<h5 id="conditions">Conditions</h5>
+<p>All the $conditions parameters in the DML functions are arrays of fieldname =&gt; fieldvalue elements.
+When multiple field/value elements are used, the logical AND is used to populate the WHERE statement. This means all the field/value pairs MUST be fulfilled.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, [&#39;firstname&#39;  =&gt; &#39;Martin&#39;, &#39;lastname&#39;  =&gt; &#39;Dougiamas&#39;]);</span>
+</code></pre></div>
+<p>This function call will generate the following SQL statement if the database type is MySQL and the table prefix is "mdl_":</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">mdl_user</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">firstname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Martin&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">lastname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Dougiamas&#39;</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h5 id="placeholders">Placeholders</h5>
+<ul>
+<li>All the $params parameters in the DML functions are arrays of values used to fill placeholders in SQL statements.</li>
+<li>Placeholders help to avoid problems with SQL-injection and/or invalid quotes in SQL queries. </li>
+<li>Placeholders facilitate secure and cross-db compatible code.</li>
+<li>Two types of placeholders are supported - question marks (SQL_PARAMS_QM) and named placeholders (SQL_PARAMS_NAMED).</li>
+<li>Named params must be unique even if the value passed is the same. </li>
+</ul>
+<p>Example of using question-mark placeholders</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;get_record_sql(</span>
+<span class="x">    &#39;SELECT * FROM {user} WHERE firstname = ? AND lastname = ?&#39;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;Martin&#39;,</span>
+<span class="x">        &#39;Dougiamas&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example of using named placeholders</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;get_record_sql(</span>
+<span class="x">    &#39;SELECT * FROM {user} WHERE firstname = :firstname AND lastname = :lastname&#39;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;firstname&#39;  =&gt; &#39;Martin&#39;,</span>
+<span class="x">        &#39;lastname&#39;  =&gt; &#39;Dougiamas&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<hr />
+<h4 id="crud-operations"><strong>CRUD Operations</strong></h4>
+<h5 id="a-create-inserting-records"><strong>a. Create: Inserting Records</strong></h5>
+<p>To insert a new record into the database, you can use the <code>insert_record()</code> function. This function takes two parameters:</p>
+<ul>
+<li><strong>Table name</strong>: The name of the database table where you want to insert the record.</li>
+<li><strong>Data object</strong>: An object where each property represents a field in the table.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">$record = new stdClass();</span>
+<span class="x">$record-&gt;name = &#39;John Doe&#39;;</span>
+<span class="x">$record-&gt;email = &#39;john@example.com&#39;;</span>
+<span class="x">$record-&gt;timecreated = time();</span>
+
+<span class="x">// Insert the record into the &#39;user&#39; table.</span>
+<span class="x">$DB-&gt;insert_record(&#39;user&#39;, $record);</span>
+</code></pre></div>
+<p>If the table has an auto-incrementing ID field, <code>insert_record()</code> will return the ID of the inserted 
+record.</p>
+<ul>
+<li>The first parameter is the table name (without the prefix).</li>
+<li>The second parameter is a data object.</li>
+<li>The data object typically will not have the "id" field set.</li>
+<li>It returns the "id" of the newly created record.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Example use of insert_record()</span>
+<span class="x">// Create a new stdClass object to hold the data.</span>
+<span class="x">$data = new stdClass();</span>
+<span class="x">$data-&gt;username = &#39;johndoe&#39;;</span>
+<span class="x">$data-&gt;password = &#39;mypassword&#39;;</span>
+<span class="x">$data-&gt;firstname = &#39;John&#39;;</span>
+<span class="x">$data-&gt;lastname = &#39;Doe&#39;;</span>
+<span class="x">$data-&gt;email = &#39;johndoe@example.com&#39;;</span>
+
+<span class="x">// Insert the record into the &#39;user&#39; table.</span>
+<span class="x">$userid = $DB-&gt;insert_record(&#39;user&#39;, $data);</span>
+
+<span class="x">if ($userid) {</span>
+<span class="x">    // Record added successfully.</span>
+<span class="x">} else {</span>
+<span class="x">    // Failed to add record.</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>To insert multiple records into a table, you can use the <code>insert_records()</code> function.</p>
+<ul>
+<li>First parameter is the table name.</li>
+<li>Second parameter is an array of data objects.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Example use of insert_records()</span>
+<span class="x">$records = [</span>
+<span class="x">    (object)[&#39;name&#39; =&gt; &#39;John Doe&#39;, &#39;email&#39; =&gt; &#39;johndoe@example.com&#39;],</span>
+<span class="x">    (object)[&#39;name&#39; =&gt; &#39;Jane Smith&#39;, &#39;email&#39; =&gt; &#39;janesmith@example.com&#39;],</span>
+<span class="x">    // Add more records as needed.</span>
+<span class="x">];</span>
+
+<span class="x">$DB-&gt;insert_records(&#39;mycustomtable&#39;, $records);</span>
+</code></pre></div>
+<h5 id="b-read-fetching-data"><strong>b. Read: Fetching Data</strong></h5>
+<p>DML provides functions to help developers read data from the database.
+There are functions to:</p>
+<ul>
+<li>Get a single record from a table matching given conditions.</li>
+<li>Get multiple records from a table matching given conditions.</li>
+<li>Get a particular field value from a record in a table.</li>
+<li>Check if a record exists.</li>
+<li>Count the number of records.</li>
+<li>Get data from multiple tables using custom SQL.</li>
+</ul>
+<p>To retrieve data from the database, several functions are available:</p>
+<ul>
+<li><code>get_record()</code>: Retrieves a single record matching a specific condition.</li>
+<li><code>get_records()</code>: Retrieves multiple records matching a specific condition.</li>
+</ul>
+<h6 id="get_record">get_record</h6>
+<p>Return a single database record as an object where all the given conditions are met.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_record(</span>
+<span class="x">    $table,</span>
+<span class="x">    array $conditions,</span>
+<span class="x">    $fields = &#39;*&#39;,</span>
+<span class="x">    $strictness = IGNORE_MISSING</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Returns an object of the first matching record if found, false if nothing is found or 
+an exception on error.</p>
+<p>Uses the logical AND to populate the WHERE clause.
+Uses = (equals) for matching the field values.</p>
+<h6 id="usage">Usage</h6>
+<p>Getting all the fields from the user table matching the given conditions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $DB-&gt;get_record(&#39;user&#39;, [&#39;firstname&#39; =&gt; &#39;Martin&#39;, &#39;lastname&#39; =&gt; &#39;Dougiamas&#39;]);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">$userid = 5;</span>
+<span class="x">$user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid), &#39;*&#39;, MUST_EXIST);</span>
+<span class="x">echo $user-&gt;name;</span>
+</code></pre></div>
+<p>In the example above, <code>MUST_EXIST</code> ensures that if no record is found, an exception is thrown.</p>
+<p>Getting only selected fields from the user table matching the given conditions.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $DB-&gt;get_record(&#39;user&#39;, [&#39;firstname&#39; =&gt; &#39;Martin&#39;, &#39;lastname&#39; =&gt; &#39;Dougiamas&#39;], &#39;id,username,email&#39;);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h6 id="get_record_select">get_record_select</h6>
+<p>Return a single database record as an object where the given conditions are used in the WHERE clause.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_record_select(</span>
+<span class="x">    $table,</span>
+<span class="x">    $select,</span>
+<span class="x">    array $params = null,</span>
+<span class="x">    $fields = &#39;*&#39;,</span>
+<span class="x">    $strictness = IGNORE_MISSING</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Returns an object of the first matching record if found, false if nothing is found or an exception 
+on error.
+Condition ($select) is a SQL snippet, giving you more flexibility.</p>
+<h6 id="usage_1">Usage</h6>
+<div class="highlight"><pre><span></span><code><span class="x">$result = $DB-&gt;get_record_select(</span>
+<span class="x">    &#39;user&#39;, </span>
+<span class="x">    &quot;firstname LIKE &#39;?%&#39; AND deleted = ?&quot;, </span>
+<span class="x">    [&#39;Martin&#39;, 0]</span>
+<span class="x">);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h6 id="get_record_sql">get_record_sql</h6>
+<p>Return a single database record as an object using a custom SELECT query.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_record_sql(</span>
+<span class="x">    $sql,</span>
+<span class="x">    array $params = null,</span>
+<span class="x">    $strictness = IGNORE_MISSING</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Returns an object of the first matching record if found, false if nothing is found or 
+an exception on error.
+The SELECT SQL should normally return one record only.</p>
+<h6 id="usage_2">Usage</h6>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname LIKE &#39;?%&#39; AND deleted = ?&quot;;</span>
+
+<span class="x">$result = $DB-&gt;get_record_sql(</span>
+<span class="x">    $sql, </span>
+<span class="x">    [&#39;Martin&#39;, 0]</span>
+<span class="x">);</span>
+
+<span class="x">if ($result) {</span>
+<span class="x">    echo $result-&gt;username;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h6 id="get-multiple-records">Get multiple records</h6>
+<p>To get multiple records, you could use <code>get_records()</code>, <code>get_records_select()</code> or <code>get_records_sql()</code>.
+These functions return a list of records as an array of objects.</p>
+<p>Example usage of get_records()</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Retrieve all users with a specific role from the &#39;user&#39; table.</span>
+<span class="x">$users = $DB-&gt;get_records(&#39;user&#39;, [&#39;roleid&#39; =&gt; 5]);</span>
+<span class="x">// Loop through the retrieved records.</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    // Access user data.</span>
+<span class="x">    echo $user-&gt;id . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;email . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;firstname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;lastname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Example of fetching multiple records:
+<div class="highlight"><pre><span></span><code><span class="x">$users = $DB-&gt;get_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 1));</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p>Example usage of get_records_select()</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Retrieve all users with a specific role and a certain city from the &#39;user&#39; table.</span>
+<span class="x">$users = $DB-&gt;get_records_select(</span>
+<span class="x">    &#39;user&#39;,</span>
+<span class="x">    &#39;roleid = :roleid AND city = :city&#39;,</span>
+<span class="x">    [&#39;roleid&#39; =&gt; 5, &#39;city&#39; =&gt; &#39;Barcelona&#39;]);</span>
+
+<span class="x">// Loop through the retrieved records.</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    // Access user data.</span>
+<span class="x">    echo $user-&gt;id . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;email . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;firstname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;lastname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Example usage of get_records_sql()</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Retrieve all users with a specific role and a certain city from the &#39;user&#39; table.</span>
+<span class="x">$sql = &quot;SELECT * FROM {user} WHERE roleid = :roleid AND city = :city&quot;;</span>
+<span class="x">$params = [&#39;roleid&#39; =&gt; 5, &#39;city&#39; =&gt; &#39;Barcelona&#39;];</span>
+<span class="x">$users = $DB-&gt;get_records_sql($sql, $params);</span>
+<span class="x">// Loop through the retrieved records.</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    // Access user data.</span>
+<span class="x">    echo $user-&gt;id . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;email . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;firstname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">    echo $user-&gt;lastname . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h5 id="c-update-modifying-existing-records"><strong>c. Update: Modifying Existing Records</strong></h5>
+<p>To update a record, you use the <code>update_record()</code> function. You must pass an object that contains the primary key field along with the fields to be updated.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = new stdClass();</span>
+<span class="x">$user-&gt;id = 5;  // ID of the record to be updated.</span>
+<span class="x">$user-&gt;email = &#39;newemail@example.com&#39;;</span>
+<span class="x">$DB-&gt;update_record(&#39;user&#39;, $user);</span>
+</code></pre></div>
+<p>Here, the record with <code>id = 5</code> is updated, and its <code>email</code> field is changed.</p>
+<ul>
+<li>The first parameter is the table name (without the prefix).</li>
+<li>The second parameter is the updated data object.</li>
+<li>The data object should have the "id" field set. This field is used to identify the record to be updated.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">// Example usage of update_record()</span>
+<span class="x">// Get an existing user record.</span>
+<span class="x">$record = $DB-&gt;get_record(&#39;user&#39;, [&#39;id&#39; =&gt; &#39;123&#39;]);</span>
+<span class="x">if ($record) {</span>
+<span class="x">    // Update the data object.</span>
+<span class="x">    $record-&gt;firstname = &#39;Updated Firstname&#39;;</span>
+<span class="x">    $record-&gt;lastname = &#39;Updated Lastname&#39;;</span>
+
+<span class="x">    // Update the record.</span>
+<span class="x">    $DB-&gt;update_record(&#39;user&#39;, $record);</span>
+<span class="x">}</span>
+</code></pre></div>
+<h5 id="d-delete-removing-records"><strong>d. Delete: Removing Records</strong></h5>
+<p>To delete records, the <code>delete_records()</code> function is used. You can delete a record or a set of records based on a condition.</p>
+<p>Example of deleting a single record:
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;id&#39; =&gt; 5));</span>
+</code></pre></div></p>
+<p>Example of deleting multiple records:
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;delete_records(&#39;user&#39;, array(&#39;confirmed&#39; =&gt; 0));  // Deletes all unconfirmed users.</span>
+</code></pre></div></p>
+<p>The DML provides <code>delete_records_select()</code> for deleting one or more records.</p>
+<p>Example usage of delete_records_select()</p>
+<div class="highlight"><pre><span></span><code><span class="x">$where = &#39;firstname LIKE :fname OR lastname LIKE :lname&#39;;</span>
+<span class="x">$params = [&#39;fname&#39; =&gt; &#39;Fake Name&#39;, &#39;lname&#39; =&gt; &#39;Fake Name&#39;];</span>
+
+<span class="x">$DB-&gt;delete_records_select(&#39;user&#39;, $where, $params);</span>
+</code></pre></div>
+<hr />
+<h4 id="sql-queries"><strong>SQL Queries</strong></h4>
+<p>While Moodle’s DML API provides functions to handle common CRUD operations, you may need to write custom SQL queries for more complex operations. Moodle provides <code>get_records_sql()</code>, <code>get_record_sql()</code>, and other SQL-based functions that allow you to execute raw SQL.</p>
+<ul>
+<li><strong>get_records_sql()</strong>: Retrieves multiple records based on an SQL query.</li>
+<li><strong>get_record_sql()</strong>: Retrieves a single record based on an SQL query.</li>
+<li><strong>execute()</strong>: Executes an SQL query without returning any data (useful for <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
+</ul>
+<p>Example of retrieving records with a custom SQL query:
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT id, name FROM {user} WHERE confirmed = :confirmed&quot;;</span>
+<span class="x">$params = array(&#39;confirmed&#39; =&gt; 1);</span>
+<span class="x">$users = $DB-&gt;get_records_sql($sql, $params);</span>
+<span class="x">foreach ($users as $user) {</span>
+<span class="x">    echo $user-&gt;name . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+Notice the use of <code>{user}</code> in the SQL query. This is a Moodle convention that allows for database table prefixing. If your Moodle site uses a table prefix like <code>mdl_</code>, this will be automatically converted to <code>mdl_user</code>.</p>
+<hr />
+<h4 id="transactions"><strong>Transactions</strong></h4>
+<p>Moodle supports database transactions, which ensure that multiple operations are treated as a single unit of work. If any operation in the transaction fails, all changes are rolled back, ensuring data consistency.</p>
+<h5 id="starting-a-transaction">Starting a Transaction</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$transaction = $DB-&gt;start_delegated_transaction();</span>
+</code></pre></div>
+<h5 id="committing-a-transaction">Committing a Transaction</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$transaction-&gt;allow_commit();</span>
+</code></pre></div>
+<h5 id="rolling-back-a-transaction">Rolling Back a Transaction</h5>
+<p>If an exception occurs during the transaction, the rollback is automatic.</p>
+<p>Example of using a transaction:
+<div class="highlight"><pre><span></span><code><span class="x">try {</span>
+<span class="x">    $transaction = $DB-&gt;start_delegated_transaction();</span>
+
+<span class="x">    // Insert a new user.</span>
+<span class="x">    $user = new stdClass();</span>
+<span class="x">    $user-&gt;name = &#39;Jane Doe&#39;;</span>
+<span class="x">    $user-&gt;email = &#39;jane@example.com&#39;;</span>
+<span class="x">    $DB-&gt;insert_record(&#39;user&#39;, $user);</span>
+
+<span class="x">    // Insert a profile field for the new user.</span>
+<span class="x">    $profile = new stdClass();</span>
+<span class="x">    $profile-&gt;userid = $user-&gt;id;</span>
+<span class="x">    $profile-&gt;fieldname = &#39;bio&#39;;</span>
+<span class="x">    $profile-&gt;fieldvalue = &#39;This is Jane\&#39;s bio.&#39;;</span>
+<span class="x">    $DB-&gt;insert_record(&#39;user_profile&#39;, $profile);</span>
+
+<span class="x">    // If all went well, commit the transaction.</span>
+<span class="x">    $transaction-&gt;allow_commit();</span>
+<span class="x">} catch (Exception $e) {</span>
+<span class="x">    // Rollback is automatic on exception.</span>
+<span class="x">    $transaction-&gt;rollback($e);</span>
+<span class="x">    echo &#39;Transaction failed: &#39; . $e-&gt;getMessage();</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<hr />
+<h4 id="database-caching"><strong>Database Caching</strong></h4>
+<p>Moodle provides caching mechanisms that improve the performance of database queries. The <code>get_record_cacheable()</code> function allows you to cache the result of a query, which can be useful if the same query is run frequently.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;core&#39;, &#39;user&#39;);</span>
+<span class="x">$userid = 5;</span>
+
+<span class="x">if ($user = $cache-&gt;get($userid)) {</span>
+<span class="x">    // User data is cached.</span>
+<span class="x">} else {</span>
+<span class="x">    $user = $DB-&gt;get_record(&#39;user&#39;, array(&#39;id&#39; =&gt; $userid));</span>
+<span class="x">    $cache-&gt;set($userid, $user);</span>
+<span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="using-recordsets">Using recordsets</h3>
+<p>The get_recordset_xxx() functions should be used when the number of records to be retrieved from the database is high. 
+This is because they return an iterator to iterate over the records and save memory.
+After using a recordset iterator, it is important to close it using the close() method to free up resources in the RDBMS.
+The get_records_xxx() functions are far from optimal, because they load all the records into the memory via the returned array.</p>
+<p>Example usage of get_recordset()</p>
+<div class="highlight"><pre><span></span><code><span class="x">$rs = $DB-&gt;get_recordset(&#39;user&#39;);</span>
+<span class="x">foreach ($rs as $record) {</span>
+<span class="x">    // Do whatever you want with this record.</span>
+<span class="x">    echo $record-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+<span class="x">$rs-&gt;close();</span>
+</code></pre></div>
+<hr />
+<h3 id="cross-database-compatibility">Cross database compatibility</h3>
+<p>Moodle supports several SQL servers, including MySQL, MariaDB, PostgreSQL, MS-SQL and Oracle. 
+These may have specific syntax in certain cases. In order to achieve cross-db compatibility of 
+the code, you should use functions from the DML API to generate the fragments of the query valid 
+for the actual SQL server.</p>
+<p>Here are some functions that you may need to use often:</p>
+<h4 id="sql_like">sql_like</h4>
+<p>Return the query fragment to perform the LIKE comparison.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;sql_like(</span>
+<span class="x">    $fieldname,</span>
+<span class="x">    $param,</span>
+<span class="x">    $casesensitive = true,</span>
+<span class="x">    $accentsensitive = true,</span>
+<span class="x">    $notlike = false,</span>
+<span class="x">    $escapechar = &#39; \\ &#39;</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example: Searching for records partially matching the given hard-coded literal.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$likeidnumber = $DB-&gt;sql_like(&#39;idnumber&#39;, &#39;:idnum&#39;);</span>
+
+<span class="x">$DB-&gt;get_records_sql(</span>
+<span class="x">    &quot;SELECT id, fullname FROM {course} WHERE {$likeidnumber}&quot;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;idnum&#39; =&gt; &#39;DEMO-%&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Note:</p>
+<ul>
+<li>Use <code>sql_like()</code> if the value being compared is trusted and properly formatted/escaped.</li>
+<li>Use <code>sql_like_escape()</code> if you need to compare with a value submitted by the user.</li>
+</ul>
+<h4 id="sql_like_escape">sql_like_escape</h4>
+<p>Escape the value submitted by the user so that it can be used for partial comparison and the 
+special characters like '_' or '%' behave as literal characters, not wildcards.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$DB-&gt;sql_like_escape(</span>
+<span class="x">    $text,</span>
+<span class="x">    $escapechar = &#39;\\&#39;</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example: If you need to perform a partial comparison with a value that has been submitted by the user.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$search = required_param(&#39;search&#39;, PARAM_RAW);</span>
+
+<span class="x">$likefullname = $DB-&gt;sql_like(&#39;fullname&#39;, &#39;:fullname&#39;);</span>
+
+<span class="x">$DB-&gt;get_records_sql(</span>
+<span class="x">    &quot;SELECT id, fullname FROM {course} WHERE {$likefullname}&quot;,</span>
+<span class="x">    [</span>
+<span class="x">        &#39;fullname&#39;  =&gt; &#39;%&#39; . $DB-&gt;sql_like_escape($search) . &#39;%&#39;,</span>
+<span class="x">    ]</span>
+<span class="x">);</span>
+</code></pre></div>
+<h4 id="get_in_or_equal">get_in_or_equal</h4>
+<p>Return the query fragment to check if a value is IN the given list of items (with a fallback to 
+plain equal comparison if there is just one item).</p>
+<div class="highlight"><pre><span></span><code><span class="x">public function get_in_or_equal(</span>
+<span class="x">    $items,</span>
+<span class="x">    $type = SQL_PARAMS_QM,</span>
+<span class="x">    $prefix = &#39;param&#39;,</span>
+<span class="x">    $equal = true,</span>
+<span class="x">    $onemptyitems = false</span>
+<span class="x">);</span>
+</code></pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$statuses = [&#39;todo&#39;, &#39;open&#39;, &#39;inprogress&#39;, &#39;intesting&#39;];</span>
+<span class="x">[$insql, $inparams] = $DB-&gt;get_in_or_equal($statuses);</span>
+<span class="x">$sql = &quot;SELECT * FROM {bugtracker_issues} WHERE status $insql&quot;;</span>
+<span class="x">$bugs = $DB-&gt;get_records_sql($sql, $inparams);</span>
+</code></pre></div>
+<p>Additional reading
+Please see the <a href="https://moodledev.io/docs/4.4/apis/core/dml#cross-db-compatibility">Cross-DB compatibility section</a> of the DML dev docs for a list of useful functions 
+you can use to generate cross-db compatible SQL.</p>
+<hr />
+<h3 id="factors-affecting-database-performance">Factors affecting database performance</h3>
+<h4 id="reduce-database-queries">Reduce database queries</h4>
+<ul>
+<li>Minimize number of database queries.</li>
+<li>Each query has overhead in terms of network latency and database server processing.</li>
+<li>Retrieve or update multiple records in a single query whenever possible.</li>
+<li>Avoid unnecessary loops, nested queries, or redundant operations. </li>
+</ul>
+<p>Example</p>
+<p>In the code snippet below, 3 database queries are executed.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$userids = [123, 345, 456];</span>
+
+<span class="x">foreach($userids as $id) {</span>
+<span class="x">    $result = $DB-&gt;get_record(&#39;user&#39;, [&#39;id&#39; =&gt; $id]);</span>
+
+<span class="x">    echo $result-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Instead of getting the record of each user in each query, you can get the records for all users 
+in a single database query.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$userids = [123, 345, 456];</span>
+<span class="x">[$insql, $inparams] = $DB-&gt;get_in_or_equal($userids);</span>
+
+<span class="x">$sql = &quot;SELECT * FROM {user} WHERE id $insql&quot;;</span>
+
+<span class="x">$users = $DB-&gt;get_records_sql($sql, $inparams);</span>
+<span class="x">foreach($users as $user) {</span>
+<span class="x">    echo $user-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="create-appropriate-indexes">Create appropriate indexes</h4>
+<ul>
+<li>Properly index database tables to improve query performance.</li>
+<li>Indexes help a database server locate and retrieve data more efficiently.</li>
+<li>Analyze query patterns and identify frequently queried columns or columns used in WHERE clauses.</li>
+<li>Create indexes on those columns.</li>
+<li>Be cautious not to over-index as too many indexes can negatively impact write performance.</li>
+</ul>
+<p>Example</p>
+<p>Adding an index named bookid to the book_chapters table, in mod/book/db/upgrade.php.</p>
+<div class="highlight"><pre><span></span><code><span class="x">    if ($oldversion &lt; 2021052501) {</span>
+<span class="x">        $table = new xmldb_table(&#39;book_chapters&#39;);</span>
+<span class="x">        $index = new xmldb_index(&#39;bookid&#39;, XMLDB_INDEX_NOTUNIQUE, [&#39;bookid&#39;]);</span>
+<span class="x">        if (!$dbman-&gt;index_exists($table, $index)) {</span>
+<span class="x">            $dbman-&gt;add_index($table, $index);</span>
+<span class="x">        }</span>
+<span class="x">        upgrade_mod_savepoint(true, 2021052501, &#39;book&#39;);</span>
+<span class="x">    }</span>
+</code></pre></div>
+<p>The index defined in the mod/book/db/install.xml file, which is used when the book module is installed.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;INDEXES&gt;</span>
+    <span class="nt">&lt;INDEX</span> <span class="na">NAME=</span><span class="s">&quot;bookid&quot;</span> <span class="na">UNIQUE=</span><span class="s">&quot;false&quot;</span> <span class="na">FIELDS=</span><span class="s">&quot;bookid&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/INDEXES&gt;</span>
+</code></pre></div>
+<h4 id="avoid-select-queries">Avoid SELECT * queries</h4>
+<p>Instead of selecting all columns (SELECT *), explicitly specify only the columns you need in your 
+query. </p>
+<ul>
+<li>Reduces the amount of data transferred between the database server and your application, improving performance. </li>
+<li>Helps avoid unnecessary data processing in your code.</li>
+<li>Will use less memory than selecting all the columns.</li>
+</ul>
+<p>Example</p>
+<p>Consider the following code snippet.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$results = $DB-&gt;get_records(&#39;user&#39;);</span>
+</code></pre></div>
+<p>This will produce the following query, with all the fields selected from the user table.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{</span><span class="k">user</span><span class="err">}</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>Now, consider the following code snippet</p>
+<div class="highlight"><pre><span></span><code><span class="x">$results = $DB-&gt;get_records(&#39;user&#39;,</span>
+<span class="x">    null,</span>
+<span class="x">    &#39;id,firstname,lastname,email&#39;);</span>
+</code></pre></div>
+<p>This will produce the following query, with only 4 fields selected:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">firstname</span><span class="p">,</span><span class="w"> </span><span class="n">lastname</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="err">{</span><span class="k">user</span><span class="err">}</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<h4 id="cache-database-results">Cache database results</h4>
+<ul>
+<li>Utilize caching mechanisms to store frequently accessed data in memory.</li>
+<li>Moodle Universal Cache (MUC) is the main cache used in Moodle. </li>
+<li>MUC includes request cache, session cache, and application cache.</li>
+<li>Caching can significantly reduce the load on your database server and improve response times.</li>
+</ul>
+<p>Example</p>
+<p>Here is an example of caching a database query result using Moodle's Cache API:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$cache = cache::make(&#39;mod_myplugin&#39;, &#39;somedata&#39;);</span>
+<span class="x">// Define the cache key.</span>
+<span class="x">$cachekey = &#39;myplugin_my_query_result&#39;;</span>
+
+<span class="x">// Check if the result is already cached.</span>
+<span class="x">if ($result = $cache-&gt;get($cachekey)) {</span>
+<span class="x">  // Use the cached result.</span>
+<span class="x">} else {</span>
+<span class="x">  // Query the database.</span>
+<span class="x">  $result = $DB-&gt;get_records(&#39;my_table&#39;);</span>
+<span class="x">  // Cache the result for future use.</span>
+<span class="x">  $cache-&gt;set($cachekey, $result);</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="optimize-data-retrieval">Optimize data retrieval</h4>
+<ul>
+<li>Use appropriate filtering and sorting techniques to limit the amount of data processed and transferred. </li>
+<li>Use conditions in your queries (WHERE clauses) to filter data at the database level rather than retrieving all data and filtering it in your code.</li>
+<li>Use proper sorting techniques (ORDER BY clauses) to ensure efficient data retrieval.</li>
+</ul>
+<h4 id="use-recordsets-when-retrieving-large-dataset">Use recordsets when retrieving large dataset</h4>
+<p>By using the get_recordset_xxx() functions and properly closing the recordset iterator, you can optimize memory usage when dealing with a large number of records retrieved from the database in Moodle code. This helps improve performance and resource management.</p>
+<ul>
+<li>get_records_xxx() functions are not optimal when retrieving a high number of records.</li>
+<li>Use get_recordset_xxx() functions instead.</li>
+<li>get_recordset_xxx() functions return an iterator to save memory.</li>
+<li>Close the returned recordset iterator after using it to free up resources in the RDBMS.</li>
+</ul>
+<p>Example</p>
+<div class="highlight"><pre><span></span><code><span class="x">$rs = $DB-&gt;get_recordset(&#39;user&#39;);</span>
+<span class="x">foreach ($rs as $record) {</span>
+<span class="x">    // Do whatever you want with this record.</span>
+<span class="x">    echo $record-&gt;username . &#39;&lt;br&gt;&#39;;</span>
+<span class="x">}</span>
+<span class="x">$rs-&gt;close();</span>
+</code></pre></div>
+<h3 id="factors-affecting-database-security">Factors affecting database security</h3>
+<h4 id="using-dml-and-ddl-apis">Using DML and DDL APIs</h4>
+<ul>
+<li>Moodle's core libraries takes care of setting up the connection to the database based on the 
+configuration specified in the config.php file. </li>
+<li>This helps ensure that the database connection is established securely and follows best practices.</li>
+<li>Always use Moodle's higher-level database methods from DML, such as get_record(), get_records_sql(), 
+etc, instead of writing your own SQL statements.</li>
+</ul>
+<h4 id="sanitize-user-input">Sanitize user input</h4>
+<ul>
+<li>User input should always be properly validated and sanitized to prevent SQL injection and cross-site scripting (XSS) attacks.</li>
+<li>Use functions like optional_param() or required_param() to clean the input and ensure it is of the expected type before using it in database queries.</li>
+</ul>
+<p>Example</p>
+<div class="highlight"><pre><span></span><code><span class="x">$name = optional_param(&#39;name&#39;, &#39;&#39;, PARAM_TEXT);</span>
+<span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname = :firstname OR lastname = :lastname&quot;; </span>
+<span class="x">$records = $DB-&gt;get_records_sql($sql, [&#39;firstname&#39; =&gt; $name, &#39;lastname&#39; =&gt; $name]);</span>
+</code></pre></div>
+<p>In the code snippet above:</p>
+<ul>
+<li>The value of $name is sanitized to ensure that it only contains text characters before it is used in the database query. </li>
+<li>Any invalid characters will be stripped out by the optional_param() function. </li>
+<li>PARAM_TEXT defines which characters are allowed and what should be stripped out.</li>
+</ul>
+<h4 id="use-bound-parameters">Use bound parameters</h4>
+<ul>
+<li>Moodle's database API encourages the use of bound parameters when constructing database queries.</li>
+<li>Bound parameters automatically handle proper escaping and sanitization of data.</li>
+<li>When using custom SQL code, it is important to use placeholders to insert values into queries instead of concatenating strings. </li>
+<li>This helps prevent SQL injection attacks.</li>
+</ul>
+<p>Example: Using named parameters</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname = :firstname AND lastname = :lastname&quot;;</span>
+<span class="x">$records = $DB-&gt;get_records_sql($sql, [&#39;firstname&#39; =&gt; $firstname, &#39;lastname&#39; =&gt; $lastname]);</span>
+</code></pre></div>
+<p>Example: Using question mark parameters</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sql = &quot;SELECT * FROM {user} WHERE firstname = ? AND lastname = ?&quot;;</span>
+<span class="x">$records = $DB-&gt;get_records_sql($sql, [$firstname, $lastname]);</span>
+</code></pre></div>
+<h4 id="check-proper-access">Check proper access</h4>
+<ul>
+<li>Before reading or writing data, ensure that user has the required permissions.</li>
+<li>Check that the user is properly logged in using require_login().</li>
+<li>Use has_capability() or require_capability() to check that the user has the required permissions.</li>
+</ul>
+<h3 id="best-practices">Best Practices</h3>
+<ol>
+<li><strong>Use Prepared Statements</strong>: Moodle DML functions automatically handle prepared statements to prevent SQL injection attacks. Always use parameterized queries.</li>
+<li><strong>Test with Multiple Databases</strong>: Ensure your plugin works across all supported databases (MySQL, PostgreSQL, MS SQL, Oracle).</li>
+<li><strong>Use Transactions</strong>: For critical operations involving multiple queries, use transactions to maintain data integrity.</li>
+<li><strong>Caching</strong>: Where possible, use caching to improve the performance of frequent queries.</li>
+<li><strong>Follow Database Conventions</strong>: Use Moodle’s naming conventions for tables and fields (e.g., lowercase names, singular table names).</li>
+</ol>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>Moodle’s Data Manipulation API provides a powerful abstraction for working with the database in a 
+secure and efficient way. By using the DML functions, you ensure compatibility with different database 
+systems, safeguard against SQL injection, and maintain the overall integrity of the system. 
+Whether you’re performing basic CRUD operations or handling complex transactions, the DML API is 
+the recommended way to manipulate data in Moodle.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../phpMoodleQuestion/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Question API" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Question API
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../phpMoodleTag/" class="md-footer__link md-footer__link--next" aria-label="Next: Tag API" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tag API
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/ArceLopera" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
