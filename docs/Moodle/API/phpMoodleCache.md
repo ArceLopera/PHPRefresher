@@ -189,6 +189,31 @@ $definitions = array(
 
 ```
 
+**Cache modifiers**
+
+To modify the way in which the cache is going to operate when working for your definition you can use the following options.
+
++ `staticacceleration`
++ `staticaccelerationsize`
++ `ttl` 
++ `maxsize`
++ `canuselocalstore`
+
+By enabling the static option the Cache API will only ever generate a single cache object for your definition on the first request for it, further requests will be returned the original instance
+
+This greatly speeds up the collecting of a cache object.
+
+Enabling persistence also enables a static store within the cache object, anything set to the cache, 
+or retrieved from it will be stored in that static array for the life of the request. This makes the 
+persistence options some of the most powerful. If you know you are going to be using you cache over and 
+over again or if you know you will be making lots of requests for the same items then this will provide 
+a great performance boost.
+
+Of course the static storage of cache objects and of data is costly in terms of memory and should only be 
+used when actually required, as such it is turned off by default. As well as persistence you can also set 
+a maximum number of items that the cache should store (not a hard limit, its up to each store) and a time 
+to live (ttl) although both are discouraged as efficient design negates the need for both in most situations.
+
 ---
 
 ### 2. **Accessing a Cache**
