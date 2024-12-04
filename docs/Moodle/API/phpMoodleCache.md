@@ -214,6 +214,57 @@ used when actually required, as such it is turned off by default. As well as per
 a maximum number of items that the cache should store (not a hard limit, its up to each store) and a time 
 to live (ttl) although both are discouraged as efficient design negates the need for both in most situations.
 
+**Overriding a cache loader**
+
+This is a super advanced feature and should not be done. Ever. Unless you have a very good reason to do so.
+
+It allows you to create your own cache loader and have it be used instead of the default cache loader class. 
+The cache object you get back from the make operations will be an instance of this class.
+
++ `overrideclass`: [string] A class to use as the loader for this cache. This is an advanced setting and will 
+allow the developer of the definition to take 100% control of the caching solution.
+Any class used here must inherit the cache_loader interface and must extend default cache loader for the 
+mode they are using.
++ `overrideclassfile`: [string] Suplements the above setting indicated the file containing the class to be used. 
+This file is included when required.
+
+**Specifying a data source**
+
+This is a great wee feature, especially if your code is object orientated.
+
+It allows you to specify a class that must inherit the cache_data_source object and will be used to load 
+any information requested from the cache that is not already being stored.
+
+When the requested key cannot be found in the cache the data source will be asked to load it. 
+The data source will then return the information to the cache, the cache will store it, and it 
+will then return it to the user as a request of their get request. Essentially no get request should 
+ever fail if you have a data source specified.
+
++ `datasource`: [string] A class to use as the data loader for this definition.
+Any class used here must inherit the cache_data_source interface.
++ `datasourcefile`: [string] Suplements the above setting indicated the file containing the class to be used. 
+This file is included when required.
+
+In Moodle versions prior to 3.8.6 and 3.9.3, if caching is disabled then nothing will be loaded through 
+the data source which is probably not what you expect (rather than the data source being loaded every time 
+but never cached). See also: MDL-42012
+
+**Misc settings**
+
+The following are stand along settings that don't fall into any of the above categories.
+
++ `invalidationevents`: [array] An array of events that should cause this cache to invalidate some or all of 
+the items within it. Note that these are NOT normal moodle events and predates the Events API. 
+Instead these are arbitrary strings which can be used by cache_helper::purge_by_event('changesincoursecat'); 
+to mark multiple caches as invalid at once without the calling code knowing which caches are affected.
++ `mappingsonly`: [bool] If set to true only the mapped cache store(s) will be used and the default mode 
+store will not. This is a super advanced setting and should not be used unless absolutely required. 
+It allows you to avoid the default stores for one reason or another.
++ `sharingoptions`: [int] The sharing options that are appropriate for this definition. Should be the sum 
+of the possible options.
++ `defaultsharing`: [int] The default sharing option to use. It's highly recommended that you don't set 
+this unless there is a very specific reason not to use the system default.
+
 ---
 
 ### 2. **Accessing a Cache**
