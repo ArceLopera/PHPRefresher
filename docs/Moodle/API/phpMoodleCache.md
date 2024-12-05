@@ -669,4 +669,23 @@ cache_helper::invalidate_by_definition('component', 'area', $identifiers, $keys)
 
 ### Conclusion
 
-The Cache API in Moodle is a robust tool for enhancing performance by reducing redundant computations and database queries. By carefully defining cache settings, using appropriate scopes, and handling cache misses effectively, developers can ensure smooth and efficient plugin functionality.
+The Cache API in Moodle is a robust tool for enhancing performance by reducing redundant computations and 
+database queries. By carefully defining cache settings, using appropriate scopes, and handling cache misses 
+effectively, developers can ensure smooth and efficient plugin functionality.
+
+### Localized stores for distributed high performance 
+
+Most cache definitions are simple in that the code expects to be able to purge the cache, or update it, 
+and for this to be universally available from then on to all code which loads from this cache again. 
+But as you scale up having a single mega shared cache store doesn't work well for a variety of reasons, 
+including extra latency between multiple front ends and the shared cache service, the number of connections 
+the cache server can handle, the cost of IO between services, and depending on the cache definition issues 
+with locking while writing.
+
+So if you want very high performance caching then you need to write you code so that it can support being 
+distributed, or localized, which means that each front end can have it's own independent cache store. 
+But this architecture means that you have no direct way to communicate from code running in one place to 
+invalidate the caches on all the other front ends. In order to achieve this you need to carefully construct 
+cache keys so that if the content changes then it uses a new cache key, which will of course be a cache 
+miss and then it will regenerate using fresh data. There are multiple ways to achieve this, more details are available
+in the [documentation](https://moodledev.io/docs/4.5/apis/subsystems/muc#localized-stores-for-distributed-high-performance-caching).
