@@ -197,4 +197,5 @@ nav:
             - Cache API : Moodle/API/phpMoodleCache.md
             - Table API : Moodle/API/phpMoodleTable.md
      - Security: Moodle/phpMoodleSecurity.md
+     - Unit Test: Moodle/phpMoodleToolsPHPUnit.md
 
