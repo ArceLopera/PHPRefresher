@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#installing-and-using-phpunit-in-moodle" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2255,9 +2260,201 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Unit Test
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Unit Test
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-using-phpunit-in-moodle" class="md-nav__link">
+    Installing and Using PHPUnit in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-phpunit" class="md-nav__link">
+    1. Install PHPUnit
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Install PHPUnit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    Installation Steps:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configure-phpunit-in-moodle" class="md-nav__link">
+    2. Configure PHPUnit in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configure PHPUnit in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-test-database-and-data-directory" class="md-nav__link">
+    Create a Test Database and Data Directory:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-configphp-for-phpunit" class="md-nav__link">
+    Configure config.php for PHPUnit:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-initialize-phpunit-in-moodle" class="md-nav__link">
+    3. Initialize PHPUnit in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-write-test-cases" class="md-nav__link">
+    4. Write Test Cases
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Write Test Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-writing-a-basic-test-case" class="md-nav__link">
+    Example: Writing a Basic Test Case
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-run-tests" class="md-nav__link">
+    5. Run Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Run Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-all-tests" class="md-nav__link">
+    Run All Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-specific-tests" class="md-nav__link">
+    Run Specific Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-tests-for-a-specific-component" class="md-nav__link">
+    Run Tests for a Specific Component:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-debugging-options" class="md-nav__link">
+    Use Debugging Options:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-debugging-and-troubleshooting" class="md-nav__link">
+    6. Debugging and Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-best-practices-for-writing-tests" class="md-nav__link">
+    7. Best Practices for Writing Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-advanced-usage" class="md-nav__link">
+    8. Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-reports" class="md-nav__link">
+    Coverage Reports:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-testing" class="md-nav__link">
+    Parallel Testing:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2288,6 +2485,184 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-using-phpunit-in-moodle" class="md-nav__link">
+    Installing and Using PHPUnit in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-phpunit" class="md-nav__link">
+    1. Install PHPUnit
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Install PHPUnit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-steps" class="md-nav__link">
+    Installation Steps:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configure-phpunit-in-moodle" class="md-nav__link">
+    2. Configure PHPUnit in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configure PHPUnit in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-test-database-and-data-directory" class="md-nav__link">
+    Create a Test Database and Data Directory:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-configphp-for-phpunit" class="md-nav__link">
+    Configure config.php for PHPUnit:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-initialize-phpunit-in-moodle" class="md-nav__link">
+    3. Initialize PHPUnit in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-write-test-cases" class="md-nav__link">
+    4. Write Test Cases
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Write Test Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-writing-a-basic-test-case" class="md-nav__link">
+    Example: Writing a Basic Test Case
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-run-tests" class="md-nav__link">
+    5. Run Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Run Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-all-tests" class="md-nav__link">
+    Run All Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-specific-tests" class="md-nav__link">
+    Run Specific Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-tests-for-a-specific-component" class="md-nav__link">
+    Run Tests for a Specific Component:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-debugging-options" class="md-nav__link">
+    Use Debugging Options:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-debugging-and-troubleshooting" class="md-nav__link">
+    6. Debugging and Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-best-practices-for-writing-tests" class="md-nav__link">
+    7. Best Practices for Writing Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-advanced-usage" class="md-nav__link">
+    8. Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coverage-reports" class="md-nav__link">
+    Coverage Reports:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-testing" class="md-nav__link">
+    Parallel Testing:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2302,8 +2677,163 @@
 
   <h1>Unit Test</h1>
 
-<p>PHPUnit by Sebastian Bergmann is an advanced unit testing framework for PHP. It is installed as Composer dependency and is not part of Moodle installation. To run PHPUnit tests, you have to manually install it on your development computer or test server.</p>
+<p>PHPUnit by Sebastian Bergmann is an advanced unit testing framework for PHP. 
+It is installed as Composer dependency and is not part of Moodle installation. 
+To run PHPUnit tests, you have to manually install it on your development computer 
+or test server.</p>
 <p>Read the excellent guide at <a href="https://phpunit.de/documentation.html">PHPUnit Manual</a></p>
+<h3 id="installing-and-using-phpunit-in-moodle">Installing and Using PHPUnit in Moodle</h3>
+<p>PHPUnit, created by Sebastian Bergmann, is a widely used testing framework for PHP applications. Moodle integrates PHPUnit for automated testing to ensure code quality and maintain stability across its extensive codebase.</p>
+<p>Here’s how to set up and use PHPUnit in Moodle:</p>
+<hr />
+<h3 id="1-install-phpunit">1. <strong>Install PHPUnit</strong></h3>
+<p>To use PHPUnit with Moodle, ensure the correct version is installed based on Moodle's requirements. You can find version compatibility in Moodle's <a href="https://docs.moodle.org/dev/PHPUnit">PHPUnit documentation</a>.</p>
+<h4 id="installation-steps">Installation Steps:</h4>
+<ol>
+<li><strong>Install PHPUnit via Composer</strong>:
+   Navigate to the Moodle root directory and run:
+   <div class="highlight"><pre><span></span><code>php admin/tool/phpunit/cli/init.php
+</code></pre></div></li>
+</ol>
+<p>This script checks the system, installs PHPUnit, and prepares Moodle for testing.</p>
+<ol>
+<li><strong>Verify Installation</strong>:
+   Check the installed PHPUnit version using:
+   <div class="highlight"><pre><span></span><code>phpunit --version
+</code></pre></div></li>
+</ol>
+<p>Ensure the version matches Moodle's requirements.</p>
+<hr />
+<h3 id="2-configure-phpunit-in-moodle">2. <strong>Configure PHPUnit in Moodle</strong></h3>
+<h4 id="create-a-test-database-and-data-directory">Create a Test Database and Data Directory:</h4>
+<ol>
+<li><strong>Test Database</strong>:</li>
+<li>Create a separate database for PHPUnit testing.</li>
+<li>
+<p>For MySQL:
+     <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">moodle_test</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Test Data Directory</strong>:
+   Create a directory for PHPUnit test data. Example:
+   <div class="highlight"><pre><span></span><code>mkdir /path/to/moodledata_phpunit
+chmod <span class="m">0777</span> /path/to/moodledata_phpunit
+</code></pre></div></p>
+</li>
+</ol>
+<h4 id="configure-configphp-for-phpunit">Configure <code>config.php</code> for PHPUnit:</h4>
+<p>Add the following block to Moodle's <code>config.php</code> file:
+<div class="highlight"><pre><span></span><code><span class="x">if (defined(&#39;PHPUNIT_TEST&#39;) &amp;&amp; PHPUNIT_TEST) {</span>
+<span class="x">    $CFG-&gt;phpunit_dataroot = &#39;/path/to/moodledata_phpunit&#39;;</span>
+<span class="x">    $CFG-&gt;phpunit_prefix = &#39;phpu_&#39;; // Optional: Prefix for test database tables.</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="3-initialize-phpunit-in-moodle">3. <strong>Initialize PHPUnit in Moodle</strong></h3>
+<p>Run the initialization script to set up the testing environment:
+<div class="highlight"><pre><span></span><code>php admin/tool/phpunit/cli/init.php
+</code></pre></div></p>
+<p>This script:
+- Verifies the Moodle environment.
+- Sets up the test database schema.
+- Configures PHPUnit settings.</p>
+<hr />
+<h3 id="4-write-test-cases">4. <strong>Write Test Cases</strong></h3>
+<p>Moodle uses PHPUnit for <strong>unit tests</strong> and <strong>integration tests</strong>. Test cases are typically placed in the <code>tests/</code> directory within the relevant plugin or core directory.</p>
+<h4 id="example-writing-a-basic-test-case">Example: Writing a Basic Test Case</h4>
+<p>Create a file in <code>tests/</code> directory, e.g., <code>example_test.php</code>:
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">use</span> <span class="nx">advanced_testcase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">example_test</span> <span class="k">extends</span> <span class="nx">advanced_testcase</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test_addition</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Addition should result in 4.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<ul>
+<li><strong><code>advanced_testcase</code></strong>: A Moodle-specific PHPUnit base class with additional setup and teardown capabilities for Moodle-specific needs.</li>
+</ul>
+<hr />
+<h3 id="5-run-tests">5. <strong>Run Tests</strong></h3>
+<h4 id="run-all-tests">Run All Tests:</h4>
+<p>Execute all tests in Moodle:
+<div class="highlight"><pre><span></span><code>vendor/bin/phpunit
+</code></pre></div></p>
+<h4 id="run-specific-tests">Run Specific Tests:</h4>
+<p>Run tests in a specific file:
+<div class="highlight"><pre><span></span><code>vendor/bin/phpunit path/to/tests/example_test.php
+</code></pre></div></p>
+<h4 id="run-tests-for-a-specific-component">Run Tests for a Specific Component:</h4>
+<p>To test a plugin or core component:
+<div class="highlight"><pre><span></span><code>vendor/bin/phpunit --testsuite mod_assign
+</code></pre></div></p>
+<h4 id="use-debugging-options">Use Debugging Options:</h4>
+<p>Add verbosity for more details:
+<div class="highlight"><pre><span></span><code>vendor/bin/phpunit --verbose
+</code></pre></div></p>
+<hr />
+<h3 id="6-debugging-and-troubleshooting">6. <strong>Debugging and Troubleshooting</strong></h3>
+<ol>
+<li>
+<p><strong>Reinitialize PHPUnit</strong>:
+   If tests fail due to environment setup issues, reinitialize PHPUnit:
+   <div class="highlight"><pre><span></span><code>php admin/tool/phpunit/cli/init.php
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Check PHPUnit Version</strong>:
+   Ensure compatibility with Moodle's required PHPUnit version.</p>
+</li>
+<li>
+<p><strong>Enable Debugging</strong>:
+   Modify <code>config.php</code> to enable debugging:
+   <div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;debug = (E_ALL | E_STRICT);</span>
+<span class="x">$CFG-&gt;debugdisplay = true;</span>
+</code></pre></div></p>
+</li>
+</ol>
+<hr />
+<h3 id="7-best-practices-for-writing-tests">7. <strong>Best Practices for Writing Tests</strong></h3>
+<ul>
+<li>
+<p><strong>Set Up Test Environment</strong>:
+  Use <code>resetAfterTest(true);</code> in tests to reset the Moodle environment after each test.</p>
+</li>
+<li>
+<p><strong>Test Data Generation</strong>:
+  Use Moodle's data generators for creating test data:
+  <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_user([&#39;username&#39; =&gt; &#39;testuser&#39;]);</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Mock Objects</strong>:
+  Use mocking for dependencies to isolate functionality:
+  <div class="highlight"><pre><span></span><code><span class="x">$mock = $this-&gt;createMock(core_user::class);</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Use Assertions</strong>:
+  Leverage PHPUnit’s assertion methods, such as:</p>
+</li>
+<li><code>assertEquals</code></li>
+<li><code>assertTrue</code></li>
+<li><code>assertInstanceOf</code></li>
+</ul>
+<hr />
+<h3 id="8-advanced-usage">8. <strong>Advanced Usage</strong></h3>
+<h4 id="coverage-reports">Coverage Reports:</h4>
+<p>Generate test coverage reports for code analysis:
+<div class="highlight"><pre><span></span><code>vendor/bin/phpunit --coverage-html /path/to/report
+</code></pre></div></p>
+<h4 id="parallel-testing">Parallel Testing:</h4>
+<p>Moodle supports parallel test execution to speed up testing:
+<div class="highlight"><pre><span></span><code>vendor/bin/phpunit --processes<span class="o">=</span><span class="m">4</span>
+</code></pre></div></p>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>Setting up PHPUnit in Moodle ensures robust testing and reduces regressions. By following the configuration steps, writing effective test cases, and utilizing Moodle’s built-in features like advanced test cases and data generators, developers can maintain high-quality code across Moodle's extensive platform.</p>
 
               
             </article>
