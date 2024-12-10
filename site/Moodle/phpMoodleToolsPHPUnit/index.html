@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-and-using-phpunit-in-moodle" class="md-skip">
+        <a href="#install-phpunit" class="md-skip">
           Skip to content
         </a>
       
@@ -2283,29 +2283,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-and-using-phpunit-in-moodle" class="md-nav__link">
-    Installing and Using PHPUnit in Moodle
+  <a href="#install-phpunit" class="md-nav__link">
+    Install PHPUnit
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-install-phpunit" class="md-nav__link">
-    1. Install PHPUnit
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Install PHPUnit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installation-steps" class="md-nav__link">
-    Installation Steps:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2492,29 +2472,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installing-and-using-phpunit-in-moodle" class="md-nav__link">
-    Installing and Using PHPUnit in Moodle
+  <a href="#install-phpunit" class="md-nav__link">
+    Install PHPUnit
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-install-phpunit" class="md-nav__link">
-    1. Install PHPUnit
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Install PHPUnit">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installation-steps" class="md-nav__link">
-    Installation Steps:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2682,21 +2642,18 @@ It is installed as Composer dependency and is not part of Moodle installation.
 To run PHPUnit tests, you have to manually install it on your development computer 
 or test server.</p>
 <p>Read the excellent guide at <a href="https://phpunit.de/documentation.html">PHPUnit Manual</a></p>
-<h3 id="installing-and-using-phpunit-in-moodle">Installing and Using PHPUnit in Moodle</h3>
-<p>PHPUnit, created by Sebastian Bergmann, is a widely used testing framework for PHP applications. Moodle integrates PHPUnit for automated testing to ensure code quality and maintain stability across its extensive codebase.</p>
-<p>Here’s how to set up and use PHPUnit in Moodle:</p>
-<hr />
-<h3 id="1-install-phpunit">1. <strong>Install PHPUnit</strong></h3>
-<p>To use PHPUnit with Moodle, ensure the correct version is installed based on Moodle's requirements. You can find version compatibility in Moodle's <a href="https://docs.moodle.org/dev/PHPUnit">PHPUnit documentation</a>.</p>
-<h4 id="installation-steps">Installation Steps:</h4>
+<h3 id="install-phpunit"><strong>Install PHPUnit</strong></h3>
+<p>To use PHPUnit with Moodle, ensure the correct version is installed based on Moodle's 
+requirements. You can find version compatibility in Moodle's 
+<a href="https://moodledev.io/general/development/tools/phpunit#phpunit-versions">PHPUnit documentation</a>.</p>
+<p><strong>Installation Steps</strong></p>
 <ol>
 <li><strong>Install PHPUnit via Composer</strong>:
-   Navigate to the Moodle root directory and run:
+   Install Composer Instructions for installing composer on all platforms are here: 
+   <a href="https://getcomposer.org/download/">https://getcomposer.org/download/</a>
+   Initialise test environment
    <div class="highlight"><pre><span></span><code>php admin/tool/phpunit/cli/init.php
 </code></pre></div></li>
-</ol>
-<p>This script checks the system, installs PHPUnit, and prepares Moodle for testing.</p>
-<ol>
 <li><strong>Verify Installation</strong>:
    Check the installed PHPUnit version using:
    <div class="highlight"><pre><span></span><code>phpunit --version

@@ -5,26 +5,21 @@ or test server.
 
 Read the excellent guide at [PHPUnit Manual](https://phpunit.de/documentation.html)
 
-### Installing and Using PHPUnit in Moodle
 
-PHPUnit, created by Sebastian Bergmann, is a widely used testing framework for PHP applications. Moodle integrates PHPUnit for automated testing to ensure code quality and maintain stability across its extensive codebase.
+### **Install PHPUnit**
+To use PHPUnit with Moodle, ensure the correct version is installed based on Moodle's 
+requirements. You can find version compatibility in Moodle's 
+[PHPUnit documentation](https://moodledev.io/general/development/tools/phpunit#phpunit-versions).
 
-Here’s how to set up and use PHPUnit in Moodle:
+**Installation Steps**
 
----
-
-### 1. **Install PHPUnit**
-To use PHPUnit with Moodle, ensure the correct version is installed based on Moodle's requirements. You can find version compatibility in Moodle's [PHPUnit documentation](https://docs.moodle.org/dev/PHPUnit).
-
-#### Installation Steps:
 1. **Install PHPUnit via Composer**:
-   Navigate to the Moodle root directory and run:
+   Install Composer Instructions for installing composer on all platforms are here: 
+   [https://getcomposer.org/download/](https://getcomposer.org/download/)
+   Initialise test environment
    ```bash
    php admin/tool/phpunit/cli/init.php
    ```
-
-   This script checks the system, installs PHPUnit, and prepares Moodle for testing.
-
 2. **Verify Installation**:
    Check the installed PHPUnit version using:
    ```bash
