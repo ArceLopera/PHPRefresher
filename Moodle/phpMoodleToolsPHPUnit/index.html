@@ -2304,6 +2304,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#generators" class="md-nav__link">
+    Generators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#run-tests" class="md-nav__link">
     Run Tests
   </a>
@@ -2387,6 +2394,13 @@
         <li class="md-nav__item">
   <a href="#write-test-cases" class="md-nav__link">
     Write Test Cases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generators" class="md-nav__link">
+    Generators
   </a>
   
 </li>
@@ -2477,9 +2491,14 @@ requirements. You can find version compatibility in Moodle's
 <h3 id="write-test-cases"><strong>Write Test Cases</strong></h3>
 <p>Moodle uses PHPUnit for <strong>unit tests</strong> and <strong>integration tests</strong>. 
 Test cases are typically placed in the <code>tests/</code> directory within the relevant plugin or 
-core directory.</p>
+core directory. Moodle PHPUnit integration is designed to allow easy adding of new tests. 
+At the start of each test the state is automatically reset to fresh new installation 
+(unless explicitly told not to reset).</p>
 <h5 id="example-writing-a-basic-test-case">Example: Writing a Basic Test Case</h5>
-<p>Create a file in <code>tests/</code> directory, e.g., <code>example_test.php</code>:</p>
+<p>Create a file in <code>tests/</code> directory, e.g., <code>example_test.php</code>. 
+PHPUnit tests are located in tests/*_test.php files in your plugin, 
+for example mod/myplugin/tests/sample_test.php, the file should contain only one class 
+that extends advanced_testcase:</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">use</span> <span class="nx">advanced_testcase</span><span class="p">;</span>
 
@@ -2489,10 +2508,50 @@ core directory.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<h5 id="testcase-classes">Testcase classes</h5>
+<p>There are three basic test class that are supposed to used in all Moodle unit tests 
+basic_testcase, advanced_testcase and provider_testcase. 
+Please note it is strongly recommended to put only one testcase into each class file.</p>
 <ul>
-<li><strong><code>advanced_testcase</code></strong>: A Moodle-specific PHPUnit base class with additional setup 
-and teardown capabilities for Moodle-specific needs.</li>
+<li>basic_testcase</li>
 </ul>
+<p>Very simple tests that do not modify database, dataroot or any PHP globals. 
+   It can be used for example when trying examples from the official PHPUnit tutorial.</p>
+<ul>
+<li>advanced_testcase</li>
+</ul>
+<p>Enhanced testcase class enhanced for easy testing of Moodle code.</p>
+<ul>
+<li>provider_testcase</li>
+</ul>
+<p>Enhanced testcase class, enhanced for easy testing of Privacy Providers.</p>
+<p>There is a fourth testcase class that is specially designed for testing of the Moodle database layer, 
+it should not be used for other purposes.</p>
+<h5 id="assertions">Assertions</h5>
+<p>All assertions are based on <a href="https://docs.phpunit.de/en/9.6/assertions.html">PHPUnit</a> assertions.</p>
+<h5 id="inclusion-of-moodle-library-files">Inclusion of Moodle library files</h5>
+<p>If you want to include some Moodle library files you should always declare global $CFG. 
+The reason is that testcase files may be included from non-moodle code which does not make 
+the global $CFG available automatically.</p>
+<h5 id="automatic-state-reset">Automatic state reset</h5>
+<p>By default after each test Moodle database and dataroot is automatically reset to the original state which was present right after installation. make sure to use $this-&gt;resetAfterTest() to indicate that the database or changes of standard global variables are expected.</p>
+<p>If you received the error "Warning: unexpected database modification, resetting DB state" it is because the test is not using $this-&gt;resetAfterTest().</p>
+<div class="highlight"><pre><span></span><code><span class="x"> namespace mod_myplugin;</span>
+
+<span class="x"> class test_something extends \advanced_testcase {</span>
+<span class="x">     public function test_deleting() {</span>
+<span class="x">         global $DB;</span>
+<span class="x">         $this-&gt;resetAfterTest(true);</span>
+<span class="x">         $DB-&gt;delete_records(&#39;user&#39;);</span>
+<span class="x">         $this-&gt;assertEmpty($DB-&gt;get_records(&#39;user&#39;));</span>
+<span class="x">     }</span>
+<span class="x">     public function test_user_table_was_reset() {</span>
+<span class="x">         global $DB;</span>
+<span class="x">         $this-&gt;assertEquals(2, $DB-&gt;count_records(&#39;user&#39;, array()));</span>
+<span class="x">     }</span>
+<span class="x"> }</span>
+</code></pre></div>
+<h3 id="generators">Generators</h3>
 <hr />
 <h3 id="run-tests"><strong>Run Tests</strong></h3>
 <h5 id="run-all-tests">Run All Tests:</h5>
