@@ -50,11 +50,17 @@ This script:
 
 Moodle uses PHPUnit for **unit tests** and **integration tests**. 
 Test cases are typically placed in the `tests/` directory within the relevant plugin or 
-core directory.
+core directory. Moodle PHPUnit integration is designed to allow easy adding of new tests. 
+At the start of each test the state is automatically reset to fresh new installation 
+(unless explicitly told not to reset).
+
 
 ##### Example: Writing a Basic Test Case
 
-Create a file in `tests/` directory, e.g., `example_test.php`:
+Create a file in `tests/` directory, e.g., `example_test.php`. 
+PHPUnit tests are located in tests/*_test.php files in your plugin, 
+for example mod/myplugin/tests/sample_test.php, the file should contain only one class 
+that extends advanced_testcase:
 
 ```php
 <?php
@@ -67,8 +73,60 @@ class example_test extends advanced_testcase {
 }
 ```
 
-- **`advanced_testcase`**: A Moodle-specific PHPUnit base class with additional setup 
-and teardown capabilities for Moodle-specific needs.
+##### Testcase classes
+
+There are three basic test class that are supposed to used in all Moodle unit tests 
+basic_testcase, advanced_testcase and provider_testcase. 
+Please note it is strongly recommended to put only one testcase into each class file.
+
++ basic_testcase
+
+   Very simple tests that do not modify database, dataroot or any PHP globals. 
+   It can be used for example when trying examples from the official PHPUnit tutorial.
+
++ advanced_testcase
+
+   Enhanced testcase class enhanced for easy testing of Moodle code.
+
++ provider_testcase
+   
+   Enhanced testcase class, enhanced for easy testing of Privacy Providers.
+
+There is a fourth testcase class that is specially designed for testing of the Moodle database layer, 
+it should not be used for other purposes.
+
+##### Assertions
+All assertions are based on [PHPUnit](https://docs.phpunit.de/en/9.6/assertions.html) assertions.
+
+##### Inclusion of Moodle library files
+
+If you want to include some Moodle library files you should always declare global $CFG. 
+The reason is that testcase files may be included from non-moodle code which does not make 
+the global $CFG available automatically.
+
+##### Automatic state reset
+By default after each test Moodle database and dataroot is automatically reset to the original state which was present right after installation. make sure to use $this->resetAfterTest() to indicate that the database or changes of standard global variables are expected.
+
+If you received the error "Warning: unexpected database modification, resetting DB state" it is because the test is not using $this->resetAfterTest().
+
+```php
+ namespace mod_myplugin;
+
+ class test_something extends \advanced_testcase {
+     public function test_deleting() {
+         global $DB;
+         $this->resetAfterTest(true);
+         $DB->delete_records('user');
+         $this->assertEmpty($DB->get_records('user'));
+     }
+     public function test_user_table_was_reset() {
+         global $DB;
+         $this->assertEquals(2, $DB->count_records('user', array()));
+     }
+ }
+```
+
+### Generators
 
 ---
 
