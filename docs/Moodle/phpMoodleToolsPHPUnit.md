@@ -25,40 +25,15 @@ requirements. You can find version compatibility in Moodle's
    ```bash
    phpunit --version
    ```
-
    Ensure the version matches Moodle's requirements.
 
----
+3. **Initialisation of test environment**:
 
-### 2. **Configure PHPUnit in Moodle**
-
-#### Create a Test Database and Data Directory:
-1. **Test Database**:
-   - Create a separate database for PHPUnit testing.
-   - For MySQL:
-     ```sql
-     CREATE DATABASE moodle_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-     ```
-
-2. **Test Data Directory**:
-   Create a directory for PHPUnit test data. Example:
-   ```bash
-   mkdir /path/to/moodledata_phpunit
-   chmod 0777 /path/to/moodledata_phpunit
-   ```
-
-#### Configure `config.php` for PHPUnit:
-Add the following block to Moodle's `config.php` file:
-```php
-if (defined('PHPUNIT_TEST') && PHPUNIT_TEST) {
-    $CFG->phpunit_dataroot = '/path/to/moodledata_phpunit';
-    $CFG->phpunit_prefix = 'phpu_'; // Optional: Prefix for test database tables.
-}
-```
+   see [Documentation](https://moodledev.io/general/development/tools/phpunit#initialisation-of-test-environment).
 
 ---
 
-### 3. **Initialize PHPUnit in Moodle**
+### **Initialize PHPUnit in Moodle**
 Run the initialization script to set up the testing environment:
 ```bash
 php admin/tool/phpunit/cli/init.php
@@ -71,13 +46,16 @@ This script:
 
 ---
 
-### 4. **Write Test Cases**
+### **Write Test Cases**
 
-Moodle uses PHPUnit for **unit tests** and **integration tests**. Test cases are typically placed in the `tests/` directory within the relevant plugin or core directory.
+Moodle uses PHPUnit for **unit tests** and **integration tests**. 
+Test cases are typically placed in the `tests/` directory within the relevant plugin or 
+core directory.
 
-#### Example: Writing a Basic Test Case
+##### Example: Writing a Basic Test Case
 
 Create a file in `tests/` directory, e.g., `example_test.php`:
+
 ```php
 <?php
 use advanced_testcase;
@@ -89,31 +67,41 @@ class example_test extends advanced_testcase {
 }
 ```
 
-- **`advanced_testcase`**: A Moodle-specific PHPUnit base class with additional setup and teardown capabilities for Moodle-specific needs.
+- **`advanced_testcase`**: A Moodle-specific PHPUnit base class with additional setup 
+and teardown capabilities for Moodle-specific needs.
 
 ---
 
-### 5. **Run Tests**
+### **Run Tests**
 
-#### Run All Tests:
+##### Run All Tests:
 Execute all tests in Moodle:
+To execute all test suites from main configuration file execute the 
+vendor/bin/phpunit script from your `$CFG->dirroot` directory.
+
 ```bash
+cd /home/example/moodle
 vendor/bin/phpunit
 ```
 
-#### Run Specific Tests:
+##### Run Specific Tests:
 Run tests in a specific file:
 ```bash
 vendor/bin/phpunit path/to/tests/example_test.php
 ```
 
-#### Run Tests for a Specific Component:
-To test a plugin or core component:
+You can also run a single test method inside a class:
 ```bash
-vendor/bin/phpunit --testsuite mod_assign
+vendor/bin/phpunit --filter test_function_name path/to/file.php
 ```
 
-#### Use Debugging Options:
+##### Run Tests for a Specific Component:
+To test a plugin or core component:
+```bash
+vendor/bin/phpunit --testsuite workshopform_accumulative_testsuite
+```
+
+##### Use Debugging Options:
 Add verbosity for more details:
 ```bash
 vendor/bin/phpunit --verbose
@@ -121,7 +109,7 @@ vendor/bin/phpunit --verbose
 
 ---
 
-### 6. **Debugging and Troubleshooting**
+### **Debugging and Troubleshooting**
 
 1. **Reinitialize PHPUnit**:
    If tests fail due to environment setup issues, reinitialize PHPUnit:
@@ -141,7 +129,7 @@ vendor/bin/phpunit --verbose
 
 ---
 
-### 7. **Best Practices for Writing Tests**
+### **Best Practices for Writing Tests**
 
 - **Set Up Test Environment**:
   Use `resetAfterTest(true);` in tests to reset the Moodle environment after each test.
@@ -166,21 +154,16 @@ vendor/bin/phpunit --verbose
 
 ---
 
-### 8. **Advanced Usage**
+### **Advanced Usage**
 
-#### Coverage Reports:
+##### Coverage Reports:
 Generate test coverage reports for code analysis:
 ```bash
 vendor/bin/phpunit --coverage-html /path/to/report
 ```
 
-#### Parallel Testing:
+##### Parallel Testing:
 Moodle supports parallel test execution to speed up testing:
 ```bash
 vendor/bin/phpunit --processes=4
 ```
-
----
-
-### Conclusion
-Setting up PHPUnit in Moodle ensures robust testing and reduces regressions. By following the configuration steps, writing effective test cases, and utilizing Moodle’s built-in features like advanced test cases and data generators, developers can maintain high-quality code across Moodle's extensive platform.
