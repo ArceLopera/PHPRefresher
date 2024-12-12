@@ -2308,6 +2308,40 @@
     Generators
   </a>
   
+    <nav class="md-nav" aria-label="Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-users" class="md-nav__link">
+    Creating users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    Groups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositories" class="md-nav__link">
+    Repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-grades" class="md-nav__link">
+    Creating grades
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2402,6 +2436,40 @@
   <a href="#generators" class="md-nav__link">
     Generators
   </a>
+  
+    <nav class="md-nav" aria-label="Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-users" class="md-nav__link">
+    Creating users
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    Groups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repositories" class="md-nav__link">
+    Repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-grades" class="md-nav__link">
+    Creating grades
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2552,6 +2620,127 @@ the global $CFG available automatically.</p>
 <span class="x"> }</span>
 </code></pre></div>
 <h3 id="generators">Generators</h3>
+<p>Tests that need to modify default installation may use generators to create new courses, users, etc. 
+All examples here should be used from test methods of a test class derived from 
+<code>advanced_testcase</code>.</p>
+<p>Note if you are using PHPUnit @dataProvider functions to provide parameters to unit tests, 
+you can not use the data generator or change the user etc in the data provider function. 
+Data providers must not instantiate/create data. Just define it. And then, the test body can 
+proceed with the instantiation/creation.</p>
+<h4 id="creating-users">Creating users</h4>
+<p>At the start of each test there are only two users present - guest and administrator. 
+If you need to add more test accounts use:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user = $this-&gt;getDataGenerator()-&gt;create_user();</span>
+</code></pre></div>
+<p>You may also specify properties of the user account, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$user1 = $this-&gt;getDataGenerator()-&gt;create_user(array(&#39;email&#39;=&gt;&#39;user1@example.com&#39;, &#39;username&#39;=&gt;&#39;user1&#39;));</span>
+</code></pre></div>
+<p>By default no user is logged-in, use setUser() method to change current $USER value:
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;setUser($user1);</span>
+</code></pre></div></p>
+<p>Guest and admin accounts have a shortcut methods:</p>
+<div class="highlight"><pre><span></span><code><span class="x"> $this-&gt;setGuestUser();</span>
+<span class="x"> $this-&gt;setAdminUser();</span>
+</code></pre></div>
+<p>Null can be used to set current user back to not-logged-in:</p>
+<div class="highlight"><pre><span></span><code><span class="x"> $this-&gt;setUser(null);</span>
+</code></pre></div>
+<h5 id="creating-course-categories">Creating course categories</h5>
+<div class="highlight"><pre><span></span><code><span class="x"> $category1 = $this-&gt;getDataGenerator()-&gt;create_category();</span>
+<span class="x"> $category2 = $this-&gt;getDataGenerator()-&gt;create_category(array(&#39;name&#39;=&gt;&#39;Some subcategory&#39;, &#39;parent&#39;=&gt;$category1-&gt;id));</span>
+</code></pre></div>
+<h5 id="creating-courses">Creating courses</h5>
+<div class="highlight"><pre><span></span><code><span class="x"> $course1 = $this-&gt;getDataGenerator()-&gt;create_course();</span>
+
+<span class="x"> $category = $this-&gt;getDataGenerator()-&gt;create_category();</span>
+<span class="x"> $course2 = $this-&gt;getDataGenerator()-&gt;create_course(array(&#39;name&#39;=&gt;&#39;Some course&#39;, &#39;category&#39;=&gt;$category-&gt;id));</span>
+</code></pre></div>
+<h5 id="creating-activities">Creating activities</h5>
+<p>Some activity plugins include instance generators. 
+The generator class are defined in <code>plugindirectory/tests/generator/lib.php</code>.</p>
+<p>Example of creation of new course with one page resource:</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$course = $this-&gt;getDataGenerator()-&gt;create_course();</span>
+<span class="x">$generator = $this-&gt;getDataGenerator()-&gt;get_plugin_generator(&#39;mod_page&#39;);</span>
+<span class="x">$generator-&gt;create_instance(array(&#39;course&#39;=&gt;$course-&gt;id));</span>
+</code></pre></div>
+The following is functionally the same, but a bit shorter:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$course = $this-&gt;getDataGenerator()-&gt;create_course();</span>
+<span class="x">$page = $this-&gt;getDataGenerator()-&gt;create_module(&#39;page&#39;, array(&#39;course&#39; =&gt; $course-&gt;id));</span>
+</code></pre></div>
+<h5 id="creating-cohorts">Creating cohorts</h5>
+<p>Moodle 2.4</p>
+<p>Since 2.4 there the data generator supports creation of new cohorts.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$cohort = $this-&gt;getDataGenerator()-&gt;create_cohort();</span>
+</code></pre></div>
+<h5 id="simplified-user-enrolments">Simplified user enrolments</h5>
+<p>Moodle 2.4</p>
+<p>Instead of standard enrolment API it is possible to use simplified method in data generator. 
+It is intended to be used with self and manual enrolment plugins.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;enrol_user($userid, $courseid);</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;enrol_user($userid, $courseid, $teacherroleid);</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;enrol_user($userid, $courseid, $teacherroleid, &#39;manual&#39;);</span>
+</code></pre></div>
+<h5 id="creating-scales">Creating scales</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_scale();</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_scale(array(&#39;name&#39; =&gt; $name, &#39;scale&#39; =&gt; $scale, &#39;courseid&#39; =&gt; $courseid, &#39;userid&#39; =&gt; $userid, &#39;description&#39; =&gt; description, &#39;descriptionformat&#39; =&gt; $descriptionformat));</span>
+</code></pre></div>
+<h5 id="creating-roles">Creating roles</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_role();</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_role(array(&#39;shortname&#39; =&gt; $shortname, &#39;name&#39; =&gt; $name, &#39;description&#39; =&gt; description, &#39;archetype&#39; =&gt; $archetype));</span>
+</code></pre></div>
+<h5 id="creating-tags">Creating tags</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_tag();</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_tag(array(</span>
+<span class="x">    &#39;userid&#39; =&gt; $userid, </span>
+<span class="x">    &#39;rawname&#39; =&gt; $rawname,</span>
+<span class="x">    &#39;name&#39; =&gt; $name, </span>
+<span class="x">    &#39;description&#39; =&gt; $description, </span>
+<span class="x">    &#39;descriptionformat&#39; =&gt; $descriptionformat,</span>
+<span class="x">    &#39;flag&#39; =&gt; $flag</span>
+<span class="x">));</span>
+</code></pre></div>
+<h4 id="groups">Groups</h4>
+<h5 id="creating-groups">Creating groups</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_group(array(&#39;courseid&#39; =&gt; $courseid));</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_group(array(&#39;courseid&#39; =&gt; $courseid, &#39;name&#39; =&gt; $name, &#39;description&#39; =&gt; $description, &#39;descriptionformat&#39; =&gt; $descriptionformat));</span>
+</code></pre></div>
+<h5 id="adding-users-to-groups">Adding users to groups</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_group_member(array(&#39;userid&#39; =&gt; $userid, &#39;groupid&#39; =&gt; $groupid));</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_group_member(array(&#39;userid&#39; =&gt; $userid, &#39;groupid&#39; =&gt; $groupid, &#39;component&#39; =&gt; $component, &#39;itemid&#39; =&gt; $itemid));</span>
+</code></pre></div>
+<h5 id="creating-groupings">Creating groupings</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_grouping(array(&#39;courseid&#39; =&gt; $courseid));</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_grouping(array(&#39;courseid&#39; =&gt; $courseid, &#39;name&#39; =&gt; $name, &#39;description&#39; =&gt; $description, &#39;descriptionformat&#39; =&gt; $descriptionformat));</span>
+</code></pre></div>
+<h5 id="adding-groups-to-groupings">Adding groups to groupings</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_grouping_group(array(&#39;groupingid&#39; =&gt; $groupingid, &#39;groupid&#39; =&gt; $groupid));</span>
+</code></pre></div>
+<h4 id="repositories">Repositories</h4>
+<h5 id="creating-repository-instances">Creating repository instances</h5>
+<p>Moodle 2.5</p>
+<p>Some respository plugins include instance generators. 
+The generator class are defined in <code>plugindirectory/tests/generator/lib.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_repository($type, $record, $options);</span>
+</code></pre></div>
+<h5 id="creating-repository-types">Creating repository types</h5>
+<p>Moodle 2.5</p>
+<p>Some respository plugins include type generators. 
+The generator class are defined in <code>plugindirectory/tests/generator/lib.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_repository_type($type, $record, $options);</span>
+</code></pre></div>
+<h4 id="creating-grades">Creating grades</h4>
+<h5 id="grade-categories">Grade categories</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_category(array(&#39;courseid&#39; =&gt; $courseid));</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_category(array(&#39;courseid&#39; =&gt; $courseid, &#39;fullname&#39; =&gt; $fullname));</span>
+</code></pre></div>
+<h5 id="grade-items">Grade items</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_item();</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_item(array(&#39;itemtype&#39; =&gt; $itemtype, &#39;itemname&#39; =&gt; $itemname, &#39;outcomeid&#39; =&gt; $outcomeid, &#39;scaleid&#39; =&gt; $scaleid, &#39;gradetype&#39; =&gt; $gradetype));</span>
+</code></pre></div>
+<h5 id="outcomes">Outcomes</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_outcome();</span>
+<span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_item(array(&#39;fullname&#39; =&gt; $fullname));</span>
+</code></pre></div>
 <hr />
 <h3 id="run-tests"><strong>Run Tests</strong></h3>
 <h5 id="run-all-tests">Run All Tests:</h5>
