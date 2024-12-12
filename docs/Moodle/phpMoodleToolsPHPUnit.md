@@ -128,6 +128,205 @@ If you received the error "Warning: unexpected database modification, resetting 
 
 ### Generators
 
+Tests that need to modify default installation may use generators to create new courses, users, etc. 
+All examples here should be used from test methods of a test class derived from 
+`advanced_testcase`.
+
+Note if you are using PHPUnit @dataProvider functions to provide parameters to unit tests, 
+you can not use the data generator or change the user etc in the data provider function. 
+Data providers must not instantiate/create data. Just define it. And then, the test body can 
+proceed with the instantiation/creation.
+
+#### Creating users
+At the start of each test there are only two users present - guest and administrator. 
+If you need to add more test accounts use:
+
+```php
+$user = $this->getDataGenerator()->create_user();
+```
+
+You may also specify properties of the user account, for example:
+
+```php
+$user1 = $this->getDataGenerator()->create_user(array('email'=>'user1@example.com', 'username'=>'user1'));
+```
+
+By default no user is logged-in, use setUser() method to change current $USER value:
+```php
+$this->setUser($user1);
+```
+
+Guest and admin accounts have a shortcut methods:
+
+```php
+ $this->setGuestUser();
+ $this->setAdminUser();
+```
+
+Null can be used to set current user back to not-logged-in:
+
+```php
+ $this->setUser(null);
+```
+
+##### Creating course categories
+
+```php
+ $category1 = $this->getDataGenerator()->create_category();
+ $category2 = $this->getDataGenerator()->create_category(array('name'=>'Some subcategory', 'parent'=>$category1->id));
+```
+
+##### Creating courses
+
+```php
+ $course1 = $this->getDataGenerator()->create_course();
+ 
+ $category = $this->getDataGenerator()->create_category();
+ $course2 = $this->getDataGenerator()->create_course(array('name'=>'Some course', 'category'=>$category->id));
+```
+
+##### Creating activities
+
+Some activity plugins include instance generators. 
+The generator class are defined in `plugindirectory/tests/generator/lib.php`.
+
+Example of creation of new course with one page resource:
+
+```php
+$course = $this->getDataGenerator()->create_course();
+$generator = $this->getDataGenerator()->get_plugin_generator('mod_page');
+$generator->create_instance(array('course'=>$course->id));
+```
+The following is functionally the same, but a bit shorter:
+
+```php
+$course = $this->getDataGenerator()->create_course();
+$page = $this->getDataGenerator()->create_module('page', array('course' => $course->id));
+```
+
+##### Creating cohorts
+Moodle 2.4
+
+Since 2.4 there the data generator supports creation of new cohorts.
+
+```php
+$cohort = $this->getDataGenerator()->create_cohort();
+```
+
+##### Simplified user enrolments
+Moodle 2.4
+
+Instead of standard enrolment API it is possible to use simplified method in data generator. 
+It is intended to be used with self and manual enrolment plugins.
+
+```php
+$this->getDataGenerator()->enrol_user($userid, $courseid);
+$this->getDataGenerator()->enrol_user($userid, $courseid, $teacherroleid);
+$this->getDataGenerator()->enrol_user($userid, $courseid, $teacherroleid, 'manual');
+```
+
+##### Creating scales
+
+```php
+$this->getDataGenerator()->create_scale();
+$this->getDataGenerator()->create_scale(array('name' => $name, 'scale' => $scale, 'courseid' => $courseid, 'userid' => $userid, 'description' => description, 'descriptionformat' => $descriptionformat));
+```
+
+##### Creating roles
+
+```php
+$this->getDataGenerator()->create_role();
+$this->getDataGenerator()->create_role(array('shortname' => $shortname, 'name' => $name, 'description' => description, 'archetype' => $archetype));
+```
+
+##### Creating tags
+
+```php
+$this->getDataGenerator()->create_tag();
+$this->getDataGenerator()->create_tag(array(
+    'userid' => $userid, 
+    'rawname' => $rawname,
+    'name' => $name, 
+    'description' => $description, 
+    'descriptionformat' => $descriptionformat,
+    'flag' => $flag
+));
+```
+
+#### Groups
+
+##### Creating groups
+
+```php
+$this->getDataGenerator()->create_group(array('courseid' => $courseid));
+$this->getDataGenerator()->create_group(array('courseid' => $courseid, 'name' => $name, 'description' => $description, 'descriptionformat' => $descriptionformat));
+```
+
+##### Adding users to groups
+
+```php
+$this->getDataGenerator()->create_group_member(array('userid' => $userid, 'groupid' => $groupid));
+$this->getDataGenerator()->create_group_member(array('userid' => $userid, 'groupid' => $groupid, 'component' => $component, 'itemid' => $itemid));
+```
+
+##### Creating groupings
+
+```php
+$this->getDataGenerator()->create_grouping(array('courseid' => $courseid));
+$this->getDataGenerator()->create_grouping(array('courseid' => $courseid, 'name' => $name, 'description' => $description, 'descriptionformat' => $descriptionformat));
+```
+
+##### Adding groups to groupings
+
+``` php
+$this->getDataGenerator()->create_grouping_group(array('groupingid' => $groupingid, 'groupid' => $groupid));
+```
+
+#### Repositories
+
+##### Creating repository instances
+Moodle 2.5
+
+Some respository plugins include instance generators. 
+The generator class are defined in `plugindirectory/tests/generator/lib.php`.
+
+```php
+$this->getDataGenerator()->create_repository($type, $record, $options);
+```
+
+##### Creating repository types
+Moodle 2.5
+
+Some respository plugins include type generators. 
+The generator class are defined in `plugindirectory/tests/generator/lib.php`.
+
+```php
+$this->getDataGenerator()->create_repository_type($type, $record, $options);
+```
+
+#### Creating grades
+
+##### Grade categories
+
+```php
+$this->getDataGenerator()->create_grade_category(array('courseid' => $courseid));
+$this->getDataGenerator()->create_grade_category(array('courseid' => $courseid, 'fullname' => $fullname));
+```
+
+##### Grade items
+
+``` php
+$this->getDataGenerator()->create_grade_item();
+$this->getDataGenerator()->create_grade_item(array('itemtype' => $itemtype, 'itemname' => $itemname, 'outcomeid' => $outcomeid, 'scaleid' => $scaleid, 'gradetype' => $gradetype));
+```
+
+##### Outcomes
+
+```php
+$this->getDataGenerator()->create_grade_outcome();
+$this->getDataGenerator()->create_grade_item(array('fullname' => $fullname));
+```
+
 ---
 
 ### **Run Tests**
