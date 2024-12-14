@@ -205,7 +205,6 @@ $page = $this->getDataGenerator()->create_module('page', array('course' => $cour
 ```
 
 ##### Creating cohorts
-Moodle 2.4
 
 Since 2.4 there the data generator supports creation of new cohorts.
 
@@ -214,7 +213,6 @@ $cohort = $this->getDataGenerator()->create_cohort();
 ```
 
 ##### Simplified user enrolments
-Moodle 2.4
 
 Instead of standard enrolment API it is possible to use simplified method in data generator. 
 It is intended to be used with self and manual enrolment plugins.
@@ -285,7 +283,6 @@ $this->getDataGenerator()->create_grouping_group(array('groupingid' => $grouping
 #### Repositories
 
 ##### Creating repository instances
-Moodle 2.5
 
 Some respository plugins include instance generators. 
 The generator class are defined in `plugindirectory/tests/generator/lib.php`.
@@ -295,7 +292,6 @@ $this->getDataGenerator()->create_repository($type, $record, $options);
 ```
 
 ##### Creating repository types
-Moodle 2.5
 
 Some respository plugins include type generators. 
 The generator class are defined in `plugindirectory/tests/generator/lib.php`.
@@ -329,9 +325,92 @@ $this->getDataGenerator()->create_grade_item(array('fullname' => $fullname));
 
 #### Other types of plugin
 
-Any other type of plugin can have a generator. The generator class should extend component_generator_base, and then you can get an instance using `$mygenerator = $this->getDataGenerator()->get_plugin_generator($frankenstylecomponentname);`
+Any other type of plugin can have a generator. The generator class should extend 
+`component_generator_base`, and then you can get an instance using 
+`$mygenerator = $this->getDataGenerator()->get_plugin_generator($frankenstylecomponentname);`
 
-For some types of plugin, like mod documented above, there may be a more specific class than component_generator_base to extend, like testing_module_generator. That will give a consistent set of method names to use. Otherwise, you can create whatever methods you like on your generator, to create the different things you need to work whith.
+For some types of plugin, like mod documented above, there may be a more specific class than 
+component_generator_base to extend, like testing_module_generator. 
+That will give a consistent set of method names to use. Otherwise, you can create whatever 
+methods you like on your generator, to create the different things you need to work whith.
+
+#### Long tests
+All standard test should execute as fast as possible. Tests that take a longer time to execute 
+(>10s) or are otherwise expensive (such as querying external servers that might be flooded by 
+all dev machines) should be execute only when PHPUNIT_LONGTEST is true. This constant can be set 
+in phpunit.xml or directly in config.php.
+
+#### Large test data
+See `advanced_testcase::createXMLDataSet()` and `advanced_testcase::createCsvDataSet()` and 
+related functions there for easier ways to manage large test data sets within files rather 
+than arrays in code. See [PHPUnit_integration#Extra_methods](https://docs.moodle.org/dev/PHPUnit_integration#Extra_methods).
+
+#### Testing sending of messages
+
+You can temporarily redirect all messages sent via message_send() to a message sink object. 
+This allows developers to verify that the tested code is sending expected messages.
+
+To test code using messaging first disable the use of transactions and then redirect the 
+messaging into a new message sink, you can inspect the results later.
+
+```php
+$this->preventResetByRollback();
+$sink = $this->redirectMessages();
+//... code that is sending messages
+$messages = $sink->get_messages();
+$this->assertEquals(3, count($messages));
+//.. test messages were generated in correct order with appropriate content
+```
+
+Template:Moodle 4.4 Since 4.4 there are two new methods that support getting the messages 
+for specific components and message types.
+
+```php
+$sink = $this->redirectMessages();
+//... code that is sending messages
+$messages = $sink->get_messages_by_component('mod_forum');
+$this->assertEquals(3, count($messages));
+//.. test messages were generated in correct order with appropriate content
+```
+
+```php
+$sink = $this->redirectMessages();
+//... code that is sending messages
+$messages = $sink->get_messages_by_component_and_type('core', 'messagecontactrequests');
+$this->assertEquals(3, count($messages));
+//.. test messages were generated in correct order with appropriate content
+```
+
+#### Testing sending of emails
+
+You can temporarily redirect emails sent via email_to_user() to a email message sink object. 
+This allows developers to verify that the tested code is sending expected emails.
+
+To test code using messaging first unset 'noemailever' setting and then redirect the emails into 
+a new message sink where you can inspect the results later.
+
+```php
+unset_config('noemailever');
+$sink = $this->redirectEmails();
+//... code that is sending email
+$messages = $sink->get_messages();
+$this->assertEquals(1, count($messages));
+```
+
+#### Logstores
+
+You can test events which were written to a logstore, but you must disable transactions, 
+enable at least one valid logstore, and disable logstore buffering to ensure that the events 
+are written to the database before the tests execute.
+
+```php
+$this->preventResetByRollback();
+set_config('enabled_stores', 'logstore_standard', 'tool_log');
+set_config('buffersize', 0, 'logstore_standard');
+get_log_manager(true);
+```
+
+### Check your coverage
 
 ---
 

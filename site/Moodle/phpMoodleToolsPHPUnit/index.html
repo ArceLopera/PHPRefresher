@@ -2346,8 +2346,50 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#long-tests" class="md-nav__link">
+    Long tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-test-data" class="md-nav__link">
+    Large test data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-sending-of-messages" class="md-nav__link">
+    Testing sending of messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-sending-of-emails" class="md-nav__link">
+    Testing sending of emails
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logstores" class="md-nav__link">
+    Logstores
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-coverage" class="md-nav__link">
+    Check your coverage
+  </a>
   
 </li>
       
@@ -2482,8 +2524,50 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#long-tests" class="md-nav__link">
+    Long tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-test-data" class="md-nav__link">
+    Large test data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-sending-of-messages" class="md-nav__link">
+    Testing sending of messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-sending-of-emails" class="md-nav__link">
+    Testing sending of emails
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logstores" class="md-nav__link">
+    Logstores
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-coverage" class="md-nav__link">
+    Check your coverage
+  </a>
   
 </li>
       
@@ -2682,12 +2766,10 @@ The following is functionally the same, but a bit shorter:</p>
 <span class="x">$page = $this-&gt;getDataGenerator()-&gt;create_module(&#39;page&#39;, array(&#39;course&#39; =&gt; $course-&gt;id));</span>
 </code></pre></div>
 <h5 id="creating-cohorts">Creating cohorts</h5>
-<p>Moodle 2.4</p>
 <p>Since 2.4 there the data generator supports creation of new cohorts.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$cohort = $this-&gt;getDataGenerator()-&gt;create_cohort();</span>
 </code></pre></div>
 <h5 id="simplified-user-enrolments">Simplified user enrolments</h5>
-<p>Moodle 2.4</p>
 <p>Instead of standard enrolment API it is possible to use simplified method in data generator. 
 It is intended to be used with self and manual enrolment plugins.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;enrol_user($userid, $courseid);</span>
@@ -2731,13 +2813,11 @@ It is intended to be used with self and manual enrolment plugins.</p>
 </code></pre></div>
 <h4 id="repositories">Repositories</h4>
 <h5 id="creating-repository-instances">Creating repository instances</h5>
-<p>Moodle 2.5</p>
 <p>Some respository plugins include instance generators. 
 The generator class are defined in <code>plugindirectory/tests/generator/lib.php</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_repository($type, $record, $options);</span>
 </code></pre></div>
 <h5 id="creating-repository-types">Creating repository types</h5>
-<p>Moodle 2.5</p>
 <p>Some respository plugins include type generators. 
 The generator class are defined in <code>plugindirectory/tests/generator/lib.php</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_repository_type($type, $record, $options);</span>
@@ -2756,8 +2836,69 @@ The generator class are defined in <code>plugindirectory/tests/generator/lib.php
 <span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_item(array(&#39;fullname&#39; =&gt; $fullname));</span>
 </code></pre></div>
 <h4 id="other-types-of-plugin">Other types of plugin</h4>
-<p>Any other type of plugin can have a generator. The generator class should extend component_generator_base, and then you can get an instance using <code>$mygenerator = $this-&gt;getDataGenerator()-&gt;get_plugin_generator($frankenstylecomponentname);</code></p>
-<p>For some types of plugin, like mod documented above, there may be a more specific class than component_generator_base to extend, like testing_module_generator. That will give a consistent set of method names to use. Otherwise, you can create whatever methods you like on your generator, to create the different things you need to work whith.</p>
+<p>Any other type of plugin can have a generator. The generator class should extend 
+<code>component_generator_base</code>, and then you can get an instance using 
+<code>$mygenerator = $this-&gt;getDataGenerator()-&gt;get_plugin_generator($frankenstylecomponentname);</code></p>
+<p>For some types of plugin, like mod documented above, there may be a more specific class than 
+component_generator_base to extend, like testing_module_generator. 
+That will give a consistent set of method names to use. Otherwise, you can create whatever 
+methods you like on your generator, to create the different things you need to work whith.</p>
+<h4 id="long-tests">Long tests</h4>
+<p>All standard test should execute as fast as possible. Tests that take a longer time to execute 
+(&gt;10s) or are otherwise expensive (such as querying external servers that might be flooded by 
+all dev machines) should be execute only when PHPUNIT_LONGTEST is true. This constant can be set 
+in phpunit.xml or directly in config.php.</p>
+<h4 id="large-test-data">Large test data</h4>
+<p>See <code>advanced_testcase::createXMLDataSet()</code> and <code>advanced_testcase::createCsvDataSet()</code> and 
+related functions there for easier ways to manage large test data sets within files rather 
+than arrays in code. See <a href="https://docs.moodle.org/dev/PHPUnit_integration#Extra_methods">PHPUnit_integration#Extra_methods</a>.</p>
+<h4 id="testing-sending-of-messages">Testing sending of messages</h4>
+<p>You can temporarily redirect all messages sent via message_send() to a message sink object. 
+This allows developers to verify that the tested code is sending expected messages.</p>
+<p>To test code using messaging first disable the use of transactions and then redirect the 
+messaging into a new message sink, you can inspect the results later.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;preventResetByRollback();</span>
+<span class="x">$sink = $this-&gt;redirectMessages();</span>
+<span class="x">//... code that is sending messages</span>
+<span class="x">$messages = $sink-&gt;get_messages();</span>
+<span class="x">$this-&gt;assertEquals(3, count($messages));</span>
+<span class="x">//.. test messages were generated in correct order with appropriate content</span>
+</code></pre></div>
+<p>Template:Moodle 4.4 Since 4.4 there are two new methods that support getting the messages 
+for specific components and message types.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$sink = $this-&gt;redirectMessages();</span>
+<span class="x">//... code that is sending messages</span>
+<span class="x">$messages = $sink-&gt;get_messages_by_component(&#39;mod_forum&#39;);</span>
+<span class="x">$this-&gt;assertEquals(3, count($messages));</span>
+<span class="x">//.. test messages were generated in correct order with appropriate content</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">$sink = $this-&gt;redirectMessages();</span>
+<span class="x">//... code that is sending messages</span>
+<span class="x">$messages = $sink-&gt;get_messages_by_component_and_type(&#39;core&#39;, &#39;messagecontactrequests&#39;);</span>
+<span class="x">$this-&gt;assertEquals(3, count($messages));</span>
+<span class="x">//.. test messages were generated in correct order with appropriate content</span>
+</code></pre></div>
+<h4 id="testing-sending-of-emails">Testing sending of emails</h4>
+<p>You can temporarily redirect emails sent via email_to_user() to a email message sink object. 
+This allows developers to verify that the tested code is sending expected emails.</p>
+<p>To test code using messaging first unset 'noemailever' setting and then redirect the emails into 
+a new message sink where you can inspect the results later.</p>
+<div class="highlight"><pre><span></span><code><span class="x">unset_config(&#39;noemailever&#39;);</span>
+<span class="x">$sink = $this-&gt;redirectEmails();</span>
+<span class="x">//... code that is sending email</span>
+<span class="x">$messages = $sink-&gt;get_messages();</span>
+<span class="x">$this-&gt;assertEquals(1, count($messages));</span>
+</code></pre></div>
+<h4 id="logstores">Logstores</h4>
+<p>You can test events which were written to a logstore, but you must disable transactions, 
+enable at least one valid logstore, and disable logstore buffering to ensure that the events 
+are written to the database before the tests execute.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;preventResetByRollback();</span>
+<span class="x">set_config(&#39;enabled_stores&#39;, &#39;logstore_standard&#39;, &#39;tool_log&#39;);</span>
+<span class="x">set_config(&#39;buffersize&#39;, 0, &#39;logstore_standard&#39;);</span>
+<span class="x">get_log_manager(true);</span>
+</code></pre></div>
+<h3 id="check-your-coverage">Check your coverage</h3>
 <hr />
 <h3 id="run-tests"><strong>Run Tests</strong></h3>
 <h5 id="run-all-tests">Run All Tests:</h5>
