@@ -2339,6 +2339,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#other-types-of-plugin" class="md-nav__link">
+    Other types of plugin
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2464,6 +2471,13 @@
           <li class="md-nav__item">
   <a href="#creating-grades" class="md-nav__link">
     Creating grades
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-types-of-plugin" class="md-nav__link">
+    Other types of plugin
   </a>
   
 </li>
@@ -2741,6 +2755,9 @@ The generator class are defined in <code>plugindirectory/tests/generator/lib.php
 <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_outcome();</span>
 <span class="x">$this-&gt;getDataGenerator()-&gt;create_grade_item(array(&#39;fullname&#39; =&gt; $fullname));</span>
 </code></pre></div>
+<h4 id="other-types-of-plugin">Other types of plugin</h4>
+<p>Any other type of plugin can have a generator. The generator class should extend component_generator_base, and then you can get an instance using <code>$mygenerator = $this-&gt;getDataGenerator()-&gt;get_plugin_generator($frankenstylecomponentname);</code></p>
+<p>For some types of plugin, like mod documented above, there may be a more specific class than component_generator_base to extend, like testing_module_generator. That will give a consistent set of method names to use. Otherwise, you can create whatever methods you like on your generator, to create the different things you need to work whith.</p>
 <hr />
 <h3 id="run-tests"><strong>Run Tests</strong></h3>
 <h5 id="run-all-tests">Run All Tests:</h5>

@@ -327,6 +327,12 @@ $this->getDataGenerator()->create_grade_outcome();
 $this->getDataGenerator()->create_grade_item(array('fullname' => $fullname));
 ```
 
+#### Other types of plugin
+
+Any other type of plugin can have a generator. The generator class should extend component_generator_base, and then you can get an instance using `$mygenerator = $this->getDataGenerator()->get_plugin_generator($frankenstylecomponentname);`
+
+For some types of plugin, like mod documented above, there may be a more specific class than component_generator_base to extend, like testing_module_generator. That will give a consistent set of method names to use. Otherwise, you can create whatever methods you like on your generator, to create the different things you need to work whith.
+
 ---
 
 ### **Run Tests**
