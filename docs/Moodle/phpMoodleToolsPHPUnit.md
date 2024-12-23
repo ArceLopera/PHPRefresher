@@ -412,6 +412,87 @@ get_log_manager(true);
 
 ### Check your coverage
 
+PHPUnit has the ability to generate code coverage information for your unit tests.
+
+Prior to Moodle 3.7, this coverage would load all files and generate coverage for everything regardless of whether that file could be covered at all, or whether it was intentionally covered.
+
+Since Moodle 3.7 the phpunit.xml configuration contains generated coverage include and exclude information for each component.
+
+#### Generating include and exclude configuration
+
+You can programatically describe which files will be checked for coverage by creating a 
+`coverage.php` file alongside the tests that you are writing.
+
+Since Moodle 4.0, a default configuration is applied for all plugins and it is not necessary 
+to supply a coverage.php unless you wish to cover additional files.
+
+The `coverage.php` file allows you to list include and exclude files and folders within the 
+component being tested. All paths specified are relative to the component being tested. 
+For example, when working with `mod_forum` your code will be in `mod/forum`, and its unit tests 
+will be `in mod/forum/tests/example_test.php`. The coverage file for this would be in 
+`mod/forum/tests/coverage.php` and all paths specified would be relative to `mod/forum`.
+
+It is possible to specify a combination of included files, included folders, excluded files, 
+and excluded folders. This would allow you, for example, to include the entire classes directory, 
+but exclude a specific file or folder within it.
+
+The following is an example coverage.php file from mod_forum:
+
+Note: For Moodle versions 3.7 to 3.10, [the syntax](https://docs.moodle.org/dev/index.php?title=Writing_PHPUnit_tests&oldid=58177#Check_your_coverage) used was slightly different.
+
+```php
+return new class extends phpunit_coverage_info {
+    /** @var array The list of folders relative to the plugin root to include in coverage generation. */
+    protected $includelistfolders = [
+        'classes',
+        'externallib.php',
+    ];
+
+    /** @var array The list of files relative to the plugin root to include in coverage generation. */
+    protected $includelistfiles = [];
+
+    /** @var array The list of folders relative to the plugin root to exclude from coverage generation. */
+    protected $excludelistfolders = [];
+
+    /** @var array The list of files relative to the plugin root to exclude from coverage generation. */
+    protected $excludelistfiles = [];
+};
+```
+
+Also, note that you can better define which class or function each test is effectively covering 
+by using the `@covers` annotation.
+
+Since Moodle 4.0, the following default configuration is applied:
+
+```php
+return new class extends phpunit_coverage_info {
+    /** @var array The list of folders relative to the plugin root to include in coverage generation. */
+    protected $includelistfolders = [
+        'classes',
+        'tests/generator',
+    ];
+
+    /** @var array The list of files relative to the plugin root to include in coverage generation. */
+    protected $includelistfiles = [
+        'externallib.php',
+        'lib.php',
+        'locallib.php',
+        'renderer.php',
+        'rsslib.php',
+    ];
+
+    /** @var array The list of folders relative to the plugin root to exclude from coverage generation. */
+    protected $excludelistfolders = [];
+
+    /** @var array The list of files relative to the plugin root to exclude from coverage generation. */
+    protected $excludelistfiles = [];
+};
+```
+
+If a `coverage.php` file already exists, then the defaults will be added to the values already 
+defined.
+
+### Best practice
 ---
 
 ### **Run Tests**
