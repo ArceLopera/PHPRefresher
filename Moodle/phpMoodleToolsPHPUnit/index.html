@@ -2391,6 +2391,26 @@
     Check your coverage
   </a>
   
+    <nav class="md-nav" aria-label="Check your coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-include-and-exclude-configuration" class="md-nav__link">
+    Generating include and exclude configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practice" class="md-nav__link">
+    Best practice
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2567,6 +2587,26 @@
         <li class="md-nav__item">
   <a href="#check-your-coverage" class="md-nav__link">
     Check your coverage
+  </a>
+  
+    <nav class="md-nav" aria-label="Check your coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-include-and-exclude-configuration" class="md-nav__link">
+    Generating include and exclude configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practice" class="md-nav__link">
+    Best practice
   </a>
   
 </li>
@@ -2899,6 +2939,70 @@ are written to the database before the tests execute.</p>
 <span class="x">get_log_manager(true);</span>
 </code></pre></div>
 <h3 id="check-your-coverage">Check your coverage</h3>
+<p>PHPUnit has the ability to generate code coverage information for your unit tests.</p>
+<p>Prior to Moodle 3.7, this coverage would load all files and generate coverage for everything regardless of whether that file could be covered at all, or whether it was intentionally covered.</p>
+<p>Since Moodle 3.7 the phpunit.xml configuration contains generated coverage include and exclude information for each component.</p>
+<h4 id="generating-include-and-exclude-configuration">Generating include and exclude configuration</h4>
+<p>You can programatically describe which files will be checked for coverage by creating a 
+<code>coverage.php</code> file alongside the tests that you are writing.</p>
+<p>Since Moodle 4.0, a default configuration is applied for all plugins and it is not necessary 
+to supply a coverage.php unless you wish to cover additional files.</p>
+<p>The <code>coverage.php</code> file allows you to list include and exclude files and folders within the 
+component being tested. All paths specified are relative to the component being tested. 
+For example, when working with <code>mod_forum</code> your code will be in <code>mod/forum</code>, and its unit tests 
+will be <code>in mod/forum/tests/example_test.php</code>. The coverage file for this would be in 
+<code>mod/forum/tests/coverage.php</code> and all paths specified would be relative to <code>mod/forum</code>.</p>
+<p>It is possible to specify a combination of included files, included folders, excluded files, 
+and excluded folders. This would allow you, for example, to include the entire classes directory, 
+but exclude a specific file or folder within it.</p>
+<p>The following is an example coverage.php file from mod_forum:</p>
+<p>Note: For Moodle versions 3.7 to 3.10, <a href="https://docs.moodle.org/dev/index.php?title=Writing_PHPUnit_tests&amp;oldid=58177#Check_your_coverage">the syntax</a> used was slightly different.</p>
+<div class="highlight"><pre><span></span><code><span class="x">return new class extends phpunit_coverage_info {</span>
+<span class="x">    /** @var array The list of folders relative to the plugin root to include in coverage generation. */</span>
+<span class="x">    protected $includelistfolders = [</span>
+<span class="x">        &#39;classes&#39;,</span>
+<span class="x">        &#39;externallib.php&#39;,</span>
+<span class="x">    ];</span>
+
+<span class="x">    /** @var array The list of files relative to the plugin root to include in coverage generation. */</span>
+<span class="x">    protected $includelistfiles = [];</span>
+
+<span class="x">    /** @var array The list of folders relative to the plugin root to exclude from coverage generation. */</span>
+<span class="x">    protected $excludelistfolders = [];</span>
+
+<span class="x">    /** @var array The list of files relative to the plugin root to exclude from coverage generation. */</span>
+<span class="x">    protected $excludelistfiles = [];</span>
+<span class="x">};</span>
+</code></pre></div>
+<p>Also, note that you can better define which class or function each test is effectively covering 
+by using the <code>@covers</code> annotation.</p>
+<p>Since Moodle 4.0, the following default configuration is applied:</p>
+<div class="highlight"><pre><span></span><code><span class="x">return new class extends phpunit_coverage_info {</span>
+<span class="x">    /** @var array The list of folders relative to the plugin root to include in coverage generation. */</span>
+<span class="x">    protected $includelistfolders = [</span>
+<span class="x">        &#39;classes&#39;,</span>
+<span class="x">        &#39;tests/generator&#39;,</span>
+<span class="x">    ];</span>
+
+<span class="x">    /** @var array The list of files relative to the plugin root to include in coverage generation. */</span>
+<span class="x">    protected $includelistfiles = [</span>
+<span class="x">        &#39;externallib.php&#39;,</span>
+<span class="x">        &#39;lib.php&#39;,</span>
+<span class="x">        &#39;locallib.php&#39;,</span>
+<span class="x">        &#39;renderer.php&#39;,</span>
+<span class="x">        &#39;rsslib.php&#39;,</span>
+<span class="x">    ];</span>
+
+<span class="x">    /** @var array The list of folders relative to the plugin root to exclude from coverage generation. */</span>
+<span class="x">    protected $excludelistfolders = [];</span>
+
+<span class="x">    /** @var array The list of files relative to the plugin root to exclude from coverage generation. */</span>
+<span class="x">    protected $excludelistfiles = [];</span>
+<span class="x">};</span>
+</code></pre></div>
+<p>If a <code>coverage.php</code> file already exists, then the defaults will be added to the values already 
+defined.</p>
+<h3 id="best-practice">Best practice</h3>
 <hr />
 <h3 id="run-tests"><strong>Run Tests</strong></h3>
 <h5 id="run-all-tests">Run All Tests:</h5>
