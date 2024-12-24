@@ -12,21 +12,21 @@
         <meta name="author" content="ArceLopera">
       
       
-        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/Plugin/phpMoodlePlugin_qbehavior/">
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodleBehat/">
       
-      <link rel="icon" href="../../../Images/elephant.ico">
+      <link rel="icon" href="../../Images/elephant.ico">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
     
     
       
-        <title>Question Behavior - PHP Refresher</title>
+        <title>Behat - PHP Refresher</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -41,7 +41,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-aspects-of-developing-a-qbehavior-plugin" class="md-skip">
+        <a href="#writing-and-using-behat-tests-in-moodle" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../../Images/Elephpant.svg" alt="logo">
+  <img src="../../Images/Elephpant.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Question Behavior
+              Behat
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -213,7 +213,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../phpRefresh/" class="md-tabs__link">
+      <a href="../../phpRefresh/" class="md-tabs__link">
         Basics
       </a>
     </li>
@@ -234,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Func/phpAll/" class="md-tabs__link">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
         Functions
       </a>
     </li>
@@ -252,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../DS/phpArray/" class="md-tabs__link">
+      <a href="../../DS/phpArray/" class="md-tabs__link">
         Data Structures
       </a>
     </li>
@@ -268,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Classes/phpCls/" class="md-tabs__link">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
         Classes
       </a>
     </li>
@@ -284,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Adv/phpInclude/" class="md-tabs__link">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
         Advanced
       </a>
     </li>
@@ -302,7 +302,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
         Moodle
       </a>
     </li>
@@ -330,9 +330,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
       
-  <img src="../../../Images/Elephpant.svg" alt="logo">
+  <img src="../../Images/Elephpant.svg" alt="logo">
 
     </a>
     PHP Refresher
@@ -360,7 +360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phpRefresh/" class="md-nav__link">
+      <a href="../../phpRefresh/" class="md-nav__link">
         General
       </a>
     </li>
@@ -441,7 +441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar1/" class="md-nav__link">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
         Variables
       </a>
     </li>
@@ -455,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar2/" class="md-nav__link">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
         Data Types and Casting
       </a>
     </li>
@@ -469,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar3/" class="md-nav__link">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
         Variable Scope
       </a>
     </li>
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpVar4/" class="md-nav__link">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
         Variable Handling
       </a>
     </li>
@@ -504,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpConst/" class="md-nav__link">
+      <a href="../../PR/phpConst/" class="md-nav__link">
         Constant
       </a>
     </li>
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpSuperGlobals/" class="md-nav__link">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
         Globals
       </a>
     </li>
@@ -532,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpForms/" class="md-nav__link">
+      <a href="../../PR/phpForms/" class="md-nav__link">
         Forms
       </a>
     </li>
@@ -572,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpStr/" class="md-nav__link">
+      <a href="../../PR/phpStr/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpStr1/" class="md-nav__link">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -633,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpNum1/" class="md-nav__link">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -647,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpMath1/" class="md-nav__link">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
         Functions
       </a>
     </li>
@@ -668,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpOperators1/" class="md-nav__link">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
         Operators
       </a>
     </li>
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpIF/" class="md-nav__link">
+      <a href="../../PR/phpIF/" class="md-nav__link">
         Conditionals
       </a>
     </li>
@@ -722,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpLoops/" class="md-nav__link">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
         Loops
       </a>
     </li>
@@ -743,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PR/phpKeywords/" class="md-nav__link">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
         Keywords
       </a>
     </li>
@@ -817,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpAll/" class="md-nav__link">
+      <a href="../../Func/phpAll/" class="md-nav__link">
         All
       </a>
     </li>
@@ -857,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpDate/" class="md-nav__link">
+      <a href="../../Func/phpDate/" class="md-nav__link">
         Date/Time
       </a>
     </li>
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpCalendar/" class="md-nav__link">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
         Calendar
       </a>
     </li>
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpRegex/" class="md-nav__link">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
         Regex
       </a>
     </li>
@@ -932,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpCookie/" class="md-nav__link">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
         Cookies
       </a>
     </li>
@@ -946,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpSessions/" class="md-nav__link">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
         Sessions
       </a>
     </li>
@@ -960,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpFTP/" class="md-nav__link">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
         FTP
       </a>
     </li>
@@ -974,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpMail/" class="md-nav__link">
+      <a href="../../Func/phpMail/" class="md-nav__link">
         Mail
       </a>
     </li>
@@ -995,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpFilters/" class="md-nav__link">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
         Filters
       </a>
     </li>
@@ -1009,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpCallback/" class="md-nav__link">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
         Callback
       </a>
     </li>
@@ -1023,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpJSON/" class="md-nav__link">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
         JSON
       </a>
     </li>
@@ -1063,7 +1063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpError/" class="md-nav__link">
+      <a href="../../Func/phpError/" class="md-nav__link">
         Errors
       </a>
     </li>
@@ -1077,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpExceptions/" class="md-nav__link">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
         Exceptions
       </a>
     </li>
@@ -1098,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpConfVar/" class="md-nav__link">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
         Config Variables
       </a>
     </li>
@@ -1112,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpDeclare/" class="md-nav__link">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
         Declare
       </a>
     </li>
@@ -1126,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpEmpty/" class="md-nav__link">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
         Empty
       </a>
     </li>
@@ -1140,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpMisc/" class="md-nav__link">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
         Misc
       </a>
     </li>
@@ -1154,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpOutput/" class="md-nav__link">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
         Output Control
       </a>
     </li>
@@ -1201,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpUserFunc/" class="md-nav__link">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1215,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpArrowFunc/" class="md-nav__link">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
         Arrow Function
       </a>
     </li>
@@ -1229,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Func/phpGenerators/" class="md-nav__link">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
         Generators
       </a>
     </li>
@@ -1284,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../DS/phpArray/" class="md-nav__link">
+      <a href="../../DS/phpArray/" class="md-nav__link">
         Array
       </a>
     </li>
@@ -1298,7 +1298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../DS/phpIterables/" class="md-nav__link">
+      <a href="../../DS/phpIterables/" class="md-nav__link">
         Iterables
       </a>
     </li>
@@ -1346,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpCls/" class="md-nav__link">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
         OOP
       </a>
     </li>
@@ -1360,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpConstructor/" class="md-nav__link">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
         Constructor
       </a>
     </li>
@@ -1374,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpModifiers/" class="md-nav__link">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
         Access Modifiers
       </a>
     </li>
@@ -1388,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpInheritance/" class="md-nav__link">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
         Inheritance
       </a>
     </li>
@@ -1402,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpConstants/" class="md-nav__link">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
         Constants
       </a>
     </li>
@@ -1416,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpAbstract/" class="md-nav__link">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
         Abstract Classes
       </a>
     </li>
@@ -1430,7 +1430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpInterfaces/" class="md-nav__link">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
         Interfaces
       </a>
     </li>
@@ -1444,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpTraits/" class="md-nav__link">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
         Traits
       </a>
     </li>
@@ -1458,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpStatic/" class="md-nav__link">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
         Static
       </a>
     </li>
@@ -1472,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Classes/phpNamespaces/" class="md-nav__link">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
         Namespaces
       </a>
     </li>
@@ -1520,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpInclude/" class="md-nav__link">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
         Include
       </a>
     </li>
@@ -1534,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpGoto/" class="md-nav__link">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
         Goto
       </a>
     </li>
@@ -1574,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpFile/" class="md-nav__link">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
         Filesystem
       </a>
     </li>
@@ -1588,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpZip/" class="md-nav__link">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
         Zip
       </a>
     </li>
@@ -1609,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpMySql/" class="md-nav__link">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
         MySQL
       </a>
     </li>
@@ -1623,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpXML/" class="md-nav__link">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
         XML
       </a>
     </li>
@@ -1637,7 +1637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Adv/phpAjax/" class="md-nav__link">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
         Ajax
       </a>
     </li>
@@ -1687,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodle/" class="md-nav__link">
+      <a href="../phpMoodle/" class="md-nav__link">
         Basics
       </a>
     </li>
@@ -1701,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleInstall/" class="md-nav__link">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -1713,14 +1713,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
       
       
       
@@ -1743,7 +1741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodlePluginTypes/" class="md-nav__link">
+      <a href="../phpMoodlePluginTypes/" class="md-nav__link">
         General
       </a>
     </li>
@@ -1757,7 +1755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePlugin_mod/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
         Activity
       </a>
     </li>
@@ -1769,14 +1767,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" type="checkbox" id="__nav_7_3_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
       
       
       
@@ -1799,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePlugin_qtypes/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
         Question Types
       </a>
     </li>
@@ -1813,7 +1809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePlugin_qformat/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
         Question Format
       </a>
     </li>
@@ -1827,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePlugin_qbank/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
         Question Bank
       </a>
     </li>
@@ -1839,62 +1835,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Question Behavior
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
         Question Behavior
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#key-aspects-of-developing-a-qbehavior-plugin" class="md-nav__link">
-    Key Aspects of Developing a Qbehavior Plugin
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-of-developing-a-qbehavior-plugin-adaptive-mode" class="md-nav__link">
-    Example of Developing a Qbehavior Plugin: Adaptive Mode
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1913,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePlugin_booktool/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
         Book Tool
       </a>
     </li>
@@ -1927,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../phpMoodlePlugin_datafield/" class="md-nav__link">
+      <a href="../Plugin/phpMoodlePlugin_datafield/" class="md-nav__link">
         Database Fields
       </a>
     </li>
@@ -1948,7 +1893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodlePluginSkeleton/" class="md-nav__link">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
         Skeleton
       </a>
     </li>
@@ -1962,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodlePluginFiles/" class="md-nav__link">
+      <a href="../phpMoodlePluginFiles/" class="md-nav__link">
         Common Files
       </a>
     </li>
@@ -1976,7 +1921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleXMLDB/" class="md-nav__link">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
         XMLDB Editor
       </a>
     </li>
@@ -1990,7 +1935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleTemplate/" class="md-nav__link">
+      <a href="../phpMoodleTemplate/" class="md-nav__link">
         Templates
       </a>
     </li>
@@ -2030,7 +1975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleJS/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleJS/" class="md-nav__link">
         General
       </a>
     </li>
@@ -2044,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleJSTools/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleJSTools/" class="md-nav__link">
         Tools
       </a>
     </li>
@@ -2058,7 +2003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodlePromises/" class="md-nav__link">
+      <a href="../Javascript/phpMoodlePromises/" class="md-nav__link">
         Promises
       </a>
     </li>
@@ -2072,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleModal/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleModal/" class="md-nav__link">
         Modal Dialogues
       </a>
     </li>
@@ -2086,7 +2031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Javascript/phpMoodleAJAX/" class="md-nav__link">
+      <a href="../Javascript/phpMoodleAJAX/" class="md-nav__link">
         AJAX
       </a>
     </li>
@@ -2133,7 +2078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleServices/" class="md-nav__link">
+      <a href="../phpMoodleServices/" class="md-nav__link">
         External Services
       </a>
     </li>
@@ -2147,7 +2092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodlePersistent/" class="md-nav__link">
+      <a href="../API/phpMoodlePersistent/" class="md-nav__link">
         Persistent API
       </a>
     </li>
@@ -2161,7 +2106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleExporter/" class="md-nav__link">
+      <a href="../API/phpMoodleExporter/" class="md-nav__link">
         Exporter
       </a>
     </li>
@@ -2175,7 +2120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleQuestion/" class="md-nav__link">
+      <a href="../API/phpMoodleQuestion/" class="md-nav__link">
         Question API
       </a>
     </li>
@@ -2189,7 +2134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleDM/" class="md-nav__link">
+      <a href="../API/phpMoodleDM/" class="md-nav__link">
         Data Manipulation API
       </a>
     </li>
@@ -2203,7 +2148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleTag/" class="md-nav__link">
+      <a href="../API/phpMoodleTag/" class="md-nav__link">
         Tag API
       </a>
     </li>
@@ -2217,7 +2162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleAccess/" class="md-nav__link">
+      <a href="../API/phpMoodleAccess/" class="md-nav__link">
         Access API
       </a>
     </li>
@@ -2231,7 +2176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleGroups/" class="md-nav__link">
+      <a href="../API/phpMoodleGroups/" class="md-nav__link">
         Groups API
       </a>
     </li>
@@ -2245,7 +2190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleMessage/" class="md-nav__link">
+      <a href="../API/phpMoodleMessage/" class="md-nav__link">
         Messaging API
       </a>
     </li>
@@ -2259,7 +2204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleCache/" class="md-nav__link">
+      <a href="../API/phpMoodleCache/" class="md-nav__link">
         Cache API
       </a>
     </li>
@@ -2273,7 +2218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../API/phpMoodleTable/" class="md-nav__link">
+      <a href="../API/phpMoodleTable/" class="md-nav__link">
         Table API
       </a>
     </li>
@@ -2294,7 +2239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleSecurity/" class="md-nav__link">
+      <a href="../phpMoodleSecurity/" class="md-nav__link">
         Security
       </a>
     </li>
@@ -2308,7 +2253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phpMoodleToolsPHPUnit/" class="md-nav__link">
+      <a href="../phpMoodleToolsPHPUnit/" class="md-nav__link">
         Unit Test
       </a>
     </li>
@@ -2320,11 +2265,232 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../phpMoodleBehat/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Behat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Behat
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#writing-and-using-behat-tests-in-moodle" class="md-nav__link">
+    Writing and Using Behat Tests in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-set-up-behat-in-moodle" class="md-nav__link">
+    1. Set Up Behat in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Set Up Behat in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-moodle-for-behat" class="md-nav__link">
+    Configure Moodle for Behat:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-initialize-behat-environment" class="md-nav__link">
+    Create and Initialize Behat Environment:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-write-behat-tests-using-gherkin-syntax" class="md-nav__link">
+    2. Write Behat Tests Using Gherkin Syntax
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Write Behat Tests Using Gherkin Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure-of-a-behat-test" class="md-nav__link">
+    Basic Structure of a Behat Test:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-simple-behat-test" class="md-nav__link">
+    Example: Simple Behat Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-running-behat-tests" class="md-nav__link">
+    3. Running Behat Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Running Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-all-behat-tests" class="md-nav__link">
+    Running All Behat Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-specific-tests" class="md-nav__link">
+    Running Specific Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-for-a-specific-tag" class="md-nav__link">
+    Running Tests for a Specific Tag:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-options" class="md-nav__link">
+    Additional Options:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-writing-effective-behat-steps-and-contexts" class="md-nav__link">
+    4. Writing Effective Behat Steps and Contexts
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Writing Effective Behat Steps and Contexts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-predefined-steps" class="md-nav__link">
+    Using Predefined Steps:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-custom-steps" class="md-nav__link">
+    Writing Custom Steps:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-writing-good-behat-tests" class="md-nav__link">
+    Tips for Writing Good Behat Tests:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-advanced-behat-features-in-moodle" class="md-nav__link">
+    5. Advanced Behat Features in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Advanced Behat Features in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-data-tables-for-form-fields" class="md-nav__link">
+    Use Data Tables for Form Fields:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-backgrounds-for-repeated-steps" class="md-nav__link">
+    Use Backgrounds for Repeated Steps:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-hooks-for-setup-and-teardown" class="md-nav__link">
+    Use Hooks for Setup and Teardown:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-troubleshooting-and-debugging" class="md-nav__link">
+    6. Troubleshooting and Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2361,22 +2527,192 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-aspects-of-developing-a-qbehavior-plugin" class="md-nav__link">
-    Key Aspects of Developing a Qbehavior Plugin
+  <a href="#writing-and-using-behat-tests-in-moodle" class="md-nav__link">
+    Writing and Using Behat Tests in Moodle
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-of-developing-a-qbehavior-plugin-adaptive-mode" class="md-nav__link">
-    Example of Developing a Qbehavior Plugin: Adaptive Mode
+  <a href="#1-set-up-behat-in-moodle" class="md-nav__link">
+    1. Set Up Behat in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Set Up Behat in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-moodle-for-behat" class="md-nav__link">
+    Configure Moodle for Behat:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-and-initialize-behat-environment" class="md-nav__link">
+    Create and Initialize Behat Environment:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-write-behat-tests-using-gherkin-syntax" class="md-nav__link">
+    2. Write Behat Tests Using Gherkin Syntax
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Write Behat Tests Using Gherkin Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-structure-of-a-behat-test" class="md-nav__link">
+    Basic Structure of a Behat Test:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-simple-behat-test" class="md-nav__link">
+    Example: Simple Behat Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-running-behat-tests" class="md-nav__link">
+    3. Running Behat Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Running Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-all-behat-tests" class="md-nav__link">
+    Running All Behat Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-specific-tests" class="md-nav__link">
+    Running Specific Tests:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-tests-for-a-specific-tag" class="md-nav__link">
+    Running Tests for a Specific Tag:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-options" class="md-nav__link">
+    Additional Options:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-writing-effective-behat-steps-and-contexts" class="md-nav__link">
+    4. Writing Effective Behat Steps and Contexts
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Writing Effective Behat Steps and Contexts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-predefined-steps" class="md-nav__link">
+    Using Predefined Steps:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-custom-steps" class="md-nav__link">
+    Writing Custom Steps:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-writing-good-behat-tests" class="md-nav__link">
+    Tips for Writing Good Behat Tests:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-advanced-behat-features-in-moodle" class="md-nav__link">
+    5. Advanced Behat Features in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Advanced Behat Features in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-data-tables-for-form-fields" class="md-nav__link">
+    Use Data Tables for Form Fields:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-backgrounds-for-repeated-steps" class="md-nav__link">
+    Use Backgrounds for Repeated Steps:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-hooks-for-setup-and-teardown" class="md-nav__link">
+    Use Hooks for Setup and Teardown:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-troubleshooting-and-debugging" class="md-nav__link">
+    6. Troubleshooting and Debugging
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
+  <a href="#summary" class="md-nav__link">
+    Summary
   </a>
   
 </li>
@@ -2395,186 +2731,158 @@
                 
 
 
-  <h1>Question Behavior</h1>
+  <h1>Behat</h1>
 
-<p>When developing a <strong>Qbehavior plugin</strong> in Moodle, the most important aspect is managing how questions behave during <strong>attempts in a quiz</strong>. A <strong>question behavior plugin</strong> controls how a user interacts with a question, how responses are processed, and how feedback is provided. It determines the user experience during quizzes, such as whether users can retry incorrect answers, how immediate feedback is shown, and how marks are adjusted based on responses.</p>
+<p>Behat is a framework for behavior driven development (BDD) which allows us to specify Moodle functionalities (aka features) as a human-readable list of steps. It parses these steps to executable actions to simulate user interaction against headless browsers (without JavaScript support, only curl-kind requests) or user simulation tools like Selenium, which interacts with browsers and allows JavaScript events simulation.</p>
+<h3 id="writing-and-using-behat-tests-in-moodle">Writing and Using Behat Tests in Moodle</h3>
+<p>Behat is a behavior-driven development (BDD) tool used in Moodle for automated functional testing. It simulates user interactions with the Moodle interface to ensure that features work as expected. Behat tests use plain language syntax (Gherkin) and provide a way to verify Moodle's web interface through predefined scenarios.</p>
 <hr />
-<h3 id="key-aspects-of-developing-a-qbehavior-plugin">Key Aspects of Developing a Qbehavior Plugin</h3>
-<ol>
-<li>
-<p><strong>Plugin Structure and Location</strong>
-    A Qbehavior plugin is located in the <code>/question/behaviour/</code> directory. When you create a new plugin (e.g., <code>mybehavior</code>), it will be structured like this:</p>
-<div class="highlight"><pre><span></span><code>/question/behaviour/mybehavior/
-</code></pre></div>
-<p>Essential files include:</p>
+<h3 id="1-set-up-behat-in-moodle">1. <strong>Set Up Behat in Moodle</strong></h3>
+<h4 id="prerequisites">Prerequisites:</h4>
 <ul>
-<li><strong>behaviour.php</strong>: This is the core file that defines how the question behaves.</li>
-<li><strong>lang/en/qbehaviour_mybehavior.php</strong>: This file contains language strings for the plugin.</li>
-<li><strong>version.php</strong>: Metadata about the plugin's version and Moodle compatibility.</li>
+<li>Ensure you have <strong>PHP</strong> installed with appropriate extensions like <code>xml</code>, <code>curl</code>, <code>json</code>.</li>
+<li>Ensure <strong>Selenium Server</strong> is set up if testing in real browsers (e.g., ChromeDriver or Geckodriver for Firefox).</li>
+<li>Use a <strong>dedicated testing database</strong> and <strong>data directory</strong> separate from your main Moodle site.</li>
 </ul>
-</li>
-<li>
-<p><strong><code>behaviour.php</code>: Core Logic of the Plugin</strong></p>
-<p>The heart of a Qbehavior plugin is the <code>behaviour.php</code> file. This file extends the base class <code>question_behaviour</code> and implements specific methods that define the behavior of the question during a quiz attempt.</p>
-<ul>
-<li><strong>Response processing</strong>: Determines how student responses are handled (e.g., whether multiple attempts are allowed, how answers are graded).</li>
-<li><strong>Feedback</strong>: Manages how feedback is provided to the user (immediate, deferred, or based on multiple tries).</li>
-<li><strong>Question state transitions</strong>: Controls how a question moves between states (e.g., unanswered, partially answered, correct, incorrect).</li>
-</ul>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="x">class qbehaviour_mybehavior extends question_behaviour {</span>
-<span class="x">    public function process_action($submitteddata, $response) {</span>
-<span class="x">        // Logic for handling the user&#39;s submission and moving to the next state.</span>
-<span class="x">    }</span>
-
-<span class="x">    public function adjust_fraction($fraction) {</span>
-<span class="x">        // Logic for adjusting the score based on the user&#39;s attempts or responses.</span>
-<span class="x">    }</span>
-<span class="x">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Key Methods to Implement</strong>
-    When developing a Qbehavior plugin, there are several critical methods you need to implement to define how the behavior works. The most important ones include:</p>
-<ul>
-<li><strong><code>process_action($submitteddata, $response)</code></strong>: Defines how the system processes the student's answer submission and evaluates the state.</li>
-<li><strong><code>is_complete_response($response)</code></strong>: Determines whether the user's response is considered complete, which is important for handling submissions.</li>
-<li><strong><code>adjust_fraction($fraction)</code></strong>: Adjusts the score or grade based on the number of attempts or quality of the response.</li>
-<li><strong><code>is_graded()</code></strong>: Specifies whether the question is graded immediately or deferred until the end of the quiz.</li>
-</ul>
-<p>These methods collectively control how the question transitions between states (e.g., whether the user can try again after an incorrect answer or receive partial marks).</p>
-</li>
-<li>
-<p><strong>States and Transitions</strong>
-    A critical part of developing a Qbehavior plugin is managing the <strong>question states</strong> and <strong>state transitions</strong>. Each question can go through various states, such as <strong>todo</strong>, <strong>complete</strong>, <strong>graded</strong>, and <strong>invalid</strong>. The behavior plugin is responsible for handling these transitions based on user interaction.</p>
-<ul>
-<li>States like <code>question_state_todo</code>, <code>question_state_complete</code>, <code>question_state_graded</code>, etc., are important for controlling what happens at each stage of the quiz attempt.</li>
-<li>For example, in adaptive behavior, a student may be allowed to submit multiple attempts at the same question, while in deferred feedback, they submit answers only once.</li>
-</ul>
-<p>Example of handling state transition:
-<div class="highlight"><pre><span></span><code><span class="x">public function process_action($submitteddata, $response) {</span>
-<span class="x">    if ($this-&gt;is_correct_response($response)) {</span>
-<span class="x">        return question_state::graded_state_for_fraction(1);</span>
-<span class="x">    } else {</span>
-<span class="x">        return question_state::todo();</span>
-<span class="x">    }</span>
-<span class="x">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>User Interaction and Feedback</strong>
-    A significant focus of a Qbehavior plugin is how feedback is provided to users during the quiz.</p>
-<ul>
-<li><strong>Immediate Feedback</strong>: Some behaviors provide feedback right after the user submits their answer, showing whether they were correct or incorrect (e.g., immediate feedback behavior).</li>
-<li><strong>Deferred Feedback</strong>: Feedback is provided only after the quiz is completed (e.g., deferred feedback behavior).</li>
-<li><strong>Partially Correct</strong>: Some behaviors allow partial marks and provide feedback after multiple attempts (e.g., interactive behavior).</li>
-</ul>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="x">public function get_feedback($response) {</span>
-<span class="x">    if ($this-&gt;is_correct_response($response)) {</span>
-<span class="x">        return new question_feedback(&#39;Correct!&#39;, 1);</span>
-<span class="x">    } else {</span>
-<span class="x">        return new question_feedback(&#39;Try again!&#39;, 0);</span>
-<span class="x">    }</span>
-<span class="x">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Grading and Fraction Adjustment</strong>
-    Another important part of developing a Qbehavior plugin is how marks (fractions) are assigned based on user responses. You might want to <strong>adjust the score</strong> depending on how many attempts a student made or how close their response is to being correct.</p>
-<ul>
-<li>In some behaviors, full marks are awarded for the correct answer on the first try, and partial marks for subsequent attempts (adaptive behavior).</li>
-<li>In others, the score may remain the same regardless of the number of attempts (deferred feedback).</li>
-</ul>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="x">public function adjust_fraction($fraction) {</span>
-<span class="x">    // Decrease the fraction for each additional attempt.</span>
-<span class="x">    $attempts = $this-&gt;get_num_attempts();</span>
-<span class="x">    return max(0, $fraction - ($attempts * 0.1));</span>
-<span class="x">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Handling User Actions and Validation</strong>
-    The Qbehavior plugin defines how <strong>user actions</strong> like submitting an answer or trying again are processed.</p>
-<ul>
-<li><strong>Validation of responses</strong>: Your plugin must validate the user's submission to ensure it's a valid response for the question type.</li>
-<li><strong>Partial or multiple attempts</strong>: Depending on the behavior, the user may be allowed to attempt the question multiple times.</li>
-</ul>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="x">public function process_action($submitteddata, $response) {</span>
-<span class="x">    if ($this-&gt;is_valid_response($submitteddata)) {</span>
-<span class="x">        // Save the user&#39;s response and transition to the appropriate state.</span>
-<span class="x">    } else {</span>
-<span class="x">        return question_state::invalid();</span>
-<span class="x">    }</span>
-<span class="x">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Performance Considerations</strong>
-    Performance is important, especially when many students are taking a quiz simultaneously. Qbehavior plugins should be optimized for efficiency:</p>
-<ul>
-<li>Minimize database queries during state transitions.</li>
-<li>Use caching where necessary.</li>
-<li>Avoid unnecessarily loading large amounts of data.</li>
-</ul>
-</li>
-<li>
-<p><strong>Testing and Compatibility</strong>
-    Testing is critical to ensure that the Qbehavior plugin works correctly across different question types and quiz scenarios.</p>
-<ul>
-<li><strong>Unit tests</strong>: Write unit tests to cover the various question behaviors, especially for edge cases like invalid submissions, retries, and multiple attempts.</li>
-<li><strong>Compatibility</strong>: Ensure that your plugin is compatible with various question types (e.g., multiple choice, short answer) and integrates smoothly with Moodle’s grading and feedback systems.</li>
-</ul>
-</li>
-</ol>
-<hr />
-<h3 id="example-of-developing-a-qbehavior-plugin-adaptive-mode">Example of Developing a Qbehavior Plugin: Adaptive Mode</h3>
-<p>Suppose you are developing a <strong>custom adaptive behavior</strong> that allows students to submit multiple attempts for a question, but with <strong>diminishing marks</strong> for each incorrect attempt.</p>
-<ol>
-<li>
-<p><strong>Core Logic (<code>behaviour.php</code>)</strong></p>
-<ul>
-<li>The <code>process_action()</code> method checks if the student's response is correct or incorrect.</li>
-<li>If correct, the question is marked as complete and fully graded.</li>
-<li>If incorrect, the user can retry, but with a reduced mark (e.g., 10% less for each wrong attempt).</li>
-</ul>
-<p>Example:
-<div class="highlight"><pre><span></span><code><span class="x">class qbehaviour_adaptive_custom extends question_behaviour {</span>
-<span class="x">    public function process_action($submitteddata, $response) {</span>
-<span class="x">        if ($this-&gt;is_correct_response($response)) {</span>
-<span class="x">            return question_state::graded_state_for_fraction(1);</span>
-<span class="x">        } else {</span>
-<span class="x">            return question_state::todo();</span>
-<span class="x">        }</span>
-<span class="x">    }</span>
-
-<span class="x">    public function adjust_fraction($fraction) {</span>
-<span class="x">        $attempts = $this-&gt;get_num_attempts();</span>
-<span class="x">        return max(0, $fraction - ($attempts * 0.1));</span>
-<span class="x">    }</span>
-<span class="x">}</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>User Feedback</strong></p>
-<ul>
-<li>The user receives feedback after each attempt, with immediate feedback on whether the response was correct or incorrect.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="x">public function get_feedback($response) {</span>
-<span class="x">    if ($this-&gt;is_correct_response($response)) {</span>
-<span class="x">        return new question_feedback(&#39;Correct! Full marks.&#39;, 1);</span>
-<span class="x">    } else {</span>
-<span class="x">        return new question_feedback(&#39;Incorrect! Try again.&#39;, 0);</span>
-<span class="x">    }</span>
+<h4 id="configure-moodle-for-behat">Configure Moodle for Behat:</h4>
+<p>Edit <code>config.php</code> to add Behat settings:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Behat configuration.</span>
+<span class="x">if (defined(&#39;BEHAT_SITE_RUNNING&#39;) &amp;&amp; BEHAT_SITE_RUNNING) {</span>
+<span class="x">    $CFG-&gt;behat_wwwroot = &#39;http://localhost/moodle&#39;;  // URL of your Moodle site.</span>
+<span class="x">    $CFG-&gt;behat_dataroot = &#39;/path/to/moodledata_behat&#39;;</span>
+<span class="x">    $CFG-&gt;behat_prefix = &#39;bht_&#39;;  // Optional prefix for tables in the test database.</span>
 <span class="x">}</span>
 </code></pre></div>
-</li>
-</ol>
+<h4 id="create-and-initialize-behat-environment">Create and Initialize Behat Environment:</h4>
+<p>Run the following command to initialize the Behat environment:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>This command does the following:
+- Configures the test site.
+- Sets up the test database and data directory.
+- Generates Behat feature context files and settings.</p>
 <hr />
-<h3 id="conclusion">Conclusion</h3>
-<p>The most important aspect of developing a <strong>Qbehavior plugin</strong> in Moodle is defining how questions behave during quiz attempts. This involves managing question state transitions, processing user responses, providing appropriate feedback, and handling grading or score adjustments. By extending the core behavior classes, customizing the user interaction flow, and ensuring optimal performance, you can create a Qbehavior plugin that enhances the quiz-taking experience in Moodle.</p>
+<h3 id="2-write-behat-tests-using-gherkin-syntax">2. <strong>Write Behat Tests Using Gherkin Syntax</strong></h3>
+<p>Behat tests use the <strong>Gherkin language</strong> to describe scenarios. Tests are stored as <code>.feature</code> files within the <code>tests/behat/</code> directories of core components or plugins.</p>
+<h4 id="basic-structure-of-a-behat-test">Basic Structure of a Behat Test:</h4>
+<p>A <code>.feature</code> file contains:
+- <strong>Feature</strong>: High-level description of what is being tested.
+- <strong>Scenario</strong>: Steps that describe a specific use case.</p>
+<h4 id="example-simple-behat-test">Example: Simple Behat Test</h4>
+<p>Create a file named <code>example.feature</code> inside <code>mod/quiz/tests/behat/</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Create a quiz activity</span>
+<span class="nf">  As an admin user</span>
+<span class="nf">  I want to create a quiz activity in a course</span>
+<span class="nf">  So that students can take the quiz</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Create and configure a quiz</span>
+<span class="k">    Given </span><span class="nf">I log in as &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I navigate to &quot;</span><span class="s">Course 1</span><span class="nf">&quot; course</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I turn editing mode on</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I add a &quot;</span><span class="s">Quiz</span><span class="nf">&quot; to section &quot;</span><span class="s">1</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I set the following fields:</span>
+<span class="k">      |</span><span class="s"> Name</span><span class="k">          |</span><span class="s"> Test Quiz</span><span class="k"> |</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">Save and display</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Test Quiz</span><span class="nf">&quot;</span>
+</code></pre></div>
+<p><strong>Explanation of Steps</strong>:
+- <strong>Given</strong>: Sets the initial context (e.g., user is logged in).
+- <strong>And</strong>: Chains additional steps to the context.
+- <strong>Then</strong>: Asserts an expected outcome.</p>
+<hr />
+<h3 id="3-running-behat-tests">3. <strong>Running Behat Tests</strong></h3>
+<h4 id="running-all-behat-tests">Running All Behat Tests:</h4>
+<p>To execute all Behat tests, run:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /path/to/moodle/behat/behat.yml
+</code></pre></div></p>
+<h4 id="running-specific-tests">Running Specific Tests:</h4>
+<p>Run a single <code>.feature</code> file:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /path/to/moodle/behat/behat.yml /path/to/example.feature
+</code></pre></div></p>
+<h4 id="running-tests-for-a-specific-tag">Running Tests for a Specific Tag:</h4>
+<p>Tags allow categorizing and filtering tests. For example:
+<div class="highlight"><pre><span></span><code><span class="nt">@quiz</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Create a quiz</span>
+</code></pre></div></p>
+<p>To run tests with the <code>@quiz</code> tag:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /path/to/moodle/behat/behat.yml --tags<span class="o">=</span>@quiz
+</code></pre></div></p>
+<h4 id="additional-options">Additional Options:</h4>
+<ul>
+<li><strong>Use Browser Profiles</strong>: <code>--profile=chrome</code> (if set up in your Behat configuration).</li>
+<li><strong>Debugging</strong>: Add <code>--format=pretty --out=std</code> for more detailed output.</li>
+</ul>
+<hr />
+<h3 id="4-writing-effective-behat-steps-and-contexts">4. <strong>Writing Effective Behat Steps and Contexts</strong></h3>
+<h4 id="using-predefined-steps">Using Predefined Steps:</h4>
+<p>Moodle comes with a rich set of predefined Behat steps to interact with the UI. To see a list of available steps, run:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --definitions
+</code></pre></div></p>
+<h4 id="writing-custom-steps">Writing Custom Steps:</h4>
+<p>If existing steps do not cover your needs, you can define custom steps by creating a context class in <code>tests/behat/</code>. Example:</p>
+<p><strong>Create a Custom Context File</strong>: <code>custom_context.php</code>:
+<div class="highlight"><pre><span></span><code><span class="x">use Behat\Behat\Context\Context;</span>
+<span class="x">use Behat\Behat\Context\SnippetAcceptingContext;</span>
+
+<span class="x">class custom_context implements Context, SnippetAcceptingContext {</span>
+<span class="x">    /**</span>
+<span class="x">     * @Given /^I print a custom message$/</span>
+<span class="x">     */</span>
+<span class="x">    public function i_print_a_custom_message() {</span>
+<span class="x">        echo &quot;This is a custom Behat step.\n&quot;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p><strong>Register the Context</strong>: Add it to your <code>behat.yml</code> file:
+<div class="highlight"><pre><span></span><code><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">suites</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">contexts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_context</span><span class="w"></span>
+</code></pre></div></p>
+<h4 id="tips-for-writing-good-behat-tests">Tips for Writing Good Behat Tests:</h4>
+<ul>
+<li><strong>Be Specific</strong>: Ensure each step is precise and unambiguous.</li>
+<li><strong>Use Tags</strong>: Organize and filter your tests for better manageability.</li>
+<li><strong>Reuse Steps</strong>: Avoid redundant steps by utilizing existing definitions.</li>
+<li><strong>Write Atomic Tests</strong>: Keep scenarios small and focused on a single behavior.</li>
+</ul>
+<hr />
+<h3 id="5-advanced-behat-features-in-moodle">5. <strong>Advanced Behat Features in Moodle</strong></h3>
+<h4 id="use-data-tables-for-form-fields">Use Data Tables for Form Fields:</h4>
+<p>Data tables make it easy to fill forms:
+<div class="highlight"><pre><span></span><code><span class="k">And </span><span class="nf">I set the following fields:</span>
+<span class="k">  |</span><span class="s"> Name</span><span class="k">            |</span><span class="s"> Quiz Test Name</span><span class="k">        |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> Description</span><span class="k">     |</span><span class="s"> This is a test quiz.</span><span class="k"> |</span>
+</code></pre></div></p>
+<h4 id="use-backgrounds-for-repeated-steps">Use Backgrounds for Repeated Steps:</h4>
+<p>Background steps run before each scenario in a feature:
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Quiz management</span>
+
+<span class="k">Background:</span><span class="nf"></span>
+<span class="k">  Given </span><span class="nf">I log in as &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I navigate to &quot;</span><span class="s">Course 1</span><span class="nf">&quot; course</span>
+
+<span class="k">Scenario:</span><span class="nf"> Add a quiz</span>
+<span class="k">  And </span><span class="nf">I add a &quot;</span><span class="s">Quiz</span><span class="nf">&quot; to section &quot;</span><span class="s">1</span><span class="nf">&quot;</span>
+</code></pre></div></p>
+<h4 id="use-hooks-for-setup-and-teardown">Use Hooks for Setup and Teardown:</h4>
+<p>Hooks are methods that run before or after scenarios:
+<div class="highlight"><pre><span></span><code><span class="x">public function before_scenario($event) {</span>
+<span class="x">    // Setup code.</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="6-troubleshooting-and-debugging">6. <strong>Troubleshooting and Debugging</strong></h3>
+<ul>
+<li><strong>Check Logs</strong>: Moodle's error logs can provide information if tests fail.</li>
+<li><strong>Check Browser Output</strong>: Use the <code>--format=pretty</code> option for more readable output.</li>
+<li><strong>Screenshot on Failure</strong>: Configure Behat to take screenshots on failure for debugging.</li>
+<li><strong>Review Behat Configuration</strong>: Ensure <code>behat.yml</code> is correctly set up for your environment.</li>
+</ul>
+<hr />
+<h3 id="summary">Summary</h3>
+<p>Behat testing in Moodle ensures your code works well from a user's perspective. By following best practices for writing and running Behat tests, and utilizing Moodle's rich test ecosystem, you can enhance the quality and stability of your Moodle features.</p>
 
               
             </article>
@@ -2588,7 +2896,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../phpMoodlePlugin_qbank/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Question Bank" rel="prev">
+        <a href="../phpMoodleToolsPHPUnit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Unit Test" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2597,26 +2905,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Question Bank
+              Unit Test
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../phpMoodlePlugin_booktool/" class="md-footer__link md-footer__link--next" aria-label="Next: Book Tool" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Book Tool
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
@@ -2690,10 +2983,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
