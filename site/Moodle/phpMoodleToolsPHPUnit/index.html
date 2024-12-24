@@ -2407,13 +2407,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#best-practice" class="md-nav__link">
-    Best practice
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#run-tests" class="md-nav__link">
     Run Tests
   </a>
@@ -2601,13 +2594,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#best-practice" class="md-nav__link">
-    Best practice
-  </a>
   
 </li>
       
@@ -3002,7 +2988,6 @@ by using the <code>@covers</code> annotation.</p>
 </code></pre></div>
 <p>If a <code>coverage.php</code> file already exists, then the defaults will be added to the values already 
 defined.</p>
-<h3 id="best-practice">Best practice</h3>
 <hr />
 <h3 id="run-tests"><strong>Run Tests</strong></h3>
 <h5 id="run-all-tests">Run All Tests:</h5>
@@ -3050,31 +3035,80 @@ vendor/bin/phpunit
 </ol>
 <hr />
 <h3 id="best-practices-for-writing-tests"><strong>Best Practices for Writing Tests</strong></h3>
-<ul>
-<li>
-<p><strong>Set Up Test Environment</strong>:
-  Use <code>resetAfterTest(true);</code> in tests to reset the Moodle environment after each test.</p>
-</li>
-<li>
-<p><strong>Test Data Generation</strong>:
-  Use Moodle's data generators for creating test data:
+<h5 id="code-coverage"><strong>Code coverage</strong>:</h5>
+<p>PHPUnit has the ability to generate code coverage information for your unit tests and this is well supported since.Moodle 3.7. 
+We recommend that you consider checking the coverage of your plugins when you write your code.</p>
+<p>We recommend that you explicitly set the <code>@covers</code> annotation as described in the PHPUnit documentation.</p>
+<h5 id="keep-use-of-resetaftertest-to-a-minimum"><strong>Keep use of resetAfterTest to a minimum</strong>:</h5>
+<p>Although many of the examples described above use the <code>resetAfterTest</code> nomenclature to reset the database and 
+filesystem after your test completes, you should ideally not use this unless you have to.</p>
+<p>Generally speaking you should aim to write code which is mockable, and does not require real fixtures. 
+Use of <code>resetAfterTest</code> will also slow your tests down.</p>
+<h5 id="test-data-generation"><strong>Test Data Generation</strong>:</h5>
+<p>Use Moodle's data generators for creating test data:
   <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;getDataGenerator()-&gt;create_user([&#39;username&#39; =&gt; &#39;testuser&#39;]);</span>
 </code></pre></div></p>
-</li>
-<li>
-<p><strong>Mock Objects</strong>:
-  Use mocking for dependencies to isolate functionality:
+<h5 id="mock-objects"><strong>Mock Objects</strong>:</h5>
+<p>Use mocking for dependencies to isolate functionality:
   <div class="highlight"><pre><span></span><code><span class="x">$mock = $this-&gt;createMock(core_user::class);</span>
 </code></pre></div></p>
-</li>
-<li>
-<p><strong>Use Assertions</strong>:
-  Leverage PHPUnit’s assertion methods, such as:</p>
-</li>
-<li><code>assertEquals</code></li>
-<li><code>assertTrue</code></li>
-<li><code>assertInstanceOf</code></li>
+<h5 id="use-assertions"><strong>Use Assertions</strong>:</h5>
+<div class="highlight"><pre><span></span><code>Leverage PHPUnit’s assertion methods, such as:
+- `assertEquals`
+- `assertTrue`
+- `assertInstanceOf`
+</code></pre></div>
+<h5 id="be-careful-with-shared-setup-and-instance-variables"><strong>Be careful with shared setUp and instance variables</strong>:</h5>
+<p>You should be careful of how you create and use instance variables in PHPUnit tests for two main reasons:</p>
+<ol>
+<li>If you create any fixtures in the setUp, or call the resetAfterTest function, these fixtures and conditions will 
+apply for <em>all</em> tests in the testsuite. You will not be able to add another test to the suite which does not require 
+these conditions without those conditions being fulfilled anyway. This can lead to slow tests.</li>
+<li>PHPUnit creates an instance of each testcase during its bootstrap phase, and does not dispose of it for the lifetime 
+of the test run. Anything which causes data to be stored as instance data within the testcase will be stored in memory until 
+the <em>entire suite</em> completes. This means that any fixture which is setup and not actively discarded will not be garbage 
+collected and lead to memory bloat. In severe cases this can lead to memory exhaustion.</li>
+</ol>
+<p>Existing testcases which contain setUp which either generate data, or set resetAfterTest should be phased out, and no new 
+cases should be introduced.</p>
+<h5 id="make-use-of-the-dataprovider-functionality"><strong>Make use of the dataProvider functionality</strong>:</h5>
+<p>The dataProvider functionality of PHPUnit is an extremely powerful and useful feature which allows you to verify a function 
+quickly and easily with a range of different conditions. However, the following rules should be followed when using dataProviders:</p>
+<ul>
+<li>Keep addition of resettable data requiring resetAfterTest to a minimum - this will lead to many slow tests</li>
+<li>Data providers <strong>must not instantiate/create data</strong>. Just define it. And then, the test body can proceed with the 
+instantiation/creation. The dataProvider is called after the testSuite is instantiated, but before any tests are run. 
+Each test will run a full setUp and tearDown, which will destroy any data which was created.</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Test function accepts parameters passed from the specified data provider.</span>
+<span class="x"> *</span>
+<span class="x"> * @dataProvider foobar_provider</span>
+<span class="x"> * @param int $foor</span>
+<span class="x"> * @param int $bar</span>
+<span class="x"> */</span>
+<span class="x">public function test_foobar(int $foo, int $bar) {</span>
+<span class="x">    // Perform the tests here.</span>
+<span class="x">}</span>
+
+<span class="x">/**</span>
+<span class="x"> * Data provider for {@see self::test_foobar()}.</span>
+<span class="x"> *</span>
+<span class="x"> * @return array List of data sets - (string) data set name =&gt; (array) data</span>
+<span class="x"> */</span>
+<span class="x">public function foobar_provider(): array {</span>
+<span class="x">    return [</span>
+<span class="x">        &#39;Same numbers&#39; =&gt; [</span>
+<span class="x">            &#39;foo&#39; =&gt; 42,</span>
+<span class="x">            &#39;bar&#39; =&gt; 42,</span>
+<span class="x">        ],</span>
+<span class="x">        &#39;Different numbers&#39; =&gt; [</span>
+<span class="x">            &#39;foo&#39; =&gt; 21,</span>
+<span class="x">            &#39;bar&#39; =&gt; 84,</span>
+<span class="x">        ],</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</code></pre></div>
 <hr />
 <h3 id="advanced-usage"><strong>Advanced Usage</strong></h3>
 <h5 id="coverage-reports">Coverage Reports:</h5>

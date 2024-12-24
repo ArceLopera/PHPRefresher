@@ -492,7 +492,6 @@ return new class extends phpunit_coverage_info {
 If a `coverage.php` file already exists, then the defaults will be added to the values already 
 defined.
 
-### Best practice
 ---
 
 ### **Run Tests**
@@ -554,26 +553,93 @@ vendor/bin/phpunit --verbose
 
 ### **Best Practices for Writing Tests**
 
-- **Set Up Test Environment**:
-  Use `resetAfterTest(true);` in tests to reset the Moodle environment after each test.
+##### **Code coverage**:
+PHPUnit has the ability to generate code coverage information for your unit tests and this is well supported since.Moodle 3.7. 
+We recommend that you consider checking the coverage of your plugins when you write your code.
 
-- **Test Data Generation**:
+We recommend that you explicitly set the `@covers` annotation as described in the PHPUnit documentation.
+
+##### **Keep use of resetAfterTest to a minimum**:
+
+Although many of the examples described above use the `resetAfterTest` nomenclature to reset the database and 
+filesystem after your test completes, you should ideally not use this unless you have to.
+
+Generally speaking you should aim to write code which is mockable, and does not require real fixtures. 
+Use of `resetAfterTest` will also slow your tests down.
+
+##### **Test Data Generation**:
   Use Moodle's data generators for creating test data:
   ```php
   $this->getDataGenerator()->create_user(['username' => 'testuser']);
   ```
 
-- **Mock Objects**:
+##### **Mock Objects**:
   Use mocking for dependencies to isolate functionality:
   ```php
   $mock = $this->createMock(core_user::class);
   ```
 
-- **Use Assertions**:
-  Leverage PHPUnit’s assertion methods, such as:
-  - `assertEquals`
-  - `assertTrue`
-  - `assertInstanceOf`
+##### **Use Assertions**:
+    Leverage PHPUnit’s assertion methods, such as:
+    - `assertEquals`
+    - `assertTrue`
+    - `assertInstanceOf`
+
+##### **Be careful with shared setUp and instance variables**:
+
+You should be careful of how you create and use instance variables in PHPUnit tests for two main reasons:
+
+1. If you create any fixtures in the setUp, or call the resetAfterTest function, these fixtures and conditions will 
+apply for _all_ tests in the testsuite. You will not be able to add another test to the suite which does not require 
+these conditions without those conditions being fulfilled anyway. This can lead to slow tests.
+2. PHPUnit creates an instance of each testcase during its bootstrap phase, and does not dispose of it for the lifetime 
+of the test run. Anything which causes data to be stored as instance data within the testcase will be stored in memory until 
+the _entire suite_ completes. This means that any fixture which is setup and not actively discarded will not be garbage 
+collected and lead to memory bloat. In severe cases this can lead to memory exhaustion.
+
+Existing testcases which contain setUp which either generate data, or set resetAfterTest should be phased out, and no new 
+cases should be introduced.
+
+##### **Make use of the dataProvider functionality**:
+
+The dataProvider functionality of PHPUnit is an extremely powerful and useful feature which allows you to verify a function 
+quickly and easily with a range of different conditions. However, the following rules should be followed when using dataProviders:
+
++ Keep addition of resettable data requiring resetAfterTest to a minimum - this will lead to many slow tests
++ Data providers **must not instantiate/create data**. Just define it. And then, the test body can proceed with the 
+instantiation/creation. The dataProvider is called after the testSuite is instantiated, but before any tests are run. 
+Each test will run a full setUp and tearDown, which will destroy any data which was created.
+
+```php
+/**
+ * Test function accepts parameters passed from the specified data provider.
+ *
+ * @dataProvider foobar_provider
+ * @param int $foor
+ * @param int $bar
+ */
+public function test_foobar(int $foo, int $bar) {
+    // Perform the tests here.
+}
+
+/**
+ * Data provider for {@see self::test_foobar()}.
+ *
+ * @return array List of data sets - (string) data set name => (array) data
+ */
+public function foobar_provider(): array {
+    return [
+        'Same numbers' => [
+            'foo' => 42,
+            'bar' => 42,
+        ],
+        'Different numbers' => [
+            'foo' => 21,
+            'bar' => 84,
+        ],
+    ];
+}
+```
 
 ---
 
