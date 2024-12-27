@@ -2763,11 +2763,15 @@
 - Generates Behat feature context files and settings.</p>
 <hr />
 <h3 id="2-write-behat-tests-using-gherkin-syntax">2. <strong>Write Behat Tests Using Gherkin Syntax</strong></h3>
-<p>Behat tests use the <strong>Gherkin language</strong> to describe scenarios. Tests are stored as <code>.feature</code> files within the <code>tests/behat/</code> directories of core components or plugins.</p>
+<p>Behat tests use the <strong>Gherkin language</strong> to describe scenarios. 
+Tests are stored as <code>.feature</code> files within the <code>tests/behat/</code> directories of core 
+components or plugins.</p>
 <h4 id="basic-structure-of-a-behat-test">Basic Structure of a Behat Test:</h4>
-<p>A <code>.feature</code> file contains:
-- <strong>Feature</strong>: High-level description of what is being tested.
-- <strong>Scenario</strong>: Steps that describe a specific use case.</p>
+<p>A <code>.feature</code> file contains:</p>
+<ul>
+<li><strong>Feature</strong>: High-level description of what is being tested.</li>
+<li><strong>Scenario</strong>: Steps that describe a specific use case.</li>
+</ul>
 <h4 id="example-simple-behat-test">Example: Simple Behat Test</h4>
 <p>Create a file named <code>example.feature</code> inside <code>mod/quiz/tests/behat/</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Create a quiz activity</span>
@@ -2785,10 +2789,12 @@
 <span class="nf">    </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">Save and display</span><span class="nf">&quot;</span>
 <span class="nf">    </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Test Quiz</span><span class="nf">&quot;</span>
 </code></pre></div>
-<p><strong>Explanation of Steps</strong>:
-- <strong>Given</strong>: Sets the initial context (e.g., user is logged in).
-- <strong>And</strong>: Chains additional steps to the context.
-- <strong>Then</strong>: Asserts an expected outcome.</p>
+<p><strong>Explanation of Steps</strong></p>
+<ul>
+<li><strong>Given</strong>: Sets the initial context (e.g., user is logged in).</li>
+<li><strong>And</strong>: Chains additional steps to the context.</li>
+<li><strong>Then</strong>: Asserts an expected outcome.</li>
+</ul>
 <hr />
 <h3 id="3-running-behat-tests">3. <strong>Running Behat Tests</strong></h3>
 <h4 id="running-all-behat-tests">Running All Behat Tests:</h4>
