@@ -2338,29 +2338,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-write-behat-tests-using-gherkin-syntax" class="md-nav__link">
-    2. Write Behat Tests Using Gherkin Syntax
+  <a href="#2-write-behat-tests" class="md-nav__link">
+    2. Write Behat Tests
   </a>
-  
-    <nav class="md-nav" aria-label="2. Write Behat Tests Using Gherkin Syntax">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-structure-of-a-behat-test" class="md-nav__link">
-    Basic Structure of a Behat Test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-simple-behat-test" class="md-nav__link">
-    Example: Simple Behat Test
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2568,29 +2548,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-write-behat-tests-using-gherkin-syntax" class="md-nav__link">
-    2. Write Behat Tests Using Gherkin Syntax
+  <a href="#2-write-behat-tests" class="md-nav__link">
+    2. Write Behat Tests
   </a>
-  
-    <nav class="md-nav" aria-label="2. Write Behat Tests Using Gherkin Syntax">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-structure-of-a-behat-test" class="md-nav__link">
-    Basic Structure of a Behat Test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-simple-behat-test" class="md-nav__link">
-    Example: Simple Behat Test
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2762,39 +2722,88 @@
 - Sets up the test database and data directory.
 - Generates Behat feature context files and settings.</p>
 <hr />
-<h3 id="2-write-behat-tests-using-gherkin-syntax">2. <strong>Write Behat Tests Using Gherkin Syntax</strong></h3>
+<h3 id="2-write-behat-tests">2. <strong>Write Behat Tests</strong></h3>
 <p>Behat tests use the <strong>Gherkin language</strong> to describe scenarios. 
 Tests are stored as <code>.feature</code> files within the <code>tests/behat/</code> directories of core 
 components or plugins.</p>
-<h4 id="basic-structure-of-a-behat-test">Basic Structure of a Behat Test:</h4>
+<h5 id="basic-structure-of-a-behat-test">Basic Structure of a Behat Test:</h5>
 <p>A <code>.feature</code> file contains:</p>
 <ul>
-<li><strong>Feature</strong>: High-level description of what is being tested.</li>
-<li><strong>Scenario</strong>: Steps that describe a specific use case.</li>
+<li><strong>Feature</strong>: Human-readable list of scenarios that describes a feature.</li>
+<li><strong>Scenario</strong>: Human-readable list of steps that describe a specific use case.</li>
+<li><strong>Steps</strong>: Human-readable sentences that describe an action. 
+There are 3 types of steps, 
+<code>Given</code> describing the initial context, 
+<code>When</code> the event that provokes a change and 
+<code>Then</code> where the outcomes should be asserted.</li>
 </ul>
-<h4 id="example-simple-behat-test">Example: Simple Behat Test</h4>
-<p>Create a file named <code>example.feature</code> inside <code>mod/quiz/tests/behat/</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Create a quiz activity</span>
-<span class="nf">  As an admin user</span>
-<span class="nf">  I want to create a quiz activity in a course</span>
-<span class="nf">  So that students can take the quiz</span>
-
-<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Create and configure a quiz</span>
-<span class="k">    Given </span><span class="nf">I log in as &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">I navigate to &quot;</span><span class="s">Course 1</span><span class="nf">&quot; course</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">I turn editing mode on</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">I add a &quot;</span><span class="s">Quiz</span><span class="nf">&quot; to section &quot;</span><span class="s">1</span><span class="nf">&quot;</span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">I set the following fields:</span>
-<span class="k">      |</span><span class="s"> Name</span><span class="k">          |</span><span class="s"> Test Quiz</span><span class="k"> |</span><span class="nf"></span>
-<span class="nf">    </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">Save and display</span><span class="nf">&quot;</span>
-<span class="nf">    </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Test Quiz</span><span class="nf">&quot;</span>
-</code></pre></div>
 <p><strong>Explanation of Steps</strong></p>
 <ul>
 <li><strong>Given</strong>: Sets the initial context (e.g., user is logged in).</li>
 <li><strong>And</strong>: Chains additional steps to the context.</li>
 <li><strong>Then</strong>: Asserts an expected outcome.</li>
+<li><strong>When</strong>: Performs an action.</li>
 </ul>
+<p><strong>Example: Simple Behat Test</strong></p>
+<p>Create a file named <code>example.feature</code> inside <code>mod/quiz/tests/behat/</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">@auth</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Login</span>
+<span class="nf">  In order to login</span>
+<span class="nf">  As a moodle user</span>
+<span class="nf">  I need to be able to validate the username and password against moodle</span>
+
+<span class="k">Scenario:</span><span class="nf"> Login as an existing user</span>
+<span class="k">  Given </span><span class="nf">I am on &quot;</span><span class="s">login/index.php</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">I fill in &quot;</span><span class="s">username</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I fill in &quot;</span><span class="s">password</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">loginbtn</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Moodle 101: Course Name</span><span class="nf">&quot;</span>
+
+<span class="k">Scenario:</span><span class="nf"> Login as an non-existing user</span>
+<span class="k">  Given </span><span class="nf">I am on &quot;</span><span class="s">login/index.php</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">I fill in &quot;</span><span class="s">username</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I fill in &quot;</span><span class="s">password</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">loginbtn</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Invalid login</span><span class="nf">&quot;</span>
+</code></pre></div>
+<h5 id="other-definitions">Other definitions</h5>
+<ul>
+<li><strong>Steps definitions</strong>: </li>
+</ul>
+<p>These are the PHP methods referenced by steps when matching its regular expression. 
+The <code>@Given</code>,  <code>@When</code> and <code>@Then</code> tags are descriptive and they are not taken into account 
+when matching steps with steps definitions. The regular expressions placeholders are returned 
+to the PHP method as arguments so methods can use them to tell the browser which button 
+(for example) they want to click.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x">- @When /^I click on the &quot;(.*)&quot; button$/</span>
+<span class="x"> */</span>
+<span class="x">public function i_click_on_the_button($button) {</span>
+<span class="x">  // Simulates the user interaction (see Mink description below for more info)</span>
+<span class="x">  $this-&gt;getSession()-&gt;getPage()-&gt;pressButton($button);</span>
+<span class="x">}</span>
+</code></pre></div>
+- <code>Behat</code>: PHP framework and CLI application that wraps the whole process of features files 
+loading + features files parsing + execution of actions in the browser + results output 
+(http://behat.org/)
+- <code>Gherkin</code>: Human-readable language used to define features that can be parsed and translated 
+into PHP methods. For more info, it's the same language used by Cucumber, the BDD Ruby 
+framework (https://github.com/cucumber/cucumber/wiki/Gherkin)
+- <code>Context</code>: In Behat scope a context is a PHP class that groups steps definitions (as methods)
+- <code>Mink</code>: Is the component which interacts with browsers, simulating a real user interaction. 
+It allows us to write PHP code (or use the available PHP methods) to send requests to the 
+different browsers APIs through a common interface or extend it to allow browser-specific actions. 
+The supported browsers includes Selenium, Selenium2, Sahi... http://mink.behat.org/
+- <code>Selenium 2</code>: Web browser automation tool, applications like Mink can communicate with it 
+through a RESTful API (http://code.google.com/p/selenium/wiki/JsonWireProtocol) to execute 
+actions simulating user interaction.
+- <code>Selector type</code>: Related with locator, is a way to select a node inside the page DOM
+- <code>Locator</code>: Is what we are looking for inside the page DOM, it completely depends on the 
+associated selector type, a few examples of it:
+  - Selector type = "link", Locator = "Link text"
+  - Selector type = "field", Locator = "Field legend text"
+  - Selector type = "css", Locator = ".css-class #id"
+  - Selector type = "xpath", Locator = "//input<a href="@id=" title="id-value"></a>" All these components are written in PHP, open sourced and packaged in a single and extensible framework.</p>
 <hr />
 <h3 id="3-running-behat-tests">3. <strong>Running Behat Tests</strong></h3>
 <h4 id="running-all-behat-tests">Running All Behat Tests:</h4>

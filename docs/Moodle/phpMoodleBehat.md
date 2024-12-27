@@ -39,44 +39,96 @@ This command does the following:
 
 ---
 
-### 2. **Write Behat Tests Using Gherkin Syntax**
+### 2. **Write Behat Tests**
 
 Behat tests use the **Gherkin language** to describe scenarios. 
 Tests are stored as `.feature` files within the `tests/behat/` directories of core 
 components or plugins.
 
-#### Basic Structure of a Behat Test:
+##### Basic Structure of a Behat Test:
 
 A `.feature` file contains:
 
-- **Feature**: High-level description of what is being tested.
-- **Scenario**: Steps that describe a specific use case.
-
-#### Example: Simple Behat Test
-Create a file named `example.feature` inside `mod/quiz/tests/behat/`:
-
-```gherkin
-Feature: Create a quiz activity
-  As an admin user
-  I want to create a quiz activity in a course
-  So that students can take the quiz
-
-  Scenario: Create and configure a quiz
-    Given I log in as "admin"
-    And I navigate to "Course 1" course
-    And I turn editing mode on
-    And I add a "Quiz" to section "1"
-    And I set the following fields:
-      | Name          | Test Quiz |
-    And I press "Save and display"
-    Then I should see "Test Quiz"
-```
+- **Feature**: Human-readable list of scenarios that describes a feature.
+- **Scenario**: Human-readable list of steps that describe a specific use case.
+- **Steps**: Human-readable sentences that describe an action. 
+There are 3 types of steps, 
+`Given` describing the initial context, 
+`When` the event that provokes a change and 
+`Then` where the outcomes should be asserted.
 
 **Explanation of Steps**
 
 - **Given**: Sets the initial context (e.g., user is logged in).
 - **And**: Chains additional steps to the context.
 - **Then**: Asserts an expected outcome.
+- **When**: Performs an action.
+
+**Example: Simple Behat Test**
+
+Create a file named `example.feature` inside `mod/quiz/tests/behat/`:
+
+```gherkin
+@auth
+Feature: Login
+  In order to login
+  As a moodle user
+  I need to be able to validate the username and password against moodle
+
+Scenario: Login as an existing user
+  Given I am on "login/index.php"
+  When I fill in "username" with "admin"
+  And I fill in "password" with "admin"
+  And I press "loginbtn"
+  Then I should see "Moodle 101: Course Name"
+
+Scenario: Login as an non-existing user
+  Given I am on "login/index.php"
+  When I fill in "username" with "admin"
+  And I fill in "password" with "admin"
+  And I press "loginbtn"
+  Then I should see "Invalid login"
+```
+##### Other definitions
+
++ **Steps definitions**: 
+
+These are the PHP methods referenced by steps when matching its regular expression. 
+The `@Given`,  `@When` and `@Then` tags are descriptive and they are not taken into account 
+when matching steps with steps definitions. The regular expressions placeholders are returned 
+to the PHP method as arguments so methods can use them to tell the browser which button 
+(for example) they want to click.
+
+```php
+/**
+- @When /^I click on the "(.*)" button$/
+ */
+public function i_click_on_the_button($button) {
+  // Simulates the user interaction (see Mink description below for more info)
+  $this->getSession()->getPage()->pressButton($button);
+}
+```
+- `Behat`: PHP framework and CLI application that wraps the whole process of features files 
+loading + features files parsing + execution of actions in the browser + results output 
+(http://behat.org/)
+- `Gherkin`: Human-readable language used to define features that can be parsed and translated 
+into PHP methods. For more info, it's the same language used by Cucumber, the BDD Ruby 
+framework (https://github.com/cucumber/cucumber/wiki/Gherkin)
+- `Context`: In Behat scope a context is a PHP class that groups steps definitions (as methods)
+- `Mink`: Is the component which interacts with browsers, simulating a real user interaction. 
+It allows us to write PHP code (or use the available PHP methods) to send requests to the 
+different browsers APIs through a common interface or extend it to allow browser-specific actions. 
+The supported browsers includes Selenium, Selenium2, Sahi... http://mink.behat.org/
+- `Selenium 2`: Web browser automation tool, applications like Mink can communicate with it 
+through a RESTful API (http://code.google.com/p/selenium/wiki/JsonWireProtocol) to execute 
+actions simulating user interaction.
+- `Selector type`: Related with locator, is a way to select a node inside the page DOM
+- `Locator`: Is what we are looking for inside the page DOM, it completely depends on the 
+associated selector type, a few examples of it:
+  - Selector type = "link", Locator = "Link text"
+  - Selector type = "field", Locator = "Field legend text"
+  - Selector type = "css", Locator = ".css-class #id"
+  - Selector type = "xpath", Locator = "//input[](@id='id-value')" All these components are written in PHP, open sourced and packaged in a single and extensible framework.
 
 ---
 
