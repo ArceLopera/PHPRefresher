@@ -41,10 +41,14 @@ This command does the following:
 
 ### 2. **Write Behat Tests Using Gherkin Syntax**
 
-Behat tests use the **Gherkin language** to describe scenarios. Tests are stored as `.feature` files within the `tests/behat/` directories of core components or plugins.
+Behat tests use the **Gherkin language** to describe scenarios. 
+Tests are stored as `.feature` files within the `tests/behat/` directories of core 
+components or plugins.
 
 #### Basic Structure of a Behat Test:
+
 A `.feature` file contains:
+
 - **Feature**: High-level description of what is being tested.
 - **Scenario**: Steps that describe a specific use case.
 
@@ -68,7 +72,8 @@ Feature: Create a quiz activity
     Then I should see "Test Quiz"
 ```
 
-**Explanation of Steps**:
+**Explanation of Steps**
+
 - **Given**: Sets the initial context (e.g., user is logged in).
 - **And**: Chains additional steps to the context.
 - **Then**: Asserts an expected outcome.
