@@ -132,6 +132,39 @@ associated selector type, a few examples of it:
 
 ---
 
+### Quick view of the whole process
+
+#### Behat CLI execution
++ Behat application initialization and loading of arguments (features files to execute, output format...)
++ Reads the Behat config file (browser servers are specified here)
++ Extensions overrides management
++ Gherkin initialization
+
+#### Features files selection
++ According to the arguments Gherkin looks for .features files
+  + It can use different features loaders (single file, a directory, the default directory...)
+  + The framework can be extended to allow multiple folders loading
+
+#### Features parsing (Gherkin)
++ Loops through the loaded features files looking for scenarios
++ Gets the list of steps of each scenario
++ There are hooks at different levels (https://docs.behat.org/en/latest/user_guide/context/hooks.html)
+
+#### Steps parsing (Gherkin)
++ Gherkin looks in the available steps definitions for a regular expression that matches the step text
+
+#### Step definition execution
++ The step definition code is executed
++ Steps definitions most of the time uses the Mink component to communicate with the browser API sending requests like "click on that button" or "go to XXX page"
+
+#### Scenario outcomes
++ The scenario counts as failed if an exception is thrown when executing a step definition (for example trying to click a non-existing button)
++ The scenario counts as passed if no exception is thrown during it's steps execution
+
+#### Finishing CLI execution
++ A summary with all the scenario results is displayed
++ It accepts different output formats (like JUnitXML) to it's execution in continuous integration systems (http://docs.behat.org/guides/6.cli.html#format-options)
+
 ### 3. **Running Behat Tests**
 
 #### Running All Behat Tests:
