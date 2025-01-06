@@ -2342,61 +2342,12 @@
     2. Write Behat Tests
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-view-of-the-whole-process" class="md-nav__link">
-    Quick view of the whole process
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick view of the whole process">
+    <nav class="md-nav" aria-label="2. Write Behat Tests">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#behat-cli-execution" class="md-nav__link">
-    Behat CLI execution
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#features-files-selection" class="md-nav__link">
-    Features files selection
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#features-parsing-gherkin" class="md-nav__link">
-    Features parsing (Gherkin)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#steps-parsing-gherkin" class="md-nav__link">
-    Steps parsing (Gherkin)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-definition-execution" class="md-nav__link">
-    Step definition execution
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scenario-outcomes" class="md-nav__link">
-    Scenario outcomes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#finishing-cli-execution" class="md-nav__link">
-    Finishing CLI execution
+  <a href="#quick-view-of-the-whole-process" class="md-nav__link">
+    Quick view of the whole process
   </a>
   
 </li>
@@ -2614,61 +2565,12 @@
     2. Write Behat Tests
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-view-of-the-whole-process" class="md-nav__link">
-    Quick view of the whole process
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick view of the whole process">
+    <nav class="md-nav" aria-label="2. Write Behat Tests">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#behat-cli-execution" class="md-nav__link">
-    Behat CLI execution
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#features-files-selection" class="md-nav__link">
-    Features files selection
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#features-parsing-gherkin" class="md-nav__link">
-    Features parsing (Gherkin)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#steps-parsing-gherkin" class="md-nav__link">
-    Steps parsing (Gherkin)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-definition-execution" class="md-nav__link">
-    Step definition execution
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#scenario-outcomes" class="md-nav__link">
-    Scenario outcomes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#finishing-cli-execution" class="md-nav__link">
-    Finishing CLI execution
+  <a href="#quick-view-of-the-whole-process" class="md-nav__link">
+    Quick view of the whole process
   </a>
   
 </li>
@@ -2899,7 +2801,7 @@ The <code>@Given</code>,  <code>@When</code> and <code>@Then</code> tags are des
 when matching steps with steps definitions. The regular expressions placeholders are returned 
 to the PHP method as arguments so methods can use them to tell the browser which button 
 (for example) they want to click.</p>
-<p><div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
 <span class="x">- @When /^I click on the &quot;(.*)&quot; button$/</span>
 <span class="x"> */</span>
 <span class="x">public function i_click_on_the_button($button) {</span>
@@ -2907,63 +2809,65 @@ to the PHP method as arguments so methods can use them to tell the browser which
 <span class="x">  $this-&gt;getSession()-&gt;getPage()-&gt;pressButton($button);</span>
 <span class="x">}</span>
 </code></pre></div>
-- <code>Behat</code>: PHP framework and CLI application that wraps the whole process of features files 
+<ul>
+<li><code>Behat</code>: PHP framework and CLI application that wraps the whole process of features files 
 loading + features files parsing + execution of actions in the browser + results output 
-(http://behat.org/)
-- <code>Gherkin</code>: Human-readable language used to define features that can be parsed and translated 
+(http://behat.org/)</li>
+<li><code>Gherkin</code>: Human-readable language used to define features that can be parsed and translated 
 into PHP methods. For more info, it's the same language used by Cucumber, the BDD Ruby 
-framework (https://github.com/cucumber/cucumber/wiki/Gherkin)
-- <code>Context</code>: In Behat scope a context is a PHP class that groups steps definitions (as methods)
-- <code>Mink</code>: Is the component which interacts with browsers, simulating a real user interaction. 
+framework (https://github.com/cucumber/cucumber/wiki/Gherkin)</li>
+<li><code>Context</code>: In Behat scope a context is a PHP class that groups steps definitions (as methods)</li>
+<li><code>Mink</code>: Is the component which interacts with browsers, simulating a real user interaction. 
 It allows us to write PHP code (or use the available PHP methods) to send requests to the 
 different browsers APIs through a common interface or extend it to allow browser-specific actions. 
-The supported browsers includes Selenium, Selenium2, Sahi... http://mink.behat.org/
-- <code>Selenium 2</code>: Web browser automation tool, applications like Mink can communicate with it 
+The supported browsers includes Selenium, Selenium2, Sahi... http://mink.behat.org/</li>
+<li><code>Selenium 2</code>: Web browser automation tool, applications like Mink can communicate with it 
 through a RESTful API (http://code.google.com/p/selenium/wiki/JsonWireProtocol) to execute 
-actions simulating user interaction.
-- <code>Selector type</code>: Related with locator, is a way to select a node inside the page DOM
-- <code>Locator</code>: Is what we are looking for inside the page DOM, it completely depends on the 
-associated selector type, a few examples of it:
-  - Selector type = "link", Locator = "Link text"
-  - Selector type = "field", Locator = "Field legend text"
-  - Selector type = "css", Locator = ".css-class #id"
-  - Selector type = "xpath", Locator = "//input<a href="@id=" title="id-value"></a>" All these components are written in PHP, open sourced and packaged in a single and extensible framework.</p>
+actions simulating user interaction.</li>
+<li><code>Selector type</code>: Related with locator, is a way to select a node inside the page DOM</li>
+<li><code>Locator</code>: Is what we are looking for inside the page DOM, it completely depends on the 
+associated selector type, a few examples of it:</li>
+<li>Selector type = "link", Locator = "Link text"</li>
+<li>Selector type = "field", Locator = "Field legend text"</li>
+<li>Selector type = "css", Locator = ".css-class #id"</li>
+<li>Selector type = "xpath", Locator = "//input<a href="@id=" title="id-value"></a>" All these components are written in PHP, open sourced and packaged in a single and extensible framework.</li>
+</ul>
 <hr />
-<h3 id="quick-view-of-the-whole-process">Quick view of the whole process</h3>
-<h4 id="behat-cli-execution">Behat CLI execution</h4>
+<h4 id="quick-view-of-the-whole-process">Quick view of the whole process</h4>
+<h5 id="behat-cli-execution">Behat CLI execution</h5>
 <ul>
 <li>Behat application initialization and loading of arguments (features files to execute, output format...)</li>
 <li>Reads the Behat config file (browser servers are specified here)</li>
 <li>Extensions overrides management</li>
 <li>Gherkin initialization</li>
 </ul>
-<h4 id="features-files-selection">Features files selection</h4>
+<h5 id="features-files-selection">Features files selection</h5>
 <ul>
 <li>According to the arguments Gherkin looks for .features files</li>
 <li>It can use different features loaders (single file, a directory, the default directory...)</li>
 <li>The framework can be extended to allow multiple folders loading</li>
 </ul>
-<h4 id="features-parsing-gherkin">Features parsing (Gherkin)</h4>
+<h5 id="features-parsing-gherkin">Features parsing (Gherkin)</h5>
 <ul>
 <li>Loops through the loaded features files looking for scenarios</li>
 <li>Gets the list of steps of each scenario</li>
-<li>There are hooks at different levels (https://docs.behat.org/en/latest/user_guide/context/hooks.html)</li>
+<li>There are hooks at different levels <a href="https://docs.behat.org/en/latest/user_guide/context/hooks.html">https://docs.behat.org/en/latest/user_guide/context/hooks.html</a></li>
 </ul>
-<h4 id="steps-parsing-gherkin">Steps parsing (Gherkin)</h4>
+<h5 id="steps-parsing-gherkin">Steps parsing (Gherkin)</h5>
 <ul>
 <li>Gherkin looks in the available steps definitions for a regular expression that matches the step text</li>
 </ul>
-<h4 id="step-definition-execution">Step definition execution</h4>
+<h5 id="step-definition-execution">Step definition execution</h5>
 <ul>
 <li>The step definition code is executed</li>
 <li>Steps definitions most of the time uses the Mink component to communicate with the browser API sending requests like "click on that button" or "go to XXX page"</li>
 </ul>
-<h4 id="scenario-outcomes">Scenario outcomes</h4>
+<h5 id="scenario-outcomes">Scenario outcomes</h5>
 <ul>
 <li>The scenario counts as failed if an exception is thrown when executing a step definition (for example trying to click a non-existing button)</li>
 <li>The scenario counts as passed if no exception is thrown during it's steps execution</li>
 </ul>
-<h4 id="finishing-cli-execution">Finishing CLI execution</h4>
+<h5 id="finishing-cli-execution">Finishing CLI execution</h5>
 <ul>
 <li>A summary with all the scenario results is displayed</li>
 <li>It accepts different output formats (like JUnitXML) to it's execution in continuous integration systems (http://docs.behat.org/guides/6.cli.html#format-options)</li>
