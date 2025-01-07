@@ -1,19 +1,20 @@
 Behat is a framework for behavior driven development (BDD) which allows us to specify Moodle functionalities (aka features) as a human-readable list of steps. It parses these steps to executable actions to simulate user interaction against headless browsers (without JavaScript support, only curl-kind requests) or user simulation tools like Selenium, which interacts with browsers and allows JavaScript events simulation.
 
-### Writing and Using Behat Tests in Moodle
-
-Behat is a behavior-driven development (BDD) tool used in Moodle for automated functional testing. It simulates user interactions with the Moodle interface to ensure that features work as expected. Behat tests use plain language syntax (Gherkin) and provide a way to verify Moodle's web interface through predefined scenarios.
+Behat is a behavior-driven development (BDD) tool used in Moodle for automated functional testing. 
+It simulates user interactions with the Moodle interface to ensure that features work as expected. 
+Behat tests use plain language syntax (Gherkin) and provide a way to verify Moodle's web interface 
+through predefined scenarios.
 
 ---
 
-### 1. **Set Up Behat in Moodle**
+### **Set Up Behat in Moodle**
 
-#### Prerequisites:
+##### Prerequisites:
 - Ensure you have **PHP** installed with appropriate extensions like `xml`, `curl`, `json`.
 - Ensure **Selenium Server** is set up if testing in real browsers (e.g., ChromeDriver or Geckodriver for Firefox).
 - Use a **dedicated testing database** and **data directory** separate from your main Moodle site.
 
-#### Configure Moodle for Behat:
+##### Configure Moodle for Behat:
 Edit `config.php` to add Behat settings:
 
 ```php
@@ -25,7 +26,7 @@ if (defined('BEHAT_SITE_RUNNING') && BEHAT_SITE_RUNNING) {
 }
 ```
 
-#### Create and Initialize Behat Environment:
+##### Create and Initialize Behat Environment:
 Run the following command to initialize the Behat environment:
 
 ```bash
@@ -39,7 +40,7 @@ This command does the following:
 
 ---
 
-### 2. **Write Behat Tests**
+### **Write Behat Tests**
 
 Behat tests use the **Gherkin language** to describe scenarios. 
 Tests are stored as `.feature` files within the `tests/behat/` directories of core 
@@ -166,21 +167,36 @@ associated selector type, a few examples of it:
 + A summary with all the scenario results is displayed
 + It accepts different output formats (like JUnitXML) to it's execution in continuous integration systems (http://docs.behat.org/guides/6.cli.html#format-options)
 
-### 3. **Running Behat Tests**
+### Moodle integration
 
-#### Running All Behat Tests:
+It follows the approach chosen with PHPUnit:
+
++ It comes disabled by default, Behat is not included within Moodle and it has to be installed separately with the 
+composer installer
++ Moodle components (subsystems and plugins) can have a tests/behat/ folder
++ The scenarios are executed in a test environment, the production database and dataroot are not affected by the tests 
+modifications
++ The scenarios specifies their own fixtures and it's execution is isolated from other scenarios and features, resetting 
+the test database and the test dataroot before each scenario
++ Moodle lists the features files and steps definitions of it's components in a behat.yml file, similar to the phpunit.xml 
+manifest
++ A basic behat.yml.dist config file has been included
+
+### **Running Behat Tests**
+
+##### Running All Behat Tests:
 To execute all Behat tests, run:
 ```bash
 vendor/bin/behat --config /path/to/moodle/behat/behat.yml
 ```
 
-#### Running Specific Tests:
+##### Running Specific Tests:
 Run a single `.feature` file:
 ```bash
 vendor/bin/behat --config /path/to/moodle/behat/behat.yml /path/to/example.feature
 ```
 
-#### Running Tests for a Specific Tag:
+##### Running Tests for a Specific Tag:
 Tags allow categorizing and filtering tests. For example:
 ```gherkin
 @quiz
@@ -192,21 +208,21 @@ To run tests with the `@quiz` tag:
 vendor/bin/behat --config /path/to/moodle/behat/behat.yml --tags=@quiz
 ```
 
-#### Additional Options:
+##### Additional Options:
 - **Use Browser Profiles**: `--profile=chrome` (if set up in your Behat configuration).
 - **Debugging**: Add `--format=pretty --out=std` for more detailed output.
 
 ---
 
-### 4. **Writing Effective Behat Steps and Contexts**
+### **Writing Effective Behat Steps and Contexts**
 
-#### Using Predefined Steps:
+##### Using Predefined Steps:
 Moodle comes with a rich set of predefined Behat steps to interact with the UI. To see a list of available steps, run:
 ```bash
 vendor/bin/behat --definitions
 ```
 
-#### Writing Custom Steps:
+##### Writing Custom Steps:
 If existing steps do not cover your needs, you can define custom steps by creating a context class in `tests/behat/`. Example:
 
 **Create a Custom Context File**: `custom_context.php`:
@@ -233,7 +249,7 @@ default:
         - custom_context
 ```
 
-#### Tips for Writing Good Behat Tests:
+##### Tips for Writing Good Behat Tests:
 - **Be Specific**: Ensure each step is precise and unambiguous.
 - **Use Tags**: Organize and filter your tests for better manageability.
 - **Reuse Steps**: Avoid redundant steps by utilizing existing definitions.
@@ -241,9 +257,9 @@ default:
 
 ---
 
-### 5. **Advanced Behat Features in Moodle**
+### **Advanced Behat Features in Moodle**
 
-#### Use Data Tables for Form Fields:
+##### Use Data Tables for Form Fields:
 Data tables make it easy to fill forms:
 ```gherkin
 And I set the following fields:
@@ -251,7 +267,7 @@ And I set the following fields:
   | Description     | This is a test quiz. |
 ```
 
-#### Use Backgrounds for Repeated Steps:
+##### Use Backgrounds for Repeated Steps:
 Background steps run before each scenario in a feature:
 ```gherkin
 Feature: Quiz management
@@ -264,7 +280,7 @@ Scenario: Add a quiz
   And I add a "Quiz" to section "1"
 ```
 
-#### Use Hooks for Setup and Teardown:
+##### Use Hooks for Setup and Teardown:
 Hooks are methods that run before or after scenarios:
 ```php
 public function before_scenario($event) {
@@ -274,7 +290,7 @@ public function before_scenario($event) {
 
 ---
 
-### 6. **Troubleshooting and Debugging**
+### **Troubleshooting and Debugging**
 
 - **Check Logs**: Moodle's error logs can provide information if tests fail.
 - **Check Browser Output**: Use the `--format=pretty` option for more readable output.
@@ -283,6 +299,7 @@ public function before_scenario($event) {
 
 ---
 
-### Summary
 
-Behat testing in Moodle ensures your code works well from a user's perspective. By following best practices for writing and running Behat tests, and utilizing Moodle's rich test ecosystem, you can enhance the quality and stability of your Moodle features.
+Behat testing in Moodle ensures your code works well from a user's perspective. 
+By following best practices for writing and running Behat tests, and utilizing Moodle's 
+rich test ecosystem, you can enhance the quality and stability of your Moodle features.
