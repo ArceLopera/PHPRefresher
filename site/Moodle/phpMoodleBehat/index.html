@@ -2328,6 +2328,19 @@
     Moodle integration
   </a>
   
+    <nav class="md-nav" aria-label="Moodle integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-environment" class="md-nav__link">
+    Alternative environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2428,6 +2441,19 @@
   <a href="#moodle-integration" class="md-nav__link">
     Moodle integration
   </a>
+  
+    <nav class="md-nav" aria-label="Moodle integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-environment" class="md-nav__link">
+    Alternative environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2643,6 +2669,35 @@ the test database and the test dataroot before each scenario</li>
 <li>Moodle lists the features files and steps definitions of it's components in a behat.yml file, similar to the phpunit.xml 
 manifest</li>
 <li>A basic behat.yml.dist config file has been included</li>
+</ul>
+<h4 id="alternative-environment">Alternative environment</h4>
+<p>Acceptance testing implies interaction with the browser like real users does, so it requires the site to be accessible via URL. 
+The Moodle integration creates a new moodle site installation in parallel to the production one to run the tests in a sandbox 
+without affecting the production environment, switching the regular <code>$CFG-&gt;wwwroot</code>, <code>$CFG-&gt;dataroot</code> and <code>$CFG-&gt;prefix</code> to 
+alternatives, which should be only accessible from localhost or internal networks. Info about how to run the tests in 
+<a href="#running-behat-tests">Running acceptance test</a>.</p>
+<p>This default configuration is useful when developing in a local host, but to run the tests automatically with Jenkins, 
+GHA, Saucelabs... or other CI systems we provide a few extra settings.</p>
+<p>All the behat CLI utilities we provide within the Moodle codebase (admin/tool/behat/cli/*) are using 
+$CFG-&gt;behat_wwwroot, $CFG-&gt;behat_prefix and $CFG-&gt;behat_dataroot instead of $CFG-&gt;wwwroot, $CFG-&gt;prefix and $CFG-&gt;dataroot, 
+this scripts are self-contained, but as we are accessing through a browser, we also need to switch the whole Moodle instance 
+to test mode. For this there are two requirements:</p>
+<ul>
+<li>
+<p>Test mode is enabled if</p>
+<ul>
+<li><code>php admin/tool/behat/cli/init.php</code> or <code>php admin/tool/behat/cli/util.php --enable</code> has been executed</li>
+</ul>
+</li>
+<li>
+<p>Test mode is requested if</p>
+<ul>
+<li>The vendor/bin/behat command is running, we know it because we hook the Behat process before the tests begins to run, 
+and we require moodle config.php after it</li>
+<li>We set $CFG-&gt;behat_wwwroot in config.php and we are accessing the moodle instance through it The unique 
+$CFG-&gt;behat_wwwroot prevents unintended execution of acceptance tests on production sites.</li>
+</ul>
+</li>
 </ul>
 <h3 id="running-behat-tests"><strong>Running Behat Tests</strong></h3>
 <h5 id="running-all-behat-tests">Running All Behat Tests:</h5>
