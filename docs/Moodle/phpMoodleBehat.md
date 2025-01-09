@@ -207,6 +207,20 @@ to test mode. For this there are two requirements:
     + We set $CFG->behat_wwwroot in config.php and we are accessing the moodle instance through it The unique 
     $CFG->behat_wwwroot prevents unintended execution of acceptance tests on production sites.
 
+#### JavaScript
+
+
+There are two types of tests depending on if their scenario needs a real browser capable of execute JavaScript or 
+if they can run in a headless browser.
+
++ Tests with JavaScript requires interaction with a browser through a user simulation tool like Selenium or 
+ZombieJS to be executed; see http://mink.behat.org/#different-browsers-drivers for all available drivers
++ Test that does not requires JavaScript are faster to run but can not test rich applications like Moodle
+
+In most of the cases a JavaScript test would be more appropriate because most of the users uses JavaScript-capable browsers, 
+non-JavaScript tests can be useful to ensure that Moodle maintains its functionality without JavaScript enabled and to ensure
+there are no big issues, regressions or exceptions in general.
+
 ### **Running Behat Tests**
 
 ##### Running All Behat Tests:
