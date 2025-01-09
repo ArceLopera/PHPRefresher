@@ -2338,6 +2338,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    JavaScript
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2448,6 +2455,13 @@
           <li class="md-nav__item">
   <a href="#alternative-environment" class="md-nav__link">
     Alternative environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    JavaScript
   </a>
   
 </li>
@@ -2699,6 +2713,17 @@ $CFG-&gt;behat_wwwroot prevents unintended execution of acceptance tests on prod
 </ul>
 </li>
 </ul>
+<h4 id="javascript">JavaScript</h4>
+<p>There are two types of tests depending on if their scenario needs a real browser capable of execute JavaScript or 
+if they can run in a headless browser.</p>
+<ul>
+<li>Tests with JavaScript requires interaction with a browser through a user simulation tool like Selenium or 
+ZombieJS to be executed; see http://mink.behat.org/#different-browsers-drivers for all available drivers</li>
+<li>Test that does not requires JavaScript are faster to run but can not test rich applications like Moodle</li>
+</ul>
+<p>In most of the cases a JavaScript test would be more appropriate because most of the users uses JavaScript-capable browsers, 
+non-JavaScript tests can be useful to ensure that Moodle maintains its functionality without JavaScript enabled and to ensure
+there are no big issues, regressions or exceptions in general.</p>
 <h3 id="running-behat-tests"><strong>Running Behat Tests</strong></h3>
 <h5 id="running-all-behat-tests">Running All Behat Tests:</h5>
 <p>To execute all Behat tests, run:
