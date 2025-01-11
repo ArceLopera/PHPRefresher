@@ -2345,6 +2345,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#admin-tool-acceptance-testing" class="md-nav__link">
+    Admin tool "Acceptance testing"
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2462,6 +2469,13 @@
           <li class="md-nav__item">
   <a href="#javascript" class="md-nav__link">
     JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-tool-acceptance-testing" class="md-nav__link">
+    Admin tool "Acceptance testing"
   </a>
   
 </li>
@@ -2724,6 +2738,14 @@ ZombieJS to be executed; see http://mink.behat.org/#different-browsers-drivers f
 <p>In most of the cases a JavaScript test would be more appropriate because most of the users uses JavaScript-capable browsers, 
 non-JavaScript tests can be useful to ensure that Moodle maintains its functionality without JavaScript enabled and to ensure
 there are no big issues, regressions or exceptions in general.</p>
+<h4 id="admin-tool-acceptance-testing">Admin tool "Acceptance testing"</h4>
+<p>There is an admin tool to run and ease the creation of acceptance tests.</p>
+<ul>
+<li><strong>Web interface</strong>: The web interface allows you to list and filter the available steps definitions, 
+a non-technical user can use this interface to write new features (admin/tool/behat/index.php)</li>
+<li><strong>CLI</strong>: Command to enable and disable the test environment and to update the behat.yml file with the system 
+tests and steps definitions (admin/tool/behat/cli/util.php and admin/tool/behat/cli/init.php for a quick start)</li>
+</ul>
 <h3 id="running-behat-tests"><strong>Running Behat Tests</strong></h3>
 <h5 id="running-all-behat-tests">Running All Behat Tests:</h5>
 <p>To execute all Behat tests, run:
