@@ -221,6 +221,16 @@ In most of the cases a JavaScript test would be more appropriate because most of
 non-JavaScript tests can be useful to ensure that Moodle maintains its functionality without JavaScript enabled and to ensure
 there are no big issues, regressions or exceptions in general.
 
+#### Admin tool "Acceptance testing"
+There is an admin tool to run and ease the creation of acceptance tests.
+
++ **Web interface**: The web interface allows you to list and filter the available steps definitions, 
+a non-technical user can use this interface to write new features (admin/tool/behat/index.php)
++ **CLI**: Command to enable and disable the test environment and to update the behat.yml file with the system 
+tests and steps definitions (admin/tool/behat/cli/util.php and admin/tool/behat/cli/init.php for a quick start)
+
+
+
 ### **Running Behat Tests**
 
 ##### Running All Behat Tests:
