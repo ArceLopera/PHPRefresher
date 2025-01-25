@@ -196,6 +196,7 @@ nav:
             - Messaging API: Moodle/API/phpMoodleMessage.md
             - Cache API : Moodle/API/phpMoodleCache.md
             - Table API : Moodle/API/phpMoodleTable.md
+            - Forms API: Moodle/API/phpMoodleForms.md
      - Security: Moodle/phpMoodleSecurity.md
      - Unit Test: Moodle/phpMoodleToolsPHPUnit.md
      - Behat: Moodle/phpMoodleBehat.md
