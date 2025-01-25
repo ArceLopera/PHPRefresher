@@ -1,8 +1,11 @@
-The **Moodle Forms API** is a framework for creating, managing, and processing forms within Moodle. It simplifies form creation and data handling, ensuring consistency and compliance with Moodle's security and UI standards. Here's a breakdown of the Moodle Forms API:
+The **Moodle Forms API** is a framework for creating, managing, and processing forms within Moodle. 
+It simplifies form creation and data handling, ensuring consistency and compliance with Moodle's security and UI standards. 
+
 
 ---
 
-## **1. Basic Workflow**
+## **Basic Workflow**
+
 1. **Define the Form**: Create a class that extends `moodleform`.
 2. **Add Elements**: Use the `definition()` method to define form fields.
 3. **Display the Form**: Render the form in your PHP script.
@@ -10,10 +13,10 @@ The **Moodle Forms API** is a framework for creating, managing, and processing f
 
 ---
 
-## **2. Creating a Form**
+## **Creating a Form**
 A form in Moodle is defined as a class that extends `moodleform`, which is located in `lib/formslib.php`.
 
-### Example:
+##### Example:
 ```php
 require_once("$CFG->libdir/formslib.php");
 
@@ -42,10 +45,10 @@ class my_custom_form extends moodleform {
 
 ---
 
-## **3. Rendering the Form**
+## **Rendering the Form**
 You render the form in your PHP script and handle form submissions.
 
-### Example:
+##### Example:
 ```php
 require_once('../../config.php');
 require_once('path/to/my_custom_form.php');
@@ -76,10 +79,11 @@ if ($mform->is_cancelled()) {
 
 ---
 
-## **4. Key Components of the API**
+## **Key Components of the API**
 
 ### **Form Elements**
 Moodle provides various elements for form creation, including:
+
 - **Text fields**: `addElement('text', ...)`
 - **Text areas**: `addElement('textarea', ...)`
 - **Select dropdowns**: `addElement('select', ...)`
@@ -102,6 +106,7 @@ protected function validation($data, $files) {
 
 ### **Security**
 The Forms API automatically handles:
+
 - **CSRF protection**: Includes a session key in forms.
 - **Data validation**: Use `setType()` for each field to define expected data types.
 
@@ -115,19 +120,89 @@ Or as raw POST data:
 $data = $mform->get_raw_data();
 ```
 
----
-
-## **5. Registering No-Submit Buttons**
+## **Advanced Features**
+### **Registering No-Submit Buttons**
 To include buttons that do not trigger form submission, register them using:
 ```php
 $mform->registerNoSubmitButton('custombutton');
 $mform->addElement('button', 'custombutton', 'Click Me');
 ```
+A common use case is to create a button for redirection and use a nosubmit button.
+In Moodle, when dealing with forms and **nosubmit** buttons (used with `mod/foosubmitbuttons` or similar), 
+you can determine which button has been pressed by examining the form data submitted to the server. 
 
 ---
 
-## **6. Advanced Features**
+##### **Add "nosubmit" buttons in a Moodle form**
+You can use the `createElement` function of Moodle's `MoodleQuickForm` to create buttons. 
+By default, you can set these buttons as **nosubmit** by setting the `nosubmit` flag.
 
+##### Example:
+```php
+$mform->addElement('submit', 'savebutton', 'Save'); // Regular submit button
+$mform->registerNoSubmitButton('action1button');
+$mform->addElement('submit', 'action1button', 'Action 1', ['nosubmit' => true]);
+$mform->registerNoSubmitButton('action2button');
+$mform->addElement('submit', 'action2button', 'Action 2', ['nosubmit' => true]);
+```
+
+---
+
+##### **Detect which button has been pressed**
+Moodle passes the button name through `$_POST` or `$data` when the form is submitted. 
+You can check the submitted form data to identify the button that was pressed.
+
+##### In the `process` function or wherever the form data is handled:
+```php
+if ($mform->is_cancelled()) {
+    // Handle form cancellation.
+} elseif ($data = $mform->get_data()) {
+    // Check which button was pressed.
+    if (isset($data->savebutton)) {
+        echo "Save button was pressed.";
+    } elseif (isset($data->action1button)) {
+        echo "Action 1 button was pressed.";
+    } elseif (isset($data->action2button)) {
+        echo "Action 2 button was pressed.";
+    }
+}
+```
+
+---
+
+##### **Handling "nosubmit" buttons with JavaScript**
+If you are using nosubmit buttons to trigger actions without submitting the entire form, you can add event listeners 
+in JavaScript:
+
+##### Example:
+```html
+<button id="action1button" name="action1button">Action 1</button>
+<button id="action2button" name="action2button">Action 2</button>
+<script>
+document.getElementById('action1button').addEventListener('click', function() {
+    console.log('Action 1 button pressed');
+    // Perform an AJAX call or other client-side action.
+});
+
+document.getElementById('action2button').addEventListener('click', function() {
+    console.log('Action 2 button pressed');
+    // Perform a different action.
+});
+</script>
+```
+
+---
+
+##### **Tips**
+- **Nosubmit buttons** prevent the form from being submitted automatically.
+- Use `$mform->registerNoSubmitButton` in PHP to ensure that buttons do not interfere with form submission.
+- Use JavaScript for custom client-side actions with nosubmit buttons.
+
+By inspecting `$_POST` or `$data` in PHP, you can easily determine which button was pressed. 
+If you're working client-side, JavaScript event listeners are your go-to approach.
+
+
+---
 ### **Custom Templates**
 You can use custom templates for specific elements to enhance the design.
 
@@ -139,7 +214,8 @@ You can integrate Ajax with forms by adding custom JavaScript or event listeners
 
 ---
 
-## **7. Debugging Forms**
+## **Debugging Forms**
 When troubleshooting forms, use the following:
+
 - `debugging()` function to output detailed error messages.
 - Check the `moodleform` object with `print_object($mform)`.
