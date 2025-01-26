@@ -229,6 +229,21 @@ a non-technical user can use this interface to write new features (admin/tool/be
 + **CLI**: Command to enable and disable the test environment and to update the behat.yml file with the system 
 tests and steps definitions (admin/tool/behat/cli/util.php and admin/tool/behat/cli/init.php for a quick start)
 
+#### Available steps to create tests
+There are behat libraries with tons of steps definitions to run all sort of processes and interactions with the browser, some of them overlaps Moodle-specific libraries and tests writers can be confused not only by this also by the amount of steps and vague or too technical steps descriptions. Moodle provides a set of steps definitions written in a common format to make tests writers life easier. New steps definitions must follow these guidelines.
+
+#### Behat extension
+A new Behat extension (https://github.com/moodlehq/moodle-behat-extension) has been created to maintain Behat and its dependencies as they comes from upstream.
+
+The aim of this extension is:
+
++ Load features from multiple folders (Moodle subsystems and plugins)
++ Load steps definitions from multiple folders and add them as subcontexts (Moodle subsystems and plugins)
++ Return the available steps definitions in a more human-readable format without regexps
++ Look for exceptions, debugging() calls, PHP error messages and other backtraces in Moodle's output
++ Extend the Selenium2 behat driver to allow extra Selenium capabilities
++ Add a new formatter method based on progress (the moodle default one) to display info about the moodle site being tested All the other particularities of this integration can managed playing with different Behat config parameters.
+
 
 
 ### **Running Behat Tests**
