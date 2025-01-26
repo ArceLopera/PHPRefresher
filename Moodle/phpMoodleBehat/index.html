@@ -2366,6 +2366,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#available-steps-to-create-tests" class="md-nav__link">
+    Available steps to create tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behat-extension" class="md-nav__link">
+    Behat extension
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2490,6 +2504,20 @@
           <li class="md-nav__item">
   <a href="#admin-tool-acceptance-testing" class="md-nav__link">
     Admin tool "Acceptance testing"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-steps-to-create-tests" class="md-nav__link">
+    Available steps to create tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behat-extension" class="md-nav__link">
+    Behat extension
   </a>
   
 </li>
@@ -2759,6 +2787,19 @@ there are no big issues, regressions or exceptions in general.</p>
 a non-technical user can use this interface to write new features (admin/tool/behat/index.php)</li>
 <li><strong>CLI</strong>: Command to enable and disable the test environment and to update the behat.yml file with the system 
 tests and steps definitions (admin/tool/behat/cli/util.php and admin/tool/behat/cli/init.php for a quick start)</li>
+</ul>
+<h4 id="available-steps-to-create-tests">Available steps to create tests</h4>
+<p>There are behat libraries with tons of steps definitions to run all sort of processes and interactions with the browser, some of them overlaps Moodle-specific libraries and tests writers can be confused not only by this also by the amount of steps and vague or too technical steps descriptions. Moodle provides a set of steps definitions written in a common format to make tests writers life easier. New steps definitions must follow these guidelines.</p>
+<h4 id="behat-extension">Behat extension</h4>
+<p>A new Behat extension (https://github.com/moodlehq/moodle-behat-extension) has been created to maintain Behat and its dependencies as they comes from upstream.</p>
+<p>The aim of this extension is:</p>
+<ul>
+<li>Load features from multiple folders (Moodle subsystems and plugins)</li>
+<li>Load steps definitions from multiple folders and add them as subcontexts (Moodle subsystems and plugins)</li>
+<li>Return the available steps definitions in a more human-readable format without regexps</li>
+<li>Look for exceptions, debugging() calls, PHP error messages and other backtraces in Moodle's output</li>
+<li>Extend the Selenium2 behat driver to allow extra Selenium capabilities</li>
+<li>Add a new formatter method based on progress (the moodle default one) to display info about the moodle site being tested All the other particularities of this integration can managed playing with different Behat config parameters.</li>
 </ul>
 <h3 id="running-behat-tests"><strong>Running Behat Tests</strong></h3>
 <h5 id="running-all-behat-tests">Running All Behat Tests:</h5>
