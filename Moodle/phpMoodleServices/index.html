@@ -2327,6 +2327,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2783,6 +2790,13 @@
         <li class="md-nav__item">
   <a href="#testing" class="md-nav__link">
     Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
   </a>
   
 </li>
@@ -3740,6 +3754,114 @@ curl --location <span class="s1">&#39;https://mysite.localhost/webservice/rest/s
 <li>Verify token validity and function calls.</li>
 <li>Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to manually test the functions.</li>
 </ul>
+<h3 id="debugging"><strong>Debugging</strong></h3>
+<p>When debugging web services, using <code>XDEBUG_SESSION=1</code> in the cookie header is the proper way to trigger Xdebug in scenarios where query parameters or <code>XDEBUG_TRIGGER</code> might not work, such as in Moodle’s strict web service implementation. </p>
+<hr />
+<h5 id="trigger-xdebug-with-xdebug_session1-via-cookie"><strong>Trigger Xdebug with <code>XDEBUG_SESSION=1</code> via Cookie</strong></h5>
+<h6 id="update-xdebug-configuration"><strong>Update Xdebug Configuration</strong></h6>
+<p>Ensure your <code>php.ini</code> is correctly set up to respond to <code>XDEBUG_SESSION</code>. Example configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="na">zend_extension</span><span class="o">=</span><span class="s">xdebug.so</span><span class="w"></span>
+<span class="na">xdebug.mode</span><span class="o">=</span><span class="s">debug</span><span class="w"></span>
+<span class="na">xdebug.start_with_request</span><span class="o">=</span><span class="s">trigger</span><span class="w"></span>
+<span class="na">xdebug.discover_client_host</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
+<span class="na">xdebug.client_host</span><span class="o">=</span><span class="s">127.0.0.1</span><span class="w"></span>
+<span class="na">xdebug.client_port</span><span class="o">=</span><span class="s">9003</span><span class="w"></span>
+<span class="na">xdebug.log</span><span class="o">=</span><span class="s">/path/to/xdebug.log</span><span class="w"></span>
+</code></pre></div>
+<p>Restart your web server to apply changes:
+<div class="highlight"><pre><span></span><code>sudo systemctl restart apache2  <span class="c1"># For Apache</span>
+sudo systemctl restart nginx   <span class="c1"># For Nginx</span>
+</code></pre></div></p>
+<hr />
+<h5 id="set-the-xdebug_session-cookie"><strong>Set the <code>XDEBUG_SESSION</code> Cookie</strong></h5>
+<h6 id="using-curl"><strong>Using cURL</strong></h6>
+<p>You can include the <code>XDEBUG_SESSION</code> cookie in your request headers like this:</p>
+<div class="highlight"><pre><span></span><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">&quot;Cookie: XDEBUG_SESSION=1&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;wstoken=your_token&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;wsfunction=core_user_get_users&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;criteria[0][key]=email&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;criteria[0][value]=test@example.com&quot;</span> <span class="se">\</span>
+  http://yourmoodlesite.com/webservice/rest/server.php
+</code></pre></div>
+<p>This tells Xdebug to start a debugging session for the request.</p>
+<hr />
+<h6 id="using-postman"><strong>Using Postman</strong></h6>
+<p>To use Postman, do the following:</p>
+<ol>
+<li>Open your request in Postman.</li>
+<li>Go to the <strong>Headers</strong> tab.</li>
+<li>Add a new header:<ul>
+<li><strong>Key:</strong> <code>Cookie</code></li>
+<li><strong>Value:</strong> <code>XDEBUG_SESSION=1</code></li>
+</ul>
+</li>
+<li>Fill out the rest of your web service parameters (e.g., <code>wstoken</code>, <code>wsfunction</code>, etc.).</li>
+<li>Send the request.</li>
+</ol>
+<hr />
+<h5 id="debugging-in-vscode"><strong>Debugging in VSCode</strong></h5>
+<ol>
+<li>
+<p><strong>Set up <code>launch.json</code>:</strong>
+   Make sure your <code>launch.json</code> in VSCode is configured like this:
+   <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Listen for Xdebug&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;php&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9003</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;pathMappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;/var/www/moodle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="w"> </span><span class="c1">// Update this to your Moodle installation directory</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;log&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Start Debugging:</strong></p>
+<ul>
+<li>In VSCode, go to the "Run and Debug" section (<code>Ctrl+Shift+D</code>).</li>
+<li>Select "Listen for Xdebug" and start the debugger.</li>
+</ul>
+</li>
+<li>
+<p><strong>Trigger the Web Service:</strong></p>
+<ul>
+<li>Make the request using cURL or Postman with the <code>XDEBUG_SESSION=1</code> cookie.</li>
+<li>VSCode should now break at your breakpoints.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h5 id="additional-tips"><strong>Additional Tips</strong></h5>
+<ul>
+<li>
+<p><strong>Check Xdebug Logs:</strong></p>
+<ul>
+<li>If debugging doesn’t trigger, check the <code>xdebug.log</code> for errors. It will provide detailed insights into why the session didn’t start.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify Cookie Handling:</strong></p>
+<ul>
+<li>Ensure the <code>XDEBUG_SESSION=1</code> cookie is actually being sent in the request.</li>
+<li>Use a tool like <code>curl -v</code> or Postman’s console to inspect the outgoing request.</li>
+</ul>
+</li>
+<li>
+<p><strong>Enable Moodle Debugging:</strong></p>
+<ul>
+<li>Go to <code>Site administration &gt; Development &gt; Debugging</code>.</li>
+<li>Set <code>Debug messages</code> to <code>DEVELOPER</code> and enable <code>Display debug messages</code>.</li>
+</ul>
+</li>
+</ul>
+<hr />
 
               
             </article>
