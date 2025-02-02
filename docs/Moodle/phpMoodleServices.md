@@ -1114,3 +1114,111 @@ curl --location 'https://mysite.localhost/webservice/rest/server.php?wstoken=XXX
 - Verify token validity and function calls.
 - Use **Moodle’s web service test client** (available in **Site administration > Server > Web services > Manage services**) to manually test the functions.
 
+### **Debugging**
+
+When debugging web services, using `XDEBUG_SESSION=1` in the cookie header is the proper way to trigger Xdebug in scenarios where query parameters or `XDEBUG_TRIGGER` might not work, such as in Moodle’s strict web service implementation. 
+
+---
+
+##### **Trigger Xdebug with `XDEBUG_SESSION=1` via Cookie**
+
+###### **Update Xdebug Configuration**
+Ensure your `php.ini` is correctly set up to respond to `XDEBUG_SESSION`. Example configuration:
+
+```ini
+zend_extension=xdebug.so
+xdebug.mode=debug
+xdebug.start_with_request=trigger
+xdebug.discover_client_host=1
+xdebug.client_host=127.0.0.1
+xdebug.client_port=9003
+xdebug.log=/path/to/xdebug.log
+```
+
+Restart your web server to apply changes:
+```bash
+sudo systemctl restart apache2  # For Apache
+sudo systemctl restart nginx   # For Nginx
+```
+
+---
+
+##### **Set the `XDEBUG_SESSION` Cookie**
+
+###### **Using cURL**
+You can include the `XDEBUG_SESSION` cookie in your request headers like this:
+
+```bash
+curl -X POST \
+  -H "Cookie: XDEBUG_SESSION=1" \
+  -d "wstoken=your_token" \
+  -d "wsfunction=core_user_get_users" \
+  -d "criteria[0][key]=email" \
+  -d "criteria[0][value]=test@example.com" \
+  http://yourmoodlesite.com/webservice/rest/server.php
+```
+
+This tells Xdebug to start a debugging session for the request.
+
+---
+
+###### **Using Postman**
+To use Postman, do the following:
+
+1. Open your request in Postman.
+2. Go to the **Headers** tab.
+3. Add a new header:
+    - **Key:** `Cookie`
+    - **Value:** `XDEBUG_SESSION=1`
+4. Fill out the rest of your web service parameters (e.g., `wstoken`, `wsfunction`, etc.).
+5. Send the request.
+
+---
+
+##### **Debugging in VSCode**
+1. **Set up `launch.json`:**
+   Make sure your `launch.json` in VSCode is configured like this:
+   ```json
+   {
+       "version": "0.2.0",
+       "configurations": [
+           {
+               "name": "Listen for Xdebug",
+               "type": "php",
+               "request": "launch",
+               "port": 9003,
+               "pathMappings": {
+                   "/var/www/moodle": "${workspaceFolder}" // Update this to your Moodle installation directory
+               },
+               "log": true
+           }
+       ]
+   }
+   ```
+
+2. **Start Debugging:**
+
+    - In VSCode, go to the "Run and Debug" section (`Ctrl+Shift+D`).
+    - Select "Listen for Xdebug" and start the debugger.
+
+3. **Trigger the Web Service:**
+
+    - Make the request using cURL or Postman with the `XDEBUG_SESSION=1` cookie.
+    - VSCode should now break at your breakpoints.
+
+---
+
+##### **Additional Tips**
+
+- **Check Xdebug Logs:**
+    - If debugging doesn’t trigger, check the `xdebug.log` for errors. It will provide detailed insights into why the session didn’t start.
+
+- **Verify Cookie Handling:**
+    - Ensure the `XDEBUG_SESSION=1` cookie is actually being sent in the request.
+    - Use a tool like `curl -v` or Postman’s console to inspect the outgoing request.
+
+- **Enable Moodle Debugging:**
+    - Go to `Site administration > Development > Debugging`.
+    - Set `Debug messages` to `DEVELOPER` and enable `Display debug messages`.
+
+---
