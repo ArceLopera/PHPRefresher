@@ -161,6 +161,7 @@ nav:
      - MySQL : Adv/phpMySql.md
      - XML : Adv/phpXML.md
      - Ajax: Adv/phpAjax.md
+     - Composer: Adv/phpcomposer.md
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
