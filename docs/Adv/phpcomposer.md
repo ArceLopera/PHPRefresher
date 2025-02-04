@@ -46,6 +46,112 @@ The command will prompt you for project details and dependencies.
 }
 ```
 
+##### **Difference Between `package.json` and `package-lock.json`**
+
+Both `package.json` and `package-lock.json` are crucial files in Node.js projects for managing dependencies. 
+They work together but serve distinct purposes.
+
+---
+
+##### **`package.json`**
+`package.json` is the main configuration file for a Node.js project. 
+It defines the project metadata, dependencies, and scripts.
+
+- Contains basic project information (name, version, description, etc.).
+- Lists direct dependencies of the project with version ranges.
+- Defines scripts for automation (`start`, `test`, etc.).
+- Used when sharing the project with others to set up dependencies.
+
+```json
+{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "description": "An example Node.js app",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.0"
+  }
+}
+```
+
+##### **Version Control**  
+This file should **always be committed to version control**.
+
+---
+
+##### **`package-lock.json`**
+ 
+`package-lock.json` records the exact versions of every installed package, including dependencies of dependencies 
+(transitive dependencies).
+
+- Ensures deterministic builds (everyone installs exactly the same package versions).
+- Stores resolved versions and URLs of packages.
+- Helps with faster installations by reducing version resolution.
+
+```json
+{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "lockfileVersion": 2,
+  "dependencies": {
+    "express": {
+      "version": "4.17.1",
+      "resolved": "https://registry.npmjs.org/express/-/express-4.17.1.tgz",
+      "integrity": "sha512-...",
+      "requires": {
+        "accepts": "~1.3.7"
+      }
+    }
+  }
+}
+```
+
+##### **Version Control**  
+This file should **also be committed** to ensure consistency across environments.
+
+---
+
+##### **Key Differences**
+
+| **Feature**        | **package.json**                      | **package-lock.json**               |
+| ------------------ | --------------------------------------- | ------------------------------------ |
+| Purpose            | Defines project metadata & dependencies | Locks exact dependency versions     |
+| Content            | Direct dependencies & metadata         | Exact dependency tree               |
+| Versioning         | Uses version ranges (`^`, `~`)         | Stores exact resolved versions      |
+| Deterministic Builds | No                                    | Yes                                 |
+| Performance Impact | Minor                                   | Faster dependency resolution        |
+| Human Readability  | Simple                                  | Detailed and complex                |
+
+---
+
+##### **When Are They Used?**
+1. **During Installation (`npm install`)**
+    - If `package-lock.json` exists, npm installs exact versions from it.
+    - If it doesn't exist, npm resolves versions based on `package.json` and generates `package-lock.json`.
+
+2. **For Project Sharing**
+    - `package.json`: Lists dependencies with version constraints.
+    - `package-lock.json`: Ensures everyone gets the same versions.
+
+---
+
+##### **Why Both Files Matter**
+- `package.json`: Defines what the project **wants**.
+- `package-lock.json`: Ensures the project gets what it **needs**.
+
+---
+
+##### **What Happens If You Delete `package-lock.json`?**
+- Dependency installation may yield different versions.
+- Deterministic builds are lost.
+- The file will be regenerated when `npm install` is run.
+
 ---
 
 ### **Adding Dependencies**
@@ -101,7 +207,7 @@ This removes the package from `composer.json`, `composer.lock`, and the `vendor`
 
 ### **Best Practices**
 - Always commit the `composer.json` and `composer.lock` files to version control.
-- Do not commit the `vendor` directory.
+- Do not commit the `vendor` directory. Add it to your `.gitignore` file.
 - Use semantic versioning (`^`, `~`) for better control over package versions.
 
 ##### **Why Composer Is the Best Choice**

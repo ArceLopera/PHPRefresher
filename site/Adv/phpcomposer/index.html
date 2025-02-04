@@ -2622,6 +2622,138 @@ The command will prompt you for project details and dependencies.</p>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<h5 id="difference-between-packagejson-and-package-lockjson"><strong>Difference Between <code>package.json</code> and <code>package-lock.json</code></strong></h5>
+<p>Both <code>package.json</code> and <code>package-lock.json</code> are crucial files in Node.js projects for managing dependencies. 
+They work together but serve distinct purposes.</p>
+<hr />
+<h5 id="packagejson"><strong><code>package.json</code></strong></h5>
+<p><code>package.json</code> is the main configuration file for a Node.js project. 
+It defines the project metadata, dependencies, and scripts.</p>
+<ul>
+<li>Contains basic project information (name, version, description, etc.).</li>
+<li>Lists direct dependencies of the project with version ranges.</li>
+<li>Defines scripts for automation (<code>start</code>, <code>test</code>, etc.).</li>
+<li>Used when sharing the project with others to set up dependencies.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-node-app&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An example Node.js app&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node index.js&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jest&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;express&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.17.1&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;jest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^26.6.0&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h5 id="version-control"><strong>Version Control</strong></h5>
+<p>This file should <strong>always be committed to version control</strong>.</p>
+<hr />
+<h5 id="package-lockjson"><strong><code>package-lock.json</code></strong></h5>
+<p><code>package-lock.json</code> records the exact versions of every installed package, including dependencies of dependencies 
+(transitive dependencies).</p>
+<ul>
+<li>Ensures deterministic builds (everyone installs exactly the same package versions).</li>
+<li>Stores resolved versions and URLs of packages.</li>
+<li>Helps with faster installations by reducing version resolution.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-node-app&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;lockfileVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;express&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4.17.1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;resolved&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.npmjs.org/express/-/express-4.17.1.tgz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha512-...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;requires&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accepts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.3.7&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h5 id="version-control_1"><strong>Version Control</strong></h5>
+<p>This file should <strong>also be committed</strong> to ensure consistency across environments.</p>
+<hr />
+<h5 id="key-differences"><strong>Key Differences</strong></h5>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>package.json</strong></th>
+<th><strong>package-lock.json</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Defines project metadata &amp; dependencies</td>
+<td>Locks exact dependency versions</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Direct dependencies &amp; metadata</td>
+<td>Exact dependency tree</td>
+</tr>
+<tr>
+<td>Versioning</td>
+<td>Uses version ranges (<code>^</code>, <code>~</code>)</td>
+<td>Stores exact resolved versions</td>
+</tr>
+<tr>
+<td>Deterministic Builds</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Performance Impact</td>
+<td>Minor</td>
+<td>Faster dependency resolution</td>
+</tr>
+<tr>
+<td>Human Readability</td>
+<td>Simple</td>
+<td>Detailed and complex</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h5 id="when-are-they-used"><strong>When Are They Used?</strong></h5>
+<ol>
+<li>
+<p><strong>During Installation (<code>npm install</code>)</strong></p>
+<ul>
+<li>If <code>package-lock.json</code> exists, npm installs exact versions from it.</li>
+<li>If it doesn't exist, npm resolves versions based on <code>package.json</code> and generates <code>package-lock.json</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>For Project Sharing</strong></p>
+<ul>
+<li><code>package.json</code>: Lists dependencies with version constraints.</li>
+<li><code>package-lock.json</code>: Ensures everyone gets the same versions.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h5 id="why-both-files-matter"><strong>Why Both Files Matter</strong></h5>
+<ul>
+<li><code>package.json</code>: Defines what the project <strong>wants</strong>.</li>
+<li><code>package-lock.json</code>: Ensures the project gets what it <strong>needs</strong>.</li>
+</ul>
+<hr />
+<h5 id="what-happens-if-you-delete-package-lockjson"><strong>What Happens If You Delete <code>package-lock.json</code>?</strong></h5>
+<ul>
+<li>Dependency installation may yield different versions.</li>
+<li>Deterministic builds are lost.</li>
+<li>The file will be regenerated when <code>npm install</code> is run.</li>
+</ul>
 <hr />
 <h3 id="adding-dependencies"><strong>Adding Dependencies</strong></h3>
 <h5 id="via-command-line"><strong>Via Command Line:</strong></h5>
@@ -2660,7 +2792,7 @@ This removes the package from <code>composer.json</code>, <code>composer.lock</c
 <h3 id="best-practices"><strong>Best Practices</strong></h3>
 <ul>
 <li>Always commit the <code>composer.json</code> and <code>composer.lock</code> files to version control.</li>
-<li>Do not commit the <code>vendor</code> directory.</li>
+<li>Do not commit the <code>vendor</code> directory. Add it to your <code>.gitignore</code> file.</li>
 <li>Use semantic versioning (<code>^</code>, <code>~</code>) for better control over package versions.</li>
 </ul>
 <h5 id="why-composer-is-the-best-choice"><strong>Why Composer Is the Best Choice</strong></h5>
