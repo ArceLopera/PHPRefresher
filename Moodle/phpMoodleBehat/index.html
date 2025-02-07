@@ -2418,6 +2418,19 @@
     Running Behat Tests
   </a>
   
+    <nav class="md-nav" aria-label="Running Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2559,6 +2572,19 @@
   <a href="#running-behat-tests" class="md-nav__link">
     Running Behat Tests
   </a>
+  
+    <nav class="md-nav" aria-label="Running Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2852,6 +2878,448 @@ tests and steps definitions (admin/tool/behat/cli/util.php and admin/tool/behat/
 <li><strong>Debugging</strong>: Add <code>--format=pretty --out=std</code> for more detailed output.</li>
 </ul>
 <hr />
+<p>Moodle uses Behat, a php framework for automated functional testing, as part of a suite of testing tools.</p>
+<p>Behat takes a set of Features, Scenarios, and Steps, and uses these to step through actions and test results using a real web browser. This is possible thanks to a protocol implemented in most modern web browsers called Webdriver.</p>
+<h5 id="requirements">Requirements</h5>
+<ul>
+<li>
+<p>Any recent OS with supported version of Moodle installed</p>
+</li>
+<li>
+<p>A recent browser (Firefox and Chrome as standard, but other browsers are possible)</p>
+</li>
+<li>
+<p>The WebDriver implementation for your browser</p>
+</li>
+<li>
+<p>A recent version of Selenium (Optional, but recommended)</p>
+</li>
+<li>
+<p>A recent Java Runtime Environment (Required if using Selenium)</p>
+</li>
+</ul>
+<h5 id="recommended-extras">Recommended extras</h5>
+<p>Some extra software is also recommended for testing with Behat.</p>
+<h6 id="pre-configured-browser-profiles-moodle-browser-config">Pre-configured browser profiles: moodle-browser-config</h6>
+<p>Available for all supported versions of Moodle, the moodle-browser-config is a recommended inclusion for Behat. This configuration tooling provides a range of standard browser profiles for testing.</p>
+<p>In the future, the moodle-browser-config tool may be included as composer dependency to Moodle but this is currently not the case.</p>
+<h6 id="installation">Installation</h6>
+<p>Check out the moodle-browser-config repository:</p>
+<p>Clone the moodle-browser-config repository</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/andrewnicols/moodle-browser-config
+</code></pre></div>
+<p>Open your Moodle installation's <code>config.php</code> in your preferred editor, and require the tool's init.php:</p>
+<div class="highlight"><pre><span></span><code><span class="x">require_once(&#39;/path/to/your/git/dir/moodle-browser-config/init.php&#39;);</span>
+</code></pre></div>
+<h5 id="provided-profiles">Provided profiles</h5>
+<p>The full list of profiles which are included with moodle-browser-config are provided in its <a href="https://github.com/andrewnicols/moodle-browser-config">own documentation</a>.</p>
+<p>The following is a summary of the profiles that most users may be interested in.</p>
+<p>You can also provide your own custom profiles, including for remote services such as Browserstack, and Saucelabs, as well as for other browsers supporting the W3C Webdriver specification.</p>
+<p>Please note that Safari and Safaridriver are not currently supported as they do not meet the W3C WebDriver specification.</p>
+<table>
+<thead>
+<tr>
+<th>Profile name</th>
+<th>Description</th>
+<th>Uses Selenium?</th>
+<th>Displays GUI?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firefox</td>
+<td>Use Firefox via Selenium</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessfirefox</td>
+<td>Use Firefox via Selenium, without displaying the GUI</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>geckodriver</td>
+<td>Use Firefox with Geckodriver directly</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessgeckodriver</td>
+<td>Use Firefox with Geckodriver directly, without displaying the GUI</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>chrome</td>
+<td>Use Chrome via Selenium</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlesschrome</td>
+<td>Use Chrome via Selenium, without displaying the GUI</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>chromedriver</td>
+<td>Use Chrome with Chromedriver directly</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlesschromedriver</td>
+<td>Use Chrome with Chromedriver directly, without displaying the GUI</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>edge</td>
+<td>Use Edge via Selenium</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessedge</td>
+<td>Use Edge via Selenium, without displaying the GUI</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>edgedriver</td>
+<td>Use Edge with Edgedriver directly</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessedgedriver</td>
+<td>Use Edge with Edgedriver directly, without displaying the GUI</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h5 id="chromedriver-wrapper">chromedriver-wrapper</h5>
+<p>When using Google Chrome, you must use the correct version of the chromedriver browser driver for the version of Chrome that you use.</p>
+<p>Since Google Chrome automatically updates on a regular basis, you will need to regularly upgrade your driver to match the version of Chrome that you are using.</p>
+<p>To make this easier, a chromedriver-wrapper utility has been written. This inspects the version of Chrome that is in your path, and downloads the correct version of chromedriver for that version, before starting it.</p>
+<p>Installation instructions can be found at https://github.com/andrewnicols/chromedriver-wrapper.</p>
+<h4 id="getting-started">Getting started</h4>
+<h5 id="environment">Environment</h5>
+<p>These notes assume that you have already installed a supported Java Runtime Environment, and the moodle-browser-config tool.</p>
+<h5 id="setting-up-selenium">Setting up Selenium</h5>
+<p>Generally we recommend use of Selenium, though this is not a fixed requirement. You can use the browser's driver implementation directly but this is harder to setup for the first time.</p>
+<p>Selenium is written in Java, and requires a recent version of the JRE to run. Please ensure that you have this installed prior to starting.</p>
+<p>Since Moodle 3.9.5 / 3.10.2 / 3.11.0 Moodle will work with any modern version of Selenium. At time of writing that is 3.141.59, and 4.1.0.</p>
+<h6 id="warning">warning</h6>
+<p>There appears to be an issue with the version 4 jars - particularly in 4.1.0 that generates a "Could not open connection: Capability value must be set" error which appears to be an issue between Selenium and the MInkExtension for JavaScript tests - see https://githubmemory.com/repo/Behat/MinkExtension/activity for more information. The quick work around is to use the earlier version (3.141.59).</p>
+<ol>
+<li>
+<p>Download the Selenium Server (Grid) from https://www.selenium.dev/downloads/. This is a single JAR file, put it anywhere handy.</p>
+</li>
+<li>
+<p>Start Selenium</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">## Version 3.141.59</span>
+java -jar selenium-server-standalone-3.141.59.jar
+
+<span class="c1">## Version 4.0.0 and later</span>
+java -jar selenium-server-4.0.0-beta-3.jar standalone
+</code></pre></div>
+<p>You can optionally specify a number of settings, depending on the version of Selenium that you are using, including the port to run on. See the help for the version of Selenium that you are using.</p>
+<h5 id="setting-up-your-browsers">Setting up your browsers</h5>
+<p>Selenium is just an intelligent wrapper to start, and manage your browser sessions. It doesn't actually include any web browsers itself.</p>
+<p>Moodle HQ run all behat tests against both Firefox and Chrome multiple times per day. Other combinations, including Microsoft Edge, are also supported.</p>
+<p>To use Behat, you will need a recent version of your preferred browser, as well as a driver for that browser. The driver is responsible for communication between Selenium (or Moodle directly) and the browser.</p>
+<p>Both the browser, and its driver, must be placed inside your $PATH - this may be somewhere like /usr/bin, /usr/local/bin, or perhaps a user bin directory like ~/bin which is present in your $PATH</p>
+<h6 id="setting-up-chrome">Setting up Chrome</h6>
+<p>You can download Google Chrome from https://www.google.com.au/chrome.</p>
+<p>You will need the correct version of the chromedriver as per the documentation. Alternatively you can make use of the chromedriver-wrapper utility noted in the Recommended extras sections.</p>
+<p>Either the chromedriver binary must be in a directory in your $PATH, or the chromedriver-wrapper/bin folder must be in your $PATH.</p>
+<h6 id="setting-up-firefox">Setting up Firefox</h6>
+<p>You can download Mozilla Firefox from https://www.mozilla.org/en-US/firefox/new/.</p>
+<p>You will need the correct version of geckodriver as per the documentation.</p>
+<p>The geckodriver binary must be in a directory in your $PATH.</p>
+<h5 id="setting-up-moodle">Setting up Moodle</h5>
+<p>Create a new dataroot area for files especially for behat</p>
+<p>Set the following in your Moodle config.php:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_dataroot = &#39;/path/to/the/dataroot/you/created&#39;;</span>
+<span class="x">$CFG-&gt;behat_wwwroot = &#39;http://127.0.0.1/path/to/your/site&#39;;</span>
+<span class="x">$CFG-&gt;behat_prefix = &#39;beh_&#39;;</span>
+</code></pre></div>
+<p>We recommend that you also include the behat-browser-config if you have not done so already.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require_once(&#39;/path/to/moodle-browser-config/init.php&#39;);</span>
+</code></pre></div>
+<h6 id="about-the-behat_wwwroot">About the behat_wwwroot</h6>
+<p>You will need to set the behat_wwwroot to your Moodle site, but it must use a different value to your $CFG-&gt;wwwroot.</p>
+<p>One common way to do this is to use 127.0.0.1 for behat, but localhost for standard use. Alternatively you can add an additional hostname in your /etc/hosts file and use this instead.</p>
+<p>If you use Docker, then you may be able to use host.docker.internal where your site is hosted on the docker host</p>
+<h5 id="configure-behat-for-moodle">Configure Behat for Moodle</h5>
+<p>After setting your configuration, you can simply initialise behat:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>This will install all required Composer dependencies, install a new Moodle site, and put configuration in place</p>
+<p>When it finishes it will give advice on how to run Behat.</p>
+<h5 id="run-behat-tests">Run Behat tests</h5>
+<p>Before running behat, ensure that your Selenium server is running.</p>
+<p>The easiest way to run behat, and test that everything works is by simply running it using the command provided when you initialised Behat. If you didn't make a note of it, you can just run the initialisation again.</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>This will give you a command which you can then run. This command will run every behat scenario, which will take a considerable amount of time. This command will look a bit like this:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml
+</code></pre></div>
+<p>To make this more useful you an combine it with flags, for example to only run certain tags or for a specific Behat Feature file, or Scenario.</p>
+<p>To run all features/scenarios which are tagged with mod_forum:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --tags<span class="o">=</span>@mod_forum
+</code></pre></div>
+<p>To run one specific feature file:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mod/forum/tests/behat/private_replies.feature
+</code></pre></div>
+<p>To run one specific scenario within a feature file:</p>
+<p>To run the Scenario on line 38 of the file
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mod/forum/tests/behat/private_replies.feature:38
+</code></pre></div></p>
+<p>To run one specific scenario by name:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --name<span class="o">=</span><span class="s2">&quot;As a teacher I can see my own response&quot;</span>
+</code></pre></div>
+<p>See the upstream documentation on Behat, and Gherkin filters for more information.</p>
+<h6 id="running-using-a-different-browser">Running using a different browser</h6>
+<p>The default browser in Behat is Firefox. To specify a different browser profile, you can add the --profile argument. For example, to use Chrome in Headless mode:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile<span class="o">=</span>headlesschrome
+</code></pre></div>
+<p>If you are using the moodle-browser-config utility, then you can use any profile listed in moodle-browser-config. Otherwise you can write your own browser profile configuration.</p>
+<h5 id="advanced-testing">Advanced testing</h5>
+<p>Run tests without Selenium (chromedriver, geckodriver)
+Historically, Behat required Selenium server, however browsers now make use of their own automation layer. For example, Firefox uses Geckodriver and Chrome uses Chromedriver. As a result the use of Selenium itself is now optional.</p>
+<p>The moodle-browser-config tool includes standard profiles to use these drivers directly and without the use of Selenium.</p>
+<p>To use the drivers directly, you must run the driver itself, for example to run chromedriver:</p>
+<p>chromedriver</p>
+<p>To run geckodriver:</p>
+<p>geckodriver</p>
+<p>note
+geckodriver runs on port 4444 by default. You cannot geckodriver at the same time as selenium.</p>
+<p>After starting your preferred browser, you can then run behat and specify an alternative profile, for example:</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile=geckodriver</p>
+<p>Headless browsers
+There are a number of reasons that you may prefer to use a headless browser. It can be particularly helpful if you are running the tests on a remote system, for example over SSH, or if you do not want to be interrupted by browsers popping up on your machine.</p>
+<p>The following headless profiles are some of those provided in the moodle-browser-config tool as standard:</p>
+<p>headlessfirefox Use Firefox via Selenium, without displaying the GUI</p>
+<p>headlessgeckodriver Use Firefox with Geckodriver directly, without displaying the GUI</p>
+<p>headlesschrome Use Chrome via Selenium, without displaying the GUI</p>
+<p>headlesschromedriver Use Chrome with Chromedriver directly, without displaying the GUI These can be provided to the --profile argument to behat:</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile=headlesschrome</p>
+<p>Parallel runs
+Out-of-the-box, Moodle will configure Behat to run a single Moodle installation with all tests run in series. This is great for developer use where you are running a single test. or a small suite of tests. However this can be quite slow. A lot of time is spent waiting in Behat for things to happen. This may be for a page to load, for additional content to load, or even explicit waits because some interactions must be deliberately slowed down. As a result, a system running behat will not have a particularly high load most of the time.</p>
+<p>If you want to run a large suite of tests then it is possible to take advantage of the relatively low resource consumption by running several behat runners in parallel. This is commonly referred to as a Parallel run.</p>
+<p>A parallel run of behat takes the same codebase and creates several installations rather than just a single Moodle installation. The behat Feature files are then grouped and allocated between each of the separate installations.</p>
+<p>To support this, each of the parallels runs needs its own:</p>
+<p>behat_wwwroot
+behat_dataroot
+database
+Rather than using an entirely separate database, the same database is actually used, but a different behat_prefix is used to prefix the table names in the database differently.</p>
+<p>Installation
+The Behat initialisation command is responsible for preparing Moodle to run a standard run. You'll have used this before when installing for a standard run:</p>
+<p>php admin/tool/behat/cli/init.php</p>
+<p>The same command can be used to prepare Moodle for a parallel run by specifying the --parallel or -j parameter:</p>
+<p>Below command will initialise moodle to run 3 parallel tests.
+php admin/tool/behat/cli/init.php --parallel=3</p>
+<p>This can be combined with the --add-core-features-to-theme or -a flag to prepare Behat to run with all installed themes.</p>
+<p>A number of advanced options are also available but you are unlikely to need these:</p>
+<p>-m=<number> or --maxruns=<number> Max parallel site which should be initialised at one time. If your system is slow, then you can initialise sites in chucks.
+--fromrun=<number> Initialise site to run specified run from. Used for running acceptance tests on different vms
+--torun=<number> Initialise site to run specified run till. Used for running acceptance tests on different vms
+-o or --optimize-runs This option will split features with specified tags in all parallel runs, so they are executed first when parallel run gets executed. You can view details of all of these using the --help flag to admin/tool/behat/cli/init.php
+Running Parallel tests
+You can use the Moodle behat runner to run all tests, including Standard runs. It is an intelligent wrapper around the standard ./vendor/bin/behat command which specifies the configuration file, and other required features.</p>
+<p>php admin/tool/behat/cli/run.php</p>
+<p>Many of the standard options and parameters that can be passed to ./vendor/bin/behat can also be passed to the Moodle runner, for example:</p>
+<p>--tags Run tests which match the specified tags
+--name="Scenario name" Run a test matching the supplied scenario name
+--feature="/path/to/test.feature" Run a specific feature file.
+--suite Features for specified theme will be executed. The runner also includes a number of custom parameters relating to parallel runs:
+--replace Replace args string with run process number, useful for output and reruns.
+--fromrun Execute run starting from (Used for parallel runs on different vms)
+--torun Execute run till (Used for parallel runs on different vms) The --replace feature is particularly useful and can be used to replace a string in the command with the run number. This is useful when specifying output formats, and rerun files as noted below.
+The following example demonstrates how Behat might be initialised with three parallel runs, to run on all themes:</p>
+<p>php admin/tool/behat/cli/init.php --parallel=3 --add-core-features-to-theme</p>
+<p>And then to run all tests matching the @tool_myplugin tag, against the classic theme:</p>
+<p>php admin/tool/behat/cli/run.php --tags="@tool_myplugin" --suite="classic"</p>
+<p>Custom parameters for parallel runs
+You can set following custom config options for parallel runs via $CFG-&gt;behat_parallel_run. It's an array of options where 1st array is for 1st run and so on.</p>
+<p>$CFG-&gt;behat_parallel_run = [
+        [
+           'dbtype' =&gt; 'mysqli',
+           'dblibrary' =&gt; 'native',
+           'dbhost' =&gt; 'localhost',
+           'dbname' =&gt; 'moodletest',
+           'dbuser' =&gt; 'moodle',
+           'dbpass' =&gt; 'moodle',
+           'behat_prefix' =&gt; 'mdl_',
+           'wd_host' =&gt; 'http://127.0.0.1:4444/wd/hub',
+           'behat_wwwroot' =&gt; 'http://127.0.0.1/moodle',
+           'behat_dataroot' =&gt; '/home/example/bht_moodledata'
+       ],
+       // ...
+],</p>
+<p>To set different selenium servers for parallel runs, you can use following.</p>
+<p>$CFG-&gt;behat_parallel_run = [
+        <a href="" title="wd_host">=&gt; 'http://127.0.0.1:4444/wd/hub'</a>,
+        <a href="" title="wd_host">=&gt; 'http://127.0.0.1:4445/wd/hub'</a>,
+        <a href="" title="wd_host">=&gt; 'http://127.0.0.1:4446/wd/hub'</a>,
+];</p>
+<p>tip
+Running parallel (headless) runs on different selenium servers avoid random focus failures.</p>
+<p>Tests filters
+With the --tags or the -name Behat options you can filter which tests are going to run or which ones are going to be skipped. There are a few tags that you might be interested in:</p>
+<p>@javascript: All the tests that runs in a browser using JavaScript; they require Selenium or the browser's own automation layer, as per Run tests without Selenium to be running, otherwise an exception will be thrown.
+@_file_upload: All the tests that involves file uploading or any OS feature that is not 100% part of the browser. They should only be executed when Selenium is running in the same machine where the tests are running.
+@_alert: All the tests that involves JavaScript dialogs (alerts, confirms...) are using a feature that is OS-dependant and out of the browser scope, so they should be tag appropriately as not all browsers manage them properly.
+@_switch_window: All the tests that are using the I switch to "NAME" window step should be tagged as not all browsers manage them properly.
+@_switch_iframe: All the tests that are using the I switch to "NAME" iframe steps should be tagged as it is an advanced feature and some browsers may have problems dealing with them
+@_cross_browser: All the tests that should run against multiple combinations of browsers + OS in a regular basis. The features that are sensitive to different combinations of OS and browsers should be tagged as @_cross_browser.
+@componentname: Moodle features uses the Frankenstyle component name to tag the features according to the Moodle subsystem they belong to.
+Output formats
+Behat is able to output in a number of different formats, and to different locations as required.</p>
+<p>This can be achieved by specifying the --format, and --out parameters when running behat, for example:</p>
+<p>Run behat, using the 'pretty' format and outputting the value to /tmp/pretty.txt
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
+        --format=pretty --out=/tmp/pretty.txt</p>
+<p>It is also possible to output to multiple formats simultaneously by repeating the arguments, for example:</p>
+<p>Since Moodle 3.1 option for output is:</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
+        --format=pretty --out=/tmp/pretty.txt \
+        --format=moodle_progress --out=std</p>
+<p>The following output formats are supported:</p>
+<p>progress: Prints one character per step.
+pretty: Prints the feature as is.
+junit: Outputs the failures in JUnit compatible files.
+moodle_progress: Prints Moodle branch information and dots for each step.
+moodle_list: List all scenarios.
+moodle_stepcount: List all features with total steps in each feature file. Used for parallel run.
+moodle_screenshot: Take screenshot and core dump of each step. With following options you can dump either or both.
+--format-settings '{"formats": "image"}': will dump image only
+--format-settings '{"formats": "html"}': will dump html only.
+--format-settings '{"formats": "html,image"}': will dump both.
+--format-settings '{"formats": "html", "dir_permissions": "0777"}' Note: If you want to see the failures immediately (rather than waiting ~3 hours for all the tests to finish) then either use the -v option to output a bit more information, or change the output format using --format. Format pretty (-f pretty) is sufficient for most cases, as it outputs each step outcomes in the command line making easier to see the progress.
+When working with parallel runs, you may wish to have an output for each run. If you were to specify a standard path for this then each of the parallel runs would overwrite the others file. The --replace option allows this to be handled:</p>
+<p>admin/tool/behat/cli/run.php \
+        --replace="{runprocess}" \
+        --format=pretty --out=/tmp/pretty_{runprocess}.txt \
+        --format=moodle_progress --out=std</p>
+<p>In this example, the --replace argument is provided with a value of {runprocess}. Anywhere that {runprocess} appears in the command it will be replaced with the run number. The above command will generate a set of commands like:</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun1/behat/behat.yml \
+        --format=pretty --out=/tmp/pretty_1.txt \
+        --format=moodle_progress --out=std</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun2/behat/behat.yml \
+        --format=pretty --out=/tmp/pretty_2.txt \
+        --format=moodle_progress --out=std</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun3/behat/behat.yml \
+        --format=pretty --out=/tmp/pretty_3.txt \
+        --format=moodle_progress --out=std</p>
+<p>Rerun failed scenarios
+With slow systems or parallel run you may experience see some random failures. These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.</p>
+<p>To help with this it is possible to rerun any failed scenarios using the --rerun option to Behat.</p>
+<p>The following example runs Behat with the rerun option:</p>
+<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
+        --format=pretty --out=/tmp/pretty.txt \
+        --format=moodle_progress --out=std \
+        --rerun</p>
+<p>If any single test fails then the command will return a non-zero exit code. Running the same command again will mean that only failed scenarios are run.</p>
+<p>For a parallel run it can be called as follows:</p>
+<p>admin/tool/behat/cli/run.php \
+        --replace="{runprocess}" \
+        --format=pretty --out=/tmp/pretty_{runprocess}.txt \
+        --format=moodle_progress --out=std \
+        --rerun</p>
+<p>tip
+The Moodle behat runner also includes an --auto-rerun option which will automatically rerun failed scenarios exactly once.</p>
+<p>Running behat with specified theme
+Behat can be run with any installed theme, but it must be initialised with the -a or --add-core-features-to-theme option first.</p>
+<p>After configuring the theme can be specified using the --suite parameter.</p>
+<p>note
+The default theme in Moodle (boost) has the suite name default.</p>
+<p>Initialise Behat for all themes
+php admin/tool/behat/cli/init.php --add-core-features-to-theme</p>
+<p>Run Behat against all initalised themes
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml</p>
+<p>Run Behat against just the default theme when all themes were initialised
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite=default</p>
+<p>Run Behat against just the 'classic' theme when all themes were initialised
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite=classic</p>
+<p>Using Docker to start selenium server
+There are a wide range of docker images available which contain a browser with Selenium. You will probably be using the official SeleniumHQ images unless you have a specific reason not to.</p>
+<p>The complete list of available SeleniumHQ images is available at https://hub.docker.com/u/selenium/.</p>
+<p>Moodle uses the standalone version and any recent version with version 3.141.59 or higher is supported.</p>
+<p>For any test which uploads files, for example when interacting with the filepicker, you must also ensure that the Moodle directory is mounted as on your local filesystem.</p>
+<p>An example usage is:</p>
+<p>docker run -d -p 4444:4444 -v <code>pwd</code>:<code>pwd</code> selenium/standalone-firefox:latest</p>
+<p>Change config.php file
+In the Moodle config.php file you must change the $CFG-&gt;behat_wwwroot to an address that can be reached from within the docker image.</p>
+<p>You cannot use localhost or 127.0.0.1 as this will be the IP address of the docker container itself.</p>
+<p>On some more recent versions of Docker you can use http://host.docker.internal/, for example if my site is located at /sm on my development machine, I can set the following:</p>
+<p>$CFG-&gt;behat_wwwroot = 'http://host.docker.internal/sm';</p>
+<p>Manually configuring other browsers
+If you would prefer not to use the moodle-browser-config tool but still wish to specify different browsers then you can do so using the $CFG-&gt;behat_profiles array. Each key/value pair contains a profile name, and the configuration for that profile. For example:</p>
+<p>$CFG-&gt;behat_profiles = [
+        'chrome' =&gt; [
+            'browser' =&gt; 'chrome',
+            'tags' =&gt; '@javascript',
+        ],
+];</p>
+<p>See alternative browsers for more details.</p>
+<p>Troubleshooting
+Increasing timeouts
+You may see errors such as:</p>
+<p>Javascript code and/or AJAX requests are not ready after 10 seconds.
+   There is a Javascript error or the code is extremely slow.</p>
+<p>Sometimes this indicates a genuine problem with the code, but if you are using a slow computer, it may just mean that your browser did not finish generating parts of the UI before behat tried was finished.</p>
+<p>If you find that this happens regularly on different scenarios then you may want to increase the timeout:</p>
+<p>$CFG-&gt;behat_increasetimeout = 2;</p>
+<p>This will increase all the timeouts by a factor of 2; if that isn't sufficient, you could use 3.</p>
+<p>Increasing timeouts will make tests run a bit slower (because there are points where Behat waits up to a timeout to make sure something doesn't happen) so don't do this unless you need to.</p>
+<p>note
+This is usually an indicator that your development machine is not well tuned. A better option would be to find out where the bottleneck is. This is usually the database configuration.</p>
+<p>New step definitions or features are not executed
+If you are adding new tests or steps definitions update the tests list</p>
+<p>php admin/tool/behat/cli/util.php --enable</p>
+<p>tip
+For parallel runs, all options for initialising parallel runs are valid</p>
+<p>Tests are failing
+If you followed all the steps and you receive an unknown weird error probably your browser version is not compatible with the Selenium version you are running. Please refer to Working combinations to run the acceptance test.</p>
+<p>The tests are failing, and the error message is completely useless
+For example, it just says "Error writing to database" with no stack trace.</p>
+<p>Add -vv command-line option to get very verbose output.</p>
+<p>Errors during setup (before test are launched)
+Typical errors are:</p>
+<p>Behat requirement not satisfied: http://127.0.0.1/m/stable_master is not available, ensure you specified correct url and that the server is set up and started.
+init.php or util.php complain that "Unknown error 1 This is not a behat test site!". Delete the behat wwwroot (look in config.php for $CFG-&gt;behat_dataroot) and drop the behat DB tables (look in config.php for $CFG-&gt;behat_prefix). Then try again.
+Behat is configured but not enabled on this test site. In order to fix those errors please check that: the behat_dataroot has correct write permissions and that the $CFG-&gt;behat* variables are placed before the lib/setup.php include:
+require_once(<strong>DIR</strong> . '/lib/setup.php');</p>
+<p>Selenium server is not running
+Chrome specific
+If you are using chrome, you need to ensure that the driver matches the version of the installed chrome browser – which may change on OS updates/upgrades. Moodle or Selenium will not give the appropriate message – see MDL-67659. One solution is the one suggested in the issue and use Andrew Nicols' Chromedriver Wrapper which will ensure you have the appropriate driver before running the tests.</p>
+<p>Examples
+Quick setup and testing using moodle-docker
+This is a quick guide to help locally pass tests for your developments, before submitting them:</p>
+<p>Set up a default Moodle install using moodle-docker, with the database and Moodle version of your choice. See its README for more details. This will start some docker containers.</p>
+<p>Initialize behat to start testing with this command, from the webserver container:</p>
+<p>php admin/tool/behat/cli/init.php</p>
+<p>Run the behat test of your choice, from the webserver container. For instance:</p>
+<p>vendor/bin/behat --config /var/www/behatdata/behatrun/behat/behat.yml --tags tool_task</p>
+<p>And you'll see something like:</p>
+<p>Moodle 4.0dev (Build: 20210507), 0b47ea0a44a092f9000729ca7b15fff23111538b
+Php: 7.3.26, mysqli: 5.7.21, OS: Linux 5.4.0-66-generic x86_64
+Run optional tests:</p>
+<p>Accessibility: No
+Server OS "Linux", Browser: "firefox"
+Started at 09-05-2021, 06:00
+...................................................................... 70
+...............................
+12 scenarios (12 passed)
+101 steps (101 passed)
+2m53.27s (47.61Mb)</p>
 <h3 id="writing-effective-behat-steps-and-contexts"><strong>Writing Effective Behat Steps and Contexts</strong></h3>
 <h5 id="using-predefined-steps">Using Predefined Steps:</h5>
 <p>Moodle comes with a rich set of predefined Behat steps to interact with the UI. To see a list of available steps, run:
