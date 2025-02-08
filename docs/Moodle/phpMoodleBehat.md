@@ -496,44 +496,50 @@ vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatr
 If you are using the moodle-browser-config utility, then you can use any profile listed in moodle-browser-config. Otherwise you can write your own browser profile configuration.
 
 ##### Advanced testing
-Run tests without Selenium (chromedriver, geckodriver)
+###### Run tests without Selenium (chromedriver, geckodriver)
 Historically, Behat required Selenium server, however browsers now make use of their own automation layer. For example, Firefox uses Geckodriver and Chrome uses Chromedriver. As a result the use of Selenium itself is now optional.
 
 The moodle-browser-config tool includes standard profiles to use these drivers directly and without the use of Selenium.
 
 To use the drivers directly, you must run the driver itself, for example to run chromedriver:
 
+``` bash
 chromedriver
+```
 
 To run geckodriver:
 
+``` bash
 geckodriver
+```
 
-note
+The default ports for chromedriver and geckodriver are 9515 and 4444 respectively.
 geckodriver runs on port 4444 by default. You cannot geckodriver at the same time as selenium.
 
 After starting your preferred browser, you can then run behat and specify an alternative profile, for example:
 
+```bash
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile=geckodriver
+```
 
-
-Headless browsers
+###### Headless browsers
 There are a number of reasons that you may prefer to use a headless browser. It can be particularly helpful if you are running the tests on a remote system, for example over SSH, or if you do not want to be interrupted by browsers popping up on your machine.
 
 The following headless profiles are some of those provided in the moodle-browser-config tool as standard:
 
-headlessfirefox Use Firefox via Selenium, without displaying the GUI
+1. `headlessfirefox` Use Firefox via Selenium, without displaying the GUI
 
-headlessgeckodriver Use Firefox with Geckodriver directly, without displaying the GUI
+2. `headlessgeckodriver` Use Firefox with Geckodriver directly, without displaying the GUI
 
-headlesschrome Use Chrome via Selenium, without displaying the GUI
+3. `headlesschrome` Use Chrome via Selenium, without displaying the GUI
 
-headlesschromedriver Use Chrome with Chromedriver directly, without displaying the GUI These can be provided to the --profile argument to behat:
+4. `headlesschromedriver` Use Chrome with Chromedriver directly, without displaying the GUI These can be provided to the --profile argument to behat:
 
+```bash
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile=headlesschrome
+```
 
-
-Parallel runs
+###### Parallel runs
 Out-of-the-box, Moodle will configure Behat to run a single Moodle installation with all tests run in series. This is great for developer use where you are running a single test. or a small suite of tests. However this can be quite slow. A lot of time is spent waiting in Behat for things to happen. This may be for a page to load, for additional content to load, or even explicit waits because some interactions must be deliberately slowed down. As a result, a system running behat will not have a particularly high load most of the time.
 
 If you want to run a large suite of tests then it is possible to take advantage of the relatively low resource consumption by running several behat runners in parallel. This is commonly referred to as a Parallel run.
@@ -542,29 +548,35 @@ A parallel run of behat takes the same codebase and creates several installation
 
 To support this, each of the parallels runs needs its own:
 
-behat_wwwroot
-behat_dataroot
-database
++ behat_wwwroot
++ behat_dataroot
++ database
+
 Rather than using an entirely separate database, the same database is actually used, but a different behat_prefix is used to prefix the table names in the database differently.
 
-Installation
+###### Installation
 The Behat initialisation command is responsible for preparing Moodle to run a standard run. You'll have used this before when installing for a standard run:
 
+```bash
 php admin/tool/behat/cli/init.php
+```
 
-The same command can be used to prepare Moodle for a parallel run by specifying the --parallel or -j parameter:
+The same command can be used to prepare Moodle for a parallel run by specifying the `--parallel` or `-j` parameter:
 
-Below command will initialise moodle to run 3 parallel tests.
+```bash
+## Below command will initialise moodle to run 3 parallel tests.
 php admin/tool/behat/cli/init.php --parallel=3
+```
 
-This can be combined with the --add-core-features-to-theme or -a flag to prepare Behat to run with all installed themes.
+This can be combined with the `--add-core-features-to-theme` or `-a` flag to prepare Behat to run with all installed themes.
 
 A number of advanced options are also available but you are unlikely to need these:
 
--m=<number> or --maxruns=<number> Max parallel site which should be initialised at one time. If your system is slow, then you can initialise sites in chucks.
---fromrun=<number> Initialise site to run specified run from. Used for running acceptance tests on different vms
---torun=<number> Initialise site to run specified run till. Used for running acceptance tests on different vms
--o or --optimize-runs This option will split features with specified tags in all parallel runs, so they are executed first when parallel run gets executed. You can view details of all of these using the --help flag to admin/tool/behat/cli/init.php
+1. `-m=<number>` or `--maxruns=<number>` Max parallel site which should be initialised at one time. If your system is slow, then you can initialise sites in chucks.
+2. `--fromrun=<number>` Initialise site to run specified run from. Used for running acceptance tests on different vms
+3. `--torun=<number>` Initialise site to run specified run till. Used for running acceptance tests on different vms
+4. `-o` or `--optimize-runs` This option will split features with specified tags in all parallel runs, so they are executed first when parallel run gets executed. You can view details of all of these using the --help flag to admin/tool/behat/cli/init.php
+
 Running Parallel tests
 You can use the Moodle behat runner to run all tests, including Standard runs. It is an intelligent wrapper around the standard ./vendor/bin/behat command which specifies the configuration file, and other required features.
 
