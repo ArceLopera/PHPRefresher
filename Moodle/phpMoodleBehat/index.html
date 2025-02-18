@@ -3151,48 +3151,58 @@ php admin/tool/behat/cli/init.php --parallel<span class="o">=</span><span class=
 <li><code>--torun=&lt;number&gt;</code> Initialise site to run specified run till. Used for running acceptance tests on different vms</li>
 <li><code>-o</code> or <code>--optimize-runs</code> This option will split features with specified tags in all parallel runs, so they are executed first when parallel run gets executed. You can view details of all of these using the --help flag to admin/tool/behat/cli/init.php</li>
 </ol>
-<p>Running Parallel tests
-You can use the Moodle behat runner to run all tests, including Standard runs. It is an intelligent wrapper around the standard ./vendor/bin/behat command which specifies the configuration file, and other required features.</p>
-<p>php admin/tool/behat/cli/run.php</p>
-<p>Many of the standard options and parameters that can be passed to ./vendor/bin/behat can also be passed to the Moodle runner, for example:</p>
-<p>--tags Run tests which match the specified tags
---name="Scenario name" Run a test matching the supplied scenario name
---feature="/path/to/test.feature" Run a specific feature file.
---suite Features for specified theme will be executed. The runner also includes a number of custom parameters relating to parallel runs:
---replace Replace args string with run process number, useful for output and reruns.
---fromrun Execute run starting from (Used for parallel runs on different vms)
---torun Execute run till (Used for parallel runs on different vms) The --replace feature is particularly useful and can be used to replace a string in the command with the run number. This is useful when specifying output formats, and rerun files as noted below.
-The following example demonstrates how Behat might be initialised with three parallel runs, to run on all themes:</p>
-<p>php admin/tool/behat/cli/init.php --parallel=3 --add-core-features-to-theme</p>
+<h6 id="running-parallel-tests">Running Parallel tests</h6>
+<p>You can use the Moodle behat runner to run all tests, including Standard runs. 
+It is an intelligent wrapper around the standard <code>./vendor/bin/behat</code> command which specifies the configuration file, 
+and other required features.</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/run.php
+</code></pre></div>
+<p>Many of the standard options and parameters that can be passed to <code>./vendor/bin/behat</code> can also be passed to the 
+Moodle runner, for example:</p>
+<ol>
+<li><code>--tags</code> Run tests which match the specified tags</li>
+<li><code>--name="Scenario name"</code> Run a test matching the supplied scenario name</li>
+<li><code>--feature="/path/to/test.feature"</code> Run a specific feature file.</li>
+<li><code>--suite</code> Features for specified theme will be executed. The runner also includes a number of custom parameters relating to parallel runs:</li>
+<li><code>--replace</code> Replace args string with run process number, useful for output and reruns.</li>
+<li><code>--fromrun</code> Execute run starting from (Used for parallel runs on different vms)</li>
+<li><code>--torun</code> Execute run till (Used for parallel runs on different vms) The --replace feature is particularly useful and can be used to replace a string in the command with the run number. This is useful when specifying output formats, and rerun files as noted below.</li>
+</ol>
+<p>The following example demonstrates how Behat might be initialised with three parallel runs, to run on all themes:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php --parallel<span class="o">=</span><span class="m">3</span> --add-core-features-to-theme
+</code></pre></div>
 <p>And then to run all tests matching the @tool_myplugin tag, against the classic theme:</p>
-<p>php admin/tool/behat/cli/run.php --tags="@tool_myplugin" --suite="classic"</p>
-<p>Custom parameters for parallel runs
-You can set following custom config options for parallel runs via $CFG-&gt;behat_parallel_run. It's an array of options where 1st array is for 1st run and so on.</p>
-<p>$CFG-&gt;behat_parallel_run = [
-        [
-           'dbtype' =&gt; 'mysqli',
-           'dblibrary' =&gt; 'native',
-           'dbhost' =&gt; 'localhost',
-           'dbname' =&gt; 'moodletest',
-           'dbuser' =&gt; 'moodle',
-           'dbpass' =&gt; 'moodle',
-           'behat_prefix' =&gt; 'mdl_',
-           'wd_host' =&gt; 'http://127.0.0.1:4444/wd/hub',
-           'behat_wwwroot' =&gt; 'http://127.0.0.1/moodle',
-           'behat_dataroot' =&gt; '/home/example/bht_moodledata'
-       ],
-       // ...
-],</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/run.php --tags<span class="o">=</span><span class="s2">&quot;@tool_myplugin&quot;</span> --suite<span class="o">=</span><span class="s2">&quot;classic&quot;</span>
+</code></pre></div>
+<h6 id="custom-parameters-for-parallel-runs">Custom parameters for parallel runs</h6>
+<p>You can set following custom config options for parallel runs via $CFG-&gt;behat_parallel_run. 
+It's an array of options where 1st array is for 1st run and so on.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_parallel_run = [</span>
+<span class="x">        [</span>
+<span class="x">           &#39;dbtype&#39; =&gt; &#39;mysqli&#39;,</span>
+<span class="x">           &#39;dblibrary&#39; =&gt; &#39;native&#39;,</span>
+<span class="x">           &#39;dbhost&#39; =&gt; &#39;localhost&#39;,</span>
+<span class="x">           &#39;dbname&#39; =&gt; &#39;moodletest&#39;,</span>
+<span class="x">           &#39;dbuser&#39; =&gt; &#39;moodle&#39;,</span>
+<span class="x">           &#39;dbpass&#39; =&gt; &#39;moodle&#39;,</span>
+<span class="x">           &#39;behat_prefix&#39; =&gt; &#39;mdl_&#39;,</span>
+<span class="x">           &#39;wd_host&#39; =&gt; &#39;http://127.0.0.1:4444/wd/hub&#39;,</span>
+<span class="x">           &#39;behat_wwwroot&#39; =&gt; &#39;http://127.0.0.1/moodle&#39;,</span>
+<span class="x">           &#39;behat_dataroot&#39; =&gt; &#39;/home/example/bht_moodledata&#39;</span>
+<span class="x">       ],</span>
+<span class="x">       // ...</span>
+<span class="x">],</span>
+</code></pre></div>
 <p>To set different selenium servers for parallel runs, you can use following.</p>
-<p>$CFG-&gt;behat_parallel_run = [
-        <a href="" title="wd_host">=&gt; 'http://127.0.0.1:4444/wd/hub'</a>,
-        <a href="" title="wd_host">=&gt; 'http://127.0.0.1:4445/wd/hub'</a>,
-        <a href="" title="wd_host">=&gt; 'http://127.0.0.1:4446/wd/hub'</a>,
-];</p>
-<p>tip
-Running parallel (headless) runs on different selenium servers avoid random focus failures.</p>
-<p>Tests filters
-With the --tags or the -name Behat options you can filter which tests are going to run or which ones are going to be skipped. There are a few tags that you might be interested in:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_parallel_run = [</span>
+<span class="x">        [=&gt; &#39;http://127.0.0.1:4444/wd/hub&#39;](&#39;wd_host&#39;),</span>
+<span class="x">        [=&gt; &#39;http://127.0.0.1:4445/wd/hub&#39;](&#39;wd_host&#39;),</span>
+<span class="x">        [=&gt; &#39;http://127.0.0.1:4446/wd/hub&#39;](&#39;wd_host&#39;),</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>Running parallel (headless) runs on different selenium servers avoid random focus failures.</p>
+<h6 id="tests-filters">Tests filters</h6>
+<p>With the --tags or the -name Behat options you can filter which tests are going to run or which ones are going to be skipped. There are a few tags that you might be interested in:</p>
 <p>@javascript: All the tests that runs in a browser using JavaScript; they require Selenium or the browser's own automation layer, as per Run tests without Selenium to be running, otherwise an exception will be thrown.
 @_file_upload: All the tests that involves file uploading or any OS feature that is not 100% part of the browser. They should only be executed when Selenium is running in the same machine where the tests are running.
 @_alert: All the tests that involves JavaScript dialogs (alerts, confirms...) are using a feature that is OS-dependant and out of the browser scope, so they should be tag appropriately as not all browsers manage them properly.
