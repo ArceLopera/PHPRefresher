@@ -577,31 +577,44 @@ A number of advanced options are also available but you are unlikely to need the
 3. `--torun=<number>` Initialise site to run specified run till. Used for running acceptance tests on different vms
 4. `-o` or `--optimize-runs` This option will split features with specified tags in all parallel runs, so they are executed first when parallel run gets executed. You can view details of all of these using the --help flag to admin/tool/behat/cli/init.php
 
-Running Parallel tests
-You can use the Moodle behat runner to run all tests, including Standard runs. It is an intelligent wrapper around the standard ./vendor/bin/behat command which specifies the configuration file, and other required features.
+###### Running Parallel tests
+You can use the Moodle behat runner to run all tests, including Standard runs. 
+It is an intelligent wrapper around the standard `./vendor/bin/behat` command which specifies the configuration file, 
+and other required features.
 
+```bash
 php admin/tool/behat/cli/run.php
+```
 
-Many of the standard options and parameters that can be passed to ./vendor/bin/behat can also be passed to the Moodle runner, for example:
+Many of the standard options and parameters that can be passed to `./vendor/bin/behat` can also be passed to the 
+Moodle runner, for example:
 
---tags Run tests which match the specified tags
---name="Scenario name" Run a test matching the supplied scenario name
---feature="/path/to/test.feature" Run a specific feature file.
---suite Features for specified theme will be executed. The runner also includes a number of custom parameters relating to parallel runs:
---replace Replace args string with run process number, useful for output and reruns.
---fromrun Execute run starting from (Used for parallel runs on different vms)
---torun Execute run till (Used for parallel runs on different vms) The --replace feature is particularly useful and can be used to replace a string in the command with the run number. This is useful when specifying output formats, and rerun files as noted below.
+
+1. `--tags` Run tests which match the specified tags
+2. `--name="Scenario name"` Run a test matching the supplied scenario name
+3. `--feature="/path/to/test.feature"` Run a specific feature file.
+4. `--suite` Features for specified theme will be executed. The runner also includes a number of custom parameters relating to parallel runs:
+5. `--replace` Replace args string with run process number, useful for output and reruns.
+6. `--fromrun` Execute run starting from (Used for parallel runs on different vms)
+7. `--torun` Execute run till (Used for parallel runs on different vms) The --replace feature is particularly useful and can be used to replace a string in the command with the run number. This is useful when specifying output formats, and rerun files as noted below.
+
 The following example demonstrates how Behat might be initialised with three parallel runs, to run on all themes:
 
+```bash
 php admin/tool/behat/cli/init.php --parallel=3 --add-core-features-to-theme
+```
 
 And then to run all tests matching the @tool_myplugin tag, against the classic theme:
 
+```bash
 php admin/tool/behat/cli/run.php --tags="@tool_myplugin" --suite="classic"
+```
 
-Custom parameters for parallel runs
-You can set following custom config options for parallel runs via $CFG->behat_parallel_run. It's an array of options where 1st array is for 1st run and so on.
+###### Custom parameters for parallel runs
+You can set following custom config options for parallel runs via $CFG->behat_parallel_run. 
+It's an array of options where 1st array is for 1st run and so on.
 
+```php
 $CFG->behat_parallel_run = [
         [
            'dbtype' => 'mysqli',
@@ -617,67 +630,79 @@ $CFG->behat_parallel_run = [
        ],
        // ...
 ],
+```
 
 To set different selenium servers for parallel runs, you can use following.
 
+```php
 $CFG->behat_parallel_run = [
         [=> 'http://127.0.0.1:4444/wd/hub']('wd_host'),
         [=> 'http://127.0.0.1:4445/wd/hub']('wd_host'),
         [=> 'http://127.0.0.1:4446/wd/hub']('wd_host'),
 ];
+```
 
-tip
 Running parallel (headless) runs on different selenium servers avoid random focus failures.
 
-Tests filters
-With the --tags or the -name Behat options you can filter which tests are going to run or which ones are going to be skipped. There are a few tags that you might be interested in:
+###### Tests filters
+With the `--tags` or the `-name` Behat options you can filter which tests are going to run or which ones are going to be skipped. There are a few tags that you might be interested in:
 
-@javascript: All the tests that runs in a browser using JavaScript; they require Selenium or the browser's own automation layer, as per Run tests without Selenium to be running, otherwise an exception will be thrown.
-@_file_upload: All the tests that involves file uploading or any OS feature that is not 100% part of the browser. They should only be executed when Selenium is running in the same machine where the tests are running.
-@_alert: All the tests that involves JavaScript dialogs (alerts, confirms...) are using a feature that is OS-dependant and out of the browser scope, so they should be tag appropriately as not all browsers manage them properly.
-@_switch_window: All the tests that are using the I switch to "NAME" window step should be tagged as not all browsers manage them properly.
-@_switch_iframe: All the tests that are using the I switch to "NAME" iframe steps should be tagged as it is an advanced feature and some browsers may have problems dealing with them
-@_cross_browser: All the tests that should run against multiple combinations of browsers + OS in a regular basis. The features that are sensitive to different combinations of OS and browsers should be tagged as @_cross_browser.
-@componentname: Moodle features uses the Frankenstyle component name to tag the features according to the Moodle subsystem they belong to.
-Output formats
++ `@javascript`: All the tests that runs in a browser using JavaScript; they require Selenium or the browser's own automation layer, as per [Run tests without Selenium](#run-tests-without-selenium-chromedriver-geckodriver) to be running, otherwise an exception will be thrown.
++ `@_file_upload`: All the tests that involves file uploading or any OS feature that is not 100% part of the browser. They should only be executed when Selenium is running in the same machine where the tests are running.
++ `@_alert`: All the tests that involves JavaScript dialogs (alerts, confirms...) are using a feature that is OS-dependant and out of the browser scope, so they should be tag appropriately as not all browsers manage them properly.
++ `@_switch_window`: All the tests that are using the `I switch to "NAME"` window step should be tagged as not all browsers manage them properly.
++ `@_switch_iframe`: All the tests that are using the `I switch to "NAME"` iframe steps should be tagged as it is an advanced feature and some browsers may have problems dealing with them
++ `@_cross_browser`: All the tests that should run against multiple combinations of browsers + OS in a regular basis. The features that are sensitive to different combinations of OS and browsers should be tagged as @_cross_browser.
++ `@componentname`: Moodle features uses the Frankenstyle component name to tag the features according to the Moodle subsystem they belong to.
+
+###### Output formats
 Behat is able to output in a number of different formats, and to different locations as required.
 
-This can be achieved by specifying the --format, and --out parameters when running behat, for example:
+This can be achieved by specifying the `--format`, and `--out` parameters when running behat, for example:
 
-Run behat, using the 'pretty' format and outputting the value to /tmp/pretty.txt
+```bash
+// Run behat, using the 'pretty' format and outputting the value to /tmp/pretty.txt
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
         --format=pretty --out=/tmp/pretty.txt
+```
 
 It is also possible to output to multiple formats simultaneously by repeating the arguments, for example:
 
 Since Moodle 3.1 option for output is:
 
+```bash
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
         --format=pretty --out=/tmp/pretty.txt \
         --format=moodle_progress --out=std
+```
 
 The following output formats are supported:
 
-progress: Prints one character per step.
-pretty: Prints the feature as is.
-junit: Outputs the failures in JUnit compatible files.
-moodle_progress: Prints Moodle branch information and dots for each step.
-moodle_list: List all scenarios.
-moodle_stepcount: List all features with total steps in each feature file. Used for parallel run.
-moodle_screenshot: Take screenshot and core dump of each step. With following options you can dump either or both.
---format-settings '{"formats": "image"}': will dump image only
---format-settings '{"formats": "html"}': will dump html only.
---format-settings '{"formats": "html,image"}': will dump both.
---format-settings '{"formats": "html", "dir_permissions": "0777"}' Note: If you want to see the failures immediately (rather than waiting ~3 hours for all the tests to finish) then either use the -v option to output a bit more information, or change the output format using --format. Format pretty (-f pretty) is sufficient for most cases, as it outputs each step outcomes in the command line making easier to see the progress.
++ `progress`: Prints one character per step.
++ `pretty`: Prints the feature as is.
++ `junit`: Outputs the failures in JUnit compatible files.
++ `moodle_progress`: Prints Moodle branch information and dots for each step.
++ `moodle_list`: List all scenarios.
++ `moodle_stepcount`: List all features with total steps in each feature file. Used for parallel run.
++ `moodle_screenshot`: Take screenshot and core dump of each step. With following options you can dump either or both.
++ `--format-settings '{"formats": "image"}'`: will dump image only
++ `--format-settings '{"formats": "html"}'`: will dump html only.
++ `--format-settings '{"formats": "html,image"}'`: will dump both.
++ `--format-settings '{"formats": "html", "dir_permissions": "0777"}'` Note: If you want to see the failures immediately (rather than waiting ~3 hours for all the tests to finish) then either use the -v option to output a bit more information, or change the output format using --format. Format pretty (-f pretty) is sufficient for most cases, as it outputs each step outcomes in the command line making easier to see the progress.
 When working with parallel runs, you may wish to have an output for each run. If you were to specify a standard path for this then each of the parallel runs would overwrite the others file. The --replace option allows this to be handled:
 
+```bash
 admin/tool/behat/cli/run.php \
         --replace="{runprocess}" \
         --format=pretty --out=/tmp/pretty_{runprocess}.txt \
         --format=moodle_progress --out=std
+```
 
-In this example, the --replace argument is provided with a value of {runprocess}. Anywhere that {runprocess} appears in the command it will be replaced with the run number. The above command will generate a set of commands like:
+In this example, the --replace argument is provided with a value of {runprocess}. 
+Anywhere that {runprocess} appears in the command it will be replaced with the run number. 
+The above command will generate a set of commands like:
 
+```bash
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun1/behat/behat.yml \
         --format=pretty --out=/tmp/pretty_1.txt \
         --format=moodle_progress --out=std
@@ -689,8 +714,9 @@ vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatr
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun3/behat/behat.yml \
         --format=pretty --out=/tmp/pretty_3.txt \
         --format=moodle_progress --out=std
+```	
 
-Rerun failed scenarios
+###### Rerun failed scenarios
 With slow systems or parallel run you may experience see some random failures. These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.
 
 To help with this it is possible to rerun any failed scenarios using the --rerun option to Behat.
