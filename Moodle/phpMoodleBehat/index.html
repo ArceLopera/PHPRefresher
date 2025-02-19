@@ -2428,6 +2428,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2579,6 +2586,13 @@
           <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     Getting started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
   </a>
   
 </li>
@@ -3261,58 +3275,72 @@ vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatr
         --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std
 </code></pre></div>
 <h6 id="rerun-failed-scenarios">Rerun failed scenarios</h6>
-<p>With slow systems or parallel run you may experience see some random failures. These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.</p>
+<p>With slow systems or parallel run you may experience see some random failures. 
+These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.</p>
 <p>To help with this it is possible to rerun any failed scenarios using the --rerun option to Behat.</p>
 <p>The following example runs Behat with the rerun option:</p>
-<p>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
-        --format=pretty --out=/tmp/pretty.txt \
-        --format=moodle_progress --out=std \
-        --rerun</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std <span class="se">\</span>
+        --rerun
+</code></pre></div>
 <p>If any single test fails then the command will return a non-zero exit code. Running the same command again will mean that only failed scenarios are run.</p>
 <p>For a parallel run it can be called as follows:</p>
-<p>admin/tool/behat/cli/run.php \
-        --replace="{runprocess}" \
-        --format=pretty --out=/tmp/pretty_{runprocess}.txt \
-        --format=moodle_progress --out=std \
-        --rerun</p>
-<p>tip
-The Moodle behat runner also includes an --auto-rerun option which will automatically rerun failed scenarios exactly once.</p>
-<p>Running behat with specified theme
-Behat can be run with any installed theme, but it must be initialised with the -a or --add-core-features-to-theme option first.</p>
-<p>After configuring the theme can be specified using the --suite parameter.</p>
-<p>note
-The default theme in Moodle (boost) has the suite name default.</p>
-<p>Initialise Behat for all themes
-php admin/tool/behat/cli/init.php --add-core-features-to-theme</p>
-<p>Run Behat against all initalised themes
-vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml</p>
-<p>Run Behat against just the default theme when all themes were initialised
-vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite=default</p>
-<p>Run Behat against just the 'classic' theme when all themes were initialised
-vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite=classic</p>
-<p>Using Docker to start selenium server
-There are a wide range of docker images available which contain a browser with Selenium. You will probably be using the official SeleniumHQ images unless you have a specific reason not to.</p>
+<div class="highlight"><pre><span></span><code>admin/tool/behat/cli/run.php <span class="se">\</span>
+        --replace<span class="o">=</span><span class="s2">&quot;{runprocess}&quot;</span> <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty_<span class="o">{</span>runprocess<span class="o">}</span>.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std <span class="se">\</span>
+        --rerun
+</code></pre></div>
+<p>The Moodle behat runner also includes an <code>--auto-rerun</code> option which will automatically rerun failed scenarios exactly once.</p>
+<h6 id="running-behat-with-specified-theme">Running behat with specified theme</h6>
+<p>Behat can be run with any installed theme, but it must be initialised with the <code>-a</code> or <code>--add-core-features-to-theme</code> 
+option first.</p>
+<p>After configuring the theme can be specified using the <code>--suite</code> parameter.</p>
+<p>The default theme in Moodle (boost) has the suite name default.</p>
+<div class="highlight"><pre><span></span><code>// Initialise Behat <span class="k">for</span> all themes
+php admin/tool/behat/cli/init.php --add-core-features-to-theme
+
+
+// Run Behat against all initalised themes
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml
+
+// Run Behat against just the default theme when all themes were initialised
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite<span class="o">=</span>default
+
+
+// Run Behat against just the <span class="s1">&#39;classic&#39;</span> theme when all themes were initialised
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite<span class="o">=</span>classic
+</code></pre></div>
+<h6 id="using-docker-to-start-selenium-server">Using Docker to start selenium server</h6>
+<p>There are a wide range of docker images available which contain a browser with Selenium. 
+You will probably be using the official SeleniumHQ images unless you have a specific reason not to.</p>
 <p>The complete list of available SeleniumHQ images is available at https://hub.docker.com/u/selenium/.</p>
 <p>Moodle uses the standalone version and any recent version with version 3.141.59 or higher is supported.</p>
 <p>For any test which uploads files, for example when interacting with the filepicker, you must also ensure that the Moodle directory is mounted as on your local filesystem.</p>
 <p>An example usage is:</p>
-<p>docker run -d -p 4444:4444 -v <code>pwd</code>:<code>pwd</code> selenium/standalone-firefox:latest</p>
-<p>Change config.php file
-In the Moodle config.php file you must change the $CFG-&gt;behat_wwwroot to an address that can be reached from within the docker image.</p>
-<p>You cannot use localhost or 127.0.0.1 as this will be the IP address of the docker container itself.</p>
+<div class="highlight"><pre><span></span><code>docker run -d -p <span class="m">4444</span>:4444 -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span> selenium/standalone-firefox:latest
+</code></pre></div>
+<h6 id="change-configphp-file">Change config.php file</h6>
+<p>In the Moodle <code>config.php</code> file you must change the <code>$CFG-&gt;behat_wwwroot</code> to an address that can be reached from within the docker image.</p>
+<p>You cannot use<code>localhost</code> or <code>127.0.0.1</code> as this will be the IP address of the docker container itself.</p>
 <p>On some more recent versions of Docker you can use http://host.docker.internal/, for example if my site is located at /sm on my development machine, I can set the following:</p>
-<p>$CFG-&gt;behat_wwwroot = 'http://host.docker.internal/sm';</p>
-<p>Manually configuring other browsers
-If you would prefer not to use the moodle-browser-config tool but still wish to specify different browsers then you can do so using the $CFG-&gt;behat_profiles array. Each key/value pair contains a profile name, and the configuration for that profile. For example:</p>
-<p>$CFG-&gt;behat_profiles = [
-        'chrome' =&gt; [
-            'browser' =&gt; 'chrome',
-            'tags' =&gt; '@javascript',
-        ],
-];</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_wwwroot = &#39;http://host.docker.internal/sm&#39;;</span>
+</code></pre></div>
+<h6 id="manually-configuring-other-browsers">Manually configuring other browsers</h6>
+<p>If you would prefer not to use the moodle-browser-config tool but still wish to specify different browsers 
+then you can do so using the $CFG-&gt;behat_profiles array. Each key/value pair contains a profile name, and 
+the configuration for that profile. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_profiles = [</span>
+<span class="x">        &#39;chrome&#39; =&gt; [</span>
+<span class="x">            &#39;browser&#39; =&gt; &#39;chrome&#39;,</span>
+<span class="x">            &#39;tags&#39; =&gt; &#39;@javascript&#39;,</span>
+<span class="x">        ],</span>
+<span class="x">];</span>
+</code></pre></div>
 <p>See alternative browsers for more details.</p>
-<p>Troubleshooting
-Increasing timeouts
+<h4 id="troubleshooting">Troubleshooting</h4>
+<p>Increasing timeouts
 You may see errors such as:</p>
 <p>Javascript code and/or AJAX requests are not ready after 10 seconds.
    There is a Javascript error or the code is extremely slow.</p>
