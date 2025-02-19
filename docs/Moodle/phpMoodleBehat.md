@@ -717,54 +717,62 @@ vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatr
 ```	
 
 ###### Rerun failed scenarios
-With slow systems or parallel run you may experience see some random failures. These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.
+With slow systems or parallel run you may experience see some random failures. 
+These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.
 
 To help with this it is possible to rerun any failed scenarios using the --rerun option to Behat.
 
 The following example runs Behat with the rerun option:
 
+```bash
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml \
         --format=pretty --out=/tmp/pretty.txt \
         --format=moodle_progress --out=std \
         --rerun
+```
 
 If any single test fails then the command will return a non-zero exit code. Running the same command again will mean that only failed scenarios are run.
 
 For a parallel run it can be called as follows:
 
+```bash
 admin/tool/behat/cli/run.php \
         --replace="{runprocess}" \
         --format=pretty --out=/tmp/pretty_{runprocess}.txt \
         --format=moodle_progress --out=std \
         --rerun
+```
 
-tip
-The Moodle behat runner also includes an --auto-rerun option which will automatically rerun failed scenarios exactly once.
+The Moodle behat runner also includes an `--auto-rerun` option which will automatically rerun failed scenarios exactly once.
 
-Running behat with specified theme
-Behat can be run with any installed theme, but it must be initialised with the -a or --add-core-features-to-theme option first.
+###### Running behat with specified theme
+Behat can be run with any installed theme, but it must be initialised with the `-a` or `--add-core-features-to-theme` 
+option first.
 
-After configuring the theme can be specified using the --suite parameter.
+After configuring the theme can be specified using the `--suite` parameter.
 
-note
 The default theme in Moodle (boost) has the suite name default.
 
-Initialise Behat for all themes
+``` bash
+// Initialise Behat for all themes
 php admin/tool/behat/cli/init.php --add-core-features-to-theme
 
-Run Behat against all initalised themes
+
+// Run Behat against all initalised themes
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml
 
-Run Behat against just the default theme when all themes were initialised
+// Run Behat against just the default theme when all themes were initialised
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite=default
 
 
-Run Behat against just the 'classic' theme when all themes were initialised
+// Run Behat against just the 'classic' theme when all themes were initialised
 vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite=classic
+```
 
 
-Using Docker to start selenium server
-There are a wide range of docker images available which contain a browser with Selenium. You will probably be using the official SeleniumHQ images unless you have a specific reason not to.
+###### Using Docker to start selenium server
+There are a wide range of docker images available which contain a browser with Selenium. 
+You will probably be using the official SeleniumHQ images unless you have a specific reason not to.
 
 The complete list of available SeleniumHQ images is available at https://hub.docker.com/u/selenium/.
 
@@ -774,30 +782,38 @@ For any test which uploads files, for example when interacting with the filepick
 
 An example usage is:
 
+``` bash
 docker run -d -p 4444:4444 -v `pwd`:`pwd` selenium/standalone-firefox:latest
+```
 
-Change config.php file
-In the Moodle config.php file you must change the $CFG->behat_wwwroot to an address that can be reached from within the docker image.
+###### Change config.php file
+In the Moodle `config.php` file you must change the `$CFG->behat_wwwroot` to an address that can be reached from within the docker image.
 
-You cannot use localhost or 127.0.0.1 as this will be the IP address of the docker container itself.
+You cannot use` localhost` or `127.0.0.1` as this will be the IP address of the docker container itself.
 
 On some more recent versions of Docker you can use http://host.docker.internal/, for example if my site is located at /sm on my development machine, I can set the following:
 
+``` php
 $CFG->behat_wwwroot = 'http://host.docker.internal/sm';
+```
 
-Manually configuring other browsers
-If you would prefer not to use the moodle-browser-config tool but still wish to specify different browsers then you can do so using the $CFG->behat_profiles array. Each key/value pair contains a profile name, and the configuration for that profile. For example:
+###### Manually configuring other browsers
+If you would prefer not to use the moodle-browser-config tool but still wish to specify different browsers 
+then you can do so using the $CFG->behat_profiles array. Each key/value pair contains a profile name, and 
+the configuration for that profile. For example:
 
+``` php
 $CFG->behat_profiles = [
         'chrome' => [
             'browser' => 'chrome',
             'tags' => '@javascript',
         ],
 ];
+```
 
 See alternative browsers for more details.
 
-Troubleshooting
+#### Troubleshooting
 Increasing timeouts
 You may see errors such as:
 
