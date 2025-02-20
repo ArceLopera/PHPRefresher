@@ -2435,6 +2435,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2593,6 +2600,13 @@
           <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
   </a>
   
 </li>
@@ -3340,56 +3354,81 @@ the configuration for that profile. For example:</p>
 </code></pre></div>
 <p>See alternative browsers for more details.</p>
 <h4 id="troubleshooting">Troubleshooting</h4>
-<p>Increasing timeouts
-You may see errors such as:</p>
-<p>Javascript code and/or AJAX requests are not ready after 10 seconds.
-   There is a Javascript error or the code is extremely slow.</p>
-<p>Sometimes this indicates a genuine problem with the code, but if you are using a slow computer, it may just mean that your browser did not finish generating parts of the UI before behat tried was finished.</p>
+<h5 id="increasing-timeouts">Increasing timeouts</h5>
+<p>You may see errors such as:</p>
+<div class="highlight"><pre><span></span><code>   Javascript code and/or AJAX requests are not ready after 10 seconds.
+   There is a Javascript error or the code is extremely slow.
+</code></pre></div>
+<p>Sometimes this indicates a genuine problem with the code, but if you are using a slow computer,
+it may just mean that your browser did not finish generating parts of the UI before behat tried was finished.</p>
 <p>If you find that this happens regularly on different scenarios then you may want to increase the timeout:</p>
-<p>$CFG-&gt;behat_increasetimeout = 2;</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_increasetimeout = 2;</span>
+</code></pre></div>
 <p>This will increase all the timeouts by a factor of 2; if that isn't sufficient, you could use 3.</p>
 <p>Increasing timeouts will make tests run a bit slower (because there are points where Behat waits up to a timeout to make sure something doesn't happen) so don't do this unless you need to.</p>
-<p>note
-This is usually an indicator that your development machine is not well tuned. A better option would be to find out where the bottleneck is. This is usually the database configuration.</p>
-<p>New step definitions or features are not executed
-If you are adding new tests or steps definitions update the tests list</p>
-<p>php admin/tool/behat/cli/util.php --enable</p>
-<p>tip
-For parallel runs, all options for initialising parallel runs are valid</p>
-<p>Tests are failing
-If you followed all the steps and you receive an unknown weird error probably your browser version is not compatible with the Selenium version you are running. Please refer to Working combinations to run the acceptance test.</p>
-<p>The tests are failing, and the error message is completely useless
-For example, it just says "Error writing to database" with no stack trace.</p>
-<p>Add -vv command-line option to get very verbose output.</p>
-<p>Errors during setup (before test are launched)
-Typical errors are:</p>
-<p>Behat requirement not satisfied: http://127.0.0.1/m/stable_master is not available, ensure you specified correct url and that the server is set up and started.
-init.php or util.php complain that "Unknown error 1 This is not a behat test site!". Delete the behat wwwroot (look in config.php for $CFG-&gt;behat_dataroot) and drop the behat DB tables (look in config.php for $CFG-&gt;behat_prefix). Then try again.
-Behat is configured but not enabled on this test site. In order to fix those errors please check that: the behat_dataroot has correct write permissions and that the $CFG-&gt;behat* variables are placed before the lib/setup.php include:
-require_once(<strong>DIR</strong> . '/lib/setup.php');</p>
-<p>Selenium server is not running
-Chrome specific
-If you are using chrome, you need to ensure that the driver matches the version of the installed chrome browser – which may change on OS updates/upgrades. Moodle or Selenium will not give the appropriate message – see MDL-67659. One solution is the one suggested in the issue and use Andrew Nicols' Chromedriver Wrapper which will ensure you have the appropriate driver before running the tests.</p>
-<p>Examples
-Quick setup and testing using moodle-docker
-This is a quick guide to help locally pass tests for your developments, before submitting them:</p>
+<p>This is usually an indicator that your development machine is not well tuned. 
+A better option would be to find out where the bottleneck is. This is usually the database configuration.</p>
+<h6 id="new-step-definitions-or-features-are-not-executed">New step definitions or features are not executed</h6>
+<p>If you are adding new tests or steps definitions update the tests list</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/util.php --enable
+</code></pre></div>
+<p>For parallel runs, all options for initialising parallel runs are valid</p>
+<h6 id="tests-are-failing">Tests are failing</h6>
+<p>If you followed all the steps and you receive an unknown weird error probably your browser version is not compatible
+ with the Selenium version you are running. Please refer to Working combinations to run the acceptance test.</p>
+<h6 id="the-tests-are-failing-and-the-error-message-is-completely-useless">The tests are failing, and the error message is completely useless</h6>
+<p>For example, it just says "Error writing to database" with no stack trace.</p>
+<p>Add <code>-vv</code> command-line option to get very verbose output.</p>
+<h6 id="errors-during-setup-before-test-are-launched">Errors during setup (before test are launched)</h6>
+<p>Typical errors are:</p>
+<ul>
+<li>Behat requirement not satisfied: http://127.0.0.1/m/stable_master is not available, ensure you specified correct url and that the server is set up and started.</li>
+<li><code>init.php</code> or <code>util.php</code> complain that <code>"Unknown error 1 This is not a behat test site!"</code>. Delete the behat <code>wwwroot</code> 
+(look in <code>config.php</code> for <code>$CFG-&gt;behat_dataroot</code>) and drop the behat DB tables (look in <code>config.php</code> for <code>$CFG-&gt;behat_prefix</code>). Then try again.</li>
+<li>Behat is configured but not enabled on this test site. In order to fix those errors please check that: 
+the <code>behat_dataroot</code> has correct write permissions and that the <code>$CFG-&gt;behat*</code> variables are placed before the 
+<code>lib/setup.php</code> include:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">require_once(__DIR__ . &#39;/lib/setup.php&#39;);   </span>
+</code></pre></div>
+<h6 id="selenium-server-is-not-running">Selenium server is not running</h6>
+<h6 id="chrome-specific"># Chrome specific</h6>
+<p>If you are using chrome, you need to ensure that the driver matches the version of the installed chrome browser 
+– which may change on OS updates/upgrades. Moodle or Selenium will not give the appropriate message – see MDL-67659. 
+One solution is the one suggested in the issue and use Andrew Nicols' Chromedriver Wrapper which will ensure you have 
+the appropriate driver before running the tests.</p>
+<h4 id="examples">Examples</h4>
+<h6 id="quick-setup-and-testing-using-moodle-docker">Quick setup and testing using moodle-docker</h6>
+<p>This is a quick guide to help locally pass tests for your developments, before submitting them:</p>
+<ol>
+<li>
 <p>Set up a default Moodle install using moodle-docker, with the database and Moodle version of your choice. See its README for more details. This will start some docker containers.</p>
+</li>
+<li>
 <p>Initialize behat to start testing with this command, from the webserver container:</p>
-<p>php admin/tool/behat/cli/init.php</p>
-<p>Run the behat test of your choice, from the webserver container. For instance:</p>
-<p>vendor/bin/behat --config /var/www/behatdata/behatrun/behat/behat.yml --tags tool_task</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<ol>
+<li>Run the behat test of your choice, from the webserver container. For instance:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /var/www/behatdata/behatrun/behat/behat.yml --tags tool_task
+</code></pre></div>
 <p>And you'll see something like:</p>
-<p>Moodle 4.0dev (Build: 20210507), 0b47ea0a44a092f9000729ca7b15fff23111538b
-Php: 7.3.26, mysqli: 5.7.21, OS: Linux 5.4.0-66-generic x86_64
-Run optional tests:</p>
-<p>Accessibility: No
-Server OS "Linux", Browser: "firefox"
-Started at 09-05-2021, 06:00
-...................................................................... 70
+<div class="highlight"><pre><span></span><code>Moodle <span class="m">4</span>.0dev <span class="o">(</span>Build: <span class="m">20210507</span><span class="o">)</span>, 0b47ea0a44a092f9000729ca7b15fff23111538b
+Php: <span class="m">7</span>.3.26, mysqli: <span class="m">5</span>.7.21, OS: Linux <span class="m">5</span>.4.0-66-generic x86_64
+Run optional tests:
+
+Accessibility: No
+Server OS <span class="s2">&quot;Linux&quot;</span>, Browser: <span class="s2">&quot;firefox&quot;</span>
+Started at <span class="m">09</span>-05-2021, <span class="m">06</span>:00
+...................................................................... <span class="m">70</span>
 ...............................
-12 scenarios (12 passed)
-101 steps (101 passed)
-2m53.27s (47.61Mb)</p>
+<span class="m">12</span> scenarios <span class="o">(</span><span class="m">12</span> passed<span class="o">)</span>
+<span class="m">101</span> steps <span class="o">(</span><span class="m">101</span> passed<span class="o">)</span>
+2m53.27s <span class="o">(</span><span class="m">47</span>.61Mb<span class="o">)</span>
+</code></pre></div>
 <h3 id="writing-effective-behat-steps-and-contexts"><strong>Writing Effective Behat Steps and Contexts</strong></h3>
 <h5 id="using-predefined-steps">Using Predefined Steps:</h5>
 <p>Moodle comes with a rich set of predefined Behat steps to interact with the UI. To see a list of available steps, run:
