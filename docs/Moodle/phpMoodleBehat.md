@@ -814,69 +814,92 @@ $CFG->behat_profiles = [
 See alternative browsers for more details.
 
 #### Troubleshooting
-Increasing timeouts
+##### Increasing timeouts
 You may see errors such as:
 
+```	
    Javascript code and/or AJAX requests are not ready after 10 seconds.
    There is a Javascript error or the code is extremely slow.
+```
 
-Sometimes this indicates a genuine problem with the code, but if you are using a slow computer, it may just mean that your browser did not finish generating parts of the UI before behat tried was finished.
+Sometimes this indicates a genuine problem with the code, but if you are using a slow computer,
+it may just mean that your browser did not finish generating parts of the UI before behat tried was finished.
 
 If you find that this happens regularly on different scenarios then you may want to increase the timeout:
 
+``` php
 $CFG->behat_increasetimeout = 2;
+```
 
 This will increase all the timeouts by a factor of 2; if that isn't sufficient, you could use 3.
 
 Increasing timeouts will make tests run a bit slower (because there are points where Behat waits up to a timeout to make sure something doesn't happen) so don't do this unless you need to.
 
-note
-This is usually an indicator that your development machine is not well tuned. A better option would be to find out where the bottleneck is. This is usually the database configuration.
+This is usually an indicator that your development machine is not well tuned. 
+A better option would be to find out where the bottleneck is. This is usually the database configuration.
 
-New step definitions or features are not executed
+###### New step definitions or features are not executed
 If you are adding new tests or steps definitions update the tests list
 
+``` bash
 php admin/tool/behat/cli/util.php --enable
+```
 
-tip
 For parallel runs, all options for initialising parallel runs are valid
 
-Tests are failing
-If you followed all the steps and you receive an unknown weird error probably your browser version is not compatible with the Selenium version you are running. Please refer to Working combinations to run the acceptance test.
+###### Tests are failing
+If you followed all the steps and you receive an unknown weird error probably your browser version is not compatible
+ with the Selenium version you are running. Please refer to Working combinations to run the acceptance test.
 
-The tests are failing, and the error message is completely useless
+###### The tests are failing, and the error message is completely useless
 For example, it just says "Error writing to database" with no stack trace.
 
-Add -vv command-line option to get very verbose output.
+Add `-vv` command-line option to get very verbose output.
 
-Errors during setup (before test are launched)
+###### Errors during setup (before test are launched)
 Typical errors are:
 
-Behat requirement not satisfied: http://127.0.0.1/m/stable_master is not available, ensure you specified correct url and that the server is set up and started.
-init.php or util.php complain that "Unknown error 1 This is not a behat test site!". Delete the behat wwwroot (look in config.php for $CFG->behat_dataroot) and drop the behat DB tables (look in config.php for $CFG->behat_prefix). Then try again.
-Behat is configured but not enabled on this test site. In order to fix those errors please check that: the behat_dataroot has correct write permissions and that the $CFG->behat* variables are placed before the lib/setup.php include:
-require_once(__DIR__ . '/lib/setup.php');
++ Behat requirement not satisfied: http://127.0.0.1/m/stable_master is not available, ensure you specified correct url and that the server is set up and started.
++ `init.php` or `util.php` complain that `"Unknown error 1 This is not a behat test site!"`. Delete the behat `wwwroot` 
+(look in `config.php` for `$CFG->behat_dataroot`) and drop the behat DB tables (look in `config.php` for `$CFG->behat_prefix`). Then try again.
++ Behat is configured but not enabled on this test site. In order to fix those errors please check that: 
+the `behat_dataroot` has correct write permissions and that the `$CFG->behat*` variables are placed before the 
+`lib/setup.php` include:
 
-Selenium server is not running
-Chrome specific
-If you are using chrome, you need to ensure that the driver matches the version of the installed chrome browser – which may change on OS updates/upgrades. Moodle or Selenium will not give the appropriate message – see MDL-67659. One solution is the one suggested in the issue and use Andrew Nicols' Chromedriver Wrapper which will ensure you have the appropriate driver before running the tests.
+``` php
+require_once(__DIR__ . '/lib/setup.php');   
+```
 
-Examples
-Quick setup and testing using moodle-docker
+###### Selenium server is not running
+
+####### Chrome specific
+
+If you are using chrome, you need to ensure that the driver matches the version of the installed chrome browser 
+– which may change on OS updates/upgrades. Moodle or Selenium will not give the appropriate message – see MDL-67659. 
+One solution is the one suggested in the issue and use Andrew Nicols' Chromedriver Wrapper which will ensure you have 
+the appropriate driver before running the tests.
+
+#### Examples
+###### Quick setup and testing using moodle-docker
 This is a quick guide to help locally pass tests for your developments, before submitting them:
 
-Set up a default Moodle install using moodle-docker, with the database and Moodle version of your choice. See its README for more details. This will start some docker containers.
+1. Set up a default Moodle install using moodle-docker, with the database and Moodle version of your choice. See its README for more details. This will start some docker containers.
 
-Initialize behat to start testing with this command, from the webserver container:
+2. Initialize behat to start testing with this command, from the webserver container:
 
+``` bash
 php admin/tool/behat/cli/init.php
+```
 
-Run the behat test of your choice, from the webserver container. For instance:
+3. Run the behat test of your choice, from the webserver container. For instance:
 
+``` bash
 vendor/bin/behat --config /var/www/behatdata/behatrun/behat/behat.yml --tags tool_task
+```
 
 And you'll see something like:
 
+``` bash
 Moodle 4.0dev (Build: 20210507), 0b47ea0a44a092f9000729ca7b15fff23111538b
 Php: 7.3.26, mysqli: 5.7.21, OS: Linux 5.4.0-66-generic x86_64
 Run optional tests:
@@ -889,6 +912,9 @@ Started at 09-05-2021, 06:00
 12 scenarios (12 passed)
 101 steps (101 passed)
 2m53.27s (47.61Mb)
+```
+
+
 
 ### **Writing Effective Behat Steps and Contexts**
 
