@@ -1188,15 +1188,18 @@ When I set the following fields to these values:
 
 ###### Writing your own steps
 Sometimes, you will need to set up data that is specific to your plugin, or perform steps that are specific to your plugin's UI. 
-In this case it may be necessary to write new step definitions, but the short version is that you define new steps as PHP methods with a special 
+In this case it may be necessary to [write new step definitions](#writing-new-acceptance-test-step-definitions), but the short version is that you define new steps as PHP methods with a special 
 annotation inside a class called behat_plugintype_plugingname inside tests/behat/behat_plugintype_plugingname.php in your plugin.
 
 As well as creating completely new steps, you can also extend some of the standard steps:
 
-Custom selectors (... in the "..." "...")
+**Custom selectors (... in the "..." "...")**
+
 There are a load of different steps which can refer to specific items on-screen, for example
 
+```Gherkin
 And I click on "Submit all and finish" "button" in the "Confirmation" "dialogue"
+```
 
 Here, 'button' and 'dialogue' are examples of selectors, and 'Submit all and finish' and 'Confirmation' are the locators which say which button or dialogue it is. When the test runs, this gets converted to an XPath expression, which is what the Behat system actually uses to locate the right element on the page.
 
@@ -1204,36 +1207,45 @@ You can define new types of selector (for example core_message > Message) by imp
 
 The reasons you might want to do this are:
 
-It makes your tests easier to read, which makes it easier to be sure that the test is testing the right thing, and being able to read the tests helps people understand your features.
-If the HTML structure you output changes, then you only need to update the selector definition in one place.
-Custom navigation targets (And I am on the "..." "..." page)
++ It makes your tests easier to read, which makes it easier to be sure that the test is testing the right thing, and being able to read the tests helps people understand your features.
++ If the HTML structure you output changes, then you only need to update the selector definition in one place.
+
+**Custom navigation targets (And I am on the "..." "..." page)**
+
 There are two related steps:
 
+```Gherkin
 Given I am on the "Quiz 1" "mod_quiz > View" page logged in as "manager"
 Given I am on the "C1" "Course" page
+```
 
 To make this work, in your plugin's behat_plugintype_plugingname class, you need to implement the functions resolve_page_url and resolve_page_instance_url methods. Once again, the detailed instructions about how this works are given in the PHPdoc comments on the base class.
 
 There are two reasons why it is good to use these steps:
 
-You are trying to test that your feature works, not Moodle navigation. In the pase we have had many occasions when Moodle navigation changed, and lots of tests failed and had to be fixed. It is better for your tests to start on your feature. (Except, perhaps, it might be appropriate to have one test for the expected method for users to navigate to your feature.)
-It is much faster because you load fewer irrelevant pages, and in particular the normal log in step leaves you on the Dashboard page, which is very slow to load.
-Custom entity generators (And the following "..." exist:)
++ You are trying to test that your feature works, not Moodle navigation. In the pase we have had many occasions when Moodle navigation changed, and lots of tests failed and had to be fixed. It is better for your tests to start on your feature. (Except, perhaps, it might be appropriate to have one test for the expected method for users to navigate to your feature.)
++ It is much faster because you load fewer irrelevant pages, and in particular the normal log in step leaves you on the Dashboard page, which is very slow to load.
+
+**Custom entity generators (And the following "..." exist:)**
+
 It is possible to extend the Given the following "entities" exist step to support your plugin's data generators. This avoids having to write new whole new behat step definitions for your plugin, and allows you to re-use data generators between PHPUnit and Behat tests.
 
 Full documentation of this process and all available options can be found in the PHPDoc for behat_generator_base. A core example of this can be found in /mod/quiz/tests/generator and quiz_reset.feature. What follows is a simple example.
 
 To begin, you need a generator in /*your*/*plugin*/tests/generator/lib.php. If you are generating a type of entity called "thing", your generator will need a method called create_thing, which accepts an object:
 
+```php
 class local_myplugin_generator extends component_generator_base {
     public function create_thing($thing) {
         global $DB;
         $DB->insert_record('local_myplugin_things', $thing);
     }
 }
+```
 
 Next, you will need to define your behat generator in /*your*/*plugin*/tests/generator/behat_*your_plugin*_generator.php, with the method get_createable_entitites() method:
 
+```php
 class behat_local_myplugin_generator extends behat_generator_base {
 
     protected function get_creatable_entities(): array {
@@ -1245,17 +1257,20 @@ class behat_local_myplugin_generator extends behat_generator_base {
         ];
     }
 }
+```
 
 The datagenerator value refers to the method in the generator class that we are calling, in this case create_thing(). The outer array key is the entity name we will use in the behat step, in this case Given the following "local_myplugin > things" exist.
 
 Now, in your behat test, you can have a step like this, which will generate 2 things, the first with the name "thing1" and the second with the name "thing2".
 
+```Gherkin
 Given the following "local_myplugin > things" exist:
   | name   |
   | thing1 |
   | thing2 |
+```
 
-Writing new acceptance test step definitions
+###### Writing new acceptance test step definitions
 As well as using the already existing steps , you can also define new steps.
 
 This is most easily learned by looking at the examples that are already in the code. In any plugin, for example qtype_ddwtos, look at the file tests/behat/behat_qtype_ddwtos.php inside that plugin. Steps are defined by a function that has a special @Given, @When or @Then annotation in the PHPdoc comment. This gives a regular expression. Any step in a *.feature file which matches that regular expression will be translated into a call to that function.
@@ -1264,12 +1279,14 @@ In terms of making the Behat test work, it does not matter whether you use @Give
 
 When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.
 
-Deprecating a step definition
+###### Deprecating a step definition
+
 Sometimes it may be desirable to remove a step definition, when it is no longer relevant due to interface changes, or when it is replaced by another step or named selector. As it is possible for other parts of the system to use any defined step, it is necessary to mark a step as deprecated before it is completely removed.
 
 To deprecate a step, create a new deprecated steps file in tests/behat/behat_plugin_name_deprecated.php with a class extending behat_deprecated_base. For example, from qbank_comments:
 
-tests/behat/qbank_comment_behat_deprecated.php
+``` php
+// tests/behat/qbank_comment_behat_deprecated.php
 <?php
 require_once(__DIR__ . '/../../../../../lib/behat/behat_deprecated_base.php');
 
@@ -1287,6 +1304,7 @@ class behat_qbank_comment_deprecated extends behat_deprecated_base {
         $this->execute('behat_general::should_exist', [$linkdata, 'qbank_comment > Comment count link']);
     }
 }
+```
 
 The deprecated step should call $this->deprecated_message() with a human readable example of what to do instead of using the deprecated step. It should then continue to perform its original behaviour (either using its original code, or by calling the step that replaces it) until it is completely removed.
 
@@ -1294,12 +1312,15 @@ If a deprecated step is called in a test, it will fail and output the deprecatio
 
 A deprecated step should be documented and removed in accordance with the normal deprecation process.
 
-Override behat core context for theme suite
+###### Override behat core context for theme suite
+
 To override behat step definitions so as to run behat with specified theme, you should create a contexts within /theme/{MYTHEME}/tests/behat/ with prefix behat_theme_{MYTHEME}_ and suffixed with the context being overridden. For example, if you want to override behat_mod_forum context, then you should create a class /theme/{MYTHEME}/tests/behat/mod_forum/behat_theme_{MYTHEME}_behat_mod_forum.php
 
-Disable behat context or features to run in theme suite
+###### Disable behat context or features to run in theme suite
+
 To disable specific contexts and features from being executed by a specific theme/suite you can create a /theme/{MYTHEME}/tests/behat/blacklist.json file with following format.
 
+```json
 {
   "contexts": [
     "behat_grade",
@@ -1310,15 +1331,16 @@ To disable specific contexts and features from being executed by a specific them
     "grade/tests/behat/grade_hidden_items.feature",
    ]
 }
+```
 
 The above will:
 
-disable the use of step_definitions from behat_grade and behat_navigation while running theme suite
+1. disable the use of step_definitions from behat_grade and behat_navigation while running theme suite
 disable running of scenarios in auth/tests/behat/login.feature and grade/tests/behat/grade_hidden_items.feature.
-Override core behat selectors
+2. Override core behat selectors
 To override behat selectors in specific theme, you should create a class behat_theme_{MYTHEME}_behat_selectors in /theme/{MYTHEME}/tests/behat/behat_theme_{MYTHEME}_behat_selectors.php extending behat_selectors.
 
-Good practice
+##### Good practice
 Test one thing per scenario
 The ideal that you should strive for, is that each scenario tests just one specific bit of functionality. Therefore, if one test fails, the scenario name should tell you exactly what the bug is. Also, any bug should cause just one scenario to fail, not lots of unrelated ones. If you can achieve this, then the idea is that it minimises the time from seeing a test fail to having fixed the bug that was detected. Of course, this ideal is not always achievable, but in my experience it is worth striving for.
 
