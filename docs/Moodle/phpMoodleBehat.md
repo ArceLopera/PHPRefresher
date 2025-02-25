@@ -988,27 +988,36 @@ But I should see "Enrol now"
 To initialize and run your tests, please follow the instructions of [Running acceptance test](#running-behat-tests).
 
 ##### Create your own tests
-Behat tests are located within the directory tests/behat of your plugin. The different tests are defined in files with the ending *.feature. First, you have to define the header of your test:
+Behat tests are located within the directory tests/behat of your plugin. The different tests are defined in files with the ending `*.feature`. 
+First, you have to define the header of your test:
 
+```gherkin
 @mod @mod_yourplugin @javascript
 Feature: Here comes a description of your user story.
+```
 
-The tags on top of the feature description can be used to select specific test cases when running the tests. The @javascript tag should only be used, if JavaScript is needed to execute your test. This is dependent on the step you will use in your definition. JavaScript tests are usually much slower than tests executed without JavaScript.
+The tags on top of the feature description can be used to select specific test cases when running the tests. 
+The` @javascript` tag should only be used, if JavaScript is needed to execute your test. This is dependent on the step you will use in your definition. 
+JavaScript tests are usually much slower than tests executed without JavaScript.
 
 Afterwards you can specify a scenario:
 
+```gherkin
 Scenario: Description of your scenario, which you want to test.
     When I log in as "student1"
     And I am on "Course 1" course homepage
+```
+
 
 Again you can define specific tags. Afterwards you write the steps, which should be executed during your test.
 
-tip
-Tags that are specified in your feature's header automatically apply to all scenarios defined in that feature, so it is not necessary to repeat them. In the above example, the scenario will use JavaScript, although it does not have the @javascript tag.
+Tags that are specified in your feature's header automatically apply to all scenarios defined in that feature, so it is not necessary to repeat them. 
+In the above example, the scenario will use JavaScript, although it does not have the `@javascript` tag.
 
-Multiple Scenarios
+###### Multiple Scenarios
 You can have an arbitrary amount of scenarios within a test. Please make sure they all belong to the same feature. If you have certain steps, which should be executed for every scenario of a feature, you can define them using a background:
 
+```gherkin
 Background:
     Given the following "courses" exist:
       | fullname | shortname | category | groupmode |
@@ -1016,88 +1025,100 @@ Background:
     And the following "users" exist:
       | username | firstname | lastname | email |
       | teacher1 | Theo | Teacher | teacher1@example.com |
+```
 
-This is usually used, to define the different Given steps.
 
-Use existing steps
+This is usually used, to define the different `Given` steps.
+
+###### Use existing steps
 There are different ways how to effectively browse the available existing steps:
 
-Moodle Administration
-Moodle offers within its administration menu under Site Administration > Development > Acceptance Testing a complete and searchable list of all available step definitions. However, make sure you installed the behat test site first!
+**Moodle Administration**
 
-IDE integration
+Moodle offers within its administration menu under Site Administration > Development > Acceptance Testing a complete and searchable list of all available 
+step definitions. However, make sure you installed the behat test site first!
+
+**IDE integration**
+
 In PhpStorm or IntelliJ you can install the behat extension. Then you get auto completions within feature files, which helps a lot during behat test development.
 
-Providing values to steps
+###### Providing values to steps
 Most of the steps requires values, there are methods to provide values to steps, the method depends on the step specification.
 
-A string/text is the most common case, the texts are wrapped between double quotes (" character) you have to replace the info about the expected value for your value; for example something like I press "BUTTON_STRING" should become I press "Save and return to course". If you want to add a string which contains a " character, you can escape it with a backslash \", for example I fill the "Name" field with "Alan alias \"the legend\"". You can identify this steps because they ends with _STRING
-A number some steps requires numbers as values, to be more specific an undetermined number of digits from 0 to 9 (Natural numbers + 0) you can identify them because the expected value info string ends with _NUMBER
-A table; is a relation between values, the most common use of it is to fill forms. The steps which requires tables are easily identifiable because they finish with : The steps description gives info about what the table columns must contain, for example Fills a moodle form with field/value data. Here you don't need to escape the double quotes if you want to include them as part of the value.
++ A string/text is the most common case, the texts are wrapped between double quotes (" character) you have to replace the info about the expected value for your value; for example something like I press "BUTTON_STRING" should become I press "Save and return to course". If you want to add a string which contains a " character, you can escape it with a backslash \", for example I fill the "Name" field with "Alan alias \"the legend\"". You can identify this steps because they ends with _STRING
++ A number some steps requires numbers as values, to be more specific an undetermined number of digits from 0 to 9 (Natural numbers + 0) you can identify them because the expected value info string ends with _NUMBER
++ A table; is a relation between values, the most common use of it is to fill forms. The steps which requires tables are easily identifiable because they finish with : The steps description gives info about what the table columns must contain, for example Fills a moodle form with field/value data. Here you don't need to escape the double quotes if you want to include them as part of the value.
 A PyString is a multiline string, most commonly used to fill out forms when a newline is required. Like steps with tables, steps which require PyStrings will end with ":"
-A field value There are many different field types, if an argument requires a field value the expected value will depend on the field type:
-Text-based fields: It expects the text. This includes textareas, input type text, input type password...
-Checkbox: It expects 1 to check and for checked and "" to uncheck or for unchecked
-Select: It expects the option text or the option value. In case you interact with a multi-select you should specify the options separating them with commas. For example: option1, option2, option3
-Radio: The text of the radio option
-A selector there are steps that can be used with different kinds of elements, for example I click on "User Name" "link" or I click on "User Name" "button" this is a closed list of elements, they always works together with another argument, where you specify the locator (eg. the link text in a link) In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:
-field - for searching a field by its id, name, value or label
-link - for searching a link by its href, id, title, img alt or value
-button - for searching a button by its name, id, value, img alt or title
-link_or_button - for searching for both, links and buttons
-select - for searching a select field by its id, name or label
-checkbox - for searching a checkbox by its id, name, or label
-radio - for searching a radio button by its id, name, or label
-file - for searching a file input by its id, name, or label
-optgroup - for searching optgroup by its label
-option - for searching an option by its content
-dialogue - for searching a dialogue with the specified header text
-filemanager - for searching a filemanager by it's id or label
-block - for searching a Moodle block by it's English name or it's frankenstyle name
-section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)
-activity - for searching for an activity module in a course list by it's title
-region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.
-table_row - for searching a table row which contains the specified text
-table - for searching a table by its id or caption
-icon - for searching an icon by its title
-fieldset - for searching a fieldset by it's id or legend
-css_element - for searching an element by its CSS selector
-xpath_element - for searching an element by its XPath
-A text selector similar to a selector but those are the elements that returns an area of the DOM, they are useful in steps following the format ... in the "Community finder" "block" where you are clicking or looking for some text inside a specific area. In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:
-dialogue - for searching a dialogue with the specified header text
-block - for searching a Moodle block by it's English name or it's frankenstyle name
-section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)
-activity - for searching for an activity module in a course list by it's title
-region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.
-table_row - for searching a table row which contains the specified text
-table - for searching a table by its id or caption
-fieldset - for searching a fieldset by it's id or legend
-list_item - for searching a list item which contains the specified text
-css_element - for searching an element by its CSS selector
-xpath_element - for searching an element by its XPath
-Checking table values
++ A field value There are many different field types, if an argument requires a field value the expected value will depend on the field type:
+    + Text-based fields: It expects the text. This includes textareas, input type text, input type password...
+    + Checkbox: It expects 1 to check and for checked and "" to uncheck or for unchecked
+    + Select: It expects the option text or the option value. In case you interact with a multi-select you should specify the options separating them with commas. For example: option1, option2, option3
+    + Radio: The text of the radio option
++ A selector there are steps that can be used with different kinds of elements, for example I click on "User Name" "link" or I click on "User Name" "button" this is a closed list of elements, they always works together with another argument, where you specify the locator (eg. the link text in a link) In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:
+    + field - for searching a field by its id, name, value or label
+    + link - for searching a link by its href, id, title, img alt or value
+    + button - for searching a button by its name, id, value, img alt or title
+    + link_or_button - for searching for both, links and buttons
+    + select - for searching a select field by its id, name or label
+    + checkbox - for searching a checkbox by its id, name, or label
+    + radio - for searching a radio button by its id, name, or label
+    + file - for searching a file input by its id, name, or label
+    + optgroup - for searching optgroup by its label
+    + option - for searching an option by its content
+    + dialogue - for searching a dialogue with the specified header text
+    + filemanager - for searching a filemanager by it's id or label
+    + block - for searching a Moodle block by it's English name or it's frankenstyle name
+    + section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)
+    + activity - for searching for an activity module in a course list by it's title
+    + region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.
+    + table_row - for searching a table row which contains the specified text
+    + table - for searching a table by its id or caption
+    + icon - for searching an icon by its title
+    + fieldset - for searching a fieldset by it's id or legend
+    + css_element - for searching an element by its CSS selector
+    + xpath_element - for searching an element by its XPath
++ A text selector similar to a selector but those are the elements that returns an area of the DOM, they are useful in steps following the format ... in the "Community finder" "block" where you are clicking or looking for some text inside a specific area. In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:
+    + dialogue - for searching a dialogue with the specified header text
+    + block - for searching a Moodle block by it's English name or it's frankenstyle name
+    + section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)
+    + activity - for searching for an activity module in a course list by it's title
+    + region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.
+    + table_row - for searching a table row which contains the specified text
+    + table - for searching a table by its id or caption
+    + fieldset - for searching a fieldset by it's id or legend
+    + list_item - for searching a list item which contains the specified text
+    + css_element - for searching an element by its CSS selector
+    + xpath_element - for searching an element by its XPath
+
+###### Checking table values
 You can check if specific value exists or not in a table row/column by using:
 
+```Gherkin
 Then "STRING_IN_ROW" row "COLUMN_HEADER" column of "TABLE_ID" table should contain "VALUE_TO_CHECK"
+```
 
 or
 
+```Gherkin
 Then the following should exist in the "TABLE_ID" table:
     | COLUMN_HEADER1 | COLUMN_HEADER2 |
     | VALUE_IN_ROW_1 | VALUE_IN_ROW_1 |
     | VALUE_IN_ROW_2 | VALUE_IN_ROW_2 |
+```
 
 Advanced use cases
 Most of the time the usage of existing step definitions is straight forward. However, there are some exceptions were it might get complicated. Some of them are listed here:
 
-Uploading files
+###### Uploading files
 Note than some tests requires files to be uploaded, in this case
 
-The I upload "FILEPATH_STRING" file to "FILEPICKER_FIELD_STRING" filepicker step can be used when located in the form page
-The file to upload should be included along with the Moodle codebase in COMPONENTNAME/tests/fixtures/*
-The file to upload is specified by it's path, which should be relative to the codebase root (lib/tests/fixtures/users.csv for example)
-/ should be used as directory separator and the file names can not include this / character as all of them would be converted to the OS-dependant directory separator to maintain the compatibility with Windows systems.
-The scenarios that includes files uploading should be tagged using the @_file_upload tag
++ The I upload "FILEPATH_STRING" file to "FILEPICKER_FIELD_STRING" filepicker step can be used when located in the form page
++ The file to upload should be included along with the Moodle codebase in COMPONENTNAME/tests/fixtures/*
++ The file to upload is specified by it's path, which should be relative to the codebase root (lib/tests/fixtures/users.csv for example)
++ / should be used as directory separator and the file names can not include this / character as all of them would be converted to the OS-dependant directory separator to maintain the compatibility with Windows systems.
++ The scenarios that includes files uploading should be tagged using the @_file_upload tag
+
+```Gherkin
 @editor @editor_atto @atto @atto_media @_file_upload
 Feature: Add media to Atto
   To write rich text - I need to add media.
@@ -1113,43 +1134,62 @@ Feature: Add media to Atto
     And I click on "Save changes" "button"
 ...
 
-Field groups
+```
+
+###### Field groups
 This section describes how you can use the step definitions
 
+```Gherkin
 When I set the following fields to these values:
+
 ...
 When I set the field "([^"]|\"*)" to "([^"]|\"*)"
+...
+```
 
-for field groups. Examples for such field groups are the duration field or the date_time_selector. These are not displayed as one single input field within the front-end but consist of multiple input fields within one row. You can access each single input field of a group using
+for field groups. Examples for such field groups are the duration field or the date_time_selector. 
+These are not displayed as one single input field within the front-end but consist of multiple input fields within one row. 
+You can access each single input field of a group using
 
+```
 identifierOfYourField[keyOfTheSpecificInput]
+```
 
 Examples would be:
 
+```Gherkin
 When I set the following fields to these values:
   | myDate[day]             |   21   |
   | myDate[month]           |   12   |
   | myDate[hour]            |   14   |
   | myDuration[number]      |   10   |
   | myDuration[unit]        | days   |
+```
 
-Human-readable and relative dates
-When testing plugins with deadlines, for instance for submissions, it is often necessary to set certain time values to dates relative to today. You can specify a relative time enclosed within two ## blocks. For example:
+###### Human-readable and relative dates
+When testing plugins with deadlines, for instance for submissions, it is often necessary to set certain time values to dates relative to today. 
+You can specify a relative time enclosed within two ## blocks. For example:
 
-## yesterday ##
-## 2 days ago ## You can use everything according to http://php.net/manual/en/datetime.formats.php.
++ `## yesterday ##`
++ `## 2 days ago ##` You can use everything according to http://php.net/manual/en/datetime.formats.php.
 Especially useful are the relative formats from: http://php.net/manual/en/datetime.formats.relative.php
 
 Additionally, you can specify a format you want the date to be returned into:
 
-## yesterday ## myformat ## These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:
++ `## yesterday ## myformat ##`  These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:
+
+```Gherkin
 When I set the following fields to these values:
   | myDate[day]   | ##yesterday##d## |
   | myDate[month] | ##yesterday##F## |
   | myDate[year]  | ##yesterday##Y## |
+```
 
-Writing your own steps
-Sometimes, you will need to set up data that is specific to your plugin, or perform steps that are specific to your plugin's UI. In this case it may be necessary to write new step definitions, but the short version is that you define new steps as PHP methods with a special annotation inside a class called behat_plugintype_plugingname inside tests/behat/behat_plugintype_plugingname.php in your plugin.
+
+###### Writing your own steps
+Sometimes, you will need to set up data that is specific to your plugin, or perform steps that are specific to your plugin's UI. 
+In this case it may be necessary to write new step definitions, but the short version is that you define new steps as PHP methods with a special 
+annotation inside a class called behat_plugintype_plugingname inside tests/behat/behat_plugintype_plugingname.php in your plugin.
 
 As well as creating completely new steps, you can also extend some of the standard steps:
 

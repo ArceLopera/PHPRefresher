@@ -2468,43 +2468,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#yesterday" class="md-nav__link">
-    yesterday
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-days-ago-you-can-use-everything-according-to-httpphpnetmanualendatetimeformatsphp" class="md-nav__link">
-    2 days ago ## You can use everything according to http://php.net/manual/en/datetime.formats.php.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yesterday-myformat-these-formats-can-be-used-as-outlined-in-httpphpnetmanualenfunctiondatephp-this-can-be-combined-with-the-field-groups" class="md-nav__link">
-    yesterday ## myformat ## These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:
-  </a>
-  
-    <nav class="md-nav" aria-label="yesterday ## myformat ## These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#advanced-behat-features-in-moodle" class="md-nav__link">
     Advanced Behat Features in Moodle
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-and-debugging" class="md-nav__link">
     Troubleshooting and Debugging
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2677,43 +2650,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#yesterday" class="md-nav__link">
-    yesterday
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-days-ago-you-can-use-everything-according-to-httpphpnetmanualendatetimeformatsphp" class="md-nav__link">
-    2 days ago ## You can use everything according to http://php.net/manual/en/datetime.formats.php.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yesterday-myformat-these-formats-can-be-used-as-outlined-in-httpphpnetmanualenfunctiondatephp-this-can-be-combined-with-the-field-groups" class="md-nav__link">
-    yesterday ## myformat ## These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:
-  </a>
-  
-    <nav class="md-nav" aria-label="yesterday ## myformat ## These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#advanced-behat-features-in-moodle" class="md-nav__link">
     Advanced Behat Features in Moodle
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting-and-debugging" class="md-nav__link">
     Troubleshooting and Debugging
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3570,136 +3516,170 @@ associated selector type, a few examples of it:</li>
 </code></pre></div>
 <p>To initialize and run your tests, please follow the instructions of <a href="#running-behat-tests">Running acceptance test</a>.</p>
 <h5 id="create-your-own-tests">Create your own tests</h5>
-<p>Behat tests are located within the directory tests/behat of your plugin. The different tests are defined in files with the ending *.feature. First, you have to define the header of your test:</p>
-<p>@mod @mod_yourplugin @javascript
-Feature: Here comes a description of your user story.</p>
-<p>The tags on top of the feature description can be used to select specific test cases when running the tests. The @javascript tag should only be used, if JavaScript is needed to execute your test. This is dependent on the step you will use in your definition. JavaScript tests are usually much slower than tests executed without JavaScript.</p>
+<p>Behat tests are located within the directory tests/behat of your plugin. The different tests are defined in files with the ending <code>*.feature</code>. 
+First, you have to define the header of your test:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">@mod</span><span class="nf"> </span><span class="nt">@mod_yourplugin</span><span class="nf"> </span><span class="nt">@javascript</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Here comes a description of your user story.</span>
+</code></pre></div>
+<p>The tags on top of the feature description can be used to select specific test cases when running the tests. 
+The<code>@javascript</code> tag should only be used, if JavaScript is needed to execute your test. This is dependent on the step you will use in your definition. 
+JavaScript tests are usually much slower than tests executed without JavaScript.</p>
 <p>Afterwards you can specify a scenario:</p>
-<p>Scenario: Description of your scenario, which you want to test.
-    When I log in as "student1"
-    And I am on "Course 1" course homepage</p>
+<div class="highlight"><pre><span></span><code><span class="k">Scenario:</span><span class="nf"> Description of your scenario, which you want to test.</span>
+<span class="k">    When </span><span class="nf">I log in as &quot;</span><span class="s">student1</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I am on &quot;</span><span class="s">Course 1</span><span class="nf">&quot; course homepage</span>
+</code></pre></div>
 <p>Again you can define specific tags. Afterwards you write the steps, which should be executed during your test.</p>
-<p>tip
-Tags that are specified in your feature's header automatically apply to all scenarios defined in that feature, so it is not necessary to repeat them. In the above example, the scenario will use JavaScript, although it does not have the @javascript tag.</p>
-<p>Multiple Scenarios
-You can have an arbitrary amount of scenarios within a test. Please make sure they all belong to the same feature. If you have certain steps, which should be executed for every scenario of a feature, you can define them using a background:</p>
-<p>Background:
-    Given the following "courses" exist:
-      | fullname | shortname | category | groupmode |
-      | Course 1 | C1        | 0        | 1         |
-    And the following "users" exist:
-      | username | firstname | lastname | email |
-      | teacher1 | Theo | Teacher | teacher1@example.com |</p>
-<p>This is usually used, to define the different Given steps.</p>
-<p>Use existing steps
-There are different ways how to effectively browse the available existing steps:</p>
-<p>Moodle Administration
-Moodle offers within its administration menu under Site Administration &gt; Development &gt; Acceptance Testing a complete and searchable list of all available step definitions. However, make sure you installed the behat test site first!</p>
-<p>IDE integration
-In PhpStorm or IntelliJ you can install the behat extension. Then you get auto completions within feature files, which helps a lot during behat test development.</p>
-<p>Providing values to steps
-Most of the steps requires values, there are methods to provide values to steps, the method depends on the step specification.</p>
-<p>A string/text is the most common case, the texts are wrapped between double quotes (" character) you have to replace the info about the expected value for your value; for example something like I press "BUTTON_STRING" should become I press "Save and return to course". If you want to add a string which contains a " character, you can escape it with a backslash \", for example I fill the "Name" field with "Alan alias \"the legend\"". You can identify this steps because they ends with _STRING
-A number some steps requires numbers as values, to be more specific an undetermined number of digits from 0 to 9 (Natural numbers + 0) you can identify them because the expected value info string ends with _NUMBER
-A table; is a relation between values, the most common use of it is to fill forms. The steps which requires tables are easily identifiable because they finish with : The steps description gives info about what the table columns must contain, for example Fills a moodle form with field/value data. Here you don't need to escape the double quotes if you want to include them as part of the value.
-A PyString is a multiline string, most commonly used to fill out forms when a newline is required. Like steps with tables, steps which require PyStrings will end with ":"
-A field value There are many different field types, if an argument requires a field value the expected value will depend on the field type:
-Text-based fields: It expects the text. This includes textareas, input type text, input type password...
-Checkbox: It expects 1 to check and for checked and "" to uncheck or for unchecked
-Select: It expects the option text or the option value. In case you interact with a multi-select you should specify the options separating them with commas. For example: option1, option2, option3
-Radio: The text of the radio option
-A selector there are steps that can be used with different kinds of elements, for example I click on "User Name" "link" or I click on "User Name" "button" this is a closed list of elements, they always works together with another argument, where you specify the locator (eg. the link text in a link) In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:
-field - for searching a field by its id, name, value or label
-link - for searching a link by its href, id, title, img alt or value
-button - for searching a button by its name, id, value, img alt or title
-link_or_button - for searching for both, links and buttons
-select - for searching a select field by its id, name or label
-checkbox - for searching a checkbox by its id, name, or label
-radio - for searching a radio button by its id, name, or label
-file - for searching a file input by its id, name, or label
-optgroup - for searching optgroup by its label
-option - for searching an option by its content
-dialogue - for searching a dialogue with the specified header text
-filemanager - for searching a filemanager by it's id or label
-block - for searching a Moodle block by it's English name or it's frankenstyle name
-section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)
-activity - for searching for an activity module in a course list by it's title
-region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.
-table_row - for searching a table row which contains the specified text
-table - for searching a table by its id or caption
-icon - for searching an icon by its title
-fieldset - for searching a fieldset by it's id or legend
-css_element - for searching an element by its CSS selector
-xpath_element - for searching an element by its XPath
-A text selector similar to a selector but those are the elements that returns an area of the DOM, they are useful in steps following the format ... in the "Community finder" "block" where you are clicking or looking for some text inside a specific area. In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:
-dialogue - for searching a dialogue with the specified header text
-block - for searching a Moodle block by it's English name or it's frankenstyle name
-section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)
-activity - for searching for an activity module in a course list by it's title
-region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.
-table_row - for searching a table row which contains the specified text
-table - for searching a table by its id or caption
-fieldset - for searching a fieldset by it's id or legend
-list_item - for searching a list item which contains the specified text
-css_element - for searching an element by its CSS selector
-xpath_element - for searching an element by its XPath
-Checking table values
-You can check if specific value exists or not in a table row/column by using:</p>
-<p>Then "STRING_IN_ROW" row "COLUMN_HEADER" column of "TABLE_ID" table should contain "VALUE_TO_CHECK"</p>
+<p>Tags that are specified in your feature's header automatically apply to all scenarios defined in that feature, so it is not necessary to repeat them. 
+In the above example, the scenario will use JavaScript, although it does not have the <code>@javascript</code> tag.</p>
+<h6 id="multiple-scenarios">Multiple Scenarios</h6>
+<p>You can have an arbitrary amount of scenarios within a test. Please make sure they all belong to the same feature. If you have certain steps, which should be executed for every scenario of a feature, you can define them using a background:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Background:</span><span class="nf"></span>
+<span class="k">    Given </span><span class="nf">the following &quot;</span><span class="s">courses</span><span class="nf">&quot; exist:</span>
+<span class="k">      |</span><span class="s"> fullname</span><span class="k"> |</span><span class="s"> shortname</span><span class="k"> |</span><span class="s"> category</span><span class="k"> |</span><span class="s"> groupmode</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Course 1</span><span class="k"> |</span><span class="s"> C1</span><span class="k">        |</span><span class="s"> 0</span><span class="k">        |</span><span class="s"> 1</span><span class="k">         |</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the following &quot;</span><span class="s">users</span><span class="nf">&quot; exist:</span>
+<span class="k">      |</span><span class="s"> username</span><span class="k"> |</span><span class="s"> firstname</span><span class="k"> |</span><span class="s"> lastname</span><span class="k"> |</span><span class="s"> email</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> teacher1</span><span class="k"> |</span><span class="s"> Theo</span><span class="k"> |</span><span class="s"> Teacher</span><span class="k"> |</span><span class="s"> teacher1@example.com</span><span class="k"> |</span>
+</code></pre></div>
+<p>This is usually used, to define the different <code>Given</code> steps.</p>
+<h6 id="use-existing-steps">Use existing steps</h6>
+<p>There are different ways how to effectively browse the available existing steps:</p>
+<p><strong>Moodle Administration</strong></p>
+<p>Moodle offers within its administration menu under Site Administration &gt; Development &gt; Acceptance Testing a complete and searchable list of all available 
+step definitions. However, make sure you installed the behat test site first!</p>
+<p><strong>IDE integration</strong></p>
+<p>In PhpStorm or IntelliJ you can install the behat extension. Then you get auto completions within feature files, which helps a lot during behat test development.</p>
+<h6 id="providing-values-to-steps">Providing values to steps</h6>
+<p>Most of the steps requires values, there are methods to provide values to steps, the method depends on the step specification.</p>
+<ul>
+<li>A string/text is the most common case, the texts are wrapped between double quotes (" character) you have to replace the info about the expected value for your value; for example something like I press "BUTTON_STRING" should become I press "Save and return to course". If you want to add a string which contains a " character, you can escape it with a backslash \", for example I fill the "Name" field with "Alan alias \"the legend\"". You can identify this steps because they ends with _STRING</li>
+<li>A number some steps requires numbers as values, to be more specific an undetermined number of digits from 0 to 9 (Natural numbers + 0) you can identify them because the expected value info string ends with _NUMBER</li>
+<li>A table; is a relation between values, the most common use of it is to fill forms. The steps which requires tables are easily identifiable because they finish with : The steps description gives info about what the table columns must contain, for example Fills a moodle form with field/value data. Here you don't need to escape the double quotes if you want to include them as part of the value.
+A PyString is a multiline string, most commonly used to fill out forms when a newline is required. Like steps with tables, steps which require PyStrings will end with ":"</li>
+<li>A field value There are many different field types, if an argument requires a field value the expected value will depend on the field type:<ul>
+<li>Text-based fields: It expects the text. This includes textareas, input type text, input type password...</li>
+<li>Checkbox: It expects 1 to check and for checked and "" to uncheck or for unchecked</li>
+<li>Select: It expects the option text or the option value. In case you interact with a multi-select you should specify the options separating them with commas. For example: option1, option2, option3</li>
+<li>Radio: The text of the radio option</li>
+</ul>
+</li>
+<li>A selector there are steps that can be used with different kinds of elements, for example I click on "User Name" "link" or I click on "User Name" "button" this is a closed list of elements, they always works together with another argument, where you specify the locator (eg. the link text in a link) In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:<ul>
+<li>field - for searching a field by its id, name, value or label</li>
+<li>link - for searching a link by its href, id, title, img alt or value</li>
+<li>button - for searching a button by its name, id, value, img alt or title</li>
+<li>link_or_button - for searching for both, links and buttons</li>
+<li>select - for searching a select field by its id, name or label</li>
+<li>checkbox - for searching a checkbox by its id, name, or label</li>
+<li>radio - for searching a radio button by its id, name, or label</li>
+<li>file - for searching a file input by its id, name, or label</li>
+<li>optgroup - for searching optgroup by its label</li>
+<li>option - for searching an option by its content</li>
+<li>dialogue - for searching a dialogue with the specified header text</li>
+<li>filemanager - for searching a filemanager by it's id or label</li>
+<li>block - for searching a Moodle block by it's English name or it's frankenstyle name</li>
+<li>section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)</li>
+<li>activity - for searching for an activity module in a course list by it's title</li>
+<li>region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.</li>
+<li>table_row - for searching a table row which contains the specified text</li>
+<li>table - for searching a table by its id or caption</li>
+<li>icon - for searching an icon by its title</li>
+<li>fieldset - for searching a fieldset by it's id or legend</li>
+<li>css_element - for searching an element by its CSS selector</li>
+<li>xpath_element - for searching an element by its XPath</li>
+</ul>
+</li>
+<li>A text selector similar to a selector but those are the elements that returns an area of the DOM, they are useful in steps following the format ... in the "Community finder" "block" where you are clicking or looking for some text inside a specific area. In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:<ul>
+<li>dialogue - for searching a dialogue with the specified header text</li>
+<li>block - for searching a Moodle block by it's English name or it's frankenstyle name</li>
+<li>section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)</li>
+<li>activity - for searching for an activity module in a course list by it's title</li>
+<li>region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.</li>
+<li>table_row - for searching a table row which contains the specified text</li>
+<li>table - for searching a table by its id or caption</li>
+<li>fieldset - for searching a fieldset by it's id or legend</li>
+<li>list_item - for searching a list item which contains the specified text</li>
+<li>css_element - for searching an element by its CSS selector</li>
+<li>xpath_element - for searching an element by its XPath</li>
+</ul>
+</li>
+</ul>
+<h6 id="checking-table-values">Checking table values</h6>
+<p>You can check if specific value exists or not in a table row/column by using:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Then </span><span class="nf">&quot;</span><span class="s">STRING_IN_ROW</span><span class="nf">&quot; row &quot;</span><span class="s">COLUMN_HEADER</span><span class="nf">&quot; column of &quot;</span><span class="s">TABLE_ID</span><span class="nf">&quot; table should contain &quot;</span><span class="s">VALUE_TO_CHECK</span><span class="nf">&quot;</span>
+</code></pre></div>
 <p>or</p>
-<p>Then the following should exist in the "TABLE_ID" table:
-    | COLUMN_HEADER1 | COLUMN_HEADER2 |
-    | VALUE_IN_ROW_1 | VALUE_IN_ROW_1 |
-    | VALUE_IN_ROW_2 | VALUE_IN_ROW_2 |</p>
+<div class="highlight"><pre><span></span><code><span class="k">Then </span><span class="nf">the following should exist in the &quot;</span><span class="s">TABLE_ID</span><span class="nf">&quot; table:</span>
+<span class="k">    |</span><span class="s"> COLUMN_HEADER1</span><span class="k"> |</span><span class="s"> COLUMN_HEADER2</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">    |</span><span class="s"> VALUE_IN_ROW_1</span><span class="k"> |</span><span class="s"> VALUE_IN_ROW_1</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">    |</span><span class="s"> VALUE_IN_ROW_2</span><span class="k"> |</span><span class="s"> VALUE_IN_ROW_2</span><span class="k"> |</span>
+</code></pre></div>
 <p>Advanced use cases
 Most of the time the usage of existing step definitions is straight forward. However, there are some exceptions were it might get complicated. Some of them are listed here:</p>
-<p>Uploading files
-Note than some tests requires files to be uploaded, in this case</p>
-<p>The I upload "FILEPATH_STRING" file to "FILEPICKER_FIELD_STRING" filepicker step can be used when located in the form page
-The file to upload should be included along with the Moodle codebase in COMPONENTNAME/tests/fixtures/*
-The file to upload is specified by it's path, which should be relative to the codebase root (lib/tests/fixtures/users.csv for example)
-/ should be used as directory separator and the file names can not include this / character as all of them would be converted to the OS-dependant directory separator to maintain the compatibility with Windows systems.
-The scenarios that includes files uploading should be tagged using the @_file_upload tag
-@editor @editor_atto @atto @atto_media @_file_upload
-Feature: Add media to Atto
-  To write rich text - I need to add media.</p>
-<p>Background:
-    Given I log in as "admin"
-    And I follow "Manage private files..."
-    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.webm" file to "Files" filemanager
-    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.mp4" file to "Files" filemanager
-    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.png" file to "Files" filemanager
-    And I upload "lib/editor/atto/tests/fixtures/pretty-good-en.vtt" file to "Files" filemanager
-    And I upload "lib/editor/atto/tests/fixtures/pretty-good-sv.vtt" file to "Files" filemanager
-    And I click on "Save changes" "button"
-...</p>
-<p>Field groups
-This section describes how you can use the step definitions</p>
-<p>When I set the following fields to these values:
-...
-When I set the field "([^"]|\"<em>)" to "([^"]|\"</em>)"</p>
-<p>for field groups. Examples for such field groups are the duration field or the date_time_selector. These are not displayed as one single input field within the front-end but consist of multiple input fields within one row. You can access each single input field of a group using</p>
-<p>identifierOfYourField[keyOfTheSpecificInput]</p>
+<h6 id="uploading-files">Uploading files</h6>
+<p>Note than some tests requires files to be uploaded, in this case</p>
+<ul>
+<li>The I upload "FILEPATH_STRING" file to "FILEPICKER_FIELD_STRING" filepicker step can be used when located in the form page</li>
+<li>The file to upload should be included along with the Moodle codebase in COMPONENTNAME/tests/fixtures/*</li>
+<li>The file to upload is specified by it's path, which should be relative to the codebase root (lib/tests/fixtures/users.csv for example)</li>
+<li>/ should be used as directory separator and the file names can not include this / character as all of them would be converted to the OS-dependant directory separator to maintain the compatibility with Windows systems.</li>
+<li>The scenarios that includes files uploading should be tagged using the @_file_upload tag</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">@editor</span><span class="nf"> </span><span class="nt">@editor_atto</span><span class="nf"> </span><span class="nt">@atto</span><span class="nf"> </span><span class="nt">@atto_media</span><span class="nf"> </span><span class="nt">@_file_upload</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Add media to Atto</span>
+<span class="nf">  To write rich text - I need to add media.</span>
+
+<span class="nf">  </span><span class="k">Background:</span><span class="nf"></span>
+<span class="k">    Given </span><span class="nf">I log in as &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I follow &quot;</span><span class="s">Manage private files...</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/moodle-logo.webm</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/moodle-logo.mp4</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/moodle-logo.png</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/pretty-good-en.vtt</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/pretty-good-sv.vtt</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I click on &quot;</span><span class="s">Save changes</span><span class="nf">&quot; &quot;</span><span class="s">button</span><span class="nf">&quot;</span>
+<span class="nf">...</span>
+</code></pre></div>
+<h6 id="field-groups">Field groups</h6>
+<p>This section describes how you can use the step definitions</p>
+<div class="highlight"><pre><span></span><code><span class="k">When </span><span class="nf">I set the following fields to these values:</span>
+
+<span class="nf">...</span>
+<span class="k">When </span><span class="nf">I set the field &quot;</span><span class="s">([^</span><span class="nf">&quot;]|\&quot;</span><span class="s">*)</span><span class="nf">&quot; to &quot;</span><span class="s">([^</span><span class="nf">&quot;]|\&quot;</span><span class="s">*)</span><span class="nf">&quot;</span>
+<span class="nf">...</span>
+</code></pre></div>
+<p>for field groups. Examples for such field groups are the duration field or the date_time_selector. 
+These are not displayed as one single input field within the front-end but consist of multiple input fields within one row. 
+You can access each single input field of a group using</p>
+<div class="highlight"><pre><span></span><code>identifierOfYourField[keyOfTheSpecificInput]
+</code></pre></div>
 <p>Examples would be:</p>
-<p>When I set the following fields to these values:
-  | myDate[day]             |   21   |
-  | myDate[month]           |   12   |
-  | myDate[hour]            |   14   |
-  | myDuration[number]      |   10   |
-  | myDuration[unit]        | days   |</p>
-<p>Human-readable and relative dates
-When testing plugins with deadlines, for instance for submissions, it is often necessary to set certain time values to dates relative to today. You can specify a relative time enclosed within two ## blocks. For example:</p>
-<h2 id="yesterday">yesterday</h2>
-<h2 id="2-days-ago-you-can-use-everything-according-to-httpphpnetmanualendatetimeformatsphp">2 days ago ## You can use everything according to http://php.net/manual/en/datetime.formats.php.</h2>
-<p>Especially useful are the relative formats from: http://php.net/manual/en/datetime.formats.relative.php</p>
+<div class="highlight"><pre><span></span><code><span class="k">When </span><span class="nf">I set the following fields to these values:</span>
+<span class="k">  |</span><span class="s"> myDate[day]</span><span class="k">             |</span><span class="s">   21</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[month]</span><span class="k">           |</span><span class="s">   12</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[hour]</span><span class="k">            |</span><span class="s">   14</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDuration[number]</span><span class="k">      |</span><span class="s">   10</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDuration[unit]</span><span class="k">        |</span><span class="s"> days</span><span class="k">   |</span>
+</code></pre></div>
+<h6 id="human-readable-and-relative-dates">Human-readable and relative dates</h6>
+<p>When testing plugins with deadlines, for instance for submissions, it is often necessary to set certain time values to dates relative to today. 
+You can specify a relative time enclosed within two ## blocks. For example:</p>
+<ul>
+<li><code>## yesterday ##</code></li>
+<li><code>## 2 days ago ##</code> You can use everything according to http://php.net/manual/en/datetime.formats.php.
+Especially useful are the relative formats from: http://php.net/manual/en/datetime.formats.relative.php</li>
+</ul>
 <p>Additionally, you can specify a format you want the date to be returned into:</p>
-<h2 id="yesterday-myformat-these-formats-can-be-used-as-outlined-in-httpphpnetmanualenfunctiondatephp-this-can-be-combined-with-the-field-groups">yesterday ## myformat ## These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:</h2>
-<p>When I set the following fields to these values:
-  | myDate[day]   | ##yesterday##d## |
-  | myDate[month] | ##yesterday##F## |
-  | myDate[year]  | ##yesterday##Y## |</p>
-<p>Writing your own steps
-Sometimes, you will need to set up data that is specific to your plugin, or perform steps that are specific to your plugin's UI. In this case it may be necessary to write new step definitions, but the short version is that you define new steps as PHP methods with a special annotation inside a class called behat_plugintype_plugingname inside tests/behat/behat_plugintype_plugingname.php in your plugin.</p>
+<ul>
+<li><code>## yesterday ## myformat ##</code>  These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">When </span><span class="nf">I set the following fields to these values:</span>
+<span class="k">  |</span><span class="s"> myDate[day]</span><span class="k">   |</span><span class="s"> ##yesterday##d##</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[month]</span><span class="k"> |</span><span class="s"> ##yesterday##F##</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[year]</span><span class="k">  |</span><span class="s"> ##yesterday##Y##</span><span class="k"> |</span>
+</code></pre></div>
+<h6 id="writing-your-own-steps">Writing your own steps</h6>
+<p>Sometimes, you will need to set up data that is specific to your plugin, or perform steps that are specific to your plugin's UI. In this case it may be necessary to write new step definitions, but the short version is that you define new steps as PHP methods with a special annotation inside a class called behat_plugintype_plugingname inside tests/behat/behat_plugintype_plugingname.php in your plugin.</p>
 <p>As well as creating completely new steps, you can also extend some of the standard steps:</p>
 <p>Custom selectors (... in the "..." "...")
 There are a load of different steps which can refer to specific items on-screen, for example</p>
