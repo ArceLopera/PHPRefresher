@@ -1341,25 +1341,37 @@ disable running of scenarios in auth/tests/behat/login.feature and grade/tests/b
 To override behat selectors in specific theme, you should create a class behat_theme_{MYTHEME}_behat_selectors in /theme/{MYTHEME}/tests/behat/behat_theme_{MYTHEME}_behat_selectors.php extending behat_selectors.
 
 ##### Good practice
-Test one thing per scenario
-The ideal that you should strive for, is that each scenario tests just one specific bit of functionality. Therefore, if one test fails, the scenario name should tell you exactly what the bug is. Also, any bug should cause just one scenario to fail, not lots of unrelated ones. If you can achieve this, then the idea is that it minimises the time from seeing a test fail to having fixed the bug that was detected. Of course, this ideal is not always achievable, but in my experience it is worth striving for.
 
-tip
+###### Test one thing per scenario
+The ideal that you should strive for, is that each scenario tests just one specific bit of functionality. 
+Therefore, if one test fails, the scenario name should tell you exactly what the bug is. 
+Also, any bug should cause just one scenario to fail, not lots of unrelated ones. 
+If you can achieve this, then the idea is that it minimises the time from seeing a test fail to having fixed the bug that was detected. 
+Of course, this ideal is not always achievable, but in my experience it is worth striving for.
+
 Note that this also implies that the Given, When and Then keywords should be used only once per scenario.
 
-Set-up (Given) should not use the UI
-The setup is not what you are really testing here. Therefore, it should be as quick and reliable as possible. The way to achieve this is with steps like And the following "Thing" exist: which directly insert the data into the database. If necessary, write extra steps for your plugin to setup the things you need.
+###### Set-up (Given) should not use the UI
+The setup is not what you are really testing here. 
+Therefore, it should be as quick and reliable as possible. 
+The way to achieve this is with steps like `And the following "Thing" exist:` which directly insert the data into the database. 
+If necessary, write extra steps for your plugin to setup the things you need.
 
-Don't use XPath or CSS selectors - fix your Accessibility bugs
-If, the only way you can identify something in the page that you want to manipulate is with a step like I set the field with xpath "//textarea['answer')](contains(@name,)" to "frog", then this is probably the sign that you have an Accessibility bug, because Behat accesses the page very like a screen-reader user would.
+###### Don't use XPath or CSS selectors - fix your Accessibility bugs
+If, the only way you can identify something in the page that you want to manipulate is with a step like 
+`I set the field with xpath "//textarea['answer')](contains(@name,)" to "frog"`, 
+then this is probably the sign that you have an Accessibility bug, because Behat accesses the page very like a screen-reader user would.
 
-You should be able to refer to things with steps like I set the field "Answer" to "frog"' or I click on "True" "radio" in the "First question" "question". If not, you should probably think about fixing the accessibility bug, rather than resorting to unreadable selectors in your Behat test.
+You should be able to refer to things with steps like `I set the field "Answer" to "frog"'` or `I click on "True" "radio" in the "First question" "question"`. 
+If not, you should probably think about fixing the accessibility bug, rather than resorting to unreadable selectors in your Behat test.
 
-When you define more steps in your plugin, make it clear they come from your plugin
-When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.
+###### When you define more steps in your plugin, make it clear they come from your plugin
+When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. 
+So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.
 
-PHPDoc comments to map scenario steps
-PHPDoc style comments before functions can be used to map to your .scenario files. Read more about this here https://behat.org/en/latest/user_guide/context/definitions.html
+###### PHPDoc comments to map scenario steps
+PHPDoc style comments before functions can be used to map to your .scenario files. 
+Read more about this here https://behat.org/en/latest/user_guide/context/definitions.html
 ---
 
 ### **Advanced Behat Features in Moodle**
