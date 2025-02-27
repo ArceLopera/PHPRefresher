@@ -2462,6 +2462,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#good-practice" class="md-nav__link">
+    Good practice
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2478,6 +2485,40 @@
   <a href="#troubleshooting-and-debugging" class="md-nav__link">
     Troubleshooting and Debugging
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browsers" class="md-nav__link">
+    Browsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Browsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drivers" class="md-nav__link">
+    Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-combinations-of-osbrowserselenium" class="md-nav__link">
+    Working combinations of OS+Browser+selenium
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2644,6 +2685,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#good-practice" class="md-nav__link">
+    Good practice
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2660,6 +2708,40 @@
   <a href="#troubleshooting-and-debugging" class="md-nav__link">
     Troubleshooting and Debugging
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browsers" class="md-nav__link">
+    Browsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Browsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drivers" class="md-nav__link">
+    Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-combinations-of-osbrowserselenium" class="md-nav__link">
+    Working combinations of OS+Browser+selenium
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3788,29 +3870,29 @@ disable running of scenarios in auth/tests/behat/login.feature and grade/tests/b
 <li>Override core behat selectors
 To override behat selectors in specific theme, you should create a class behat_theme_{MYTHEME}<em MYTHEME="MYTHEME">behat_selectors in /theme/{MYTHEME}/tests/behat/behat_theme</em>_behat_selectors.php extending behat_selectors.</li>
 </ol>
-<h5 id="good-practice">Good practice</h5>
-<h6 id="test-one-thing-per-scenario">Test one thing per scenario</h6>
+<h4 id="good-practice">Good practice</h4>
+<h5 id="test-one-thing-per-scenario">Test one thing per scenario</h5>
 <p>The ideal that you should strive for, is that each scenario tests just one specific bit of functionality. 
 Therefore, if one test fails, the scenario name should tell you exactly what the bug is. 
 Also, any bug should cause just one scenario to fail, not lots of unrelated ones. 
 If you can achieve this, then the idea is that it minimises the time from seeing a test fail to having fixed the bug that was detected. 
 Of course, this ideal is not always achievable, but in my experience it is worth striving for.</p>
 <p>Note that this also implies that the Given, When and Then keywords should be used only once per scenario.</p>
-<h6 id="set-up-given-should-not-use-the-ui">Set-up (Given) should not use the UI</h6>
+<h5 id="set-up-given-should-not-use-the-ui">Set-up (Given) should not use the UI</h5>
 <p>The setup is not what you are really testing here. 
 Therefore, it should be as quick and reliable as possible. 
 The way to achieve this is with steps like <code>And the following "Thing" exist:</code> which directly insert the data into the database. 
 If necessary, write extra steps for your plugin to setup the things you need.</p>
-<h6 id="dont-use-xpath-or-css-selectors-fix-your-accessibility-bugs">Don't use XPath or CSS selectors - fix your Accessibility bugs</h6>
+<h5 id="dont-use-xpath-or-css-selectors-fix-your-accessibility-bugs">Don't use XPath or CSS selectors - fix your Accessibility bugs</h5>
 <p>If, the only way you can identify something in the page that you want to manipulate is with a step like 
 <code>I set the field with xpath "//textarea['answer')](contains(@name,)" to "frog"</code>, 
 then this is probably the sign that you have an Accessibility bug, because Behat accesses the page very like a screen-reader user would.</p>
 <p>You should be able to refer to things with steps like <code>I set the field "Answer" to "frog"'</code> or <code>I click on "True" "radio" in the "First question" "question"</code>. 
 If not, you should probably think about fixing the accessibility bug, rather than resorting to unreadable selectors in your Behat test.</p>
-<h6 id="when-you-define-more-steps-in-your-plugin-make-it-clear-they-come-from-your-plugin">When you define more steps in your plugin, make it clear they come from your plugin</h6>
+<h5 id="when-you-define-more-steps-in-your-plugin-make-it-clear-they-come-from-your-plugin">When you define more steps in your plugin, make it clear they come from your plugin</h5>
 <p>When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. 
 So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.</p>
-<h6 id="phpdoc-comments-to-map-scenario-steps">PHPDoc comments to map scenario steps</h6>
+<h5 id="phpdoc-comments-to-map-scenario-steps">PHPDoc comments to map scenario steps</h5>
 <p>PHPDoc style comments before functions can be used to map to your .scenario files. 
 Read more about this here https://behat.org/en/latest/user_guide/context/definitions.html</p>
 <hr />
@@ -3847,9 +3929,110 @@ Read more about this here https://behat.org/en/latest/user_guide/context/definit
 <li><strong>Review Behat Configuration</strong>: Ensure <code>behat.yml</code> is correctly set up for your environment.</li>
 </ul>
 <hr />
-<p>Behat testing in Moodle ensures your code works well from a user's perspective. 
-By following best practices for writing and running Behat tests, and utilizing Moodle's 
-rich test ecosystem, you can enhance the quality and stability of your Moodle features.</p>
+<h3 id="browsers">Browsers</h3>
+<p>This page complements Behat providing info about how to run the acceptance tests suite in different browsers.</p>
+<h4 id="drivers">Drivers</h4>
+<p>There are Selenium drivers to run acceptance tests in different browsers:</p>
+<p>Firefox - https://code.google.com/p/selenium/wiki/FirefoxDriver
+Chrome - https://code.google.com/p/selenium/wiki/ChromeDriver
+Safari - https://code.google.com/p/selenium/wiki/SafariDriver
+Internet Explorer - https://code.google.com/p/selenium/wiki/InternetExplorerDriver
+Microsoft Edge - https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+PhantomJS (Webkit) - http://phantomjs.org/
+IPhone - https://code.google.com/p/selenium/wiki/IPhoneDriver
+Each driver should be downloaded and Selenium .jar should be started specifying the path to the driver; depending on the driver there could be other requirements.</p>
+<h5 id="phantomjs">PhantomJS</h5>
+<p>PhantomJS is different as it is a headless browser as it is quite faster than other drivers, it doesn't need a GUI to run and can execute JS, it doesn't even need to be used through Selenium (you can do it though, but it's not officially supported) and you can do it</p>
+<p>Download PhantomJS: http://phantomjs.org/download.html</p>
+<p>Run the following command</p>
+<div class="highlight"><pre><span></span><code>/path/to/your/phantomjs/bin/phantomjs --webdriver=4444
+</code></pre></div>
+<p>Note that 4444 is the default port used by Selenium, so you must specify another one if you want to run them together and specify the port in $CFG-&gt;behat_config.</p>
+<h5 id="examples_1">Examples</h5>
+<div class="highlight"><pre><span></span><code>// Selenium <span class="k">in</span> Linux <span class="o">(</span>firefox by default + chrome<span class="o">)</span>
+   java -jar /opt/selenium-server-standalone.jar -Dwebdriver.chrome.driver<span class="o">=</span>/opt/chromedriver
+
+// Selenium <span class="k">in</span> OSx <span class="o">(</span>firefox <span class="p">&amp;</span> safari by default + chrome<span class="o">)</span>
+  java -jar /Users/moodle/Downloads/selenium-server-standalone.jar -Dwebdriver.chrome.driver<span class="o">=</span>/Users/moodle/Downloads/chromedriver
+
+
+// Selenium <span class="k">in</span> Windows <span class="o">(</span>started using git bash<span class="o">)</span> <span class="o">(</span>firefox by default + chrome + internet explorer<span class="o">)</span>
+  java -jar /c/seleniumdrivers/selenium-server-standalone.jar -Dwebdriver.chrome.driver<span class="o">=</span>/c/seleniumdrivers/chromedriver.exe -Dwebdriver.ie.driver<span class="o">=</span>/c/seleniumdrivers/IEDriverServer.exe
+
+
+// PhantomJS
+  /path/to/your/phantomjs/bin/phantomjs --webdriver<span class="o">=</span><span class="m">4444</span>
+</code></pre></div>
+<h4 id="compatibility">Compatibility</h4>
+<p>Not all the drivers can execute all of Moodle's step definitions; we tagged the step definitions that are using features not supported by all browsers and also limitations that some browsers have; refer to the following table to know which browsers can run which tags:</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>File uploads (@_file_upload)</th>
+<th>Browser dialogs (@_alert)</th>
+<th>Switch window (@_switch_window)</th>
+<th>Switch frame (@_switch_iframe)</th>
+<th>Bugs in Chrome (@skip_chrome_zerosize)</th>
+<th>Bug in PhantomJS (@_bug_phantomjs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firefox</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No (see <a href="https://tracker.moodle.org/browse/MDL-71108">MDL-71108</a>)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Internet Explorer</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>PhantomJS</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Note that, to skip some tag, you must prepend it with the ~ (logical NOT) character. Examples:</p>
+<ul>
+<li>Run all tests but <code>@_alert&lt;/tt&gt; ones: &lt;tt&gt;--tags '~@_alert'</code></li>
+<li>Run all chrome tests but <code>@skip_chrome_zerosize</code> ones: <code>--tags '@javascript&amp;&amp;~@skip_chrome_zerosize'</code></li>
+</ul>
+<h4 id="working-combinations-of-osbrowserselenium">Working combinations of OS+Browser+selenium</h4>
+<p>As OS, Browsers and Selenium keeps updating, some combination of OS+Browser+Selenium will not work on specific moodle version.
+for information about this issue please see <a href="https://moodledev.io/general/development/tools/behat/browsers/supportedbrowsers">Working combinations of OS+Browser+selenium</a>.</p>
 
               
             </article>

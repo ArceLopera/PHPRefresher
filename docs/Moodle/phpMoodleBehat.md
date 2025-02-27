@@ -1340,9 +1340,9 @@ disable running of scenarios in auth/tests/behat/login.feature and grade/tests/b
 2. Override core behat selectors
 To override behat selectors in specific theme, you should create a class behat_theme_{MYTHEME}_behat_selectors in /theme/{MYTHEME}/tests/behat/behat_theme_{MYTHEME}_behat_selectors.php extending behat_selectors.
 
-##### Good practice
+#### Good practice
 
-###### Test one thing per scenario
+##### Test one thing per scenario
 The ideal that you should strive for, is that each scenario tests just one specific bit of functionality. 
 Therefore, if one test fails, the scenario name should tell you exactly what the bug is. 
 Also, any bug should cause just one scenario to fail, not lots of unrelated ones. 
@@ -1351,13 +1351,13 @@ Of course, this ideal is not always achievable, but in my experience it is worth
 
 Note that this also implies that the Given, When and Then keywords should be used only once per scenario.
 
-###### Set-up (Given) should not use the UI
+##### Set-up (Given) should not use the UI
 The setup is not what you are really testing here. 
 Therefore, it should be as quick and reliable as possible. 
 The way to achieve this is with steps like `And the following "Thing" exist:` which directly insert the data into the database. 
 If necessary, write extra steps for your plugin to setup the things you need.
 
-###### Don't use XPath or CSS selectors - fix your Accessibility bugs
+##### Don't use XPath or CSS selectors - fix your Accessibility bugs
 If, the only way you can identify something in the page that you want to manipulate is with a step like 
 `I set the field with xpath "//textarea['answer')](contains(@name,)" to "frog"`, 
 then this is probably the sign that you have an Accessibility bug, because Behat accesses the page very like a screen-reader user would.
@@ -1365,11 +1365,11 @@ then this is probably the sign that you have an Accessibility bug, because Behat
 You should be able to refer to things with steps like `I set the field "Answer" to "frog"'` or `I click on "True" "radio" in the "First question" "question"`. 
 If not, you should probably think about fixing the accessibility bug, rather than resorting to unreadable selectors in your Behat test.
 
-###### When you define more steps in your plugin, make it clear they come from your plugin
+##### When you define more steps in your plugin, make it clear they come from your plugin
 When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. 
 So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.
 
-###### PHPDoc comments to map scenario steps
+##### PHPDoc comments to map scenario steps
 PHPDoc style comments before functions can be used to map to your .scenario files. 
 Read more about this here https://behat.org/en/latest/user_guide/context/definitions.html
 ---
@@ -1416,7 +1416,70 @@ public function before_scenario($event) {
 
 ---
 
+### Browsers
+This page complements Behat providing info about how to run the acceptance tests suite in different browsers.
 
-Behat testing in Moodle ensures your code works well from a user's perspective. 
-By following best practices for writing and running Behat tests, and utilizing Moodle's 
-rich test ecosystem, you can enhance the quality and stability of your Moodle features.
+#### Drivers
+There are Selenium drivers to run acceptance tests in different browsers:
+
+Firefox - https://code.google.com/p/selenium/wiki/FirefoxDriver
+Chrome - https://code.google.com/p/selenium/wiki/ChromeDriver
+Safari - https://code.google.com/p/selenium/wiki/SafariDriver
+Internet Explorer - https://code.google.com/p/selenium/wiki/InternetExplorerDriver
+Microsoft Edge - https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+PhantomJS (Webkit) - http://phantomjs.org/
+IPhone - https://code.google.com/p/selenium/wiki/IPhoneDriver
+Each driver should be downloaded and Selenium .jar should be started specifying the path to the driver; depending on the driver there could be other requirements.
+
+##### PhantomJS
+PhantomJS is different as it is a headless browser as it is quite faster than other drivers, it doesn't need a GUI to run and can execute JS, it doesn't even need to be used through Selenium (you can do it though, but it's not officially supported) and you can do it
+
+Download PhantomJS: http://phantomjs.org/download.html
+
+Run the following command
+
+```
+/path/to/your/phantomjs/bin/phantomjs --webdriver=4444
+```
+
+
+Note that 4444 is the default port used by Selenium, so you must specify another one if you want to run them together and specify the port in $CFG->behat_config.
+
+##### Examples
+
+```bash
+// Selenium in Linux (firefox by default + chrome)
+   java -jar /opt/selenium-server-standalone.jar -Dwebdriver.chrome.driver=/opt/chromedriver
+
+// Selenium in OSx (firefox & safari by default + chrome)
+  java -jar /Users/moodle/Downloads/selenium-server-standalone.jar -Dwebdriver.chrome.driver=/Users/moodle/Downloads/chromedriver
+
+
+// Selenium in Windows (started using git bash) (firefox by default + chrome + internet explorer)
+  java -jar /c/seleniumdrivers/selenium-server-standalone.jar -Dwebdriver.chrome.driver=/c/seleniumdrivers/chromedriver.exe -Dwebdriver.ie.driver=/c/seleniumdrivers/IEDriverServer.exe
+
+
+// PhantomJS
+  /path/to/your/phantomjs/bin/phantomjs --webdriver=4444
+```
+
+#### Compatibility
+Not all the drivers can execute all of Moodle's step definitions; we tagged the step definitions that are using features not supported by all browsers and also limitations that some browsers have; refer to the following table to know which browsers can run which tags:
+
+| Browser            | File uploads (@_file_upload) | Browser dialogs (@_alert) | Switch window (@_switch_window) | Switch frame (@_switch_iframe) | Bugs in Chrome (@skip_chrome_zerosize) | Bug in PhantomJS (@_bug_phantomjs) |
+|--------------------|----------------------------|---------------------------|--------------------------------|--------------------------------|--------------------------------|----------------------------|
+| Firefox          | Yes                        | Yes                       | Yes                            | Yes                            | Yes                            | Yes                        |
+| Chrome           | Yes                        | Yes                       | Yes                            | Yes                            | No (see [MDL-71108](https://tracker.moodle.org/browse/MDL-71108))           | Yes                        |
+| Internet Explorer | Yes                        | Yes                       | No                             | Yes                            | Yes                            | Yes                        |
+| Safari           | Yes                        | No                        | No                             | Yes                            | Yes                            | Yes                        |
+| PhantomJS        | No                         | No                        | Yes                            | Yes                            | Yes                            | No                         |
+
+
+Note that, to skip some tag, you must prepend it with the ~ (logical NOT) character. Examples:
+
++ Run all tests but `@_alert</tt> ones: <tt>--tags '~@_alert'`
++ Run all chrome tests but `@skip_chrome_zerosize` ones: `--tags '@javascript&&~@skip_chrome_zerosize'`
+
+#### Working combinations of OS+Browser+selenium
+As OS, Browsers and Selenium keeps updating, some combination of OS+Browser+Selenium will not work on specific moodle version.
+for information about this issue please see [Working combinations of OS+Browser+selenium](https://moodledev.io/general/development/tools/behat/browsers/supportedbrowsers).
