@@ -200,6 +200,8 @@ nav:
             - Table API : Moodle/API/phpMoodleTable.md
             - Forms API: Moodle/API/phpMoodleForms.md
      - Security: Moodle/phpMoodleSecurity.md
-     - Unit Test: Moodle/phpMoodleToolsPHPUnit.md
-     - Behat: Moodle/phpMoodleBehat.md
+     - Test Frameworks:
+            - General : Moodle/phpMoodleTestFrameworks.md
+            - Unit Test: Moodle/phpMoodleToolsPHPUnit.md
+            - Behat: Moodle/phpMoodleBehat.md
 
