@@ -153,6 +153,6 @@ JBehave is a BDD framework for Java, offering a simple and intuitive syntax for 
 
 ##### [Behat](./phpMoodleBehat.md)
 
-Behat is a BDD framework for PHP, providing a clear and concise syntax to define and execute test scenarios. It supports multiple programming languages, including PHP, Python, and Ruby.
+Behat is a BDD framework for PHP, providing a clear and concise syntax to define and execute test scenarios. 
+It supports multiple programming languages, including PHP, Python, and Ruby.
 
-## Acceptance Test-Driven Development (ATDD)
