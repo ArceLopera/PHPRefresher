@@ -161,6 +161,7 @@ nav:
      - Ajax: Adv/phpAjax.md
      - Composer: Adv/phpcomposer.md
      - NodeJS: Adv/phpnpm.md
+     - Phpstan: Adv/phpstan.md
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
