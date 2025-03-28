@@ -766,6 +766,26 @@
     Conditional Assignment Operators
   </a>
   
+    <nav class="md-nav" aria-label="Conditional Assignment Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-an-if-statement-to-a-ternary-operator" class="md-nav__link">
+    Converting an if statement to a Ternary Operator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-coalescing-operator" class="md-nav__link">
+    Null Coalescing Operator (??)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2574,6 +2594,26 @@
     Conditional Assignment Operators
   </a>
   
+    <nav class="md-nav" aria-label="Conditional Assignment Operators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#converting-an-if-statement-to-a-ternary-operator" class="md-nav__link">
+    Converting an if statement to a Ternary Operator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null-coalescing-operator" class="md-nav__link">
+    Null Coalescing Operator (??)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2796,6 +2836,22 @@ inside the block. ($dwarves = 12 evaluates to 12, which is true.)</p>
 </tr>
 </tbody>
 </table>
+<p>The spaceship operator is used for comparing two expressions. It returns -1, 0 or 1 when $a is respectively less than, equal to, or greater than $b. Comparisons are performed according to PHP's usual type comparison rules.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Integers</span>
+<span class="x">echo 1 &lt;=&gt; 1; // 0</span>
+<span class="x">echo 1 &lt;=&gt; 2; // -1</span>
+<span class="x">echo 2 &lt;=&gt; 1; // 1</span>
+
+<span class="x">// Floats</span>
+<span class="x">echo 1.5 &lt;=&gt; 1.5; // 0</span>
+<span class="x">echo 1.5 &lt;=&gt; 2.5; // -1</span>
+<span class="x">echo 2.5 &lt;=&gt; 1.5; // 1</span>
+
+<span class="x">// Strings</span>
+<span class="x">echo &quot;a&quot; &lt;=&gt; &quot;a&quot;; // 0</span>
+<span class="x">echo &quot;a&quot; &lt;=&gt; &quot;b&quot;; // -1</span>
+<span class="x">echo &quot;b&quot; &lt;=&gt; &quot;a&quot;; // 1</span>
+</code></pre></div>
 <h2 id="php-increment-decrement-operators">PHP Increment / Decrement Operators</h2>
 <p>The PHP increment and decrement operators are used to increase or decrease the value of a variable.</p>
 <table>
@@ -2980,6 +3036,40 @@ inside the block. ($dwarves = 12 evaluates to 12, which is true.)</p>
 </tr>
 </tbody>
 </table>
+<h3 id="converting-an-if-statement-to-a-ternary-operator"><strong>Converting an <code>if</code> statement to a Ternary Operator</strong></h3>
+<p>A ternary operator is a shorthand for <code>if-else</code> statements in PHP. The syntax is:</p>
+<div class="highlight"><pre><span></span><code><span class="x">condition ? value_if_true : value_if_false;</span>
+</code></pre></div>
+<h5 id="example-standard-if-statement"><strong>Example: Standard <code>if</code> statement</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="x">$age = 20;</span>
+<span class="x">if ($age &gt;= 18) {</span>
+<span class="x">    $status = &quot;Adult&quot;;</span>
+<span class="x">} else {</span>
+<span class="x">    $status = &quot;Minor&quot;;</span>
+<span class="x">}</span>
+</code></pre></div>
+<h5 id="equivalent-ternary-operator"><strong>Equivalent Ternary Operator</strong></h5>
+<div class="highlight"><pre><span></span><code><span class="x">$age = 20;</span>
+<span class="x">$status = ($age &gt;= 18) ? &quot;Adult&quot; : &quot;Minor&quot;;</span>
+</code></pre></div>
+<hr />
+<h3 id="null-coalescing-operator"><strong>Null Coalescing Operator (<code>??</code>)</strong></h3>
+<p>The <strong>null coalescing operator (<code>??</code>)</strong> is used to check if a variable is set and not <code>null</code>. If the variable is set, it returns its value; otherwise, it returns a default value.
+It was added as a syntactic sugar for the common case of needing to use a ternary in conjunction with isset(). It returns its first operand if it exists and is not null; otherwise it returns its second operand.</p>
+<h5 id="example-using-isset"><strong>Example: Using <code>isset()</code></strong></h5>
+<div class="highlight"><pre><span></span><code><span class="x">// Fetches the value of $_GET[&#39;user&#39;] and returns &#39;Guest&#39;</span>
+<span class="x">// if it does not exist.</span>
+<span class="x">$username = isset($_GET[&#39;user&#39;]) ? $_GET[&#39;user&#39;] : &#39;Guest&#39;;</span>
+</code></pre></div>
+<h5 id="equivalent-with-null-coalescing-operator"><strong>Equivalent with Null Coalescing Operator (<code>??</code>)</strong></h5>
+<p><div class="highlight"><pre><span></span><code><span class="x">$username = $_GET[&#39;user&#39;] ?? &#39;Guest&#39;;</span>
+</code></pre></div>
+This is more concise and avoids explicitly using <code>isset()</code>. It ensures that if <code>$_GET['user']</code> is not set or is <code>null</code>, the default value <code>'Guest'</code> is used.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Coalescing can be chained: this will return the first</span>
+<span class="x">// defined value out of $_GET[&#39;user&#39;], $_POST[&#39;user&#39;], and</span>
+<span class="x">// &#39;Guest&#39;.</span>
+<span class="x">$username = $_GET[&#39;user&#39;] ?? $_POST[&#39;user&#39;] ?? &#39;Guest&#39;;</span>
+</code></pre></div>
 
               
             </article>

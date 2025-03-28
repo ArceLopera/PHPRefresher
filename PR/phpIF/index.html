@@ -808,6 +808,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#match-statement" class="md-nav__link">
+    match statement
+  </a>
+  
+    <nav class="md-nav" aria-label="match statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-match-vs-switch" class="md-nav__link">
+    Comparing match vs. switch
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing match vs. switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-switch-vs-match" class="md-nav__link">
+    When to Use switch vs. match
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2574,6 +2607,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#match-statement" class="md-nav__link">
+    match statement
+  </a>
+  
+    <nav class="md-nav" aria-label="match statement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparing-match-vs-switch" class="md-nav__link">
+    Comparing match vs. switch
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparing match vs. switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-switch-vs-match" class="md-nav__link">
+    When to Use switch vs. match
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2684,6 +2750,193 @@
 <span class="k">endswitch</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h2 id="match-statement">match statement</h2>
+<p>The <code>match</code> expression, introduced in PHP 8, is an improvement over the traditional <code>switch</code> statement. It provides a more concise syntax and has strict type comparison (<code>===</code>), making it safer to use in certain scenarios.  </p>
+<p><div class="highlight"><pre><span></span><code><span class="x">$result = match ($variable) {</span>
+<span class="x">    value1 =&gt; return_value1,</span>
+<span class="x">    value2 =&gt; return_value2,</span>
+<span class="x">    default =&gt; return_value_default,</span>
+<span class="x">};</span>
+</code></pre></div>
+- Each <strong>case</strong> is written as <code>value =&gt; return_value,</code>
+- <code>match</code> <strong>returns a value</strong>, so it's an expression, not just a control structure.
+- <strong>No <code>break</code> is needed</strong>, unlike <code>switch</code>.
+- <strong>Strict comparison (<code>===</code>)</strong> is used instead of loose comparison (<code>==</code>), reducing unexpected bugs.</p>
+<hr />
+<h3 id="comparing-match-vs-switch"><strong>Comparing <code>match</code> vs. <code>switch</code></strong></h3>
+<h5 id="example-1-basic-comparison"><strong>Example 1: Basic Comparison</strong></h5>
+<h6 id="using-switch">Using <code>switch</code></h6>
+<p><div class="highlight"><pre><span></span><code><span class="x">$color = &#39;red&#39;;</span>
+
+<span class="x">switch ($color) {</span>
+<span class="x">    case &#39;red&#39;:</span>
+<span class="x">        $message = &#39;Stop&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">    case &#39;yellow&#39;:</span>
+<span class="x">        $message = &#39;Slow down&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">    case &#39;green&#39;:</span>
+<span class="x">        $message = &#39;Go&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">    default:</span>
+<span class="x">        $message = &#39;Invalid color&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">}</span>
+
+<span class="x">echo $message; // Output: Stop</span>
+</code></pre></div>
+ <strong>Using <code>match</code> (More Concise)</strong>
+<div class="highlight"><pre><span></span><code><span class="x">$color = &#39;red&#39;;</span>
+
+<span class="x">$message = match ($color) {</span>
+<span class="x">    &#39;red&#39; =&gt; &#39;Stop&#39;,</span>
+<span class="x">    &#39;yellow&#39; =&gt; &#39;Slow down&#39;,</span>
+<span class="x">    &#39;green&#39; =&gt; &#39;Go&#39;,</span>
+<span class="x">    default =&gt; &#39;Invalid color&#39;,</span>
+<span class="x">};</span>
+
+<span class="x">echo $message; // Output: Stop</span>
+</code></pre></div></p>
+<h5 id="advantages-of-match"><strong>Advantages of <code>match</code></strong></h5>
+<ol>
+<li><strong>More Concise</strong> – No need for <code>break</code>.</li>
+<li><strong>Strict Comparison (<code>===</code>)</strong> – Prevents unintended type coercion.</li>
+<li><strong>Returns a Value Directly</strong> – No need to define <code>$message</code> beforehand.</li>
+</ol>
+<hr />
+<h5 id="example-2-handling-numeric-cases"><strong> Example 2: Handling Numeric Cases</strong></h5>
+<h6 id="switch-with-loose-comparison"><code>switch</code> with Loose Comparison (<code>==</code>)</h6>
+<div class="highlight"><pre><span></span><code><span class="x">$value = &#39;2&#39;;</span>
+
+<span class="x">switch ($value) {</span>
+<span class="x">    case 2: // This will match because switch uses loose comparison (==)</span>
+<span class="x">        $result = &#39;Matched as number 2&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">    default:</span>
+<span class="x">        $result = &#39;No match&#39;;</span>
+<span class="x">}</span>
+
+<span class="x">echo $result; // Output: Matched as number 2</span>
+</code></pre></div>
+<h5 id="match-with-strict-comparison"><code>match</code> with Strict Comparison (<code>===</code>)</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$value = &#39;2&#39;;</span>
+
+<span class="x">$result = match ($value) {</span>
+<span class="x">    2 =&gt; &#39;Matched as number 2&#39;, // This will NOT match because `match` uses strict comparison</span>
+<span class="x">    default =&gt; &#39;No match&#39;,</span>
+<span class="x">};</span>
+
+<span class="x">echo $result; // Output: No match</span>
+</code></pre></div>
+<h5 id="key-difference"><strong>⚠️ Key Difference</strong></h5>
+<ul>
+<li><code>switch</code> <strong>matches</strong> <code>'2'</code> with <code>2</code> because it uses <code>==</code> (loose comparison).</li>
+<li><code>match</code> <strong>does NOT match</strong> <code>'2'</code> with <code>2</code> because it uses <code>===</code> (strict comparison).</li>
+</ul>
+<hr />
+<h5 id="example-3-multiple-assignments-in-switch-vs-match"><strong> Example 3: Multiple Assignments in <code>switch</code> vs. <code>match</code></strong></h5>
+<p>If multiple variables need to be assigned in each case, <code>switch</code> is usually the better choice.</p>
+<h6 id="switch-with-multiple-assignments"><code>switch</code> with Multiple Assignments</h6>
+<div class="highlight"><pre><span></span><code><span class="x">$url = &#39;https://uat.net&#39;;</span>
+
+<span class="x">switch ($url) {</span>
+<span class="x">    case &#39;https://uat.net&#39;:</span>
+<span class="x">        $accesskeyid = &#39;url&#39;;</span>
+<span class="x">        $another_variable = &#39;value1&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">    case &#39;https://prod.net&#39;:</span>
+<span class="x">        $accesskeyid = &#39;prod&#39;;</span>
+<span class="x">        $another_variable = &#39;value2&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">    default:</span>
+<span class="x">        $accesskeyid = &#39;test&#39;;</span>
+<span class="x">        $another_variable = &#39;value3&#39;;</span>
+<span class="x">        break;</span>
+<span class="x">}</span>
+
+<span class="x">echo $accesskeyid; // Output: url</span>
+<span class="x">echo $another_variable; // Output: value1</span>
+</code></pre></div>
+<h6 id="alternative-approach-using-match"><strong>Alternative Approach Using <code>match</code></strong></h6>
+<p>Since <code>match</code> does not support multiple statements directly, a workaround is required:</p>
+<h6 id="option-1-returning-an-array"># <strong>Option 1: Returning an Array</strong></h6>
+<div class="highlight"><pre><span></span><code><span class="x">$config = match ($url) {</span>
+<span class="x">    &#39;https://uat.net&#39; =&gt; [&#39;accesskeyid&#39; =&gt; &#39;url&#39;, &#39;another_variable&#39; =&gt; &#39;value1&#39;],</span>
+<span class="x">    &#39;https://prod.net&#39; =&gt; [&#39;accesskeyid&#39; =&gt; &#39;prod&#39;, &#39;another_variable&#39; =&gt; &#39;value2&#39;],</span>
+<span class="x">    default =&gt; [&#39;accesskeyid&#39; =&gt; &#39;test&#39;, &#39;another_variable&#39; =&gt; &#39;value3&#39;],</span>
+<span class="x">};</span>
+
+<span class="x">$accesskeyid = $config[&#39;accesskeyid&#39;];</span>
+<span class="x">$another_variable = $config[&#39;another_variable&#39;];</span>
+
+<span class="x">echo $accesskeyid; // Output: url</span>
+<span class="x">echo $another_variable; // Output: value1</span>
+</code></pre></div>
+<h6 id="option-2-using-a-function"><strong>Option 2: Using a Function</strong></h6>
+<div class="highlight"><pre><span></span><code><span class="x">function getConfig($url) {</span>
+<span class="x">    return match ($url) {</span>
+<span class="x">        &#39;https://uat.net&#39; =&gt; [&#39;url&#39;, &#39;value1&#39;],</span>
+<span class="x">        &#39;https://prod.net&#39; =&gt; [&#39;prod&#39;, &#39;value2&#39;],</span>
+<span class="x">        default =&gt; [&#39;test&#39;, &#39;value3&#39;],</span>
+<span class="x">    };</span>
+<span class="x">}</span>
+
+<span class="x">[$accesskeyid, $another_variable] = getConfig($url);</span>
+
+<span class="x">echo $accesskeyid; // Output: url</span>
+<span class="x">echo $another_variable; // Output: value1</span>
+</code></pre></div>
+<h4 id="when-to-use-switch-vs-match"><strong>When to Use <code>switch</code> vs. <code>match</code></strong></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>switch</code></th>
+<th><code>match</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strict comparison (<code>===</code>)</strong></td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Returns a value</strong></td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+<tr>
+<td><strong>Requires <code>break</code></strong></td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td><strong>Multiple Statements Per Case</strong></td>
+<td>✅ Yes</td>
+<td>❌ No (Workaround needed)</td>
+</tr>
+<tr>
+<td><strong>Concise Syntax</strong></td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h5 id="summary"><strong>Summary</strong></h5>
+<h6 id="use-match-when"><strong>Use <code>match</code> when:</strong></h6>
+<ul>
+<li>You want a <strong>concise syntax</strong>.  </li>
+<li>You need <strong>strict comparison (<code>===</code>)</strong>.  </li>
+<li>You only need to return a <strong>single value</strong> per case.  </li>
+</ul>
+<h6 id="use-switch-when"><strong>Use <code>switch</code> when:</strong></h6>
+<ul>
+<li>You need <strong>loose comparison (<code>==</code>)</strong>.  </li>
+<li>You need to execute <strong>multiple statements per case</strong>.  </li>
+<li>You are using <strong>complex logic</strong> inside each case.  </li>
+</ul>
 
               
             </article>
