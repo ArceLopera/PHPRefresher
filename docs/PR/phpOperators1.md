@@ -84,6 +84,25 @@ The PHP comparison operators are used to compare two values (number or string):
 | `>=` | Greater than or equal to | $x >= $y | Returns true if $x is greater than or equal to $y |
 | `<=>` | Spaceship operator | $x <=> $y | Returns an integer less than, equal to, or greater than zero, depending on if $x is less than, equal to, or greater than $y.  Introduced in PHP 7. | 
 
+The spaceship operator is used for comparing two expressions. It returns -1, 0 or 1 when $a is respectively less than, equal to, or greater than $b. Comparisons are performed according to PHP's usual type comparison rules.
+
+```php
+// Integers
+echo 1 <=> 1; // 0
+echo 1 <=> 2; // -1
+echo 2 <=> 1; // 1
+
+// Floats
+echo 1.5 <=> 1.5; // 0
+echo 1.5 <=> 2.5; // -1
+echo 2.5 <=> 1.5; // 1
+ 
+// Strings
+echo "a" <=> "a"; // 0
+echo "a" <=> "b"; // -1
+echo "b" <=> "a"; // 1
+```
+
 ## PHP Increment / Decrement Operators
 
 The PHP increment and decrement operators are used to increase or decrease the value of a variable.
@@ -138,3 +157,53 @@ The PHP array operators are used to perform operations on arrays.
 | -------- | ----------- | ---- | ----- |
 | `?:` | Ternary Operator | $x = expr1 ? expr2 : expr3|	Returns the value of $x. The value of $x is expr2 if expr1 = TRUE. The value of $x is expr3 if expr1 = FALSE |
 |`??`|	Null coalescing	|$x = expr1 ?? expr2	|Returns the value of $x. The value of $x is expr1 if expr1 exists, and is not NULL. If expr1 does not exist, or is NULL, the value of $x is expr2. Introduced in PHP 7|
+
+### **Converting an `if` statement to a Ternary Operator**
+A ternary operator is a shorthand for `if-else` statements in PHP. The syntax is:
+
+```php
+condition ? value_if_true : value_if_false;
+```
+
+##### **Example: Standard `if` statement**
+```php
+$age = 20;
+if ($age >= 18) {
+    $status = "Adult";
+} else {
+    $status = "Minor";
+}
+```
+
+##### **Equivalent Ternary Operator**
+```php
+$age = 20;
+$status = ($age >= 18) ? "Adult" : "Minor";
+```
+
+---
+
+### **Null Coalescing Operator (`??`)**
+The **null coalescing operator (`??`)** is used to check if a variable is set and not `null`. If the variable is set, it returns its value; otherwise, it returns a default value.
+It was added as a syntactic sugar for the common case of needing to use a ternary in conjunction with isset(). It returns its first operand if it exists and is not null; otherwise it returns its second operand.
+
+##### **Example: Using `isset()`**
+
+```php
+// Fetches the value of $_GET['user'] and returns 'Guest'
+// if it does not exist.
+$username = isset($_GET['user']) ? $_GET['user'] : 'Guest';
+```
+
+##### **Equivalent with Null Coalescing Operator (`??`)**
+```php
+$username = $_GET['user'] ?? 'Guest';
+```
+This is more concise and avoids explicitly using `isset()`. It ensures that if `$_GET['user']` is not set or is `null`, the default value `'Guest'` is used.
+
+```php
+// Coalescing can be chained: this will return the first
+// defined value out of $_GET['user'], $_POST['user'], and
+// 'Guest'.
+$username = $_GET['user'] ?? $_POST['user'] ?? 'Guest';
+```
