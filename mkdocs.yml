@@ -162,6 +162,7 @@ nav:
      - Composer: Adv/phpcomposer.md
      - NodeJS: Adv/phpnpm.md
      - Phpstan: Adv/phpstan.md
+     - Adminer: Adv/phpAdminer.md
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
@@ -203,4 +204,5 @@ nav:
             - General : Moodle/phpMoodleTestFrameworks.md
             - Unit Test: Moodle/phpMoodleToolsPHPUnit.md
             - Behat: Moodle/phpMoodleBehat.md
+     - Debug : Moodle/phpMoodleDebug.md 
 
