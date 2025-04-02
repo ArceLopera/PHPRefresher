@@ -36,12 +36,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/Adv/phpMailhog/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Adv/phpMySql/</loc>
          <lastmod>2025-04-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Adv/phpTiller/</loc>
+         <lastmod>2025-04-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/Adv/phpVault/</loc>
          <lastmod>2025-04-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
