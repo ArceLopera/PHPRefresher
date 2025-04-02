@@ -1,0 +1,4286 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodleBehat/">
+      
+      <link rel="icon" href="../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Behat - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#set-up-behat-in-moodle" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Behat
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DS/phpArray/" class="md-tabs__link">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpArray/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpcomposer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpnpm/" class="md-nav__link">
+        NodeJS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpstan/" class="md-nav__link">
+        Phpstan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAdminer/" class="md-nav__link">
+        Adminer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpTiller/" class="md-nav__link">
+        Tiller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMailhog/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpVault/" class="md-nav__link">
+        Secrets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_3">
+          Question
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Question" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Question
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+        Question Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+        Question Format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+        Question Bank
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+        Question Behavior
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
+        Book Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_datafield/" class="md-nav__link">
+        Database Fields
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginFiles/" class="md-nav__link">
+        Common Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB Editor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTemplate/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleModal/" class="md-nav__link">
+        Modal Dialogues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" data-md-state="indeterminate" type="checkbox" id="__nav_7_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_9">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleServices/" class="md-nav__link">
+        External Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodlePersistent/" class="md-nav__link">
+        Persistent API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleExporter/" class="md-nav__link">
+        Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleQuestion/" class="md-nav__link">
+        Question API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleDM/" class="md-nav__link">
+        Data Manipulation API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleTag/" class="md-nav__link">
+        Tag API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleAccess/" class="md-nav__link">
+        Access API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleGroups/" class="md-nav__link">
+        Groups API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleMessage/" class="md-nav__link">
+        Messaging API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleCache/" class="md-nav__link">
+        Cache API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleTable/" class="md-nav__link">
+        Table API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleForms/" class="md-nav__link">
+        Forms API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleSecurity/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" type="checkbox" id="__nav_7_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_11">
+          Test Frameworks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Test Frameworks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_11">
+          <span class="md-nav__icon md-icon"></span>
+          Test Frameworks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTestFrameworks/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleToolsPHPUnit/" class="md-nav__link">
+        Unit Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Behat
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Behat
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-behat-in-moodle" class="md-nav__link">
+    Set Up Behat in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Up Behat in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-view-of-the-whole-process" class="md-nav__link">
+    Quick view of the whole process
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle-integration" class="md-nav__link">
+    Moodle integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Moodle integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-environment" class="md-nav__link">
+    Alternative environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-tool-acceptance-testing" class="md-nav__link">
+    Admin tool "Acceptance testing"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-steps-to-create-tests" class="md-nav__link">
+    Available steps to create tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behat-extension" class="md-nav__link">
+    Behat extension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-behat-tests" class="md-nav__link">
+    Running Behat Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-behat-tests" class="md-nav__link">
+    Write Behat Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Write Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-effective-behat-steps-and-contexts" class="md-nav__link">
+    Writing Effective Behat Steps and Contexts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-acceptance-tests" class="md-nav__link">
+    Writing acceptance tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#good-practice" class="md-nav__link">
+    Good practice
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-behat-features-in-moodle" class="md-nav__link">
+    Advanced Behat Features in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-debugging" class="md-nav__link">
+    Troubleshooting and Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browsers" class="md-nav__link">
+    Browsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Browsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drivers" class="md-nav__link">
+    Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-combinations-of-osbrowserselenium" class="md-nav__link">
+    Working combinations of OS+Browser+selenium
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleDebug/" class="md-nav__link">
+        Debug
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-behat-in-moodle" class="md-nav__link">
+    Set Up Behat in Moodle
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Up Behat in Moodle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-view-of-the-whole-process" class="md-nav__link">
+    Quick view of the whole process
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moodle-integration" class="md-nav__link">
+    Moodle integration
+  </a>
+  
+    <nav class="md-nav" aria-label="Moodle integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-environment" class="md-nav__link">
+    Alternative environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-tool-acceptance-testing" class="md-nav__link">
+    Admin tool "Acceptance testing"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-steps-to-create-tests" class="md-nav__link">
+    Available steps to create tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behat-extension" class="md-nav__link">
+    Behat extension
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-behat-tests" class="md-nav__link">
+    Running Behat Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-behat-tests" class="md-nav__link">
+    Write Behat Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Write Behat Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writing-effective-behat-steps-and-contexts" class="md-nav__link">
+    Writing Effective Behat Steps and Contexts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-acceptance-tests" class="md-nav__link">
+    Writing acceptance tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#good-practice" class="md-nav__link">
+    Good practice
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-behat-features-in-moodle" class="md-nav__link">
+    Advanced Behat Features in Moodle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-and-debugging" class="md-nav__link">
+    Troubleshooting and Debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browsers" class="md-nav__link">
+    Browsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Browsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drivers" class="md-nav__link">
+    Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compatibility" class="md-nav__link">
+    Compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-combinations-of-osbrowserselenium" class="md-nav__link">
+    Working combinations of OS+Browser+selenium
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Behat</h1>
+
+<p>Behat is a framework for behavior driven development (BDD) which allows us to specify Moodle functionalities (aka features) as a human-readable list of steps. It parses these steps to executable actions to simulate user interaction against headless browsers (without JavaScript support, only curl-kind requests) or user simulation tools like Selenium, which interacts with browsers and allows JavaScript events simulation.</p>
+<p>Behat is a behavior-driven development (BDD) tool used in Moodle for automated functional testing. 
+It simulates user interactions with the Moodle interface to ensure that features work as expected. 
+Behat tests use plain language syntax (Gherkin) and provide a way to verify Moodle's web interface 
+through predefined scenarios.</p>
+<hr />
+<h3 id="set-up-behat-in-moodle"><strong>Set Up Behat in Moodle</strong></h3>
+<h5 id="prerequisites">Prerequisites:</h5>
+<ul>
+<li>Ensure you have <strong>PHP</strong> installed with appropriate extensions like <code>xml</code>, <code>curl</code>, <code>json</code>.</li>
+<li>Ensure <strong>Selenium Server</strong> is set up if testing in real browsers (e.g., ChromeDriver or Geckodriver for Firefox).</li>
+<li>Use a <strong>dedicated testing database</strong> and <strong>data directory</strong> separate from your main Moodle site.</li>
+</ul>
+<h5 id="configure-moodle-for-behat">Configure Moodle for Behat:</h5>
+<p>Edit <code>config.php</code> to add Behat settings:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Behat configuration.</span>
+<span class="x">if (defined(&#39;BEHAT_SITE_RUNNING&#39;) &amp;&amp; BEHAT_SITE_RUNNING) {</span>
+<span class="x">    $CFG-&gt;behat_wwwroot = &#39;http://localhost/moodle&#39;;  // URL of your Moodle site.</span>
+<span class="x">    $CFG-&gt;behat_dataroot = &#39;/path/to/moodledata_behat&#39;;</span>
+<span class="x">    $CFG-&gt;behat_prefix = &#39;bht_&#39;;  // Optional prefix for tables in the test database.</span>
+<span class="x">}</span>
+</code></pre></div>
+<h5 id="create-and-initialize-behat-environment">Create and Initialize Behat Environment:</h5>
+<p>Run the following command to initialize the Behat environment:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>This command does the following:
+- Configures the test site.
+- Sets up the test database and data directory.
+- Generates Behat feature context files and settings.</p>
+<hr />
+<h4 id="quick-view-of-the-whole-process">Quick view of the whole process</h4>
+<h5 id="behat-cli-execution">Behat CLI execution</h5>
+<ul>
+<li>Behat application initialization and loading of arguments (features files to execute, output format...)</li>
+<li>Reads the Behat config file (browser servers are specified here)</li>
+<li>Extensions overrides management</li>
+<li>Gherkin initialization</li>
+</ul>
+<h5 id="features-files-selection">Features files selection</h5>
+<ul>
+<li>According to the arguments Gherkin looks for .features files</li>
+<li>It can use different features loaders (single file, a directory, the default directory...)</li>
+<li>The framework can be extended to allow multiple folders loading</li>
+</ul>
+<h5 id="features-parsing-gherkin">Features parsing (Gherkin)</h5>
+<ul>
+<li>Loops through the loaded features files looking for scenarios</li>
+<li>Gets the list of steps of each scenario</li>
+<li>There are hooks at different levels <a href="https://docs.behat.org/en/latest/user_guide/context/hooks.html">https://docs.behat.org/en/latest/user_guide/context/hooks.html</a></li>
+</ul>
+<h5 id="steps-parsing-gherkin">Steps parsing (Gherkin)</h5>
+<ul>
+<li>Gherkin looks in the available steps definitions for a regular expression that matches the step text</li>
+</ul>
+<h5 id="step-definition-execution">Step definition execution</h5>
+<ul>
+<li>The step definition code is executed</li>
+<li>Steps definitions most of the time uses the Mink component to communicate with the browser API sending requests like "click on that button" or "go to XXX page"</li>
+</ul>
+<h5 id="scenario-outcomes">Scenario outcomes</h5>
+<ul>
+<li>The scenario counts as failed if an exception is thrown when executing a step definition (for example trying to click a non-existing button)</li>
+<li>The scenario counts as passed if no exception is thrown during it's steps execution</li>
+</ul>
+<h5 id="finishing-cli-execution">Finishing CLI execution</h5>
+<ul>
+<li>A summary with all the scenario results is displayed</li>
+<li>It accepts different output formats (like JUnitXML) to it's execution in continuous integration systems (http://docs.behat.org/guides/6.cli.html#format-options)</li>
+</ul>
+<h3 id="moodle-integration">Moodle integration</h3>
+<p>It follows the approach chosen with PHPUnit:</p>
+<ul>
+<li>It comes disabled by default, Behat is not included within Moodle and it has to be installed separately with the 
+composer installer</li>
+<li>Moodle components (subsystems and plugins) can have a tests/behat/ folder</li>
+<li>The scenarios are executed in a test environment, the production database and dataroot are not affected by the tests 
+modifications</li>
+<li>The scenarios specifies their own fixtures and it's execution is isolated from other scenarios and features, resetting 
+the test database and the test dataroot before each scenario</li>
+<li>Moodle lists the features files and steps definitions of it's components in a behat.yml file, similar to the phpunit.xml 
+manifest</li>
+<li>A basic behat.yml.dist config file has been included</li>
+</ul>
+<h4 id="alternative-environment">Alternative environment</h4>
+<p>Acceptance testing implies interaction with the browser like real users does, so it requires the site to be accessible via URL. 
+The Moodle integration creates a new moodle site installation in parallel to the production one to run the tests in a sandbox 
+without affecting the production environment, switching the regular <code>$CFG-&gt;wwwroot</code>, <code>$CFG-&gt;dataroot</code> and <code>$CFG-&gt;prefix</code> to 
+alternatives, which should be only accessible from localhost or internal networks. Info about how to run the tests in 
+<a href="#running-behat-tests">Running acceptance test</a>.</p>
+<p>This default configuration is useful when developing in a local host, but to run the tests automatically with Jenkins, 
+GHA, Saucelabs... or other CI systems we provide a few extra settings.</p>
+<p>All the behat CLI utilities we provide within the Moodle codebase (admin/tool/behat/cli/*) are using 
+$CFG-&gt;behat_wwwroot, $CFG-&gt;behat_prefix and $CFG-&gt;behat_dataroot instead of $CFG-&gt;wwwroot, $CFG-&gt;prefix and $CFG-&gt;dataroot, 
+this scripts are self-contained, but as we are accessing through a browser, we also need to switch the whole Moodle instance 
+to test mode. For this there are two requirements:</p>
+<ul>
+<li>
+<p>Test mode is enabled if</p>
+<ul>
+<li><code>php admin/tool/behat/cli/init.php</code> or <code>php admin/tool/behat/cli/util.php --enable</code> has been executed</li>
+</ul>
+</li>
+<li>
+<p>Test mode is requested if</p>
+<ul>
+<li>The vendor/bin/behat command is running, we know it because we hook the Behat process before the tests begins to run, 
+and we require moodle config.php after it</li>
+<li>We set $CFG-&gt;behat_wwwroot in config.php and we are accessing the moodle instance through it The unique 
+$CFG-&gt;behat_wwwroot prevents unintended execution of acceptance tests on production sites.</li>
+</ul>
+</li>
+</ul>
+<h4 id="javascript">JavaScript</h4>
+<p>There are two types of tests depending on if their scenario needs a real browser capable of execute JavaScript or 
+if they can run in a headless browser.</p>
+<ul>
+<li>Tests with JavaScript requires interaction with a browser through a user simulation tool like Selenium or 
+ZombieJS to be executed; see http://mink.behat.org/#different-browsers-drivers for all available drivers</li>
+<li>Test that does not requires JavaScript are faster to run but can not test rich applications like Moodle</li>
+</ul>
+<p>In most of the cases a JavaScript test would be more appropriate because most of the users uses JavaScript-capable browsers, 
+non-JavaScript tests can be useful to ensure that Moodle maintains its functionality without JavaScript enabled and to ensure
+there are no big issues, regressions or exceptions in general.</p>
+<h4 id="admin-tool-acceptance-testing">Admin tool "Acceptance testing"</h4>
+<p>There is an admin tool to run and ease the creation of acceptance tests.</p>
+<ul>
+<li><strong>Web interface</strong>: The web interface allows you to list and filter the available steps definitions, 
+a non-technical user can use this interface to write new features (admin/tool/behat/index.php)</li>
+<li><strong>CLI</strong>: Command to enable and disable the test environment and to update the behat.yml file with the system 
+tests and steps definitions (admin/tool/behat/cli/util.php and admin/tool/behat/cli/init.php for a quick start)</li>
+</ul>
+<h4 id="available-steps-to-create-tests">Available steps to create tests</h4>
+<p>There are behat libraries with tons of steps definitions to run all sort of processes and interactions with the browser, some of them overlaps Moodle-specific libraries and tests writers can be confused not only by this also by the amount of steps and vague or too technical steps descriptions. Moodle provides a set of steps definitions written in a common format to make tests writers life easier. New steps definitions must follow these guidelines.</p>
+<h4 id="behat-extension">Behat extension</h4>
+<p>A new Behat extension (https://github.com/moodlehq/moodle-behat-extension) has been created to maintain Behat and its dependencies as they comes from upstream.</p>
+<p>The aim of this extension is:</p>
+<ul>
+<li>Load features from multiple folders (Moodle subsystems and plugins)</li>
+<li>Load steps definitions from multiple folders and add them as subcontexts (Moodle subsystems and plugins)</li>
+<li>Return the available steps definitions in a more human-readable format without regexps</li>
+<li>Look for exceptions, debugging() calls, PHP error messages and other backtraces in Moodle's output</li>
+<li>Extend the Selenium2 behat driver to allow extra Selenium capabilities</li>
+<li>Add a new formatter method based on progress (the moodle default one) to display info about the moodle site being tested All the other particularities of this integration can managed playing with different Behat config parameters.</li>
+</ul>
+<h3 id="running-behat-tests"><strong>Running Behat Tests</strong></h3>
+<h5 id="running-all-behat-tests">Running All Behat Tests:</h5>
+<p>To execute all Behat tests, run:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /path/to/moodle/behat/behat.yml
+</code></pre></div></p>
+<h5 id="running-specific-tests">Running Specific Tests:</h5>
+<p>Run a single <code>.feature</code> file:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /path/to/moodle/behat/behat.yml /path/to/example.feature
+</code></pre></div></p>
+<h5 id="running-tests-for-a-specific-tag">Running Tests for a Specific Tag:</h5>
+<p>Tags allow categorizing and filtering tests. For example:
+<div class="highlight"><pre><span></span><code><span class="nt">@quiz</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Create a quiz</span>
+</code></pre></div></p>
+<p>To run tests with the <code>@quiz</code> tag:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /path/to/moodle/behat/behat.yml --tags<span class="o">=</span>@quiz
+</code></pre></div></p>
+<h5 id="additional-options">Additional Options:</h5>
+<ul>
+<li><strong>Use Browser Profiles</strong>: <code>--profile=chrome</code> (if set up in your Behat configuration).</li>
+<li><strong>Debugging</strong>: Add <code>--format=pretty --out=std</code> for more detailed output.</li>
+</ul>
+<hr />
+<p>Moodle uses Behat, a php framework for automated functional testing, as part of a suite of testing tools.</p>
+<p>Behat takes a set of Features, Scenarios, and Steps, and uses these to step through actions and test results using a real web browser. This is possible thanks to a protocol implemented in most modern web browsers called Webdriver.</p>
+<h5 id="requirements">Requirements</h5>
+<ul>
+<li>
+<p>Any recent OS with supported version of Moodle installed</p>
+</li>
+<li>
+<p>A recent browser (Firefox and Chrome as standard, but other browsers are possible)</p>
+</li>
+<li>
+<p>The WebDriver implementation for your browser</p>
+</li>
+<li>
+<p>A recent version of Selenium (Optional, but recommended)</p>
+</li>
+<li>
+<p>A recent Java Runtime Environment (Required if using Selenium)</p>
+</li>
+</ul>
+<h5 id="recommended-extras">Recommended extras</h5>
+<p>Some extra software is also recommended for testing with Behat.</p>
+<h6 id="pre-configured-browser-profiles-moodle-browser-config">Pre-configured browser profiles: moodle-browser-config</h6>
+<p>Available for all supported versions of Moodle, the moodle-browser-config is a recommended inclusion for Behat. This configuration tooling provides a range of standard browser profiles for testing.</p>
+<p>In the future, the moodle-browser-config tool may be included as composer dependency to Moodle but this is currently not the case.</p>
+<h6 id="installation">Installation</h6>
+<p>Check out the moodle-browser-config repository:</p>
+<p>Clone the moodle-browser-config repository</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/andrewnicols/moodle-browser-config
+</code></pre></div>
+<p>Open your Moodle installation's <code>config.php</code> in your preferred editor, and require the tool's init.php:</p>
+<div class="highlight"><pre><span></span><code><span class="x">require_once(&#39;/path/to/your/git/dir/moodle-browser-config/init.php&#39;);</span>
+</code></pre></div>
+<h5 id="provided-profiles">Provided profiles</h5>
+<p>The full list of profiles which are included with moodle-browser-config are provided in its <a href="https://github.com/andrewnicols/moodle-browser-config">own documentation</a>.</p>
+<p>The following is a summary of the profiles that most users may be interested in.</p>
+<p>You can also provide your own custom profiles, including for remote services such as Browserstack, and Saucelabs, as well as for other browsers supporting the W3C Webdriver specification.</p>
+<p>Please note that Safari and Safaridriver are not currently supported as they do not meet the W3C WebDriver specification.</p>
+<table>
+<thead>
+<tr>
+<th>Profile name</th>
+<th>Description</th>
+<th>Uses Selenium?</th>
+<th>Displays GUI?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>firefox</td>
+<td>Use Firefox via Selenium</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessfirefox</td>
+<td>Use Firefox via Selenium, without displaying the GUI</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>geckodriver</td>
+<td>Use Firefox with Geckodriver directly</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessgeckodriver</td>
+<td>Use Firefox with Geckodriver directly, without displaying the GUI</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>chrome</td>
+<td>Use Chrome via Selenium</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlesschrome</td>
+<td>Use Chrome via Selenium, without displaying the GUI</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>chromedriver</td>
+<td>Use Chrome with Chromedriver directly</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlesschromedriver</td>
+<td>Use Chrome with Chromedriver directly, without displaying the GUI</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>edge</td>
+<td>Use Edge via Selenium</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessedge</td>
+<td>Use Edge via Selenium, without displaying the GUI</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>edgedriver</td>
+<td>Use Edge with Edgedriver directly</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>headlessedgedriver</td>
+<td>Use Edge with Edgedriver directly, without displaying the GUI</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h5 id="chromedriver-wrapper">chromedriver-wrapper</h5>
+<p>When using Google Chrome, you must use the correct version of the chromedriver browser driver for the version of Chrome that you use.</p>
+<p>Since Google Chrome automatically updates on a regular basis, you will need to regularly upgrade your driver to match the version of Chrome that you are using.</p>
+<p>To make this easier, a chromedriver-wrapper utility has been written. This inspects the version of Chrome that is in your path, and downloads the correct version of chromedriver for that version, before starting it.</p>
+<p>Installation instructions can be found at https://github.com/andrewnicols/chromedriver-wrapper.</p>
+<h4 id="getting-started">Getting started</h4>
+<h5 id="environment">Environment</h5>
+<p>These notes assume that you have already installed a supported Java Runtime Environment, and the moodle-browser-config tool.</p>
+<h5 id="setting-up-selenium">Setting up Selenium</h5>
+<p>Generally we recommend use of Selenium, though this is not a fixed requirement. You can use the browser's driver implementation directly but this is harder to setup for the first time.</p>
+<p>Selenium is written in Java, and requires a recent version of the JRE to run. Please ensure that you have this installed prior to starting.</p>
+<p>Since Moodle 3.9.5 / 3.10.2 / 3.11.0 Moodle will work with any modern version of Selenium. At time of writing that is 3.141.59, and 4.1.0.</p>
+<h6 id="warning">warning</h6>
+<p>There appears to be an issue with the version 4 jars - particularly in 4.1.0 that generates a "Could not open connection: Capability value must be set" error which appears to be an issue between Selenium and the MInkExtension for JavaScript tests - see https://githubmemory.com/repo/Behat/MinkExtension/activity for more information. The quick work around is to use the earlier version (3.141.59).</p>
+<ol>
+<li>
+<p>Download the Selenium Server (Grid) from https://www.selenium.dev/downloads/. This is a single JAR file, put it anywhere handy.</p>
+</li>
+<li>
+<p>Start Selenium</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">## Version 3.141.59</span>
+java -jar selenium-server-standalone-3.141.59.jar
+
+<span class="c1">## Version 4.0.0 and later</span>
+java -jar selenium-server-4.0.0-beta-3.jar standalone
+</code></pre></div>
+<p>You can optionally specify a number of settings, depending on the version of Selenium that you are using, including the port to run on. See the help for the version of Selenium that you are using.</p>
+<h5 id="setting-up-your-browsers">Setting up your browsers</h5>
+<p>Selenium is just an intelligent wrapper to start, and manage your browser sessions. It doesn't actually include any web browsers itself.</p>
+<p>Moodle HQ run all behat tests against both Firefox and Chrome multiple times per day. Other combinations, including Microsoft Edge, are also supported.</p>
+<p>To use Behat, you will need a recent version of your preferred browser, as well as a driver for that browser. The driver is responsible for communication between Selenium (or Moodle directly) and the browser.</p>
+<p>Both the browser, and its driver, must be placed inside your $PATH - this may be somewhere like /usr/bin, /usr/local/bin, or perhaps a user bin directory like ~/bin which is present in your $PATH</p>
+<h6 id="setting-up-chrome">Setting up Chrome</h6>
+<p>You can download Google Chrome from https://www.google.com.au/chrome.</p>
+<p>You will need the correct version of the chromedriver as per the documentation. Alternatively you can make use of the chromedriver-wrapper utility noted in the Recommended extras sections.</p>
+<p>Either the chromedriver binary must be in a directory in your $PATH, or the chromedriver-wrapper/bin folder must be in your $PATH.</p>
+<h6 id="setting-up-firefox">Setting up Firefox</h6>
+<p>You can download Mozilla Firefox from https://www.mozilla.org/en-US/firefox/new/.</p>
+<p>You will need the correct version of geckodriver as per the documentation.</p>
+<p>The geckodriver binary must be in a directory in your $PATH.</p>
+<h5 id="setting-up-moodle">Setting up Moodle</h5>
+<p>Create a new dataroot area for files especially for behat</p>
+<p>Set the following in your Moodle config.php:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_dataroot = &#39;/path/to/the/dataroot/you/created&#39;;</span>
+<span class="x">$CFG-&gt;behat_wwwroot = &#39;http://127.0.0.1/path/to/your/site&#39;;</span>
+<span class="x">$CFG-&gt;behat_prefix = &#39;beh_&#39;;</span>
+</code></pre></div>
+<p>We recommend that you also include the behat-browser-config if you have not done so already.</p>
+<div class="highlight"><pre><span></span><code><span class="x">require_once(&#39;/path/to/moodle-browser-config/init.php&#39;);</span>
+</code></pre></div>
+<h6 id="about-the-behat_wwwroot">About the behat_wwwroot</h6>
+<p>You will need to set the behat_wwwroot to your Moodle site, but it must use a different value to your $CFG-&gt;wwwroot.</p>
+<p>One common way to do this is to use 127.0.0.1 for behat, but localhost for standard use. Alternatively you can add an additional hostname in your /etc/hosts file and use this instead.</p>
+<p>If you use Docker, then you may be able to use host.docker.internal where your site is hosted on the docker host</p>
+<h5 id="configure-behat-for-moodle">Configure Behat for Moodle</h5>
+<p>After setting your configuration, you can simply initialise behat:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>This will install all required Composer dependencies, install a new Moodle site, and put configuration in place</p>
+<p>When it finishes it will give advice on how to run Behat.</p>
+<h5 id="run-behat-tests">Run Behat tests</h5>
+<p>Before running behat, ensure that your Selenium server is running.</p>
+<p>The easiest way to run behat, and test that everything works is by simply running it using the command provided when you initialised Behat. If you didn't make a note of it, you can just run the initialisation again.</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>This will give you a command which you can then run. This command will run every behat scenario, which will take a considerable amount of time. This command will look a bit like this:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml
+</code></pre></div>
+<p>To make this more useful you an combine it with flags, for example to only run certain tags or for a specific Behat Feature file, or Scenario.</p>
+<p>To run all features/scenarios which are tagged with mod_forum:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --tags<span class="o">=</span>@mod_forum
+</code></pre></div>
+<p>To run one specific feature file:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mod/forum/tests/behat/private_replies.feature
+</code></pre></div>
+<p>To run one specific scenario within a feature file:</p>
+<p>To run the Scenario on line 38 of the file
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/mod/forum/tests/behat/private_replies.feature:38
+</code></pre></div></p>
+<p>To run one specific scenario by name:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --name<span class="o">=</span><span class="s2">&quot;As a teacher I can see my own response&quot;</span>
+</code></pre></div>
+<p>See the upstream documentation on Behat, and Gherkin filters for more information.</p>
+<h6 id="running-using-a-different-browser">Running using a different browser</h6>
+<p>The default browser in Behat is Firefox. To specify a different browser profile, you can add the --profile argument. For example, to use Chrome in Headless mode:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile<span class="o">=</span>headlesschrome
+</code></pre></div>
+<p>If you are using the moodle-browser-config utility, then you can use any profile listed in moodle-browser-config. Otherwise you can write your own browser profile configuration.</p>
+<h5 id="advanced-testing">Advanced testing</h5>
+<h6 id="run-tests-without-selenium-chromedriver-geckodriver">Run tests without Selenium (chromedriver, geckodriver)</h6>
+<p>Historically, Behat required Selenium server, however browsers now make use of their own automation layer. For example, Firefox uses Geckodriver and Chrome uses Chromedriver. As a result the use of Selenium itself is now optional.</p>
+<p>The moodle-browser-config tool includes standard profiles to use these drivers directly and without the use of Selenium.</p>
+<p>To use the drivers directly, you must run the driver itself, for example to run chromedriver:</p>
+<div class="highlight"><pre><span></span><code>chromedriver
+</code></pre></div>
+<p>To run geckodriver:</p>
+<div class="highlight"><pre><span></span><code>geckodriver
+</code></pre></div>
+<p>The default ports for chromedriver and geckodriver are 9515 and 4444 respectively.
+geckodriver runs on port 4444 by default. You cannot geckodriver at the same time as selenium.</p>
+<p>After starting your preferred browser, you can then run behat and specify an alternative profile, for example:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile<span class="o">=</span>geckodriver
+</code></pre></div>
+<h6 id="headless-browsers">Headless browsers</h6>
+<p>There are a number of reasons that you may prefer to use a headless browser. It can be particularly helpful if you are running the tests on a remote system, for example over SSH, or if you do not want to be interrupted by browsers popping up on your machine.</p>
+<p>The following headless profiles are some of those provided in the moodle-browser-config tool as standard:</p>
+<ol>
+<li>
+<p><code>headlessfirefox</code> Use Firefox via Selenium, without displaying the GUI</p>
+</li>
+<li>
+<p><code>headlessgeckodriver</code> Use Firefox with Geckodriver directly, without displaying the GUI</p>
+</li>
+<li>
+<p><code>headlesschrome</code> Use Chrome via Selenium, without displaying the GUI</p>
+</li>
+<li>
+<p><code>headlesschromedriver</code> Use Chrome with Chromedriver directly, without displaying the GUI These can be provided to the --profile argument to behat:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --profile<span class="o">=</span>headlesschrome
+</code></pre></div>
+<h6 id="parallel-runs">Parallel runs</h6>
+<p>Out-of-the-box, Moodle will configure Behat to run a single Moodle installation with all tests run in series. This is great for developer use where you are running a single test. or a small suite of tests. However this can be quite slow. A lot of time is spent waiting in Behat for things to happen. This may be for a page to load, for additional content to load, or even explicit waits because some interactions must be deliberately slowed down. As a result, a system running behat will not have a particularly high load most of the time.</p>
+<p>If you want to run a large suite of tests then it is possible to take advantage of the relatively low resource consumption by running several behat runners in parallel. This is commonly referred to as a Parallel run.</p>
+<p>A parallel run of behat takes the same codebase and creates several installations rather than just a single Moodle installation. The behat Feature files are then grouped and allocated between each of the separate installations.</p>
+<p>To support this, each of the parallels runs needs its own:</p>
+<ul>
+<li>behat_wwwroot</li>
+<li>behat_dataroot</li>
+<li>database</li>
+</ul>
+<p>Rather than using an entirely separate database, the same database is actually used, but a different behat_prefix is used to prefix the table names in the database differently.</p>
+<h6 id="installation_1">Installation</h6>
+<p>The Behat initialisation command is responsible for preparing Moodle to run a standard run. You'll have used this before when installing for a standard run:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<p>The same command can be used to prepare Moodle for a parallel run by specifying the <code>--parallel</code> or <code>-j</code> parameter:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Below command will initialise moodle to run 3 parallel tests.</span>
+php admin/tool/behat/cli/init.php --parallel<span class="o">=</span><span class="m">3</span>
+</code></pre></div>
+<p>This can be combined with the <code>--add-core-features-to-theme</code> or <code>-a</code> flag to prepare Behat to run with all installed themes.</p>
+<p>A number of advanced options are also available but you are unlikely to need these:</p>
+<ol>
+<li><code>-m=&lt;number&gt;</code> or <code>--maxruns=&lt;number&gt;</code> Max parallel site which should be initialised at one time. If your system is slow, then you can initialise sites in chucks.</li>
+<li><code>--fromrun=&lt;number&gt;</code> Initialise site to run specified run from. Used for running acceptance tests on different vms</li>
+<li><code>--torun=&lt;number&gt;</code> Initialise site to run specified run till. Used for running acceptance tests on different vms</li>
+<li><code>-o</code> or <code>--optimize-runs</code> This option will split features with specified tags in all parallel runs, so they are executed first when parallel run gets executed. You can view details of all of these using the --help flag to admin/tool/behat/cli/init.php</li>
+</ol>
+<h6 id="running-parallel-tests">Running Parallel tests</h6>
+<p>You can use the Moodle behat runner to run all tests, including Standard runs. 
+It is an intelligent wrapper around the standard <code>./vendor/bin/behat</code> command which specifies the configuration file, 
+and other required features.</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/run.php
+</code></pre></div>
+<p>Many of the standard options and parameters that can be passed to <code>./vendor/bin/behat</code> can also be passed to the 
+Moodle runner, for example:</p>
+<ol>
+<li><code>--tags</code> Run tests which match the specified tags</li>
+<li><code>--name="Scenario name"</code> Run a test matching the supplied scenario name</li>
+<li><code>--feature="/path/to/test.feature"</code> Run a specific feature file.</li>
+<li><code>--suite</code> Features for specified theme will be executed. The runner also includes a number of custom parameters relating to parallel runs:</li>
+<li><code>--replace</code> Replace args string with run process number, useful for output and reruns.</li>
+<li><code>--fromrun</code> Execute run starting from (Used for parallel runs on different vms)</li>
+<li><code>--torun</code> Execute run till (Used for parallel runs on different vms) The --replace feature is particularly useful and can be used to replace a string in the command with the run number. This is useful when specifying output formats, and rerun files as noted below.</li>
+</ol>
+<p>The following example demonstrates how Behat might be initialised with three parallel runs, to run on all themes:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php --parallel<span class="o">=</span><span class="m">3</span> --add-core-features-to-theme
+</code></pre></div>
+<p>And then to run all tests matching the @tool_myplugin tag, against the classic theme:</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/run.php --tags<span class="o">=</span><span class="s2">&quot;@tool_myplugin&quot;</span> --suite<span class="o">=</span><span class="s2">&quot;classic&quot;</span>
+</code></pre></div>
+<h6 id="custom-parameters-for-parallel-runs">Custom parameters for parallel runs</h6>
+<p>You can set following custom config options for parallel runs via $CFG-&gt;behat_parallel_run. 
+It's an array of options where 1st array is for 1st run and so on.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_parallel_run = [</span>
+<span class="x">        [</span>
+<span class="x">           &#39;dbtype&#39; =&gt; &#39;mysqli&#39;,</span>
+<span class="x">           &#39;dblibrary&#39; =&gt; &#39;native&#39;,</span>
+<span class="x">           &#39;dbhost&#39; =&gt; &#39;localhost&#39;,</span>
+<span class="x">           &#39;dbname&#39; =&gt; &#39;moodletest&#39;,</span>
+<span class="x">           &#39;dbuser&#39; =&gt; &#39;moodle&#39;,</span>
+<span class="x">           &#39;dbpass&#39; =&gt; &#39;moodle&#39;,</span>
+<span class="x">           &#39;behat_prefix&#39; =&gt; &#39;mdl_&#39;,</span>
+<span class="x">           &#39;wd_host&#39; =&gt; &#39;http://127.0.0.1:4444/wd/hub&#39;,</span>
+<span class="x">           &#39;behat_wwwroot&#39; =&gt; &#39;http://127.0.0.1/moodle&#39;,</span>
+<span class="x">           &#39;behat_dataroot&#39; =&gt; &#39;/home/example/bht_moodledata&#39;</span>
+<span class="x">       ],</span>
+<span class="x">       // ...</span>
+<span class="x">],</span>
+</code></pre></div>
+<p>To set different selenium servers for parallel runs, you can use following.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_parallel_run = [</span>
+<span class="x">        [=&gt; &#39;http://127.0.0.1:4444/wd/hub&#39;](&#39;wd_host&#39;),</span>
+<span class="x">        [=&gt; &#39;http://127.0.0.1:4445/wd/hub&#39;](&#39;wd_host&#39;),</span>
+<span class="x">        [=&gt; &#39;http://127.0.0.1:4446/wd/hub&#39;](&#39;wd_host&#39;),</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>Running parallel (headless) runs on different selenium servers avoid random focus failures.</p>
+<h6 id="tests-filters">Tests filters</h6>
+<p>With the <code>--tags</code> or the <code>-name</code> Behat options you can filter which tests are going to run or which ones are going to be skipped. There are a few tags that you might be interested in:</p>
+<ul>
+<li><code>@javascript</code>: All the tests that runs in a browser using JavaScript; they require Selenium or the browser's own automation layer, as per <a href="#run-tests-without-selenium-chromedriver-geckodriver">Run tests without Selenium</a> to be running, otherwise an exception will be thrown.</li>
+<li><code>@_file_upload</code>: All the tests that involves file uploading or any OS feature that is not 100% part of the browser. They should only be executed when Selenium is running in the same machine where the tests are running.</li>
+<li><code>@_alert</code>: All the tests that involves JavaScript dialogs (alerts, confirms...) are using a feature that is OS-dependant and out of the browser scope, so they should be tag appropriately as not all browsers manage them properly.</li>
+<li><code>@_switch_window</code>: All the tests that are using the <code>I switch to "NAME"</code> window step should be tagged as not all browsers manage them properly.</li>
+<li><code>@_switch_iframe</code>: All the tests that are using the <code>I switch to "NAME"</code> iframe steps should be tagged as it is an advanced feature and some browsers may have problems dealing with them</li>
+<li><code>@_cross_browser</code>: All the tests that should run against multiple combinations of browsers + OS in a regular basis. The features that are sensitive to different combinations of OS and browsers should be tagged as @_cross_browser.</li>
+<li><code>@componentname</code>: Moodle features uses the Frankenstyle component name to tag the features according to the Moodle subsystem they belong to.</li>
+</ul>
+<h6 id="output-formats">Output formats</h6>
+<p>Behat is able to output in a number of different formats, and to different locations as required.</p>
+<p>This can be achieved by specifying the <code>--format</code>, and <code>--out</code> parameters when running behat, for example:</p>
+<div class="highlight"><pre><span></span><code>// Run behat, using the <span class="s1">&#39;pretty&#39;</span> format and outputting the value to /tmp/pretty.txt
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty.txt
+</code></pre></div>
+<p>It is also possible to output to multiple formats simultaneously by repeating the arguments, for example:</p>
+<p>Since Moodle 3.1 option for output is:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std
+</code></pre></div>
+<p>The following output formats are supported:</p>
+<ul>
+<li><code>progress</code>: Prints one character per step.</li>
+<li><code>pretty</code>: Prints the feature as is.</li>
+<li><code>junit</code>: Outputs the failures in JUnit compatible files.</li>
+<li><code>moodle_progress</code>: Prints Moodle branch information and dots for each step.</li>
+<li><code>moodle_list</code>: List all scenarios.</li>
+<li><code>moodle_stepcount</code>: List all features with total steps in each feature file. Used for parallel run.</li>
+<li><code>moodle_screenshot</code>: Take screenshot and core dump of each step. With following options you can dump either or both.</li>
+<li><code>--format-settings '{"formats": "image"}'</code>: will dump image only</li>
+<li><code>--format-settings '{"formats": "html"}'</code>: will dump html only.</li>
+<li><code>--format-settings '{"formats": "html,image"}'</code>: will dump both.</li>
+<li><code>--format-settings '{"formats": "html", "dir_permissions": "0777"}'</code> Note: If you want to see the failures immediately (rather than waiting ~3 hours for all the tests to finish) then either use the -v option to output a bit more information, or change the output format using --format. Format pretty (-f pretty) is sufficient for most cases, as it outputs each step outcomes in the command line making easier to see the progress.
+When working with parallel runs, you may wish to have an output for each run. If you were to specify a standard path for this then each of the parallel runs would overwrite the others file. The --replace option allows this to be handled:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>admin/tool/behat/cli/run.php <span class="se">\</span>
+        --replace<span class="o">=</span><span class="s2">&quot;{runprocess}&quot;</span> <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty_<span class="o">{</span>runprocess<span class="o">}</span>.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std
+</code></pre></div>
+<p>In this example, the --replace argument is provided with a value of {runprocess}. 
+Anywhere that {runprocess} appears in the command it will be replaced with the run number. 
+The above command will generate a set of commands like:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun1/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty_1.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std
+
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun2/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty_2.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std
+
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun3/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty_3.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std
+</code></pre></div>
+<h6 id="rerun-failed-scenarios">Rerun failed scenarios</h6>
+<p>With slow systems or parallel run you may experience see some random failures. 
+These may happen when your system is too slow, when it is too fast, or where a page depends on external dependencies.</p>
+<p>To help with this it is possible to rerun any failed scenarios using the --rerun option to Behat.</p>
+<p>The following example runs Behat with the rerun option:</p>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std <span class="se">\</span>
+        --rerun
+</code></pre></div>
+<p>If any single test fails then the command will return a non-zero exit code. Running the same command again will mean that only failed scenarios are run.</p>
+<p>For a parallel run it can be called as follows:</p>
+<div class="highlight"><pre><span></span><code>admin/tool/behat/cli/run.php <span class="se">\</span>
+        --replace<span class="o">=</span><span class="s2">&quot;{runprocess}&quot;</span> <span class="se">\</span>
+        --format<span class="o">=</span>pretty --out<span class="o">=</span>/tmp/pretty_<span class="o">{</span>runprocess<span class="o">}</span>.txt <span class="se">\</span>
+        --format<span class="o">=</span>moodle_progress --out<span class="o">=</span>std <span class="se">\</span>
+        --rerun
+</code></pre></div>
+<p>The Moodle behat runner also includes an <code>--auto-rerun</code> option which will automatically rerun failed scenarios exactly once.</p>
+<h6 id="running-behat-with-specified-theme">Running behat with specified theme</h6>
+<p>Behat can be run with any installed theme, but it must be initialised with the <code>-a</code> or <code>--add-core-features-to-theme</code> 
+option first.</p>
+<p>After configuring the theme can be specified using the <code>--suite</code> parameter.</p>
+<p>The default theme in Moodle (boost) has the suite name default.</p>
+<div class="highlight"><pre><span></span><code>// Initialise Behat <span class="k">for</span> all themes
+php admin/tool/behat/cli/init.php --add-core-features-to-theme
+
+
+// Run Behat against all initalised themes
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml
+
+// Run Behat against just the default theme when all themes were initialised
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite<span class="o">=</span>default
+
+
+// Run Behat against just the <span class="s1">&#39;classic&#39;</span> theme when all themes were initialised
+vendor/bin/behat --config /Users/nicols/Sites/moodles/sm/moodledata_behat/behatrun/behat/behat.yml --suite<span class="o">=</span>classic
+</code></pre></div>
+<h6 id="using-docker-to-start-selenium-server">Using Docker to start selenium server</h6>
+<p>There are a wide range of docker images available which contain a browser with Selenium. 
+You will probably be using the official SeleniumHQ images unless you have a specific reason not to.</p>
+<p>The complete list of available SeleniumHQ images is available at https://hub.docker.com/u/selenium/.</p>
+<p>Moodle uses the standalone version and any recent version with version 3.141.59 or higher is supported.</p>
+<p>For any test which uploads files, for example when interacting with the filepicker, you must also ensure that the Moodle directory is mounted as on your local filesystem.</p>
+<p>An example usage is:</p>
+<div class="highlight"><pre><span></span><code>docker run -d -p <span class="m">4444</span>:4444 -v <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:<span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span> selenium/standalone-firefox:latest
+</code></pre></div>
+<h6 id="change-configphp-file">Change config.php file</h6>
+<p>In the Moodle <code>config.php</code> file you must change the <code>$CFG-&gt;behat_wwwroot</code> to an address that can be reached from within the docker image.</p>
+<p>You cannot use<code>localhost</code> or <code>127.0.0.1</code> as this will be the IP address of the docker container itself.</p>
+<p>On some more recent versions of Docker you can use http://host.docker.internal/, for example if my site is located at /sm on my development machine, I can set the following:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_wwwroot = &#39;http://host.docker.internal/sm&#39;;</span>
+</code></pre></div>
+<h6 id="manually-configuring-other-browsers">Manually configuring other browsers</h6>
+<p>If you would prefer not to use the moodle-browser-config tool but still wish to specify different browsers 
+then you can do so using the $CFG-&gt;behat_profiles array. Each key/value pair contains a profile name, and 
+the configuration for that profile. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_profiles = [</span>
+<span class="x">        &#39;chrome&#39; =&gt; [</span>
+<span class="x">            &#39;browser&#39; =&gt; &#39;chrome&#39;,</span>
+<span class="x">            &#39;tags&#39; =&gt; &#39;@javascript&#39;,</span>
+<span class="x">        ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>See alternative browsers for more details.</p>
+<h4 id="troubleshooting">Troubleshooting</h4>
+<h5 id="increasing-timeouts">Increasing timeouts</h5>
+<p>You may see errors such as:</p>
+<div class="highlight"><pre><span></span><code>   Javascript code and/or AJAX requests are not ready after 10 seconds.
+   There is a Javascript error or the code is extremely slow.
+</code></pre></div>
+<p>Sometimes this indicates a genuine problem with the code, but if you are using a slow computer,
+it may just mean that your browser did not finish generating parts of the UI before behat tried was finished.</p>
+<p>If you find that this happens regularly on different scenarios then you may want to increase the timeout:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$CFG-&gt;behat_increasetimeout = 2;</span>
+</code></pre></div>
+<p>This will increase all the timeouts by a factor of 2; if that isn't sufficient, you could use 3.</p>
+<p>Increasing timeouts will make tests run a bit slower (because there are points where Behat waits up to a timeout to make sure something doesn't happen) so don't do this unless you need to.</p>
+<p>This is usually an indicator that your development machine is not well tuned. 
+A better option would be to find out where the bottleneck is. This is usually the database configuration.</p>
+<h6 id="new-step-definitions-or-features-are-not-executed">New step definitions or features are not executed</h6>
+<p>If you are adding new tests or steps definitions update the tests list</p>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/util.php --enable
+</code></pre></div>
+<p>For parallel runs, all options for initialising parallel runs are valid</p>
+<h6 id="tests-are-failing">Tests are failing</h6>
+<p>If you followed all the steps and you receive an unknown weird error probably your browser version is not compatible
+ with the Selenium version you are running. Please refer to Working combinations to run the acceptance test.</p>
+<h6 id="the-tests-are-failing-and-the-error-message-is-completely-useless">The tests are failing, and the error message is completely useless</h6>
+<p>For example, it just says "Error writing to database" with no stack trace.</p>
+<p>Add <code>-vv</code> command-line option to get very verbose output.</p>
+<h6 id="errors-during-setup-before-test-are-launched">Errors during setup (before test are launched)</h6>
+<p>Typical errors are:</p>
+<ul>
+<li>Behat requirement not satisfied: http://127.0.0.1/m/stable_master is not available, ensure you specified correct url and that the server is set up and started.</li>
+<li><code>init.php</code> or <code>util.php</code> complain that <code>"Unknown error 1 This is not a behat test site!"</code>. Delete the behat <code>wwwroot</code> 
+(look in <code>config.php</code> for <code>$CFG-&gt;behat_dataroot</code>) and drop the behat DB tables (look in <code>config.php</code> for <code>$CFG-&gt;behat_prefix</code>). Then try again.</li>
+<li>Behat is configured but not enabled on this test site. In order to fix those errors please check that: 
+the <code>behat_dataroot</code> has correct write permissions and that the <code>$CFG-&gt;behat*</code> variables are placed before the 
+<code>lib/setup.php</code> include:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="x">require_once(__DIR__ . &#39;/lib/setup.php&#39;);   </span>
+</code></pre></div>
+<h6 id="selenium-server-is-not-running">Selenium server is not running</h6>
+<h6 id="chrome-specific"># Chrome specific</h6>
+<p>If you are using chrome, you need to ensure that the driver matches the version of the installed chrome browser 
+– which may change on OS updates/upgrades. Moodle or Selenium will not give the appropriate message – see MDL-67659. 
+One solution is the one suggested in the issue and use Andrew Nicols' Chromedriver Wrapper which will ensure you have 
+the appropriate driver before running the tests.</p>
+<h4 id="examples">Examples</h4>
+<h6 id="quick-setup-and-testing-using-moodle-docker">Quick setup and testing using moodle-docker</h6>
+<p>This is a quick guide to help locally pass tests for your developments, before submitting them:</p>
+<ol>
+<li>
+<p>Set up a default Moodle install using moodle-docker, with the database and Moodle version of your choice. See its README for more details. This will start some docker containers.</p>
+</li>
+<li>
+<p>Initialize behat to start testing with this command, from the webserver container:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>php admin/tool/behat/cli/init.php
+</code></pre></div>
+<ol>
+<li>Run the behat test of your choice, from the webserver container. For instance:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --config /var/www/behatdata/behatrun/behat/behat.yml --tags tool_task
+</code></pre></div>
+<p>And you'll see something like:</p>
+<div class="highlight"><pre><span></span><code>Moodle <span class="m">4</span>.0dev <span class="o">(</span>Build: <span class="m">20210507</span><span class="o">)</span>, 0b47ea0a44a092f9000729ca7b15fff23111538b
+Php: <span class="m">7</span>.3.26, mysqli: <span class="m">5</span>.7.21, OS: Linux <span class="m">5</span>.4.0-66-generic x86_64
+Run optional tests:
+
+Accessibility: No
+Server OS <span class="s2">&quot;Linux&quot;</span>, Browser: <span class="s2">&quot;firefox&quot;</span>
+Started at <span class="m">09</span>-05-2021, <span class="m">06</span>:00
+...................................................................... <span class="m">70</span>
+...............................
+<span class="m">12</span> scenarios <span class="o">(</span><span class="m">12</span> passed<span class="o">)</span>
+<span class="m">101</span> steps <span class="o">(</span><span class="m">101</span> passed<span class="o">)</span>
+2m53.27s <span class="o">(</span><span class="m">47</span>.61Mb<span class="o">)</span>
+</code></pre></div>
+<h3 id="write-behat-tests"><strong>Write Behat Tests</strong></h3>
+<p>Behat tests use the <strong>Gherkin language</strong> to describe scenarios. 
+Tests are stored as <code>.feature</code> files within the <code>tests/behat/</code> directories of core 
+components or plugins.</p>
+<h5 id="basic-structure-of-a-behat-test">Basic Structure of a Behat Test:</h5>
+<p>A <code>.feature</code> file contains:</p>
+<ul>
+<li><strong>Feature</strong>: Human-readable list of scenarios that describes a feature.</li>
+<li><strong>Scenario</strong>: Human-readable list of steps that describe a specific use case.</li>
+<li><strong>Steps</strong>: Human-readable sentences that describe an action. </li>
+</ul>
+<p>There are 3 types of steps, </p>
+<ul>
+<li><code>Given</code> describing the initial context, </li>
+<li><code>When</code> the event that provokes a change and </li>
+<li><code>Then</code> where the outcomes should be asserted.</li>
+</ul>
+<p><strong>Explanation of Steps</strong></p>
+<ul>
+<li><strong>Given</strong>: Sets the initial context (e.g., user is logged in).</li>
+<li><strong>And</strong>: Chains additional steps to the context.</li>
+<li><strong>Then</strong>: Asserts an expected outcome.</li>
+<li><strong>When</strong>: Performs an action.</li>
+</ul>
+<p><strong>Example: Simple Behat Test</strong></p>
+<p>Create a file named <code>example.feature</code> inside <code>mod/quiz/tests/behat/</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">@auth</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Login</span>
+<span class="nf">  In order to login</span>
+<span class="nf">  As a moodle user</span>
+<span class="nf">  I need to be able to validate the username and password against moodle</span>
+
+<span class="k">Scenario:</span><span class="nf"> Login as an existing user</span>
+<span class="k">  Given </span><span class="nf">I am on &quot;</span><span class="s">login/index.php</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">I fill in &quot;</span><span class="s">username</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I fill in &quot;</span><span class="s">password</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">loginbtn</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Moodle 101: Course Name</span><span class="nf">&quot;</span>
+
+<span class="k">Scenario:</span><span class="nf"> Login as an non-existing user</span>
+<span class="k">  Given </span><span class="nf">I am on &quot;</span><span class="s">login/index.php</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">When </span><span class="nf">I fill in &quot;</span><span class="s">username</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I fill in &quot;</span><span class="s">password</span><span class="nf">&quot; with &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I press &quot;</span><span class="s">loginbtn</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">Invalid login</span><span class="nf">&quot;</span>
+</code></pre></div>
+<h5 id="other-definitions">Other definitions</h5>
+<ul>
+<li><strong>Steps definitions</strong>: </li>
+</ul>
+<p>These are the PHP methods referenced by steps when matching its regular expression. 
+The <code>@Given</code>,  <code>@When</code> and <code>@Then</code> tags are descriptive and they are not taken into account 
+when matching steps with steps definitions. The regular expressions placeholders are returned 
+to the PHP method as arguments so methods can use them to tell the browser which button 
+(for example) they want to click.</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x">- @When /^I click on the &quot;(.*)&quot; button$/</span>
+<span class="x"> */</span>
+<span class="x">public function i_click_on_the_button($button) {</span>
+<span class="x">  // Simulates the user interaction (see Mink description below for more info)</span>
+<span class="x">  $this-&gt;getSession()-&gt;getPage()-&gt;pressButton($button);</span>
+<span class="x">}</span>
+</code></pre></div>
+<ul>
+<li><code>Behat</code>: PHP framework and CLI application that wraps the whole process of features files 
+loading + features files parsing + execution of actions in the browser + results output 
+(http://behat.org/)</li>
+<li><code>Gherkin</code>: Human-readable language used to define features that can be parsed and translated 
+into PHP methods. For more info, it's the same language used by Cucumber, the BDD Ruby 
+framework (https://github.com/cucumber/cucumber/wiki/Gherkin)</li>
+<li><code>Context</code>: In Behat scope a context is a PHP class that groups steps definitions (as methods)</li>
+<li><code>Mink</code>: Is the component which interacts with browsers, simulating a real user interaction. 
+It allows us to write PHP code (or use the available PHP methods) to send requests to the 
+different browsers APIs through a common interface or extend it to allow browser-specific actions. 
+The supported browsers includes Selenium, Selenium2, Sahi... http://mink.behat.org/</li>
+<li><code>Selenium 2</code>: Web browser automation tool, applications like Mink can communicate with it 
+through a RESTful API (http://code.google.com/p/selenium/wiki/JsonWireProtocol) to execute 
+actions simulating user interaction.</li>
+<li><code>Selector type</code>: Related with locator, is a way to select a node inside the page DOM</li>
+<li><code>Locator</code>: Is what we are looking for inside the page DOM, it completely depends on the 
+associated selector type, a few examples of it:</li>
+<li>Selector type = "link", Locator = "Link text"</li>
+<li>Selector type = "field", Locator = "Field legend text"</li>
+<li>Selector type = "css", Locator = ".css-class #id"</li>
+<li>Selector type = "xpath", Locator = "//input<a href="@id=" title="id-value"></a>" All these components are written in PHP, open sourced and packaged in a single and extensible framework.</li>
+</ul>
+<hr />
+<h4 id="writing-effective-behat-steps-and-contexts"><strong>Writing Effective Behat Steps and Contexts</strong></h4>
+<h5 id="using-predefined-steps">Using Predefined Steps:</h5>
+<p>Moodle comes with a rich set of predefined Behat steps to interact with the UI. To see a list of available steps, run:
+<div class="highlight"><pre><span></span><code>vendor/bin/behat --definitions
+</code></pre></div></p>
+<h5 id="writing-custom-steps">Writing Custom Steps:</h5>
+<p>If existing steps do not cover your needs, you can define custom steps by creating a context class in <code>tests/behat/</code>. Example:</p>
+<p><strong>Create a Custom Context File</strong>: <code>custom_context.php</code>:
+<div class="highlight"><pre><span></span><code><span class="x">use Behat\Behat\Context\Context;</span>
+<span class="x">use Behat\Behat\Context\SnippetAcceptingContext;</span>
+
+<span class="x">class custom_context implements Context, SnippetAcceptingContext {</span>
+<span class="x">    /**</span>
+<span class="x">     * @Given /^I print a custom message$/</span>
+<span class="x">     */</span>
+<span class="x">    public function i_print_a_custom_message() {</span>
+<span class="x">        echo &quot;This is a custom Behat step.\n&quot;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<p><strong>Register the Context</strong>: Add it to your <code>behat.yml</code> file:
+<div class="highlight"><pre><span></span><code><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">suites</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">contexts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_context</span><span class="w"></span>
+</code></pre></div></p>
+<h5 id="tips-for-writing-good-behat-tests">Tips for Writing Good Behat Tests:</h5>
+<ul>
+<li><strong>Be Specific</strong>: Ensure each step is precise and unambiguous.</li>
+<li><strong>Use Tags</strong>: Organize and filter your tests for better manageability.</li>
+<li><strong>Reuse Steps</strong>: Avoid redundant steps by utilizing existing definitions.</li>
+<li><strong>Write Atomic Tests</strong>: Keep scenarios small and focused on a single behavior.</li>
+</ul>
+<hr />
+<h4 id="writing-acceptance-tests">Writing acceptance tests</h4>
+<p>Each test consists of several stages which are categorised by the terms Given, When, and Then:</p>
+<ul>
+<li>Given: These steps allow you to perform a test set-up. Typically Given steps are used to set configuration, create users, courses and plugin instances, and generally prepare the site for testing</li>
+<li>When: When steps are used to get the test environment to the point at which you wish to test the conditions. This may include logging in, and then performing a range of actions like submitting an assignment and grading it for example</li>
+<li>Then: Then steps are used to check that your plugin behaved as expected. They typically check very simple things like if certain elements or text are visible or not. For example after submitting an assignment in the When stage, you may have a step which checks that a notice was shown to state that the submission was successful. These three stages match the standard Four-phase test pattern. The fourth phase is 'tear-down' which is performed by Moodle between each test and does not need to be explicitly defined in your test.</li>
+</ul>
+<p>Each test should have only one use of Given, When, and Then. See MDLSITE-3778 for information and the policy decision on why you should not have multiple Given, When, and Then steps.</p>
+<p>Where you have several Given, When, and Then steps you should use the words And, and But, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">the following user exists:</span>
+<span class="k">  |</span><span class="s"> username</span><span class="k">   |</span><span class="s"> ccolon</span><span class="k">             |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> First name</span><span class="k"> |</span><span class="s"> Colin</span><span class="k">              |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> Last name</span><span class="k">  |</span><span class="s"> Colon</span><span class="k">              |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> email</span><span class="k">      |</span><span class="s"> ccolon@example.com</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">And </span><span class="nf">the following course exists:</span>
+<span class="k">  |</span><span class="s"> Name</span><span class="k">      |</span><span class="s"> Jump Judging (Level 1)</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> Shortname</span><span class="k"> |</span><span class="s"> sjea1</span><span class="k">                  |</span><span class="nf"></span>
+<span class="k">When </span><span class="nf">I log in as &quot;</span><span class="s">ccolon</span><span class="nf">&quot;</span>
+<span class="k">And </span><span class="nf">I navigate to &quot;</span><span class="s">Site home &gt; Jump Judging (Level 1)</span><span class="nf">&quot;</span>
+<span class="k">Then </span><span class="nf">I should see &quot;</span><span class="s">You are not enrolled in this course</span><span class="nf">&quot;</span>
+<span class="k">But </span><span class="nf">I should see &quot;</span><span class="s">Enrol now</span><span class="nf">&quot;</span>
+</code></pre></div>
+<p>To initialize and run your tests, please follow the instructions of <a href="#running-behat-tests">Running acceptance test</a>.</p>
+<h5 id="create-your-own-tests">Create your own tests</h5>
+<p>Behat tests are located within the directory tests/behat of your plugin. The different tests are defined in files with the ending <code>*.feature</code>. 
+First, you have to define the header of your test:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">@mod</span><span class="nf"> </span><span class="nt">@mod_yourplugin</span><span class="nf"> </span><span class="nt">@javascript</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Here comes a description of your user story.</span>
+</code></pre></div>
+<p>The tags on top of the feature description can be used to select specific test cases when running the tests. 
+The<code>@javascript</code> tag should only be used, if JavaScript is needed to execute your test. This is dependent on the step you will use in your definition. 
+JavaScript tests are usually much slower than tests executed without JavaScript.</p>
+<p>Afterwards you can specify a scenario:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Scenario:</span><span class="nf"> Description of your scenario, which you want to test.</span>
+<span class="k">    When </span><span class="nf">I log in as &quot;</span><span class="s">student1</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I am on &quot;</span><span class="s">Course 1</span><span class="nf">&quot; course homepage</span>
+</code></pre></div>
+<p>Again you can define specific tags. Afterwards you write the steps, which should be executed during your test.</p>
+<p>Tags that are specified in your feature's header automatically apply to all scenarios defined in that feature, so it is not necessary to repeat them. 
+In the above example, the scenario will use JavaScript, although it does not have the <code>@javascript</code> tag.</p>
+<h6 id="multiple-scenarios">Multiple Scenarios</h6>
+<p>You can have an arbitrary amount of scenarios within a test. Please make sure they all belong to the same feature. If you have certain steps, which should be executed for every scenario of a feature, you can define them using a background:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Background:</span><span class="nf"></span>
+<span class="k">    Given </span><span class="nf">the following &quot;</span><span class="s">courses</span><span class="nf">&quot; exist:</span>
+<span class="k">      |</span><span class="s"> fullname</span><span class="k"> |</span><span class="s"> shortname</span><span class="k"> |</span><span class="s"> category</span><span class="k"> |</span><span class="s"> groupmode</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Course 1</span><span class="k"> |</span><span class="s"> C1</span><span class="k">        |</span><span class="s"> 0</span><span class="k">        |</span><span class="s"> 1</span><span class="k">         |</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the following &quot;</span><span class="s">users</span><span class="nf">&quot; exist:</span>
+<span class="k">      |</span><span class="s"> username</span><span class="k"> |</span><span class="s"> firstname</span><span class="k"> |</span><span class="s"> lastname</span><span class="k"> |</span><span class="s"> email</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> teacher1</span><span class="k"> |</span><span class="s"> Theo</span><span class="k"> |</span><span class="s"> Teacher</span><span class="k"> |</span><span class="s"> teacher1@example.com</span><span class="k"> |</span>
+</code></pre></div>
+<p>This is usually used, to define the different <code>Given</code> steps.</p>
+<h6 id="use-existing-steps">Use existing steps</h6>
+<p>There are different ways how to effectively browse the available existing steps:</p>
+<p><strong>Moodle Administration</strong></p>
+<p>Moodle offers within its administration menu under Site Administration &gt; Development &gt; Acceptance Testing a complete and searchable list of all available 
+step definitions. However, make sure you installed the behat test site first!</p>
+<p><strong>IDE integration</strong></p>
+<p>In PhpStorm or IntelliJ you can install the behat extension. Then you get auto completions within feature files, which helps a lot during behat test development.</p>
+<h6 id="providing-values-to-steps">Providing values to steps</h6>
+<p>Most of the steps requires values, there are methods to provide values to steps, the method depends on the step specification.</p>
+<ul>
+<li>A string/text is the most common case, the texts are wrapped between double quotes (" character) you have to replace the info about the expected value for your value; for example something like I press "BUTTON_STRING" should become I press "Save and return to course". If you want to add a string which contains a " character, you can escape it with a backslash \", for example I fill the "Name" field with "Alan alias \"the legend\"". You can identify this steps because they ends with _STRING</li>
+<li>A number some steps requires numbers as values, to be more specific an undetermined number of digits from 0 to 9 (Natural numbers + 0) you can identify them because the expected value info string ends with _NUMBER</li>
+<li>A table; is a relation between values, the most common use of it is to fill forms. The steps which requires tables are easily identifiable because they finish with : The steps description gives info about what the table columns must contain, for example Fills a moodle form with field/value data. Here you don't need to escape the double quotes if you want to include them as part of the value.
+A PyString is a multiline string, most commonly used to fill out forms when a newline is required. Like steps with tables, steps which require PyStrings will end with ":"</li>
+<li>A field value There are many different field types, if an argument requires a field value the expected value will depend on the field type:<ul>
+<li>Text-based fields: It expects the text. This includes textareas, input type text, input type password...</li>
+<li>Checkbox: It expects 1 to check and for checked and "" to uncheck or for unchecked</li>
+<li>Select: It expects the option text or the option value. In case you interact with a multi-select you should specify the options separating them with commas. For example: option1, option2, option3</li>
+<li>Radio: The text of the radio option</li>
+</ul>
+</li>
+<li>A selector there are steps that can be used with different kinds of elements, for example I click on "User Name" "link" or I click on "User Name" "button" this is a closed list of elements, they always works together with another argument, where you specify the locator (eg. the link text in a link) In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:<ul>
+<li>field - for searching a field by its id, name, value or label</li>
+<li>link - for searching a link by its href, id, title, img alt or value</li>
+<li>button - for searching a button by its name, id, value, img alt or title</li>
+<li>link_or_button - for searching for both, links and buttons</li>
+<li>select - for searching a select field by its id, name or label</li>
+<li>checkbox - for searching a checkbox by its id, name, or label</li>
+<li>radio - for searching a radio button by its id, name, or label</li>
+<li>file - for searching a file input by its id, name, or label</li>
+<li>optgroup - for searching optgroup by its label</li>
+<li>option - for searching an option by its content</li>
+<li>dialogue - for searching a dialogue with the specified header text</li>
+<li>filemanager - for searching a filemanager by it's id or label</li>
+<li>block - for searching a Moodle block by it's English name or it's frankenstyle name</li>
+<li>section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)</li>
+<li>activity - for searching for an activity module in a course list by it's title</li>
+<li>region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.</li>
+<li>table_row - for searching a table row which contains the specified text</li>
+<li>table - for searching a table by its id or caption</li>
+<li>icon - for searching an icon by its title</li>
+<li>fieldset - for searching a fieldset by it's id or legend</li>
+<li>css_element - for searching an element by its CSS selector</li>
+<li>xpath_element - for searching an element by its XPath</li>
+</ul>
+</li>
+<li>A text selector similar to a selector but those are the elements that returns an area of the DOM, they are useful in steps following the format ... in the "Community finder" "block" where you are clicking or looking for some text inside a specific area. In the 'Acceptance testing' interface you can see a drop-down menu to select one of these options:<ul>
+<li>dialogue - for searching a dialogue with the specified header text</li>
+<li>block - for searching a Moodle block by it's English name or it's frankenstyle name</li>
+<li>section - for searching for a section on a course page by it's title or its written out date (e.g. "1 January - 7 January"). Use "frontpage" "section" for the frontpage section if it has no title (default)</li>
+<li>activity - for searching for an activity module in a course list by it's title</li>
+<li>region - for searching a Moodle page region with that id, in fact it works with all ids for div, section, aside, header or footer elements.</li>
+<li>table_row - for searching a table row which contains the specified text</li>
+<li>table - for searching a table by its id or caption</li>
+<li>fieldset - for searching a fieldset by it's id or legend</li>
+<li>list_item - for searching a list item which contains the specified text</li>
+<li>css_element - for searching an element by its CSS selector</li>
+<li>xpath_element - for searching an element by its XPath</li>
+</ul>
+</li>
+</ul>
+<h6 id="checking-table-values">Checking table values</h6>
+<p>You can check if specific value exists or not in a table row/column by using:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Then </span><span class="nf">&quot;</span><span class="s">STRING_IN_ROW</span><span class="nf">&quot; row &quot;</span><span class="s">COLUMN_HEADER</span><span class="nf">&quot; column of &quot;</span><span class="s">TABLE_ID</span><span class="nf">&quot; table should contain &quot;</span><span class="s">VALUE_TO_CHECK</span><span class="nf">&quot;</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code><span class="k">Then </span><span class="nf">the following should exist in the &quot;</span><span class="s">TABLE_ID</span><span class="nf">&quot; table:</span>
+<span class="k">    |</span><span class="s"> COLUMN_HEADER1</span><span class="k"> |</span><span class="s"> COLUMN_HEADER2</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">    |</span><span class="s"> VALUE_IN_ROW_1</span><span class="k"> |</span><span class="s"> VALUE_IN_ROW_1</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">    |</span><span class="s"> VALUE_IN_ROW_2</span><span class="k"> |</span><span class="s"> VALUE_IN_ROW_2</span><span class="k"> |</span>
+</code></pre></div>
+<p>Advanced use cases
+Most of the time the usage of existing step definitions is straight forward. However, there are some exceptions were it might get complicated. Some of them are listed here:</p>
+<h6 id="uploading-files">Uploading files</h6>
+<p>Note than some tests requires files to be uploaded, in this case</p>
+<ul>
+<li>The I upload "FILEPATH_STRING" file to "FILEPICKER_FIELD_STRING" filepicker step can be used when located in the form page</li>
+<li>The file to upload should be included along with the Moodle codebase in COMPONENTNAME/tests/fixtures/*</li>
+<li>The file to upload is specified by it's path, which should be relative to the codebase root (lib/tests/fixtures/users.csv for example)</li>
+<li>/ should be used as directory separator and the file names can not include this / character as all of them would be converted to the OS-dependant directory separator to maintain the compatibility with Windows systems.</li>
+<li>The scenarios that includes files uploading should be tagged using the @_file_upload tag</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">@editor</span><span class="nf"> </span><span class="nt">@editor_atto</span><span class="nf"> </span><span class="nt">@atto</span><span class="nf"> </span><span class="nt">@atto_media</span><span class="nf"> </span><span class="nt">@_file_upload</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Add media to Atto</span>
+<span class="nf">  To write rich text - I need to add media.</span>
+
+<span class="nf">  </span><span class="k">Background:</span><span class="nf"></span>
+<span class="k">    Given </span><span class="nf">I log in as &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I follow &quot;</span><span class="s">Manage private files...</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/moodle-logo.webm</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/moodle-logo.mp4</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/moodle-logo.png</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/pretty-good-en.vtt</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I upload &quot;</span><span class="s">lib/editor/atto/tests/fixtures/pretty-good-sv.vtt</span><span class="nf">&quot; file to &quot;</span><span class="s">Files</span><span class="nf">&quot; filemanager</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">I click on &quot;</span><span class="s">Save changes</span><span class="nf">&quot; &quot;</span><span class="s">button</span><span class="nf">&quot;</span>
+<span class="nf">...</span>
+</code></pre></div>
+<h6 id="field-groups">Field groups</h6>
+<p>This section describes how you can use the step definitions</p>
+<div class="highlight"><pre><span></span><code><span class="k">When </span><span class="nf">I set the following fields to these values:</span>
+
+<span class="nf">...</span>
+<span class="k">When </span><span class="nf">I set the field &quot;</span><span class="s">([^</span><span class="nf">&quot;]|\&quot;</span><span class="s">*)</span><span class="nf">&quot; to &quot;</span><span class="s">([^</span><span class="nf">&quot;]|\&quot;</span><span class="s">*)</span><span class="nf">&quot;</span>
+<span class="nf">...</span>
+</code></pre></div>
+<p>for field groups. Examples for such field groups are the duration field or the date_time_selector. 
+These are not displayed as one single input field within the front-end but consist of multiple input fields within one row. 
+You can access each single input field of a group using</p>
+<div class="highlight"><pre><span></span><code>identifierOfYourField[keyOfTheSpecificInput]
+</code></pre></div>
+<p>Examples would be:</p>
+<div class="highlight"><pre><span></span><code><span class="k">When </span><span class="nf">I set the following fields to these values:</span>
+<span class="k">  |</span><span class="s"> myDate[day]</span><span class="k">             |</span><span class="s">   21</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[month]</span><span class="k">           |</span><span class="s">   12</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[hour]</span><span class="k">            |</span><span class="s">   14</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDuration[number]</span><span class="k">      |</span><span class="s">   10</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDuration[unit]</span><span class="k">        |</span><span class="s"> days</span><span class="k">   |</span>
+</code></pre></div>
+<h6 id="human-readable-and-relative-dates">Human-readable and relative dates</h6>
+<p>When testing plugins with deadlines, for instance for submissions, it is often necessary to set certain time values to dates relative to today. 
+You can specify a relative time enclosed within two ## blocks. For example:</p>
+<ul>
+<li><code>## yesterday ##</code></li>
+<li><code>## 2 days ago ##</code> You can use everything according to http://php.net/manual/en/datetime.formats.php.
+Especially useful are the relative formats from: http://php.net/manual/en/datetime.formats.relative.php</li>
+</ul>
+<p>Additionally, you can specify a format you want the date to be returned into:</p>
+<ul>
+<li><code>## yesterday ## myformat ##</code>  These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">When </span><span class="nf">I set the following fields to these values:</span>
+<span class="k">  |</span><span class="s"> myDate[day]</span><span class="k">   |</span><span class="s"> ##yesterday##d##</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[month]</span><span class="k"> |</span><span class="s"> ##yesterday##F##</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> myDate[year]</span><span class="k">  |</span><span class="s"> ##yesterday##Y##</span><span class="k"> |</span>
+</code></pre></div>
+<h6 id="writing-your-own-steps">Writing your own steps</h6>
+<p>Sometimes, you will need to set up data that is specific to your plugin, or perform steps that are specific to your plugin's UI. 
+In this case it may be necessary to <a href="#writing-new-acceptance-test-step-definitions">write new step definitions</a>, but the short version is that you define new steps as PHP methods with a special 
+annotation inside a class called behat_plugintype_plugingname inside tests/behat/behat_plugintype_plugingname.php in your plugin.</p>
+<p>As well as creating completely new steps, you can also extend some of the standard steps:</p>
+<p><strong>Custom selectors (... in the "..." "...")</strong></p>
+<p>There are a load of different steps which can refer to specific items on-screen, for example</p>
+<div class="highlight"><pre><span></span><code><span class="k">And </span><span class="nf">I click on &quot;</span><span class="s">Submit all and finish</span><span class="nf">&quot; &quot;</span><span class="s">button</span><span class="nf">&quot; in the &quot;</span><span class="s">Confirmation</span><span class="nf">&quot; &quot;</span><span class="s">dialogue</span><span class="nf">&quot;</span>
+</code></pre></div>
+<p>Here, 'button' and 'dialogue' are examples of selectors, and 'Submit all and finish' and 'Confirmation' are the locators which say which button or dialogue it is. When the test runs, this gets converted to an XPath expression, which is what the Behat system actually uses to locate the right element on the page.</p>
+<p>You can define new types of selector (for example core_message &gt; Message) by implementing functions like behat_component_named_selector in your plugin's behat_plugintype_plugingname class. The detailed instructions for how to do this are in the PHPdoc comments on the base class.</p>
+<p>The reasons you might want to do this are:</p>
+<ul>
+<li>It makes your tests easier to read, which makes it easier to be sure that the test is testing the right thing, and being able to read the tests helps people understand your features.</li>
+<li>If the HTML structure you output changes, then you only need to update the selector definition in one place.</li>
+</ul>
+<p><strong>Custom navigation targets (And I am on the "..." "..." page)</strong></p>
+<p>There are two related steps:</p>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">I am on the &quot;</span><span class="s">Quiz 1</span><span class="nf">&quot; &quot;</span><span class="s">mod_quiz &gt; View</span><span class="nf">&quot; page logged in as &quot;</span><span class="s">manager</span><span class="nf">&quot;</span>
+<span class="k">Given </span><span class="nf">I am on the &quot;</span><span class="s">C1</span><span class="nf">&quot; &quot;</span><span class="s">Course</span><span class="nf">&quot; page</span>
+</code></pre></div>
+<p>To make this work, in your plugin's behat_plugintype_plugingname class, you need to implement the functions resolve_page_url and resolve_page_instance_url methods. Once again, the detailed instructions about how this works are given in the PHPdoc comments on the base class.</p>
+<p>There are two reasons why it is good to use these steps:</p>
+<ul>
+<li>You are trying to test that your feature works, not Moodle navigation. In the pase we have had many occasions when Moodle navigation changed, and lots of tests failed and had to be fixed. It is better for your tests to start on your feature. (Except, perhaps, it might be appropriate to have one test for the expected method for users to navigate to your feature.)</li>
+<li>It is much faster because you load fewer irrelevant pages, and in particular the normal log in step leaves you on the Dashboard page, which is very slow to load.</li>
+</ul>
+<p><strong>Custom entity generators (And the following "..." exist:)</strong></p>
+<p>It is possible to extend the Given the following "entities" exist step to support your plugin's data generators. This avoids having to write new whole new behat step definitions for your plugin, and allows you to re-use data generators between PHPUnit and Behat tests.</p>
+<p>Full documentation of this process and all available options can be found in the PHPDoc for behat_generator_base. A core example of this can be found in /mod/quiz/tests/generator and quiz_reset.feature. What follows is a simple example.</p>
+<p>To begin, you need a generator in /<em>your</em>/<em>plugin</em>/tests/generator/lib.php. If you are generating a type of entity called "thing", your generator will need a method called create_thing, which accepts an object:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class local_myplugin_generator extends component_generator_base {</span>
+<span class="x">    public function create_thing($thing) {</span>
+<span class="x">        global $DB;</span>
+<span class="x">        $DB-&gt;insert_record(&#39;local_myplugin_things&#39;, $thing);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>Next, you will need to define your behat generator in /<em>your</em>/<em>plugin</em>/tests/generator/behat_<em>your_plugin</em>_generator.php, with the method get_createable_entitites() method:</p>
+<div class="highlight"><pre><span></span><code><span class="x">class behat_local_myplugin_generator extends behat_generator_base {</span>
+
+<span class="x">    protected function get_creatable_entities(): array {</span>
+<span class="x">        return [</span>
+<span class="x">            &#39;things&#39; =&gt; [</span>
+<span class="x">                &#39;datagenerator&#39; =&gt; &#39;thing&#39;,</span>
+<span class="x">                &#39;required&#39; =&gt; [&#39;name&#39;]</span>
+<span class="x">            ],</span>
+<span class="x">        ];</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The datagenerator value refers to the method in the generator class that we are calling, in this case create_thing(). The outer array key is the entity name we will use in the behat step, in this case Given the following "local_myplugin &gt; things" exist.</p>
+<p>Now, in your behat test, you can have a step like this, which will generate 2 things, the first with the name "thing1" and the second with the name "thing2".</p>
+<div class="highlight"><pre><span></span><code><span class="k">Given </span><span class="nf">the following &quot;</span><span class="s">local_myplugin &gt; things</span><span class="nf">&quot; exist:</span>
+<span class="k">  |</span><span class="s"> name</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> thing1</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> thing2</span><span class="k"> |</span>
+</code></pre></div>
+<h6 id="writing-new-acceptance-test-step-definitions">Writing new acceptance test step definitions</h6>
+<p>As well as using the already existing steps , you can also define new steps.</p>
+<p>This is most easily learned by looking at the examples that are already in the code. In any plugin, for example qtype_ddwtos, look at the file tests/behat/behat_qtype_ddwtos.php inside that plugin. Steps are defined by a function that has a special @Given, @When or @Then annotation in the PHPdoc comment. This gives a regular expression. Any step in a *.feature file which matches that regular expression will be translated into a call to that function.</p>
+<p>In terms of making the Behat test work, it does not matter whether you use @Given, @When or @Then. However, to make your step understandable to people using your step, it is important to use the right word. Use @Given for steps that set things up, @When for steps that perform actions, and @Then for steps that verify what happened.</p>
+<p>When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.</p>
+<h6 id="deprecating-a-step-definition">Deprecating a step definition</h6>
+<p>Sometimes it may be desirable to remove a step definition, when it is no longer relevant due to interface changes, or when it is replaced by another step or named selector. As it is possible for other parts of the system to use any defined step, it is necessary to mark a step as deprecated before it is completely removed.</p>
+<p>To deprecate a step, create a new deprecated steps file in tests/behat/behat_plugin_name_deprecated.php with a class extending behat_deprecated_base. For example, from qbank_comments:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// tests/behat/qbank_comment_behat_deprecated.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">require_once</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/../../../../../lib/behat/behat_deprecated_base.php&#39;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">behat_qbank_comment_deprecated</span> <span class="k">extends</span> <span class="nx">behat_deprecated_base</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Looks for the appropriate hyperlink comment count in the column.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @Then I should see :arg1 on the comments column</span>
+<span class="sd">     * @param string $linkdata</span>
+<span class="sd">     * @deprecated Since Moodle 5.0 MDL-79122 in favour of the &quot;qbank_comment &gt; Comment count link&quot; named selector.</span>
+<span class="sd">     * @todo Final removal in Moodle 6.0 MDL-82413.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">i_should_see_on_the_column</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$linkdata</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">deprecated_message</span><span class="p">(</span><span class="s2">&quot;Use &#39;</span><span class="se">\&quot;</span><span class="si">{</span><span class="nv">$linkdata</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="s2">qbank_comment &gt; Comment count link</span><span class="se">\&quot;</span><span class="s2"> should exist&#39;&quot;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="s1">&#39;behat_general::should_exist&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$linkdata</span><span class="p">,</span> <span class="s1">&#39;qbank_comment &gt; Comment count link&#39;</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The deprecated step should call $this-&gt;deprecated_message() with a human readable example of what to do instead of using the deprecated step. It should then continue to perform its original behaviour (either using its original code, or by calling the step that replaces it) until it is completely removed.</p>
+<p>If a deprecated step is called in a test, it will fail and output the deprecation message. As a temporary measure, it is possible to run tests using deprecated steps by setting $CFG-&gt;behat_usedeprecated in config.php.</p>
+<p>A deprecated step should be documented and removed in accordance with the normal deprecation process.</p>
+<h6 id="override-behat-core-context-for-theme-suite">Override behat core context for theme suite</h6>
+<p>To override behat step definitions so as to run behat with specified theme, you should create a contexts within /theme/{MYTHEME}/tests/behat/ with prefix behat_theme_{MYTHEME}<em MYTHEME="MYTHEME"> and suffixed with the context being overridden. For example, if you want to override behat_mod_forum context, then you should create a class /theme/{MYTHEME}/tests/behat/mod_forum/behat_theme</em>_behat_mod_forum.php</p>
+<h6 id="disable-behat-context-or-features-to-run-in-theme-suite">Disable behat context or features to run in theme suite</h6>
+<p>To disable specific contexts and features from being executed by a specific theme/suite you can create a /theme/{MYTHEME}/tests/behat/blacklist.json file with following format.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;contexts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;behat_grade&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;behat_navigation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;auth/tests/behat/login.feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;grade/tests/behat/grade_hidden_items.feature&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>The above will:</p>
+<ol>
+<li>disable the use of step_definitions from behat_grade and behat_navigation while running theme suite
+disable running of scenarios in auth/tests/behat/login.feature and grade/tests/behat/grade_hidden_items.feature.</li>
+<li>Override core behat selectors
+To override behat selectors in specific theme, you should create a class behat_theme_{MYTHEME}<em MYTHEME="MYTHEME">behat_selectors in /theme/{MYTHEME}/tests/behat/behat_theme</em>_behat_selectors.php extending behat_selectors.</li>
+</ol>
+<h4 id="good-practice">Good practice</h4>
+<h5 id="test-one-thing-per-scenario">Test one thing per scenario</h5>
+<p>The ideal that you should strive for, is that each scenario tests just one specific bit of functionality. 
+Therefore, if one test fails, the scenario name should tell you exactly what the bug is. 
+Also, any bug should cause just one scenario to fail, not lots of unrelated ones. 
+If you can achieve this, then the idea is that it minimises the time from seeing a test fail to having fixed the bug that was detected. 
+Of course, this ideal is not always achievable, but in my experience it is worth striving for.</p>
+<p>Note that this also implies that the Given, When and Then keywords should be used only once per scenario.</p>
+<h5 id="set-up-given-should-not-use-the-ui">Set-up (Given) should not use the UI</h5>
+<p>The setup is not what you are really testing here. 
+Therefore, it should be as quick and reliable as possible. 
+The way to achieve this is with steps like <code>And the following "Thing" exist:</code> which directly insert the data into the database. 
+If necessary, write extra steps for your plugin to setup the things you need.</p>
+<h5 id="dont-use-xpath-or-css-selectors-fix-your-accessibility-bugs">Don't use XPath or CSS selectors - fix your Accessibility bugs</h5>
+<p>If, the only way you can identify something in the page that you want to manipulate is with a step like 
+<code>I set the field with xpath "//textarea['answer')](contains(@name,)" to "frog"</code>, 
+then this is probably the sign that you have an Accessibility bug, because Behat accesses the page very like a screen-reader user would.</p>
+<p>You should be able to refer to things with steps like <code>I set the field "Answer" to "frog"'</code> or <code>I click on "True" "radio" in the "First question" "question"</code>. 
+If not, you should probably think about fixing the accessibility bug, rather than resorting to unreadable selectors in your Behat test.</p>
+<h5 id="when-you-define-more-steps-in-your-plugin-make-it-clear-they-come-from-your-plugin">When you define more steps in your plugin, make it clear they come from your plugin</h5>
+<p>When defining new Step definitions in your plugin, try to make sure the step name identifies it as belonging to your plugin. 
+So, don't make a step called I disable UI plugins. Call it something like I disable UI plugins in the CodeRunner question type.</p>
+<h5 id="phpdoc-comments-to-map-scenario-steps">PHPDoc comments to map scenario steps</h5>
+<p>PHPDoc style comments before functions can be used to map to your .scenario files. 
+Read more about this here https://behat.org/en/latest/user_guide/context/definitions.html</p>
+<hr />
+<h3 id="advanced-behat-features-in-moodle"><strong>Advanced Behat Features in Moodle</strong></h3>
+<h5 id="use-data-tables-for-form-fields">Use Data Tables for Form Fields:</h5>
+<p>Data tables make it easy to fill forms:
+<div class="highlight"><pre><span></span><code><span class="k">And </span><span class="nf">I set the following fields:</span>
+<span class="k">  |</span><span class="s"> Name</span><span class="k">            |</span><span class="s"> Quiz Test Name</span><span class="k">        |</span><span class="nf"></span>
+<span class="k">  |</span><span class="s"> Description</span><span class="k">     |</span><span class="s"> This is a test quiz.</span><span class="k"> |</span>
+</code></pre></div></p>
+<h5 id="use-backgrounds-for-repeated-steps">Use Backgrounds for Repeated Steps:</h5>
+<p>Background steps run before each scenario in a feature:
+<div class="highlight"><pre><span></span><code><span class="k">Feature:</span><span class="nf"> Quiz management</span>
+
+<span class="k">Background:</span><span class="nf"></span>
+<span class="k">  Given </span><span class="nf">I log in as &quot;</span><span class="s">admin</span><span class="nf">&quot;</span>
+<span class="nf">  </span><span class="k">And </span><span class="nf">I navigate to &quot;</span><span class="s">Course 1</span><span class="nf">&quot; course</span>
+
+<span class="k">Scenario:</span><span class="nf"> Add a quiz</span>
+<span class="k">  And </span><span class="nf">I add a &quot;</span><span class="s">Quiz</span><span class="nf">&quot; to section &quot;</span><span class="s">1</span><span class="nf">&quot;</span>
+</code></pre></div></p>
+<h5 id="use-hooks-for-setup-and-teardown">Use Hooks for Setup and Teardown:</h5>
+<p>Hooks are methods that run before or after scenarios:
+<div class="highlight"><pre><span></span><code><span class="x">public function before_scenario($event) {</span>
+<span class="x">    // Setup code.</span>
+<span class="x">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="troubleshooting-and-debugging"><strong>Troubleshooting and Debugging</strong></h3>
+<ul>
+<li><strong>Check Logs</strong>: Moodle's error logs can provide information if tests fail.</li>
+<li><strong>Check Browser Output</strong>: Use the <code>--format=pretty</code> option for more readable output.</li>
+<li><strong>Screenshot on Failure</strong>: Configure Behat to take screenshots on failure for debugging.</li>
+<li><strong>Review Behat Configuration</strong>: Ensure <code>behat.yml</code> is correctly set up for your environment.</li>
+</ul>
+<hr />
+<h3 id="browsers">Browsers</h3>
+<p>This page complements Behat providing info about how to run the acceptance tests suite in different browsers.</p>
+<h4 id="drivers">Drivers</h4>
+<p>There are Selenium drivers to run acceptance tests in different browsers:</p>
+<p>Firefox - https://code.google.com/p/selenium/wiki/FirefoxDriver
+Chrome - https://code.google.com/p/selenium/wiki/ChromeDriver
+Safari - https://code.google.com/p/selenium/wiki/SafariDriver
+Internet Explorer - https://code.google.com/p/selenium/wiki/InternetExplorerDriver
+Microsoft Edge - https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+PhantomJS (Webkit) - http://phantomjs.org/
+IPhone - https://code.google.com/p/selenium/wiki/IPhoneDriver
+Each driver should be downloaded and Selenium .jar should be started specifying the path to the driver; depending on the driver there could be other requirements.</p>
+<h5 id="phantomjs">PhantomJS</h5>
+<p>PhantomJS is different as it is a headless browser as it is quite faster than other drivers, it doesn't need a GUI to run and can execute JS, it doesn't even need to be used through Selenium (you can do it though, but it's not officially supported) and you can do it</p>
+<p>Download PhantomJS: http://phantomjs.org/download.html</p>
+<p>Run the following command</p>
+<div class="highlight"><pre><span></span><code>/path/to/your/phantomjs/bin/phantomjs --webdriver=4444
+</code></pre></div>
+<p>Note that 4444 is the default port used by Selenium, so you must specify another one if you want to run them together and specify the port in $CFG-&gt;behat_config.</p>
+<h5 id="examples_1">Examples</h5>
+<div class="highlight"><pre><span></span><code>// Selenium <span class="k">in</span> Linux <span class="o">(</span>firefox by default + chrome<span class="o">)</span>
+   java -jar /opt/selenium-server-standalone.jar -Dwebdriver.chrome.driver<span class="o">=</span>/opt/chromedriver
+
+// Selenium <span class="k">in</span> OSx <span class="o">(</span>firefox <span class="p">&amp;</span> safari by default + chrome<span class="o">)</span>
+  java -jar /Users/moodle/Downloads/selenium-server-standalone.jar -Dwebdriver.chrome.driver<span class="o">=</span>/Users/moodle/Downloads/chromedriver
+
+
+// Selenium <span class="k">in</span> Windows <span class="o">(</span>started using git bash<span class="o">)</span> <span class="o">(</span>firefox by default + chrome + internet explorer<span class="o">)</span>
+  java -jar /c/seleniumdrivers/selenium-server-standalone.jar -Dwebdriver.chrome.driver<span class="o">=</span>/c/seleniumdrivers/chromedriver.exe -Dwebdriver.ie.driver<span class="o">=</span>/c/seleniumdrivers/IEDriverServer.exe
+
+
+// PhantomJS
+  /path/to/your/phantomjs/bin/phantomjs --webdriver<span class="o">=</span><span class="m">4444</span>
+</code></pre></div>
+<h4 id="compatibility">Compatibility</h4>
+<p>Not all the drivers can execute all of Moodle's step definitions; we tagged the step definitions that are using features not supported by all browsers and also limitations that some browsers have; refer to the following table to know which browsers can run which tags:</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>File uploads (@_file_upload)</th>
+<th>Browser dialogs (@_alert)</th>
+<th>Switch window (@_switch_window)</th>
+<th>Switch frame (@_switch_iframe)</th>
+<th>Bugs in Chrome (@skip_chrome_zerosize)</th>
+<th>Bug in PhantomJS (@_bug_phantomjs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firefox</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No (see <a href="https://tracker.moodle.org/browse/MDL-71108">MDL-71108</a>)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Internet Explorer</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>PhantomJS</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Note that, to skip some tag, you must prepend it with the ~ (logical NOT) character. Examples:</p>
+<ul>
+<li>Run all tests but <code>@_alert&lt;/tt&gt; ones: &lt;tt&gt;--tags '~@_alert'</code></li>
+<li>Run all chrome tests but <code>@skip_chrome_zerosize</code> ones: <code>--tags '@javascript&amp;&amp;~@skip_chrome_zerosize'</code></li>
+</ul>
+<h4 id="working-combinations-of-osbrowserselenium">Working combinations of OS+Browser+selenium</h4>
+<p>As OS, Browsers and Selenium keeps updating, some combination of OS+Browser+Selenium will not work on specific moodle version.
+for information about this issue please see <a href="https://moodledev.io/general/development/tools/behat/browsers/supportedbrowsers">Working combinations of OS+Browser+selenium</a>.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../phpMoodleToolsPHPUnit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Unit Test" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Unit Test
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../phpMoodleDebug/" class="md-footer__link md-footer__link--next" aria-label="Next: Debug" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Debug
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4141 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="PHP and coding refresher.">
+      
+      
+        <meta name="author" content="ArceLopera">
+      
+      
+        <link rel="canonical" href="https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodleServices/">
+      
+      <link rel="icon" href="../../Images/elephant.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>External Services - PHP Refresher</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-service-protocols" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PHP Refresher" class="md-header__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PHP Refresher
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              External Services
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../phpRefresh/" class="md-tabs__link">
+        Basics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Func/phpAll/" class="md-tabs__link">
+        Functions
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../DS/phpArray/" class="md-tabs__link">
+        Data Structures
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Classes/phpCls/" class="md-tabs__link">
+        Classes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Adv/phpInclude/" class="md-tabs__link">
+        Advanced
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../phpMoodle/" class="md-tabs__link md-tabs__link--active">
+        Moodle
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PHP Refresher" class="md-nav__button md-logo" aria-label="PHP Refresher" data-md-component="logo">
+      
+  <img src="../../Images/Elephpant.svg" alt="logo">
+
+    </a>
+    PHP Refresher
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ArceLopera/PHPRefresher" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ArceLopera/PHPRefresher
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phpRefresh/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" data-md-state="indeterminate" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          Variables and Assignments
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Variables and Assignments" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Variables and Assignments
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar1/" class="md-nav__link">
+        Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar2/" class="md-nav__link">
+        Data Types and Casting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar3/" class="md-nav__link">
+        Variable Scope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpVar4/" class="md-nav__link">
+        Variable Handling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpConst/" class="md-nav__link">
+        Constant
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpSuperGlobals/" class="md-nav__link">
+        Globals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpForms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" data-md-state="indeterminate" type="checkbox" id="__nav_2_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          Strings
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Strings" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Strings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpStr1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" data-md-state="indeterminate" type="checkbox" id="__nav_2_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_7">
+          Numbers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numbers" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Numbers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpNum1/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpMath1/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpOperators1/" class="md-nav__link">
+        Operators
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" data-md-state="indeterminate" type="checkbox" id="__nav_2_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_9">
+          Control Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Control Flow" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Control Flow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpIF/" class="md-nav__link">
+        Conditionals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpLoops/" class="md-nav__link">
+        Loops
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PR/phpKeywords/" class="md-nav__link">
+        Keywords
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Built-in
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Built-in" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Built-in
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpAll/" class="md-nav__link">
+        All
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Time n Date
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Time n Date" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Time n Date
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDate/" class="md-nav__link">
+        Date/Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCalendar/" class="md-nav__link">
+        Calendar
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpRegex/" class="md-nav__link">
+        Regex
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_4" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_4">
+          Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCookie/" class="md-nav__link">
+        Cookies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpSessions/" class="md-nav__link">
+        Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFTP/" class="md-nav__link">
+        FTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMail/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpFilters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpCallback/" class="md-nav__link">
+        Callback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpJSON/" class="md-nav__link">
+        JSON
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_8" data-md-state="indeterminate" type="checkbox" id="__nav_3_1_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_8">
+          Error and Exceptions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Error and Exceptions" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_8">
+          <span class="md-nav__icon md-icon"></span>
+          Error and Exceptions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpError/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpExceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpConfVar/" class="md-nav__link">
+        Config Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpDeclare/" class="md-nav__link">
+        Declare
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpEmpty/" class="md-nav__link">
+        Empty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpMisc/" class="md-nav__link">
+        Misc
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpOutput/" class="md-nav__link">
+        Output Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          User-Defined
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="User-Defined" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          User-Defined
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpUserFunc/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpArrowFunc/" class="md-nav__link">
+        Arrow Function
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Func/phpGenerators/" class="md-nav__link">
+        Generators
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Data Structures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Structures" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Data Structures
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpArray/" class="md-nav__link">
+        Array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DS/phpIterables/" class="md-nav__link">
+        Iterables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Classes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Classes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpCls/" class="md-nav__link">
+        OOP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstructor/" class="md-nav__link">
+        Constructor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpModifiers/" class="md-nav__link">
+        Access Modifiers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInheritance/" class="md-nav__link">
+        Inheritance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpConstants/" class="md-nav__link">
+        Constants
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpAbstract/" class="md-nav__link">
+        Abstract Classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpInterfaces/" class="md-nav__link">
+        Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpTraits/" class="md-nav__link">
+        Traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpStatic/" class="md-nav__link">
+        Static
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpNamespaces/" class="md-nav__link">
+        Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpInclude/" class="md-nav__link">
+        Include
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpGoto/" class="md-nav__link">
+        Goto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" data-md-state="indeterminate" type="checkbox" id="__nav_6_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3">
+          File Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="File Management" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          File Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpFile/" class="md-nav__link">
+        Filesystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpZip/" class="md-nav__link">
+        Zip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMySql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpXML/" class="md-nav__link">
+        XML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAjax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpcomposer/" class="md-nav__link">
+        Composer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpnpm/" class="md-nav__link">
+        NodeJS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpstan/" class="md-nav__link">
+        Phpstan
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpAdminer/" class="md-nav__link">
+        Adminer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpTiller/" class="md-nav__link">
+        Tiller
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpMailhog/" class="md-nav__link">
+        Mail
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Adv/phpVault/" class="md-nav__link">
+        Secrets
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Moodle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Moodle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Moodle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodle/" class="md-nav__link">
+        Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleInstall/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Plugin Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Plugin Types" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Plugin Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginTypes/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_mod/" class="md-nav__link">
+        Activity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_7_3_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3_3">
+          Question
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Question" data-md-level="3">
+        <label class="md-nav__title" for="__nav_7_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Question
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qtypes/" class="md-nav__link">
+        Question Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qformat/" class="md-nav__link">
+        Question Format
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qbank/" class="md-nav__link">
+        Question Bank
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_qbehavior/" class="md-nav__link">
+        Question Behavior
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_booktool/" class="md-nav__link">
+        Book Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Plugin/phpMoodlePlugin_datafield/" class="md-nav__link">
+        Database Fields
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginSkeleton/" class="md-nav__link">
+        Skeleton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodlePluginFiles/" class="md-nav__link">
+        Common Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleXMLDB/" class="md-nav__link">
+        XMLDB Editor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTemplate/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_8" data-md-state="indeterminate" type="checkbox" id="__nav_7_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_8">
+          Javascript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Javascript" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_8">
+          <span class="md-nav__icon md-icon"></span>
+          Javascript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJS/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleJSTools/" class="md-nav__link">
+        Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodlePromises/" class="md-nav__link">
+        Promises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleModal/" class="md-nav__link">
+        Modal Dialogues
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Javascript/phpMoodleAJAX/" class="md-nav__link">
+        AJAX
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_9" type="checkbox" id="__nav_7_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_9">
+          APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="APIs" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_9">
+          <span class="md-nav__icon md-icon"></span>
+          APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          External Services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        External Services
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#web-service-protocols" class="md-nav__link">
+    Web Service Protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-web-service-functions" class="md-nav__link">
+    Defining Web Service Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-declarations" class="md-nav__link">
+    Service declarations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-definitions" class="md-nav__link">
+    Function Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    Security Considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validating-function-parameters" class="md-nav__link">
+    Validating function parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-access-to-the-moodle-context" class="md-nav__link">
+    Validating access to the Moodle context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensuring-that-a-user-has-the-appropriate-rights" class="md-nav__link">
+    Ensuring that a user has the appropriate rights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-access-control" class="md-nav__link">
+    Managing Access Control
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-and-tokens" class="md-nav__link">
+    Authentication and Tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
+    Service Configuration in the Moodle Admin Interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-handling" class="md-nav__link">
+    File handling
+  </a>
+  
+    <nav class="md-nav" aria-label="File handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-service-functions" class="md-nav__link">
+    Web service functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-endpoints" class="md-nav__link">
+    Dedicated endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-new-service" class="md-nav__link">
+    Writing a new service
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a new service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-specification" class="md-nav__link">
+    Functional specification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare-the-web-service-function" class="md-nav__link">
+    Declare the web service function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-the-external-function-descriptions" class="md-nav__link">
+    Write the external function descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-external-function" class="md-nav__link">
+    Implement the external function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bump-the-plugin-version" class="md-nav__link">
+    Bump the plugin version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecation" class="md-nav__link">
+    Deprecation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-creation" class="md-nav__link">
+    Service creation
+  </a>
+  
+    <nav class="md-nav" aria-label="Service creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaring-a-custom-service-declaration" class="md-nav__link">
+    Declaring a custom service declaration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-write-an-external-function-phpunit-test" class="md-nav__link">
+    How to write an external function PHPUnit test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodlePersistent/" class="md-nav__link">
+        Persistent API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleExporter/" class="md-nav__link">
+        Exporter
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleQuestion/" class="md-nav__link">
+        Question API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleDM/" class="md-nav__link">
+        Data Manipulation API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleTag/" class="md-nav__link">
+        Tag API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleAccess/" class="md-nav__link">
+        Access API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleGroups/" class="md-nav__link">
+        Groups API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleMessage/" class="md-nav__link">
+        Messaging API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleCache/" class="md-nav__link">
+        Cache API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleTable/" class="md-nav__link">
+        Table API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../API/phpMoodleForms/" class="md-nav__link">
+        Forms API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleSecurity/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_11" data-md-state="indeterminate" type="checkbox" id="__nav_7_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_11">
+          Test Frameworks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Test Frameworks" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_11">
+          <span class="md-nav__icon md-icon"></span>
+          Test Frameworks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleTestFrameworks/" class="md-nav__link">
+        General
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleToolsPHPUnit/" class="md-nav__link">
+        Unit Test
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleBehat/" class="md-nav__link">
+        Behat
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpMoodleDebug/" class="md-nav__link">
+        Debug
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#web-service-protocols" class="md-nav__link">
+    Web Service Protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-web-service-functions" class="md-nav__link">
+    Defining Web Service Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-declarations" class="md-nav__link">
+    Service declarations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-definitions" class="md-nav__link">
+    Function Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    Security Considerations
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validating-function-parameters" class="md-nav__link">
+    Validating function parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-access-to-the-moodle-context" class="md-nav__link">
+    Validating access to the Moodle context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensuring-that-a-user-has-the-appropriate-rights" class="md-nav__link">
+    Ensuring that a user has the appropriate rights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-access-control" class="md-nav__link">
+    Managing Access Control
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-and-tokens" class="md-nav__link">
+    Authentication and Tokens
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-configuration-in-the-moodle-admin-interface" class="md-nav__link">
+    Service Configuration in the Moodle Admin Interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-handling" class="md-nav__link">
+    File handling
+  </a>
+  
+    <nav class="md-nav" aria-label="File handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-service-functions" class="md-nav__link">
+    Web service functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dedicated-endpoints" class="md-nav__link">
+    Dedicated endpoints
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-a-new-service" class="md-nav__link">
+    Writing a new service
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing a new service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-specification" class="md-nav__link">
+    Functional specification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare-the-web-service-function" class="md-nav__link">
+    Declare the web service function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-the-external-function-descriptions" class="md-nav__link">
+    Write the external function descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-external-function" class="md-nav__link">
+    Implement the external function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bump-the-plugin-version" class="md-nav__link">
+    Bump the plugin version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecation" class="md-nav__link">
+    Deprecation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-creation" class="md-nav__link">
+    Service creation
+  </a>
+  
+    <nav class="md-nav" aria-label="Service creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaring-a-custom-service-declaration" class="md-nav__link">
+    Declaring a custom service declaration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-write-an-external-function-phpunit-test" class="md-nav__link">
+    How to write an external function PHPUnit test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>External Services</h1>
+
+<p>External web services in Moodle allow the platform to interact with external systems, 
+providing a bridge for integrating Moodle with third-party applications such as mobile apps, 
+external platforms, or custom systems. Moodle uses a standardized way to define, expose, 
+and secure web services to ensure safe communication between systems.</p>
+<p>Developing an external web service in Moodle involves several steps, including defining 
+the functions to be exposed, creating the necessary security mechanisms, and managing 
+user permissions. The Web Service framework and the External API work closely together providing a number of Endpoints, 
+and self-describing classes to support a wide range of uses.</p>
+<p>Moodle uses these web services internally for:</p>
+<ul>
+<li>AJAX interactions in the Moodle Web Interface; and</li>
+<li>The official Moodle Mobile App.</li>
+</ul>
+<p>The following example shows a typical authentication and protocol workflow.</p>
+<p><img alt="auth-protocol" src="../../Images/protocolworkflow.bmp" /></p>
+<p>The External Service API has two categories of documentation:</p>
+<ul>
+<li>this documentation details how to write a web service and use the External API; and</li>
+<li>API documentation for a live Moodle site, which can be found under <strong> Site administration &gt; Server &gt; Web services &gt; API Documentation </strong>.</li>
+</ul>
+<hr />
+<h3 id="web-service-protocols"><strong>Web Service Protocols</strong></h3>
+<p>Moodle supports multiple web service protocols, which determine how external systems 
+can communicate with Moodle. Common protocols include:</p>
+<ul>
+<li><strong>REST (Representational State Transfer)</strong>: A simple, lightweight protocol that uses HTTP 
+requests (GET, POST, etc.).</li>
+<li><strong>SOAP (Simple Object Access Protocol)</strong>: A more complex, XML-based protocol.</li>
+<li><strong>XML-RPC (Remote Procedure Call)</strong>: Uses XML to encode calls and HTTP as the transport mechanism.</li>
+<li><strong>AMF (Action Message Format)</strong>: A binary protocol primarily used for communication with Flash applications.</li>
+</ul>
+<p>Moodle comes with built-in support for these protocols, and developers can configure which ones to use.</p>
+<hr />
+<h3 id="defining-web-service-functions"><strong>Defining Web Service Functions</strong></h3>
+<p>A web service function is a PHP function that handles the logic of your web service. You can expose any PHP function in Moodle 
+as a web service function, but it must be carefully structured to ensure security and proper behavior.</p>
+<p>Before they can be used, all functions must be <em>declared</em> to Moodle, and their inputs and outputs must be <em>defined</em>.</p>
+<ul>
+<li>Functions are <em>declared</em> by noting them in the <code>db/services.php</code> file for a plugin.</li>
+<li>Functions are <em>defined</em> within their own class located within the <code>\component\external</code> namespace of a component.</li>
+</ul>
+<p>Note that there is a <a href="https://docs.moodle.org/dev/Web_service_API_functions#Naming_convention">strict naming convention for external service functions</a>.</p>
+<p>Function implementation classes consist of one class containing a number of functions, some of which are mandatory.</p>
+<p>During a Moodle installation or upgrade, the service and function declarations are parsed by a service discovery process 
+and stored within the database. An administrative UI may be used to change some configuration details of these declarations.</p>
+<h3 id="service-declarations"><strong>Service declarations</strong></h3>
+<p>Each component wishing to create an external service function must declare that the function exists by describing 
+it in the <code>db/services.php</code> file for that component.</p>
+<p>This information is stored internally within Moodle, and collected as part of the service discovery during installation 
+and upgrade. The function name is arbitrary, but must follow the naming convention. This helps ensure that it is globally unique.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">// The name of your web service function, as discussed above.</span>
+<span class="x">&#39;local_myplugin_create_groups&#39; =&gt; [</span>
+<span class="x">    // The name of the namespaced class that the function is located in.</span>
+<span class="x">    &#39;classname&#39;   =&gt; &#39;local_groupmanager\external\create_groups&#39;,</span>
+
+<span class="x">    // A brief, human-readable, description of the web service function.</span>
+<span class="x">    &#39;description&#39; =&gt; &#39;Creates new groups.&#39;,</span>
+
+<span class="x">    // Options include read, and write.</span>
+<span class="x">    &#39;type&#39;        =&gt; &#39;write&#39;,</span>
+
+<span class="x">    // Whether the service is available for use in AJAX calls from the web.</span>
+<span class="x">    &#39;ajax&#39;        =&gt; true,</span>
+
+<span class="x">    // An optional list of services where the function will be included.</span>
+<span class="x">    &#39;services&#39;    =&gt; [</span>
+<span class="x">        // A standard Moodle install includes one default service:</span>
+<span class="x">        // - MOODLE_OFFICIAL_MOBILE_SERVICE.</span>
+<span class="x">        // Specifying this service means that your function will be available for</span>
+<span class="x">        // use in the Moodle Mobile App.</span>
+<span class="x">        MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ],</span>
+<span class="x">    // A comma-separated list of capabilities used by the function.</span>
+<span class="x">    // This is advisory only and used to indicate to the administrator</span>
+<span class="x">    // configuring a custom service definition.</span>
+<span class="x">    &#39;capabilities&#39; =&gt; &#39;moodle/course:creategroups,moodle/course:managegroups&#39;,</span>
+
+<span class="x">    // The following parameters are also available, but are no longer recommended.</span>
+
+<span class="x">    // The name of the external function name.</span>
+<span class="x">    // If not specified, this will default to &#39;execute&#39;.</span>
+<span class="x">    &#39;methodname&#39;  =&gt; &#39;execute&#39;,</span>
+
+<span class="x">    // The file containing the class/external function.</span>
+<span class="x">    // Do not use if using namespaced auto-loading classes.</span>
+<span class="x">    &#39;classpath&#39;   =&gt; &#39;local/groupmanager/externallib.php&#39;,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</code></pre></div>
+<h3 id="function-definitions"><strong>Function Definitions</strong></h3>
+<p>An External function definition is the class, and collection of functions, used to define:</p>
+<ul>
+<li>any parameters that the function expects to take, including any types</li>
+<li>what the function will return, including any types</li>
+<li>whether the function has been deprecated, or not</li>
+</ul>
+<p>It also includes the code that will actually be executed by the function.</p>
+<p>The function definition should be located within the external namespace of a component.
+For a component named local_groupmanager located in local/groupmanager which is responsible for creating groups on request, you may have:</p>
+<ul>
+<li>a Web service function named: local_groupmanager_create_groups</li>
+<li>defined in a class named local_groupmanager\external\create_groups</li>
+<li>which is located local/groupmanager/classes/external/create_groups.php</li>
+</ul>
+<p>A service definition:</p>
+<ul>
+<li>must extend the \core_external\external_api class</li>
+<li>must declare an execute_parameters function to describe the expected parameters of the function</li>
+<li>must declare an execute function which is called with the functions and performs the expected actions</li>
+<li>must declare an execute_returns function to describe the values returned by the function</li>
+<li>may declare an execute_is_deprecated function to declare a function as deprecated</li>
+</ul>
+<p>Writing plugins supporting Multiple Moodle versions
+The External API subsystem was restructured in Moodle 4.2 and moved from classes within a manually-required file, to autoloaded and namespaced classes.</p>
+<p>If you are developing a plugin whose codebase is used or tested in multiple Moodle versions, including older versions of Moodle, then you:</p>
+<ul>
+<li>must require_once the lib/externallib.php file</li>
+<li>must extend the external_api class instead of \core_external\external_api</li>
+</ul>
+<p>This will allow your plugin to continue working without deprecation notices or failures.</p>
+<p>Please note that deprecation notices will be added to this pathway from Moodle 4.6 onwards.</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">// local/groupmanager/classes/external/create_groups.php</span>
+<span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">local_groupmanager\external</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">external_function_parameters</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_multiple_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_single_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_value</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">create_groups</span> <span class="k">extends</span> <span class="nx">\core_external\external_api</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute_parameters</span><span class="p">()</span><span class="o">:</span> <span class="nx">external_function_parameters</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">external_function_parameters</span><span class="p">([</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_multiple_structure</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">external_single_structure</span><span class="p">([</span>
+                    <span class="s1">&#39;courseid&#39;</span>  <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_INT</span><span class="p">,</span> <span class="s1">&#39;The course to create the group for&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;idnumber&#39;</span>    <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;An arbitrary ID code number perhaps from the institution&#39;</span><span class="p">,</span>
+                        <span class="nx">VALUE_DEFAULT</span><span class="p">,</span>
+                        <span class="k">null</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;The name of the group&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_TEXT</span><span class="p">,</span>
+                        <span class="s1">&#39;A description&#39;</span><span class="p">,</span>
+                        <span class="nx">VALUE_OPTIONAL</span>
+                    <span class="p">),</span>
+                <span class="p">]),</span>
+                <span class="s1">&#39;A list of groups to create&#39;</span>
+            <span class="p">),</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="k">array</span> <span class="nv">$groups</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">// Validate all of the parameters.</span>
+        <span class="p">[</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="nv">$groups</span><span class="p">,</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="nx">self</span><span class="o">::</span><span class="na">validate_parameters</span><span class="p">(</span><span class="nx">self</span><span class="o">::</span><span class="na">execute_parameters</span><span class="p">(),</span> <span class="p">[</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="nv">$groups</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// Perform security checks, for example:</span>
+        <span class="nv">$coursecontext</span> <span class="o">=</span> <span class="nx">\context_course</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$courseid</span><span class="p">);</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">validate_context</span><span class="p">(</span><span class="nv">$coursecontext</span><span class="p">);</span>
+        <span class="nx">require_capability</span><span class="p">(</span><span class="s1">&#39;moodle/course:creategroups&#39;</span><span class="p">,</span> <span class="nv">$coursecontext</span><span class="p">);</span>
+
+        <span class="c1">// Create the group using existing Moodle APIs.</span>
+        <span class="nv">$createdgroups</span> <span class="o">=</span> <span class="nx">\local_groupmanager\util</span><span class="o">::</span><span class="na">create_groups</span><span class="p">(</span><span class="nv">$groups</span><span class="p">);</span>
+
+        <span class="c1">// Return a value as described in the returns function.</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="nv">$createdgroups</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute_returns</span><span class="p">()</span><span class="o">:</span> <span class="nx">external_single_structure</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">external_single_structure</span><span class="p">([</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_multiple_structure</span><span class="p">([</span>
+                <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_INT</span><span class="p">,</span> <span class="s1">&#39;Id of the created user&#39;</span><span class="p">),</span>
+                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_RAW</span><span class="p">,</span> <span class="s1">&#39;The name of the group&#39;</span><span class="p">),</span>
+            <span class="p">])</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Available parameter types are defined in lib/moodlelib.php and are used by the 
+validate_parameters() function and during return value checking to ensure that the 
+service is called and working as defined.</p>
+<h3 id="security-considerations"><strong>Security Considerations</strong></h3>
+<p>Web services often expose sensitive data, so it’s critical to enforce strict security measures.</p>
+<ul>
+<li><strong>User Authentication</strong>: Ensure that only authorized users can access your web services.</li>
+<li><strong>Capability Checks</strong>: Use Moodle’s capabilities system to control access. For example, only users with the capability <code>moodle/course:view</code> can retrieve course details.</li>
+<li><strong>Parameter Validation</strong>: Always validate and sanitize the input parameters using the <code>external_function_parameters</code> class.</li>
+<li><strong>Return Value Sanitization</strong>: Ensure that the data returned is safe and free from XSS vulnerabilities.</li>
+</ul>
+<p>Before operating on any data in an external function, you must ensure that the user:</p>
+<ul>
+<li>has access to context that the data is located in</li>
+<li>has permission to perform the relevant action</li>
+</ul>
+<h4 id="validating-function-parameters">Validating function parameters</h4>
+<p>Before working with any data provided by a user you must validate the parameters against the 
+definitions you have defined.</p>
+<p>To do so you should call the <code>validate_parameters()</code> function, passing in the reference to 
+your <code>execute_parameters()</code> function, and the complete list of parameters for the function. 
+The function will return the validated and cleaned parameters.</p>
+<p>The validate_parameters() function is defined on the <code>\core_external\external_api</code> class, 
+and can be called as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// local/groupmanager/classes/external/create_groups.php</span>
+<span class="x">public static function execute(array $groups): array {</span>
+<span class="x">    [</span>
+<span class="x">        &#39;groups&#39; =&gt; $groups,</span>
+<span class="x">    ] = self::validate_parameters(self::execute_parameters(), [</span>
+<span class="x">        &#39;groups&#39; =&gt; $groups,</span>
+<span class="x">    ]);</span>
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="validating-access-to-the-moodle-context">Validating access to the Moodle context</h4>
+<p>Whenever fetching or updating any data within Moodle using an External function definition, 
+you must validate the context that the data exists within.</p>
+<p>To do so you should call the validate_context() function, passing the most specific context 
+for the data.</p>
+<p>For example, if you are working with data belonging to a specific activity, you should use 
+the activity context. If you are working with data belonging to a course, you should use 
+the course context.</p>
+<p>If your function operates on multiple contexts (like a list of courses), you must validate 
+each context right before generating any response data related to that context.</p>
+<p>The <code>validate_context()</code> function is defined on the <code>\core_external\external_api</code> class, 
+and can be called as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="x">// local/groupmanager/classes/external/create_groups.php</span>
+<span class="x">public static function execute(array $groups): array {</span>
+<span class="x">    // ...</span>
+<span class="x">    foreach ($groups as $group) {</span>
+<span class="x">        $coursecontext = \context_course::instance($group[&#39;courseid&#39;]);</span>
+<span class="x">        self::validate_context($coursecontext);</span>
+<span class="x">        // ...</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>The validate_context() function will also configure 
+the correct theme, language, and filters required to render content for the current user.</p>
+<p>You should not:</p>
+<ul>
+<li>use the require_login function from an external function - this function is reserved for php scripts returning a web page.</li>
+<li>call $PAGE-&gt;set_context() manually - this will generate warning notices.</li>
+</ul>
+<p>The <code>validate_context()</code> function is the only correct way to write external functions.</p>
+<h4 id="ensuring-that-a-user-has-the-appropriate-rights">Ensuring that a user has the appropriate rights</h4>
+<p>Once you have confirmed that the provided data is of the correct type, and configured Moodle for the specific context, you should also ensure that all capabilities are checked correctly.</p>
+<p>You can use the standard capability functions, including:</p>
+<ul>
+<li>has_capability() - to check that a user has a single capability</li>
+<li>has_any_capability() - to check that a user has any capability in a set</li>
+<li>has_all_capability() - to check that a user has all capabilities in a set</li>
+<li>require_capability() - to require a single capability</li>
+<li>require_all_capabilities() - to require that a user has all capabilities in a set</li>
+</ul>
+<hr />
+<h3 id="managing-access-control"><strong>Managing Access Control</strong></h3>
+<p>Each web service function can have specific access controls that determine who can call it. Access is controlled via <strong>tokens</strong> and <strong>capabilities</strong>.</p>
+<ul>
+<li><strong>Tokens</strong>: Users or systems must have a valid token to call a web service. Admins can issue these tokens through <strong>Site administration &gt; Server &gt; Web services &gt; Manage tokens</strong>.</li>
+<li><strong>Capabilities</strong>: Each function can define required capabilities in <code>db/services.php</code>, ensuring that users have the correct roles to access the web service.</li>
+</ul>
+<h4 id="authentication-and-tokens"><strong>Authentication and Tokens</strong></h4>
+<p>Moodle uses tokens for authenticating users when they access web services. Tokens are generated for individual users or system accounts 
+and can be issued in two ways:</p>
+<ul>
+<li><strong>Manually</strong> by administrators: Through the admin interface.</li>
+<li><strong>Automatically</strong>: Using Moodle’s authentication mechanisms (e.g., OAuth2).</li>
+</ul>
+<p><strong>Example: Creating a Token Manually</strong></p>
+<ol>
+<li>Go to <strong>Site administration &gt; Server &gt; Web services &gt; Manage tokens</strong>.</li>
+<li>Choose the user for whom the token will be created.</li>
+<li>Assign the web service functions that this token allows access to.</li>
+</ol>
+<h4 id="service-configuration-in-the-moodle-admin-interface"><strong>Service Configuration in the Moodle Admin Interface</strong></h4>
+<p>After defining your web service functions, you can configure them via the Moodle admin interface:</p>
+<ul>
+<li><strong>Enable Web Services</strong>: Ensure web services are enabled in <strong>Site administration &gt; Advanced features</strong>.</li>
+<li><strong>Configure Protocols</strong>: Enable the desired web service protocols under <strong>Site administration &gt; Plugins &gt; Web services &gt; Manage protocols</strong>.</li>
+<li><strong>Create a Service</strong>: In <strong>Site administration &gt; Server &gt; Web services &gt; External services</strong>, you can create and manage services, which are groups of related web service functions.</li>
+<li><strong>Assign Functions to the Service</strong>: Add the functions defined in <code>db/services.php</code> to the service, so they are accessible externally.</li>
+</ul>
+<hr />
+<h3 id="file-handling"><strong>File handling</strong></h3>
+<p>Moodle provides two ways to fetch and upload files:</p>
+<ol>
+<li>A set of web service functions; and</li>
+<li>A pair of dedicated endpoints.</li>
+</ol>
+<h4 id="web-service-functions">Web service functions</h4>
+<p>You can use the following functions to upload, and fetch, file content:</p>
+<ul>
+<li><code>core_files_get_files()</code>; and</li>
+<li><code>core_files_upload()</code>.</li>
+</ul>
+<p>When using these functions, the file content is base64-encoded.</p>
+<p><strong>Note: </strong>
+Many devices do not have enough memory to encode and decode requests containing large files. 
+As such we recommend using the dedicated endpoints instead.</p>
+<h4 id="dedicated-endpoints">Dedicated endpoints</h4>
+<p>Moodle provides two dedicated endpoints which can be used, alongside the authentication token, to upload and fetch content. These are:</p>
+<ul>
+<li>to upload a file: <code>/webservice/upload.php</code>; and</li>
+<li>to fetch a file: <code>/webservice/pluginfile.php</code>.</li>
+</ul>
+<h5 id="file-upload">File upload</h5>
+<p>The recommended way to upload file content from an external service is by issue a <code>POST</code> request to the <code>/webservice/upload.php</code> endpoint, 
+passing in a valid web service token for authentication.</p>
+<p>Upon successful upload, any files passed will be saved in the user's draft file area.</p>
+<p>The endpoint takes two optional arguments:</p>
+<ul>
+<li>An <code>itemid</code> to upload the files to, defaulting to <code>0</code>. If none is specified then a new id is generated for the current user's draft file area</li>
+<li>A <code>filepath</code> to store the file in, defaulting to /.</li>
+</ul>
+<p>The endpoint will return a JSON-encoded summary of the uploaded file, including the <code>itemid</code> that it was stored in.</p>
+<p>It is typical that the <code>itemid</code> parameter will be used when the files are uploaded singularly in separate HTTP calls 
+and the files are required to be in the same draft file area.</p>
+<p>The client retrieves the <code>itemid</code> from the first uploaded file and uses it in subsequent uploads.</p>
+<p>This allows multiple files to be uploaded to the same draft file area.</p>
+<p>On every successful upload, the file/s information are returned in JSON format. 
+If an error occurs, an error message will be sent back in JSON format too.</p>
+<h5 id="example">Example</h5>
+<p>To upload a file, <code>users.csv</code>, you could use curl as follows:</p>
+<div class="highlight"><pre><span></span><code>$ curl -X POST -F <span class="s2">&quot;file_1=@users.csv&quot;</span> https://SITENAME/webservice/upload.php?token<span class="o">=</span>TOKEN <span class="se">\</span>
+<span class="p">|</span> jq
+
+<span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">&quot;component&quot;</span>: <span class="s2">&quot;user&quot;</span>,
+    <span class="s2">&quot;contextid&quot;</span>: <span class="m">567</span>,
+    <span class="s2">&quot;userid&quot;</span>: <span class="s2">&quot;123&quot;</span>,
+    <span class="s2">&quot;filearea&quot;</span>: <span class="s2">&quot;draft&quot;</span>,
+    <span class="s2">&quot;filename&quot;</span>: <span class="s2">&quot;users.csv&quot;</span>,
+    <span class="s2">&quot;filepath&quot;</span>: <span class="s2">&quot;/&quot;</span>,
+    <span class="s2">&quot;itemid&quot;</span>: <span class="m">880413555</span>,
+    <span class="s2">&quot;license&quot;</span>: <span class="s2">&quot;allrightsreserved&quot;</span>,
+    <span class="s2">&quot;author&quot;</span>: <span class="s2">&quot;User User&quot;</span>,
+    <span class="s2">&quot;source&quot;</span>: <span class="s2">&quot;O:8:\&quot;stdClass\&quot;:1:{s:6:\&quot;source\&quot;;s:13:\&quot;users.csv\&quot;;}&quot;</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<p>The returned JSON response includes the key parts of the file record, including the <code>itemid</code>.</p>
+<p>Once all the files are uploaded, you can call a webserivce function to process the files from the user drafts area, 
+passing in the <code>itemid</code> of the draft area containing the list of files for the request. 
+The service can identify the uploads and manipulate them as necessary.</p>
+<p>An example of a webservice that accepts files is: <code>mod_assign_save_submission</code>.</p>
+<p>To accept file uploads, the service must allow "files download" 
+(Administration &gt; Plugins &gt; Web services &gt; Manage services &gt; Edit service &gt; Advanced button)</p>
+<h5 id="file-download">File download</h5>
+<p>We serve the files through <code>/webservice/pluginfile.php</code>. This script requires a web service token for authentication.</p>
+<p>To support file downloads, the service must allow "files download".</p>
+<p>The <code>/webservice/pluginfile.php</code> endpoint has the exact same structure as <code>/pluginfile.php</code> and <code>/tokenpluginfile.php</code>.</p>
+<p>We don't serve the files through <code>/pluginfile.php</code> for web service clients because it requires the user's login session to work, 
+however it is possible to use the <code>/tokenpluginfile.php</code> endpoint with an appropriate token.</p>
+<h5 id="returning-files-in-web-services">Returning files in Web Services</h5>
+<p>Since Moodle 3.2, you can return a complete file area list via Web Services using the static <code>get_area_files</code> method, defined in <code>external_util</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$forum-&gt;introfiles = external_util::get_area_files($context-&gt;id, &#39;mod_forum&#39;, &#39;intro&#39;, false, false);</span>
+</code></pre></div>
+<p>You can also use the <code>external_files</code> structure definition in combination with the method to return the most common file fields 
+required by WS clients.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function execute_returns(): external_multiple_structure {</span>
+<span class="x">    return new external_multiple_structure(</span>
+<span class="x">        new external_single_structure([</span>
+<span class="x">            &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;Forum id&#39;),</span>
+<span class="x">            // ...</span>
+<span class="x">            &#39;introfiles&#39; =&gt; new external_files(&#39;Files in the introduction text&#39;, VALUE_OPTIONAL),</span>
+<span class="x">            // ...</span>
+<span class="x">        ])</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="writing-a-new-service"><strong>Writing a new service</strong></h3>
+<p>This documentation covers the creation of a new external service for use in a web service of a fictional local plugin, local_groupmanager.</p>
+<h4 id="functional-specification">Functional specification</h4>
+<p>The local_groupmanager plugin has a need to create groups within a course and would like to do so using its own web service.</p>
+<p>When defining a new service definition, Moodle requires that the name of the definition be in the form:
+<code>[frankenstyle_component]_[methodname]</code></p>
+<p>The naming convention further dictates that the methodname component be in the form:</p>
+<div class="highlight"><pre><span></span><code>[methodname]  - The name of the method in the form of [verb]_[noun]
+
+[verb]        - Usually one of get, create, delete, update
+                A similar verb that well describes the action may also be used
+
+[noun]        - The object being modified
+                Usually in Plural form
+</code></pre></div>
+<p>Per the Moodle naming convention for web services the name of the function should be:
+local_groupmanager_create_groups</p>
+<p><strong>Inputs</strong></p>
+<p>The local_groupmanager_create_groups external service definition will take a list of groups as its only parameters.</p>
+<p><strong>Outputs</strong></p>
+<p>The service will return a list of the created groups, including the id element of those groups.</p>
+<p><strong>Exceptions and failures</strong></p>
+<p>If any group creation fails, the function will throw an exception, and no groups will be created.</p>
+<p><strong>Technical specification</strong></p>
+<ul>
+<li>the core function the external function will call: <code>groups_create_group()</code> from /group/lib.php.</li>
+<li>the parameter types: a list of object. This object are groups, with <code>id/name/courseid</code>.</li>
+<li>the returned value types: a list of objects (groups) with their id.</li>
+<li>the user capabilities to check: <code>moodle/course:managegroups</code></li>
+</ul>
+<h4 id="declare-the-web-service-function">Declare the web service function</h4>
+<p>An external function must be declared before it can be used in your plugin. Function declarations 
+should be placed in the db/services.php file of your plugin. 
+For example in our fictitious plugin this would be located in <code>local/groupmanager/db/services.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">    // The name of your web service function, as discussed above.</span>
+<span class="x">    &#39;local_groupmanager_create_groups&#39; =&gt; [</span>
+<span class="x">        // The name of the namespaced class that the function is located in.</span>
+<span class="x">        &#39;classname&#39;   =&gt; &#39;local_groupmanager\external\create_groups&#39;,</span>
+
+<span class="x">        // A brief, human-readable, description of the web service function.</span>
+<span class="x">        &#39;description&#39; =&gt; &#39;Creates new groups.&#39;,</span>
+
+<span class="x">        // Options include read, and write.</span>
+<span class="x">        &#39;type&#39;        =&gt; &#39;write&#39;,</span>
+
+<span class="x">        // Whether the service is available for use in AJAX calls from the web.</span>
+<span class="x">        &#39;ajax&#39;        =&gt; true,</span>
+
+<span class="x">        // An optional list of services where the function will be included.</span>
+<span class="x">        &#39;services&#39; =&gt; [</span>
+<span class="x">            // A standard Moodle install includes one default service:</span>
+<span class="x">            // - MOODLE_OFFICIAL_MOBILE_SERVICE.</span>
+<span class="x">            // Specifying this service means that your function will be available for</span>
+<span class="x">            // use in the Moodle Mobile App.</span>
+<span class="x">            MOODLE_OFFICIAL_MOBILE_SERVICE,</span>
+<span class="x">        ]</span>
+<span class="x">    ],</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>A number of advanced options are also available, as described below:</p>
+<div class="highlight"><pre><span></span><code><span class="x">$functions = [</span>
+<span class="x">    // The name of your web service function, as discussed above.</span>
+<span class="x">    &#39;local_groupmanager_create_groups&#39; =&gt; [</span>
+<span class="x">        // A comma-separated list of capabilities used by the function.</span>
+<span class="x">        // This is advisory only and used to indicate to the administrator configuring a custom service definition.</span>
+<span class="x">        &#39;capabilities&#39; =&gt; &#39;moodle/course:creategroups,moodle/course:managegroups&#39;,</span>
+
+<span class="x">        // The following parameters are also available, but are no longer recommended.</span>
+
+<span class="x">        // The name of the external function name.</span>
+<span class="x">        // If not specified, this will default to &#39;execute&#39;.</span>
+<span class="x">        // &#39;methodname&#39;  =&gt; &#39;execute&#39;,</span>
+
+<span class="x">        // The file containing the class/external function.</span>
+<span class="x">        // Do not use if using namespaced auto-loading classes.</span>
+<span class="x">        // &#39;classpath&#39;   =&gt; &#39;local/groupmanager/externallib.php&#39;,</span>
+<span class="x">    ),</span>
+<span class="x">);</span>
+</code></pre></div>
+<h4 id="write-the-external-function-descriptions">Write the external function descriptions</h4>
+<p>Every web service function is mapped to an external function. 
+External function are described in the External functions API. 
+Each external function is written with two other functions describing the parameters and the return values. 
+These description functions are used by web service servers to:</p>
+<ul>
+<li>validate the web service function parameters</li>
+<li>validate the web service function returned values</li>
+<li>build WSDL files or other protocol documents</li>
+</ul>
+<p>These two description functions are located in the class declared in <code>local/groupmanager/db/services.php</code>.</p>
+<p>Thus for the web service function <code>local_groupmanager_create_groups()</code>, we should write a class named <code>create_group</code>s in the 
+<code>local_groupmanager\external</code> namespace.</p>
+<p>This will be located in the file <code>local/groupmanager/classes/external/create_groups.php</code>. The class will contain:</p>
+<ul>
+<li>execute(...)</li>
+<li>execute_parameters()</li>
+<li>execute_return()</li>
+</ul>
+<h5 id="defining-parameters">Defining parameters</h5>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">local_groupmanager\external</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">external_function_parameters</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_multiple_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_single_structure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">external_value</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">create_groups</span> <span class="k">extends</span> <span class="nx">\core_external\external_api</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Returns description of method parameters</span>
+<span class="sd">     * @return external_function_parameters</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">execute_parameters</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">external_function_parameters</span><span class="p">([</span>
+            <span class="s1">&#39;groups&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_multiple_structure</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">external_single_structure</span><span class="p">([</span>
+                    <span class="s1">&#39;courseid&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span><span class="nx">PARAM_INT</span><span class="p">,</span> <span class="s1">&#39;id of course&#39;</span><span class="p">),</span>
+                    <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_TEXT</span><span class="p">,</span>
+                        <span class="s1">&#39;multilang compatible name, course unique&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;group description text&#39;</span>
+                    <span class="p">),</span>
+                    <span class="s1">&#39;enrolmentkey&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">external_value</span><span class="p">(</span>
+                        <span class="nx">PARAM_RAW</span><span class="p">,</span>
+                        <span class="s1">&#39;group enrol secret phrase&#39;</span>
+                    <span class="p">),</span>
+                <span class="p">])</span>
+            <span class="p">)</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A web service function without parameters will have a parameter description function like that:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Returns description of method parameters</span>
+<span class="x"> * @return external_function_parameters</span>
+<span class="x"> */</span>
+<span class="x">public static function execute_parameters(): external_function_parameters {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        // If this function had any parameters, they would be described here.</span>
+<span class="x">        // This example has no parameters, so the array is empty.</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>A parameter can be described as:</p>
+<ul>
+<li>a list =&gt; external_multiple_structure</li>
+<li>an object =&gt; external_single_structure</li>
+<li>a primary type =&gt; external_value</li>
+</ul>
+<p>Our create_groups() function expects one parameter named groups, so we will first write:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Returns description of method parameters</span>
+<span class="x"> * @return external_function_parameters</span>
+<span class="x"> */</span>
+<span class="x">public static function execute_parameters(): external_function_parameters {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;groups&#39; =&gt; ...</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>This groups parameter is a list of group. So we will write :</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;groups&#39; =&gt; new external_multiple_structure(</span>
+<span class="x">    ...</span>
+<span class="x">)</span>
+</code></pre></div>
+<p>An external_multiple_structure object (list) can be constructed with:</p>
+<ul>
+<li>external_multiple_structure (list)</li>
+<li>external_single_structure (object)</li>
+<li>external_value (primary type).</li>
+</ul>
+<p>For our function it will be a external_single_structure:</p>
+<div class="highlight"><pre><span></span><code><span class="x">new external_single_structure([</span>
+<span class="x">    &#39;courseid&#39; =&gt; ...,</span>
+<span class="x">    &#39;name&#39; =&gt; ...,</span>
+<span class="x">    &#39;description&#39; =&gt; ...,</span>
+<span class="x">    &#39;enrolmentkey&#39; =&gt; ...,</span>
+<span class="x">])</span>
+</code></pre></div>
+<p>Thus we obtain :</p>
+<p><div class="highlight"><pre><span></span><code><span class="x">&#39;groups&#39; =&gt; new external_multiple_structure(</span>
+<span class="x">    new external_single_structure([</span>
+<span class="x">        &#39;courseid&#39; =&gt; ...,</span>
+<span class="x">        &#39;name&#39; =&gt; ...,</span>
+<span class="x">        &#39;description&#39; =&gt; ...,</span>
+<span class="x">        &#39;enrolmentkey&#39; =&gt; ...,</span>
+<span class="x">    ])</span>
+<span class="x">)</span>
+</code></pre></div>
+Each group values is a external_value (primary type):</p>
+<ul>
+<li>courseid is an integer</li>
+<li>name is a string (text only, not tag)</li>
+<li>description is a string (can be anything)</li>
+<li>enrolmentkey is also a string (can be anything)</li>
+</ul>
+<p>We add them to the description :</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;groups&#39; =&gt; new external_multiple_structure(</span>
+<span class="x">    new external_single_structure([</span>
+<span class="x">        // The second argument is a human readable description text.</span>
+<span class="x">        // This text is displayed in the automatically generated documentation.</span>
+<span class="x">        &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;id of course&#39;),</span>
+<span class="x">        &#39;name&#39; =&gt; new external_value(PARAM_TEXT, &#39;multilang compatible name, course unique&#39;),</span>
+<span class="x">        &#39;description&#39; =&gt; new external_value(PARAM_RAW, &#39;group description text&#39;),</span>
+<span class="x">        &#39;enrolmentkey&#39; =&gt; new external_value(PARAM_RAW, &#39;group enrol secret phrase&#39;),</span>
+<span class="x">    ])</span>
+<span class="x">)</span>
+</code></pre></div>
+<h5 id="execute_returns">execute_returns()</h5>
+<p>It's similar to execute_parameters(), but instead of describing the parameters, it describes the return values.</p>
+<div class="highlight"><pre><span></span><code><span class="x">public static function execute_returns() {</span>
+<span class="x">    return new external_multiple_structure(</span>
+<span class="x">        new external_single_structure([</span>
+<span class="x">            &#39;id&#39; =&gt; new external_value(PARAM_INT, &#39;group record id&#39;),</span>
+<span class="x">            &#39;courseid&#39; =&gt; new external_value(PARAM_INT, &#39;id of course&#39;),</span>
+<span class="x">            &#39;name&#39; =&gt; new external_value(PARAM_TEXT, &#39;multilang compatible name, course unique&#39;),</span>
+<span class="x">            &#39;description&#39; =&gt; new external_value(PARAM_RAW, &#39;group description text&#39;),</span>
+<span class="x">            &#39;enrolmentkey&#39; =&gt; new external_value(PARAM_RAW, &#39;group enrol secret phrase&#39;),</span>
+<span class="x">        ])</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</code></pre></div>
+<h5 id="required-optional-or-default-value">Required, Optional or Default value</h5>
+<p>A value can be VALUE_REQUIRED, VALUE_OPTIONAL, or VALUE_DEFAULT. If not mentioned, a value is VALUE_REQUIRED by default.</p>
+<div class="highlight"><pre><span></span><code><span class="x">&#39;yearofstudy&#39; =&gt; new external_value(PARAM_INT, &#39;year of study&#39;, VALUE_DEFAULT, 1979),</span>
+</code></pre></div>
+<ul>
+<li>VALUE_REQUIRED - if the value is not supplied =&gt; the server throws an error message</li>
+<li>VALUE_OPTIONAL - if the value is not supplied =&gt; the value is ignored. Note that VALUE_OPTIONAL can't be used in top level parameters, it must be used only within array/objects key definition. If you need top level Optional parameters you should use VALUE_DEFAULT instead.</li>
+<li>VALUE_DEFAULT - if the value is not supplied =&gt; the default value is used</li>
+</ul>
+<p>Because some web service protocols are strict about the number and types of arguments - it is not possible to specify an optional parameter as one of the top-most parameters for a function.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// An example of incorrect behaviour</span>
+<span class="x">public static function get_biscuit_parameters() {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;chocolatechips&#39; =&gt; new external_value(</span>
+<span class="x">            PARAM_BOOL,</span>
+<span class="x">            &#39;if biscuit contains chocolate chips&#39;,</span>
+<span class="x">            VALUE_REQUIRED</span>
+<span class="x">        ),</span>
+<span class="x">        &#39;glutenfree&#39; =&gt; new external_value(</span>
+<span class="x">            type: PARAM_BOOL,</span>
+<span class="x">            required: VALUE_DEFAULT,</span>
+<span class="x">            default: false,</span>
+<span class="x">            allownull: false</span>
+<span class="x">        ),</span>
+<span class="x">        // ERROR! top level optional parameter!!!</span>
+<span class="x">        &#39;icingsugar&#39; =&gt; new external_value(</span>
+<span class="x">            PARAM_BOOL,</span>
+<span class="x">            &#39;if biscuit has icing sugar on top&#39;,</span>
+<span class="x">            VALUE_OPTIONAL</span>
+<span class="x">        ),</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">// An example of correct behaviour</span>
+<span class="x">public static function get_biscuit_parameters() {</span>
+<span class="x">    return new external_function_parameters([</span>
+<span class="x">        &#39;ifeellike&#39; =&gt; new external_single_structure([</span>
+<span class="x">                &#39;chocolatechips&#39; =&gt; new external_value(</span>
+<span class="x">                    PARAM_BOOL,</span>
+<span class="x">                    &#39;if biscuit contains chocolate chips&#39;,</span>
+<span class="x">                    VALUE_REQUIRED</span>
+<span class="x">                ),</span>
+<span class="x">                &#39;glutenfree&#39; =&gt; new external_value(</span>
+<span class="x">                    type: PARAM_BOOL,</span>
+<span class="x">                    required: VALUE_DEFAULT,</span>
+<span class="x">                    default: false,</span>
+<span class="x">                    allownull: false</span>
+<span class="x">                ),</span>
+<span class="x">                // ALL GOOD!! We have nested the params in an external_single_structure.</span>
+<span class="x">                &#39;icingsugar&#39; =&gt; new external_value(</span>
+<span class="x">                    PARAM_BOOL,</span>
+<span class="x">                    &#39;if biscuit has icing sugar on top&#39;,</span>
+<span class="x">                    VALUE_OPTIONAL</span>
+<span class="x">                ),</span>
+<span class="x">        ]),</span>
+<span class="x">    ]);</span>
+<span class="x">}</span>
+</code></pre></div>
+<h4 id="implement-the-external-function">Implement the external function</h4>
+<p>We declared our web service function and we defined the external function parameters and return values. We will now implement the external function:</p>
+<div class="highlight"><pre><span></span><code><span class="x">    /**</span>
+<span class="x">     * Create groups</span>
+<span class="x">     * @param array $groups array of group description arrays (with keys groupname and courseid)</span>
+<span class="x">     * @return array of newly created groups</span>
+<span class="x">     */</span>
+<span class="x">    public static function execute($groups) {</span>
+<span class="x">        global $CFG, $DB;</span>
+<span class="x">        require_once(&quot;$CFG-&gt;dirroot/group/lib.php&quot;);</span>
+
+<span class="x">        $params = self::validate_parameters(self::execute_parameters(), [&#39;groups&#39; =&gt; $groups]);</span>
+
+<span class="x">        $transaction = $DB-&gt;start_delegated_transaction(); //If an exception is thrown in the below code, all DB queries in this code will be rollback.</span>
+
+<span class="x">        $groups = array();</span>
+
+<span class="x">        foreach ($params[&#39;groups&#39;] as $group) {</span>
+<span class="x">            $group = (object)$group;</span>
+
+<span class="x">            if (trim($group-&gt;name) == &#39;&#39;) {</span>
+<span class="x">                throw new invalid_parameter_exception(&#39;Invalid group name&#39;);</span>
+<span class="x">            }</span>
+<span class="x">            if ($DB-&gt;get_record(&#39;groups&#39;, [&#39;courseid&#39; =&gt; $group-&gt;courseid, &#39;name&#39; =&gt; $group-&gt;name])) {</span>
+<span class="x">                throw new invalid_parameter_exception(&#39;Group with the same name already exists in the course&#39;);</span>
+<span class="x">            }</span>
+
+<span class="x">            // now security checks</span>
+<span class="x">            $context = get_context_instance(CONTEXT_COURSE, $group-&gt;courseid);</span>
+<span class="x">            self::validate_context($context);</span>
+<span class="x">            require_capability(&#39;moodle/course:managegroups&#39;, $context);</span>
+
+<span class="x">            // finally create the group</span>
+<span class="x">            $group-&gt;id = groups_create_group($group, false);</span>
+<span class="x">            $groups[] = (array) $group;</span>
+<span class="x">        }</span>
+
+<span class="x">        $transaction-&gt;allow_commit();</span>
+
+<span class="x">        return $groups;</span>
+<span class="x">    }</span>
+</code></pre></div>
+<h5 id="parameter-validation">Parameter validation</h5>
+<div class="highlight"><pre><span></span><code><span class="x">$params = self::validate_parameters(self::execute_parameters(), [</span>
+<span class="x">    &#39;groups&#39; =&gt; $groups,</span>
+<span class="x">]);</span>
+</code></pre></div>
+<p>This <em>validate_parameters</em> function validates the external function parameters against the description. 
+It will return an exception if some required parameters are missing, if parameters are not well-formed, 
+and check the parameters validity. It is essential that you do this call to avoid potential hack.</p>
+<p><strong>Important:</strong> the parameters of the external function and their declaration in the description <strong>must be the same order</strong>. 
+In this example we have only one parameter named $groups, so we don't need to worry about the order.</p>
+<h5 id="context-and-capability-checks">Context and Capability checks</h5>
+<div class="highlight"><pre><span></span><code><span class="x">// Perform security checks.</span>
+<span class="x">$context = context_course::instance($group-&gt;courseid);</span>
+<span class="x">self::validate_context($context);</span>
+<span class="x">require_capability(&#39;moodle/course:managegroups&#39;, $context);</span>
+</code></pre></div>
+<p><strong>Note:</strong> <code>validate_context()</code> is required in all external functions before operating on any data belonging to a context. 
+This function does sanity and security checks on the context that was passed to the external function - 
+and sets up the global $PAGE and $OUTPUT for rendering return values. Do NOT use require_login(), 
+or $PAGE-&gt;set_context() in an external function.</p>
+<h5 id="exceptions">Exceptions</h5>
+<p>You can throw exceptions. These are automatically handled by Moodle web service servers.</p>
+<div class="highlight"><pre><span></span><code><span class="x">// Note: It is good practice to add detailled information in $debuginfo,</span>
+<span class="x">//       and only send back a generic exception message when Moodle DEBUG mode &lt; NORMAL.</span>
+<span class="x">//       It&#39;s what we do here throwing the invalid_parameter_exception($debug) exception</span>
+<span class="x">throw new invalid_parameter_exception(&#39;Group with the same name already exists in the course&#39;);</span>
+</code></pre></div>
+<h5 id="correct-return-values">Correct return values</h5>
+<p>The return values will be validated by the Moodle web service servers:</p>
+<ul>
+<li>return values contain some values not described =&gt; these values will be skipped.</li>
+<li>return values miss some required values (VALUE_REQUIRED) =&gt; the server will return an error.</li>
+<li>return values types don't match the description (int != PARAM_ALPHA) =&gt; the server will return an error 
+<strong>Note:</strong> cast all your returned objects into arrays.</li>
+</ul>
+<h4 id="bump-the-plugin-version">Bump the plugin version</h4>
+<p>Edit your <code>local/groupmanager/version.php</code> and increase the plugin version. 
+This should trigger a Moodle upgrade and the new web service should be available in the administration 
+(Administration &gt; Plugins &gt; Web Services &gt; Manage services)</p>
+<h4 id="deprecation">Deprecation</h4>
+<p>External functions deprecation process is slightly different from the standard deprecation. 
+If you are interested in deprecating any of your external functions you should also (apart from the applicable points detailed 
+in the <a href="https://moodledev.io/general/development/policies/deprecation">standard deprecation docs</a>) create a <code>FUNCTIONNAME_is_deprecated()</code> method in your external function class. 
+Return true if the external function is deprecated. This is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * Mark the function as deprecated.</span>
+<span class="x"> * @return bool</span>
+<span class="x"> */</span>
+<span class="x">public static function execute_is_deprecated() {</span>
+<span class="x">    return true;</span>
+<span class="x">}</span>
+</code></pre></div>
+<hr />
+<h3 id="service-creation"><strong>Service creation</strong></h3>
+<p>Moodle comes with two built-in services that your functions can be attached to. In rare situations, you may need to create a create a custom service declaration.
+The recommended way of creating a new service declaration is by placing it into the db/services.php file as a new service declaration.
+Moodle Administrators can also manually create a service declaration using the web interface.
+This is an advanced feature and, in most cases, you will not need to use this feature.
+Whilst writing a service declaration is optional, if you do not create a service declaration, 
+then the Moodle administrator will have to create one manually through the Web UI.
+If you define a web service here, then the administrator cannot add or remove any function from it.</p>
+<h4 id="declaring-a-custom-service-declaration">Declaring a custom service declaration</h4>
+<p>Service declarations should be placed in the <code>db/services.php</code> file of your plugin (after function declaration), 
+for example <code>local/groupmanager/db/services.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">$services = [</span>
+<span class="x">    // The name of the service.</span>
+<span class="x">    // This does not need to include the component name.</span>
+<span class="x">    &#39;myintegration&#39; =&gt; [</span>
+
+<span class="x">        // A list of external functions available in this service.</span>
+<span class="x">        &#39;functions&#39; =&gt; [</span>
+<span class="x">            &#39;local_groupmanager_create_groups&#39;,</span>
+<span class="x">        ],</span>
+
+<span class="x">        // If set, the external service user will need this capability to access</span>
+<span class="x">        // any function of this service.</span>
+<span class="x">        // For example: &#39;local_groupmanager/integration:access&#39;</span>
+<span class="x">        &#39;requiredcapability&#39; =&gt; &#39;local_groupmanager/integration:access&#39;,</span>
+
+<span class="x">        // If enabled, the Moodle administrator must link a user to this service from the Web UI.</span>
+<span class="x">        &#39;restrictedusers&#39; =&gt; 0,</span>
+
+<span class="x">        // Whether the service is enabled by default or not.</span>
+<span class="x">        &#39;enabled&#39; =&gt; 1,</span>
+
+<span class="x">        // This field os optional, but requried if the `restrictedusers` value is</span>
+<span class="x">        // set, so as to allow configuration via the Web UI.</span>
+<span class="x">        &#39;shortname&#39; =&gt;  &#39;&#39;,</span>
+
+<span class="x">        // Whether to allow file downloads.</span>
+<span class="x">        &#39;downloadfiles&#39; =&gt; 0,</span>
+
+<span class="x">        // Whether to allow file uploads.</span>
+<span class="x">        &#39;uploadfiles&#39;  =&gt; 0,</span>
+<span class="x">    ]</span>
+<span class="x">];</span>
+</code></pre></div>
+<p>It is not possible for an administrator to add/remove any function from a pre-built service.</p>
+<hr />
+<h3 id="unit-testing"><strong>Unit Testing</strong></h3>
+<p>Unit tests are the best way of checking the behaviour of your external services and can help you to:</p>
+<ul>
+<li>discover use cases you didn't think about</li>
+<li>understand the feelings and the needs of the web service client developer</li>
+<li>end up with a function usable by everybody, not only by your own client</li>
+<li>reach integration way faster as you joined a proof of validity</li>
+<li>make the QA process a breeze</li>
+</ul>
+<p>Writing unit tests for an external service function is no different to writing unit tests for any other part of Moodle, which is documented in under PHPUnit.</p>
+<h4 id="how-to-write-an-external-function-phpunit-test">How to write an external function PHPUnit test</h4>
+<p>You should create one unit test testcase for each external service file, and it should be named after the file that it tests.</p>
+<p>For example, if you have written a service function in <code>[componentfolder]/classes/external/get_fruit.php</code>, you should write a unit test in <code>[componentfolder]/tests/external/get_fruit_test.php</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="x">//mod/kitchen/tests/external/get_fruit_test.php</span>
+
+<span class="cp">&lt;?php</span>
+<span class="c1">// This file is part of Moodle - http://moodle.org/</span>
+<span class="c1">//</span>
+<span class="c1">// Moodle is free software: you can redistribute it and/or modify</span>
+<span class="c1">// it under the terms of the GNU General Public License as published by</span>
+<span class="c1">// the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">// (at your option) any later version.</span>
+<span class="c1">//</span>
+<span class="c1">// Moodle is distributed in the hope that it will be useful,</span>
+<span class="c1">// but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">// GNU General Public License for more details.</span>
+<span class="c1">//</span>
+<span class="c1">// You should have received a copy of the GNU General Public License</span>
+<span class="c1">// along with Moodle.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Unit tests for the get_fruit function of the kitchen.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @package    mod_kitchen</span>
+<span class="sd"> * @category   external</span>
+<span class="sd"> * @copyright  20XX Your Name</span>
+<span class="sd"> * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later</span>
+<span class="sd"> */</span>
+
+<span class="k">namespace</span> <span class="nx">mod_kitchen\external</span><span class="p">;</span>
+
+<span class="nb">defined</span><span class="p">(</span><span class="s1">&#39;MOODLE_INTERNAL&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="k">die</span><span class="p">();</span>
+
+<span class="k">global</span> <span class="nv">$CFG</span><span class="p">;</span>
+<span class="k">require_once</span><span class="p">(</span><span class="nv">$CFG</span><span class="o">-&gt;</span><span class="na">dirroot</span> <span class="o">.</span> <span class="s1">&#39;/webservice/tests/helpers.php&#39;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">get_fruit_test</span> <span class="k">extends</span> <span class="nx">externallib_advanced_testcase</span> <span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Test the execute function when capabilities are present.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @covers \mod_fruit\external\get_fruit::execute</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test_capabilities</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resetAfterTest</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+        <span class="nv">$course</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_course</span><span class="p">();</span>
+        <span class="nv">$cm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_module</span><span class="p">(</span><span class="s1">&#39;mod_kitchen&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// Set the required capabilities by the external function</span>
+        <span class="nv">$contextid</span> <span class="o">=</span> <span class="nx">context_module</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">cmid</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$roleid</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assignUserCapability</span><span class="p">(</span><span class="s1">&#39;moodle/CAPABILITYNAME&#39;</span><span class="p">,</span> <span class="nv">$contextid</span><span class="p">);</span>
+
+        <span class="c1">// Call the external service function.</span>
+        <span class="nv">$returnvalue</span> <span class="o">=</span> <span class="nx">get_fruit</span><span class="o">::</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;cmid&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// We need to execute the return values cleaning process to simulate</span>
+        <span class="c1">// the web service server.</span>
+        <span class="nv">$returnvalue</span> <span class="o">=</span> <span class="nx">\core_external\external_api</span><span class="o">::</span><span class="na">clean_returnvalue</span><span class="p">(</span>
+            <span class="nx">get_fruit</span><span class="o">::</span><span class="na">execute_returns</span><span class="p">(),</span>
+            <span class="nv">$returnvalue</span>
+        <span class="p">);</span>
+
+        <span class="c1">// Assert that there was a response.</span>
+        <span class="c1">// The actual response is tested in other tests.</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertNotNull</span><span class="p">(</span><span class="nv">$returnvalue</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Test the execute function when capabilities are missing.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @covers \mod_fruit\external\get_fruit::execute</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test_capabilities_missing</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">global</span> <span class="nv">$USER</span><span class="p">;</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resetAfterTest</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+
+        <span class="nv">$course</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_course</span><span class="p">();</span>
+        <span class="nv">$cm</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDataGenerator</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create_module</span><span class="p">(</span><span class="s1">&#39;mod_kitchen&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+
+        <span class="c1">// Set the required capabilities by the external function</span>
+        <span class="nv">$contextid</span> <span class="o">=</span> <span class="nx">context_module</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">cmid</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">unassignUserCapability</span><span class="p">(</span><span class="s1">&#39;moodle/CAPABILITYNAME&#39;</span><span class="p">,</span> <span class="nv">$contextid</span><span class="p">,</span> <span class="nv">$roleid</span><span class="p">);</span>
+
+        <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span><span class="nx">PARAM1</span><span class="p">,</span> <span class="nx">PARAM2</span><span class="p">,</span> <span class="o">...</span><span class="p">];</span>
+
+        <span class="c1">// Call without required capability</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">expectException</span><span class="p">(</span><span class="nx">required_capability_exception</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">get_fruit</span><span class="o">::</span><span class="na">execute</span><span class="p">([</span>
+            <span class="s1">&#39;course&#39;</span> <span class="o">=&gt;</span> <span class="nv">$course</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;cmid&#39;</span> <span class="o">=&gt;</span> <span class="nv">$cm</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="testing"><strong>Testing</strong></h3>
+<p>To test web services:</p>
+<ul>
+<li>Use <a href="https://www.postman.com/"><strong>Postman</strong></a> or similar tools to make HTTP requests to the Moodle web services endpoint.
+<div class="highlight"><pre><span></span><code>// Example: of a webservice call with parameters userid and message
+curl --location <span class="s1">&#39;https://mysite.localhost/webservice/rest/server.php?wstoken=XXXXXXXXXXX&amp;moodlewsrestformat=json&amp;wsfunction=myplugin_service_name&#39;</span> <span class="se">\</span>
+--form <span class="s1">&#39;userid=&quot;10&quot;&#39;</span> <span class="se">\</span>
+--form <span class="s1">&#39;message=&quot;test message&quot;&#39;</span>
+</code></pre></div></li>
+<li>Verify token validity and function calls.</li>
+<li>Use <strong>Moodle’s web service test client</strong> (available in <strong>Site administration &gt; Server &gt; Web services &gt; Manage services</strong>) to manually test the functions.</li>
+</ul>
+<h3 id="debugging"><strong>Debugging</strong></h3>
+<p>When debugging web services, using <code>XDEBUG_SESSION=1</code> in the cookie header is the proper way to trigger Xdebug in scenarios where query parameters or <code>XDEBUG_TRIGGER</code> might not work, such as in Moodle’s strict web service implementation. </p>
+<hr />
+<h5 id="trigger-xdebug-with-xdebug_session1-via-cookie"><strong>Trigger Xdebug with <code>XDEBUG_SESSION=1</code> via Cookie</strong></h5>
+<h6 id="update-xdebug-configuration"><strong>Update Xdebug Configuration</strong></h6>
+<p>Ensure your <code>php.ini</code> is correctly set up to respond to <code>XDEBUG_SESSION</code>. Example configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="na">zend_extension</span><span class="o">=</span><span class="s">xdebug.so</span><span class="w"></span>
+<span class="na">xdebug.mode</span><span class="o">=</span><span class="s">debug</span><span class="w"></span>
+<span class="na">xdebug.start_with_request</span><span class="o">=</span><span class="s">trigger</span><span class="w"></span>
+<span class="na">xdebug.discover_client_host</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
+<span class="na">xdebug.client_host</span><span class="o">=</span><span class="s">127.0.0.1</span><span class="w"></span>
+<span class="na">xdebug.client_port</span><span class="o">=</span><span class="s">9003</span><span class="w"></span>
+<span class="na">xdebug.log</span><span class="o">=</span><span class="s">/path/to/xdebug.log</span><span class="w"></span>
+</code></pre></div>
+<p>Restart your web server to apply changes:
+<div class="highlight"><pre><span></span><code>sudo systemctl restart apache2  <span class="c1"># For Apache</span>
+sudo systemctl restart nginx   <span class="c1"># For Nginx</span>
+</code></pre></div></p>
+<hr />
+<h5 id="set-the-xdebug_session-cookie"><strong>Set the <code>XDEBUG_SESSION</code> Cookie</strong></h5>
+<h6 id="using-curl"><strong>Using cURL</strong></h6>
+<p>You can include the <code>XDEBUG_SESSION</code> cookie in your request headers like this:</p>
+<div class="highlight"><pre><span></span><code>curl -X POST <span class="se">\</span>
+  -H <span class="s2">&quot;Cookie: XDEBUG_SESSION=1&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;wstoken=your_token&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;wsfunction=core_user_get_users&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;criteria[0][key]=email&quot;</span> <span class="se">\</span>
+  -d <span class="s2">&quot;criteria[0][value]=test@example.com&quot;</span> <span class="se">\</span>
+  http://yourmoodlesite.com/webservice/rest/server.php
+</code></pre></div>
+<p>This tells Xdebug to start a debugging session for the request.</p>
+<hr />
+<h6 id="using-postman"><strong>Using Postman</strong></h6>
+<p>To use Postman, do the following:</p>
+<ol>
+<li>Open your request in Postman.</li>
+<li>Go to the <strong>Headers</strong> tab.</li>
+<li>Add a new header:<ul>
+<li><strong>Key:</strong> <code>Cookie</code></li>
+<li><strong>Value:</strong> <code>XDEBUG_SESSION=1</code></li>
+</ul>
+</li>
+<li>Fill out the rest of your web service parameters (e.g., <code>wstoken</code>, <code>wsfunction</code>, etc.).</li>
+<li>Send the request.</li>
+</ol>
+<hr />
+<h5 id="debugging-in-vscode"><strong>Debugging in VSCode</strong></h5>
+<ol>
+<li>
+<p><strong>Set up <code>launch.json</code>:</strong>
+   Make sure your <code>launch.json</code> in VSCode is configured like this:
+   <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Listen for Xdebug&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;php&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9003</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;pathMappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;/var/www/moodle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="w"> </span><span class="c1">// Update this to your Moodle installation directory</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;log&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Start Debugging:</strong></p>
+<ul>
+<li>In VSCode, go to the "Run and Debug" section (<code>Ctrl+Shift+D</code>).</li>
+<li>Select "Listen for Xdebug" and start the debugger.</li>
+</ul>
+</li>
+<li>
+<p><strong>Trigger the Web Service:</strong></p>
+<ul>
+<li>Make the request using cURL or Postman with the <code>XDEBUG_SESSION=1</code> cookie.</li>
+<li>VSCode should now break at your breakpoints.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h5 id="additional-tips"><strong>Additional Tips</strong></h5>
+<ul>
+<li>
+<p><strong>Check Xdebug Logs:</strong></p>
+<ul>
+<li>If debugging doesn’t trigger, check the <code>xdebug.log</code> for errors. It will provide detailed insights into why the session didn’t start.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify Cookie Handling:</strong></p>
+<ul>
+<li>Ensure the <code>XDEBUG_SESSION=1</code> cookie is actually being sent in the request.</li>
+<li>Use a tool like <code>curl -v</code> or Postman’s console to inspect the outgoing request.</li>
+</ul>
+</li>
+<li>
+<p><strong>Enable Moodle Debugging:</strong></p>
+<ul>
+<li>Go to <code>Site administration &gt; Development &gt; Debugging</code>.</li>
+<li>Set <code>Debug messages</code> to <code>DEVELOPER</code> and enable <code>Display debug messages</code>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../Javascript/phpMoodleAJAX/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AJAX" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              AJAX
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../API/phpMoodlePersistent/" class="md-footer__link md-footer__link--next" aria-label="Next: Persistent API" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Persistent API
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/carlos-arcelopera" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ArceLopera" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:arcelopera.carlos@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="m511.6 36.86-64 415.1a32.008 32.008 0 0 1-31.65 27.147c-4.188 0-8.319-.815-12.29-2.472l-122.6-51.1-50.86 76.29C226.3 508.5 219.8 512 212.8 512c-11.5 0-20.8-9.3-20.8-20.8v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96 122.3 360.3 19.69 317.5C8.438 312.8.812 302.2.062 289.1s5.47-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
