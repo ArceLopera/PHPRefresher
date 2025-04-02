@@ -164,6 +164,8 @@ nav:
      - Phpstan: Adv/phpstan.md
      - Adminer: Adv/phpAdminer.md
      - Tiller: Adv/phpTiller.md
+     - Mail: Adv/phpMailhog.md
+     - Secrets: Adv/phpVault.md
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
