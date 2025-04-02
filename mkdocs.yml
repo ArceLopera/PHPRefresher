@@ -163,6 +163,7 @@ nav:
      - NodeJS: Adv/phpnpm.md
      - Phpstan: Adv/phpstan.md
      - Adminer: Adv/phpAdminer.md
+     - Tiller: Adv/phpTiller.md
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
