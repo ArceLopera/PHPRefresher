@@ -1323,6 +1323,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#named-arguments-php-80" class="md-nav__link">
+    Named Arguments (PHP 8.0+)
+  </a>
+  
+    <nav class="md-nav" aria-label="Named Arguments (PHP 8.0+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip-default-parameters" class="md-nav__link">
+    Skip Default Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improved-readability" class="md-nav__link">
+    Improved Readability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-constructor-promotion" class="md-nav__link">
+    With Constructor Promotion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1597,6 +1631,34 @@
     <li class="md-nav__item">
       <a href="../../Classes/phpNamespaces/" class="md-nav__link">
         Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpEnums/" class="md-nav__link">
+        Enums
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Classes/phpAttributes/" class="md-nav__link">
+        Attributes
       </a>
     </li>
   
@@ -2688,6 +2750,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#named-arguments-php-80" class="md-nav__link">
+    Named Arguments (PHP 8.0+)
+  </a>
+  
+    <nav class="md-nav" aria-label="Named Arguments (PHP 8.0+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip-default-parameters" class="md-nav__link">
+    Skip Default Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improved-readability" class="md-nav__link">
+    Improved Readability
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-constructor-promotion" class="md-nav__link">
+    With Constructor Promotion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2932,6 +3028,64 @@
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <p>$sum is now 10. If you are using a version of PHP earlier than 5.3.0, use create_function() instead:</p>
+<h2 id="named-arguments-php-80">Named Arguments (PHP 8.0+)</h2>
+<p>Named arguments allow you to pass arguments to a function by specifying the parameter name instead of its position.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">createUser</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$age</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$active</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// Positional arguments</span>
+<span class="nx">createUser</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;john@example.com&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+
+<span class="c1">// Named arguments (order doesn&#39;t matter)</span>
+<span class="nx">createUser</span><span class="p">(</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span>
+    <span class="nx">email</span><span class="o">:</span> <span class="s1">&#39;john@example.com&#39;</span><span class="p">,</span>
+    <span class="nx">age</span><span class="o">:</span> <span class="mi">30</span>
+<span class="p">);</span>
+
+<span class="c1">// Mix positional and named</span>
+<span class="nx">createUser</span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;john@example.com&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">30</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="skip-default-parameters">Skip Default Parameters</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">configure</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">bool</span> <span class="nv">$debug</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$env</span> <span class="o">=</span> <span class="s1">&#39;prod&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="c1">// Only specify what you need</span>
+<span class="nx">configure</span><span class="p">(</span><span class="nx">options</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">],</span> <span class="nx">debug</span><span class="o">:</span> <span class="k">true</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="improved-readability">Improved Readability</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Hard to understand what each parameter does</span>
+<span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+
+<span class="c1">// Clear with named arguments</span>
+<span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="nx">quote_style</span><span class="o">:</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="nx">encoding</span><span class="o">:</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">,</span> <span class="nx">double_encode</span><span class="o">:</span> <span class="k">false</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="with-constructor-promotion">With Constructor Promotion</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">APIClient</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$baseUrl</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$apiKey</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">int</span> <span class="nv">$timeout</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">bool</span> <span class="nv">$ssl</span> <span class="o">=</span> <span class="k">true</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">APIClient</span><span class="p">(</span>
+    <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;https://api.example.com&#39;</span><span class="p">,</span>
+    <span class="nx">apiKey</span><span class="o">:</span> <span class="s1">&#39;secret-key&#39;</span><span class="p">,</span>
+    <span class="nx">timeout</span><span class="o">:</span> <span class="mi">60</span>  <span class="c1">// only override what needs changing</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$increment</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
 <span class="nv">$add</span> <span class="o">=</span> <span class="nb">create_function</span><span class="p">(</span><span class="s1">&#39;$i,$j&#39;</span><span class="p">,</span> <span class="s1">&#39;return $i+$j + &#39;</span> <span class="o">.</span> <span class="nv">$increment</span><span class="o">.</span> <span class="s1">&#39;;&#39;</span><span class="p">);</span>

@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#readonly-properties-php-81" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1378,9 +1383,65 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Access Modifiers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Access Modifiers
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#readonly-properties-php-81" class="md-nav__link">
+    Readonly Properties (PHP 8.1+)
+  </a>
+  
+    <nav class="md-nav" aria-label="Readonly Properties (PHP 8.1+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-constructor-property-promotion" class="md-nav__link">
+    With Constructor Property Promotion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-rules" class="md-nav__link">
+    Initialization Rules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-from-const" class="md-nav__link">
+    Difference from const
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1479,6 +1540,34 @@
     <li class="md-nav__item">
       <a href="../phpNamespaces/" class="md-nav__link">
         Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpEnums/" class="md-nav__link">
+        Enums
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpAttributes/" class="md-nav__link">
+        Attributes
       </a>
     </li>
   
@@ -2475,6 +2564,48 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#readonly-properties-php-81" class="md-nav__link">
+    Readonly Properties (PHP 8.1+)
+  </a>
+  
+    <nav class="md-nav" aria-label="Readonly Properties (PHP 8.1+)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#with-constructor-property-promotion" class="md-nav__link">
+    With Constructor Property Promotion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-rules" class="md-nav__link">
+    Initialization Rules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-from-const" class="md-nav__link">
+    Difference from const
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2531,6 +2662,87 @@
 <span class="nv">$mango</span><span class="o">-&gt;</span><span class="na">set_weight</span><span class="p">(</span><span class="s1">&#39;300&#39;</span><span class="p">);</span> <span class="c1">// ERROR</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
+<h2 id="readonly-properties-php-81">Readonly Properties (PHP 8.1+)</h2>
+<p>The <code>readonly</code> modifier prevents a property from being modified after initialization. This is useful for immutability patterns.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Config</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$host</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">int</span> <span class="nv">$port</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$name</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Config</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">3306</span><span class="p">,</span> <span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$config</span><span class="o">-&gt;</span><span class="na">host</span><span class="p">;</span> <span class="c1">// OK - reading</span>
+<span class="nv">$config</span><span class="o">-&gt;</span><span class="na">host</span> <span class="o">=</span> <span class="s1">&#39;example.com&#39;</span><span class="p">;</span> <span class="c1">// ERROR - cannot modify</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="with-constructor-property-promotion">With Constructor Property Promotion</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">DateTimeImmutable</span> <span class="nv">$createdAt</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;john@example.com&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">DateTimeImmutable</span><span class="p">());</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="s1">&#39;Jane&#39;</span><span class="p">;</span> <span class="c1">// ERROR - cannot modify readonly property</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="initialization-rules">Initialization Rules</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Example</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$ex</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Example</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+<span class="nv">$ex</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="s1">&#39;changed&#39;</span><span class="p">;</span> <span class="c1">// ERROR - cannot modify after initialization</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="difference-from-const">Difference from <code>const</code></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>const</code></th>
+<th><code>readonly</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value set at</td>
+<td>Compile time</td>
+<td>Runtime (construction)</td>
+</tr>
+<tr>
+<td>Can be dynamic</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Per-instance</td>
+<td>No (static)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Type flexible</td>
+<td>Limited</td>
+<td>All types</td>
+</tr>
+</tbody>
+</table>
 
               
             </article>

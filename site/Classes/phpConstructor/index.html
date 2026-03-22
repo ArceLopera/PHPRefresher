@@ -1412,6 +1412,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#constructor-property-promotion" class="md-nav__link">
+    Constructor Property Promotion
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor Property Promotion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-vs-promoted" class="md-nav__link">
+    Traditional vs Promoted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-default-values" class="md-nav__link">
+    With Default Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-types-and-visibility" class="md-nav__link">
+    With Types and Visibility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-__destruct-function" class="md-nav__link">
     The __destruct Function
   </a>
@@ -1533,6 +1567,34 @@
     <li class="md-nav__item">
       <a href="../phpNamespaces/" class="md-nav__link">
         Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpEnums/" class="md-nav__link">
+        Enums
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../phpAttributes/" class="md-nav__link">
+        Attributes
       </a>
     </li>
   
@@ -2556,6 +2618,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#constructor-property-promotion" class="md-nav__link">
+    Constructor Property Promotion
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor Property Promotion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-vs-promoted" class="md-nav__link">
+    Traditional vs Promoted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-default-values" class="md-nav__link">
+    With Default Values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-types-and-visibility" class="md-nav__link">
+    With Types and Visibility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-__destruct-function" class="md-nav__link">
     The __destruct Function
   </a>
@@ -2599,6 +2695,70 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$person1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">36</span><span class="p">);</span>
 <span class="nv">$person2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="constructor-property-promotion">Constructor Property Promotion</h2>
+<p>Constructor Property Promotion (PHP 8.0+) allows you to combine property declaration, constructor parameter, and assignment in a single statement.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">int</span> <span class="nv">$age</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nv">$person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="mi">36</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span> <span class="c1">// John</span>
+<span class="k">echo</span> <span class="nv">$person</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">;</span>  <span class="c1">// 36</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="traditional-vs-promoted">Traditional vs Promoted</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Traditional approach</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="nv">$email</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// With constructor promotion (PHP 8.0+)</span>
+<span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="with-default-values">With Default Values</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Config</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">int</span> <span class="nv">$port</span> <span class="o">=</span> <span class="mi">3306</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">bool</span> <span class="nv">$debug</span> <span class="o">=</span> <span class="k">false</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Config</span><span class="p">();</span>                      <span class="c1">// defaults</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Config</span><span class="p">(</span><span class="s1">&#39;example.com&#39;</span><span class="p">);</span>        <span class="c1">// custom host</span>
+<span class="nv">$config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Config</span><span class="p">(</span><span class="s1">&#39;example.com&#39;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">);</span>  <span class="c1">// custom host and port</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h3 id="with-types-and-visibility">With Types and Visibility</h3>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Point</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">float</span> <span class="nv">$x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">float</span> <span class="nv">$y</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">float</span> <span class="nv">$z</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1">// can combine with readonly</span>
+    <span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
 <h2 id="the-__destruct-function">The __destruct Function</h2>

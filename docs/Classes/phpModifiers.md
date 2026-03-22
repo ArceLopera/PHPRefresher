@@ -42,4 +42,72 @@ $mango->set_name('Mango'); // OK
 $mango->set_color('Yellow'); // ERROR
 $mango->set_weight('300'); // ERROR
 ?>
-```	
+```
+
+## Readonly Properties (PHP 8.1+)
+
+The `readonly` modifier prevents a property from being modified after initialization. This is useful for immutability patterns.
+
+```php
+<?php
+class Config
+{
+    public function __construct(
+        public readonly string $host,
+        public readonly int $port,
+        public readonly string $name
+    ) {}
+}
+
+$config = new Config('localhost', 3306, 'myapp');
+echo $config->host; // OK - reading
+$config->host = 'example.com'; // ERROR - cannot modify
+?>
+```
+
+### With Constructor Property Promotion
+
+```php
+<?php
+class User
+{
+    public function __construct(
+        public readonly int $id,
+        public readonly string $name,
+        public readonly string $email,
+        public readonly DateTimeImmutable $createdAt
+    ) {}
+}
+
+$user = new User(1, 'John', 'john@example.com', new DateTimeImmutable());
+$user->name = 'Jane'; // ERROR - cannot modify readonly property
+?>
+```
+
+### Initialization Rules
+
+```php
+<?php
+class Example
+{
+    public readonly string $value;
+
+    public function __construct(string $value)
+    {
+        $this->value = $value;
+    }
+}
+
+$ex = new Example('test');
+$ex->value = 'changed'; // ERROR - cannot modify after initialization
+?>
+```
+
+### Difference from `const`
+
+| Feature | `const` | `readonly` |
+|---------|---------|------------|
+| Value set at | Compile time | Runtime (construction) |
+| Can be dynamic | No | Yes |
+| Per-instance | No (static) | Yes |
+| Type flexible | Limited | All types |	

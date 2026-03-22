@@ -150,12 +150,14 @@ nav:
      - Traits: Classes/phpTraits.md
      - Static: Classes/phpStatic.md
      - Namespaces: Classes/phpNamespaces.md
+     - Enums: Classes/phpEnums.md
+     - Attributes: Classes/phpAttributes.md
   - Advanced:
      - Include : Adv/phpInclude.md
      - Goto: Adv/phpGoto.md
      - File Management:
-            - Filesystem: Adv/phpFile.md
-            - Zip: Adv/phpZip.md
+           - Filesystem: Adv/phpFile.md
+           - Zip: Adv/phpZip.md
      - MySQL : Adv/phpMySql.md
      - XML : Adv/phpXML.md
      - Ajax: Adv/phpAjax.md

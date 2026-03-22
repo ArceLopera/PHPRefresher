@@ -301,6 +301,77 @@ echo $sum;
 
 $sum is now 10. If you are using a version of PHP earlier than 5.3.0, use create_function() instead:
 
+## Named Arguments (PHP 8.0+)
+
+Named arguments allow you to pass arguments to a function by specifying the parameter name instead of its position.
+
+```php
+<?php
+function createUser(string $name, string $email, int $age, bool $active = true) {
+    // ...
+}
+
+// Positional arguments
+createUser('John', 'john@example.com', 30);
+
+// Named arguments (order doesn't matter)
+createUser(
+    name: 'John',
+    email: 'john@example.com',
+    age: 30
+);
+
+// Mix positional and named
+createUser('John', 'john@example.com', age: 30);
+?>
+```
+
+### Skip Default Parameters
+
+```php
+<?php
+function configure(array $options = [], bool $debug = false, string $env = 'prod') {
+    // ...
+}
+
+// Only specify what you need
+configure(options: ['host' => 'localhost'], debug: true);
+?>
+```
+
+### Improved Readability
+
+```php
+<?php
+// Hard to understand what each parameter does
+htmlspecialchars($string, ENT_QUOTES, 'UTF-8', false);
+
+// Clear with named arguments
+htmlspecialchars($string, quote_style: ENT_QUOTES, encoding: 'UTF-8', double_encode: false);
+?>
+```
+
+### With Constructor Promotion
+
+```php
+<?php
+class APIClient {
+    public function __construct(
+        private string $baseUrl,
+        private string $apiKey,
+        private int $timeout = 30,
+        private bool $ssl = true
+    ) {}
+}
+
+$client = new APIClient(
+    baseUrl: 'https://api.example.com',
+    apiKey: 'secret-key',
+    timeout: 60  // only override what needs changing
+);
+?>
+```
+
 ```php
 <?php
 $increment = 7;
