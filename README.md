@@ -1,7 +1,6 @@
 # PHP Refresher
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://arcelopera.github.io/PHPRefresher)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 > Everyone can forget about grammar and vocabulary. What is most important is to know where to look.
 
@@ -135,17 +134,3 @@ npx playwright test
 - [Composer](https://getcomposer.org/)
 
 ---
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## Author
-
-**Carlos Arce Lopera**
-
-- [GitHub](https://github.com/ArceLopera)
-- [LinkedIn](https://linkedin.com/in/carlos-arcelopera)
-- [Email](mailto:arcelopera.carlos@gmail.com)
