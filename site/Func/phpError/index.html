@@ -2907,7 +2907,7 @@ Howard-&gt;moe(), Howard-&gt;curly(), Fine::larry(), stooges()
 <p>There are lots of error messages you want to show your users, such as telling them they’ve filled in a form incorrectly, but you should shield your users from internal errors that may reflect a problem with your code. There are two reasons for this. First, these errors appear unprofessional (to expert users) and confusing (to novice users). If something goes wrong when saving form input to a database, check the return code from the database query and display a message to your users apologizing and asking them to
 come back later. Showing them a cryptic error message straight from PHP doesn’t inspire confidence in your website.</p>
 <p>Second, displaying these errors to users is a security risk. Depending on your database and the type of error, the error message may contain information about how to log in to your database or server and how it is structured. Malicious users can use this information to mount an attack on your website.</p>
-<p>For example, if your database server is down, and you attempt to connect to it with mysql_connect(), PHP generates the following warning:</p>
+<p>For example, if your database server is down, and you attempt to connect to it with <code>mysqli_connect()</code> or PDO, PHP generates the following warning:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Warning<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>: Can&#39;t connect to MySQL server on &#39;db.example.com&#39; (111) in
 <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>/www/docroot/example.php<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> on line <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
@@ -3061,12 +3061,24 @@ Errors labeled catchable can be processed by the function registered using set_e
 <h2 id="logging-errors">Logging Errors</h2>
 <p>Logging errors facilitates debugging. Smart error logging makes it easier to fix bugs.
 Always log information about what caused the error:</p>
-<div class="highlight"><pre><span></span><code><span class="x">$r = mysql_query($sql);</span>
-<span class="x">if (! $r) {</span>
-<span class="x"> $error = mysql_error();</span>
-<span class="x"> error_log(&#39;[DB: query @&#39;.$_SERVER[&#39;REQUEST_URI&#39;].&quot;][$sql]: $error&quot;);</span>
-<span class="x">} else {</span>
-<span class="x"> // process results</span>
+<div class="highlight"><pre><span></span><code><span class="x">try {</span>
+<span class="x">    $pdo = new PDO(&quot;mysql:host=$host;dbname=$dbname&quot;, $username, $password);</span>
+<span class="x">    $pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);</span>
+<span class="x">    $stmt = $pdo-&gt;prepare($sql);</span>
+<span class="x">    $stmt-&gt;execute();</span>
+<span class="x">    // process results</span>
+<span class="x">} catch (PDOException $e) {</span>
+<span class="x">    error_log(&#39;[DB: query @&#39; . $_SERVER[&#39;REQUEST_URI&#39;] . &quot;][$sql]: &quot; . $e-&gt;getMessage());</span>
+<span class="x">}</span>
+</code></pre></div>
+<p>You're not getting all the debugging help you could be if you simply log that an error
+occurred without any supporting information:</p>
+<div class="highlight"><pre><span></span><code><span class="x">try {</span>
+<span class="x">    $stmt = $pdo-&gt;prepare($sql);</span>
+<span class="x">    $stmt-&gt;execute();</span>
+<span class="x">    // process result</span>
+<span class="x">} catch (PDOException $e) {</span>
+<span class="x">    error_log(&quot;bad query&quot;);</span>
 <span class="x">}</span>
 </code></pre></div>
 <p>You’re not getting all the debugging help you could be if you simply log that an error

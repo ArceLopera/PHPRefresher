@@ -531,12 +531,15 @@ The function substr_replace() is useful when you’ve got text that’s too big 
 <?php
 /*
 Displays the first 25 characters of a message with an ellipsis after it as a link to a page
-that displays more text
+that displays more text. Uses PDO with prepared statements to prevent SQL injection.
 */
-$r = mysql_query("SELECT id,message FROM messages WHERE id = $id") or die();
-$ob = mysql_fetch_object($r);
-printf('<a href="more-text.php?id=%d">%s</a>',
- $ob->id, substr_replace($ob->message,' ...',25));
+$stmt = $pdo->prepare("SELECT id, message FROM messages WHERE id = :id");
+$stmt->execute(['id' => $id]);
+$ob = $stmt->fetch(PDO::FETCH_OBJ);
+if ($ob) {
+    printf('<a href="more-text.php?id=%d">%s</a>',
+        $ob->id, substr_replace($ob->message, ' ...', 25));
+}
 ?>
 
 /* 

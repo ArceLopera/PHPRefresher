@@ -138,7 +138,7 @@ come back later. Showing them a cryptic error message straight from PHP doesn’
 
 Second, displaying these errors to users is a security risk. Depending on your database and the type of error, the error message may contain information about how to log in to your database or server and how it is structured. Malicious users can use this information to mount an attack on your website.
 
-For example, if your database server is down, and you attempt to connect to it with mysql_connect(), PHP generates the following warning:
+For example, if your database server is down, and you attempt to connect to it with `mysqli_connect()` or PDO, PHP generates the following warning:
 
 
 ```html
@@ -257,14 +257,28 @@ Logging errors facilitates debugging. Smart error logging makes it easier to fix
 Always log information about what caused the error:
 
 ```php
-$r = mysql_query($sql);
-if (! $r) {
- $error = mysql_error();
- error_log('[DB: query @'.$_SERVER['REQUEST_URI']."][$sql]: $error");
-} else {
- // process results
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    // process results
+} catch (PDOException $e) {
+    error_log('[DB: query @' . $_SERVER['REQUEST_URI'] . "][$sql]: " . $e->getMessage());
 }
+```
 
+You're not getting all the debugging help you could be if you simply log that an error
+occurred without any supporting information:
+
+```php
+try {
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    // process result
+} catch (PDOException $e) {
+    error_log("bad query");
+}
 ```
 
 You’re not getting all the debugging help you could be if you simply log that an error

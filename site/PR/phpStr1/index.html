@@ -3748,12 +3748,15 @@ xxxx 1111
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="cm">/*</span>
 <span class="cm">Displays the first 25 characters of a message with an ellipsis after it as a link to a page</span>
-<span class="cm">that displays more text</span>
+<span class="cm">that displays more text. Uses PDO with prepared statements to prevent SQL injection.</span>
 <span class="cm">*/</span>
-<span class="nv">$r</span> <span class="o">=</span> <span class="nb">mysql_query</span><span class="p">(</span><span class="s2">&quot;SELECT id,message FROM messages WHERE id = </span><span class="si">$id</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">();</span>
-<span class="nv">$ob</span> <span class="o">=</span> <span class="nb">mysql_fetch_object</span><span class="p">(</span><span class="nv">$r</span><span class="p">);</span>
-<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;more-text.php?id=%d&quot;&gt;%s&lt;/a&gt;&#39;</span><span class="p">,</span>
- <span class="nv">$ob</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span> <span class="nb">substr_replace</span><span class="p">(</span><span class="nv">$ob</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">,</span><span class="s1">&#39; ...&#39;</span><span class="p">,</span><span class="mi">25</span><span class="p">));</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$pdo</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="s2">&quot;SELECT id, message FROM messages WHERE id = :id&quot;</span><span class="p">);</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">]);</span>
+<span class="nv">$ob</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_OBJ</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$ob</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;more-text.php?id=%d&quot;&gt;%s&lt;/a&gt;&#39;</span><span class="p">,</span>
+        <span class="nv">$ob</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span> <span class="nb">substr_replace</span><span class="p">(</span><span class="nv">$ob</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">,</span> <span class="s1">&#39; ...&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">));</span>
+<span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 
 <span class="x">/* </span>

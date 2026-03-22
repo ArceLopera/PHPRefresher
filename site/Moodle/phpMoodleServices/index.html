@@ -3673,7 +3673,7 @@ Each group values is a external_value (primary type):</p>
 <span class="x">            }</span>
 
 <span class="x">            // now security checks</span>
-<span class="x">            $context = get_context_instance(CONTEXT_COURSE, $group-&gt;courseid);</span>
+<span class="x">            $context = context_course::instance($group-&gt;courseid);</span>
 <span class="x">            self::validate_context($context);</span>
 <span class="x">            require_capability(&#39;moodle/course:managegroups&#39;, $context);</span>
 

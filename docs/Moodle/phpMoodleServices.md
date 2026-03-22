@@ -835,7 +835,7 @@ We declared our web service function and we defined the external function parame
             }
 
             // now security checks
-            $context = get_context_instance(CONTEXT_COURSE, $group->courseid);
+            $context = context_course::instance($group->courseid);
             self::validate_context($context);
             require_capability('moodle/course:managegroups', $context);
 
