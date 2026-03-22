@@ -35,12 +35,12 @@ Both are object-oriented, but MySQLi also offers a procedural API.
 Both support Prepared Statements. Prepared Statements protect from SQL injection, and are very important for web application security.
 
 ### MySQLi Installation
-For Linux and Windows: The MySQLi extension is automatically installed in most cases, when php5 mysql package is installed.
+For Linux and Windows: The MySQLi extension is automatically installed in most cases, when the PHP MySQL extension is installed.
 
-For installation details, go to: http://php.net/manual/en/mysqli.installation.php
+For installation details, go to: https://www.php.net/manual/en/mysqli.installation.php
 
 ### PDO Installation
-For installation details, go to: http://php.net/manual/en/pdo.installation.php
+For installation details, go to: https://www.php.net/manual/en/pdo.installation.php
 
 ## Open a Connection to MySQL
 Before we can access data in the MySQL database, we need to be able to connect to the server:

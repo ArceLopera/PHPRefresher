@@ -1171,12 +1171,12 @@ When testing plugins with deadlines, for instance for submissions, it is often n
 You can specify a relative time enclosed within two ## blocks. For example:
 
 + `## yesterday ##`
-+ `## 2 days ago ##` You can use everything according to http://php.net/manual/en/datetime.formats.php.
++ `## 2 days ago ##` You can use everything according to https://www.php.net/manual/en/datetime.formats.php.
 Especially useful are the relative formats from: http://php.net/manual/en/datetime.formats.relative.php
 
 Additionally, you can specify a format you want the date to be returned into:
 
-+ `## yesterday ## myformat ##`  These formats can be used as outlined in http://php.net/manual/en/function.date.php. This can be combined with the field groups:
++ `## yesterday ## myformat ##`  These formats can be used as outlined in https://www.php.net/manual/en/function.date.php. This can be combined with the field groups:
 
 ```Gherkin
 When I set the following fields to these values:
