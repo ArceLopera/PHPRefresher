@@ -1,3 +1,17 @@
+# Moodle Persistent API
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.2+
+
+## Quick Navigation
+- [Key Features](#key-features-of-the-persistent-api) - Overview
+- [Creating Persistents](#creating-persistent-classes) - Implementation
+  - [Validation](#validation)
+  - [Hooks](#lifecycle-hooks)
+- [Querying](#querying-persistent-records) - CRUD operations
+- [Best Practices](#best-practices) - Design patterns
+- [Examples](#examples) - Real-world usage
+
 The Persistent API in Moodle is a framework that simplifies the handling of data records, particularly when dealing with the database. It provides a structured way to interact with database tables, making it easier to create, update, retrieve, and delete records while ensuring data integrity and consistency.
 
 ### Key Features of the Persistent API

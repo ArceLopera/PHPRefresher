@@ -1,4 +1,20 @@
-Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. 
+# Moodle Plugin Files
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.2+
+
+## Quick Navigation
+- [Essential Files](#essential-files) - Required for all plugins
+  - [version.php](#versionphp) - Plugin metadata
+  - [language/](#language) - Localization strings
+  - [db/install.xml](#dbinstallxml) - Database schema
+- [Optional Files](#optional-files) - Common but not required
+  - [lib.php](#libphp) - Hook implementations
+  - [locallib.php](#locallibphp) - Local helpers
+- [Plugin Types](#plugin-types) - Different plugin structures
+- [Best Practices](#best-practices) - Moodle standards
+
+Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality.
 
 |Basic Required|Basic Optional|Others|Other Optional|
 |---|---|---|---|

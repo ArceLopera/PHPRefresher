@@ -256,6 +256,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/IMPROVEMENT-PHASES/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/IMPROVEMENT-PHASES/PHASE-1-FOUNDATION/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/IMPROVEMENT-PHASES/QUICK-WINS/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Moodle/phpMoodle/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>

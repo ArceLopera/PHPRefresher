@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-This is a MkDocs-powered static documentation site about PHP and Moodle development. The site contains ~90 Markdown documents organized into sections: Basics, Functions, Data Structures, Classes, Advanced, and Moodle.
+This is a MkDocs-powered static documentation site about PHP and Moodle development. The site contains **102 Markdown documents** organized into sections: Basics (PR), Functions (Func), Data Structures (DS), Classes, Advanced (Adv), and Moodle.
+
+**Status:** Active development with comprehensive improvement plan (v2024.Q2) to standardize documentation, expand test coverage, and reorganize content structure.
 
 ---
 
@@ -174,3 +176,204 @@ Key sections:
 - Do NOT mix HTTP and HTTPS links
 - Do NOT forget to update `mkdocs.yml` when adding/removing pages
 - Do NOT commit built output without the corresponding source changes
+
+---
+
+## Strategic Improvement Initiative (v2024.Q2)
+
+### Overview
+A comprehensive improvement plan has been developed to modernize the documentation site. **15 initiatives** organized into 4 priority tiers are planned over 5-8 weeks (150-210 hours effort, ~1 FTE).
+
+**Key Goals:**
+- Achieve 100% test coverage (from 1 to 15+ tests)
+- Implement standardized documentation template
+- Fix navigation consistency and file naming
+- Add PHP version indicators to all features
+- Reorganize Advanced section with logical grouping
+- Create foundational sections (Getting Started, Best Practices, etc.)
+- Expand Data Structures coverage (add 8 missing SPL structures)
+
+### Priority Tiers & Initiatives
+
+#### 🔴 Priority 1: Foundation (Weeks 1-2, HIGH IMPACT)
+**Effort:** 40-60 hours | **Status:** Pending
+
+1. **p1-doc-template** — Create standardized documentation template
+   - Create `.template.md` with standard structure
+   - Sections: Overview, Use Cases, Examples, Comparison Table, Related Topics, PHP Version
+   - Provide migration guide for existing pages
+   
+2. **p1-expand-tests** — Expand test suite (1 → 15+ tests)
+   - Add link validation (internal & external)
+   - Navigation integrity tests
+   - Responsive design verification
+   - Search functionality testing
+   - Code syntax validation
+   - Performance baseline tests
+
+3. **p1-fix-nav** — Standardize navigation consistency
+   - Fix capitalization ("Time n Date" → "Date & Time")
+   - Remove informal language
+   - Consistent spacing in mkdocs.yml
+   - Update all nav entries
+
+4. **p1-php-version-badges** — Add PHP version indicators
+   - Tag all features by minimum PHP version (8.0+, 8.1+, 8.2+)
+   - Add visual badges in appropriate sections
+   - Create compatibility matrix for key features
+   - Update README Features section
+
+#### 🟠 Priority 2: Organization (Weeks 3-4, MEDIUM-HIGH IMPACT)
+**Effort:** 60-80 hours | **Status:** Pending | **Dependencies:** Requires P1
+
+1. **p2-reorganize-adv** — Reorganize Advanced section
+   - Create logical groupings: Database, Development Tools, Web Services, System & Infrastructure
+   - Reorganize folder structure under `docs/Adv/`
+   - Update mkdocs.yml navigation
+   
+2. **p2-create-foundations** — Create foundational sections (6-8 new pages)
+   - Getting Started Guide (beginner learning path)
+   - Best Practices & Code Organization
+   - Common Design Patterns (singleton, factory, observer, etc.)
+   - Performance & Optimization
+   - Security Fundamentals
+   - Testing & QA Guide
+   
+3. **p2-enhance-ds** — Expand Data Structures coverage
+   - Add: SplFixedArray, SplDoublyLinkedList, SplObjectStorage, SplStack, SplQueue, SplHeap variants
+   - Create comparison matrix
+   - Performance characteristics per structure
+   - Use case guidance
+   
+4. **p2-improve-org** — Improve content organization
+   - Rename files for clarity (remove ambiguous suffixes like "1")
+   - Create logical subdirectories
+   - Improve cross-linking between related topics
+   - Update all mkdocs.yml references
+
+#### 🟡 Priority 3: Enhancement (Weeks 5-6, MEDIUM IMPACT)
+**Effort:** 40-60 hours | **Status:** Pending
+
+1. **p3-interactive** — Add interactive content
+   - Explore runnable code snippet integration (repl.it, CodePen, etc.)
+   - Create interactive diagrams for complex concepts
+   - Comparison visualizations
+   
+2. **p3-version-docs** — Version-specific documentation strategy
+   - Decide approach: separate branches vs. conditional blocks
+   - Implement PHP 7.x vs 8.x content separation
+   - Add deprecation warnings where needed
+   
+3. **p3-contrib-guide** — Improve contribution guide
+   - Create detailed CONTRIBUTING.md
+   - Template for new contributors
+   - Review checklist and expectations
+
+#### 🟢 Quick Wins (Start Immediately)
+**Effort:** 0-5 hours each | **Status:** Pending | **Can execute in parallel with all phases**
+
+1. **quick-win-badges** — Add PHP version badges to README
+2. **quick-win-contrib** — Create CONTRIBUTING.md template
+3. **quick-win-metadata** — Add last-updated metadata to pages
+4. **quick-win-toc** — Create dynamic table of contents for long pages
+
+### Success Metrics
+
+| Metric | Current | Target | Improvement |
+|--------|---------|--------|-------------|
+| Test Coverage | 1 test | 15+ tests | **1500%+** |
+| Doc Template Compliance | ~10% | 100% | **900%+** |
+| PHP Version Clarity | 0% | 100% | **NEW** |
+| Navigation Consistency | 70% | 100% | **+30%** |
+| File Naming Consistency | 60% | 100% | **+40%** |
+| Data Structure Coverage | 2 topics | 10+ topics | **400%+** |
+| Avg File Quality Score | 6/10 | 9/10 | **+50%** |
+
+### Implementation Phase Commands
+
+#### Phase 1: Foundation
+```bash
+# 1. Create documentation template
+# Create docs/.template.md with standard structure
+
+# 2. Expand test suite
+npm install  # if not already installed
+npx playwright install --with-deps
+# Add test files to tests/ directory
+npx playwright test
+
+# 3. Fix navigation
+# Edit mkdocs.yml nav section for consistency
+
+# 4. Add PHP version indicators
+# Update docs files with version badges
+# Update README.md Features section
+mkdocs build --clean
+mkdocs serve -a 127.0.0.1:8000
+```
+
+#### Phase 2: Organization
+```bash
+# 1. Reorganize Advanced section
+# Move and rename Adv/ files according to new structure
+# Update mkdocs.yml Adv section
+
+# 2. Create foundational sections
+# Create new files in docs/Foundations/ (or appropriate location)
+
+# 3. Expand Data Structures
+# Create new DS files with comprehensive SPL documentation
+
+# 4. Improve organization
+# Rename files consistently
+# Update all mkdocs.yml references
+mkdocs build --clean
+npx playwright test
+```
+
+#### Phase 3: Enhancement
+```bash
+# 1. Add interactive content
+# Research and integrate interactive code snippet platform
+
+# 2. Version-specific docs
+# Implement version targeting strategy
+
+# 3. Improve contribution guide
+# Create or update CONTRIBUTING.md
+```
+
+### Related Documentation Files
+
+- **plan.md** — Complete improvement strategy and roadmap (session folder)
+- **repository_analysis.md** — Detailed technical analysis (session folder)
+- **.github/copilot-instructions.md** — Updated with improvement context
+- **IMPROVEMENT-PHASES/** — Individual phase implementation guides (to be created)
+
+### Agent Guidelines for Improvements
+
+When working on improvement initiatives:
+
+1. **Before starting** any initiative:
+   - Update the corresponding todo status to `in_progress` in the SQL database
+   - Review the detailed specification in the phase guide
+   - Run `mkdocs build --clean` to establish baseline
+
+2. **During implementation:**
+   - Follow the standardized documentation template (when created in P1)
+   - Test changes locally: `mkdocs serve`
+   - Run full test suite after changes: `npx playwright test`
+   - Maintain consistency with established patterns
+
+3. **Before committing:**
+   - Run `mkdocs build --clean` and verify no errors
+   - Verify all tests pass: `npx playwright test`
+   - Test locally: `mkdocs serve -a 127.0.0.1:8000`
+   - Check for broken links and images
+   - Update todo status to `done` in SQL database
+
+4. **Commit message format:**
+   - Prefix with initiative: `[P1-doc-template]`, `[P2-enhance-ds]`, etc.
+   - Clear description of what was changed
+   - Include co-authorship trailer
+   - Example: `[P1-fix-nav] Standardize mkdocs.yml navigation consistency`

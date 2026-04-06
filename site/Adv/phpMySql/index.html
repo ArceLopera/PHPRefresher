@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php-connect-to-mysql" class="md-skip">
+        <a href="#mysql-database" class="md-skip">
           Skip to content
         </a>
       
@@ -1645,6 +1645,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           MySQL
@@ -1661,12 +1663,21 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    Quick Navigation
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#php-connect-to-mysql" class="md-nav__link">
@@ -1717,7 +1728,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysql-database" class="md-nav__link">
+  <a href="#mysql-database_1" class="md-nav__link">
     MySQL Database
   </a>
   
@@ -2686,12 +2697,21 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    Quick Navigation
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#php-connect-to-mysql" class="md-nav__link">
@@ -2742,7 +2762,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysql-database" class="md-nav__link">
+  <a href="#mysql-database_1" class="md-nav__link">
     MySQL Database
   </a>
   
@@ -2864,10 +2884,24 @@
                 
 
 
-  <h1>MySQL</h1>
-
+<h1 id="mysql-database">MySQL Database</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026<br />
+<strong>Minimum PHP Version:</strong> PHP 5.0+</p>
+</blockquote>
+<h2 id="quick-navigation">Quick Navigation</h2>
 <ul>
-<li>MySQL is a database system used on the web</li>
+<li><a href="#database-basics">Database Basics</a></li>
+<li><a href="#connect-to-mysql">Connect &amp; Query</a> - Connection, SELECT, INSERT</li>
+<li><a href="#update--delete">UPDATE &amp; DELETE</a> - Modify records</li>
+<li><a href="#advanced-queries">Advanced Queries</a> - Joins, WHERE, ORDER BY</li>
+<li><a href="#prepared-statements-and-parameterized-queries">Prepared Statements</a> - Security</li>
+<li>
+<p><a href="#error-handling">Error Handling</a> - Debugging</p>
+</li>
+<li>
+<p>MySQL is a database system used on the web</p>
+</li>
 <li>MySQL is a database system that runs on a server</li>
 <li>MySQL is ideal for both small and large applications</li>
 <li>MySQL is very fast, reliable, and easy to use</li>
@@ -2973,7 +3007,7 @@ Earlier versions of PHP used the MySQL extension. However, this extension was de
 <span class="nv">$conn</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 <span class="cp">?&gt;</span><span class="x"></span>
 </code></pre></div>
-<h2 id="mysql-database">MySQL Database</h2>
+<h2 id="mysql-database_1">MySQL Database</h2>
 <h3 id="create-database">Create Database</h3>
 <div class="highlight"><pre><span></span><code><span class="x">//MySQLi Object-Oriented:</span>
 <span class="cp">&lt;?php</span>

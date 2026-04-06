@@ -10,8 +10,12 @@ PHP Refresher is a comprehensive documentation site covering PHP fundamentals an
 
 ## Features
 
-- **~90 documented topics** covering PHP basics to advanced concepts
-- **Modern PHP 8.x** coverage including Enums, Attributes, Constructor Promotion
+- **~102 documented topics** covering PHP basics to advanced concepts
+- **Modern PHP 8.x focus**
+  - PHP 8.2 features
+  - PHP 8.1 features (Enums, Fibers, array functions)
+  - PHP 8.0 features (Attributes, Constructor Promotion, Match Expressions)
+  - PHP 7.4+ support (Typed properties, Arrow functions)
 - **Moodle development** documentation with API references
 - **Code examples** for every concept with expected output
 - **Responsive design** with dark mode support

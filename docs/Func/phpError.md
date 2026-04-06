@@ -1,3 +1,8 @@
+# PHP Error and Logging Functions
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.3.6+
+
 The error functions are used to deal with error handling and logging.
 
 The error functions allow us to define own error handling rules, and modify the way the errors can be logged.

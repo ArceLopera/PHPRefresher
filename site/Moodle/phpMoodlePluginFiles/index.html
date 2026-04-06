@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#basic" class="md-skip">
+        <a href="#moodle-plugin-files" class="md-skip">
           Skip to content
         </a>
       
@@ -2039,6 +2039,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Common Files
@@ -2055,12 +2057,21 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    Quick Navigation
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#basic" class="md-nav__link">
@@ -2550,12 +2561,21 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    Quick Navigation
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#basic" class="md-nav__link">
@@ -2592,9 +2612,24 @@
                 
 
 
-  <h1>Common Files</h1>
-
-<p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality. </p>
+<h1 id="moodle-plugin-files">Moodle Plugin Files</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026<br />
+<strong>Minimum PHP Version:</strong> PHP 7.2+</p>
+</blockquote>
+<h2 id="quick-navigation">Quick Navigation</h2>
+<ul>
+<li><a href="#essential-files">Essential Files</a> - Required for all plugins</li>
+<li><a href="#versionphp">version.php</a> - Plugin metadata</li>
+<li><a href="#language">language/</a> - Localization strings</li>
+<li><a href="#dbinstallxml">db/install.xml</a> - Database schema</li>
+<li><a href="#optional-files">Optional Files</a> - Common but not required</li>
+<li><a href="#libphp">lib.php</a> - Hook implementations</li>
+<li><a href="#locallibphp">locallib.php</a> - Local helpers</li>
+<li><a href="#plugin-types">Plugin Types</a> - Different plugin structures</li>
+<li><a href="#best-practices">Best Practices</a> - Moodle standards</li>
+</ul>
+<p>Writing the code for a Moodle plugin involves creating and configuring several essential files that define the plugin's behavior, data structure, language strings, and core functionality.</p>
 <table>
 <thead>
 <tr>

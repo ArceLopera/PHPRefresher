@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-features-of-the-persistent-api" class="md-skip">
+        <a href="#moodle-persistent-api" class="md-skip">
           Skip to content
         </a>
       
@@ -2226,6 +2226,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Persistent API
@@ -2242,6 +2244,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2250,27 +2254,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    Quick Navigation
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features-of-the-persistent-api" class="md-nav__link">
     Key Features of the Persistent API
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#creating-a-persistent-class" class="md-nav__link">
     Creating a Persistent Class
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#key-components" class="md-nav__link">
     Key Components
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#basic-operations-with-persistent-api" class="md-nav__link">
     Basic Operations with Persistent API
   </a>
@@ -2310,8 +2322,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#other-features" class="md-nav__link">
     Other Features
   </a>
@@ -2358,15 +2370,15 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#hooks" class="md-nav__link">
     Hooks
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#integrating-persistent-api-with-forms" class="md-nav__link">
     Integrating Persistent API with Forms
   </a>
@@ -2406,8 +2418,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     Examples
   </a>
@@ -2433,6 +2445,11 @@
   <a href="#using-the-form" class="md-nav__link">
     Using the form
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2723,6 +2740,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2731,27 +2750,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    Quick Navigation
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#key-features-of-the-persistent-api" class="md-nav__link">
     Key Features of the Persistent API
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#creating-a-persistent-class" class="md-nav__link">
     Creating a Persistent Class
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#key-components" class="md-nav__link">
     Key Components
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#basic-operations-with-persistent-api" class="md-nav__link">
     Basic Operations with Persistent API
   </a>
@@ -2791,8 +2818,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#other-features" class="md-nav__link">
     Other Features
   </a>
@@ -2839,15 +2866,15 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#hooks" class="md-nav__link">
     Hooks
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#integrating-persistent-api-with-forms" class="md-nav__link">
     Integrating Persistent API with Forms
   </a>
@@ -2887,8 +2914,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     Examples
   </a>
@@ -2921,6 +2948,11 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
     </ul>
   
@@ -2936,8 +2968,21 @@
                 
 
 
-  <h1>Persistent API</h1>
-
+<h1 id="moodle-persistent-api">Moodle Persistent API</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026<br />
+<strong>Minimum PHP Version:</strong> PHP 7.2+</p>
+</blockquote>
+<h2 id="quick-navigation">Quick Navigation</h2>
+<ul>
+<li><a href="#key-features-of-the-persistent-api">Key Features</a> - Overview</li>
+<li><a href="#creating-persistent-classes">Creating Persistents</a> - Implementation</li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#lifecycle-hooks">Hooks</a></li>
+<li><a href="#querying-persistent-records">Querying</a> - CRUD operations</li>
+<li><a href="#best-practices">Best Practices</a> - Design patterns</li>
+<li><a href="#examples">Examples</a> - Real-world usage</li>
+</ul>
 <p>The Persistent API in Moodle is a framework that simplifies the handling of data records, particularly when dealing with the database. It provides a structured way to interact with database tables, making it easier to create, update, retrieve, and delete records while ensuring data integrity and consistency.</p>
 <h3 id="key-features-of-the-persistent-api">Key Features of the Persistent API</h3>
 <ol>

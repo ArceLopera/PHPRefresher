@@ -1,3 +1,16 @@
+# MySQL Database
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+## Quick Navigation
+- [Database Basics](#database-basics)
+- [Connect & Query](#connect-to-mysql) - Connection, SELECT, INSERT
+- [UPDATE & DELETE](#update--delete) - Modify records
+- [Advanced Queries](#advanced-queries) - Joins, WHERE, ORDER BY
+- [Prepared Statements](#prepared-statements-and-parameterized-queries) - Security
+- [Error Handling](#error-handling) - Debugging
+
 + MySQL is a database system used on the web
 + MySQL is a database system that runs on a server
 + MySQL is ideal for both small and large applications

@@ -1,3 +1,17 @@
+# Moodle JavaScript
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.2+
+
+## Quick Navigation
+- [JavaScript in Moodle](#javascript-enhances-moodle) - Overview
+- [Module System](#module-system) - AMD modules
+- [jQuery & DOM](#jquery--dom-manipulation) - Element handling
+- [AMD Modules](#amd-modules) - Modern JS structure
+- [Event System](#event-system) - Custom events
+- [AJAX Calls](#ajax-calls-to-moodle) - Server communication
+- [Best Practices](#best-practices) - Performance & patterns
+
 JavaScript enhances Moodle by allowing dynamic content, interactive elements, and improved user interactions. It is used to:
 
 - Create interactive elements like pop-ups and modals.

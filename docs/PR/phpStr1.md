@@ -1,3 +1,31 @@
+# PHP String Functions
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+PHP contains many useful built-in functions and methods to accomplish common tasks.
+
+## Quick Navigation
+- [Most Common Functions](#most-common-functions)
+  - [strlen()](#strlen)
+  - [str_word_count()](#str_word_count-)
+  - [strrev()](#strrev-)
+  - [join()](#join)
+  - [strpos()](#strpos-)
+- [Fixed-Width Field Data Records](#fixedwidth-field-data-records)
+  - [pack()](#pack)
+  - [str_pad()](#str_pad)
+  - [substr()](#substr)
+  - [unpack()](#unpack)
+- [Taking Strings Apart](#taking-strings-apart)
+  - [explode()](#explode)
+  - [str_replace()](#str_replace)
+  - [str_repeat()](#str_repeat)
+- [Case Conversion](#case-conversion)
+  - [strtolower()](#strtolower) / [strtoupper()](#strtoupper)
+  - [ucfirst()](#ucfirst) / [ucwords()](#ucwords)
+- [Formatting](#formatting) - CSV, Numbers, Text Wrapping
+
 PHP contains many useful built-in functions and methods to accomplish common tasks.
 
 

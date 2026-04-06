@@ -1,4 +1,19 @@
-An array stores multiple values in one single variable. 
+# PHP Arrays
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+An array stores multiple values in one single variable.
+
+## Quick Navigation
+- [Create an Array](#create-an-array-in-php)
+- [Array Functions](#array-functions) - Essential operations
+- [Array Access & Modification](#array-access--modification)
+- [Iterating & Searching](#array-iteration--searching)
+- [Array Manipulation](#array-manipulation) - Sort, Merge, Slice
+- [SPL Array Functions](#spl-array-functions) - Advanced array operations
+
+An array stores multiple values in one single variable.
 
 In PHP, numerical arrays are associative arrays, and associative arrays are numerical arrays. So which kind are they really? Both and neither. The line between them constantly blurs back and forth from one to another. 
 

@@ -1,4 +1,17 @@
-External web services in Moodle allow the platform to interact with external systems, 
+# Moodle Web Services
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.2+
+
+## Quick Navigation
+- [Overview](#overview) - Why web services matter
+- [Architecture](#architecture) - External API framework
+- [Creating Services](#creating-external-web-services) - Define & expose
+- [Authentication](#authentication) - Security & tokens
+- [AJAX Integration](#ajax-integration) - Client-side usage
+- [Mobile App](#mobile-app) - Supporting Moodle Mobile
+
+External web services in Moodle allow the platform to interact with external systems,
 providing a bridge for integrating Moodle with third-party applications such as mobile apps, 
 external platforms, or custom systems. Moodle uses a standardized way to define, expose, 
 and secure web services to ensure safe communication between systems.

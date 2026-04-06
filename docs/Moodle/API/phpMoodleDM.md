@@ -1,3 +1,21 @@
+# Moodle Database APIs
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.2+
+
+## Quick Navigation
+- [DML API](#data-manipulation-language-api-dml) - Query & fetch data
+  - [SELECT Operations](#select)
+  - [INSERT / UPDATE](#insert--update)
+  - [DELETE](#delete)
+- [DDL API](#data-definition-api-ddl) - Manage database structure
+  - [Create Tables](#creating-tables)
+  - [Modify Tables](#modifying-existing-tables)
+  - [Indexes](#indexes)
+- [Database Manager](#database-manager) - Core object
+- [Global $DB](#the-global-db-object) - Access point
+- [Security](#preventing-sql-injection) - Prepared statements
+
 Moodle provides two main APIs for database abstraction:
 
 ### [Data Definition API (DDL)](https://moodledev.io/docs/5.0/apis/core/dml/ddl)

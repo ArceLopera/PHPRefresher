@@ -1,3 +1,16 @@
+# Moodle Behat Testing
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.2+
+
+## Quick Navigation
+- [Setup Behat](#set-up-behat-in-moodle) - Prerequisites & Installation
+- [Feature Files](#feature-files) - Writing tests with Gherkin
+- [Step Definitions](#step-definitions) - Implementing test steps
+- [Running Tests](#running-tests-in-moodle) - Execution commands
+- [Debugging](#debugging-behat-tests) - Troubleshooting
+- [Best Practices](#best-practices) - Writing effective tests
+
 Behat is a framework for behavior driven development (BDD) which allows us to specify Moodle functionalities (aka features) as a human-readable list of steps. It parses these steps to executable actions to simulate user interaction against headless browsers (without JavaScript support, only curl-kind requests) or user simulation tools like Selenium, which interacts with browsers and allows JavaScript events simulation.
 
 Behat is a behavior-driven development (BDD) tool used in Moodle for automated functional testing. 
