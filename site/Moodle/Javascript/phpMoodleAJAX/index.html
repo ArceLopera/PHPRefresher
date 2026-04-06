@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#steps-to-create-an-ajax-interaction-in-moodle" class="md-skip">
+        <a href="#moodleajax" class="md-skip">
           Skip to content
         </a>
       
@@ -2165,6 +2165,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           AJAX
@@ -2180,6 +2182,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -2573,6 +2577,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2636,8 +2642,12 @@
                 
 
 
-  <h1>AJAX</h1>
-
+<h1 id="moodleajax">MoodleAJAX</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 7.2+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>AJAX (Asynchronous JavaScript and XML) allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes. This means that parts of a web page can be updated without reloading the entire page. In Moodle, AJAX is commonly used to create more dynamic and responsive user interfaces.</p>
 <p>The preferred way to write new AJAX interactions in Moodle is to use the JavaScript module <code>core/ajax</code>, which directly calls web service functions built using the Moodle Web Service API.</p>
 <p><strong>Benefits of Using <code>core/ajax</code>:</strong></p>

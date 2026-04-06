@@ -1,4 +1,4 @@
-An exception is an object that describes an error or unexpected behaviour of a PHP script.
+﻿An exception is an object that describes an error or unexpected behaviour of a PHP script.
 
 Exceptions are thrown by many PHP functions and classes.
 
@@ -7,6 +7,10 @@ User defined functions and classes can also throw exceptions.
 Exceptions are a good way to stop a function when it comes across data that it cannot use.
 
 ## Throwing an Exception
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The throw statement allows a user defined function or method to throw an exception. When an exception is thrown, the code following it will not be executed.
 
 If an exception is not caught, a fatal error will occur with an "Uncaught Exception" message.

@@ -1,6 +1,10 @@
-Promises in JavaScript represent the eventual completion (or failure) of an asynchronous operation and its resulting value. In Moodle, promises are commonly used for handling asynchronous tasks such as AJAX requests, loading modules, and other operations that involve waiting for some data or action to complete.
+﻿Promises in JavaScript represent the eventual completion (or failure) of an asynchronous operation and its resulting value. In Moodle, promises are commonly used for handling asynchronous tasks such as AJAX requests, loading modules, and other operations that involve waiting for some data or action to complete.
 
 ### Basic Structure of Promises
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 A promise can be in one of three states:
 

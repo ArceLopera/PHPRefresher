@@ -1,4 +1,8 @@
 ### Key security vulnerabilities
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 Given below are some of the typical vulnerability types developers need to be aware of when developing web applications, including Moodle.
 

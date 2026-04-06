@@ -1,4 +1,8 @@
 ## Forms Handling
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 PHP - A Simple HTML Form
 The example below displays a simple HTML form with two input fields and a submit button.

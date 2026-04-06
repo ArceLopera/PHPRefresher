@@ -1,8 +1,12 @@
-**Managing JavaScript Dependencies Using NPM and NVM**
+﻿**Managing JavaScript Dependencies Using NPM and NVM**
 
 ---
 
 ### **NPM (Node Package Manager)**
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 NPM is the default package manager for Node.js. It allows you to manage JavaScript project dependencies and provides access to the vast NPM registry of packages.
 

@@ -1,3 +1,8 @@
+# Mail
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The mail() function allows you to send emails directly from a script.
 
 The behavior of the mail functions is affected by settings in php.ini:

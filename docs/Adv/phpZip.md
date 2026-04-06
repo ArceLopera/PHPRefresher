@@ -1,4 +1,8 @@
 ## Installation
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 ### Linux Systems
 
 For these functions to work, you have to compile PHP with --enable-zip.

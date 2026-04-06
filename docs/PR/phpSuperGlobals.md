@@ -1,3 +1,8 @@
+# SuperGlobals
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 Superglobals were introduced in PHP 4.1.0, and are built-in variables that are always available in all scopes.
 
 The PHP superglobal variables are:
@@ -154,3 +159,4 @@ echo "Study " . $_GET['subject'] . " at " . $_GET['web'];
 </body>
 </html>
 ```
+

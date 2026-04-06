@@ -1,10 +1,14 @@
-Test-Driven Development (TDD), Behavior-Driven Development (BDD), and Acceptance Test-Driven Development (ATDD) are three distinct yet interconnected approaches that help developers create robust and reliable software.
+﻿Test-Driven Development (TDD), Behavior-Driven Development (BDD), and Acceptance Test-Driven Development (ATDD) are three distinct yet interconnected approaches that help developers create robust and reliable software.
 
 TDD is primarily focused on unit testing and code functionality, BDD centers on system behavior and stakeholder collaboration, and ATDD aligns development with user requirements through acceptance criteria.
 
 Understanding these distinctions can help teams leverage the strengths of each methodology, fostering a more efficient and effective development process.
 
 ## Test Driven Development (TDD)
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 Test-Driven Development is a testing methodology or a programming practice implemented from a developer’s perspective. In this technique, a QA engineer starts designing and writing test cases for every small functionality of an application. This technique attempts to answer a simple question – Is the code valid?
 

@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generator-object" class="md-skip">
+        <a href="#generators" class="md-skip">
           Skip to content
         </a>
       
@@ -1239,6 +1239,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Generators
@@ -1254,6 +1256,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -2593,6 +2597,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2676,8 +2682,12 @@
                 
 
 
-  <h1>Generators</h1>
-
+<h1 id="generators">Generators</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 7.4+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>Generators provide an easy way to implement simple iterators without the overhead or complexity of implementing a class that implements the Iterator interface.</p>
 <p>A generator allows you to write code that uses foreach to iterate over a set of data without needing to build an array in memory, which may cause you to exceed a memory limit, or require a considerable amount of processing time to generate. Instead, you can write a generator function, which is the same as a normal function, except that instead of returning once, a generator can yield as many times as it needs to in order to provide the values to be iterated over.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>

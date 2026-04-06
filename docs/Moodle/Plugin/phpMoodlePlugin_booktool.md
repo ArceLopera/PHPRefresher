@@ -1,8 +1,12 @@
-A **booktool** plugin adds new tools or actions to be used within the Book activity, which allows for structured content with chapters and subchapters, making it a highly organized resource for learners.
+﻿A **booktool** plugin adds new tools or actions to be used within the Book activity, which allows for structured content with chapters and subchapters, making it a highly organized resource for learners.
 
 ---
 
 ### **Understanding the Book Module's Structure**
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 The **Book module** provides a hierarchical structure of chapters and subchapters, and a booktool plugin interacts with this structure. The main idea of a booktool plugin is to provide additional functionality (like exporting, printing, annotating, etc.) inside the context of a Book activity.
 
 - The **Book module’s core functionality** (`/mod/book/`).

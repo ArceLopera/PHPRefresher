@@ -1,8 +1,12 @@
-A valid constant name starts with a letter or underscore (no $ sign before the constant name).
+﻿A valid constant name starts with a letter or underscore (no $ sign before the constant name).
 
 Unlike variables, constants are automatically global across the entire script.
 
 ## Create a PHP Constant
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 There are 2 ways to create a constant:
 1. Using the define() function

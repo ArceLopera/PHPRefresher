@@ -1,3 +1,8 @@
+# Modifiers
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 5.0+
+> **Status:** Stable
+
 There are three access modifiers:
 
 1. public - the property or method can be accessed from everywhere. This is default
@@ -111,3 +116,4 @@ $ex->value = 'changed'; // ERROR - cannot modify after initialization
 | Can be dynamic | No | Yes |
 | Per-instance | No (static) | Yes |
 | Type flexible | Limited | All types |	
+

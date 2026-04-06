@@ -1,4 +1,8 @@
 ## Static Methods
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 5.0+
+> **Status:** Stable
+
 Static methods can be called directly - without creating an instance of the class first.
 
 Static methods are declared with the static keyword.
@@ -133,3 +137,4 @@ $x = new x();
 echo $x->xStatic();
 ?>
 ```
+

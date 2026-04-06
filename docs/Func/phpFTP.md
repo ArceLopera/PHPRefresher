@@ -1,10 +1,14 @@
-The FTP functions give client access to file servers through the File Transfer Protocol (FTP).
+﻿The FTP functions give client access to file servers through the File Transfer Protocol (FTP).
 
 The FTP functions are used to open, login and close connections, as well as upload, download, rename, delete, and get information on files from file servers. Not all of the FTP functions will work with every server or return the same results. The FTP functions became available with PHP 3.
 
 If you only wish to read from or write to a file on an FTP server, consider using the ftp:// wrapper with the Filesystem functions which provide a simpler and more intuitive interface.
 
 ##  FTP Functions
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 |Function|	Description|
 |--------|-----------|
 |ftp_alloc()|	Allocates space for a file to be uploaded to the FTP server|

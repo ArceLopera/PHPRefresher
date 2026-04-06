@@ -1,4 +1,4 @@
-If you are after a general introduction on using the Moodle Messaging system go to [messaging user documentation](https://docs.moodle.org/405/en/Messaging).
+﻿If you are after a general introduction on using the Moodle Messaging system go to [messaging user documentation](https://docs.moodle.org/405/en/Messaging).
 
 If you are looking for details of how the Messaging system's internal structure was implemented, go to [Messaging 2.0](https://docs.moodle.org/dev/Messaging_2.0).
 
@@ -7,6 +7,10 @@ If you are looking for instructions on the implementation of a custom message pr
 If you are looking for instructions on sending messages programmatically within Moodle then read on. Moodle components have the ability to send messages to users via the Moodle messaging system. Any type of component, for example a plugin or block, can register as a message producer then send messages to users.
 
 ### File locations
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 The Message API code is contained within `lib/messagelib.php` and is automatically included for you during page setup.
 
 ### Functions

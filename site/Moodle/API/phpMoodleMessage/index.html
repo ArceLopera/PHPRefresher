@@ -2697,6 +2697,11 @@
 <p>If you are looking for instructions on the implementation of a custom message processor (a component that receives messages sent to a user), go to <a href="https://docs.moodle.org/dev/Messaging_custom_components">Messaging custom components</a>.</p>
 <p>If you are looking for instructions on sending messages programmatically within Moodle then read on. Moodle components have the ability to send messages to users via the Moodle messaging system. Any type of component, for example a plugin or block, can register as a message producer then send messages to users.</p>
 <h3 id="file-locations">File locations</h3>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 7.2+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>The Message API code is contained within <code>lib/messagelib.php</code> and is automatically included for you during page setup.</p>
 <h3 id="functions">Functions</h3>
 <p><code>message_send()</code> is the primary point of contact for the message API. Call it to send a message to a user.</p>

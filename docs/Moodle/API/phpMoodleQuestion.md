@@ -1,6 +1,10 @@
-The question subsystem in Moodle manages the creation, editing and management of interactive questions, and then enables those questions to be presented to users so they can be attempted. It is useful to consider these as separate subcomponents.
+﻿The question subsystem in Moodle manages the creation, editing and management of interactive questions, and then enables those questions to be presented to users so they can be attempted. It is useful to consider these as separate subcomponents.
 
 ### The question engine
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 This is the part that makes questions work when users attempt or otherwise interact with questions as part of a learning experience.
 
 The main user of this in the standard Moodle package is mod_quiz, but there is also qbank_previewquestion, and numerous plugins, including filter_embedquestion.

@@ -1,4 +1,8 @@
 # Debugging in Moodle
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 Debugging is an essential part of software development, and Moodle provides multiple ways to output and track information for developers. 
 
@@ -130,5 +134,6 @@ $logger->add_event(new \core\event\course_created(['context' => context_system::
 - **Use `error_log()`** for logging in production.
 - **Use `$this->debug()`** for PHPUnit tests.
 - **Use Moodle Logging API** for structured logging.
+
 
 

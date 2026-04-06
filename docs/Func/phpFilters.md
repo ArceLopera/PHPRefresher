@@ -1,3 +1,8 @@
+# Filters
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 Validating data = Determine if the data is in proper form.
 
 Sanitizing data = Remove any illegal character from the data.
@@ -213,4 +218,5 @@ $newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
 echo $newstr;
 ?>
 ```
+
 

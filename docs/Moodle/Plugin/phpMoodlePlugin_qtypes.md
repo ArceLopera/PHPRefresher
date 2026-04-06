@@ -1,8 +1,12 @@
-Question types are one of the plugins used by the [question subsystem](../API/phpMoodleQuestion.md). They are used to create and edit questions.
+﻿Question types are one of the plugins used by the [question subsystem](../API/phpMoodleQuestion.md). They are used to create and edit questions.
 
 Question types have to do many things:
 
 #### edit_..._form.php 
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 Provide an editing form so that teachers can create and edit questions of this type.
 
 This file contains the form displayed in the quiz administration interface, allowing teachers to create and edit this specific question type. It extends question_edit_form.

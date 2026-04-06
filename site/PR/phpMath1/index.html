@@ -2871,6 +2871,11 @@
   <h1>Functions</h1>
 
 <h2 id="comparing-floating-point-numbers">Comparing Floating-Point Numbers</h2>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 7.4+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>Floating-point numbers are represented in binary form with only a finite number of bits for the mantissa and the exponent. You get overflows when you exceed those bits. As a result, sometimes PHP (just like some other languages) doesn’t believe that two equal numbers are actually equal because they may differ toward the very end. To avoid this problem, instead of checking if $a == <span class="arithmatex">\(b, make sure the first number is within a very small amount (\)</span>delta) of the second one. The size of your delta should be the smallest amount of difference you care about between two numbers. Then use <a href="#abs">abs()</a> to get the absolute value of the difference.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="mf">1.00000001</span><span class="p">;</span>

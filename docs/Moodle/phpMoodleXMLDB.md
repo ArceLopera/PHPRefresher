@@ -1,3 +1,8 @@
+# MoodleXMLDB
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 The XMLDB editor is a powerful feature within Moodle that assists developers in creating and managing 
 database schemas for Moodle plugins. It provides a graphical interface to define database tables, 
 fields, keys, indexes, and other database elements, which are then used to generate the `install.xml` 
@@ -172,4 +177,5 @@ Avoid to create all the fields as NOT NULL with the silly default value * (empty
 #### About UNIQUE KEYS
 
 + Declare any fields as UNIQUE KEY (UK) only if they are going to be used as target for one FK. Create unique indexes instead.
+
 

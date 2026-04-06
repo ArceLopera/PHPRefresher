@@ -1,3 +1,8 @@
+# Generators
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 Generators provide an easy way to implement simple iterators without the overhead or complexity of implementing a class that implements the Iterator interface.
 
 A generator allows you to write code that uses foreach to iterate over a set of data without needing to build an array in memory, which may cause you to exceed a memory limit, or require a considerable amount of processing time to generate. Instead, you can write a generator function, which is the same as a normal function, except that instead of returning once, a generator can yield as many times as it needs to in order to provide the values to be iterated over.
@@ -363,4 +368,5 @@ print $selected . "\n";
 
 Despite a completely different use case, FileLineGenerator() is reusable without modifications. In this example, the generator is invoked from within the foreach loop instead of storing it in a variable.
 You cannot rewind a generator. They only iterate forward.
+
 

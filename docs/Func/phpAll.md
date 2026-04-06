@@ -1,3 +1,8 @@
+# All
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 PHP has over 1000 built-in functions that can be called directly, from within a script, to perform a specific task.
 
 | Category | ||Libraries||
@@ -10,3 +15,4 @@ PHP has over 1000 built-in functions that can be called directly, from within a 
 | Text Formats | *|[JSON](../Func/phpJSON.md)| [XML Parser](../Adv/phpXML.md)|[SimpleXML](../Adv/phpXML.md#simplexml)|
 |Database |*| [MySQLi](../Adv/phpMySql.md) |||
 |Other|*|[Math](../PR/phpMath1.md#all-math-functions) | [Var Handling](../PR/phpVar4.md)|[Misc](../Func/phpMisc.md)|
+

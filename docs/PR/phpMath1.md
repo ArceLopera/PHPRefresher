@@ -1,4 +1,8 @@
 ##  Comparing Floating-Point Numbers
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 Floating-point numbers are represented in binary form with only a finite number of bits for the mantissa and the exponent. You get overflows when you exceed those bits. As a result, sometimes PHP (just like some other languages) doesn’t believe that two equal numbers are actually equal because they may differ toward the very end. To avoid this problem, instead of checking if $a == $b, make sure the first number is within a very small amount ($delta) of the second one. The size of your delta should be the smallest amount of difference you care about between two numbers. Then use [abs()](#abs) to get the absolute value of the difference.
 

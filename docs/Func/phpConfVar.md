@@ -1,4 +1,8 @@
 ## Reading Configuration Variables
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 When you want to get the value of a PHP configuration setting.
 

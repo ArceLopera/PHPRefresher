@@ -1,10 +1,14 @@
-+ Currently the code for creating table often involves a lot of duplication of code. New api can improve things.
+﻿+ Currently the code for creating table often involves a lot of duplication of code. New api can improve things.
 + New API handles downloads
     + download export formats are separated into classes and it is simple to add more formats. Added two more formats. Unpaged XHTML format and comma seperated values format.
 + No longer have to make sure that column data is added to the table in the same order as columns are declared. Can have the logic for choosing what columns to include in the table in one place.
 + New mechanism in table_sql allows appropriate code to be automatically called to format data before putting it into the table.
 
 ### Skeleton Usage
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 In order to check your sql query is working as expected when developing a page it can be useful just to output all the data from the query in the table before going on to work out how you want to format data. The code below will output all the data from your query in a collapsible, sortable table. It automatically displays all columns returned from the db.
 
 You should go on to :

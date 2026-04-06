@@ -1,4 +1,8 @@
 ### Moodle Cache API: Overview and Usage
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 The Cache API in Moodle is a powerful system designed to improve performance and efficiency by storing and retrieving frequently used data. It provides developers with a flexible and easy-to-use mechanism for implementing caching in their plugins or core functionalities.
 The Cache API, also known as MUC (Moodle Universal Cache), is a fundamental caching system within Moodle.

@@ -1,8 +1,12 @@
-When developing a **Qbank plugin** in Moodle, the most important aspect is managing how the **question bank** (the repository of quiz questions) is enhanced or extended. This type of plugin allows developers to customize how questions are created, viewed, stored, searched, categorized, or manipulated within Moodle's question bank system.
+﻿When developing a **Qbank plugin** in Moodle, the most important aspect is managing how the **question bank** (the repository of quiz questions) is enhanced or extended. This type of plugin allows developers to customize how questions are created, viewed, stored, searched, categorized, or manipulated within Moodle's question bank system.
 
 ---
 
 ### Key Aspects of Developing a Qbank Plugin
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 1. **Plugin Structure and Location**
     A Qbank plugin extends or modifies the behavior of the question bank. The plugin is located in the `/question/bank/` directory. When you create a new Qbank plugin, you place it under the following structure:

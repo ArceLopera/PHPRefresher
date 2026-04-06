@@ -1,3 +1,8 @@
+# Constants
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 5.0+
+> **Status:** Stable
+
 Class constants can be useful if you need to define some constant data within a class.
 
 A class constant is declared inside a class with the const keyword.

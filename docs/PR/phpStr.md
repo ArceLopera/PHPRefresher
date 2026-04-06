@@ -1,9 +1,13 @@
-
+﻿
 PHP strings are binary-safe (i.e., they can contain null bytes) and can grow and shrink on demand. Their size is limited only by the amount of memory that is available to PHP.
 
 Usually, PHP strings are ASCII strings. You must do extra work to handle non-ASCII data like UTF-8 or other multibyte character encodings.
 
 ## Initialization
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 Similar in form and behavior to Perl and the Unix shell, strings can be initialized in four ways:
  

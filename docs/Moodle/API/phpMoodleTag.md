@@ -1,9 +1,13 @@
-The **Tag API** in Moodle provides a standardized way for developers to allow users to tag content. This system is built into Moodle core and supports tagging various types of content (like forum posts, glossary entries, and user profiles) with custom tags. These tags can be reused across the platform, helping to categorize and find content more easily. The API also provides mechanisms to manage, search, and display tags.
+﻿The **Tag API** in Moodle provides a standardized way for developers to allow users to tag content. This system is built into Moodle core and supports tagging various types of content (like forum posts, glossary entries, and user profiles) with custom tags. These tags can be reused across the platform, helping to categorize and find content more easily. The API also provides mechanisms to manage, search, and display tags.
 The main tag related functions can be found in the `tag/classes/tag.php` file. For a thorough overview of all of the functions available for working with Tags please see methods in `core_tag_tag`, `core_tag_collection` and `core_tag_area classes`.
 
 ---
 
 ### **Tag Creation and Management**
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 When a user tags something a tag instance is created in the database linking the item to the actual tag. 
 If the tag did not exist before it is created automatically. 

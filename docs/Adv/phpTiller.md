@@ -1,4 +1,8 @@
 # Using Tiller for Dynamic Configuration in PHP Web Development
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 
 Tiller is a Ruby-based tool that dynamically generates configuration files from various data sources such as environment variables, YAML files, or JSON services. This is particularly useful in PHP web development for managing dynamic configurations in different environments (development, staging, production).
@@ -90,4 +94,5 @@ For further customization, explore additional sources like JSON services or Hash
 ### Useful Links
 - [Tiller GitHub Repository](https://github.com/markround/tiller)
 - [RubyGems Tiller Page](https://rubygems.org/gems/tiller)
+
 

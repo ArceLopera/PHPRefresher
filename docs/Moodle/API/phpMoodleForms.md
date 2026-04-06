@@ -1,10 +1,14 @@
-The **Moodle Forms API** is a framework for creating, managing, and processing forms within Moodle. 
+﻿The **Moodle Forms API** is a framework for creating, managing, and processing forms within Moodle. 
 It simplifies form creation and data handling, ensuring consistency and compliance with Moodle's security and UI standards. 
 
 
 ---
 
 ## **Basic Workflow**
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 1. **Define the Form**: Create a class that extends `moodleform`.
 2. **Add Elements**: Use the `definition()` method to define form fields.

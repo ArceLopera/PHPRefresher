@@ -1,4 +1,8 @@
 # MailHog for PHP Development
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 MailHog is a lightweight email testing tool that captures outgoing emails sent from your PHP application, allowing you to inspect them in a web interface without actually sending them to real recipients. This tutorial covers installing, configuring, and using MailHog with PHP.
 
@@ -99,3 +103,4 @@ docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
 MailHog is an excellent tool for testing email functionality in PHP applications without actually sending emails. By following this tutorial, you can set up and use MailHog efficiently for debugging email workflows.
 
 For more details, visit the [MailHog GitHub repository](https://github.com/mailhog/MailHog).
+

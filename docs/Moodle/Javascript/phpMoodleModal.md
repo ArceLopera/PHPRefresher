@@ -1,3 +1,8 @@
+# MoodleModal
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 Modal dialogues are a useful UI component in Moodle for displaying content and interacting with users without navigating away from the current page. They are typically used for forms, confirmations, alerts, and other content that needs user interaction.
 
 The use of modal modules provides a simplified developer experience for creating modal dialogues within Moodle.

@@ -1,8 +1,12 @@
-When developing a **Qbehavior plugin** in Moodle, the most important aspect is managing how questions behave during **attempts in a quiz**. A **question behavior plugin** controls how a user interacts with a question, how responses are processed, and how feedback is provided. It determines the user experience during quizzes, such as whether users can retry incorrect answers, how immediate feedback is shown, and how marks are adjusted based on responses.
+﻿When developing a **Qbehavior plugin** in Moodle, the most important aspect is managing how questions behave during **attempts in a quiz**. A **question behavior plugin** controls how a user interacts with a question, how responses are processed, and how feedback is provided. It determines the user experience during quizzes, such as whether users can retry incorrect answers, how immediate feedback is shown, and how marks are adjusted based on responses.
 
 ---
 
 ### Key Aspects of Developing a Qbehavior Plugin
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 1. **Plugin Structure and Location**
     A Qbehavior plugin is located in the `/question/behaviour/` directory. When you create a new plugin (e.g., `mybehavior`), it will be structured like this:

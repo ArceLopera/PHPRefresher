@@ -1,10 +1,14 @@
-A **Qformat plugin** in Moodle allows users to **import** and **export** quiz questions in various file formats. Developing a qformat plugin enables you to support custom formats beyond the default ones like Moodle XML or GIFT.
+﻿A **Qformat plugin** in Moodle allows users to **import** and **export** quiz questions in various file formats. Developing a qformat plugin enables you to support custom formats beyond the default ones like Moodle XML or GIFT.
 
 The most important aspects of developing a qformat plugin involve handling the **parsing of external data** during imports, and **generating structured data** during exports.
 
 ---
 
 ### Key Aspects of Developing a Qformat Plugin
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 1. **Plugin Structure and Location**
     Qformat plugins reside in the `/question/format/` directory of Moodle. When developing a new plugin (let’s call it `myformat`), you will create the following directory:

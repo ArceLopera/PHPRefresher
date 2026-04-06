@@ -1,6 +1,10 @@
-Moodle is the premier Learning Management System (LMS) designed for seamless online education. With its user-friendly interface, advanced features, and versatile plugin system, Moodle empowers educators and institutions to create engaging and interactive learning experiences. Moodle is a global community that values innovation, collaboration, and effective online education.
+﻿Moodle is the premier Learning Management System (LMS) designed for seamless online education. With its user-friendly interface, advanced features, and versatile plugin system, Moodle empowers educators and institutions to create engaging and interactive learning experiences. Moodle is a global community that values innovation, collaboration, and effective online education.
 
 ## Key Features
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 **Open-Source Advantage**
 

@@ -21,6 +21,10 @@ After you have installed NVM, you can install the correct version of NodeJS by r
 
 ```bash
 # Installing the version of NodeJS for the current directory
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 nvm install
 nvm use
 ```
@@ -134,3 +138,4 @@ Note that:
 + You can make output more verbose by adding -v parameter.
 + If used with grunt shifter you will have to cd into the module/yui/src folder, and to show what your lint errors are you can also use the -v parameter.
 + On Windows, you need to specify the path on the command line like --root=admin/tool/templatelibrary.
+

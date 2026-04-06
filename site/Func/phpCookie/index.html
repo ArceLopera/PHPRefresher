@@ -2643,6 +2643,11 @@
 <p>A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.</p>
 <p>HTTP requests aren’t “stateful”; each request isn’t connected to a previous one. A cookie, however, can link different requests by the same user. This makes it easier to build features such as shopping carts or to keep track of a user’s search history.</p>
 <h2 id="setcookie">setcookie()</h2>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 7.4+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>When you want to set a cookie so that your website can recognize subsequent requests from the same web browser. Call setcookie() with a cookie name and value:</p>
 <div class="highlight"><pre><span></span><code><span class="x">setcookie($name, $value = &quot;&quot;, $expire = &quot;&quot;, $path = &quot;&quot;, $domain = &quot;&quot;, $secure = &quot;&quot;, $httponly = &quot;&quot;);</span>
 </code></pre></div>

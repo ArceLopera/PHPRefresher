@@ -1,4 +1,8 @@
 ## PHP File Handling
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 File handling is an important part of any web application. You often need to open and process a file for different tasks.
 
@@ -511,6 +515,7 @@ print_r($a);
 print_r($b);
 ?>
 ```
+
 
 
 

@@ -1,6 +1,10 @@
-Understanding the different types of Moodle plugins is crucial for developing the right kind of functionality to extend Moodle. Each plugin type serves a specific purpose and integrates with Moodle in a unique way. By exploring existing plugins and their source code, you can gain insights into best practices and common patterns used in Moodle plugin development. For the official documentation of each plugin type, see the [Moodle documentation](https://moodledev.io/docs/4.4/apis/plugintypes).
+﻿Understanding the different types of Moodle plugins is crucial for developing the right kind of functionality to extend Moodle. Each plugin type serves a specific purpose and integrates with Moodle in a unique way. By exploring existing plugins and their source code, you can gain insights into best practices and common patterns used in Moodle plugin development. For the official documentation of each plugin type, see the [Moodle documentation](https://moodledev.io/docs/4.4/apis/plugintypes).
 
 ### General Naming Conventions
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 1. **Component Name**: The component name of a plugin follows the format `plugin_type_pluginname`. For example, an assignment activity module might be named `mod_assignment`.
 2. **Directory and File Names**: The directory name of the plugin should match the plugin name part of the component name. For example, the directory for an assignment plugin should be `mod/assignment`.

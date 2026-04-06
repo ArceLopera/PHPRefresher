@@ -55,6 +55,10 @@ git clone https://github.com/moodlehq/moodle-docker.git
 
 ``` bash
 # For example: /home/user/moodle/
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 export MOODLE_DOCKER_WWWROOT=/path/to/moodle/code
 ```
 

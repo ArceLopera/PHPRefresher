@@ -1,4 +1,8 @@
 # **Adminer: A Powerful Lightweight Database Management Tool for PHP Developers**  
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 ## **What is Adminer?**  
 Adminer is a simple yet powerful database management tool written in PHP. It serves as an alternative to phpMyAdmin, offering a lightweight, fast, and secure way to interact with databases directly from a web browser. With a single PHP file, Adminer makes it easy to manage MySQL, PostgreSQL, SQLite, MS SQL, and other databases.  
@@ -46,3 +50,4 @@ Adminer is a simple yet powerful database management tool written in PHP. It ser
 - Extend functionality using **plugins** for extra security, automation, or UI enhancements.  
 
 Adminer is an excellent choice for PHP developers who need a fast, secure, and easy-to-use database management tool. Whether you're working locally or managing a production database, Adminer simplifies the process while offering powerful features.  
+

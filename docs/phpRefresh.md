@@ -65,6 +65,10 @@ A comment in PHP code is a line that is not executed as a part of the program. I
 // This is a single-line comment
 
 # This is also a single-line comment
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 ?>
 
 </body>

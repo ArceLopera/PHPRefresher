@@ -1,3 +1,8 @@
+# Empty
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The empty keyword acts as a function which returns true if a variable does not exist, or if its value is considered empty. The empty keyword also evaluates expressions which are not in a variable.
 
 A value is considered empty if its value is any of the following:

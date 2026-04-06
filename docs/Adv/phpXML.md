@@ -1,4 +1,4 @@
-The XML language is a way to structure data for sharing across websites.
+﻿The XML language is a way to structure data for sharing across websites.
 
 Several web technologies like RSS Feeds and Podcasts are written in XML.
 
@@ -8,6 +8,10 @@ In PHP there are two major types of XML parsers:
 + [Event-Based Parsers](#event-based-parsers)
 
 ## Tree-Based Parsers
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 Tree-based parsers holds the entire document in Memory and transforms the XML document into a Tree structure. It analyzes the whole document, and provides access to the Tree elements (DOM).
 
 This type of parser is a better option for smaller XML documents, but not for large XML document as it causes major performance issues.

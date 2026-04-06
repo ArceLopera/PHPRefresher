@@ -1,8 +1,12 @@
-In the world of PHP development, ensuring code quality and catching potential bugs early can save countless hours of debugging and troubleshooting. **PHPStan** is one of the most powerful tools available for this purpose. It provides **static analysis** for PHP code, helping developers detect issues before the code is even executed.
+﻿In the world of PHP development, ensuring code quality and catching potential bugs early can save countless hours of debugging and troubleshooting. **PHPStan** is one of the most powerful tools available for this purpose. It provides **static analysis** for PHP code, helping developers detect issues before the code is even executed.
 
 ---
 
 ## What is PHPStan?
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 PHPStan is a **static analysis tool** for PHP. Unlike traditional debugging tools that catch errors at runtime, PHPStan analyzes your code **without executing it**. It looks for potential issues, such as:
 - Undefined variables

@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#goto" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1565,6 +1570,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Goto
@@ -2502,6 +2509,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2515,8 +2524,12 @@
                 
 
 
-  <h1>Goto</h1>
-
+<h1 id="goto">Goto</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 7.4+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>The goto operator can be used to jump to another section in the program. The target point is specified by a case-sensitive label followed by a colon, and the instruction is given as goto followed by the desired target label. This is not a full unrestricted goto. The target label must be within the same file and context, meaning that you cannot jump out of a function or method, nor can you jump into one. You also cannot jump into any sort of loop or switch structure. You may jump out of these, and a common use is to use a goto in place of a multi-level break.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nx">goto</span> <span class="nx">label</span><span class="p">;</span>

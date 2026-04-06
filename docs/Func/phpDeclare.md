@@ -1,3 +1,8 @@
+# Declare
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 5.0+
+> **Status:** Stable
+
 The declare keyword sets an execution directive for a block of code. If the declare statement is not followed by a block then the directive applies to the rest of the code in the file.
 
 There are three directives which can be declared: ticks, encoding and strict_types.

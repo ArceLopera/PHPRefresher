@@ -1,4 +1,4 @@
-In PHP, we have the following loop types:
+﻿In PHP, we have the following loop types:
 
 + [while](#while) - loops through a block of code as long as the specified condition is true
 + [do...while](#dowhile) - loops through a block of code once, and then repeats the loop as long as the specified condition is true
@@ -8,6 +8,10 @@ In PHP, we have the following loop types:
 To control further the flow of a loop, you can use the [break](#php-break) and [continue](#php-continue) statements.
 
 ## while
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 The while loop - Loops through a block of code as long as the specified condition is true.
 

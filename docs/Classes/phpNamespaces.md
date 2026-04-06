@@ -1,4 +1,8 @@
 ## Declaring a Namespace
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 5.3+
+> **Status:** Stable
+
 Namespaces are declared at the beginning of a file using the namespace keyword.
 
 ```php

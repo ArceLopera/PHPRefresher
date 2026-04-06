@@ -1,3 +1,8 @@
+# ArrowFunc
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The fn keyword is used to create arrow functions. Arrow functions are only available in PHP versions 7.4 and up.
 
 Arrow functions have access to all variables from the scope in which they were created.

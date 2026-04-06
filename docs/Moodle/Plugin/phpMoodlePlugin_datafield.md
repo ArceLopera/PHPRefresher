@@ -1,4 +1,4 @@
-The [Database activity](https://docs.moodle.org/405/en/Database_activity) included with Moodle includes support for several predefined field types, including text, date, and URL. It is also possible to create new field types. For example, you might like to create:
+﻿The [Database activity](https://docs.moodle.org/405/en/Database_activity) included with Moodle includes support for several predefined field types, including text, date, and URL. It is also possible to create new field types. For example, you might like to create:
 
 + Discipline-specific field types - For example "Protein PDB code": users can enter the PDB code for a protein, and then the display 3D viewer for the protein structure, or link out to molecular databases.
 + Institution-specific field types - For example "library reference number": Allow users to enter a reference number which can be automatically turned into a direct link for local library services.
@@ -7,6 +7,10 @@ The [Database activity](https://docs.moodle.org/405/en/Database_activity) includ
 The mod_data activity can be extended using two sub-plugin types, namely Database field types, used to create custom field data types; and Database presets, a legacy plugintype used to share configurations.
 
 ### File structure
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 Database field sub-plugins are located in the /mod/data/field directory.
 
 Each plugin is in a separate subdirectory and consists of a number of mandatory files and any other files the developer is going to use.

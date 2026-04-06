@@ -1,6 +1,10 @@
-AJAX is about updating parts of a web page, without reloading the whole page.
+﻿AJAX is about updating parts of a web page, without reloading the whole page.
 
 ## What is AJAX?
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 AJAX = Asynchronous JavaScript and XML.
 
 AJAX is a technique for creating fast and dynamic web pages.

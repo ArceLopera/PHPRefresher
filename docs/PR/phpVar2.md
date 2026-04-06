@@ -1,4 +1,8 @@
 ## Data Types
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 PHP supports the following data types:
 
 + [String](#php-string)

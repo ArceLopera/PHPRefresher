@@ -1,6 +1,10 @@
-Attributes (PHP 8.0+) provide a way to add metadata to classes, methods, properties, and functions without modifying the code itself.
+﻿Attributes (PHP 8.0+) provide a way to add metadata to classes, methods, properties, and functions without modifying the code itself.
 
 ## Basic Syntax
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 8.0+
+> **Status:** Stable
+
 
 ```php
 <?php

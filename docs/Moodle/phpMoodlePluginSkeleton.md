@@ -1,6 +1,10 @@
-Creating a plugin skeleton for a Moodle plugin can be done in two primary ways. One involves using the Moodle Plugin Skeleton Generator tool, which can be installed as a plugin in Moodle, and the other is manually creating the plugin skeleton, which commonly includes copying code from an existing plugin. 
+﻿Creating a plugin skeleton for a Moodle plugin can be done in two primary ways. One involves using the Moodle Plugin Skeleton Generator tool, which can be installed as a plugin in Moodle, and the other is manually creating the plugin skeleton, which commonly includes copying code from an existing plugin. 
 
 ### Using the [Moodle Plugin Skeleton Generator Tool](https://docs.moodle.org/404/en/Plugin_skeleton_generator)
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 The Moodle Plugin Skeleton Generator tool automates the creation of the initial plugin structure, ensuring that the generated skeleton adheres to Moodle's coding standards and best practices. This tool can be installed directly as a plugin in your Moodle site.
 

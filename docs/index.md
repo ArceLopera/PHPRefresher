@@ -1,4 +1,8 @@
 # Welcome to PHP Refresher
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 Everyone can forget about grammar and vocabulary. 
 
@@ -18,3 +22,4 @@ The key to becoming a proficient PHP developer is to keep learning and practicin
 </center>
 
 This material is a work in progress, so your feedback is welcome. The best way to provide that feedback is [to click here and create an issue in this GitHub repository](https://github.com/ArceLopera/PHPRefresher/issues).
+

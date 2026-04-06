@@ -1,4 +1,4 @@
-PHP provides a set of functions that control what content is sent to the browser and when. This is referred to as output control.
+﻿PHP provides a set of functions that control what content is sent to the browser and when. This is referred to as output control.
 
 Output can come from any of the following sources:
 
@@ -7,6 +7,10 @@ Output can come from any of the following sources:
 + Any content outside of the <?php ?> tags
 
 ### echo
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 The echo statement sends output to the browser.
 

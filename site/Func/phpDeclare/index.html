@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enddeclare" class="md-skip">
+        <a href="#declare" class="md-skip">
           Skip to content
         </a>
       
@@ -1122,6 +1122,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Declare
@@ -1137,6 +1139,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -2538,6 +2542,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2566,8 +2572,12 @@
                 
 
 
-  <h1>Declare</h1>
-
+<h1 id="declare">Declare</h1>
+<blockquote>
+<p><strong>Last updated:</strong> April 6, 2026
+<strong>Minimum PHP Version:</strong> PHP 5.0+
+<strong>Status:</strong> Stable</p>
+</blockquote>
 <p>The declare keyword sets an execution directive for a block of code. If the declare statement is not followed by a block then the directive applies to the rest of the code in the file.</p>
 <p>There are three directives which can be declared: ticks, encoding and strict_types.</p>
 <p>The ticks directive will send a tick event each time a specified number of instructions have been executed. A tick function can be registered which will run each time a tick event fires.</p>

@@ -1,4 +1,4 @@
-PHPUnit by Sebastian Bergmann is an advanced unit testing framework for PHP. 
+﻿PHPUnit by Sebastian Bergmann is an advanced unit testing framework for PHP. 
 It is installed as Composer dependency and is not part of Moodle installation. 
 To run PHPUnit tests, you have to manually install it on your development computer 
 or test server.
@@ -7,6 +7,10 @@ Read the excellent guide at [PHPUnit Manual](https://phpunit.de/documentation.ht
 
 
 ### **Install PHPUnit**
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 To use PHPUnit with Moodle, ensure the correct version is installed based on Moodle's 
 requirements. You can find version compatibility in Moodle's 
 [PHPUnit documentation](https://moodledev.io/general/development/tools/phpunit#phpunit-versions).

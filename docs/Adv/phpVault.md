@@ -1,4 +1,8 @@
 # Using HashiCorp Vault for PHP Web Development
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 HashiCorp Vault is a tool for securely storing and accessing secrets such as API keys, database credentials, and encryption keys. This tutorial will guide you through installing, configuring, and integrating Vault with a PHP web application.
 
@@ -122,4 +126,5 @@ Using Vault in PHP web development enhances security by managing sensitive crede
 For advanced setups, consider using Vault’s **dynamic secrets** feature for databases or integrating with Laravel's environment management.
 
 🔗 **Learn More**: [Vault Documentation](https://developer.hashicorp.com/vault)
+
 

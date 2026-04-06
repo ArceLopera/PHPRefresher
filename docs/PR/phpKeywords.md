@@ -1,7 +1,11 @@
-PHP has a set of keywords that are reserved words which cannot be used as function names, class names or method names. Prior to PHP 7, these keywords could not be used as class property names either:
+﻿PHP has a set of keywords that are reserved words which cannot be used as function names, class names or method names. Prior to PHP 7, these keywords could not be used as class property names either:
 
 
 ### Logical OPs Keywords
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 |Keyword|	Description|
 |---|---|
 |[and](phpOperators1.md#php-logical-operators)|	A logical operator|

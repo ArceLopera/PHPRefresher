@@ -1,3 +1,8 @@
+# MoodleAJAX
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 AJAX (Asynchronous JavaScript and XML) allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes. This means that parts of a web page can be updated without reloading the entire page. In Moodle, AJAX is commonly used to create more dynamic and responsive user interfaces.
 
 The preferred way to write new AJAX interactions in Moodle is to use the JavaScript module `core/ajax`, which directly calls web service functions built using the Moodle Web Service API.

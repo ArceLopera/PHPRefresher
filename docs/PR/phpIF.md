@@ -1,6 +1,10 @@
-Conditional statements are used to perform different actions based on different conditions.
+﻿Conditional statements are used to perform different actions based on different conditions.
 
 ## PHP Conditional Statements
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 
 In PHP we have the following conditional statements:
 

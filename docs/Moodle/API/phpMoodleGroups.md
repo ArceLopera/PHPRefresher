@@ -1,4 +1,4 @@
-Moodle Groups are a way of expressing collections of users within a course. They may be defined 
+﻿Moodle Groups are a way of expressing collections of users within a course. They may be defined 
 by the teacher in the course participants page, or created automatically during a bulk user 
 upload (for example, from a text file).
 
@@ -7,6 +7,10 @@ A teacher can choose whether to use, or even to force, the use of groups for an 
  settings).
 
 ### Group modes
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 There are three different group modes, these modes allow for restrictions to be put in place for access and visibility.
 

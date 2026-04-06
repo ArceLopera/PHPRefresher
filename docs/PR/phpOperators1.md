@@ -1,3 +1,8 @@
+# Operators1
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 Operators are used to perform operations on variables and values.
 
 PHP divides the operators in the following groups:
@@ -207,3 +212,4 @@ This is more concise and avoids explicitly using `isset()`. It ensures that if `
 // 'Guest'.
 $username = $_GET['user'] ?? $_POST['user'] ?? 'Guest';
 ```
+

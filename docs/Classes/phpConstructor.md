@@ -1,4 +1,8 @@
 ## The __construct Function
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 5.0+
+> **Status:** Stable
+
 A constructor allows you to initialize an object's properties upon creation of the object.
 
 If you create a __construct() function, PHP will automatically call this function when you create an object from a class.
@@ -129,3 +133,4 @@ class Person
 }
 ?>
 ```
+

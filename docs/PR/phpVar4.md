@@ -1,4 +1,8 @@
 ## Variable Handling Functions
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The PHP variable handling functions are part of the PHP core. No installation is required to use these functions.
 
 |                   Function                    |                              Description                              |

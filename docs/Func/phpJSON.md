@@ -1,8 +1,12 @@
-JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data.
+﻿JSON stands for JavaScript Object Notation, and is a syntax for storing and exchanging data.
 
 Since the JSON format is a text-based format, it can easily be sent to and from a server, and used as a data format by any programming language.
 
 ## json_encode()
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The json_encode() function is used to encode a value to JSON format.
 
 ```php

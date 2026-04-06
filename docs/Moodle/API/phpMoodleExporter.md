@@ -1,6 +1,10 @@
-Moodle exporters are powerful classes used to **convert complex data structures** into a **simplified, standardized format** for external output. They ensure that data exported from Moodle is **consistent**, **uniform**, and **easy to maintain**. Exporters are especially valuable when dealing with **external functions**, such as **web services** and **AJAX calls**, where the data needs to be serialized (transformed into a format that can be transferred over a network or saved for later use).
+﻿Moodle exporters are powerful classes used to **convert complex data structures** into a **simplified, standardized format** for external output. They ensure that data exported from Moodle is **consistent**, **uniform**, and **easy to maintain**. Exporters are especially valuable when dealing with **external functions**, such as **web services** and **AJAX calls**, where the data needs to be serialized (transformed into a format that can be transferred over a network or saved for later use).
 
 #### Key Concepts
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 
 1. **Serialization**: 
     Exporters take complex objects or data arrays from Moodle and convert them into a simple, predictable format (typically arrays or JSON). This ensures that external consumers (like web services, API clients, or front-end JavaScript) receive data in a usable, well-structured form.

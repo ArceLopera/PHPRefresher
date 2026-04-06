@@ -1,3 +1,8 @@
+# Var3
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 In PHP, variables can be declared anywhere in the script.
 
 The scope of a variable is the part of the script where the variable can be referenced/used.

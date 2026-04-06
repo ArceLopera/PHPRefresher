@@ -1,3 +1,8 @@
+# Misc
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 The behavior of the misc. functions is affected by settings in the php.ini file.
 
 Misc. configuration options:

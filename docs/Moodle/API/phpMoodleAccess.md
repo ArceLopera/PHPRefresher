@@ -1,6 +1,10 @@
-The Access API gives you functions so you can determine what the current user is allowed to do. It also allows plugins to extend Moodle with new capabilities.
+﻿The Access API gives you functions so you can determine what the current user is allowed to do. It also allows plugins to extend Moodle with new capabilities.
 
 ### Overview
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.2+
+> **Status:** Stable
+
 Moodle uses a role-based access control model. Entities are represented by contexts which are arranged into a tree-like hierarchy known as the context tree.
 
 The following context types are available:

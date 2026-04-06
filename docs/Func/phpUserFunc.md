@@ -1,3 +1,8 @@
+# UserFunc
+> **Last updated:** April 6, 2026
+> **Minimum PHP Version:** PHP 7.4+
+> **Status:** Stable
+
 + A function is a block of statements that can be used repeatedly in a program.
 + A function will not execute automatically when a page loads.
 + A function will be executed by a call to the function.
