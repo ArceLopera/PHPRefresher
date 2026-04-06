@@ -30,7 +30,7 @@ jobs:
         run: npm install
 
       - name: Install Playwright browsers
-        run: npm exec playwright install --with-deps
+        run: npx --yes -p playwright playwright install --with-deps
 
       - name: Run Playwright tests
         run: npm run test -- --reporter=github
