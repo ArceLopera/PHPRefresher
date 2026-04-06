@@ -73,10 +73,10 @@ The PHP date() function formats a timestamp to a more readable date and time.
 
 date(format,timestamp)
 
-|Parameter|	Description|
+| Parameter | Description|
 |---------|-----------|
-|format	|Required. Specifies the format of the timestamp|
-|timestamp|	Optional. Specifies a timestamp. Default is the current date and time. A timestamp is a sequence of characters, denoting the date and/or time at which a certain event occurred.|
+|format |Required. Specifies the format of the timestamp|
+| timestamp | Optional. Specifies a timestamp. Default is the current date and time. A timestamp is a sequence of characters, denoting the date and/or time at which a certain event occurred.|
 
 ### Get a Date
 The required format parameter of the date() function specifies how to format the date (or time).
@@ -127,7 +127,7 @@ So, if you need the time to be correct according to a specific location, you can
 date_default_timezone_set('America/New_York');
 echo "The time is " . date("h:i:sa");
 ?>
-```	
+``` 
 
 ## DateTime Object
 The DateTime object can be used to format a date and/or a time.
@@ -348,7 +348,7 @@ while ($startdate < $enddate) {
 ?>
 ```
 
-``` php	
+``` php 
 <?php
 $d1=strtotime("July 04");
 $d2=ceil(($d1-time())/60/60/24);
@@ -669,3 +669,4 @@ foreach ($range1 as $d) {
 }
 ?>
 ```
+

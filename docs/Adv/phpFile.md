@@ -45,16 +45,16 @@ fclose($myfile);
 
 The file may be opened in one of the following modes:
 
-|Modes|	Description|
-|---|---|
-|r|	Open a file for read only. File pointer starts at the beginning of the file|
-|w|	Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file|
-|a|	Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist|
-|x|	Creates a new file for write only. Returns FALSE and an error if file already exists|
-|r+|	Open a file for read/write. File pointer starts at the beginning of the file|
-|w+|	Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file|
-|a+|	Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist|
-|x+|	Creates a new file for read/write. Returns FALSE and an error if file already exists|
+| Modes | Description |
+|-------|-------------|
+| r | Open a file for read only. File pointer starts at the beginning of the file |
+| w | Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file |
+| a | Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist |
+| x | Creates a new file for write only. Returns FALSE and an error if file already exists |
+| r+ | Open a file for read/write. File pointer starts at the beginning of the file |
+| w+ | Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file |
+| a+ | Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist |
+| x+ | Creates a new file for read/write. Returns FALSE and an error if file already exists |
 
 The fopen() function is also used to create a file.
 If you use fopen() on a file that does not exist, it will create it, given that the file is opened for writing (w) or appending (a).
@@ -165,7 +165,7 @@ First, ensure that PHP is configured to allow file uploads.
 
 In your "php.ini" file, search for the file_uploads directive, and set it to On:
 
-``` php	
+``` php 
 file_uploads = On
 ```
 ### Create The HTML Form
@@ -329,17 +329,17 @@ if ($uploadOk == 0) {
 
 ## PHP Directory Functions
 
-|Function	|Description|
+|Function |Description|
 | ----- |-----|
-|[chdir()](#chdir)|	Changes the current directory|
-|[chroot()](#chroot)|	Changes the root directory|
-|[closedir()](#closedir)|	Closes a directory handle|
-|[dir()](#dir)|	Returns an instance of the Directory class|
-|[getcwd()](#getcwd)|	Returns the current working directory|
-|[opendir()](#opendir)|	Opens a directory handle|
-|[readdir()](#readdir)|	Returns an entry from a directory handle|
-|[rewinddir()](#rewinddir)|	Resets a directory handle|
-|[scandir()](#scandir)|	Returns an array of files and directories of a specified directory|
+|[chdir()](#chdir)| Changes the current directory|
+|[chroot()](#chroot)| Changes the root directory|
+|[closedir()](#closedir)| Closes a directory handle|
+|[dir()](#dir)| Returns an instance of the Directory class|
+|[getcwd()](#getcwd)| Returns the current working directory|
+|[opendir()](#opendir)| Opens a directory handle|
+|[readdir()](#readdir)| Returns an entry from a directory handle|
+|[rewinddir()](#rewinddir)| Resets a directory handle|
+|[scandir()](#scandir)| Returns an array of files and directories of a specified directory|
 
 ### chdir()
 The chdir() function changes the current working directory.
@@ -515,6 +515,7 @@ print_r($a);
 print_r($b);
 ?>
 ```
+
 
 
 

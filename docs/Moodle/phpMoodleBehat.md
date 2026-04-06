@@ -245,20 +245,20 @@ You can also provide your own custom profiles, including for remote services suc
 
 Please note that Safari and Safaridriver are not currently supported as they do not meet the W3C WebDriver specification.
 
-|Profile name|	Description|	Uses Selenium?|	Displays GUI?|
+|Profile name| Description| Uses Selenium?| Displays GUI?|
 |---|---|---|---|
-|firefox|	Use Firefox via Selenium|	Yes|	Yes|
-|headlessfirefox|	Use Firefox via Selenium, without displaying the GUI|	Yes|	No|
-|geckodriver|	Use Firefox with Geckodriver directly|	No|	Yes|
-|headlessgeckodriver|	Use Firefox with Geckodriver directly, without displaying the GUI|	No|	No|
-|chrome|	Use Chrome via Selenium|	Yes|	Yes|
-|headlesschrome|	Use Chrome via Selenium, without displaying the GUI|	Yes|	No|
-|chromedriver|	Use Chrome with Chromedriver directly|	No|	Yes|
-|headlesschromedriver|	Use Chrome with Chromedriver directly, without displaying the GUI|	No|	No|
-|edge|	Use Edge via Selenium|	Yes|	Yes|
-|headlessedge|	Use Edge via Selenium, without displaying the GUI|	Yes|	No|
-|edgedriver|	Use Edge with Edgedriver directly|	No|	Yes|
-|headlessedgedriver|	Use Edge with Edgedriver directly, without displaying the GUI|	No|	No|
+| firefox | Use Firefox via Selenium| Yes| Yes|
+| headlessfirefox | Use Firefox via Selenium, without displaying the GUI| Yes| No|
+| geckodriver | Use Firefox with Geckodriver directly| No| Yes|
+| headlessgeckodriver | Use Firefox with Geckodriver directly, without displaying the GUI| No| No|
+| chrome | Use Chrome via Selenium| Yes| Yes|
+| headlesschrome | Use Chrome via Selenium, without displaying the GUI| Yes| No|
+| chromedriver | Use Chrome with Chromedriver directly| No| Yes|
+| headlesschromedriver | Use Chrome with Chromedriver directly, without displaying the GUI| No| No|
+| edge | Use Edge via Selenium| Yes| Yes|
+| headlessedge | Use Edge via Selenium, without displaying the GUI| Yes| No|
+| edgedriver | Use Edge with Edgedriver directly| No| Yes|
+| headlessedgedriver | Use Edge with Edgedriver directly, without displaying the GUI| No| No|
 
 ##### chromedriver-wrapper
 When using Google Chrome, you must use the correct version of the chromedriver browser driver for the version of Chrome that you use.
@@ -735,7 +735,7 @@ See alternative browsers for more details.
 ##### Increasing timeouts
 You may see errors such as:
 
-```	
+``` 
    Javascript code and/or AJAX requests are not ready after 10 seconds.
    There is a Javascript error or the code is extremely slow.
 ```
@@ -1496,3 +1496,4 @@ Note that, to skip some tag, you must prepend it with the ~ (logical NOT) charac
 #### Working combinations of OS+Browser+selenium
 As OS, Browsers and Selenium keeps updating, some combination of OS+Browser+Selenium will not work on specific moodle version.
 for information about this issue please see [Working combinations of OS+Browser+selenium](https://moodledev.io/general/development/tools/behat/browsers/supportedbrowsers).
+

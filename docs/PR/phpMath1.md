@@ -250,106 +250,107 @@ The PHP math functions are part of the PHP core. No installation is required to 
 
 ### Base Conversion
 
-|Function|	Description|
+| Function | Description|
 | -------- | -------- |
-|[base_convert()](#base_convert)|	Converts a number from one number base to another|
-|bindec()|	Converts a binary number to a decimal number|
-|decbin()|	Converts a decimal number to a binary number|
-|dechex()|	Converts a decimal number to a hexadecimal number|
-|hexdec()|	Converts a hexadecimal number to a decimal number|
-|decoct()|	Converts a decimal number to an octal number|
-|octdec()|	Converts an octal number to a decimal number|
-|deg2rad()|	Converts a degree value to a radian value|
-|rad2deg()|	Converts a radian value to a degree value|
+|[base_convert()](#base_convert)| Converts a number from one number base to another|
+|bindec()| Converts a binary number to a decimal number|
+|decbin()| Converts a decimal number to a binary number|
+|dechex()| Converts a decimal number to a hexadecimal number|
+|hexdec()| Converts a hexadecimal number to a decimal number|
+|decoct()| Converts a decimal number to an octal number|
+|octdec()| Converts an octal number to a decimal number|
+|deg2rad()| Converts a degree value to a radian value|
+|rad2deg()| Converts a radian value to a degree value|
 
 
 ### Trigonometric Functions
 
-|Function|	Description|
+| Function | Description|
 | -------- | -------- |
-|acos()|	Returns the arc cosine of a number|
-|acosh()|	Returns the inverse hyperbolic cosine of a number|
-|asin()|	Returns the arc sine of a number|
-|asinh()|	Returns the inverse hyperbolic sine of a number|
-|atan()|	Returns the arc tangent of a number in radians|
-|atan2()|	Returns the arc tangent of two variables x and y|
-|atanh()|	Returns the inverse hyperbolic tangent of a number|
-|cos()|	Returns the cosine of a number|
-|cosh()|	Returns the hyperbolic cosine of a number|
-|hypot()|	Calculates the hypotenuse of a right-angle triangle|
-|sin()|	Returns the sine of a number|
-|sinh()|	Returns the hyperbolic sine of a number|
-|tan()|	Returns the tangent of a number|
-|tanh()|	Returns the hyperbolic tangent of a number|
+|acos()| Returns the arc cosine of a number|
+|acosh()| Returns the inverse hyperbolic cosine of a number|
+|asin()| Returns the arc sine of a number|
+|asinh()| Returns the inverse hyperbolic sine of a number|
+|atan()| Returns the arc tangent of a number in radians|
+|atan2()| Returns the arc tangent of two variables x and y|
+|atanh()| Returns the inverse hyperbolic tangent of a number|
+|cos()| Returns the cosine of a number|
+|cosh()| Returns the hyperbolic cosine of a number|
+|hypot()| Calculates the hypotenuse of a right-angle triangle|
+|sin()| Returns the sine of a number|
+|sinh()| Returns the hyperbolic sine of a number|
+|tan()| Returns the tangent of a number|
+|tanh()| Returns the hyperbolic tangent of a number|
 
 ### Random Number Functions
 
-|Function|	Description|
+| Function | Description|
 | -------- | -------- |
-|getrandmax()|	Returns the largest possible value returned by rand()|
-|lcg_value()|	Returns a pseudo random number in a range between 0 and 1|
-|mt_getrandmax()|	Returns the largest possible value returned by mt_rand()|
-|[mt_rand()](#rand)|	Generates a random integer using Mersenne Twister algorithm|
-|[mt_srand()](#mt_srand)|	Seeds the Mersenne Twister random number generator|
-|[rand()](#rand)|	Generates a random integer|
-|[srand()](#mt_srand)|	Seeds the random number generator|
+|getrandmax()| Returns the largest possible value returned by rand()|
+|lcg_value()| Returns a pseudo random number in a range between 0 and 1|
+|mt_getrandmax()| Returns the largest possible value returned by mt_rand()|
+|[mt_rand()](#rand)| Generates a random integer using Mersenne Twister algorithm|
+|[mt_srand()](#mt_srand)| Seeds the Mersenne Twister random number generator|
+|[rand()](#rand)| Generates a random integer|
+|[srand()](#mt_srand)| Seeds the random number generator|
 
 
 ### Power Functions
 
-|Function|	Description|
+| Function | Description|
 | -------- | -------- |
-|exp()|	Calculates the exponent of e|
-|expm1()|	Returns exp(x) - 1|
-|log()|	Returns the natural logarithm of a number|
-|log10()|	Returns the base-10 logarithm of a number|
-|log1p()|	Returns log(1+number)|
-|pow()	|Returns x raised to the power of y|
-|[sqrt()](#sqrt)|	Returns the square root of a number|
+|exp()| Calculates the exponent of e|
+|expm1()| Returns exp(x) - 1|
+|log()| Returns the natural logarithm of a number|
+|log10()| Returns the base-10 logarithm of a number|
+|log1p()| Returns log(1+number)|
+|pow() |Returns x raised to the power of y|
+|[sqrt()](#sqrt)| Returns the square root of a number|
 
 ### Miscellaneous Functions
 
-|Function|	Description|
+| Function | Description|
 | -------- | -------- |
-|[abs()](#abs)|	Returns the absolute (positive) value of a number|
-|[ceil()](#floor-and-ceil)|	Rounds a number up to the nearest integer|
-|[floor()](#floor-and-ceil)|	Rounds a number down to the nearest integer|
-|fmod()|	Returns the remainder of x/y|
-|intdiv()|	Performs integer division|
-|is_finite()|	Checks whether a value is finite or not|
-|is_infinite()|	Checks whether a value is infinite or not|
-|is_nan()	|Checks whether a value is 'not-a-number'|
-|[max()](#min-and-max)|	Returns the highest value in an array, or the highest value of several specified values|
-|[min()](#min-and-max)|	Returns the lowest value in an array, or the lowest value of several specified values|
-|[pi()](#pi)|	Returns the value of PI|
-|[round()](#round)|	Rounds a floating-point number|
+|[abs()](#abs)| Returns the absolute (positive) value of a number|
+|[ceil()](#floor-and-ceil)| Rounds a number up to the nearest integer|
+|[floor()](#floor-and-ceil)| Rounds a number down to the nearest integer|
+|fmod()| Returns the remainder of x/y|
+|intdiv()| Performs integer division|
+|is_finite()| Checks whether a value is finite or not|
+|is_infinite()| Checks whether a value is infinite or not|
+|is_nan() |Checks whether a value is 'not-a-number'|
+|[max()](#min-and-max)| Returns the highest value in an array, or the highest value of several specified values|
+|[min()](#min-and-max)| Returns the lowest value in an array, or the lowest value of several specified values|
+|[pi()](#pi)| Returns the value of PI|
+|[round()](#round)| Rounds a floating-point number|
 
 
 
 
 ## Predefined Math Constants
-|Constant	|Value|	Description|
+|Constant | Value | Description|
 |--------|--------|--------|
-|INF|INF|	The infinite|
-|M_E|	2.7182818284590452354|	Returns e|
-|M_EULER|	0.57721566490153286061|	Returns Euler constant|
-|M_LNPI|	1.14472988584940017414|	Returns the natural logarithm of PI: log_e(pi)|
-|M_LN2|	0.69314718055994530942	|Returns the natural logarithm of 2: log_e 2|
-|M_LN10|	2.30258509299404568402|	Returns the natural logarithm of 10: log_e 10|
-|M_LOG2E|	1.4426950408889634074|	Returns the base-2 logarithm of E: log_2 e|
-|M_LOG10E|	0.43429448190325182765|	Returns the base-10 logarithm of E: log_10 e|
-|M_PI|	3.14159265358979323846	|Returns Pi|
-|M_PI_2|	1.57079632679489661923|	Returns Pi/2|
-|M_PI_4|	0.78539816339744830962|	Returns Pi/4|
-|M_1_PI|	0.31830988618379067154|	Returns 1/Pi|
-|M_2_PI|	0.63661977236758134308|	Returns 2/Pi|
-|M_SQRTPI|	1.77245385090551602729|	Returns the square root of PI: sqrt(pi)|
-|M_2_SQRTPI|	1.12837916709551257390	|Returns 2/square root of PI: 2/sqrt(pi)|
-|M_SQRT1_2|	0.70710678118654752440	|Returns the square root of 1/2: 1/sqrt(2)|
-|M_SQRT2|	1.41421356237309504880|	Returns the square root of 2: sqrt(2)|
-|M_SQRT3|	1.73205080756887729352|	Returns the square root of 3: sqrt(3)|
-|NAN|	NAN|	Not A Number|
-|PHP_ROUND_HALF_UP	|1|	Round halves up|
-|PHP_ROUND_HALF_DOWN|	2|	Round halves down|
-|PHP_ROUND_HALF_EVEN|	3|	Round halves to even numbers
-|PHP_ROUND_HALF_ODD	|4|	Round halves to odd numbers|
+|INF| INF | The infinite|
+| M_E | 2.7182818284590452354| Returns e|
+| M_EULER | 0.57721566490153286061| Returns Euler constant|
+| M_LNPI | 1.14472988584940017414| Returns the natural logarithm of PI: log_e(pi)|
+| M_LN2 | 0.69314718055994530942 |Returns the natural logarithm of 2: log_e 2|
+| M_LN10 | 2.30258509299404568402| Returns the natural logarithm of 10: log_e 10|
+| M_LOG2E | 1.4426950408889634074| Returns the base-2 logarithm of E: log_2 e|
+| M_LOG10E | 0.43429448190325182765| Returns the base-10 logarithm of E: log_10 e|
+| M_PI | 3.14159265358979323846 |Returns Pi|
+| M_PI_2 | 1.57079632679489661923| Returns Pi/2|
+| M_PI_4 | 0.78539816339744830962| Returns Pi/4|
+| M_1_PI | 0.31830988618379067154| Returns 1/Pi|
+| M_2_PI | 0.63661977236758134308| Returns 2/Pi|
+| M_SQRTPI | 1.77245385090551602729| Returns the square root of PI: sqrt(pi)|
+| M_2_SQRTPI | 1.12837916709551257390 |Returns 2/square root of PI: 2/sqrt(pi)|
+| M_SQRT1_2 | 0.70710678118654752440 |Returns the square root of 1/2: 1/sqrt(2)|
+| M_SQRT2 | 1.41421356237309504880| Returns the square root of 2: sqrt(2)|
+| M_SQRT3 | 1.73205080756887729352| Returns the square root of 3: sqrt(3)|
+| NAN | NAN| Not A Number|
+|PHP_ROUND_HALF_UP | 1 | Round halves up|
+| PHP_ROUND_HALF_DOWN | 2| Round halves down|
+| PHP_ROUND_HALF_EVEN | 3| Round halves to even numbers
+|PHP_ROUND_HALF_ODD | 4 | Round halves to odd numbers|
+

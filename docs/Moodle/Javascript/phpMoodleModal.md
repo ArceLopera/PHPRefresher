@@ -54,13 +54,13 @@ The Modal Factory can be used to instantiate a new Modal. The factory provides a
 
 The configuration is provided as an object with key/value pairs. The options are:
 
-|key|	description|
+| key | description|
 |---|---|
-|title	|the title to display in the modal header - note: this will render HTML|
-|body	|the main content to be rendered in the modal body|
-|footer	|the content to be rendered in the modal footer|
-|type	|one of the modal types registered with the factory|
-|large	|a boolean to indicate if the modal should be wider than the default size|
+|title |the title to display in the modal header - note: this will render HTML|
+|body |the main content to be rendered in the modal body|
+|footer |the content to be rendered in the modal footer|
+|type |one of the modal types registered with the factory|
+|large |a boolean to indicate if the modal should be wider than the default size|
 
 ```javascript
 // Basic instantiation of a modal
@@ -588,3 +588,4 @@ document.getElementById('showModal').addEventListener('click', function() {
 Modal dialogues in Moodle provide a powerful way to interact with users without navigating away from the current page. By using Moodle's `core/modal_factory` and `core/modal` modules, you can create dynamic and interactive modals for displaying information, capturing user input, and more. Always follow best practices for user experience, accessibility, and performance to ensure a high-quality implementation. For more detailed information and examples, refer to the [official Moodle documentation](https://moodledev.io/docs/4.5/guides/javascript/modal). It is possible to display moodleform in a popup or use AJAX form submission.
 
 Refer to the [Modal and AJAX forms](https://docs.moodle.org/dev/Modal_and_AJAX_forms) developer docs for details on their use case and how to use them in your code.
+

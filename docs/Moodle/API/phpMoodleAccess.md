@@ -1,4 +1,4 @@
-﻿The Access API gives you functions so you can determine what the current user is allowed to do. It also allows plugins to extend Moodle with new capabilities.
+The Access API gives you functions so you can determine what the current user is allowed to do. It also allows plugins to extend Moodle with new capabilities.
 
 ### Overview
 > **Last updated:** April 6, 2026
@@ -9,14 +9,14 @@ Moodle uses a role-based access control model. Entities are represented by conte
 
 The following context types are available:
 
-|Context name|	Represents|	Immediate contents|	Notes|
+|Context name| Represents| Immediate contents| Notes|
 |:---|:---|:---|:---|
-|`context_system`|	The site as a whole|	user, course category, module, and block|	The System context is root context in the tree. There is only one System context|
-|`context_user`|	An individual user|	block|	Each user has their own, unique, context|
-|`context_coursecat`|	A single course category|	course category, course, block	||
-|`context_course`|	A single course|	module, block	||
-|`context_module`|	An activity|	block	||
-|`context_block`|	A block|	none||	
+|`context_system`| The site as a whole| user, course category, module, and block| The System context is root context in the tree. There is only one System context|
+|`context_user`| An individual user| block| Each user has their own, unique, context|
+|`context_coursecat`| A single course category| course category, course, block ||
+|`context_course`| A single course| module, block ||
+|`context_module`| An activity| block ||
+|`context_block`| A block| none|| 
 
 A Role is a set of capability definitions, where each capability represents something that the user is able to do. Roles are defined at the top most context in the context tree, the System context.
 
@@ -47,13 +47,13 @@ $capabilities = [
 
 Where the meaning of array keys is:
 
-|Field|	Description|
+| Field | Description|
 |:---|:---|
-|`riskbitmask`|	associated risks. These are explained on [Hardening new Roles system](https://moodledev.io/docs/5.0/apis/subsystems/roles#hardening-roles-system).|
-|`captype`|	read or write capability type, for security reasons system prevents all write capabilities for guest account and not-logged-in users|
-|`contextlevel`|	specified as context level constant. Declares the typical context level where this capability is checked. This capability can be checked with contexts that are at a lower level (e.g. `moodle/site:accessallgroups` could be checked with CONTEXT_MODULE).|
-|`archetypes`|	specifies defaults for roles with standard archetypes, this is used in installs, upgrades and when resetting roles (it is recommended to use only CAP_ALLOW here). Archetypes are defined in mdl_role table. See also Role archetypes.|
-|`clonepermissionsfrom`|	when you are adding a new capability, you can tell Moodle to copy the permissions for each role from the current settings for another capability. This may give better defaults than just using archetypes for administrators who have heavily customised their roles configuration. The full syntax is: clonepermissionsfrom => moodle/quiz:attempt|
+|`riskbitmask`| associated risks. These are explained on [Hardening new Roles system](https://moodledev.io/docs/5.0/apis/subsystems/roles#hardening-roles-system).|
+|`captype`| read or write capability type, for security reasons system prevents all write capabilities for guest account and not-logged-in users|
+|`contextlevel`| specified as context level constant. Declares the typical context level where this capability is checked. This capability can be checked with contexts that are at a lower level (e.g. `moodle/site:accessallgroups` could be checked with CONTEXT_MODULE).|
+|`archetypes`| specifies defaults for roles with standard archetypes, this is used in installs, upgrades and when resetting roles (it is recommended to use only CAP_ALLOW here). Archetypes are defined in mdl_role table. See also Role archetypes.|
+|`clonepermissionsfrom`| when you are adding a new capability, you can tell Moodle to copy the permissions for each role from the current settings for another capability. This may give better defaults than just using archetypes for administrators who have heavily customised their roles configuration. The full syntax is: clonepermissionsfrom => moodle/quiz:attempt|
 
 
 It is necessary to bump up plugin version number after any change in db/access.php, so that the upgrade scripts can make the necessary changes to the database. To run the upgrade scripts, log in to Moodle as administrator, navigate to the site home page, and follow the instructions.

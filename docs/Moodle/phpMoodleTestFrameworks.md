@@ -1,4 +1,4 @@
-﻿Test-Driven Development (TDD), Behavior-Driven Development (BDD), and Acceptance Test-Driven Development (ATDD) are three distinct yet interconnected approaches that help developers create robust and reliable software.
+Test-Driven Development (TDD), Behavior-Driven Development (BDD), and Acceptance Test-Driven Development (ATDD) are three distinct yet interconnected approaches that help developers create robust and reliable software.
 
 TDD is primarily focused on unit testing and code functionality, BDD centers on system behavior and stakeholder collaboration, and ATDD aligns development with user requirements through acceptance criteria.
 
@@ -37,14 +37,14 @@ Incorporating Test-Driven Development (TDD) into your software development proce
 
 The structured approach outlined above helps to clarify the roles and responsibilities of various stakeholders, facilitating collaboration and efficiency throughout the development lifecycle.
 
-|Step|	Description|	Stakeholders Involved|
+| Step | Description| Stakeholders Involved|
 |---|---|---|
-|1. Write a Test|	Create a test for a small piece of functionality. This test should initially fail as the code does not yet exist.	|Developers|
-|2. Run the Test	|Execute the test suite to ensure the new test fails, confirming that the functionality is not implemented yet.	|Developers|
-|3. Implement Code|	Write the minimal amount of code required to pass the test. Focus on just enough implementation to satisfy the test condition.|	Developers|
-|4. Run Tests Again|	Run all tests again, including the new test, to check if the new code passes and does not break existing functionality.	|Developers|
-|5. Refactor Code	|Optimize the newly implemented code while keeping the functionality intact. This may involve cleaning up code, improving structure, or enhancing performance.	|Developers|
-|6. Repeat	|Continue this cycle for each new feature or piece of functionality, gradually building the application with a solid test suite.	|Developers, Project Managers|
+|1. Write a Test| Create a test for a small piece of functionality. This test should initially fail as the code does not yet exist. |Developers|
+|2. Run the Test |Execute the test suite to ensure the new test fails, confirming that the functionality is not implemented yet. |Developers|
+|3. Implement Code| Write the minimal amount of code required to pass the test. Focus on just enough implementation to satisfy the test condition.| Developers|
+|4. Run Tests Again| Run all tests again, including the new test, to check if the new code passes and does not break existing functionality. |Developers|
+|5. Refactor Code |Optimize the newly implemented code while keeping the functionality intact. This may involve cleaning up code, improving structure, or enhancing performance. |Developers|
+|6. Repeat |Continue this cycle for each new feature or piece of functionality, gradually building the application with a solid test suite. |Developers, Project Managers|
 
 ### TDD Example
 
@@ -106,16 +106,16 @@ Behavior-Driven Development (BDD) is a collaborative approach that bridges the g
 
 Below is a structured overview of the steps involved in BDD, along with descriptions and the stakeholders typically involved in each step.
 
-|Step	|Description	|Stakeholders Involved|
+|Step |Description |Stakeholders Involved|
 |---|---|---|
-|1. Identify Features|	Collaborate with stakeholders to identify and prioritize features or functionalities needed for the software.|	Product Owners, Business Analysts, Developers, Testers|
-|2. Write Scenarios|	Create user stories and define acceptance criteria in the form of scenarios. Use a common language to describe expected behavior.|	Product Owners, Business Analysts, Developers, Testers|
-|3. Review Scenarios|	Conduct reviews of the scenarios with all stakeholders to ensure clarity and shared understanding of the requirements.|	Product Owners, Business Analysts, Developers, Testers|
-|4. Implement Code|	Developers write code to implement the functionality described in the scenarios, ensuring that it meets the acceptance criteria.|	Developers|
-|5. Write Automated Tests|	Create automated tests based on the defined scenarios. This often involves using BDD frameworks (e.g., Cucumber, SpecFlow).|	Developers, Testers|
-|6. Run Tests|	Execute the automated tests to verify that the implemented functionality behaves as expected.|	Developers, Testers|
-|7. Refactor Code|	Optimize and clean the code, ensuring that it remains maintainable while retaining the functionality described in the scenarios.|	Developers|
-|8. Repeat|	Continue the BDD cycle for new features or modifications, incorporating feedback and new requirements as necessary.|	All Stakeholders|
+|1. Identify Features| Collaborate with stakeholders to identify and prioritize features or functionalities needed for the software.| Product Owners, Business Analysts, Developers, Testers|
+|2. Write Scenarios| Create user stories and define acceptance criteria in the form of scenarios. Use a common language to describe expected behavior.| Product Owners, Business Analysts, Developers, Testers|
+|3. Review Scenarios| Conduct reviews of the scenarios with all stakeholders to ensure clarity and shared understanding of the requirements.| Product Owners, Business Analysts, Developers, Testers|
+|4. Implement Code| Developers write code to implement the functionality described in the scenarios, ensuring that it meets the acceptance criteria.| Developers|
+|5. Write Automated Tests| Create automated tests based on the defined scenarios. This often involves using BDD frameworks (e.g., Cucumber, SpecFlow).| Developers, Testers|
+|6. Run Tests| Execute the automated tests to verify that the implemented functionality behaves as expected.| Developers, Testers|
+|7. Refactor Code| Optimize and clean the code, ensuring that it remains maintainable while retaining the functionality described in the scenarios.| Developers|
+|8. Repeat| Continue the BDD cycle for new features or modifications, incorporating feedback and new requirements as necessary.| All Stakeholders|
 
 ### BDD Example
 
@@ -159,4 +159,5 @@ JBehave is a BDD framework for Java, offering a simple and intuitive syntax for 
 
 Behat is a BDD framework for PHP, providing a clear and concise syntax to define and execute test scenarios. 
 It supports multiple programming languages, including PHP, Python, and Ruby.
+
 
