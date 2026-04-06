@@ -1781,6 +1781,19 @@
     Overview
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-concept" class="md-nav__link">
+    Class Concept
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3257,6 +3270,19 @@
     Overview
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-concept" class="md-nav__link">
+    Class Concept
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3357,6 +3383,20 @@
 </blockquote>
 <h2 id="overview">Overview</h2>
 <p>Object-oriented programming (OOP) is a paradigm that structures code around objects and classes rather than just functions and procedures. A class is a template or blueprint for creating objects, and an object is an instance of a class.</p>
+<h3 id="class-concept">Class Concept</h3>
+<div class="highlight"><pre><span></span><code>graph TD
+    A[&quot;Class Blueprint&lt;br/&gt;Person&quot;] --&gt;|create instance| B[&quot;Object&lt;br/&gt;$alice = new Person&quot;]
+    A --&gt;|create instance| C[&quot;Object&lt;br/&gt;$bob = new Person&quot;]
+
+    D[&quot;Properties&lt;br/&gt;name, age&quot;] --&gt;|belongs to| A
+    E[&quot;Methods&lt;br/&gt;introduce()&quot;] --&gt;|belongs to| A
+
+    style A fill:#e1f5ff,stroke:#0277bd,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style E fill:#f3e5f5,stroke:#7b1fa2,color:#000
+</code></pre></div>
 <h2 id="when-to-use">When to Use</h2>
 <ul>
 <li>Building large, complex applications with many related components</li>

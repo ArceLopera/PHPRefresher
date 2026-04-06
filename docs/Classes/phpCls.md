@@ -7,6 +7,23 @@
 
 Object-oriented programming (OOP) is a paradigm that structures code around objects and classes rather than just functions and procedures. A class is a template or blueprint for creating objects, and an object is an instance of a class.
 
+### Class Concept
+
+```mermaid
+graph TD
+    A["Class Blueprint<br/>Person"] -->|create instance| B["Object<br/>$alice = new Person"]
+    A -->|create instance| C["Object<br/>$bob = new Person"]
+    
+    D["Properties<br/>name, age"] -->|belongs to| A
+    E["Methods<br/>introduce()"] -->|belongs to| A
+    
+    style A fill:#e1f5ff,stroke:#0277bd,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style E fill:#f3e5f5,stroke:#7b1fa2,color:#000
+```
+
 ## When to Use
 
 - Building large, complex applications with many related components

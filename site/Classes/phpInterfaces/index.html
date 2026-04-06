@@ -1865,6 +1865,19 @@
     Overview
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface-implementation-diagram" class="md-nav__link">
+    Interface Implementation Diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3243,6 +3256,19 @@
     Overview
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interface-implementation-diagram" class="md-nav__link">
+    Interface Implementation Diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3329,6 +3355,24 @@
 </blockquote>
 <h2 id="overview">Overview</h2>
 <p>Interfaces allow you to specify what methods a class should implement. Interfaces define a contract that implementing classes must follow, enabling polymorphism and consistent method signatures across different classes.</p>
+<h3 id="interface-implementation-diagram">Interface Implementation Diagram</h3>
+<div class="highlight"><pre><span></span><code>graph TD
+    A[&quot;Interface&lt;br/&gt;Animal&quot;] --&gt;|implements| B[&quot;Dog&quot;]
+    A --&gt;|implements| C[&quot;Cat&quot;]
+    A --&gt;|implements| D[&quot;Bird&quot;]
+
+    E[&quot;Methods:&lt;br/&gt;eat(), makeSound()&quot;] --&gt;|defines| A
+
+    F[&quot;Dog Implementation&quot;] --&gt;|follows contract| B
+    G[&quot;Cat Implementation&quot;] --&gt;|follows contract| C
+    H[&quot;Bird Implementation&quot;] --&gt;|follows contract| D
+
+    style A fill:#e1f5ff,stroke:#0277bd,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,color:#000
+    style E fill:#f3e5f5,stroke:#7b1fa2,color:#000
+</code></pre></div>
 <h2 id="when-to-use">When to Use</h2>
 <ul>
 <li>Defining a contract for multiple related classes</li>

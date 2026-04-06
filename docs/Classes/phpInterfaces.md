@@ -7,6 +7,28 @@
 
 Interfaces allow you to specify what methods a class should implement. Interfaces define a contract that implementing classes must follow, enabling polymorphism and consistent method signatures across different classes.
 
+### Interface Implementation Diagram
+
+```mermaid
+graph TD
+    A["Interface<br/>Animal"] -->|implements| B["Dog"]
+    A -->|implements| C["Cat"]
+    A -->|implements| D["Bird"]
+    
+    E["Methods:<br/>eat(), makeSound()"] -->|defines| A
+    
+    F["Dog Implementation"] -->|follows contract| B
+    G["Cat Implementation"] -->|follows contract| C
+    H["Bird Implementation"] -->|follows contract| D
+    
+    style A fill:#e1f5ff,stroke:#0277bd,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,color:#000
+    style E fill:#f3e5f5,stroke:#7b1fa2,color:#000
+```
+
+
 ## When to Use
 
 - Defining a contract for multiple related classes

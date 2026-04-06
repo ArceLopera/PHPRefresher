@@ -7,7 +7,29 @@ Inheritance in OOP = When a class derives from another class.
 
 The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods.
 
-An inherited class is defined by using the extends keyword. 
+An inherited class is defined by using the extends keyword.
+
+### Inheritance Hierarchy
+
+```mermaid
+graph TD
+    A["Fruit"] -->|extends| B["Strawberry"]
+    A -->|extends| C["Banana"]
+    A -->|extends| D["Apple"]
+    
+    E["Properties:<br/>name, color"] -->|inherited| A
+    F["Methods:<br/>intro()"] -->|inherited| A
+    G["Methods:<br/>message()"] -->|unique| B
+    
+    style A fill:#e1f5ff,stroke:#0277bd,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,color:#000
+    style E fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style G fill:#c8e6c9,stroke:#388e3c,color:#000
+```
+
 
 ```php
 <?php

@@ -1639,6 +1639,19 @@
     Overview
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queue-operation-diagram" class="md-nav__link">
+    Queue Operation Diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3224,6 +3237,19 @@
     Overview
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queue-operation-diagram" class="md-nav__link">
+    Queue Operation Diagram
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3289,7 +3315,25 @@
 <strong>Status:</strong> Stable</p>
 </blockquote>
 <h2 id="overview">Overview</h2>
-<p>Queue (FIFO) data structure implementation</p>
+<p>Queue (FIFO - First In First Out) data structure implementation. Perfect for managing task queues, request buffers, or any scenario where order matters.</p>
+<h3 id="queue-operation-diagram">Queue Operation Diagram</h3>
+<div class="highlight"><pre><span></span><code>graph LR
+    A[&quot;📥 enqueue&lt;br/&gt;Add to Back&quot;] --&gt; B[&quot;Item 1&quot;]
+    B --&gt;|FIFO| C[&quot;Item 2&quot;]
+    C --&gt;|FIFO| D[&quot;Item 3&quot;]
+    D --&gt; E[&quot;📤 dequeue&lt;br/&gt;Remove from Front&quot;]
+
+    F[&quot;Front&lt;br/&gt;Remove Here&quot;] -.-&gt; B
+    G[&quot;Back&lt;br/&gt;Add Here&quot;] -.-&gt; D
+
+    style A fill:#c8e6c9,stroke:#388e3c,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,color:#000
+    style E fill:#ffccbc,stroke:#d84315,color:#000
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style G fill:#f3e5f5,stroke:#7b1fa2,color:#000
+</code></pre></div>
 <h2 id="when-to-use">When to Use</h2>
 <ul>
 <li>Appropriate use case 1</li>

@@ -1819,6 +1819,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance-hierarchy" class="md-nav__link">
+    Inheritance Hierarchy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#protected-access-modifier" class="md-nav__link">
     Protected Access Modifier
   </a>
@@ -3196,6 +3203,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#inheritance-hierarchy" class="md-nav__link">
+    Inheritance Hierarchy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#protected-access-modifier" class="md-nav__link">
     Protected Access Modifier
   </a>
@@ -3244,7 +3258,25 @@
 </blockquote>
 <p>Inheritance in OOP = When a class derives from another class.</p>
 <p>The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods.</p>
-<p>An inherited class is defined by using the extends keyword. </p>
+<p>An inherited class is defined by using the extends keyword.</p>
+<h3 id="inheritance-hierarchy">Inheritance Hierarchy</h3>
+<div class="highlight"><pre><span></span><code>graph TD
+    A[&quot;Fruit&quot;] --&gt;|extends| B[&quot;Strawberry&quot;]
+    A --&gt;|extends| C[&quot;Banana&quot;]
+    A --&gt;|extends| D[&quot;Apple&quot;]
+
+    E[&quot;Properties:&lt;br/&gt;name, color&quot;] --&gt;|inherited| A
+    F[&quot;Methods:&lt;br/&gt;intro()&quot;] --&gt;|inherited| A
+    G[&quot;Methods:&lt;br/&gt;message()&quot;] --&gt;|unique| B
+
+    style A fill:#e1f5ff,stroke:#0277bd,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,color:#000
+    style E fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style G fill:#c8e6c9,stroke:#388e3c,color:#000
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Fruit</span> <span class="p">{</span>
   <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>

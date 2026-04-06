@@ -6,7 +6,29 @@
 
 ## Overview
 
-Queue (FIFO) data structure implementation
+Queue (FIFO - First In First Out) data structure implementation. Perfect for managing task queues, request buffers, or any scenario where order matters.
+
+### Queue Operation Diagram
+
+```mermaid
+graph LR
+    A["📥 enqueue<br/>Add to Back"] --> B["Item 1"]
+    B -->|FIFO| C["Item 2"]
+    C -->|FIFO| D["Item 3"]
+    D --> E["📤 dequeue<br/>Remove from Front"]
+    
+    F["Front<br/>Remove Here"] -.-> B
+    G["Back<br/>Add Here"] -.-> D
+    
+    style A fill:#c8e6c9,stroke:#388e3c,color:#000
+    style B fill:#fff3e0,stroke:#f57c00,color:#000
+    style C fill:#fff3e0,stroke:#f57c00,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,color:#000
+    style E fill:#ffccbc,stroke:#d84315,color:#000
+    style F fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style G fill:#f3e5f5,stroke:#7b1fa2,color:#000
+```
+
 
 ## When to Use
 
