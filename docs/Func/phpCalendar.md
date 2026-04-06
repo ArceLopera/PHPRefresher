@@ -50,7 +50,6 @@ print_r(array_keys($info));  // Shows available calendars
 ## Related Topics
 
 - [Date Functions](./phpDate.md)
-- [Time Functions](./phpTime.md)
 
 ## PHP Version Support
 

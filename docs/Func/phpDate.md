@@ -47,9 +47,8 @@ echo $date->format("Y-m-d H:i e");  // Output: 2026-04-06 10:33 America/New_York
 
 ## Related Topics
 
-- [Strings](./phpStr1.md)
+- [Strings](../PR/phpStr1.md)
 - [Arrays](../DS/phpArray.md)
-- [Type Functions](./phpType.md)
 
 ## PHP Version Support
 

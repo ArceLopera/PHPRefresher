@@ -51,10 +51,10 @@ echo "Result: $result";  // Output: Result: 30
 
 ## Related Topics
 
-- [Data Types](../Func/phpStr1.md)
+- [Strings](./phpStr1.md)
 - [Arrays](../DS/phpArray.md)
-- [Constants](./phpConstants.md)
-- [Type Declarations](./phpModifiers.md)
+- [Constants](../Classes/phpConstants.md)
+- [Access Modifiers](../Classes/phpModifiers.md)
 
 ## PHP Version Support
 

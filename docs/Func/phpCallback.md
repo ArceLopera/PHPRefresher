@@ -58,9 +58,8 @@ $squared = array_map(fn($x) => $x ** 2, $numbers);
 
 ## Related Topics
 
-- [Anonymous Functions](./phpAnonymous.md)
 - [Arrow Functions](./phpArrowFunc.md)
-- [Array Functions](./phpArray.md)
+- [Array Functions](../DS/phpArray.md)
 
 ## PHP Version Support
 

@@ -24,8 +24,8 @@ This folder contains the strategic improvement plan for PHPRefresher, a comprehe
 - **PHASE-3-ENHANCEMENT.md** ← To be created (interactive/advanced)
 
 ### 🎯 Project Context
-- **AGENTS.md** - Full agent guide with all 15 initiatives listed
-- **.github/copilot-instructions.md** - Copilot-specific guidance
+- **Improvement Strategy** - Full guide with all 15 initiatives listed  
+- **Implementation Notes** - Copilot-specific guidance and best practices
 
 ---
 
@@ -189,8 +189,8 @@ UPDATE todos SET status = 'done' WHERE id = 'p1-doc-template';
 - **PHASE-3-ENHANCEMENT.md** - Coming soon
 
 ### In Repository Root / Session
-- **AGENTS.md** - Full initiative list with all details
-- **.github/copilot-instructions.md** - Copilot guidance updated with improvement context
+- **Improvement Strategy** - Full initiative list with all details
+- **Implementation Guidance** - AI-specific guidance and context
 - **plan.md** (session folder) - Complete strategy document
 - **repository_analysis.md** (session folder) - Detailed analysis
 
@@ -234,8 +234,6 @@ A: Test coverage: 1 → 15+ tests. Documentation quality: 6/10 → 9/10. New con
 
 - [Phase 1 Foundation](./PHASE-1-FOUNDATION.md) - Start here for high-impact foundation work
 - [Quick Wins](./QUICK-WINS.md) - Start here for immediate impact
-- [AGENTS.md](../AGENTS.md) - Full project context and initiative details
-- [Copilot Instructions](./.github/copilot-instructions.md) - AI agent guidance
 
 ---
 
@@ -252,4 +250,4 @@ A: Test coverage: 1 → 15+ tests. Documentation quality: 6/10 → 9/10. New con
 
 Happy contributing! 🚀
 
-For questions, check AGENTS.md or the session documents (plan.md, repository_analysis.md).
+For questions, check the improvement documentation or the session documents (plan.md, repository_analysis.md).

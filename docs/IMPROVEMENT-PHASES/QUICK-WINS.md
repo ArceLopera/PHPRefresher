@@ -153,7 +153,7 @@ npx playwright test
 
 ## Questions?
 
-Open an issue on GitHub or check AGENTS.md for project details.
+Open an issue on GitHub or check the improvement documentation for project details.
 
 Happy contributing! 🎉
 ```
@@ -357,7 +357,7 @@ Quick Wins can be done in any order and can run in parallel with Phase 1-3 work:
 
 ## Resources
 
-- AGENTS.md - Full project context
-- .github/copilot-instructions.md - Copilot guidance
+- Improvement documentation - Full project context
+- Implementation guidance - Community and contribution guidance
 - PHASE-1-FOUNDATION.md - Foundation phase details
 - plan.md (session) - Complete improvement strategy

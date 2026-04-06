@@ -398,13 +398,13 @@ Once Phase 1 completes:
 ## Resources
 
 - Template inspiration: See `.template.md` (to be created)
-- Style guide: AGENTS.md
+- Style guide: Improvement documentation
 - Test framework: Playwright documentation (https://playwright.dev)
 - PHP version info: https://www.php.net/manual/en/
 
 ## Questions?
 
 Refer to:
-- AGENTS.md - Full project context
-- .github/copilot-instructions.md - Copilot-specific guidance
+- Improvement documentation - Full project context
+- Implementation guidance - Community-specific guidance
 - plan.md (session) - Complete improvement strategy

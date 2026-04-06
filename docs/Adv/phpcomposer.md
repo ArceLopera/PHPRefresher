@@ -55,9 +55,9 @@ composer update
 
 ## Related Topics
 
-- [Packages](./phpPackages.md)
 - [PSR Standards](https://www.php-fig.org)
-- [Autoloading](./phpNamespaces.md)
+- [Namespaces](../Classes/phpNamespaces.md)
+- [Class Autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)
 
 ## PHP Version Support
 

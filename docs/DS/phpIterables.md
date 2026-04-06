@@ -65,9 +65,8 @@ processCollection($collection);
 ## Related Topics
 
 - [Arrays](./phpArray.md)
-- [Foreach Loop](../PR/phpIF.md)
-- [Iterator Interface](./phpIterator.md)
-- [Generators](../Func/phpYield.md)
+- [Foreach Loop](../PR/phpLoops.md)
+- [Generators](../Func/phpGenerators.md)
 
 ## PHP Version Support
 
