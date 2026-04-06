@@ -42,6 +42,13 @@ PHP Refresher is a comprehensive documentation site covering PHP fundamentals an
 
 Visit the live documentation at: **[arcelopera.github.io/PHPRefresher](https://arcelopera.github.io/PHPRefresher)**
 
+### Understanding the Organization
+
+New to the repository? Check out:
+- **[Organization Guide](docs/ORGANIZATION-GUIDE.md)** - How the documentation is structured
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute improvements
+- **[Improvement Phases](docs/IMPROVEMENT-PHASES/)** - Strategic roadmap for repository improvements
+
 ### Run Locally
 
 ```bash

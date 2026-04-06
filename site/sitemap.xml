@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/ORGANIZATION-GUIDE/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/TEMPLATE-MIGRATION-GUIDE/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>
@@ -267,6 +272,11 @@
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/IMPROVEMENT-PHASES/PHASE-1-FOUNDATION/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/IMPROVEMENT-PHASES/PHASE-2-ORGANIZATION/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
