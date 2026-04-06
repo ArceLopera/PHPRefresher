@@ -191,6 +191,41 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplDoublyLinkedList/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplFixedArray/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplHeap/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplObjectStorage/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplQueue/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplSplFileObject/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/DS/phpSplStack/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/Func/phpAll/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>

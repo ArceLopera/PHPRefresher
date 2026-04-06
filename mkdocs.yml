@@ -145,8 +145,18 @@ nav:
         - Arrow Function: Func/phpArrowFunc.md
         - Generators: Func/phpGenerators.md
   - Data Structures:
-     - Array: DS/phpArray.md
-     - Iterables: DS/phpIterables.md
+     - Core:
+         - Array: DS/phpArray.md
+         - Iterables: DS/phpIterables.md
+     - SPL Collections:
+         - Fixed Array: DS/phpSplFixedArray.md
+         - Doubly-Linked List: DS/phpSplDoublyLinkedList.md
+         - Queue: DS/phpSplQueue.md
+         - Stack: DS/phpSplStack.md
+     - SPL Advanced:
+         - Heap: DS/phpSplHeap.md
+         - Object Storage: DS/phpSplObjectStorage.md
+         - File Object: DS/phpSplSplFileObject.md
   - Classes:
      - OOP: Classes/phpCls.md
      - Constructor : Classes/phpConstructor.md
