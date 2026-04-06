@@ -56,6 +56,7 @@ The behavior of output control functions is affected by settings in php.ini:
 |url_rewriter.hosts| The current value of $_SERVER['HTTP_HOST'] |URL rewriting is only done on the server's own URLs by default. To allow for rewriting URLs of other websites, set the hostnames of the other websites here. |7.1|
 
 ## PHP Output Control Functions
+
 | Method | Function|
 |---|---|
 |[flush()](#flush)| Attempts to send content from the system's output buffer to the browser|

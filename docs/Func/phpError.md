@@ -37,6 +37,7 @@ Errors and logging configuration options:
 |error_log |NULL |Specifies the name of the file where script errors should be logged. The file should be writable by the web server's user. If the special value syslog is used, the errors are sent to the system logger instead |PHP_INI_ALL|
 
 ## PHP Error and Logging Functions
+
 | Function | Description|
 |---|---|
 |debug_backtrace() |Generates a backtrace|
@@ -304,6 +305,7 @@ foreach ($array as $value) {
 A custom error-handling function can parse errors based on their type and take an appropriate action.
 
 ## PHP Predefined Error and Logging Constants
+
 |Value | Constant | Description|
 |---|---|---|
 |1 | E_ERROR | Fatal run-time errors. Errors that cannot be recovered from. Execution of the script is halted|

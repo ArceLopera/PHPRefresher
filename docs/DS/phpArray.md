@@ -181,6 +181,7 @@ for ($row = 0; $row < 4; $row++) {
 The PHP array functions are used to perform operations on arrays.
 
 ### Modifying Arrays
+
 |Function	|Description|
 |---|---|
 |array()|	Creates an array|
@@ -482,6 +483,7 @@ In fact, it’s faster to use the associative array method and then call array_v
 
 
 ### Update Information in Arrays
+
 |Function	|Description|
 |---|---|
 |array_change_key_case()|	Changes all keys in an array to lowercase or uppercase|
@@ -627,6 +629,7 @@ so you don’t need to modify a callback when switching from array_walk().
 
 
 ### Extracting Information from Arrays
+
 |Function	|Description|
 |---|---|
 |array_column()|	Returns the values from a single column in the input array|
@@ -1027,6 +1030,7 @@ Once stated, the algorithm is straightforward. You call array_diff() twice and f
 
 
 ### Pointer Functions
+
 |Function	|Description|
 |---|---|
 |current()|	Returns the current element in an array|
@@ -1039,6 +1043,7 @@ Once stated, the algorithm is straightforward. You call array_diff() twice and f
 
 
 ### Sorting Arrays
+
 |Function	|Description|
 |---|---|
 |[array_multisort()](#array_multisort)|	Sorts multiple or multi-dimensional arrays|

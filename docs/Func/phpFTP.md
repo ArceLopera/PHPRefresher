@@ -10,6 +10,8 @@ If you only wish to read from or write to a file on an FTP server, consider usin
 > **Status:** Stable
 
 | Function | Description|
+
+| Function | Description|
 |--------|-----------|
 |ftp_alloc()| Allocates space for a file to be uploaded to the FTP server|
 |ftp_cdup() |Changes to the parent directory on the FTP server|
@@ -48,6 +50,7 @@ If you only wish to read from or write to a file on an FTP server, consider usin
 |ftp_systype()| Returns the system type identifier of the FTP server|
 
 ## Predefined FTP Constants
+
 | Constant | Type| Description|
 |--------|--------|-----------|
 | FTP_ASCII | Integer|  |

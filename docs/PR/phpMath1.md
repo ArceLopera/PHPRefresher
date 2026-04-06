@@ -328,6 +328,7 @@ The PHP math functions are part of the PHP core. No installation is required to 
 
 
 ## Predefined Math Constants
+
 |Constant | Value | Description|
 |--------|--------|--------|
 |INF| INF | The infinite|

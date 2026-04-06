@@ -73,6 +73,7 @@ echo "The value of variable 'a' after unset: " . $a;
 ```
 
 #### Values that evaluate to false
+
 |  Type   |                       Value                       |
 | ------- | ------------------------------------------------- |
 | integer | 0                                                 |

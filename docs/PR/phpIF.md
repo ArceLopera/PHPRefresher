@@ -271,6 +271,7 @@ echo $accesskeyid; // Output: url
 echo $another_variable; // Output: value1
 ```
 #### **When to Use `switch` vs. `match`**
+
 | Feature | `switch` | `match` |
 |---------|---------|--------|
 | **Strict comparison (`===`)** | ❌ No | ✅ Yes |

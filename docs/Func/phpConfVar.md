@@ -34,6 +34,7 @@ Array
 The global_value is the value set from the php.ini file; the local_value is adjusted to account for any changes made in the web server’s configuration file, any relevant .htaccess files, and the current script. The value of access is a numeric constant representing the places where this value can be altered.
 
 ### Access values
+
 | Value |  PHP constant  |                     Meaning                      |
 | ----- | -------------- | ------------------------------------------------ |
 | 1     | PHP_INI_USER   | Any script, using ini_set()                      |

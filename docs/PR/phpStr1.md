@@ -145,6 +145,7 @@ The PHP pack() function converts an array into a binary string. When you need to
 Use pack() with a format string that specifies a sequence of space-padded strings.
 
 #### Format characters for pack( ) and unpack( )
+
 |Format| character |Data type|
 |---|---|---|
 |a| NUL-padded string|

@@ -18,6 +18,7 @@ The behavior of the mail functions is affected by settings in php.ini:
 
 
 ## Mail Functions
+
 | Function | Description|
 |--------|-----------|
 |[ezmlm_hash()](#ezmlm_hash)| Calculates the hash value needed by EZMLM|

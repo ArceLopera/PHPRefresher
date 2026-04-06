@@ -13,6 +13,7 @@ PHP has a set of keywords that are reserved words which cannot be used as functi
 |[xor](phpOperators1.md#php-logical-operators)| A logical operator|
 
 ### Conditional Keywords
+
 | Keyword | Description|
 |---|---|
 |[switch](phpIF.md#switch-statement)| Create a switch block|
@@ -45,6 +46,7 @@ PHP has a set of keywords that are reserved words which cannot be used as functi
 |[continue](phpLoops.md#break-and-continue)| Jump to the next iteration of a loop |
 
 ### I/O Keywords
+
 | Keyword | Description|
 |---|---|
 |[echo](../Func/phpOutput.md#echo)| Output text|
@@ -52,6 +54,7 @@ PHP has a set of keywords that are reserved words which cannot be used as functi
 
 
 ### Exception Keywords
+
 | Keyword | Description|
 |---|---|
 |[try](../Func/phpExceptions.md#the-trycatch-statement)| Create a try...catch structure|
@@ -60,6 +63,7 @@ PHP has a set of keywords that are reserved words which cannot be used as functi
 |[throw](../Func/phpExceptions.md#throwing-an-exception)| Throw an exception|
 
 ### Functions Keywords
+
 | Keyword | Description|
 |---|---|
 |[fn](../Func/phpArrowFunc.md)| Declare an arrow function|
@@ -70,6 +74,7 @@ PHP has a set of keywords that are reserved words which cannot be used as functi
 |[callable](../Func/phpCallback.md#php-callable-keyword)| A data type which can be executed as a function|
 
 ### OOP Keywords
+
 | Keyword | Description|
 |---|---|
 |[abstract](../Classes/phpAbstract.md)| Declare a class as abstract|
@@ -94,6 +99,7 @@ PHP has a set of keywords that are reserved words which cannot be used as functi
 
 
 ### Code Keywords
+
 | Keyword | Description|
 |---|---|
 |[declare](../Func/phpDeclare.md)| Set directives for a block of code|
