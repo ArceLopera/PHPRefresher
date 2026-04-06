@@ -7,6 +7,16 @@
 
 Enums (enumerations) allow you to define a type with a fixed set of possible values. Introduced in PHP 8.1, enums provide type-safe alternatives to constants and make code more expressive and maintainable.
 
+### PHP Version Support
+
+| Feature | PHP 8.0 | PHP 8.1+ | PHP 8.2+ |
+|---------|---------|----------|----------|
+| Enums (Pure) | ❌ | ✅ | ✅ |
+| Backed Enums | ❌ | ✅ | ✅ |
+| Enum Methods | ❌ | ✅ | ✅ |
+| Constants in Enums | ❌ | ✅ | ✅ |
+| Enum Traits | ❌ | ✅ | ✅ |
+
 ## When to Use
 
 - Defining fixed sets of values (statuses, roles, directions)

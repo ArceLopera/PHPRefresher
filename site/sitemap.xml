@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/VERSION-STRATEGY/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/best-practices-error-handling/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>
@@ -607,6 +612,16 @@
     </url>
     <url>
          <loc>https://arcelopera.github.io/PHPRefresher/PR/phpVar4/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/getting-started/upgrades/upgrading-from-php-74/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/getting-started/upgrades/version-comparison/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>
     </url>

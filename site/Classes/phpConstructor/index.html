@@ -1795,6 +1795,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#php-version-support" class="md-nav__link">
+    PHP Version Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#calling-the-__construct-function" class="md-nav__link">
     Calling the __construct Function
   </a>
@@ -3232,6 +3239,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#php-version-support" class="md-nav__link">
+    PHP Version Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#calling-the-__construct-function" class="md-nav__link">
     Calling the __construct Function
   </a>
@@ -3307,6 +3321,49 @@
 <strong>Status:</strong> Stable</p>
 </blockquote>
 <p>A constructor allows you to initialize an object's properties upon creation of the object.</p>
+<h3 id="php-version-support">PHP Version Support</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>PHP 7.4</th>
+<th>PHP 8.0+</th>
+<th>PHP 8.1+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic Constructor</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Type Hints</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Property Promotion</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Named Arguments</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Readonly Properties</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
 <p>If you create a __construct() function, PHP will automatically call this function when you create an object from a class.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">Person</span>

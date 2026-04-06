@@ -5,6 +5,17 @@
 > **Minimum PHP Version:** PHP 8.0+
 > **Status:** Stable
 
+### PHP Version Support
+
+| Feature | PHP 7.4 | PHP 8.0+ | PHP 8.1+ | PHP 8.2+ |
+|---------|---------|----------|----------|----------|
+| Attributes | ❌ | ✅ | ✅ | ✅ |
+| Class Attributes | ❌ | ✅ | ✅ | ✅ |
+| Method Attributes | ❌ | ✅ | ✅ | ✅ |
+| Property Attributes | ❌ | ✅ | ✅ | ✅ |
+| Function Attributes | ❌ | ✅ | ✅ | ✅ |
+| Parameter Attributes | ❌ | ❌ | ❌ | ✅ |
+
 
 ```php
 <?php

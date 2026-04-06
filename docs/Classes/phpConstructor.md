@@ -5,6 +5,16 @@
 
 A constructor allows you to initialize an object's properties upon creation of the object.
 
+### PHP Version Support
+
+| Feature | PHP 7.4 | PHP 8.0+ | PHP 8.1+ |
+|---------|---------|----------|----------|
+| Basic Constructor | ✅ | ✅ | ✅ |
+| Type Hints | ✅ | ✅ | ✅ |
+| Property Promotion | ❌ | ✅ | ✅ |
+| Named Arguments | ❌ | ✅ | ✅ |
+| Readonly Properties | ❌ | ❌ | ✅ |
+
 If you create a __construct() function, PHP will automatically call this function when you create an object from a class.
 
 ```php
