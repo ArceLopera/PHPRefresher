@@ -18,6 +18,100 @@ Expected: > 0
 Received:   0
 ```
 
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation "Header" [ref=e3]:
+      - link "PHP Refresher" [ref=e4] [cursor=pointer]:
+        - /url: /PHPRefresher/.
+        - img "logo" [ref=e5]
+      - generic [ref=e9]: PHP Refresher
+      - generic [ref=e10]:
+        - radio "Switch to dark mode"
+        - generic "Switch to dark mode" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - radio "Switch to light mode"
+      - dialog [ref=e14]:
+        - search [ref=e15]:
+          - generic [ref=e16]:
+            - textbox "Search" [ref=e17]
+            - generic:
+              - img
+            - navigation "Search":
+              - button "Clear":
+                - img
+          - generic [ref=e18]:
+            - generic [ref=e19]: Initializing search
+            - list
+      - link "ArceLopera/PHPRefresher" [ref=e21] [cursor=pointer]:
+        - /url: https://github.com/ArceLopera/PHPRefresher
+        - img [ref=e23]
+        - generic [ref=e25]: ArceLopera/PHPRefresher
+  - generic [ref=e26]:
+    - navigation "Tabs" [ref=e27]:
+      - list [ref=e29]:
+        - listitem [ref=e30]:
+          - link "Home" [ref=e31] [cursor=pointer]:
+            - /url: /PHPRefresher/.
+        - listitem [ref=e32]:
+          - link "Getting Started" [ref=e33] [cursor=pointer]:
+            - /url: /PHPRefresher/getting-started-index/
+        - listitem [ref=e34]:
+          - link "Best Practices" [ref=e35] [cursor=pointer]:
+            - /url: /PHPRefresher/best-practices-index/
+        - listitem [ref=e36]:
+          - link "Basics" [ref=e37] [cursor=pointer]:
+            - /url: /PHPRefresher/phpRefresh/
+        - listitem [ref=e38]:
+          - link "Functions" [ref=e39] [cursor=pointer]:
+            - /url: /PHPRefresher/Func/phpAll/
+        - listitem [ref=e40]:
+          - link "Data Structures" [ref=e41] [cursor=pointer]:
+            - /url: /PHPRefresher/DS/phpArray/
+        - listitem [ref=e42]:
+          - link "Classes" [ref=e43] [cursor=pointer]:
+            - /url: /PHPRefresher/Classes/phpCls/
+        - listitem [ref=e44]:
+          - link "Advanced" [ref=e45] [cursor=pointer]:
+            - /url: /PHPRefresher/Adv/phpInclude/
+        - listitem [ref=e46]:
+          - link "Moodle" [ref=e47] [cursor=pointer]:
+            - /url: /PHPRefresher/Moodle/phpMoodle/
+    - main [ref=e48]:
+      - generic [ref=e49]:
+        - generic [ref=e51]:
+          - generic:
+            - navigation "Navigation":
+              - list
+        - generic [ref=e53]:
+          - generic:
+            - navigation "Table of contents"
+        - article [ref=e55]:
+          - heading "404 - Not found" [level=1] [ref=e56]
+    - contentinfo [ref=e57]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: Copyright © 2024
+          - text: Made with
+          - link "Material for MkDocs" [ref=e62] [cursor=pointer]:
+            - /url: https://squidfunk.github.io/mkdocs-material/
+        - generic [ref=e63]:
+          - link "linkedin.com" [ref=e64] [cursor=pointer]:
+            - /url: https://linkedin.com/in/carlos-arcelopera
+            - img [ref=e65]
+          - link "github.com" [ref=e67] [cursor=pointer]:
+            - /url: https://github.com/ArceLopera
+            - img [ref=e68]
+          - link "www.youtube.com" [ref=e70] [cursor=pointer]:
+            - /url: https://www.youtube.com/
+            - img [ref=e71]
+          - link [ref=e73] [cursor=pointer]:
+            - /url: mailto:arcelopera.carlos@gmail.com
+            - img [ref=e74]
+```
+
 # Test source
 
 ```ts

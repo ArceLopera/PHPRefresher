@@ -6,24 +6,42 @@
 
 # Test info
 
-- Name: responsive.spec.js >> Responsive Design >> page renders on mobile (375px width)
-- Location: tests\responsive.spec.js:4:3
+- Name: navigation.spec.js >> Navigation Integrity >> mobile menu navigation works
+- Location: tests\navigation.spec.js:64:3
 
 # Error details
 
 ```
-Error: expect(locator).toBeVisible() failed
+Test timeout of 30000ms exceeded.
+```
 
-Locator: locator('main, article, .md-content')
-Expected: visible
-Error: strict mode violation: locator('main, article, .md-content') resolved to 3 elements:
-    1) <main class="md-main" data-md-component="main">…</main> aka getByRole('main')
-    2) <div class="md-content" data-md-component="content">…</div> aka locator('div').filter({ hasText: 'Welcome to PHP Refresher Last' }).nth(2)
-    3) <article class="md-content__inner md-typeset">…</article> aka getByText('Welcome to PHP Refresher Last')
-
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
 Call log:
-  - Expect "toBeVisible" with timeout 5000ms
-  - waiting for locator('main, article, .md-content')
+  - waiting for locator('[aria-label*="menu"], .md-nav__button').first()
+    - locator resolved to <a href="." title="PHP Refresher" data-md-component="logo" aria-label="PHP Refresher" class="md-nav__button md-logo">…</a>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - element is outside of the viewport
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - element is outside of the viewport
+    - retrying click action
+      - waiting 100ms
+    55 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - element is outside of the viewport
+     - retrying click action
+       - waiting 500ms
 
 ```
 
@@ -57,7 +75,7 @@ Call log:
           - generic:
             - generic:
               - generic:
-                - generic [ref=e23]: Initializing search
+                - generic [ref=e23]: Type to start searching
                 - list
   - generic [ref=e24]:
     - main [ref=e25]:
@@ -674,113 +692,104 @@ Call log:
 ```ts
   1   | const { test, expect } = require('@playwright/test');
   2   | 
-  3   | test.describe('Responsive Design', () => {
-  4   |   test('page renders on mobile (375px width)', async ({ page }) => {
-  5   |     await page.setViewportSize({ width: 375, height: 812 });
-  6   |     await page.goto('/');
-  7   |     
-  8   |     // Main content should still be accessible
-  9   |     const mainContent = page.locator('main, article, .md-content');
-> 10  |     await expect(mainContent).toBeVisible();
-      |                               ^ Error: expect(locator).toBeVisible() failed
-  11  |     
-  12  |     // No horizontal overflow
-  13  |     const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
-  14  |     expect(bodyWidth).toBeLessThanOrEqual(375 + 20);  // Allow small margin
-  15  |   });
-  16  | 
-  17  |   test('page renders on tablet (768px width)', async ({ page }) => {
-  18  |     await page.setViewportSize({ width: 768, height: 1024 });
-  19  |     await page.goto('/');
-  20  |     
-  21  |     const mainContent = page.locator('main, article, .md-content');
-  22  |     await expect(mainContent).toBeVisible();
-  23  |   });
-  24  | 
-  25  |   test('page renders on desktop (1280px width)', async ({ page }) => {
-  26  |     await page.setViewportSize({ width: 1280, height: 800 });
-  27  |     await page.goto('/');
-  28  |     
-  29  |     const mainContent = page.locator('main, article, .md-content');
-  30  |     await expect(mainContent).toBeVisible();
-  31  |   });
-  32  | 
-  33  |   test('navigation adapts to mobile', async ({ page }) => {
-  34  |     await page.setViewportSize({ width: 375, height: 812 });
-  35  |     await page.goto('/');
-  36  |     
-  37  |     const mobileMenuButton = page.locator('[aria-label*="menu"], .md-nav__button').first();
-  38  |     const isMobileMenuVisible = await mobileMenuButton.isVisible().catch(() => false);
-  39  |     
-  40  |     // Either menu button exists or nav is visible
-  41  |     const navVisible = await page.locator('.md-nav').isVisible().catch(() => false);
-  42  |     expect(isMobileMenuVisible || navVisible).toBe(true);
-  43  |   });
-  44  | 
-  45  |   test('code blocks are readable on mobile', async ({ page }) => {
-  46  |     await page.setViewportSize({ width: 375, height: 812 });
-  47  |     await page.goto('/PR/phpVar1/');
-  48  |     
-  49  |     const codeBlocks = await page.locator('pre').count();
-  50  |     if (codeBlocks > 0) {
-  51  |       const firstCodeBlock = page.locator('pre').first();
-  52  |       const isVisible = await firstCodeBlock.isVisible();
-  53  |       expect(isVisible).toBe(true);
-  54  |       
-  55  |       // Should have horizontal scroll if needed
-  56  |       const scrollWidth = await firstCodeBlock.evaluate(el => el.scrollWidth);
-  57  |       const clientWidth = await firstCodeBlock.evaluate(el => el.clientWidth);
-  58  |       expect(clientWidth).toBeGreaterThan(0);
-  59  |     }
-  60  |   });
-  61  | 
-  62  |   test('tables are responsive', async ({ page }) => {
-  63  |     await page.setViewportSize({ width: 375, height: 812 });
-  64  |     await page.goto('/Classes/phpCls/');
-  65  |     
-  66  |     const tables = await page.locator('table').count();
-  67  |     if (tables > 0) {
-  68  |       const table = page.locator('table').first();
-  69  |       await expect(table).toBeVisible();
-  70  |     }
-  71  |   });
-  72  | 
-  73  |   test('images scale appropriately', async ({ page }) => {
-  74  |     await page.setViewportSize({ width: 375, height: 812 });
-  75  |     await page.goto('/');
-  76  |     
-  77  |     const images = await page.locator('img').all();
-  78  |     
-  79  |     for (const img of images.slice(0, 3)) {
-  80  |       const isVisible = await img.isVisible();
-  81  |       if (isVisible) {
-  82  |         const width = await img.boundingBox();
-  83  |         expect(width.width).toBeLessThanOrEqual(375);
-  84  |       }
-  85  |     }
-  86  |   });
-  87  | 
-  88  |   test('text is readable on mobile', async ({ page }) => {
-  89  |     await page.setViewportSize({ width: 375, height: 812 });
-  90  |     await page.goto('/');
-  91  |     
-  92  |     const bodyText = await page.locator('body').textContent();
-  93  |     expect(bodyText).toBeTruthy();
-  94  |     expect(bodyText.length).toBeGreaterThan(10);
-  95  |   });
-  96  | 
-  97  |   test('buttons and links are touch-friendly', async ({ page }) => {
-  98  |     await page.setViewportSize({ width: 375, height: 812 });
-  99  |     await page.goto('/');
-  100 |     
-  101 |     const links = await page.locator('a').all();
-  102 |     
-  103 |     for (const link of links.slice(0, 5)) {
-  104 |       const box = await link.boundingBox();
-  105 |       if (box) {
-  106 |         // Touch target should be at least 44x44px (mobile standard)
-  107 |         expect(Math.max(box.width, box.height)).toBeGreaterThanOrEqual(30);
-  108 |       }
-  109 |     }
-  110 |   });
+  3   | test.describe('Navigation Integrity', () => {
+  4   |   test('navigation sidebar renders without errors', async ({ page }) => {
+  5   |     await page.goto('/');
+  6   |     
+  7   |     const navBar = page.locator('.md-nav');
+  8   |     await expect(navBar).toBeVisible();
+  9   |     
+  10  |     // Check that nav items exist
+  11  |     const navItems = await page.locator('.md-nav li').count();
+  12  |     expect(navItems).toBeGreaterThan(0);
+  13  |   });
+  14  | 
+  15  |   test('main navigation sections are visible', async ({ page }) => {
+  16  |     await page.goto('/');
+  17  |     
+  18  |     const expectedSections = ['Basics', 'Functions', 'Data Structures', 'Classes', 'Advanced', 'Moodle'];
+  19  |     
+  20  |     for (const section of expectedSections) {
+  21  |       // At least some navigation should be present
+  22  |       const navElements = await page.locator('.md-nav').count();
+  23  |       expect(navElements).toBeGreaterThan(0);
+  24  |     }
+  25  |   });
+  26  | 
+  27  |   test('breadcrumb navigation works correctly', async ({ page }) => {
+  28  |     await page.goto('/PR/phpVar1/');
+  29  |     
+  30  |     // Check for breadcrumb or hierarchy indicator
+  31  |     const title = await page.title();
+  32  |     expect(title).toBeTruthy();
+  33  |     expect(title.length).toBeGreaterThan(0);
+  34  |   });
+  35  | 
+  36  |   test('navigation preserves scroll position on nested pages', async ({ page }) => {
+  37  |     await page.goto('/Classes/phpCls/');
+  38  |     await expect(page.locator('h1')).toContainText(/Class/);
+  39  |   });
+  40  | 
+  41  |   test('homepage navigation links to all main sections', async ({ page }) => {
+  42  |     await page.goto('/');
+  43  |     
+  44  |     const navLinks = page.locator('.md-nav a');
+  45  |     const navCount = await navLinks.count();
+  46  |     
+  47  |     // Should have multiple navigation options
+  48  |     expect(navCount).toBeGreaterThan(5);
+  49  |   });
+  50  | 
+  51  |   test('search box is accessible in navigation', async ({ page }) => {
+  52  |     await page.goto('/');
+  53  |     
+  54  |     const searchBox = page.locator('input[placeholder*="Search"]');
+  55  |     const isVisible = await searchBox.isVisible().catch(() => false);
+  56  |     
+  57  |     if (isVisible) {
+  58  |       await expect(searchBox).toBeFocused().catch(() => {
+  59  |         // Search box may not be focused initially, that's OK
+  60  |       });
+  61  |     }
+  62  |   });
+  63  | 
+  64  |   test('mobile menu navigation works', async ({ page, viewport }) => {
+  65  |     // Set mobile viewport
+  66  |     await page.setViewportSize({ width: 375, height: 812 });
+  67  |     
+  68  |     await page.goto('/');
+  69  |     
+  70  |     // Mobile menu should exist
+  71  |     const mobileMenuButton = page.locator('[aria-label*="menu"], .md-nav__button').first();
+  72  |     
+  73  |     if (await mobileMenuButton.isVisible().catch(() => false)) {
+> 74  |       await mobileMenuButton.click();
+      |                              ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  75  |       // Navigation should toggle
+  76  |       const nav = page.locator('.md-nav');
+  77  |       await expect(nav).toBeVisible();
+  78  |     }
+  79  |   });
+  80  | 
+  81  |   test('navigation items have correct URLs', async ({ page }) => {
+  82  |     await page.goto('/');
+  83  |     
+  84  |     const navLinks = await page.locator('.md-nav a[href]').all();
+  85  |     
+  86  |     for (const link of navLinks.slice(0, 5)) {
+  87  |       const href = await link.getAttribute('href');
+  88  |       expect(href).toBeTruthy();
+  89  |       expect(href).toMatch(/^\/|^http/);
+  90  |     }
+  91  |   });
+  92  | 
+  93  |   test('active navigation item is highlighted', async ({ page }) => {
+  94  |     await page.goto('/PR/phpVar1/');
+  95  |     
+  96  |     // Current page should have some indicator in nav
+  97  |     const title = await page.locator('h1').first().textContent();
+  98  |     expect(title).toBeTruthy();
+  99  |   });
+  100 | });
+  101 | 
 ```

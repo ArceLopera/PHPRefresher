@@ -6,25 +6,16 @@
 
 # Test info
 
-- Name: search.spec.js >> Search Functionality >> search functionality degrades gracefully without JavaScript
-- Location: tests\search.spec.js:113:3
+- Name: navigation.spec.js >> Navigation Integrity >> navigation items have correct URLs
+- Location: tests\navigation.spec.js:81:3
 
 # Error details
 
 ```
-Error: expect(locator).toBeVisible() failed
+Error: expect(received).toMatch(expected)
 
-Locator: locator('main, article, .md-content')
-Expected: visible
-Error: strict mode violation: locator('main, article, .md-content') resolved to 3 elements:
-    1) <main class="md-main" data-md-component="main">…</main> aka getByRole('main')
-    2) <div class="md-content" data-md-component="content">…</div> aka locator('div').filter({ hasText: 'Welcome to PHP Refresher Last' }).nth(2)
-    3) <article class="md-content__inner md-typeset">…</article> aka getByText('Welcome to PHP Refresher Last')
-
-Call log:
-  - Expect "toBeVisible" with timeout 5000ms
-  - waiting for locator('main, article, .md-content')
-
+Expected pattern: /^\/|^http/
+Received string:  "."
 ```
 
 # Page snapshot
@@ -196,119 +187,106 @@ Call log:
 # Test source
 
 ```ts
-  19  |     await page.goto('/');
-  20  |     
-  21  |     const searchBox = page.locator('input[placeholder*="Search"], .md-search__input').first();
-  22  |     
-  23  |     if (await searchBox.isVisible().catch(() => false)) {
-  24  |       await searchBox.fill('array');
-  25  |       await page.waitForTimeout(500);
-  26  |       
-  27  |       // Results should appear
-  28  |       const results = page.locator('[class*="search-result"], [class*="md-search-result"]');
-  29  |       const resultCount = await results.count().catch(() => 0);
-  30  |       
-  31  |       // May or may not have results depending on search implementation
-  32  |       expect(resultCount).toBeGreaterThanOrEqual(0);
-  33  |     }
+  1   | const { test, expect } = require('@playwright/test');
+  2   | 
+  3   | test.describe('Navigation Integrity', () => {
+  4   |   test('navigation sidebar renders without errors', async ({ page }) => {
+  5   |     await page.goto('/');
+  6   |     
+  7   |     const navBar = page.locator('.md-nav');
+  8   |     await expect(navBar).toBeVisible();
+  9   |     
+  10  |     // Check that nav items exist
+  11  |     const navItems = await page.locator('.md-nav li').count();
+  12  |     expect(navItems).toBeGreaterThan(0);
+  13  |   });
+  14  | 
+  15  |   test('main navigation sections are visible', async ({ page }) => {
+  16  |     await page.goto('/');
+  17  |     
+  18  |     const expectedSections = ['Basics', 'Functions', 'Data Structures', 'Classes', 'Advanced', 'Moodle'];
+  19  |     
+  20  |     for (const section of expectedSections) {
+  21  |       // At least some navigation should be present
+  22  |       const navElements = await page.locator('.md-nav').count();
+  23  |       expect(navElements).toBeGreaterThan(0);
+  24  |     }
+  25  |   });
+  26  | 
+  27  |   test('breadcrumb navigation works correctly', async ({ page }) => {
+  28  |     await page.goto('/PR/phpVar1/');
+  29  |     
+  30  |     // Check for breadcrumb or hierarchy indicator
+  31  |     const title = await page.title();
+  32  |     expect(title).toBeTruthy();
+  33  |     expect(title.length).toBeGreaterThan(0);
   34  |   });
   35  | 
-  36  |   test('search index is accessible', async ({ page }) => {
-  37  |     await page.goto('/');
-  38  |     
-  39  |     // Check for search index file
-  40  |     const response = await page.context().request.head('/search/search_index.json').catch(() => null);
-  41  |     
-  42  |     // Search index should exist or search should be available
-  43  |     const searchBox = page.locator('input[placeholder*="Search"]').isVisible().catch(() => false);
-  44  |     expect(await searchBox || response).toBeTruthy();
-  45  |   });
-  46  | 
-  47  |   test('search results are navigable', async ({ page }) => {
-  48  |     await page.goto('/');
-  49  |     
-  50  |     const searchBox = page.locator('input[placeholder*="Search"], .md-search__input').first();
-  51  |     
-  52  |     if (await searchBox.isVisible().catch(() => false)) {
-  53  |       await searchBox.fill('PHP');
-  54  |       await page.waitForTimeout(500);
-  55  |       
-  56  |       const resultLinks = page.locator('a[href*="/"]');
-  57  |       const linkCount = await resultLinks.count();
-  58  |       
-  59  |       expect(linkCount).toBeGreaterThanOrEqual(0);
-  60  |     }
-  61  |   });
-  62  | 
-  63  |   test('search is case-insensitive', async ({ page }) => {
-  64  |     await page.goto('/');
-  65  |     
-  66  |     const searchBox = page.locator('input[placeholder*="Search"], .md-search__input').first();
+  36  |   test('navigation preserves scroll position on nested pages', async ({ page }) => {
+  37  |     await page.goto('/Classes/phpCls/');
+  38  |     await expect(page.locator('h1')).toContainText(/Class/);
+  39  |   });
+  40  | 
+  41  |   test('homepage navigation links to all main sections', async ({ page }) => {
+  42  |     await page.goto('/');
+  43  |     
+  44  |     const navLinks = page.locator('.md-nav a');
+  45  |     const navCount = await navLinks.count();
+  46  |     
+  47  |     // Should have multiple navigation options
+  48  |     expect(navCount).toBeGreaterThan(5);
+  49  |   });
+  50  | 
+  51  |   test('search box is accessible in navigation', async ({ page }) => {
+  52  |     await page.goto('/');
+  53  |     
+  54  |     const searchBox = page.locator('input[placeholder*="Search"]');
+  55  |     const isVisible = await searchBox.isVisible().catch(() => false);
+  56  |     
+  57  |     if (isVisible) {
+  58  |       await expect(searchBox).toBeFocused().catch(() => {
+  59  |         // Search box may not be focused initially, that's OK
+  60  |       });
+  61  |     }
+  62  |   });
+  63  | 
+  64  |   test('mobile menu navigation works', async ({ page, viewport }) => {
+  65  |     // Set mobile viewport
+  66  |     await page.setViewportSize({ width: 375, height: 812 });
   67  |     
-  68  |     if (await searchBox.isVisible().catch(() => false)) {
-  69  |       // Try different cases
-  70  |       await searchBox.fill('array');
-  71  |       await page.waitForTimeout(300);
-  72  |       const results1 = await page.locator('[class*="result"]').count().catch(() => 0);
-  73  |       
-  74  |       await searchBox.clear();
-  75  |       await searchBox.fill('ARRAY');
-  76  |       await page.waitForTimeout(300);
-  77  |       const results2 = await page.locator('[class*="result"]').count().catch(() => 0);
-  78  |       
-  79  |       // Results should be similar regardless of case
-  80  |       expect(results1 >= 0 && results2 >= 0).toBe(true);
-  81  |     }
-  82  |   });
-  83  | 
-  84  |   test('search handles special characters', async ({ page }) => {
-  85  |     await page.goto('/');
-  86  |     
-  87  |     const searchBox = page.locator('input[placeholder*="Search"], .md-search__input').first();
-  88  |     
-  89  |     if (await searchBox.isVisible().catch(() => false)) {
-  90  |       await searchBox.fill('$_');
-  91  |       await page.waitForTimeout(300);
-  92  |       
-  93  |       // Should not crash
-  94  |       const pageTitle = await page.title();
-  95  |       expect(pageTitle).toBeTruthy();
-  96  |     }
-  97  |   });
-  98  | 
-  99  |   test('search can be cleared', async ({ page }) => {
-  100 |     await page.goto('/');
-  101 |     
-  102 |     const searchBox = page.locator('input[placeholder*="Search"], .md-search__input').first();
-  103 |     
-  104 |     if (await searchBox.isVisible().catch(() => false)) {
-  105 |       await searchBox.fill('test');
-  106 |       expect(await searchBox.inputValue()).toBe('test');
-  107 |       
-  108 |       await searchBox.clear();
-  109 |       expect(await searchBox.inputValue()).toBe('');
-  110 |     }
-  111 |   });
-  112 | 
-  113 |   test('search functionality degrades gracefully without JavaScript', async ({ page }) => {
-  114 |     // This tests that the page doesn't break if search JS doesn't load
-  115 |     await page.goto('/');
-  116 |     
-  117 |     // Page should load without search if needed
-  118 |     const mainContent = page.locator('main, article, .md-content');
-> 119 |     await expect(mainContent).toBeVisible();
-      |                               ^ Error: expect(locator).toBeVisible() failed
-  120 |   });
-  121 | 
-  122 |   test('search results include page titles', async ({ page }) => {
-  123 |     await page.goto('/');
-  124 |     
-  125 |     // Verify we can navigate to documentation pages
-  126 |     await page.goto('/PR/phpVar1/');
-  127 |     const title = await page.title();
-  128 |     
-  129 |     expect(title).toContain('Variable');
-  130 |   });
-  131 | });
-  132 | 
+  68  |     await page.goto('/');
+  69  |     
+  70  |     // Mobile menu should exist
+  71  |     const mobileMenuButton = page.locator('[aria-label*="menu"], .md-nav__button').first();
+  72  |     
+  73  |     if (await mobileMenuButton.isVisible().catch(() => false)) {
+  74  |       await mobileMenuButton.click();
+  75  |       // Navigation should toggle
+  76  |       const nav = page.locator('.md-nav');
+  77  |       await expect(nav).toBeVisible();
+  78  |     }
+  79  |   });
+  80  | 
+  81  |   test('navigation items have correct URLs', async ({ page }) => {
+  82  |     await page.goto('/');
+  83  |     
+  84  |     const navLinks = await page.locator('.md-nav a[href]').all();
+  85  |     
+  86  |     for (const link of navLinks.slice(0, 5)) {
+  87  |       const href = await link.getAttribute('href');
+  88  |       expect(href).toBeTruthy();
+> 89  |       expect(href).toMatch(/^\/|^http/);
+      |                    ^ Error: expect(received).toMatch(expected)
+  90  |     }
+  91  |   });
+  92  | 
+  93  |   test('active navigation item is highlighted', async ({ page }) => {
+  94  |     await page.goto('/PR/phpVar1/');
+  95  |     
+  96  |     // Current page should have some indicator in nav
+  97  |     const title = await page.locator('h1').first().textContent();
+  98  |     expect(title).toBeTruthy();
+  99  |   });
+  100 | });
+  101 | 
 ```

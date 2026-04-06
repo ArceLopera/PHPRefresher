@@ -6,16 +6,17 @@
 
 # Test info
 
-- Name: links.spec.js >> Link Validation >> all internal links are valid
-- Location: tests\links.spec.js:4:3
+- Name: performance.spec.js >> Performance >> no memory leaks in navigation
+- Location: tests\performance.spec.js:93:3
 
 # Error details
 
 ```
-Error: expect(received).toBeGreaterThan(expected)
+Test timeout of 30000ms exceeded.
+```
 
-Expected: > 0
-Received:   0
+```
+Error: page.waitForLoadState: Test timeout of 30000ms exceeded.
 ```
 
 # Page snapshot
@@ -48,7 +49,7 @@ Received:   0
               - button "Clear":
                 - img
           - generic [ref=e19]:
-            - generic [ref=e20]: Initializing search
+            - generic [ref=e20]: Type to start searching
             - list
       - link "ArceLopera/PHPRefresher" [ref=e22] [cursor=pointer]:
         - /url: https://github.com/ArceLopera/PHPRefresher
@@ -183,111 +184,162 @@ Received:   0
 # Test source
 
 ```ts
-  1   | const { test, expect } = require('@playwright/test');
-  2   | 
-  3   | test.describe('Link Validation', () => {
-  4   |   test('all internal links are valid', async ({ page }) => {
-  5   |     await page.goto('/');
-  6   |     
-  7   |     // Get all internal links
-  8   |     const links = await page.locator('a[href^="/"]').all();
-  9   |     
-  10  |     console.log(`Found ${links.length} internal links`);
+  4   |   test('homepage loads in reasonable time', async ({ page }) => {
+  5   |     const startTime = Date.now();
+  6   |     await page.goto('/');
+  7   |     const loadTime = Date.now() - startTime;
+  8   |     
+  9   |     // Should load within 10 seconds
+  10  |     expect(loadTime).toBeLessThan(10000);
   11  |     
-  12  |     // Sample test - check that links exist and are not broken
-  13  |     let checkedLinks = 0;
-  14  |     for (const link of links.slice(0, 20)) {  // Test first 20 links
-  15  |       const href = await link.getAttribute('href');
-  16  |       if (href && !href.includes('#')) {
-  17  |         await page.goto(href).catch(e => {
-  18  |           console.log(`Failed to load: ${href}`);
-  19  |         });
-  20  |         expect(page.url()).toContain('/');
-  21  |         checkedLinks++;
-  22  |       }
-  23  |     }
-  24  |     
-> 25  |     expect(checkedLinks).toBeGreaterThan(0);
-      |                          ^ Error: expect(received).toBeGreaterThan(expected)
-  26  |   });
-  27  | 
-  28  |   test('navigation links work correctly', async ({ page }) => {
-  29  |     await page.goto('/');
-  30  |     
-  31  |     // Test navbar links
-  32  |     const navLinks = await page.locator('.md-nav a').count();
-  33  |     expect(navLinks).toBeGreaterThan(0);
-  34  |     
-  35  |     // Click first nav link and verify page loads
-  36  |     const firstNavLink = page.locator('.md-nav a').first();
-  37  |     const href = await firstNavLink.getAttribute('href');
+  12  |     console.log(`Homepage loaded in ${loadTime}ms`);
+  13  |   });
+  14  | 
+  15  |   test('documentation page loads quickly', async ({ page }) => {
+  16  |     const startTime = Date.now();
+  17  |     await page.goto('/PR/phpVar1/');
+  18  |     const loadTime = Date.now() - startTime;
+  19  |     
+  20  |     // Should load within 5 seconds
+  21  |     expect(loadTime).toBeLessThan(5000);
+  22  |     
+  23  |     console.log(`Documentation page loaded in ${loadTime}ms`);
+  24  |   });
+  25  | 
+  26  |   test('build completes without errors', async ({ page }) => {
+  27  |     // This is validated by the mkdocs build process
+  28  |     // If tests run successfully, the site was built correctly
+  29  |     
+  30  |     // Verify main pages are accessible
+  31  |     const pages = [
+  32  |       '/',
+  33  |       '/phpRefresh/',
+  34  |       '/PR/phpVar1/',
+  35  |       '/Func/phpStr1/',
+  36  |       '/DS/phpArray/',
+  37  |     ];
   38  |     
-  39  |     if (href && href.startsWith('/')) {
-  40  |       await firstNavLink.click();
-  41  |       await expect(page).toHaveURL(new RegExp(href));
+  39  |     for (const testPage of pages) {
+  40  |       const response = await page.goto(testPage);
+  41  |       expect(response.status()).toBeLessThan(400);
   42  |     }
   43  |   });
   44  | 
-  45  |   test('documentation links are structured correctly', async ({ page }) => {
+  45  |   test('images are optimized', async ({ page }) => {
   46  |     await page.goto('/');
   47  |     
-  48  |     // Check for main documentation sections
-  49  |     const sections = ['PR', 'Func', 'DS', 'Classes', 'Adv', 'Moodle'];
-  50  |     
-  51  |     for (const section of sections) {
-  52  |       const sectionLink = page.locator(`a:has-text("${section}")`).first();
-  53  |       const exists = await sectionLink.isVisible().catch(() => false);
-  54  |       
-  55  |       if (exists) {
-  56  |         await expect(sectionLink).toBeVisible();
-  57  |       }
-  58  |     }
-  59  |   });
-  60  | 
-  61  |   test('external links use HTTPS', async ({ page }) => {
-  62  |     await page.goto('/');
-  63  |     
-  64  |     const links = await page.locator('a[href^="http"]').all();
-  65  |     
-  66  |     for (const link of links.slice(0, 10)) {
-  67  |       const href = await link.getAttribute('href');
-  68  |       expect(href).toMatch(/^https:\/\//);
-  69  |     }
-  70  |   });
-  71  | 
-  72  |   test('anchor links within page work', async ({ page }) => {
-  73  |     await page.goto('/PR/phpVar1/');
+  48  |     const images = await page.locator('img').all();
+  49  |     
+  50  |     for (const img of images.slice(0, 3)) {
+  51  |       const src = await img.getAttribute('src');
+  52  |       expect(src).toBeTruthy();
+  53  |       
+  54  |       // Check if image is actually loaded
+  55  |       const isLoaded = await img.evaluate(el => el.complete && el.naturalHeight > 0).catch(() => false);
+  56  |       if (isLoaded !== undefined) {
+  57  |         expect(isLoaded).toBe(true);
+  58  |       }
+  59  |     }
+  60  |   });
+  61  | 
+  62  |   test('CSS and JS are properly minified', async ({ page }) => {
+  63  |     const response = await page.goto('/');
+  64  |     const resourceTiming = await page.evaluate(() => {
+  65  |       return performance.getEntriesByType('resource').map(r => ({
+  66  |         name: r.name,
+  67  |         duration: r.duration,
+  68  |         size: r.transferSize,
+  69  |       }));
+  70  |     });
+  71  |     
+  72  |     // Should have resources
+  73  |     expect(resourceTiming.length).toBeGreaterThan(0);
   74  |     
-  75  |     // Find all anchor links
-  76  |     const anchorLinks = await page.locator('a[href^="#"]').count();
-  77  |     
-  78  |     if (anchorLinks > 0) {
-  79  |       const firstAnchorLink = page.locator('a[href^="#"]').first();
-  80  |       const href = await firstAnchorLink.getAttribute('href');
-  81  |       
-  82  |       // Verify anchor target exists
-  83  |       const targetElement = page.locator(href);
-  84  |       expect(await targetElement.count()).toBeGreaterThan(0);
-  85  |     }
-  86  |   });
-  87  | 
-  88  |   test('no broken internal links in mkdocs.yml navigation', async ({ page }) => {
-  89  |     // Main pages that should exist
-  90  |     const mainPages = [
-  91  |       '/',
-  92  |       '/phpRefresh/',
-  93  |       '/PR/phpVar1/',
-  94  |       '/Func/phpStr1/',
-  95  |       '/DS/phpArray/',
-  96  |       '/Classes/phpCls/',
-  97  |     ];
-  98  |     
-  99  |     for (const mainPage of mainPages) {
-  100 |       await page.goto(mainPage);
-  101 |       expect(page.url()).toContain('/');
-  102 |       expect(await page.title()).toBeTruthy();
-  103 |     }
-  104 |   });
-  105 | });
-  106 | 
+  75  |     console.log(`Total resources: ${resourceTiming.length}`);
+  76  |   });
+  77  | 
+  78  |   test('first contentful paint is quick', async ({ page }) => {
+  79  |     const metrics = await page.goto('/').then(() => 
+  80  |       page.evaluate(() => {
+  81  |         const paintEntries = performance.getEntriesByType('paint');
+  82  |         return paintEntries.find(p => p.name === 'first-contentful-paint');
+  83  |       })
+  84  |     );
+  85  |     
+  86  |     // FCP should ideally be under 2 seconds
+  87  |     if (metrics) {
+  88  |       console.log(`First Contentful Paint: ${metrics.startTime}ms`);
+  89  |       expect(metrics.startTime).toBeLessThan(5000);
+  90  |     }
+  91  |   });
+  92  | 
+  93  |   test('no memory leaks in navigation', async ({ page }) => {
+  94  |     // Navigate through multiple pages to check for memory issues
+  95  |     const pages = [
+  96  |       '/',
+  97  |       '/PR/phpVar1/',
+  98  |       '/Func/phpStr1/',
+  99  |       '/Classes/phpCls/',
+  100 |     ];
+  101 |     
+  102 |     for (const testPage of pages) {
+  103 |       await page.goto(testPage);
+> 104 |       await page.waitForLoadState('networkidle');
+      |                  ^ Error: page.waitForLoadState: Test timeout of 30000ms exceeded.
+  105 |     }
+  106 |     
+  107 |     // If we reach here without crashing, navigation is stable
+  108 |     expect(true).toBe(true);
+  109 |   });
+  110 | 
+  111 |   test('search performs efficiently', async ({ page }) => {
+  112 |     await page.goto('/');
+  113 |     
+  114 |     const searchBox = page.locator('input[placeholder*="Search"], .md-search__input').first();
+  115 |     
+  116 |     if (await searchBox.isVisible().catch(() => false)) {
+  117 |       const startTime = Date.now();
+  118 |       await searchBox.fill('array');
+  119 |       await page.waitForTimeout(500);
+  120 |       const searchTime = Date.now() - startTime;
+  121 |       
+  122 |       // Search should be responsive
+  123 |       expect(searchTime).toBeLessThan(2000);
+  124 |     }
+  125 |   });
+  126 | 
+  127 |   test('sidebar navigation does not cause layout thrashing', async ({ page }) => {
+  128 |     await page.goto('/');
+  129 |     
+  130 |     // Toggle sidebar if it exists
+  131 |     const sidebarButton = page.locator('[aria-label*="menu"], .md-nav__button').first();
+  132 |     
+  133 |     if (await sidebarButton.isVisible().catch(() => false)) {
+  134 |       const measureTime = async () => {
+  135 |         const start = Date.now();
+  136 |         await sidebarButton.click();
+  137 |         return Date.now() - start;
+  138 |       };
+  139 |       
+  140 |       const time = await measureTime();
+  141 |       expect(time).toBeLessThan(1000);
+  142 |     }
+  143 |   });
+  144 | 
+  145 |   test('no console errors on main pages', async ({ page }) => {
+  146 |     const errors = [];
+  147 |     
+  148 |     page.on('console', msg => {
+  149 |       if (msg.type() === 'error') {
+  150 |         errors.push(msg.text());
+  151 |       }
+  152 |     });
+  153 |     
+  154 |     await page.goto('/');
+  155 |     
+  156 |     // May have some errors, but shouldn't be excessive
+  157 |     console.log(`Console errors: ${errors.length}`);
+  158 |   });
+  159 | });
+  160 | 
 ```

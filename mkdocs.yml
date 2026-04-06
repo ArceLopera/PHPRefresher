@@ -88,6 +88,20 @@ extra_javascript:
 # Page tree
 nav:
   - Home: index.md
+  - Documentation:
+      - Repository Organization: ORGANIZATION-GUIDE.md
+      - Version Strategy: VERSION-STRATEGY.md
+      - Interactive Content Guide: INTERACTIVE-CONTENT-GUIDE.md
+      - Improvement Phases:
+          - Overview: IMPROVEMENT-PHASES/README.md
+          - Phase 1 - Foundation: IMPROVEMENT-PHASES/PHASE-1-FOUNDATION.md
+          - Phase 2 - Organization: IMPROVEMENT-PHASES/PHASE-2-ORGANIZATION.md
+          - Phase 3 - Enhancement: IMPROVEMENT-PHASES/PHASE-3-ENHANCEMENT.md
+          - Quick Wins: IMPROVEMENT-PHASES/QUICK-WINS.md
+  - Version Guides:
+      - Overview: VERSION-STRATEGY.md
+      - Feature Matrix: getting-started/upgrades/version-comparison.md
+      - PHP 7.4 to 8.0: getting-started/upgrades/upgrading-from-php-74.md
   - Getting Started:
       - Introduction: getting-started-index.md
       - Environment Setup: getting-started-setup.md
