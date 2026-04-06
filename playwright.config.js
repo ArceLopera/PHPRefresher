@@ -12,4 +12,5 @@ module.exports = defineConfig({
     port: 8000,
     reuseExistingServer: !process.env.CI,
   },
+  workers: process.env.CI ? 1 : undefined,
 });
