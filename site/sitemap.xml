@@ -16,6 +16,36 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/best-practices-error-handling/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/best-practices-index/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/best-practices-security/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/getting-started-first-script/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/getting-started-index/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arcelopera.github.io/PHPRefresher/getting-started-setup/</loc>
+         <lastmod>2026-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arcelopera.github.io/PHPRefresher/phpRefresh/</loc>
          <lastmod>2026-04-06</lastmod>
          <changefreq>daily</changefreq>

@@ -88,7 +88,15 @@ extra_javascript:
 # Page tree
 nav:
   - Home: index.md
-  - Basics: 
+  - Getting Started:
+      - Introduction: getting-started-index.md
+      - Environment Setup: getting-started-setup.md
+      - Your First Script: getting-started-first-script.md
+  - Best Practices:
+      - Overview: best-practices-index.md
+      - Security Essentials: best-practices-security.md
+      - Error Handling: best-practices-error-handling.md
+  - Basics:
      - General: phpRefresh.md
      - Variables and Assignments: 
         - Variables: PR/phpVar1.md
