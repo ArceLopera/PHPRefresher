@@ -153,21 +153,28 @@ nav:
      - Enums: Classes/phpEnums.md
      - Attributes: Classes/phpAttributes.md
   - Advanced:
-     - Include : Adv/phpInclude.md
-     - Goto: Adv/phpGoto.md
-     - File Management:
-           - Filesystem: Adv/phpFile.md
+     - Language Features:
+           - Include: Adv/phpInclude.md
+           - Goto: Adv/phpGoto.md
+           - File Management: Adv/phpFile.md
+     - Database & Data:
+           - MySQL: Adv/phpMySql.md
+           - XML: Adv/phpXML.md
            - Zip: Adv/phpZip.md
-     - MySQL : Adv/phpMySql.md
-     - XML : Adv/phpXML.md
-     - Ajax: Adv/phpAjax.md
-     - Composer: Adv/phpcomposer.md
-     - NodeJS: Adv/phpnpm.md
-     - Phpstan: Adv/phpstan.md
-     - Adminer: Adv/phpAdminer.md
-     - Tiller: Adv/phpTiller.md
-     - Mail: Adv/phpMailhog.md
-     - Secrets: Adv/phpVault.md
+     - Development Tools:
+           - Dependency Management:
+                 - Composer: Adv/phpcomposer.md
+                 - Node.js/npm: Adv/phpnpm.md
+           - Code Analysis:
+                 - Phpstan: Adv/phpstan.md
+           - Database Tools:
+                 - Adminer: Adv/phpAdminer.md
+                 - Mailhog: Adv/phpMailhog.md
+           - Configuration & DevOps:
+                 - Tiller: Adv/phpTiller.md
+                 - Vault: Adv/phpVault.md
+     - Web Services:
+           - Ajax: Adv/phpAjax.md
   - Moodle:
      - Basics: Moodle/phpMoodle.md
      - Installation: Moodle/phpMoodleInstall.md
