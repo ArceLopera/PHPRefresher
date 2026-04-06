@@ -1,3 +1,87 @@
+# PHP Iterables
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 7.1+
+
+## Overview
+
+An iterable is any value which can be looped through with a foreach() loop. The iterable pseudo-type was introduced in PHP 7.1 and represents any array or object that implements the Traversable interface.
+
+## When to Use
+
+- Type-hinting function parameters that accept arrays or Iterator objects
+- Defining return types for functions that return collections
+- Creating flexible APIs that accept multiple collection types
+- Implementing collections and iterators
+- Building reusable utility functions
+
+## Basic Example
+
+```php
+<?php
+function printIterable(iterable $myIterable) {
+    foreach($myIterable as $item) {
+        echo $item . " ";
+    }
+}
+
+$arr = ["a", "b", "c"];
+printIterable($arr);  // Output: a b c 
+
+$iterator = new ArrayIterator(["x", "y", "z"]);
+printIterable($iterator);  // Output: x y z 
+?>
+```
+
+## Advanced Example
+
+```php
+<?php
+class CustomCollection implements IteratorAggregate {
+    private $items = [];
+    
+    public function addItem($item) {
+        $this->items[] = $item;
+    }
+    
+    public function getIterator(): Traversable {
+        return new ArrayIterator($this->items);
+    }
+}
+
+function processCollection(iterable $collection) {
+    foreach ($collection as $item) {
+        echo "Processing: $item\n";
+    }
+}
+
+$collection = new CustomCollection();
+$collection->addItem("first");
+$collection->addItem("second");
+processCollection($collection);
+?>
+```
+
+## Related Topics
+
+- [Arrays](./phpArray.md)
+- [Foreach Loop](../PR/phpIF.md)
+- [Iterator Interface](./phpIterator.md)
+- [Generators](../Func/phpYield.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 7.1  
+**Minimum Required:** PHP 7.1+  
+**Covariance:** PHP 7.4+
+
+## See Also
+
+- [Official PHP Iterables Documentation](https://www.php.net/manual/en/language.types.iterable.php)
+- [Iterator Interface](https://www.php.net/manual/en/class.iterator.php)
+
+---
+
 An iterable is any value which can be looped through with a foreach() loop.
 
 The iterable pseudo-type was introduced in PHP 7.1, and it can be used as a data type for function arguments and function return values.

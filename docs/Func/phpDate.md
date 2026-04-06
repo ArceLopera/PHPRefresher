@@ -1,3 +1,70 @@
+# PHP Date and Time
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+## Overview
+
+The PHP date() function is used to format dates and times into readable strings. Combined with the DateTime class, PHP provides powerful tools for working with dates, timestamps, and time zones.
+
+## When to Use
+
+- Formatting current date and time for display
+- Converting timestamps to human-readable dates
+- Parsing and validating date strings
+- Working with different time zones
+- Scheduling and event management
+
+## Basic Example
+
+```php
+<?php
+// Format current date
+echo date("Y-m-d");           // Output: 2026-04-06
+echo date("D, M d Y");        // Output: Sun, Apr 06 2026
+echo date("h:i A");           // Output: 02:33 PM
+
+// Using DateTime object
+$date = new DateTime("2026-04-06");
+echo $date->format("Y-m-d");  // Output: 2026-04-06
+?>
+```
+
+## Advanced Example
+
+```php
+<?php
+// Working with timestamps and timezones
+$timestamp = strtotime("2026-04-06 14:33");
+echo date("Y-m-d H:i", $timestamp);  // Output: 2026-04-06 14:33
+
+// DateTime with timezone
+$date = new DateTime("2026-04-06", new DateTimeZone("UTC"));
+$date->setTimeZone(new DateTimeZone("America/New_York"));
+echo $date->format("Y-m-d H:i e");  // Output: 2026-04-06 10:33 America/New_York
+?>
+```
+
+## Related Topics
+
+- [Strings](./phpStr1.md)
+- [Arrays](../DS/phpArray.md)
+- [Type Functions](./phpType.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 5.0  
+**Minimum Required:** PHP 5.0+  
+**DateTime Class:** PHP 5.2+  
+**DateTimeImmutable:** PHP 5.5.1+
+
+## See Also
+
+- [Official PHP Date/Time Documentation](https://www.php.net/manual/en/book.datetime.php)
+- [Date Format Characters](https://www.php.net/manual/en/datetime.format.php)
+
+---
+
 The PHP date() function is used to format a date and/or a time.
 
 The function date() (and the DateTime object) can produce a variety of formatted time and date strings.

@@ -1,3 +1,81 @@
+# PHP Callbacks
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+## Overview
+
+A callback function is a function which is passed as an argument into another function. Callbacks enable functional programming patterns and are fundamental to modern PHP development, especially with array functions and event systems.
+
+## When to Use
+
+- Processing array elements with array_map(), array_filter(), array_reduce()
+- Implementing event handlers and observers
+- Creating higher-order functions
+- Building flexible, reusable code
+- Implementing design patterns like Strategy or Command
+
+## Basic Example
+
+```php
+<?php
+function processArray($callback, $array) {
+    $result = [];
+    foreach ($array as $item) {
+        $result[] = $callback($item);
+    }
+    return $result;
+}
+
+function doubleValue($num) {
+    return $num * 2;
+}
+
+$numbers = [1, 2, 3, 4];
+$doubled = processArray("doubleValue", $numbers);
+print_r($doubled);  // Output: Array ( [0] => 2 [1] => 4 [2] => 6 [3] => 8 )
+?>
+```
+
+## Advanced Example
+
+```php
+<?php
+// Using array_map with callbacks
+$strings = ["apple", "orange", "banana"];
+$lengths = array_map("strlen", $strings);
+
+// Using anonymous functions
+$numbers = [1, 2, 3, 4, 5];
+$evens = array_filter($numbers, function($n) {
+    return $n % 2 === 0;
+});
+
+// Arrow functions (PHP 7.4+)
+$squared = array_map(fn($x) => $x ** 2, $numbers);
+?>
+```
+
+## Related Topics
+
+- [Anonymous Functions](./phpAnonymous.md)
+- [Arrow Functions](./phpArrowFunc.md)
+- [Array Functions](./phpArray.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 5.0  
+**Minimum Required:** PHP 5.0+  
+**Anonymous Functions:** PHP 5.3+  
+**Arrow Functions:** PHP 7.4+
+
+## See Also
+
+- [Official PHP Callbacks Documentation](https://www.php.net/manual/en/language.types.callable.php)
+- [Array Functions](https://www.php.net/manual/en/ref.array.php)
+
+---
+
 A callback function (often referred to as just "callback") is a function which is passed as an argument into another function.
 
 Any existing function can be used as a callback function. To use a function as a callback function, pass a string containing the name of the function as the argument of another function:

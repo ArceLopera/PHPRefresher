@@ -1,3 +1,69 @@
+# PHP Calendar Functions
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 4.3+
+
+## Overview
+
+The calendar extension contains functions that simplify converting between different calendar formats. It is based on the Julian Day Count, which is a count of days starting from January 1st, 4713 B.C.
+
+## When to Use
+
+- Converting between different calendar systems
+- Calculating Easter dates
+- Working with historical calendars (Gregorian, Julian, Hebrew, French Republican)
+- Date calculations and conversions
+- International applications requiring multiple calendar formats
+
+## Basic Example
+
+```php
+<?php
+// Convert Gregorian date to Julian Day Count
+$jd = gregoriantojd(4, 6, 2026);
+echo $jd;  // Output: Julian Day Count
+
+// Convert back to Gregorian
+$date = jdtogregorian($jd);
+echo $date;  // Output: 4/6/2026
+?>
+```
+
+## Advanced Example
+
+```php
+<?php
+// Calculate Easter date for a year
+$easter = easter_date(2026);
+echo date("M d, Y", $easter);  // Output: Apr 05, 2026
+
+// Get days after March 21
+$days = easter_days(2026);
+echo "Easter is $days days after March 21";  // Output: Easter is 15 days after March 21
+
+// Get info about calendars
+$info = cal_info();
+print_r(array_keys($info));  // Shows available calendars
+?>
+```
+
+## Related Topics
+
+- [Date Functions](./phpDate.md)
+- [Time Functions](./phpTime.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 4.3  
+**Minimum Required:** PHP 4.3+  
+**Extension:** Requires calendar extension
+
+## See Also
+
+- [Official PHP Calendar Documentation](https://www.php.net/manual/en/book.calendar.php)
+
+---
+
 The calendar extension contains functions that simplifies converting between different calendar formats.
 
 It is based on the Julian Day Count, which is a count of days starting from January 1st, 4713 B.C.

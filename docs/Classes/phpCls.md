@@ -1,3 +1,44 @@
+# PHP Classes
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+## Overview
+
+Object-oriented programming (OOP) is a paradigm that structures code around objects and classes rather than just functions and procedures. A class is a template or blueprint for creating objects, and an object is an instance of a class.
+
+## When to Use
+
+- Building large, complex applications with many related components
+- Creating reusable code across multiple projects
+- Implementing design patterns and maintaining clean architecture
+- Working with frameworks that use OOP (Laravel, Symfony, Moodle)
+- Grouping related data and behavior together
+
+## Basic Example
+
+```php
+<?php
+class Person {
+    public $name;
+    public $age;
+    
+    public function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+    
+    public function introduce() {
+        return "Hello, I'm " . $this->name . " and I'm " . $this->age . " years old.";
+    }
+}
+
+$person = new Person("Alice", 30);
+echo $person->introduce(); 
+// Output: Hello, I'm Alice and I'm 30 years old.
+?>
+```
+
 Procedural programming is about writing procedures or functions that perform operations on the data, while object-oriented programming is about creating objects that contain both data and functions.
 
 Object-oriented programming has several advantages over procedural programming:
@@ -6,6 +47,56 @@ Object-oriented programming has several advantages over procedural programming:
 + OOP provides a clear structure for the programs
 + OOP helps to keep the PHP code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug
 + OOP makes it possible to create full reusable applications with less code and shorter development time
+
+## Advanced Example
+
+```php
+<?php
+class Employee extends Person {
+    private $employeeId;
+    private $salary;
+    
+    public function __construct($name, $age, $employeeId, $salary) {
+        parent::__construct($name, $age);
+        $this->employeeId = $employeeId;
+        $this->salary = $salary;
+    }
+    
+    public function getDetails() {
+        return $this->introduce() . " - Employee #" . $this->employeeId . 
+               " earning \$" . $this->salary;
+    }
+}
+
+$employee = new Employee("Bob", 35, 1001, 50000);
+echo $employee->getDetails();
+// Output: Hello, I'm Bob and I'm 35 years old. - Employee #1001 earning $50000
+?>
+```
+
+## Related Topics
+
+- [Constructors and Destructors](./phpConstructor.md)
+- [Properties and Methods](../PR/phpVar1.md)
+- [Inheritance](./phpInheritance.md)
+- [Interfaces](./phpInterfaces.md)
+- [Traits](./phpTraits.md)
+- [Abstract Classes](./phpAbstract.md)
+- [Static Properties and Methods](./phpStatic.md)
+- [Namespaces](./phpNamespaces.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 5.0  
+**Minimum Required:** PHP 5.0+  
+**Modern Syntax:** PHP 8.0+ (typed properties, constructor promotion)
+
+## See Also
+
+- [Official PHP OOP Documentation](https://www.php.net/manual/en/language.oop5.php)
+- [PHP PSR Standards](https://www.php-fig.org/psr/)
+
+---
 
 ## Classes
 

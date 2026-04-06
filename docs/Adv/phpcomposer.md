@@ -1,10 +1,81 @@
-### **Managing PHP Dependencies Using Composer**
+# Composer: PHP Package Manager
 
-Composer is a dependency manager for PHP. It allows developers to manage and integrate third-party libraries and packages into their projects, making it easier to handle dependencies and versioning.
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.3.2+
+
+## Overview
+
+Composer is a dependency manager for PHP. It allows developers to manage and integrate third-party libraries and packages into their projects, making it easier to handle dependencies and versioning across different projects.
+
+## When to Use
+
+- Managing third-party PHP libraries and dependencies
+- Autoloading classes efficiently
+- Managing project dependencies in a version-controlled way
+- Installing and updating packages easily
+- Following modern PHP development practices
+
+## Basic Example
+
+```bash
+# Initialize a new project
+composer init
+
+# Install a package
+composer require monolog/monolog
+
+# Install all dependencies from composer.lock
+composer install
+
+# Update to latest versions
+composer update
+```
+
+## Advanced Example
+
+```json
+{
+    "name": "myproject/myapp",
+    "require": {
+        "php": ">=8.0",
+        "laravel/framework": "^9.0",
+        "monolog/monolog": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "laravel/tinker": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
+```
+
+## Related Topics
+
+- [Packages](./phpPackages.md)
+- [PSR Standards](https://www.php-fig.org)
+- [Autoloading](./phpNamespaces.md)
+
+## PHP Version Support
+
+**Introduced:** 2012  
+**Minimum Required:** PHP 5.3.2+  
+**Current Version:** 2.0+  
+**PHP 8+ Ready:** ✅ Yes
+
+## See Also
+
+- [Official Composer Documentation](https://getcomposer.org/doc/)
+- [Packagist (Package Repository)](https://packagist.org/)
 
 ---
 
-### **Installation of Composer**
+### **Managing PHP Dependencies Using Composer**
+
+Composer is a dependency manager for PHP. It allows developers to manage and integrate third-party libraries and packages into their projects, making it easier to handle dependencies and versioning.
 
 ##### **On Windows:**
 - Download the [Composer-Setup.exe](https://getcomposer.org/download/) file.

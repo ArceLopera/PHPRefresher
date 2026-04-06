@@ -1,3 +1,73 @@
+# PHP Variables
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 5.0+
+
+## Overview
+
+In PHP, variables store all pieces of data—numbers, characters, strings, and everything else. Variables are the fundamental building blocks of any PHP program, used to hold and manipulate data throughout your application.
+
+## When to Use
+
+- Storing values for later use
+- Passing data between functions
+- Building data structures (arrays, objects)
+- Managing application state
+- Creating reusable code
+
+## Basic Example
+
+```php
+<?php
+$name = "John";
+$age = 30;
+$score = 95.5;
+$isActive = true;
+
+echo $name;  // Output: John
+echo $age;   // Output: 30
+?>
+```
+
+## Advanced Example
+
+```php
+<?php
+// Type declarations (PHP 7.0+)
+function addNumbers(int $a, int $b): int {
+    return $a + $b;
+}
+
+// Strict types (PHP 7.0+)
+declare(strict_types=1);
+
+$x = 10;
+$y = 20;
+$result = addNumbers($x, $y);
+
+echo "Result: $result";  // Output: Result: 30
+?>
+```
+
+## Related Topics
+
+- [Data Types](../Func/phpStr1.md)
+- [Arrays](../DS/phpArray.md)
+- [Constants](./phpConstants.md)
+- [Type Declarations](./phpModifiers.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 3.0  
+**Minimum Required:** PHP 5.0+  
+**Type Hints:** PHP 5.0+  
+**Strict Types:** PHP 7.0+
+
+## See Also
+
+- [Official PHP Variables Documentation](https://www.php.net/manual/en/language.variables.php)
+
+---
 
 In PHP, we store all pieces of data -- numbers, characters, strings, *everything* -- as objects, and we refer to these objects using variables.  As a simple case, we can *assign* a variable a value using the assignment operator, which is the "equals" sign. 
 

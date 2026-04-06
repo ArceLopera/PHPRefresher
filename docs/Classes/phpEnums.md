@@ -1,3 +1,78 @@
+# PHP Enums
+
+> **Last updated:** April 6, 2026  
+> **Minimum PHP Version:** PHP 8.1+
+
+## Overview
+
+Enums (enumerations) allow you to define a type with a fixed set of possible values. Introduced in PHP 8.1, enums provide type-safe alternatives to constants and make code more expressive and maintainable.
+
+## When to Use
+
+- Defining fixed sets of values (statuses, roles, directions)
+- Type-safe alternatives to class constants
+- State machines with clear transitions
+- Configuration options with limited valid values
+- Domain-driven design with value objects
+
+## Basic Example
+
+```php
+<?php
+enum Status {
+    case Draft;
+    case Published;
+    case Archived;
+}
+
+function publish(Status $status): void {
+    if ($status === Status::Draft) {
+        echo "Publishing draft...";
+    }
+}
+
+publish(Status::Draft);  // Output: Publishing draft...
+?>
+```
+
+## Advanced Example (Backed Enums)
+
+```php
+<?php
+enum HttpStatus: int {
+    case OK = 200;
+    case Created = 201;
+    case BadRequest = 400;
+    case NotFound = 404;
+    case ServerError = 500;
+}
+
+function handleResponse(HttpStatus $status) {
+    echo "Status: " . $status->value;
+}
+
+handleResponse(HttpStatus::OK);  // Output: Status: 200
+?>
+```
+
+## Related Topics
+
+- [Classes](./phpCls.md)
+- [Type Declarations](../PR/phpVar1.md)
+- [Constants](./phpConstants.md)
+
+## PHP Version Support
+
+**Introduced:** PHP 8.1  
+**Minimum Required:** PHP 8.1+  
+**Backed Enums:** PHP 8.1+
+
+## See Also
+
+- [Official PHP Enums Documentation](https://www.php.net/manual/en/language.enums.php)
+
+---
+
 PHP Enums allow you to define a type that has a fixed set of values. Enums were introduced in PHP 8.1.
 
 ## Basic Enums
