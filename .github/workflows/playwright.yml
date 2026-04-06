@@ -29,5 +29,10 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
+      - name: Install Playwright browsers
+        shell: bash
+        run: |
+          cd node_modules/@playwright/test && node install.js chromium firefox webkit
+
       - name: Run Playwright tests
-        run: npm run test -- --reporter=github
+        run: npx playwright test --reporter=github
