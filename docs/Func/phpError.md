@@ -51,8 +51,107 @@ Errors and logging configuration options:
 
 The handy debug_print_backtrace() function allows you to quickly get a sense of what has been been going on in your application immediately before you called a particular function.
 
+The output from debug_print_backtrace() includes, by default, the arguments passed to each function. If those arguments are big arrays or complicated objects, it can make the output unwieldy.
 
-The output from debug_print_backtrace() includes, by default, the arguments passed to each function. If those arguments are big arrays or complicated objects, it can make the output unwieldy. You can pass the constant DEBUG_BACKTRACE_IGNORE_ARGS as a first argument to debug_print_backtrace() to have arguments eliminated from the output. If you only need to keep track of the sequence of functions called, this is perfect.
+```php
+<?php
+function process_user($user_array, $config_object) {
+    debug_print_backtrace();
+}
+
+function create_user() {
+    $user = ['id' => 1, 'name' => 'John', 'email' => 'john@example.com'];
+    $config = (object)['debug' => true, 'timeout' => 30];
+    process_user($user, $config);
+}
+
+create_user();
+```
+
+The output above will include all the arguments, which can be verbose and unwieldy when arguments are large arrays or complicated objects.
+
+#### DEBUG_BACKTRACE Constants
+
+You can control backtrace output behavior using constants passed as the second parameter to `debug_print_backtrace()` or `debug_backtrace()` (PHP 5.3.6+).
+
+| Constant | Value | Description |
+|---|---|---|
+| `DEBUG_BACKTRACE_PROVIDE_OBJECT` | 1 | Include the object context in the backtrace ($frame['object']) |
+| `DEBUG_BACKTRACE_IGNORE_ARGS` | 2 | Omit function arguments from the backtrace output |
+
+#### Using DEBUG_BACKTRACE_IGNORE_ARGS
+
+When you only need to track the sequence of functions called (not their arguments):
+
+```php
+<?php
+function process_user($user_array, $config_object) {
+    debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+}
+
+function create_user() {
+    $user = ['id' => 1, 'name' => 'John', 'email' => 'john@example.com'];
+    $config = (object)['debug' => true, 'timeout' => 30];
+    process_user($user, $config);
+}
+
+create_user();
+```
+
+Output with `DEBUG_BACKTRACE_IGNORE_ARGS`:
+```
+#0  process_user() called at [/app/script.php:12]
+#1  create_user() called at [/app/script.php:18]
+```
+
+Without the flag, arguments would be displayed, making the output much larger.
+
+#### Using DEBUG_BACKTRACE_PROVIDE_OBJECT
+
+When you need the object context for object methods:
+
+```php
+<?php
+class Logger {
+    public function log($message) {
+        debug_print_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT);
+    }
+}
+
+class UserService {
+    private $logger;
+    
+    public function __construct() {
+        $this->logger = new Logger();
+    }
+    
+    public function createUser($name) {
+        $this->logger->log("Creating user: $name");
+    }
+}
+
+$service = new UserService();
+$service->createUser("John");
+```
+
+#### Combining Flags
+
+Use bitwise OR to combine constants:
+
+```php
+<?php
+// Ignore arguments AND provide object context
+debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT);
+```
+
+#### Comparison of Behaviors
+
+| Scenario | Flag(s) | Best For |
+|---|---|---|
+| Default (no flags) | `0` | Full debugging with all context and arguments; may be verbose |
+| Track function sequence | `DEBUG_BACKTRACE_IGNORE_ARGS` | Performance debugging, clean output, large/sensitive arguments |
+| Include object context | `DEBUG_BACKTRACE_PROVIDE_OBJECT` | Object-oriented debugging, method call tracing |
+| Minimal output | `DEBUG_BACKTRACE_IGNORE_ARGS \| DEBUG_BACKTRACE_PROVIDE_OBJECT` | Performance logging, production debugging |
 
 ### debug_backtrace()
 

@@ -1118,6 +1118,47 @@
     debug_print_backtrace()
   </a>
   
+    <nav class="md-nav" aria-label="debug_print_backtrace()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_backtrace-constants" class="md-nav__link">
+    DEBUG_BACKTRACE Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug_backtrace_ignore_args" class="md-nav__link">
+    Using DEBUG_BACKTRACE_IGNORE_ARGS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug_backtrace_provide_object" class="md-nav__link">
+    Using DEBUG_BACKTRACE_PROVIDE_OBJECT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-flags" class="md-nav__link">
+    Combining Flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-of-behaviors" class="md-nav__link">
+    Comparison of Behaviors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2629,6 +2670,47 @@
     debug_print_backtrace()
   </a>
   
+    <nav class="md-nav" aria-label="debug_print_backtrace()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debug_backtrace-constants" class="md-nav__link">
+    DEBUG_BACKTRACE Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug_backtrace_ignore_args" class="md-nav__link">
+    Using DEBUG_BACKTRACE_IGNORE_ARGS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-debug_backtrace_provide_object" class="md-nav__link">
+    Using DEBUG_BACKTRACE_PROVIDE_OBJECT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-flags" class="md-nav__link">
+    Combining Flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-of-behaviors" class="md-nav__link">
+    Comparison of Behaviors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2876,7 +2958,126 @@
 </table>
 <h3 id="debug_print_backtrace">debug_print_backtrace()</h3>
 <p>The handy debug_print_backtrace() function allows you to quickly get a sense of what has been been going on in your application immediately before you called a particular function.</p>
-<p>The output from debug_print_backtrace() includes, by default, the arguments passed to each function. If those arguments are big arrays or complicated objects, it can make the output unwieldy. You can pass the constant DEBUG_BACKTRACE_IGNORE_ARGS as a first argument to debug_print_backtrace() to have arguments eliminated from the output. If you only need to keep track of the sequence of functions called, this is perfect.</p>
+<p>The output from debug_print_backtrace() includes, by default, the arguments passed to each function. If those arguments are big arrays or complicated objects, it can make the output unwieldy.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">process_user</span><span class="p">(</span><span class="nv">$user_array</span><span class="p">,</span> <span class="nv">$config_object</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">debug_print_backtrace</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">create_user</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$user</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;john@example.com&#39;</span><span class="p">];</span>
+    <span class="nv">$config</span> <span class="o">=</span> <span class="p">(</span><span class="nx">object</span><span class="p">)[</span><span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">];</span>
+    <span class="nx">process_user</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="nv">$config</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">create_user</span><span class="p">();</span>
+</code></pre></div>
+<p>The output above will include all the arguments, which can be verbose and unwieldy when arguments are large arrays or complicated objects.</p>
+<h4 id="debug_backtrace-constants">DEBUG_BACKTRACE Constants</h4>
+<p>You can control backtrace output behavior using constants passed as the second parameter to <code>debug_print_backtrace()</code> or <code>debug_backtrace()</code> (PHP 5.3.6+).</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEBUG_BACKTRACE_PROVIDE_OBJECT</code></td>
+<td>1</td>
+<td>Include the object context in the backtrace ($frame['object'])</td>
+</tr>
+<tr>
+<td><code>DEBUG_BACKTRACE_IGNORE_ARGS</code></td>
+<td>2</td>
+<td>Omit function arguments from the backtrace output</td>
+</tr>
+</tbody>
+</table>
+<h4 id="using-debug_backtrace_ignore_args">Using DEBUG_BACKTRACE_IGNORE_ARGS</h4>
+<p>When you only need to track the sequence of functions called (not their arguments):</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">process_user</span><span class="p">(</span><span class="nv">$user_array</span><span class="p">,</span> <span class="nv">$config_object</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">debug_print_backtrace</span><span class="p">(</span><span class="nx">DEBUG_BACKTRACE_IGNORE_ARGS</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">create_user</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$user</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;john@example.com&#39;</span><span class="p">];</span>
+    <span class="nv">$config</span> <span class="o">=</span> <span class="p">(</span><span class="nx">object</span><span class="p">)[</span><span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">];</span>
+    <span class="nx">process_user</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="nv">$config</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">create_user</span><span class="p">();</span>
+</code></pre></div>
+<p>Output with <code>DEBUG_BACKTRACE_IGNORE_ARGS</code>:
+<div class="highlight"><pre><span></span><code>#0  process_user() called at [/app/script.php:12]
+#1  create_user() called at [/app/script.php:18]
+</code></pre></div></p>
+<p>Without the flag, arguments would be displayed, making the output much larger.</p>
+<h4 id="using-debug_backtrace_provide_object">Using DEBUG_BACKTRACE_PROVIDE_OBJECT</h4>
+<p>When you need the object context for object methods:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Logger</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">log</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">debug_print_backtrace</span><span class="p">(</span><span class="nx">DEBUG_BACKTRACE_PROVIDE_OBJECT</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">UserService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createUser</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">log</span><span class="p">(</span><span class="s2">&quot;Creating user: </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserService</span><span class="p">();</span>
+<span class="nv">$service</span><span class="o">-&gt;</span><span class="na">createUser</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="combining-flags">Combining Flags</h4>
+<p>Use bitwise OR to combine constants:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="c1">// Ignore arguments AND provide object context</span>
+<span class="nb">debug_print_backtrace</span><span class="p">(</span><span class="nx">DEBUG_BACKTRACE_IGNORE_ARGS</span> <span class="o">|</span> <span class="nx">DEBUG_BACKTRACE_PROVIDE_OBJECT</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="comparison-of-behaviors">Comparison of Behaviors</h4>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Flag(s)</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default (no flags)</td>
+<td><code>0</code></td>
+<td>Full debugging with all context and arguments; may be verbose</td>
+</tr>
+<tr>
+<td>Track function sequence</td>
+<td><code>DEBUG_BACKTRACE_IGNORE_ARGS</code></td>
+<td>Performance debugging, clean output, large/sensitive arguments</td>
+</tr>
+<tr>
+<td>Include object context</td>
+<td><code>DEBUG_BACKTRACE_PROVIDE_OBJECT</code></td>
+<td>Object-oriented debugging, method call tracing</td>
+</tr>
+<tr>
+<td>Minimal output</td>
+<td><code>DEBUG_BACKTRACE_IGNORE_ARGS \| DEBUG_BACKTRACE_PROVIDE_OBJECT</code></td>
+<td>Performance logging, production debugging</td>
+</tr>
+</tbody>
+</table>
 <h3 id="debug_backtrace">debug_backtrace()</h3>
 <p>A companion to debug_print_backtrace() is debug_backtrace(). Instead of outputting the backtrace, debug_backtrace() returns it as an array, one element per stackframe. This is useful if you only need to print certain elements of the backtrace, or you want to manipulate it programmatically.</p>
 <div class="highlight"><pre><span></span><code><span class="x">function print_parsed_backtrace() {</span>
