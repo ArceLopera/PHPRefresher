@@ -183,14 +183,12 @@ chmod 755 filename.php
 
 1. ✅ PHP installed and running
 2. ⏳ [Your First Script](getting-started-first-script.md) - Write PHP code
-3. ⏳ [Basic Syntax](getting-started-syntax.md) - Understand the language
-4. ⏳ [Common Mistakes](getting-started-mistakes.md) - Avoid bugs
+3. ⏳ Continue with [Basics: Variables](PR/phpVar1.md)
 
 ## Related Topics
 
 - [Control Flow](PR/phpIF.md) - Make decisions
 - [Functions](Func/phpUserFunc.md) - Write reusable code
-- [Debugging](best-practices-debugging.md) - Fix problems
 
 ## See Also
 

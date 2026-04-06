@@ -201,5 +201,5 @@ Then explore other topics in [Basics](index.md) section.
 
 ---
 
-**Continue to [Basic Syntax](getting-started-syntax.md) or explore [Basics](index.md#basics) section!**
+**Continue with [Basics](PR/phpVar1.md) or explore [Best Practices](best-practices-index.md)!**
 
